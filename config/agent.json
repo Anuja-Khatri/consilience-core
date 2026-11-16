@@ -1,0 +1,13 @@
+{
+  "agent_name": "The Consilience engine",
+  "agent_local_name": "consilience-engine",
+  "agent_iri": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+  "introduction_nanopub": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc",
+  "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB",
+  "responsible_person_name": "Anuja Khatri",
+  "responsible_person_orcid": "",
+  "responsible_person_orcid_note": "PLACEHOLDER. Leave empty until Anuja Khatri supplies her ORCID iD herself. It must be set before any production (live network) publication. Never guess or look it up on her behalf.",
+  "registry": "test",
+  "registry_url": "https://test.registry.knowledgepixels.com/np/",
+  "key_location_note": "The private key is never in this repository. Default: ~/.consilience-nanopub/consilience-engine_id_rsa (override with CONSILIENCE_NANOPUB_KEY_DIR)."
+}

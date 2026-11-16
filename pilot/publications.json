@@ -1,0 +1,172 @@
+{
+  "agent:introduction": {
+    "nanopub": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc",
+    "published": "2026-11-16T19:26:25Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "agent/introduction.trig",
+    "note": "self-signed introduction of the engine as a software agent"
+  },
+  "template:graded_correspondence": {
+    "nanopub": "https://w3id.org/np/RAliOt1I-l8MmIehzK8wqRenfljWJk4SED3XyJmVCIftY",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAliOt1I-l8MmIehzK8wqRenfljWJk4SED3XyJmVCIftY",
+    "published": "2026-11-16T19:27:42Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "templates/graded_correspondence.trig",
+    "note": "Consilience: claim A corresponds to claim B at grade X"
+  },
+  "template:comparison_refusal": {
+    "nanopub": "https://w3id.org/np/RAr2wiuk3YGzyw123e9k0lc-c8Om_WRhv5zQEyP6Rz9Dw",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAr2wiuk3YGzyw123e9k0lc-c8Om_WRhv5zQEyP6Rz9Dw",
+    "published": "2026-11-16T19:27:43Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "templates/comparison_refusal.trig",
+    "note": "Consilience: comparison refused"
+  },
+  "template:testable_disagreement": {
+    "nanopub": "https://w3id.org/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE",
+    "published": "2026-11-16T19:27:44Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "templates/testable_disagreement.trig",
+    "note": "Consilience: this disagreement is testable now with instrument Y"
+  },
+  "template:data_quality_finding": {
+    "nanopub": "https://w3id.org/np/RAIVWy9da47nSVGrlPGhVsqyvFTkFgzrpw42l_t12iVPo",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAIVWy9da47nSVGrlPGhVsqyvFTkFgzrpw42l_t12iVPo",
+    "published": "2026-11-16T19:27:46Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "templates/data_quality_finding.trig",
+    "note": "Consilience: data-quality finding"
+  },
+  "template:claim_card": {
+    "nanopub": "https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8",
+    "published": "2026-11-16T19:27:47Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "templates/claim_card.trig",
+    "note": "Consilience: claim card"
+  },
+  "template:receipt_provenance": {
+    "nanopub": "https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4",
+    "published": "2026-11-16T19:27:49Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "templates/receipt_provenance.trig",
+    "note": "Consilience: receipt"
+  },
+  "record:01-claim-card-ref40_peng2023__002": {
+    "nanopub": "https://w3id.org/np/RA4UmeZBdq6pNgWcg5zCH6yvBZeLDjwWnDwAjEGdeU1DQ",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RA4UmeZBdq6pNgWcg5zCH6yvBZeLDjwWnDwAjEGdeU1DQ",
+    "published": "2026-11-16T19:28:44Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/01-claim-card-ref40_peng2023__002.trig",
+    "note": "claim_card; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668"
+  },
+  "record:02-claim-card-ref40_peng2023__011": {
+    "nanopub": "https://w3id.org/np/RA1HAG4dZ9aJB5NCD-Ig6yATyHiCT9uRnTYwJ0Hm_7vKg",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RA1HAG4dZ9aJB5NCD-Ig6yATyHiCT9uRnTYwJ0Hm_7vKg",
+    "published": "2026-11-16T19:28:46Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/02-claim-card-ref40_peng2023__011.trig",
+    "note": "claim_card; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866"
+  },
+  "record:03-claim-card-2609.30133__003": {
+    "nanopub": "https://w3id.org/np/RA49qRFK9XtXtIu5XcFvkTDIo-rzeFSGpfavK5oim8j58",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RA49qRFK9XtXtIu5XcFvkTDIo-rzeFSGpfavK5oim8j58",
+    "published": "2026-11-16T19:28:47Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/03-claim-card-2609.30133__003.trig",
+    "note": "claim_card; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L80-L119"
+  },
+  "record:04-refusal-ref40_peng2023__002--ref40_peng2023__011": {
+    "nanopub": "https://w3id.org/np/RAttErMNFCCmfeggou4vaaXQlqbePSCw3Rh_qigiFSpa4",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAttErMNFCCmfeggou4vaaXQlqbePSCw3Rh_qigiFSpa4",
+    "published": "2026-11-16T19:28:49Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/04-refusal-ref40_peng2023__002--ref40_peng2023__011.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L9794-L9828"
+  },
+  "record:05-refusal-ref40_peng2023__009--ref40_peng2023__010": {
+    "nanopub": "https://w3id.org/np/RA1YUVPAWY0wyjK4NI69E-2mCu-QkmOl-bNIpOm20qepA",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RA1YUVPAWY0wyjK4NI69E-2mCu-QkmOl-bNIpOm20qepA",
+    "published": "2026-11-16T19:28:51Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/05-refusal-ref40_peng2023__009--ref40_peng2023__010.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10822-L10852"
+  },
+  "record:06-refusal-2609.30133__001--ref40_peng2023__002": {
+    "nanopub": "https://w3id.org/np/RAFkap6esujdqU5MzB9D-4NMJCPZLqKP2zw7xCpOoodYU",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAFkap6esujdqU5MzB9D-4NMJCPZLqKP2zw7xCpOoodYU",
+    "published": "2026-11-16T19:28:53Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/06-refusal-2609.30133__001--ref40_peng2023__002.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L359-L381"
+  },
+  "record:07-refusal-2609.30133__003--2609.30133__004": {
+    "nanopub": "https://w3id.org/np/RAOVEJAJRvh0R3SCGpHwEezvZdaNNwAdVv3pPe6cce1IM",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAOVEJAJRvh0R3SCGpHwEezvZdaNNwAdVv3pPe6cce1IM",
+    "published": "2026-11-16T19:28:54Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/07-refusal-2609.30133__003--2609.30133__004.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L1509-L1535"
+  },
+  "record:08-refusal-2609.30133__003--ref40_peng2023__013": {
+    "nanopub": "https://w3id.org/np/RA4MUUChBFMojXEEwFAhOF11T0KxKzSXMgMeAmkiaSFII",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RA4MUUChBFMojXEEwFAhOF11T0KxKzSXMgMeAmkiaSFII",
+    "published": "2026-11-16T19:28:56Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/08-refusal-2609.30133__003--ref40_peng2023__013.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L1974-L2008"
+  },
+  "record:09-refusal-2609.30133__001--2609.30133__002": {
+    "nanopub": "https://w3id.org/np/RAaUcr_sQOgJec-CSehaIidZWW59jhKoMfgIUTpdAPYMk",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAaUcr_sQOgJec-CSehaIidZWW59jhKoMfgIUTpdAPYMk",
+    "published": "2026-11-16T19:28:58Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/09-refusal-2609.30133__001--2609.30133__002.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L2-L36"
+  },
+  "record:10-refusal-ref40_peng2023__026--ref40_peng2023__044": {
+    "nanopub": "https://w3id.org/np/RAhDd4aPFDsKjIZcXLH1lx8K-MDc24ls3kA3JweZsOH6s",
+    "registry": "test",
+    "resolves_at": "https://test.registry.knowledgepixels.com/np/RAhDd4aPFDsKjIZcXLH1lx8K-MDc24ls3kA3JweZsOH6s",
+    "published": "2026-11-16T19:29:00Z",
+    "supersedes": null,
+    "signer": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+    "file": "pilot/trig/10-refusal-ref40_peng2023__026--ref40_peng2023__044.trig",
+    "note": "comparison_refusal; receipt https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L13033-L13067"
+  }
+}

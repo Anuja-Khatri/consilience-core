@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "consilience"
+version = "0.1.0.dev0"
+description = "Consilience: claim comparison records with receipts, and their export as nanopublications."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Anuja Khatri" }]
+dependencies = [
+  "nanopub>=2.2.2,<3",
+  "rdflib>=7.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+consilience = "consilience.cli:main"
+
+[project.urls]
+Source = "https://github.com/Anuja-Khatri/consilience-core"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

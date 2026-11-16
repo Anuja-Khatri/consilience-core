@@ -1,0 +1,148 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAliOt1I-l8MmIehzK8wqRenfljWJk4SED3XyJmVCIftY/> .
+@prefix this: <https://w3id.org/np/RAliOt1I-l8MmIehzK8wqRenfljWJk4SED3XyJmVCIftY> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:assertion {
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: claim A corresponds to claim B at grade X" ;
+        dcterms:description "Two claims were compared by structure and judged to correspond at a grade on a four-rung ladder, from rung 1 (structural identity) to rung 4 (thematic resonance only). The ceiling says what that grade does not license. The equivocation check records whether the correspondence survives removing the vocabulary the two claims share." ;
+        ntemplate:hasNanopubLabelPattern "Correspondence at grade ${grade}: ${identifier}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:GradedCorrespondence .
+
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:claimA rdfs:label "compares claim A" .
+
+    cv:claimASentence rdfs:label "claim A's source sentence" .
+
+    cv:claimB rdfs:label "with claim B" .
+
+    cv:claimBSentence rdfs:label "claim B's source sentence" .
+
+    cv:equivocation rdfs:label "has the equivocation-check result" .
+
+    cv:grade rdfs:label "has the grade" .
+
+    cv:gradeCeiling rdfs:label "with the ceiling" .
+
+    sub:ceiling a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "what this grade does not license" .
+
+    sub:claimA a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim A (link to its claim card)" .
+
+    sub:claimB a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim B (link to its claim card)" .
+
+    sub:equivocation a ntemplate:LiteralPlaceholder ;
+        rdfs:label "equivocation-check result" .
+
+    sub:grade a ntemplate:LiteralPlaceholder ;
+        rdfs:label "grade: rung 1 (strongest) to 4 (weakest)" ;
+        ntemplate:hasDatatype xsd:integer .
+
+    sub:identifier a ntemplate:LiteralPlaceholder ;
+        rdfs:label "identifier of the record in its source repository" .
+
+    sub:sentenceA a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "source sentence of claim A" .
+
+    sub:sentenceB a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "source sentence of claim B" .
+
+    sub:st01 rdf:object cv:GradedCorrespondence ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:correspondence .
+
+    sub:st02 rdf:object sub:identifier ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:correspondence .
+
+    sub:st03 rdf:object sub:claimA ;
+        rdf:predicate cv:claimA ;
+        rdf:subject sub:correspondence .
+
+    sub:st04 rdf:object sub:claimB ;
+        rdf:predicate cv:claimB ;
+        rdf:subject sub:correspondence .
+
+    sub:st05 rdf:object sub:grade ;
+        rdf:predicate cv:grade ;
+        rdf:subject sub:correspondence .
+
+    sub:st06 a ntemplate:OptionalStatement ;
+        rdf:object sub:ceiling ;
+        rdf:predicate cv:gradeCeiling ;
+        rdf:subject sub:correspondence .
+
+    sub:st07 a ntemplate:OptionalStatement ;
+        rdf:object sub:equivocation ;
+        rdf:predicate cv:equivocation ;
+        rdf:subject sub:correspondence .
+
+    sub:st08 a ntemplate:OptionalStatement ;
+        rdf:object sub:sentenceA ;
+        rdf:predicate cv:claimASentence ;
+        rdf:subject sub:correspondence .
+
+    sub:st09 a ntemplate:OptionalStatement ;
+        rdf:object sub:sentenceB ;
+        rdf:predicate cv:claimBSentence ;
+        rdf:subject sub:correspondence .
+
+    cv:GradedCorrespondence rdfs:label "graded correspondence" .
+
+    sub:correspondence a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this correspondence" .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "gvmgUQeT2hmmViH15qdEtElC0uNDWAA9xpvtmDGUwZu6TRrC+VhCSiUunnKEAwavO88jt0/+5AVSTbCzSouVTgfmM6JIZhkrKMpFtAQ7WEowu8J+sgOrFkX2a1XPtmvf7JIqh1uZBGkI2uRwxMJBDCk8gq/I3R4RGdZGsxflCJfSfmwafy23veATa7RTYzVLar2MVYrbD27DQKLPH5+T8qIwL75NVhPkdH2wqWdpFl+SeIpZn1fn/FtrM5eBL39e73jEVmlhdJEUfJ8aIUWurPVtpofOcf0VINb/lnN7nY+TUjje/9I2DgIYrMY4QFJ08Y2EL+8WT4D/aII6m67Y8Q==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Consilience: claim A corresponds to claim B at grade X" ;
+        dcterms:created "2026-11-16T19:27:40Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+

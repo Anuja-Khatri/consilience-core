@@ -1,0 +1,192 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAr2wiuk3YGzyw123e9k0lc-c8Om_WRhv5zQEyP6Rz9Dw/> .
+@prefix this: <https://w3id.org/np/RAr2wiuk3YGzyw123e9k0lc-c8Om_WRhv5zQEyP6Rz9Dw> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "Cetfa2Q8YFljiAJ4uZcVDIR4rlNCo/8wx7MLR1V6igCEzUp6q3FuEXeksnvjQxRkiXTMQN1ra/m5liv/fztkZUBgHuteFiKszIQaXx3lXv9ofckoaSdtp3Kd3OTHkmlesh+R92+f6k091ra8IUzgEokHBKmSzI/SEB+GV1fcmHhYSDoKpuXNK/kwWNkzqM82pKAOZbQf149NDqdaI9WHc0TCaWay4C1y2zhEUjXPfpAn0Rs1fzbQAtReLtMAOru0TtVIPfs8K8/CGMYSp+EqLxAYvBiPNmG7EXCCzor/pDiB6+QGeh5VdtHQC+j/cF7MaojkZK1bywtKfQ0d6TnbEQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Consilience: comparison refused" ;
+        dcterms:created "2026-11-16T19:27:42Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+
+sub:assertion {
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:ConditionMismatch rdfs:label "condition differs" .
+
+    cv:ConditionUnstated rdfs:label "condition not stated" .
+
+    cv:NotComparable rdfs:label "not comparable" .
+
+    cv:QuantityRefused rdfs:label "quantity could not be read" .
+
+    cv:TypeMismatch rdfs:label "different claim kinds" .
+
+    cv:axis rdfs:label "is on the quantity axis" .
+
+    cv:claimA rdfs:label "compares claim A" .
+
+    cv:claimASentence rdfs:label "claim A's source sentence" .
+
+    cv:claimB rdfs:label "with claim B" .
+
+    cv:claimBSentence rdfs:label "claim B's source sentence" .
+
+    cv:defectTarget rdfs:label "concerns" .
+
+    cv:defectType rdfs:label "is of defect type" .
+
+    cv:hasDefect rdfs:label "has the defect" .
+
+    cv:outcome rdfs:label "has the outcome" .
+
+    sub:axis a ntemplate:LiteralPlaceholder ;
+        rdfs:label "quantity axis" .
+
+    sub:claimA a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim A (link to its claim card)" .
+
+    sub:claimB a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim B (link to its claim card)" .
+
+    sub:defectTarget a ntemplate:LiteralPlaceholder ;
+        rdfs:label "condition, rule or axes concerned" .
+
+    sub:defectType a ntemplate:RestrictedChoicePlaceholder ;
+        rdfs:label "defect type" ;
+        ntemplate:possibleValue cv:AxisMismatch,
+            cv:ConditionMismatch,
+            cv:ConditionUnstated,
+            cv:QuantityRefused,
+            cv:TypeMismatch .
+
+    sub:identifier a ntemplate:LiteralPlaceholder ;
+        rdfs:label "identifier of the record in its source repository" .
+
+    sub:outcome a ntemplate:RestrictedChoicePlaceholder ;
+        rdfs:label "outcome" ;
+        ntemplate:possibleValue cv:AxisMismatch,
+            cv:NotComparable .
+
+    sub:sentenceA a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "source sentence of claim A" .
+
+    sub:sentenceB a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "source sentence of claim B" .
+
+    sub:st01 rdf:object cv:ComparisonRefusal ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:refusal .
+
+    sub:st02 rdf:object sub:identifier ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:refusal .
+
+    sub:st03 rdf:object sub:claimA ;
+        rdf:predicate cv:claimA ;
+        rdf:subject sub:refusal .
+
+    sub:st04 rdf:object sub:claimB ;
+        rdf:predicate cv:claimB ;
+        rdf:subject sub:refusal .
+
+    sub:st05 a ntemplate:OptionalStatement ;
+        rdf:object sub:axis ;
+        rdf:predicate cv:axis ;
+        rdf:subject sub:refusal .
+
+    sub:st06 rdf:object sub:outcome ;
+        rdf:predicate cv:outcome ;
+        rdf:subject sub:refusal .
+
+    sub:st10 a ntemplate:OptionalStatement ;
+        rdf:object sub:sentenceA ;
+        rdf:predicate cv:claimASentence ;
+        rdf:subject sub:refusal .
+
+    sub:st11 a ntemplate:OptionalStatement ;
+        rdf:object sub:sentenceB ;
+        rdf:predicate cv:claimBSentence ;
+        rdf:subject sub:refusal .
+
+    sub:st20 a ntemplate:GroupedStatement,
+            ntemplate:RepeatableStatement ;
+        ntemplate:hasStatement sub:st07,
+            sub:st08,
+            sub:st09 .
+
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: comparison refused" ;
+        dcterms:description "A comparison between two claims that was refused, with the reason named. Two claims are compared only if they are on the same quantity axis and every condition the rule set requires is stated for both and matches. Otherwise the comparison is refused, and each defect is recorded: a condition that is not stated in a claim card, a condition that differs between the two, or different quantity axes. A refusal is a statement about what the two claim cards, as recorded, allow; it is not a judgement of either source. The rule set, code version and content hash of the original verdict are in the provenance." ;
+        ntemplate:hasNanopubLabelPattern "Comparison refused: ${identifier}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11,
+            sub:st20 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:ComparisonRefusal .
+
+    cv:AxisMismatch rdfs:label "different quantity axes" .
+
+    cv:ComparisonRefusal rdfs:label "comparison refusal" .
+
+    sub:st07 rdf:object sub:defect ;
+        rdf:predicate cv:hasDefect ;
+        rdf:subject sub:refusal .
+
+    sub:st08 rdf:object sub:defectType ;
+        rdf:predicate cv:defectType ;
+        rdf:subject sub:defect .
+
+    sub:st09 rdf:object sub:defectTarget ;
+        rdf:predicate cv:defectTarget ;
+        rdf:subject sub:defect .
+
+    sub:defect a ntemplate:LocalResource ;
+        rdfs:label "a defect" .
+
+    sub:refusal a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this refusal" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

@@ -1,0 +1,125 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAIVWy9da47nSVGrlPGhVsqyvFTkFgzrpw42l_t12iVPo/> .
+@prefix this: <https://w3id.org/np/RAIVWy9da47nSVGrlPGhVsqyvFTkFgzrpw42l_t12iVPo> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "mvchAIG5Ye6E5+dCCWhjG+LywB1O2Oee4oq4gEbCLx+TlF+ZPm+80NqQTAlBqBxjBYO+B4eZyoWBVnNG5BhmKuZd7fgXRvQJsDiSNNiVVCg3O2j3PbHfaCDnXJO3/mPRl6Zojlz2mMbJxtQgB3ujL1Cg+uLzaixeIDv6/3+zE3jZ4RLJYHfKor88U2LTDjAiarE8PoiL9QhwDWqvGPz33XSjx103vdvNc1XKzALinjNdjLEA1aFeSsf8ggORG5GkuofVq67fZrYgaBzA43JeCn1daZmoPx0dTWRHXVUJicW+GX4GqiTZwVPhw+j1jAdKK0uUGwGQDOvu8S2cJDoUZA==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Consilience: data-quality finding" ;
+        dcterms:created "2026-11-16T19:27:44Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+}
+
+sub:assertion {
+    dcterms:description rdfs:label "is described as" .
+
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:check rdfs:label "applies the check" .
+
+    cv:dataset rdfs:label "concerns the dataset" .
+
+    cv:recordsChecked rdfs:label "checked this many records" .
+
+    cv:recordsFlagged rdfs:label "flagged this many records" .
+
+    sub:check a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "the check, in plain words" .
+
+    sub:dataset a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "dataset (persistent link)" .
+
+    sub:findingText a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "the finding, in plain words" .
+
+    sub:identifier a ntemplate:LiteralPlaceholder ;
+        rdfs:label "identifier of the finding" .
+
+    sub:recordsChecked a ntemplate:LiteralPlaceholder ;
+        rdfs:label "records checked" ;
+        ntemplate:hasDatatype xsd:integer .
+
+    sub:recordsFlagged a ntemplate:LiteralPlaceholder ;
+        rdfs:label "records flagged" ;
+        ntemplate:hasDatatype xsd:integer .
+
+    sub:st01 rdf:object cv:DataQualityFinding ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:finding .
+
+    sub:st02 rdf:object sub:identifier ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:finding .
+
+    sub:st03 rdf:object sub:dataset ;
+        rdf:predicate cv:dataset ;
+        rdf:subject sub:finding .
+
+    sub:st04 rdf:object sub:check ;
+        rdf:predicate cv:check ;
+        rdf:subject sub:finding .
+
+    sub:st05 rdf:object sub:recordsChecked ;
+        rdf:predicate cv:recordsChecked ;
+        rdf:subject sub:finding .
+
+    sub:st06 rdf:object sub:recordsFlagged ;
+        rdf:predicate cv:recordsFlagged ;
+        rdf:subject sub:finding .
+
+    sub:st07 rdf:object sub:findingText ;
+        rdf:predicate dcterms:description ;
+        rdf:subject sub:finding .
+
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: data-quality finding" ;
+        dcterms:description "A check run over a dataset, and how many records it flagged out of how many it checked. A finding is an observation about individual records, made possible by what the dataset records; it credits the dataset and is not a statement about the people who produced it. Findings are shared with the dataset's maintainers before they are published." ;
+        ntemplate:hasNanopubLabelPattern "Data-quality finding: ${identifier}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:DataQualityFinding .
+
+    cv:DataQualityFinding rdfs:label "data-quality finding" .
+
+    sub:finding a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this finding" .
+}
+

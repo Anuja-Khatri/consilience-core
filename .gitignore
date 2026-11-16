@@ -1,0 +1,30 @@
+# --- Signing keys: never commit. Keys live outside the repository
+# (default ~/.consilience-nanopub/). These patterns are a second line of defence.
+*id_rsa*
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*private*key*
+.consilience-nanopub/
+.nanopub/
+profile.yml
+profile.yaml
+keys/
+secrets/
+
+# --- Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# --- Local scratch
+tmp/
+.cache/

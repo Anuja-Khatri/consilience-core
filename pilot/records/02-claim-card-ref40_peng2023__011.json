@@ -1,0 +1,65 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      827,
+      866
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866"
+  },
+  "receipt": {
+    "content_hash": "2230f435fe816a257d689ec4c9f9a786b257df301d34697029be09d29c316778",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__011",
+    "claim_kind": "stability_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": {
+        "normalization": "geometric",
+        "unit": "mA/cm^2",
+        "value": 100.0
+      },
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "cp_chronopotentiometry",
+    "object": "stability_duration",
+    "physical_scale": "nanoscale",
+    "provenance_hash": "195812a2e6d8acd6",
+    "quantity": {
+      "bound": "lower",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "h",
+      "value": 40.0
+    },
+    "relation": "has_stability_duration",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "Furthermore, the high durability of >40 h for Pd-55 at 100 mA cm–2 also confirms that hierarchical Pd is quite stable under a large current density.",
+    "subject": "Pd-55"
+  }
+}

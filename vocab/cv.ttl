@@ -1,0 +1,263 @@
+# Consilience verdict vocabulary (cv). CC BY 4.0. Generated from src/consilience/export/vocab.py.
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+cv:AxisMismatch a owl:NamedIndividual ;
+    rdfs:label "different quantity axes" ;
+    rdfs:comment "Outcome and defect type: the two claims are on different quantity axes." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ClaimCard a owl:Class ;
+    rdfs:label "claim card" ;
+    rdfs:comment "One measured claim as an approved claim card: exact source sentence, source document, subject, quantity on an axis with its unit, and the conditions stated and not stated." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ComparisonRefusal a owl:Class ;
+    rdfs:label "comparison refusal" ;
+    rdfs:comment "A comparison between two claims that was refused, with each reason (defect) named." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ConditionMismatch a owl:NamedIndividual ;
+    rdfs:label "condition differs" ;
+    rdfs:comment "Defect type: a condition rule (named in defectTarget) is not met because the stated conditions differ." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ConditionUnstated a owl:NamedIndividual ;
+    rdfs:label "condition not stated" ;
+    rdfs:comment "Defect type: a condition the rule set requires is not stated in a claim card." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:DataQualityFinding a owl:Class ;
+    rdfs:label "data-quality finding" ;
+    rdfs:comment "A check run over a dataset and how many records it flagged out of how many it checked. Credits the dataset; not a statement about its authors." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:GradedCorrespondence a owl:Class ;
+    rdfs:label "graded correspondence" ;
+    rdfs:comment "Two claims judged to correspond at a grade on a four-rung ladder (rung 1 strongest, 4 weakest), with a ceiling stating what the grade does not license." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:NotComparable a owl:NamedIndividual ;
+    rdfs:label "not comparable" ;
+    rdfs:comment "Outcome: the two claims cannot be compared under the rule set." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:NotTestable a owl:NamedIndividual ;
+    rdfs:label "not testable" ;
+    rdfs:comment "Testability: not testable, with the reason." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:QuantityRefused a owl:NamedIndividual ;
+    rdfs:label "quantity could not be read" ;
+    rdfs:comment "Defect type: a quantity could not be read or converted, with the reason." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:TestableDisagreement a owl:Class ;
+    rdfs:label "testable disagreement" ;
+    rdfs:comment "Two comparable claims that disagree beyond the floor on their axis, with the instrument that could test the disagreement." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:TestableNow a owl:NamedIndividual ;
+    rdfs:label "testable now" ;
+    rdfs:comment "Testability: testable with an instrument that exists today." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:TestableUnderAssumption a owl:NamedIndividual ;
+    rdfs:label "testable under a named assumption" ;
+    rdfs:comment "Testability: testable under a named assumption." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:TypeMismatch a owl:NamedIndividual ;
+    rdfs:label "different claim kinds" ;
+    rdfs:comment "Defect type: the two claims are of different kinds." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:assumption a rdf:Property ;
+    rdfs:label "under the assumption" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:axis a rdf:Property ;
+    rdfs:label "is on the quantity axis" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:bound a rdf:Property ;
+    rdfs:label "with bound" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:canonicalUnit a rdf:Property ;
+    rdfs:label "in the unit" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:check a rdf:Property ;
+    rdfs:label "applies the check" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:claimA a rdf:Property ;
+    rdfs:label "compares claim A" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:claimASentence a rdf:Property ;
+    rdfs:label "claim A's source sentence" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:claimB a rdf:Property ;
+    rdfs:label "with claim B" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:claimBSentence a rdf:Property ;
+    rdfs:label "claim B's source sentence" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:claimKind a rdf:Property ;
+    rdfs:label "is of claim kind" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:codeVersion a rdf:Property ;
+    rdfs:label "was computed by the code version" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:conditionName a rdf:Property ;
+    rdfs:label "has the condition name" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:conditionUnstated a rdf:Property ;
+    rdfs:label "does not state the condition" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:conditionValueJson a rdf:Property ;
+    rdfs:label "has the condition value (JSON)" ;
+    rdfs:comment "The stated value of a condition, as JSON with sorted keys, exactly as in the claim card." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:contentHash a rdf:Property ;
+    rdfs:label "has the content hash" ;
+    rdfs:comment "SHA-256 content hash of the source record (hex). Reproduce it with the method named by hashMethod." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:dataset a rdf:Property ;
+    rdfs:label "concerns the dataset" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:defectTarget a rdf:Property ;
+    rdfs:label "concerns" ;
+    rdfs:comment "What a defect concerns: a condition name, a rule identifier (for ConditionMismatch), or the two axes." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:defectType a rdf:Property ;
+    rdfs:label "is of defect type" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:equivocation a rdf:Property ;
+    rdfs:label "has the equivocation-check result" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:exportedWith a rdf:Property ;
+    rdfs:label "was exported with" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:floor a rdf:Property ;
+    rdfs:label "beyond the floor" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:grade a rdf:Property ;
+    rdfs:label "has the grade" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:gradeCeiling a rdf:Property ;
+    rdfs:label "with the ceiling" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasCondition a rdf:Property ;
+    rdfs:label "states the condition" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasDefect a rdf:Property ;
+    rdfs:label "has the defect" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasQuantity a rdf:Property ;
+    rdfs:label "states the quantity" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hashMethod a rdf:Property ;
+    rdfs:label "hashed with the method" ;
+    rdfs:comment "How contentHash is computed. verdict-sha256-v0: SHA-256 of the record minus its content_hash field, JSON with sorted keys. card-sha256-v0: SHA-256 of the whole claim card, JSON with sorted keys." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:instrument a rdf:Property ;
+    rdfs:label "is testable with the instrument" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ledgerHash a rdf:Property ;
+    rdfs:label "is covered by the ledger hash" ;
+    rdfs:comment "The ledger hash that covers the full set of claim cards, the rules lock and the code version at the source commit." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:mapVersion a rdf:Property ;
+    rdfs:label "with the axis map version" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:margin a rdf:Property ;
+    rdfs:label "differs by the margin" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:measurability a rdf:Property ;
+    rdfs:label "has measurability" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:measurableWith a rdf:Property ;
+    rdfs:label "is measurable with" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:objectName a rdf:Property ;
+    rdfs:label "measures" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:outcome a rdf:Property ;
+    rdfs:label "has the outcome" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:recordsChecked a rdf:Property ;
+    rdfs:label "checked this many records" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:recordsFlagged a rdf:Property ;
+    rdfs:label "flagged this many records" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:relation a rdf:Property ;
+    rdfs:label "has the relation" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:rulesVersion a rdf:Property ;
+    rdfs:label "under the rule version" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:sourceCommit a rdf:Property ;
+    rdfs:label "at the commit" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:sourceRepository a rdf:Property ;
+    rdfs:label "comes from the repository" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:sourceSentence a rdf:Property ;
+    rdfs:label "has the source sentence" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:subjectName a rdf:Property ;
+    rdfs:label "is about the subject" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:testability a rdf:Property ;
+    rdfs:label "has testability" ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+<https://theconsilience.io/ns/cv> a owl:Ontology ;
+    rdfs:label "Consilience verdict vocabulary (cv), version 0" ;
+    dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "Minimal terms for Consilience records published as nanopublications, defined only where no existing vocabulary fits. Draft; not yet served at this address." .
+

@@ -1,0 +1,178 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE/> .
+@prefix this: <https://w3id.org/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+}
+
+sub:assertion {
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: this disagreement is testable now with instrument Y" ;
+        dcterms:description "Two comparable claims disagree beyond the floor that applies on their axis, and the disagreement can be tested with an instrument that exists today (or under a named assumption, or not at all, with the reason). The margin and the floor are given in the canonical unit of the axis." ;
+        ntemplate:hasNanopubLabelPattern "Testable disagreement: ${identifier}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:TestableDisagreement .
+
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:NotTestable rdfs:label "not testable" .
+
+    cv:TestableNow rdfs:label "testable now" .
+
+    cv:TestableUnderAssumption rdfs:label "testable under a named assumption" .
+
+    cv:assumption rdfs:label "under the assumption" .
+
+    cv:axis rdfs:label "is on the quantity axis" .
+
+    cv:canonicalUnit rdfs:label "in the unit" .
+
+    cv:claimA rdfs:label "compares claim A" .
+
+    cv:claimB rdfs:label "with claim B" .
+
+    cv:floor rdfs:label "beyond the floor" .
+
+    cv:instrument rdfs:label "is testable with the instrument" .
+
+    cv:margin rdfs:label "differs by the margin" .
+
+    cv:testability rdfs:label "has testability" .
+
+    sub:assumption a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "assumption needed" .
+
+    sub:axis a ntemplate:LiteralPlaceholder ;
+        rdfs:label "quantity axis" .
+
+    sub:canonicalUnit a ntemplate:LiteralPlaceholder ;
+        rdfs:label "canonical unit" .
+
+    sub:claimA a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim A (link to its claim card)" .
+
+    sub:claimB a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim B (link to its claim card)" .
+
+    sub:floor a ntemplate:LiteralPlaceholder ;
+        rdfs:label "floor applied" ;
+        ntemplate:hasDatatype xsd:decimal .
+
+    sub:identifier a ntemplate:LiteralPlaceholder ;
+        rdfs:label "identifier of the record in its source repository" .
+
+    sub:instrument a ntemplate:LiteralPlaceholder ;
+        rdfs:label "instrument (class or name)" .
+
+    sub:margin a ntemplate:LiteralPlaceholder ;
+        rdfs:label "margin" ;
+        ntemplate:hasDatatype xsd:decimal .
+
+    sub:st01 rdf:object cv:TestableDisagreement ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:disagreement .
+
+    sub:st02 rdf:object sub:identifier ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:disagreement .
+
+    sub:st03 rdf:object sub:claimA ;
+        rdf:predicate cv:claimA ;
+        rdf:subject sub:disagreement .
+
+    sub:st04 rdf:object sub:claimB ;
+        rdf:predicate cv:claimB ;
+        rdf:subject sub:disagreement .
+
+    sub:st05 rdf:object sub:axis ;
+        rdf:predicate cv:axis ;
+        rdf:subject sub:disagreement .
+
+    sub:st06 rdf:object sub:testability ;
+        rdf:predicate cv:testability ;
+        rdf:subject sub:disagreement .
+
+    sub:st07 rdf:object sub:instrument ;
+        rdf:predicate cv:instrument ;
+        rdf:subject sub:disagreement .
+
+    sub:st08 a ntemplate:OptionalStatement ;
+        rdf:object sub:assumption ;
+        rdf:predicate cv:assumption ;
+        rdf:subject sub:disagreement .
+
+    sub:st09 a ntemplate:OptionalStatement ;
+        rdf:object sub:margin ;
+        rdf:predicate cv:margin ;
+        rdf:subject sub:disagreement .
+
+    sub:st10 a ntemplate:OptionalStatement ;
+        rdf:object sub:floor ;
+        rdf:predicate cv:floor ;
+        rdf:subject sub:disagreement .
+
+    sub:st11 a ntemplate:OptionalStatement ;
+        rdf:object sub:canonicalUnit ;
+        rdf:predicate cv:canonicalUnit ;
+        rdf:subject sub:disagreement .
+
+    sub:testability a ntemplate:RestrictedChoicePlaceholder ;
+        rdfs:label "testability" ;
+        ntemplate:possibleValue cv:NotTestable,
+            cv:TestableNow,
+            cv:TestableUnderAssumption .
+
+    cv:TestableDisagreement rdfs:label "testable disagreement" .
+
+    sub:disagreement a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this disagreement" .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "cdYj3sR6Kq8gzG20Yli2IVdxLH7z4FIshVv8ZllZXtcDuVSZGlDE25ohob7FBL6hEjWYS17xrIoVw/de8sc/Rr34s1AYq2SArnIYe5mW9piPbXLLybe35r+lDLizxrw8gnXoRjYBkqxGqRTgYS1j4W2M4heAuS4u46U6zA1MRWyYmYNM1fMcSmmfUkLLXTzSKo4EtW5GGfZXnIAoKga6NMRE+qmRQOrXGEaj99dgvW9ZGJ6LKu8yM1rom3oH1K9eGtoTrvEiFq34ZjqsYBVxxuthDQ7FMBKvdF+oquK7jpi/8sioHicAKUYK39Qj4uowLd8epSA59n6YIg1AsIG3xg==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Consilience: this disagreement is testable now with instrument Y" ;
+        dcterms:created "2026-11-16T19:27:43Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+

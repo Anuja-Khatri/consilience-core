@@ -1,0 +1,273 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sub: <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/> .
+@prefix this: <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: claim card" ;
+        dcterms:description "One measured claim as an approved Consilience claim card: the exact source sentence, the source document, the subject, the quantity on its axis with its unit, the conditions the sentence states and the conditions it does not state. Comparisons between claims are made only from these cards." ;
+        ntemplate:hasNanopubLabelPattern "Claim card ${claimId}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11,
+            sub:st12,
+            sub:st13,
+            sub:st14,
+            sub:st15,
+            sub:st16,
+            sub:st17,
+            sub:st18,
+            sub:st19,
+            sub:st21,
+            sub:st30,
+            sub:st31 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:ClaimCard .
+
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    dcterms:source rdfs:label "comes from the source document" .
+
+    schema:QuantitativeValue rdfs:label "quantitative value" .
+
+    schema:unitText rdfs:label "has the unit" .
+
+    schema:value rdfs:label "has the numeric value" .
+
+    cv:axis rdfs:label "is on the quantity axis" .
+
+    cv:bound rdfs:label "with bound" .
+
+    cv:claimKind rdfs:label "is of claim kind" .
+
+    cv:conditionName rdfs:label "has the condition name" .
+
+    cv:conditionUnstated rdfs:label "does not state the condition" .
+
+    cv:conditionValueJson rdfs:label "has the condition value (JSON)" .
+
+    cv:hasCondition rdfs:label "states the condition" .
+
+    cv:hasQuantity rdfs:label "states the quantity" .
+
+    cv:measurability rdfs:label "has measurability" .
+
+    cv:measurableWith rdfs:label "is measurable with" .
+
+    cv:objectName rdfs:label "measures" .
+
+    cv:relation rdfs:label "has the relation" .
+
+    cv:sourceSentence rdfs:label "has the source sentence" .
+
+    cv:subjectName rdfs:label "is about the subject" .
+
+    sub:axis a ntemplate:LiteralPlaceholder ;
+        rdfs:label "quantity axis" .
+
+    sub:bound a ntemplate:LiteralPlaceholder ;
+        rdfs:label "bound (exact, approx, lower, upper)" .
+
+    sub:claimId a ntemplate:LiteralPlaceholder ;
+        rdfs:label "claim identifier in the source repository" .
+
+    sub:claimKind a ntemplate:LiteralPlaceholder ;
+        rdfs:label "claim kind" .
+
+    sub:conditionName a ntemplate:LiteralPlaceholder ;
+        rdfs:label "condition name" .
+
+    sub:conditionValue a ntemplate:LiteralPlaceholder ;
+        rdfs:label "condition value as JSON" .
+
+    sub:document a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "source document" .
+
+    sub:instrumentId a ntemplate:LiteralPlaceholder ;
+        rdfs:label "instrument class" .
+
+    sub:measurability a ntemplate:LiteralPlaceholder ;
+        rdfs:label "measurability" .
+
+    sub:objectName a ntemplate:LiteralPlaceholder ;
+        rdfs:label "what is measured" .
+
+    sub:relation a ntemplate:LiteralPlaceholder ;
+        rdfs:label "relation" .
+
+    sub:sentence a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "exact source sentence" .
+
+    sub:st01 rdf:object cv:ClaimCard ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:claim .
+
+    sub:st02 rdf:object sub:claimId ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:claim .
+
+    sub:st03 rdf:object sub:sentence ;
+        rdf:predicate cv:sourceSentence ;
+        rdf:subject sub:claim .
+
+    sub:st04 rdf:object sub:document ;
+        rdf:predicate dcterms:source ;
+        rdf:subject sub:claim .
+
+    sub:st05 rdf:object sub:subjectName ;
+        rdf:predicate cv:subjectName ;
+        rdf:subject sub:claim .
+
+    sub:st06 a ntemplate:OptionalStatement ;
+        rdf:object sub:objectName ;
+        rdf:predicate cv:objectName ;
+        rdf:subject sub:claim .
+
+    sub:st07 a ntemplate:OptionalStatement ;
+        rdf:object sub:relation ;
+        rdf:predicate cv:relation ;
+        rdf:subject sub:claim .
+
+    sub:st08 rdf:object sub:claimKind ;
+        rdf:predicate cv:claimKind ;
+        rdf:subject sub:claim .
+
+    sub:st09 rdf:object sub:axis ;
+        rdf:predicate cv:axis ;
+        rdf:subject sub:claim .
+
+    sub:st18 a ntemplate:OptionalStatement,
+            ntemplate:RepeatableStatement ;
+        rdf:object sub:unstatedCondition ;
+        rdf:predicate cv:conditionUnstated ;
+        rdf:subject sub:claim .
+
+    sub:st19 a ntemplate:OptionalStatement ;
+        rdf:object sub:measurability ;
+        rdf:predicate cv:measurability ;
+        rdf:subject sub:claim .
+
+    sub:st21 a ntemplate:OptionalStatement ;
+        rdf:object sub:instrumentId ;
+        rdf:predicate cv:measurableWith ;
+        rdf:subject sub:claim .
+
+    sub:st30 a ntemplate:GroupedStatement ;
+        ntemplate:hasStatement sub:st10,
+            sub:st11,
+            sub:st12,
+            sub:st13,
+            sub:st14 .
+
+    sub:st31 a ntemplate:GroupedStatement,
+            ntemplate:OptionalStatement,
+            ntemplate:RepeatableStatement ;
+        ntemplate:hasStatement sub:st15,
+            sub:st16,
+            sub:st17 .
+
+    sub:subjectName a ntemplate:LiteralPlaceholder ;
+        rdfs:label "subject (e.g. the material)" .
+
+    sub:unit a ntemplate:LiteralPlaceholder ;
+        rdfs:label "unit as written" .
+
+    sub:unstatedCondition a ntemplate:LiteralPlaceholder ;
+        rdfs:label "condition not stated" .
+
+    sub:value a ntemplate:LiteralPlaceholder ;
+        rdfs:label "numeric value" ;
+        ntemplate:hasDatatype xsd:decimal .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:ClaimCard rdfs:label "claim card" .
+
+    sub:st10 rdf:object sub:quantity ;
+        rdf:predicate cv:hasQuantity ;
+        rdf:subject sub:claim .
+
+    sub:st11 rdf:object schema:QuantitativeValue ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:quantity .
+
+    sub:st12 rdf:object sub:value ;
+        rdf:predicate schema:value ;
+        rdf:subject sub:quantity .
+
+    sub:st13 rdf:object sub:unit ;
+        rdf:predicate schema:unitText ;
+        rdf:subject sub:quantity .
+
+    sub:st14 rdf:object sub:bound ;
+        rdf:predicate cv:bound ;
+        rdf:subject sub:quantity .
+
+    sub:st15 rdf:object sub:condition ;
+        rdf:predicate cv:hasCondition ;
+        rdf:subject sub:claim .
+
+    sub:st16 rdf:object sub:conditionName ;
+        rdf:predicate cv:conditionName ;
+        rdf:subject sub:condition .
+
+    sub:st17 rdf:object sub:conditionValue ;
+        rdf:predicate cv:conditionValueJson ;
+        rdf:subject sub:condition .
+
+    sub:condition a ntemplate:LocalResource ;
+        rdfs:label "a stated condition" .
+
+    sub:quantity a ntemplate:LocalResource ;
+        rdfs:label "the stated quantity" .
+
+    sub:claim a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "the claim card (its location in the source repository)" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "tVoskWcuHSHH/i5FptdeRnQ6ktLWSFBE2RtX9C8r9KdhZlq7ECF6E3XDggoy72WMken6fbP6gB1AZMQ1zqh0NSiCkuje/gBYFI83OQDDMN8Z8NyciHCRe4IUEsQB5PIQv6s5UMRR9d/TQoh8xqUNfVir63A+Uuk07HRZIzk+5/mGI5bk8V03I4Ma6WBdTUXqQFbZk2Mbo9AIowee4bRafE1sM2TMw6udRlidq+ZREYOUfl/W/9kqq3NNLL5w1Scs774bp0u4i5Sgp/uODcL8+kyBeSyXFA6YBbd8Ykqj2DBw3FLHnWvGg5Wi8YYDU83TCRjyWt+pTEsIQr4FpXX+iQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Consilience: claim card" ;
+        dcterms:created "2026-11-16T19:27:46Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+
