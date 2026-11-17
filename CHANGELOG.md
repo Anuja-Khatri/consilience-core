@@ -7,6 +7,11 @@ Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
 ### Added
 - The unit `"1"` is read as `dimensionless` (the SI way of writing a pure number). No
   other digit may stand in a unit except as an exponent (`cm^2`, `s^-1`).
+- Count and ratio units `fold`, `cell`, `event`, `sample` (and plurals). Each is a
+  dimensionless kind of its own: `3 fold` vs `3 cells`, or vs a bare `3`, is
+  `not_comparable(unit)`. They combine (`cells/mL`) but take no SI prefix. Every other
+  unknown word is still `unparseable(unknown_unit)`; pint's `count` stays a plain pure
+  number, as in 0.1.0.
 
 ### Fixed
 - `verify` re-runs a receipt by the rules of the consilience version that wrote it, so

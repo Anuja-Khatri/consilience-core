@@ -29,14 +29,16 @@ reason                      example input
 ``unit_in_number``          ``"12 V"`` where a plain number is required
 ``unit_contains_number``    ``"cm2"`` (write ``cm^2``), ``"1/s"`` (write ``s^-1``)
 ``ambiguous_unit``          ``"C"`` (Celsius or coulomb?), ``"F"``, ``"k"``, ``"B"``, ...
-``unknown_unit``            ``"banana"`` as a unit
+``unknown_unit``            ``"banana"`` as a unit, ``"kcells"`` (count words take no prefix)
 ``dimension_mismatch``      converting ``"300 mA"`` to volts
 ==========================  ==============================================================
 
 Unit names are pint's (case matters: ``m`` is metre, ``M`` is molar; ``K`` is kelvin).
 There is no alias table that rewrites spellings; ``degC`` is Celsius. The unit ``"1"``
 (the SI way of writing a pure number) is read as ``dimensionless``; no other digit may
-stand in a unit except as an exponent.
+stand in a unit except as an exponent. Four count and ratio words are units too:
+``fold``, ``cell``, ``event``, ``sample`` (and their plurals). Each is a pure number of
+its own kind: ``"3 fold"`` is not comparable with ``"3 cells"`` or with ``3``.
 
 Rules by version. Receipts record the consilience version that wrote them, and
 ``verify`` re-runs a receipt by that version's rules: inside ``rules_of("0.1.0")``
@@ -55,6 +57,14 @@ import pint
 
 UREG = pint.UnitRegistry()
 Number = Union[int, float]
+
+# Count and ratio words. Each is a pure number of its own kind (its own pint base
+# dimension), so "3 fold" never equals "3 cells" or 3. Plurals are read ("cells");
+# SI prefixes are not ("kcells"). pint's own "count" stays a plain pure number, as in
+# 0.1.0. Anything else stays unknown.
+COUNT_UNITS = ("fold", "cell", "event", "sample")
+for _w in COUNT_UNITS:
+    UREG.define(f"{_w} = [{_w}]")
 
 
 # Which version's rules apply. None means this version's; "0.1.0" reproduces 0.1.0.
@@ -199,11 +209,20 @@ def parse_unit(unit) -> pint.Unit:
         raise UnitError("unit_contains_number", unit,
                         "digits are allowed only as exponents, e.g. cm^2 or s^-1")
     try:
-        return UREG.parse_units(u)
+        parsed = UREG.parse_units(u)
     except pint.UndefinedUnitError:
         raise UnitError("unknown_unit", unit, "not a unit pint knows") from None
     except Exception as exc:  # pint syntax errors
         raise UnitError("unknown_unit", unit, f"cannot be read: {exc}") from None
+    for name in parsed._units:
+        for word in COUNT_UNITS:
+            if name == word or name.endswith(word):
+                if legacy():   # 0.1.0 did not know these words
+                    raise UnitError("unknown_unit", unit, "not a unit pint knows")
+                if name != word:
+                    raise UnitError("unknown_unit", unit,
+                                    f"{word!r} takes no prefix (write {word}, not {name})")
+    return parsed
 
 
 def as_quantity(value, unit: Optional[str] = None) -> pint.Quantity:
@@ -284,6 +303,7 @@ def unit_text(u) -> str:
 
 
 __all__ = [
+    "COUNT_UNITS",
     "UREG",
     "UnitError",
     "as_quantity",

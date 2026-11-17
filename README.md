@@ -316,6 +316,12 @@ Units are [pint](https://pint.readthedocs.io/) unit names, and case matters (`m`
 metre, `M` is molar, `K` is kelvin). Write `degC` for Celsius and `dimensionless` (or
 `1`, as SI writes it) for a pure number. `%` and `percent` work, so `90 %` equals `0.9`.
 
+Four count and ratio words are units as well: `fold`, `cell`, `event` and `sample` (and
+their plurals, `cells`, `events`, ...). Each is a pure number of its own kind, so
+`3 fold` equals `3 folds` but is not comparable with `3 cells` or with a bare `3`
+(`not_comparable(unit)`). They combine with other units (`cells/mL`) but take no prefix
+(`kcells` is `unknown_unit`). Any other word that pint does not know is `unknown_unit`.
+
 ## Conditions and domain packs
 
 **Without a pack**, every condition present on either side must be present on both and
