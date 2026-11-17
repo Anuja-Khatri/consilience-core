@@ -1,0 +1,86 @@
+# Domain pack: electrochemistry (first pack shipped with consilience).
+#
+# Declares which measurement conditions must match before two electrochemical
+# measurements (for example an overpotential reported at a current density) may be
+# compared at all. Conditions not listed here are not checked when this pack is used.
+#
+# Ported from consilience-ledger, branch wp1-public-truth @7c1f923,
+# rules/comparability_rules.yaml (version comparability-v0.1, rules.lock sha256
+# ba3db7c1b7803c4391fb82d32440b2085e30c3cd6eea4dcb725b7ccc1adf92b7), rules CR1-CR4.
+# Differences from the ledger are listed in PROVENANCE.md (this pack is stricter:
+# an unstated current-density normalisation is "not stated", not a match).
+#
+# Licence: CC BY 4.0. The pack's hash is printed with every result that uses it.
+kind: compare-pack
+name: electrochemistry
+version: electrochemistry-v1
+plain_english: >
+  Two electrochemical measurements are compared only when they were made in the same
+  electrolyte at the same concentration, at the same current density with the same
+  normalisation, at the same temperature, and with the same iR correction.
+source: >
+  consilience-ledger rules/comparability_rules.yaml (comparability-v0.1), CR1-CR4, which
+  cite B2 (PMC13707403, Molecules 2026).
+licence: CC BY 4.0
+conditions:
+  - id: EC1
+    field: electrolyte
+    predicate: record
+    parts:
+      identity:
+        predicate: equal
+        ignore_case: true
+        aliases:
+          h2so4: sulfuric acid
+          sulfuric acid: sulfuric acid
+          sulfuric_acid: sulfuric acid
+          sulphuric acid: sulfuric acid
+          sulphuric_acid: sulfuric acid
+          hclo4: perchloric acid
+          perchloric acid: perchloric acid
+          perchloric_acid: perchloric acid
+      concentration:
+        predicate: quantity_equal
+        tolerance: 0
+    plain_english: Two measurements are comparable only in the same electrolyte at the same concentration.
+    rationale: Electrolyte identity and concentration set the reaction environment.
+    source: >
+      Ledger CR1. B2 (PMC13707403, Molecules 2026), abstract: comparability asserted only
+      "on a matched basis (1 M KOH, room temperature)".
+  - id: EC2
+    field: current_density
+    predicate: quantity_equal
+    tolerance: 0
+    also_equal: [normalization]
+    plain_english: >
+      Overpotentials are comparable only at the same current density and the same
+      normalisation (geometric or ECSA).
+    rationale: >
+      Overpotential is reported at a current density; ECSA- and geometric-normalised
+      current densities are not interchangeable.
+    source: >
+      Ledger CR2. B2 (PMC13707403, Molecules 2026), section 3.2 "The 10 mA cm-2
+      Benchmark": divergence "by more than 150 mV at 100 mA cm-2" relative to 10 mA cm-2.
+  - id: EC3
+    field: temperature
+    predicate: quantity_equal
+    tolerance: 0
+    words: [room_temperature]
+    plain_english: >
+      Measurements are comparable only at the same temperature; room_temperature matches
+      room_temperature only, never a number.
+    rationale: Temperature shifts kinetics; room_temperature is a word, never a number.
+    source: >
+      Ledger CR3. B2 (PMC13707403, Molecules 2026), abstract: the matched basis is
+      explicitly "(1 M KOH, room temperature)".
+  - id: EC4
+    field: ir_correction
+    predicate: equal
+    plain_english: Measurements are comparable only if both are iR-corrected or both are not.
+    rationale: >
+      iR correction changes the reported overpotential materially; mixing corrected and
+      uncorrected values is not comparable.
+    source: >
+      Ledger CR4. B2 (PMC13707403, Molecules 2026), section 3: a RuO2 electrode's
+      overpotential at 25 mA cm-2 "slid continuously from 437 mV uncompensated down to
+      382 mV at full compensation, depending on which fraction the author chose".
