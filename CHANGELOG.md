@@ -44,6 +44,10 @@ Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
   `consilience-receipt/v1`; `check` receipts are unchanged.
 
 ### Fixed
+
+- Piping output into a reader that stops early (e.g. `| head -1`) no longer prints a
+  `BrokenPipeError` traceback; the command exits quietly with status 141 (128 + SIGPIPE),
+  as standard command-line tools do.
 - `verify` re-runs a receipt by the rules of the consilience version that wrote it, so
   receipts made by 0.1.0 keep verifying even where 0.1.1 reads an input differently.
 

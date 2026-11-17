@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import os
 import sys
 from importlib import resources
 from pathlib import Path
@@ -403,13 +404,25 @@ def build_parser() -> argparse.ArgumentParser:
     return ap
 
 
+EXIT_BROKEN_PIPE = 141  # 128 + SIGPIPE: output reader went away; the verdict was not fully written
+
+
 def main(argv=None) -> int:
     ap = build_parser()
     args = ap.parse_args(argv)
     if not getattr(args, "func", None):
         ap.print_help(sys.stderr)
         return EXIT_USAGE
-    return args.func(args)
+    try:
+        return args.func(args)
+    except BrokenPipeError:
+        # The reader closed the pipe early (e.g. `| head -1`). Exit quietly with the
+        # conventional SIGPIPE status, as standard command-line tools do, instead of
+        # printing a traceback. Python's documented recipe: point stdout at devnull so
+        # the interpreter's final flush cannot raise again.
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        return EXIT_BROKEN_PIPE
 
 
 if __name__ == "__main__":

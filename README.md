@@ -368,7 +368,9 @@ part in 10^9 of the values are treated as rounding from unit conversion.
 Exit codes of `check`: 0 no violations and every needed cell read; 1 violations; 3 some
 cells could not be read (the check is incomplete; the violations it did find are still
 listed). `verify`: 0 the re-run reproduces the receipt, 1 it does not. Every command: 64
-for a usage or input error (missing file, unknown field, unreadable rule file).
+for a usage or input error (missing file, unknown field, unreadable rule file); 141 if
+the output was piped into a reader that stopped early (e.g. `| head -1`), as with other
+command-line tools.
 
 ## What is refused, and why
 
