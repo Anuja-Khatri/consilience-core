@@ -90,3 +90,12 @@ def test_only_the_test_registry_exists_in_code():
 def test_publish_refuses_unsigned_input():
     with pytest.raises(Exception):
         X.publish_to_test_server("@prefix x: <http://example.org/> .")
+
+
+def test_key_directory_inside_any_git_checkout_is_refused(tmp_path, monkeypatch):
+    """Guards installs without -e, where REPO_ROOT points into site-packages."""
+    (tmp_path / ".git").mkdir()
+    monkeypatch.setenv("CONSILIENCE_NANOPUB_KEY_DIR", str(tmp_path / "keys"))
+    with pytest.raises(agent.AgentError, match="key_dir_inside_repository"):
+        agent.generate_keys()
+    assert not (tmp_path / "keys").exists()

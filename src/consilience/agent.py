@@ -37,8 +37,16 @@ def key_dir() -> Path:
 
 
 def _inside_repo(p: Path) -> bool:
+    """True if ``p`` is inside this repository or inside any git working tree.
+
+    The git check matters when the package is installed without ``-e``: REPO_ROOT then
+    points into site-packages, and a key directory inside a clone would not be noticed.
+    """
+    rp = p.resolve()
+    if any((d / ".git").exists() for d in (rp, *rp.parents)):
+        return True
     try:
-        p.resolve().relative_to(REPO_ROOT)
+        rp.relative_to(REPO_ROOT)
         return True
     except ValueError:
         return False
