@@ -313,8 +313,8 @@ exponent), never evaluated as arithmetic. These are refused with a named reason:
 | empty | `empty` / `missing_unit` | |
 
 Units are [pint](https://pint.readthedocs.io/) unit names, and case matters (`m` is
-metre, `M` is molar, `K` is kelvin). Write `degC` for Celsius and `dimensionless` for a
-pure number. `%` and `percent` work, so `90 %` equals `0.9`.
+metre, `M` is molar, `K` is kelvin). Write `degC` for Celsius and `dimensionless` (or
+`1`, as SI writes it) for a pure number. `%` and `percent` work, so `90 %` equals `0.9`.
 
 ## Conditions and domain packs
 

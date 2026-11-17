@@ -9,7 +9,10 @@ the options, the full rule file it used, the consilience version and the result,
 2. for ``check``: finds the data file and confirms its SHA-256 (has the data changed?);
 3. confirms the embedded rule file still hashes to the recorded rule hash;
 4. re-runs the comparison or check with this installed consilience and confirms that a
-   fresh receipt, stamped with the recorded version, has the same hash.
+   fresh receipt, stamped with the recorded version, has the same hash. The re-run uses
+   the rules of the version that wrote the receipt: a 0.1.0 receipt is re-run by the
+   0.1.0 rules (see ``consilience.units.rules_of``), so a later change of rule never
+   makes an old receipt fail.
 
 It also accepts a nanopublication record envelope (``schema: consilience-record/v0``),
 for which it checks the record against its content hash (see ``consilience.receipts``).
@@ -25,6 +28,7 @@ from . import __version__
 from .compare import PINT_VERSION, RECEIPT_SCHEMA, InputError, compare, read_json
 from .hashing import sha256_bytes, sha256_json
 from .rules import RuleFileError, rules_from_dict
+from .units import rules_of
 
 
 @dataclass
@@ -105,6 +109,12 @@ def verify(receipt: Union[str, Path, dict], *, data=None) -> VerifyResult:
                   "matches its contents" if integrity == recorded else
                   f"recorded {recorded}, contents hash to {integrity}: the receipt was edited"))
 
+    with rules_of(version):
+        return _rerun(rec, rpath, data, command, recorded, version, integrity, steps)
+
+
+def _rerun(rec, rpath, data, command, recorded, version, integrity, steps) -> VerifyResult:
+    """Steps 2-4, run under the rules of the version that wrote the receipt."""
     key = "pack" if command == "compare" else "rules"
     ruleset = None
     if rec.get(key) is not None:

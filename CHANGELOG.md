@@ -1,6 +1,18 @@
 # Changelog
 
-## [0.1.0] - unreleased
+## [0.1.1] - unreleased
+
+Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
+
+### Added
+- The unit `"1"` is read as `dimensionless` (the SI way of writing a pure number). No
+  other digit may stand in a unit except as an exponent (`cm^2`, `s^-1`).
+
+### Fixed
+- `verify` re-runs a receipt by the rules of the consilience version that wrote it, so
+  receipts made by 0.1.0 keep verifying even where 0.1.1 reads an input differently.
+
+## [0.1.0] - 2026-11-17
 
 First public release on PyPI.
 

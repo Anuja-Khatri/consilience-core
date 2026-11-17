@@ -16,7 +16,8 @@ rule, and optionally a `rationale`, a `source` and a `licence`.
 - **Duplicate keys are refused**, and so are duplicate rule ids.
 - **Quantities** are written as text with a unit, `0.02 V`, `0 K`, `500 mmol/L`, and read
   by the same strict parser as the data (see the README, "What is refused"). Units are
-  [pint](https://pint.readthedocs.io/) names; case matters; `degC` is Celsius.
+  [pint](https://pint.readthedocs.io/) names; case matters; `degC` is Celsius;
+  `dimensionless` or `1` is a pure number.
 - **The hash.** After loading, the file is normalised (whitespace in text collapsed, keys
   sorted, defaults filled in) and hashed: SHA-256 over canonical JSON (sorted keys, no
   spaces, UTF-8). Comments and formatting do not change the hash; any change to a rule

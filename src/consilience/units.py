@@ -34,11 +34,19 @@ reason                      example input
 ==========================  ==============================================================
 
 Unit names are pint's (case matters: ``m`` is metre, ``M`` is molar; ``K`` is kelvin).
-There is no alias table that rewrites spellings; ``degC`` is Celsius.
+There is no alias table that rewrites spellings; ``degC`` is Celsius. The unit ``"1"``
+(the SI way of writing a pure number) is read as ``dimensionless``; no other digit may
+stand in a unit except as an exponent.
+
+Rules by version. Receipts record the consilience version that wrote them, and
+``verify`` re-runs a receipt by that version's rules: inside ``rules_of("0.1.0")``
+everything added later (the unit ``"1"``, ...) is refused exactly as 0.1.0 refused it.
 """
 
 from __future__ import annotations
 
+import contextlib
+import contextvars
 import math
 import re
 from typing import Optional, Union
@@ -47,6 +55,31 @@ import pint
 
 UREG = pint.UnitRegistry()
 Number = Union[int, float]
+
+
+# Which version's rules apply. None means this version's; "0.1.0" reproduces 0.1.0.
+_RULES_OF: contextvars.ContextVar = contextvars.ContextVar("consilience_rules_of",
+                                                          default=None)
+LEGACY_VERSIONS = frozenset({"0.1.0"})
+
+
+@contextlib.contextmanager
+def rules_of(version: Optional[str]):
+    """Read numbers and units by the rules of consilience ``version`` (for ``verify``).
+
+    Only versions whose rules differ from the current ones are special; for any other
+    version (or None) the current rules apply.
+    """
+    token = _RULES_OF.set(version if version in LEGACY_VERSIONS else None)
+    try:
+        yield
+    finally:
+        _RULES_OF.reset(token)
+
+
+def legacy() -> bool:
+    """True inside ``rules_of("0.1.0")``."""
+    return _RULES_OF.get() is not None
 
 
 class UnitError(ValueError):
@@ -158,6 +191,8 @@ def parse_unit(unit) -> pint.Unit:
     if not isinstance(unit, str):
         raise UnitError("missing_unit", unit, "a unit must be text")
     u = unit.strip()
+    if u == "1" and not legacy():
+        return UREG.dimensionless
     if u in _AMBIGUOUS_UNITS:
         raise UnitError("ambiguous_unit", unit, _AMBIGUOUS_UNITS[u])
     if re.search(r"\d", _UNIT_EXPONENT.sub("", u)):
@@ -257,6 +292,7 @@ __all__ = [
     "is_offset_unit",
     "parse_number",
     "parse_unit",
+    "rules_of",
     "split_quantity",
     "unit_text",
 ]

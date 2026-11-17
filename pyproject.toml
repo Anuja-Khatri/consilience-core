@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "consilience"
-version = "0.1.0"
+version = "0.1.1"
 description = "Compare two measurements with units and conditions, and check a table against written limits. Refuses what it cannot read; every result has a receipt you can re-run."
 readme = "README.md"
 requires-python = ">=3.10"
