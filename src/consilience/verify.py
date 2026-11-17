@@ -28,7 +28,7 @@ from . import __version__
 from .compare import PINT_VERSION, RECEIPT_SCHEMA, InputError, compare, read_json
 from .hashing import sha256_bytes, sha256_json
 from .rules import RuleFileError, rules_from_dict
-from .units import rules_of
+from .units import LEGACY_VERSIONS, rules_of
 
 
 @dataclass
@@ -169,7 +169,9 @@ def _rerun(rec, rpath, data, command, recorded, version, integrity, steps) -> Ve
         steps.append(("re-run", False, "not re-run (see above)"))
     notes = []
     if version != __version__:
-        notes.append(f"receipt made with consilience {version}; re-run with {__version__}")
+        rules = (f" by the {version} rules" if version in LEGACY_VERSIONS else "")
+        notes.append(f"receipt made with consilience {version}; re-run with "
+                     f"{__version__}{rules}")
     if rec.get("pint_version") != PINT_VERSION:
         notes.append(f"receipt made with pint {rec.get('pint_version')}; re-run with "
                      f"{PINT_VERSION} (a different pint can change the last digits of a "

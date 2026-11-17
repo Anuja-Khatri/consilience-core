@@ -48,7 +48,7 @@ consilience = "consilience.cli:main"
 Homepage = "https://github.com/Anuja-Khatri/consilience-core"
 Source = "https://github.com/Anuja-Khatri/consilience-core"
 Issues = "https://github.com/Anuja-Khatri/consilience-core/issues"
-Changelog = "https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/CHANGELOG.md"
+Changelog = "https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]

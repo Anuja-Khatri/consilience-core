@@ -38,3 +38,18 @@ def test_0_1_0_receipt_verifies(path):
 def test_0_1_0_receipt_verifies_from_the_command_line(path, capsys):
     assert main(["verify", str(path)]) == 0
     assert capsys.readouterr().out.startswith(f"ok: {path}")
+
+
+def test_a_new_receipt_relabelled_as_0_1_0_fails():
+    from consilience import compare
+    from consilience.hashing import sha256_json
+    rec = compare({"value": "0.777", "unit": "1"}, {"value": 0.776943, "unit": "1"}).receipt
+    rec["consilience_version"] = "0.1.0"
+    rec["sha256"] = sha256_json({k: v for k, v in rec.items() if k != "sha256"})
+    v = verify(rec)
+    assert not v.ok and [s[0] for s in v.steps if not s[1]] == ["re-run"]
+
+
+def test_0_1_0_note_names_the_rules():
+    v = verify(OLD / "compare-precision.json")
+    assert "by the 0.1.0 rules" in v.note

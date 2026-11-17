@@ -1,17 +1,18 @@
-# Releasing consilience 0.1.0 to PyPI
+# Releasing consilience 0.1.1 to PyPI
 
 A checklist for the owner. Plain language, copy-paste commands. Nothing in this
 repository uploads anything by itself: every upload below happens only when you do it.
 
 **Read this first.** PyPI never lets the same version number be uploaded twice, even
-after a delete. If something is wrong after upload, the fix is a new version (0.1.1). So
-do the checks in steps 1 and 2 before step 4.
+after a delete. If something is wrong after upload, the fix is a new version (0.1.2). So
+do the checks in step 1 before step 4.
 
-The name `consilience` was free on PyPI on 17 Nov 2026. To check again, open
-https://pypi.org/project/consilience/ . "Not Found" means it is still free.
+0.1.0 is on PyPI (published 17 Nov 2026 from the tag `v0.1.0`). Before releasing,
+check that 0.1.0 is still the latest version there: open
+https://pypi.org/pypi/consilience/json and look at `"version"` under `"info"`.
 
 This release is made from the branch `wp4-package`. `main` is not changed. The links on
-the PyPI page point to files at the tag `v0.1.0`, which GitHub creates when you publish
+the PyPI page point to files at the tag `v0.1.1`, which GitHub creates when you publish
 the release in step 4; until then those links do not work yet.
 
 ---
@@ -39,7 +40,7 @@ bash scripts/check_release.sh
 That one script does everything below and stops with `FAIL` if anything is wrong:
 
 - builds the two files that get uploaded into `dist/`:
-  `consilience-0.1.0.tar.gz` and `consilience-0.1.0-py3-none-any.whl`;
+  `consilience-0.1.1.tar.gz` and `consilience-0.1.1-py3-none-any.whl`;
 - runs `twine check --strict` on them (checks the PyPI page will render);
 - lists what is inside the wheel and checks the electrochemistry pack and the examples
   are there;
@@ -68,7 +69,7 @@ python3 -m venv /tmp/cs-build && /tmp/cs-build/bin/pip install build twine
 rm -rf dist && /tmp/cs-build/bin/python -m build
 /tmp/cs-build/bin/twine check --strict dist/*
 
-python3 -m venv /tmp/cs-test && /tmp/cs-test/bin/pip install dist/consilience-0.1.0-py3-none-any.whl
+python3 -m venv /tmp/cs-test && /tmp/cs-test/bin/pip install dist/consilience-0.1.1-py3-none-any.whl
 mkdir /tmp/cs-try && cd /tmp/cs-try
 /tmp/cs-test/bin/consilience examples .
 /tmp/cs-test/bin/consilience compare measurement_a.json measurement_b.json --pack electrochemistry; echo "exit $?"   # disagree, exit 1
@@ -76,7 +77,10 @@ mkdir /tmp/cs-try && cd /tmp/cs-try
 /tmp/cs-test/bin/consilience check readings.csv --rules readings_rules.yaml; echo "exit $?"                         # 5 violations, 2 unreadable cells, exit 3
 ```
 
-## Step 2. One-time setup for trusted publishing (recommended)
+## Step 2. One-time setup for trusted publishing (already done for 0.1.0)
+
+If 0.1.0 was published through the `publish` workflow, this is already set up: skip to
+step 3. The steps are kept here for reference.
 
 Trusted publishing lets GitHub upload the package for you without any password or
 token stored anywhere. You set it up once. (You did the same for lab-gate; this is a
@@ -115,15 +119,15 @@ https://test.pypi.org/project/consilience/ only.
 The workflow file is `.github/workflows/publish.yml`. It runs only when you publish a
 GitHub Release, or when you click **Run workflow** yourself. It never runs on a push.
 Before uploading, it runs the same `scripts/check_release.sh` as step 1, and on a
-release it checks that the release tag matches the version `0.1.0`.
+release it checks that the release tag matches the version `0.1.1`.
 
 ## Step 4. Publish
 
 1. On GitHub, open https://github.com/Anuja-Khatri/consilience-core , then **Releases**
    (right-hand side of the repository page), then **Draft a new release**.
-2. **Choose a tag**: type `v0.1.0` and click **Create new tag: v0.1.0 on publish**.
+2. **Choose a tag**: type `v0.1.1` and click **Create new tag: v0.1.1 on publish**.
    **Target**: choose the branch `wp4-package` (not `main`).
-3. Release title: `consilience 0.1.0`. Description: paste the 0.1.0 section of
+3. Release title: `consilience 0.1.1`. Description: paste the 0.1.1 section of
    `CHANGELOG.md`.
 4. Click **Publish release**.
 5. Open the **Actions** tab. The `publish` run builds and checks the package. If you
@@ -146,7 +150,7 @@ Only if you do not want trusted publishing.
    ```
 
    When asked for the username type `__token__`; for the password paste the token.
-3. Then create the tag `v0.1.0` on `wp4-package` as in step 4 (so the links on the PyPI
+3. Then create the tag `v0.1.1` on `wp4-package` as in step 4 (so the links on the PyPI
    page work), and delete the token on pypi.org if you will not use it again.
 
 ## Step 5. Check the published package
@@ -155,10 +159,14 @@ In a new terminal, in an empty folder:
 
 ```
 python3 -m venv /tmp/cs-pypi && /tmp/cs-pypi/bin/pip install consilience
-/tmp/cs-pypi/bin/consilience version          # consilience 0.1.0
+/tmp/cs-pypi/bin/consilience version          # consilience 0.1.1
 /tmp/cs-pypi/bin/consilience examples .
 /tmp/cs-pypi/bin/consilience compare measurement_a.json measurement_b.json --pack electrochemistry   # disagree
 ```
 
-Then update `CHANGELOG.md` on `wp4-package`: change `## [0.1.0] - unreleased` to the
+A receipt made with 0.1.0 must still verify with 0.1.1 (`consilience verify
+old-receipt.json`); the test suite checks this with the receipts in
+`tests/fixtures/receipts-0.1.0/`.
+
+Then update `CHANGELOG.md` on `wp4-package`: change `## [0.1.1] - unreleased` to the
 release date.

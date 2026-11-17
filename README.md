@@ -232,7 +232,8 @@ uncertainty, when given, is used instead). A number without a decimal point (`12
 "to the nearest unit". In scientific notation the mantissa counts: `1.23e-5` means
 ±5e-8. The two half-units are added to the tolerance and to the floor. A number in a
 JSON file keeps the digits written in the file (`1.50` is two places); a Python float
-passed to `compare()` has no written form and is exact. `check` compares cells exactly.
+passed to `compare()` has no written form and is exact. Stated precision applies to
+the two values compared, not to conditions; `check` compares cells exactly.
 
 Papers also report bounds, such as `p < 1e-6` or `≤ 0.30 V`. A value may be a one-sided
 bound (`<`, `<=`, `≤`, `>`, `>=`, `≥`), and the run's value is checked against it:
@@ -453,7 +454,7 @@ rules:
 Unknown keys are refused, so a misspelt key is an error rather than silently ignored.
 The full format for both kinds (and options such as `if_empty`, `if_limit_empty`,
 `value_offset`, exclusive bounds, and every pack predicate) is in
-[docs/RULES.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/docs/RULES.md).
+[docs/RULES.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/docs/RULES.md).
 
 ## Receipts
 
@@ -461,7 +462,9 @@ A receipt is a JSON file holding the inputs (for `check`, the data file's path a
 SHA-256), the options, the complete rule file used, the consilience and pint versions,
 and the result, plus a SHA-256 over all of that. `consilience verify` checks the hash,
 checks the data file still has the same SHA-256, re-runs the comparison or check, and
-confirms the fresh result hashes the same. For a check receipt it looks for the data file
+confirms the fresh result hashes the same. It re-runs by the rules of the version that
+wrote the receipt, so a receipt made with 0.1.0 still verifies under 0.1.1, even where
+0.1.1 reads the same input differently. For a check receipt it looks for the data file
 where it was, then beside the receipt; `--data` tells it where the file is now. A
 violation's row receipt is `sha256` over `{"rules_sha256", "rule", "line", "cells"}` in
 canonical JSON (the rule file's hash, the rule id, the line number and the row as text).
@@ -488,13 +491,13 @@ From a source checkout, the package can also export Consilience records as
 nanopublications (signed, citable RDF statements) to the Knowledge Pixels test registry.
 This needs `pip install "consilience[nanopub]"` (Python 3.12 or newer, which the
 nanopub library requires) and is described in
-[docs/NANOPUB.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/docs/NANOPUB.md)
-and [PILOT.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/PILOT.md).
+[docs/NANOPUB.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/docs/NANOPUB.md)
+and [PILOT.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/PILOT.md).
 
 ## Develop
 
 ```
-git clone -b v0.1.0 https://github.com/Anuja-Khatri/consilience-core.git
+git clone -b v0.1.1 https://github.com/Anuja-Khatri/consilience-core.git
 cd consilience-core
 python -m venv .venv && . .venv/bin/activate
 pip install -e ".[test]"
@@ -504,9 +507,9 @@ bash scripts/check_release.sh      # build, install the wheel in a clean venv, r
 
 ## Licence and provenance
 
-Code: MIT ([LICENSE](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/LICENSE)).
+Code: MIT ([LICENSE](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/LICENSE)).
 Rule packs, examples, records and vocabulary: CC BY 4.0
-([LICENSE-DATA](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/LICENSE-DATA)).
+([LICENSE-DATA](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/LICENSE-DATA)).
 What was adapted from other Consilience repositories, and from which commit, is in
-[PROVENANCE.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/PROVENANCE.md).
-Changes: [CHANGELOG.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/CHANGELOG.md).
+[PROVENANCE.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/PROVENANCE.md).
+Changes: [CHANGELOG.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/CHANGELOG.md).
