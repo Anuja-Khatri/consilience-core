@@ -1,99 +1,428 @@
-# consilience-core
+# consilience
 
-The public Python package `consilience`. On this branch (`wp3-nanopub-pilot`) it does one
-thing: it exports Consilience records (claim cards and comparison verdicts, each with a
-content hash) as **nanopublications**, small signed RDF statements with provenance that
-anyone can cite.
+Compare two measurements with their units and conditions, and check a table of data
+against written limits. When something cannot be read exactly, `consilience` says so and
+names the reason instead of guessing. Every result comes with a receipt that anyone can
+re-run to confirm it.
 
-**This is a pilot on the Knowledge Pixels test server.** Nothing has been published to the
-live nanopublication network. The list of what was published, with links, is in
-[`PILOT.md`](PILOT.md).
+- `consilience compare a.json b.json` answers: do these two measurements agree, and are
+  they even comparable? It converts units, applies your tolerances, and checks that the
+  measurement conditions match.
+- `consilience check data.csv --rules rules.yaml` lists every row that breaks a rule (a
+  value above its own recorded limit, a value outside physical bounds), and every cell it
+  could not read.
+- `consilience verify receipt.json` re-runs either result and confirms its hash.
 
-## What it does
+Verdicts come from plain, deterministic code. No AI model is called anywhere in this
+package.
 
-- Reads a *record envelope*: one record exactly as it appears in a public Consilience
-  repository, plus the pinned commit and lines it came from (`pilot/records/*.json`).
-- Checks the record against its receipt: the content hash must reproduce from the record
-  itself. Anything that does not verify is refused with a named reason.
-- Maps the record to the three graphs of a nanopublication:
-  - **assertion**: the statement (for example, "the comparison of claim A with claim B is
-    refused: current density differs; electrolyte not stated");
-  - **provenance**: the receipt: source repository, commit, a link to the record at that
-    commit, the content hash and how to reproduce it, and the code, rule and map versions
-    that produced the record;
-  - **publication info**: the publishing software agent, the CC BY 4.0 licence, a label,
-    and the template it follows.
-- Signs it with the engine's own key, as a declared software agent ("The Consilience
-  engine"), and publishes it to the **test** registry. There is no code path to the live
-  network.
+**Who it is for:** anyone who compares numbers from different labs, papers or runs, or
+who receives tables of measurements and wants to know which rows to distrust before
+using them: researchers, data stewards, people building automated or AI-assisted analysis
+who want a check that refuses rather than guesses.
 
-Five assertion templates and one provenance template, in the Knowledge Pixels (Nanodash)
-template format, describe the record types:
+## Install
 
-| Template | Record type |
-|---|---|
-| (a) claim A corresponds to claim B at grade X | graded correspondence |
-| (b) comparison refused: condition C differs or is not stated | refused comparison |
-| (c) this disagreement is testable now with instrument Y | testable disagreement |
-| (d) data-quality finding | finding over a dataset |
-| claim card | one measured claim with its source sentence |
-| receipt (provenance) | where a record comes from and how to check it |
+Needs Python 3.10 or newer.
 
-The vocabulary is described in [`docs/VOCABULARY.md`](docs/VOCABULARY.md).
-
-## Run it
-
-Needs Python 3.10 or later.
-
-```bash
-git clone -b wp3-nanopub-pilot https://github.com/Anuja-Khatri/consilience-core.git
-cd consilience-core
-python -m venv .venv && . .venv/bin/activate
-pip install -e ".[test]"
-
-# check one record against its receipt
-consilience verify pilot/records/04-refusal-ref40_peng2023__002--ref40_peng2023__011.json
-
-# write the nanopublication as TriG without publishing (unsigned unless you have the key)
-consilience export --nanopub pilot/records/04-refusal-ref40_peng2023__002--ref40_peng2023__011.json \
-    --dry-run --unsigned --out /tmp/04.trig
-
-# tests: mapping, hashes against the public ledger, TriG validity, no keys in the tree
-python -m pytest -q
+```
+pip install consilience
 ```
 
-The hash tests fetch the public ledger at the pinned commit from GitHub. To run them
-offline against a local clone, set `CONSILIENCE_LEDGER_DIR=/path/to/consilience-ledger`;
-`CONSILIENCE_OFFLINE=1` skips everything that needs the network.
+This installs the command `consilience` and two dependencies (pint for units, PyYAML for
+rule files).
 
-Publishing (only the key holder can do this, and only to the test registry):
+## Five-minute quickstart: compare
 
-```bash
-consilience agent keygen          # key goes to ~/.consilience-nanopub/, never into the repo
-consilience agent introduce       # declares the engine's public key
-consilience templates publish
-consilience export --nanopub pilot/records/<record>.json
+Write the made-up example files into a new folder and go there:
+
+```console
+$ consilience examples try
+wrote try/measurement_a.json
+wrote try/measurement_b.json
+wrote try/measurement_c.json
+wrote try/measurement_d.json
+wrote try/measurement_e.json
+wrote try/readings.csv
+wrote try/readings_rules.yaml
+wrote try/electrochemistry.yaml
+These examples are MADE UP for trying the tool; they are not real data.
+$ cd try
 ```
 
-Every publication is recorded in `pilot/publications.json`; the signed files are kept in
-`agent/`, `templates/` and `pilot/trig/`.
+A measurement file holds a value, a unit, an optional uncertainty and the conditions it
+was measured under. `measurement_a.json`:
 
-## Where the records come from
+```json
+{
+  "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement.",
+  "label": "Example lab A, overpotential at 10 mA/cm^2",
+  "value": 0.320,
+  "unit": "V",
+  "uncertainty": "4 mV",
+  "conditions": {
+    "electrolyte": {"identity": "H2SO4", "concentration": "0.5 mol/L"},
+    "current_density": {"value": 10, "unit": "mA/cm^2", "normalization": "geometric"},
+    "temperature": "25 degC",
+    "ir_correction": true
+  }
+}
+```
 
-The pilot records are copied unchanged from the public
-[consilience-ledger](https://github.com/Anuja-Khatri/consilience-ledger) at commit
-`7c1f9235b582666403537dd929c844e4b2dfc8cf` by `scripts/select_pilot_records.py`; see
-[`PROVENANCE.md`](PROVENANCE.md).
+`measurement_b.json` reports 331 mV ± 3 mV under the same conditions, written
+differently ("sulfuric acid", "500 mmol/L", "0.01 A/cm^2", "298.15 K"). Compare them with
+the bundled electrochemistry pack, which knows which conditions matter:
+
+```console
+$ consilience compare measurement_a.json measurement_b.json --pack electrochemistry
+verdict:    disagree
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0.331 V ± 0.003 V   (as given: 331 mV ± 3 mV)   [Example lab B, overpotential at 10 mA/cm^2]
+difference: 0.011 V
+tolerance:  0 V   (larger of --abs-tol and --rel-tol x the larger value)
+floor:      0.004 V   (largest of --floor and the two uncertainties)
+conditions: checked with pack electrochemistry (electrochemistry-v1): electrolyte, current_density, temperature, ir_correction
+pack hash:  cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c
+receipt:    sha256 ...
+$ echo $?
+1
+```
+
+The units were converted and the conditions matched, so the two values could be
+compared; they differ by 11 mV, more than either stated uncertainty. If you know that
+labs typically spread by 13 mV on this measurement, say so with `--floor`:
+
+```console
+$ consilience compare measurement_a.json measurement_b.json --pack electrochemistry --floor "13 mV"
+verdict:    within_floor
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0.331 V ± 0.003 V   (as given: 331 mV ± 3 mV)   [Example lab B, overpotential at 10 mA/cm^2]
+difference: 0.011 V
+tolerance:  0 V   (larger of --abs-tol and --rel-tol x the larger value)
+floor:      0.013 V   (largest of --floor and the two uncertainties)
+conditions: checked with pack electrochemistry (electrochemistry-v1): electrolyte, current_density, temperature, ir_correction
+pack hash:  cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c
+receipt:    sha256 ...
+$ echo $?
+0
+```
+
+(The 13 mV here is an example number, not a measured spread.)
+
+Measurement C was taken at 100 mA/cm^2 instead of 10, so it is refused, and the rule that
+refused it is named:
+
+```console
+$ consilience compare measurement_a.json measurement_c.json --pack electrochemistry
+verdict:    not_comparable(current_density)
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0.41 V   [Example lab C, overpotential at 100 mA/cm^2]
+  not_comparable  current_density ({"normalization": "geometric", "unit": "mA/cm^2", "value": 10} vs {"normalization": "geometric", "unit": "mA/cm^2", "value": 100})
+                  rule EC2: Overpotentials are comparable only at the same current density and the same normalisation (geometric or ECSA).
+conditions: checked with pack electrochemistry (electrochemistry-v1): electrolyte, current_density, temperature, ir_correction
+pack hash:  cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c
+receipt:    sha256 ...
+$ echo $?
+2
+```
+
+Measurement D does not say its temperature, so the comparison is refused rather than
+assumed:
+
+```console
+$ consilience compare measurement_a.json measurement_d.json --pack electrochemistry
+verdict:    not_stated(temperature)
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0.318 V   [Example lab D, temperature not reported]
+  not_stated      temperature (not stated on b)
+                  rule EC3: Measurements are comparable only at the same temperature; room_temperature matches room_temperature only, never a number.
+conditions: checked with pack electrochemistry (electrochemistry-v1): electrolyte, current_density, temperature, ir_correction
+pack hash:  cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c
+receipt:    sha256 ...
+$ echo $?
+2
+```
+
+Measurement E writes its value as `"0,32"`. A comma can be a decimal point or a
+thousands separator, so it is refused:
+
+```console
+$ consilience compare measurement_a.json measurement_e.json --pack electrochemistry
+verdict:    unparseable(b.value: ambiguous_separator)
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0,32 V   [Example lab E, value written as 0,32]
+  unparseable     b.value: ambiguous_separator (a comma may be a decimal or a thousands separator)
+conditions: checked with pack electrochemistry (electrochemistry-v1): electrolyte, current_density, temperature, ir_correction
+pack hash:  cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c
+receipt:    sha256 ...
+$ echo $?
+3
+```
+
+Without a pack, every condition on either side must match exactly, so the different
+spelling of the electrolyte is enough to refuse. That is what a pack is for:
+
+```console
+$ consilience compare measurement_a.json measurement_b.json
+verdict:    not_comparable(electrolyte.identity)
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0.331 V ± 0.003 V   (as given: 331 mV ± 3 mV)   [Example lab B, overpotential at 10 mA/cm^2]
+  not_comparable  electrolyte.identity ("H2SO4" vs "sulfuric acid")
+conditions: no pack: every condition on either side must match (current_density, electrolyte, ir_correction, temperature)
+receipt:    sha256 ...
+$ echo $?
+2
+```
+
+Save a receipt and re-run it:
+
+```console
+$ consilience compare measurement_a.json measurement_b.json --pack electrochemistry --abs-tol "15 mV" --receipt compare-receipt.json
+verdict:    agree
+a:          0.32 V ± 0.004 V   (as given: 0.32 V ± 4 mV)   [Example lab A, overpotential at 10 mA/cm^2]
+b:          0.331 V ± 0.003 V   (as given: 331 mV ± 3 mV)   [Example lab B, overpotential at 10 mA/cm^2]
+difference: 0.011 V
+tolerance:  0.015 V   (larger of --abs-tol and --rel-tol x the larger value)
+floor:      0.004 V   (largest of --floor and the two uncertainties)
+conditions: checked with pack electrochemistry (electrochemistry-v1): electrolyte, current_density, temperature, ir_correction
+pack hash:  cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c
+receipt:    sha256 ...
+wrote:      compare-receipt.json
+$ consilience verify compare-receipt.json
+ok: compare-receipt.json (compare)
+  ok  receipt hash: matches its contents
+  ok  rule hash: electrochemistry (electrochemistry-v1) matches
+  ok  re-run: same result
+  recorded sha256   ...
+$ echo $?
+0
+```
+
+Add `--json` to any `compare` or `check` to get the full result as JSON (the same content
+as the receipt).
+
+## Five-minute quickstart: check a table
+
+`readings.csv` is a small made-up table of bench readings. Each row has a reading, the
+unit of that reading, the limit recorded for it, a temperature and a humidity. Some rows
+are wrong on purpose. `readings_rules.yaml` holds three rules:
+
+- **R1** (limit): a reading must not exceed its own recorded limit by more than 0.02 V;
+- **R2** (bound): no temperature below absolute zero (`min: 0 K`);
+- **R3** (bound): relative humidity between 0 and 100 percent.
+
+```console
+$ consilience check readings.csv --rules readings_rules.yaml --html report.html --receipt check-receipt.json
+data:        readings.csv (20 rows; sha256 ce1f95d5ff15ebab30b57e7d37d1e3793d88c2bbedc0e8f42f59d3a6f1d2e84f)
+rules:       example-bench-readings-v1 (readings_rules.yaml)
+rule hash:   b6a64e8fab26a07da5ca9fbcc0c50a3460781ba722f224bd0a27221fb80bbcff
+violations:  5
+  line 7    S-004  R1  reading 2.71 V > limit_v 2.5 V + margin 0.02 V   row receipt f6ebb38ff21a
+  line 10   S-007  R2  temperature_c -280 degC < min -273.15 degC   row receipt bda89ad69f3a
+  line 14   S-011  R1  reading 850 mV > limit_v 800 mV + margin 20 mV   row receipt 511d51f9d275
+  line 18   S-015  R3  humidity_pct 104 percent > max 100 percent   row receipt be633f7a4560
+  line 21   S-018  R3  humidity_pct -3 percent < min 0 percent   row receipt 3a7f9477333a
+could not read: 2 cells (not checked; nothing was guessed)
+  line 12   S-009  limit_v "n/a": not_a_number (needed by R1)
+  line 16   S-013  temperature_c "21,5": ambiguous_separator (needed by R2)
+skipped empty: 0
+result:      exit 3: some cells could not be read, so the check is incomplete
+receipt:     sha256 ...
+wrote:       report.html
+wrote:       check-receipt.json
+$ echo $?
+3
+$ consilience verify check-receipt.json
+ok: check-receipt.json (check)
+  ok  receipt hash: matches its contents
+  ok  rule hash: example-bench-readings (example-bench-readings-v1) matches
+  ok  data hash: readings.csv matches
+  ok  re-run: same result
+  recorded sha256   ...
+$ echo $?
+0
+```
+
+Row S-011 was recorded in mV; it was converted before comparing with its limit in V. The
+two cells that could not be read are listed and counted, not skipped: fix them and run
+the check again. Open `report.html` in a browser for the same report as a page. The
+full report, including every violating row's receipt, is in `check-receipt.json`.
+
+## Python
+
+The same four functions, from Python:
+
+```python
+from consilience import check, compare, load_rules, verify
+
+r = compare("measurement_a.json", "measurement_b.json", pack="electrochemistry")
+print(r.verdict, r.exit_code)                # disagree 1
+print(round(r.difference, 6), r.unit)        # 0.011 V
+
+c = check("readings.csv", "readings_rules.yaml")
+print(c.summary["violations"], c.summary["unparseable_cells"])   # 5 2
+print([v["id"] for v in c.violations])       # ['S-004', 'S-007', 'S-011', 'S-015', 'S-018']
+
+print(verify(r.receipt).ok)                  # True
+print(load_rules("electrochemistry").version)   # electrochemistry-v1
+```
+
+Run it from the `try` folder. Inputs can be file paths or dicts. Problems with the inputs
+themselves (a missing file, an unknown field, a bad option) raise `InputError`; a bad rule
+file raises `RuleFileError`. Anything that can be read but not compared is a verdict, not
+an exception. `c.to_html()` gives the HTML report.
+
+## What the verdicts mean
+
+| Verdict | Meaning | Exit code |
+|---|---|---|
+| `agree` | The difference is within the tolerance: the larger of `--abs-tol` and `--rel-tol` times the larger value (both 0 by default, so equal after unit conversion). | 0 |
+| `within_floor` | Not within the tolerance, but within the floor: the largest of `--floor` and the two stated uncertainties. A difference this small is not evidence of disagreement. | 0 |
+| `disagree` | The difference is larger than both. | 1 |
+| `not_comparable(<what>)` | A condition differs (`not_comparable(temperature)`), or the two values measure different things (`not_comparable(unit)`: millivolts against milliamps). | 2 |
+| `not_stated(<what>)` | A value, unit or condition is missing on one or both sides, so the comparison cannot be made. | 2 |
+| `unparseable(<what>: <why>)` | Something could not be read exactly. The reason is named, e.g. `ambiguous_separator`, `non_finite`, `unknown_unit`. | 3 |
+
+When there are several problems, all are listed and the verdict is the first by rank:
+`unparseable`, then `not_comparable`, then `not_stated`. Differences smaller than one
+part in 10^9 of the values are treated as rounding from unit conversion.
+
+Exit codes of `check`: 0 no violations and every needed cell read; 1 violations; 3 some
+cells could not be read (the check is incomplete; the violations it did find are still
+listed). `verify`: 0 the re-run reproduces the receipt, 1 it does not. Every command: 64
+for a usage or input error (missing file, unknown field, unreadable rule file).
+
+## What is refused, and why
+
+Numbers are read by a fixed grammar (a sign, digits, one decimal point, an optional
+exponent), never evaluated as arithmetic. These are refused with a named reason:
+
+| Input | Reason | Why |
+|---|---|---|
+| `"1 200"` | `space_separated_digits` | one number or two? |
+| `"3,14"`, `"1,200"` | `ambiguous_separator` | decimal comma or thousands separator? |
+| `"1.2.3"` | `second_decimal_point` | not a number |
+| `"nan"`, `"inf"`, `NaN`, `1e400` | `non_finite` | not a measurement |
+| `"(1,234)"` | `parenthesised_number` | accounting negative? |
+| `"5-10"`, `"1/2"` | `malformed_number` | a range or arithmetic, not a value |
+| `"1 h 30 min"` | `compound_quantity` | more than one number |
+| `"5M"`, `"5k"` | `ambiguous_scale_suffix` | molar or million? |
+| `"25 C"` | `ambiguous_unit` | Celsius or coulomb? Write `degC`. |
+| `"10 mA/cm2"` | `unit_contains_number` | write `cm^2` |
+| `"5 banana"` | `unknown_unit` | |
+| empty | `empty` / `missing_unit` | |
+
+Units are [pint](https://pint.readthedocs.io/) unit names, and case matters (`m` is
+metre, `M` is molar, `K` is kelvin). Write `degC` for Celsius and `dimensionless` for a
+pure number. `%` and `percent` work, so `90 %` equals `0.9`.
+
+## Conditions and domain packs
+
+**Without a pack**, every condition present on either side must be present on both and
+equal: text exactly (case and spelling count, because `Co` is cobalt and `CO` is carbon
+monoxide), numbers exactly, quantities after unit conversion, nested objects key by key.
+A condition present on only one side gives `not_stated(<condition>)`. A value of `null`
+or `"unstated"` is treated as not stated.
+
+**With a pack** (`--pack electrochemistry` or `--pack my_pack.yaml`), only the conditions
+the pack names are checked, by the pack's rules; other conditions are listed as "not
+checked". A pack can say that some spellings mean the same thing, that a quantity must
+match within a tolerance, that a word like `room_temperature` matches only itself, and
+that a part such as `normalization` must also match.
+
+The bundled **electrochemistry** pack (`electrochemistry-v1`) checks electrolyte identity
+and concentration, current density and its normalisation, temperature, and iR correction.
+Each rule has a plain-English line, a rationale and a source. List bundled packs with
+`consilience packs`. `consilience examples` writes a copy, `electrochemistry.yaml`, that
+you can edit.
+
+## Writing rules
+
+Both kinds of rule file are YAML with a `kind`, a `name`, a `version`, and a
+`plain_english` line for the file and for every rule. A check rule file:
+
+```yaml
+kind: check-rules
+name: my-rules
+version: my-rules-v1
+plain_english: What these rules are for.
+id_column: sample_id             # optional: labels rows in the report
+columns:                         # every column a rule reads, with its unit
+  reading: {unit_column: reading_unit}   # each row says its own unit
+  limit_v: {unit: V}                     # one unit for the whole column
+  temperature_c: {unit: degC}
+rules:
+  - id: R1
+    kind: limit                  # value against another column of the same row
+    column: reading
+    limit_column: limit_v
+    must_be: at_most             # or at_least
+    margin: 0.02 V
+    plain_english: A reading must not exceed its own recorded limit by more than 0.02 V.
+  - id: R2
+    kind: bound                  # value against fixed bounds
+    column: temperature_c
+    min: 0 K
+    plain_english: No temperature is below absolute zero.
+```
+
+Unknown keys are refused, so a misspelt key is an error rather than silently ignored.
+The full format for both kinds (and options such as `if_empty`, `if_limit_empty`,
+`value_offset`, exclusive bounds, and every pack predicate) is in
+[docs/RULES.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/docs/RULES.md).
+
+## Receipts
+
+A receipt is a JSON file holding the inputs (for `check`, the data file's path and
+SHA-256), the options, the complete rule file used, the consilience and pint versions,
+and the result, plus a SHA-256 over all of that. `consilience verify` checks the hash,
+checks the data file still has the same SHA-256, re-runs the comparison or check, and
+confirms the fresh result hashes the same. For a check receipt it looks for the data file
+where it was, then beside the receipt; `--data` tells it where the file is now. A
+violation's row receipt is `sha256` over `{"rules_sha256", "rule", "line", "cells"}` in
+canonical JSON (the rule file's hash, the rule id, the line number and the row as text).
 
 ## What it does not do
 
-- It does not publish to the live network.
-- It does not compute verdicts. It exports verdicts that the ledger's code computed and
-  committed; their hashes are checked, not re-derived from the source papers.
-- A claim-card nanopub carries the fields a reader needs (sentence, source, subject,
-  quantity, conditions). The full card, including fields not mapped, is at its receipt
-  link and is covered by the content hash.
+- **It does not read prose.** It does not find numbers or conditions in papers, reports
+  or model output. You give it structured files.
+- **It checks only the conditions you give it.** If a condition that matters is missing
+  from both files, and no pack names it, nothing will notice.
+- **The electrochemistry pack covers one field**, and only the four conditions it names.
+  For other fields, write a pack; without one, every condition must match exactly.
+- **The example data is made up.** It shows how the tool works; it describes no real
+  instrument, sample or experiment. The 13 mV floor in the quickstart is an example too.
+- **It does not know whether your rules are right.** A check reports rows that break the
+  rules you wrote, nothing more.
+- **There is no hosted service.** `compare`, `check` and `verify` run on your computer
+  and send nothing anywhere.
+- It reads CSV only (UTF-8, comma-separated, a header row).
 
-## Licence
+## Also in this package: nanopublication export
 
-Code: MIT (`LICENSE`). Records, templates and vocabulary: CC BY 4.0 (`LICENSE-DATA`).
+From a source checkout, the package can also export Consilience records as
+nanopublications (signed, citable RDF statements) to the Knowledge Pixels test registry.
+This needs `pip install "consilience[nanopub]"` (Python 3.12 or newer, which the
+nanopub library requires) and is described in
+[docs/NANOPUB.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/docs/NANOPUB.md)
+and [PILOT.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/PILOT.md).
+
+## Develop
+
+```
+git clone -b v0.1.0 https://github.com/Anuja-Khatri/consilience-core.git
+cd consilience-core
+python -m venv .venv && . .venv/bin/activate
+pip install -e ".[test]"
+python -m pytest -q
+bash scripts/check_release.sh      # build, install the wheel in a clean venv, run this README
+```
+
+## Licence and provenance
+
+Code: MIT ([LICENSE](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/LICENSE)).
+Rule packs, examples, records and vocabulary: CC BY 4.0
+([LICENSE-DATA](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/LICENSE-DATA)).
+What was adapted from other Consilience repositories, and from which commit, is in
+[PROVENANCE.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/PROVENANCE.md).
+Changes: [CHANGELOG.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.0/CHANGELOG.md).
