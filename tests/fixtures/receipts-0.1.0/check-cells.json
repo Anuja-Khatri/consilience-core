@@ -1,0 +1,124 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "check",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "data": {
+      "path": "cells.csv",
+      "sha256": "cccc7de05afb1ca76f6496ce5bcc2e92852fae8f7a8af582ccbc4b5cc37e0e44",
+      "bytes": 46
+    }
+  },
+  "rules": {
+    "name": "counts-test",
+    "version": "counts-test-v1",
+    "sha256": "8351d47c5228975fbce1421e7204a1d9dec76f817fa25cd21512e2edc852f25c",
+    "content": {
+      "kind": "check-rules",
+      "name": "counts-test",
+      "version": "counts-test-v1",
+      "plain_english": "Test rules for a 0.1.0 receipt fixture.",
+      "rationale": null,
+      "source": null,
+      "licence": null,
+      "id_column": "id",
+      "columns": {
+        "n": {
+          "plain_english": null,
+          "unit_column": "n_unit"
+        }
+      },
+      "rules": [
+        {
+          "id": "B1",
+          "kind": "bound",
+          "column": "n",
+          "if_empty": "refuse",
+          "plain_english": "At most 6.",
+          "rationale": null,
+          "source": null,
+          "max": "6 V",
+          "min_inclusive": true,
+          "max_inclusive": true
+        }
+      ]
+    }
+  },
+  "result": {
+    "summary": {
+      "rows": 4,
+      "blank_lines": 0,
+      "rules": 1,
+      "violations": 1,
+      "unparseable_cells": 3,
+      "skipped_empty": 0,
+      "by_rule": {
+        "B1": {
+          "violations": 1,
+          "unparseable": 3,
+          "skipped": 0,
+          "passed": 0
+        }
+      }
+    },
+    "violations": [
+      {
+        "rule": "B1",
+        "line": 4,
+        "id": "r3",
+        "column": "n",
+        "value": "7",
+        "unit": "V",
+        "plain_english": "At most 6.",
+        "bound": "max",
+        "limit": 6.0,
+        "limit_unit": "V",
+        "inclusive": true,
+        "row_sha256": "70c83669b4635c35c41bbc720c2f45b7c296d6308fb5f43d82d66f2ecc69a84b"
+      }
+    ],
+    "unparseable": [
+      {
+        "line": 2,
+        "id": "r1",
+        "column": "n_unit",
+        "reason": "unknown_unit",
+        "text": "cells",
+        "detail": "not a unit pint knows",
+        "rules": [
+          "B1"
+        ]
+      },
+      {
+        "line": 3,
+        "id": "r2",
+        "column": "n_unit",
+        "reason": "unit_contains_number",
+        "text": "1",
+        "detail": "digits are allowed only as exponents, e.g. cm^2 or s^-1",
+        "rules": [
+          "B1"
+        ]
+      },
+      {
+        "line": 5,
+        "id": "r4",
+        "column": "n",
+        "reason": "not_a_number",
+        "text": "<9",
+        "detail": "it does not start with a plain number",
+        "rules": [
+          "B1"
+        ]
+      }
+    ],
+    "header": [
+      "id",
+      "n",
+      "n_unit"
+    ],
+    "exit_code": 3
+  },
+  "sha256": "3f4f758bec98d4d7f103986353a658f6777ec1d01c6dc765cf35e7baa6e3dd43"
+}

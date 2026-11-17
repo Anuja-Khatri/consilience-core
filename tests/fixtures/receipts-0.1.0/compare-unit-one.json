@@ -1,0 +1,61 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "compare",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "a": {
+      "value": 0.5,
+      "unit": "1"
+    },
+    "b": {
+      "value": 0.5,
+      "unit": "dimensionless"
+    }
+  },
+  "options": {
+    "abs_tol": null,
+    "rel_tol": null,
+    "floor": null
+  },
+  "pack": null,
+  "result": {
+    "verdict": "unparseable",
+    "label": "unparseable(a.unit: unit_contains_number)",
+    "defects": [
+      {
+        "verdict": "unparseable",
+        "target": "a.unit",
+        "reason": "unit_contains_number",
+        "detail": "digits are allowed only as exponents, e.g. cm^2 or s^-1",
+        "rule": null
+      }
+    ],
+    "unit": null,
+    "a": {
+      "label": null,
+      "as_given": {
+        "value": 0.5,
+        "unit": "1"
+      }
+    },
+    "b": {
+      "label": null,
+      "as_given": {
+        "value": 0.5,
+        "unit": "dimensionless"
+      },
+      "value": null,
+      "uncertainty": 0.0
+    },
+    "difference": null,
+    "tolerance": null,
+    "floor": null,
+    "conditions": {
+      "mode": "all conditions on either side",
+      "checked": [],
+      "ignored": []
+    }
+  },
+  "sha256": "d5e0c2015015de0b019822aabb1337d2e7572a2b385751e4f50c156dab17a891"
+}

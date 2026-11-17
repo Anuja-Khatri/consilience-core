@@ -1,0 +1,55 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "compare",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "a": {
+      "value": "0.777",
+      "unit": "dimensionless"
+    },
+    "b": {
+      "value": 0.776943,
+      "unit": "dimensionless"
+    }
+  },
+  "options": {
+    "abs_tol": null,
+    "rel_tol": null,
+    "floor": null
+  },
+  "pack": null,
+  "result": {
+    "verdict": "disagree",
+    "label": "disagree",
+    "defects": [],
+    "unit": "dimensionless",
+    "a": {
+      "label": null,
+      "as_given": {
+        "value": "0.777",
+        "unit": "dimensionless"
+      },
+      "value": 0.777,
+      "uncertainty": 0.0
+    },
+    "b": {
+      "label": null,
+      "as_given": {
+        "value": 0.776943,
+        "unit": "dimensionless"
+      },
+      "value": 0.776943,
+      "uncertainty": 0.0
+    },
+    "difference": 5.699999999997374e-05,
+    "tolerance": 0.0,
+    "floor": 0.0,
+    "conditions": {
+      "mode": "all conditions on either side",
+      "checked": [],
+      "ignored": []
+    }
+  },
+  "sha256": "e94d335035add9ca05ac282ce2ca6874cb51a05b87513ac0d3b3a343f46a822d"
+}

@@ -1,0 +1,55 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "compare",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "a": {
+      "value": "1.23e-5",
+      "unit": "mol/L"
+    },
+    "b": {
+      "value": "1.2337e-5",
+      "unit": "mol/L"
+    }
+  },
+  "options": {
+    "abs_tol": null,
+    "rel_tol": 0.001,
+    "floor": null
+  },
+  "pack": null,
+  "result": {
+    "verdict": "disagree",
+    "label": "disagree",
+    "defects": [],
+    "unit": "mol/L",
+    "a": {
+      "label": null,
+      "as_given": {
+        "value": "1.23e-5",
+        "unit": "mol/L"
+      },
+      "value": 1.23e-05,
+      "uncertainty": 0.0
+    },
+    "b": {
+      "label": null,
+      "as_given": {
+        "value": "1.2337e-5",
+        "unit": "mol/L"
+      },
+      "value": 1.2337e-05,
+      "uncertainty": 0.0
+    },
+    "difference": 3.6999999999999815e-08,
+    "tolerance": 1.2337000000000002e-08,
+    "floor": 0.0,
+    "conditions": {
+      "mode": "all conditions on either side",
+      "checked": [],
+      "ignored": []
+    }
+  },
+  "sha256": "ab77b38c9d79a8a44e44b90aa435fdd0550bf1a1400f8409b544464d1b40e3f5"
+}

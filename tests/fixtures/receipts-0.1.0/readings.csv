@@ -1,0 +1,23 @@
+# MADE-UP EXAMPLE DATA for the consilience quickstart. Every row is invented.
+# It describes no real instrument, sample or experiment. Some rows are wrong on purpose.
+sample_id,reading,reading_unit,limit_v,temperature_c,humidity_pct
+S-001,1.42,V,2.50,21.4,41
+S-002,1.55,V,2.50,21.6,40
+S-003,1.61,V,2.50,21.5,42
+S-004,2.71,V,2.50,21.7,43
+S-005,1.38,V,2.50,21.9,44
+S-006,1.47,V,2.50,22.0,45
+S-007,1.52,V,2.50,-280,45
+S-008,1.49,V,2.50,22.1,46
+S-009,1.58,V,n/a,22.2,44
+S-010,0.79,V,0.80,22.0,43
+S-011,850,mV,0.80,21.8,42
+S-012,0.81,V,0.80,21.7,42
+S-013,1.44,V,2.50,"21,5",41
+S-014,1.40,V,2.50,21.4,40
+S-015,1.39,V,2.50,21.3,104
+S-016,1.41,V,2.50,21.2,39
+S-017,1.43,V,2.50,21.1,38
+S-018,1.45,V,2.50,21.0,-3
+S-019,1.46,V,2.50,20.9,37
+S-020,1.47,V,2.50,20.8,36

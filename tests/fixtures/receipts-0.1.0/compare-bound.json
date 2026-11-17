@@ -1,0 +1,61 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "compare",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "a": {
+      "value": "<1e-6",
+      "unit": "dimensionless"
+    },
+    "b": {
+      "value": 2e-07,
+      "unit": "dimensionless"
+    }
+  },
+  "options": {
+    "abs_tol": null,
+    "rel_tol": null,
+    "floor": null
+  },
+  "pack": null,
+  "result": {
+    "verdict": "unparseable",
+    "label": "unparseable(a.value: not_a_number)",
+    "defects": [
+      {
+        "verdict": "unparseable",
+        "target": "a.value",
+        "reason": "not_a_number",
+        "detail": "it does not start with a plain number",
+        "rule": null
+      }
+    ],
+    "unit": null,
+    "a": {
+      "label": null,
+      "as_given": {
+        "value": "<1e-6",
+        "unit": "dimensionless"
+      }
+    },
+    "b": {
+      "label": null,
+      "as_given": {
+        "value": 2e-07,
+        "unit": "dimensionless"
+      },
+      "value": null,
+      "uncertainty": 0.0
+    },
+    "difference": null,
+    "tolerance": null,
+    "floor": null,
+    "conditions": {
+      "mode": "all conditions on either side",
+      "checked": [],
+      "ignored": []
+    }
+  },
+  "sha256": "fc944b33f22fba5b4ca9de295259baacc88e129eb7958799c7a5d2ebf160e16a"
+}

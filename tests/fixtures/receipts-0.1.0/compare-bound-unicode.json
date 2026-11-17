@@ -1,0 +1,57 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "compare",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "a": {
+      "value": "≤ 0.30 V"
+    },
+    "b": {
+      "value": "0.25 V"
+    }
+  },
+  "options": {
+    "abs_tol": null,
+    "rel_tol": null,
+    "floor": null
+  },
+  "pack": null,
+  "result": {
+    "verdict": "unparseable",
+    "label": "unparseable(a.value: not_a_number)",
+    "defects": [
+      {
+        "verdict": "unparseable",
+        "target": "a.value",
+        "reason": "not_a_number",
+        "detail": "it does not start with a plain number",
+        "rule": null
+      }
+    ],
+    "unit": null,
+    "a": {
+      "label": null,
+      "as_given": {
+        "value": "≤ 0.30 V"
+      }
+    },
+    "b": {
+      "label": null,
+      "as_given": {
+        "value": "0.25 V"
+      },
+      "value": null,
+      "uncertainty": 0.0
+    },
+    "difference": null,
+    "tolerance": null,
+    "floor": null,
+    "conditions": {
+      "mode": "all conditions on either side",
+      "checked": [],
+      "ignored": []
+    }
+  },
+  "sha256": "a297e40a7dce1e6137b29904779fd726dcca4bac54b2c82579ba4b99fa5f1312"
+}

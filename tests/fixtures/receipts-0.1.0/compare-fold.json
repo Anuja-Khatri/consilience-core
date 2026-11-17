@@ -1,0 +1,64 @@
+{
+  "receipt": "consilience-receipt/v1",
+  "command": "compare",
+  "consilience_version": "0.1.0",
+  "pint_version": "0.26.2",
+  "inputs": {
+    "a": {
+      "value": "3 fold"
+    },
+    "b": {
+      "value": 3,
+      "unit": "fold"
+    }
+  },
+  "options": {
+    "abs_tol": null,
+    "rel_tol": null,
+    "floor": null
+  },
+  "pack": null,
+  "result": {
+    "verdict": "unparseable",
+    "label": "unparseable(a.value: unknown_unit)",
+    "defects": [
+      {
+        "verdict": "unparseable",
+        "target": "a.value",
+        "reason": "unknown_unit",
+        "detail": "not a unit pint knows",
+        "rule": null
+      },
+      {
+        "verdict": "unparseable",
+        "target": "b.unit",
+        "reason": "unknown_unit",
+        "detail": "not a unit pint knows",
+        "rule": null
+      }
+    ],
+    "unit": null,
+    "a": {
+      "label": null,
+      "as_given": {
+        "value": "3 fold"
+      }
+    },
+    "b": {
+      "label": null,
+      "as_given": {
+        "value": 3,
+        "unit": "fold"
+      }
+    },
+    "difference": null,
+    "tolerance": null,
+    "floor": null,
+    "conditions": {
+      "mode": "all conditions on either side",
+      "checked": [],
+      "ignored": []
+    }
+  },
+  "sha256": "21d0fcbd171a0b8a4f2868a1c5e7f2cd22d963e5580347fb52f5c4e756f6cc60"
+}
