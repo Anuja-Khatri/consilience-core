@@ -198,6 +198,42 @@ $ echo $?
 0
 ```
 
+### Values as a paper writes them
+
+A paper says `0.777`; the run that produced it logged `0.776943`. A value written with k
+decimal places carries an implied half-unit in its last place, so `0.777` means 0.7765
+to 0.7775, and the two agree. The output says how much was implied, and why:
+
+```console
+$ echo '{"value": "0.777", "unit": "1"}' > paper.json
+$ echo '{"value": 0.776943, "unit": "1"}' > run.json
+$ consilience compare paper.json run.json
+verdict:    agree
+a:          0.777 dimensionless   (as given: 0.777 1)
+b:          0.776943 dimensionless   (as given: 0.776943 1)
+difference: 5.7e-05 dimensionless
+tolerance:  0 dimensionless   (larger of --abs-tol and --rel-tol x the larger value)
+floor:      0 dimensionless   (largest of --floor and the two uncertainties)
+precision:  ±0.0005005 dimensionless implied by stated precision (added to the tolerance and the floor; --exact turns this off)
+            a 0.777: 3 decimal places, ±0.0005 dimensionless
+            b 0.776943: 6 decimal places, ±5e-07 dimensionless
+conditions: no pack: every condition on either side must match (none given)
+receipt:    sha256 ...
+$ consilience compare paper.json run.json --exact
+verdict:    disagree
+...
+precision:  exact (--exact): no tolerance is implied by how the values are written
+...
+```
+
+The rules: only a value without a stated uncertainty gets an implied precision (an
+uncertainty, when given, is used instead). A number without a decimal point (`1200`,
+`17`, `1e-6`) is exact, because trailing zeros are ambiguous; write `1200.` to mean
+"to the nearest unit". In scientific notation the mantissa counts: `1.23e-5` means
+±5e-8. The two half-units are added to the tolerance and to the floor. A number in a
+JSON file keeps the digits written in the file (`1.50` is two places); a Python float
+passed to `compare()` has no written form and is exact. `check` compares cells exactly.
+
 Add `--json` to any `compare` or `check` to get the full result as JSON (the same content
 as the receipt).
 
@@ -276,8 +312,8 @@ an exception. `c.to_html()` gives the HTML report.
 
 | Verdict | Meaning | Exit code |
 |---|---|---|
-| `agree` | The difference is within the tolerance: the larger of `--abs-tol` and `--rel-tol` times the larger value (both 0 by default, so equal after unit conversion). | 0 |
-| `within_floor` | Not within the tolerance, but within the floor: the largest of `--floor` and the two stated uncertainties. A difference this small is not evidence of disagreement. | 0 |
+| `agree` | The difference is within the tolerance: the larger of `--abs-tol` and `--rel-tol` times the larger value (both 0 by default), plus the precision implied by how the values are written (none with `--exact`). | 0 |
+| `within_floor` | Not within the tolerance, but within the floor: the largest of `--floor` and the two stated uncertainties, plus the implied precision. A difference this small is not evidence of disagreement. | 0 |
 | `disagree` | The difference is larger than both. | 1 |
 | `not_comparable(<what>)` | A condition differs (`not_comparable(temperature)`), or the two values measure different things (`not_comparable(unit)`: millivolts against milliamps). | 2 |
 | `not_stated(<what>)` | A value, unit or condition is missing on one or both sides, so the comparison cannot be made. | 2 |

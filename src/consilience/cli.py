@@ -1,7 +1,7 @@
 """The ``consilience`` command.
 
     consilience compare A.json B.json [--pack NAME|FILE] [--abs-tol Q] [--rel-tol X]
-                        [--floor Q] [--json] [--receipt FILE]
+                        [--floor Q] [--exact] [--json] [--receipt FILE]
     consilience check DATA.csv --rules RULES.yaml [--json] [--html FILE] [--receipt FILE]
     consilience verify RECEIPT.json [--data FILE]
     consilience examples [DIR] [--force]
@@ -77,6 +77,8 @@ def _fmt_compare(r) -> str:
     rec = r.receipt
     res = rec["result"]
     unit = res["unit"] or ""
+    if unit.strip() == "1":
+        unit = "dimensionless"
     out = [f"verdict:    {r.label}",
            f"a:          {_side_line(res['a'], unit)}",
            f"b:          {_side_line(res['b'], unit)}"]
@@ -86,6 +88,7 @@ def _fmt_compare(r) -> str:
                 "--rel-tol x the larger value)",
                 f"floor:      {_g(r.floor)} {unit}   (largest of --floor and the two "
                 "uncertainties)"]
+    out += _precision_lines(res.get("precision"), unit)
     rule_text = {}
     if rec["pack"] is not None:
         rule_text = {c["id"]: c["plain_english"] for c in rec["pack"]["content"]["conditions"]}
@@ -115,6 +118,28 @@ def _fmt_compare(r) -> str:
     return "\n".join(out)
 
 
+def _precision_lines(p, unit) -> list:
+    """The stated-precision lines of a compare result (none for a 0.1.0 receipt)."""
+    if not p:
+        return []
+    if p["mode"] == "exact":
+        return ["precision:  exact (--exact): no tolerance is implied by how the values "
+                "are written"]
+    if p.get("implied") is None or all(p[s]["rule"] == "uncertainty stated"
+                                       for s in ("a", "b")):
+        return []
+    out = [f"precision:  ±{_g(p['implied'])} {unit} implied by stated precision (added to "
+           "the tolerance and the floor; --exact turns this off)"]
+    for side in ("a", "b"):
+        sp = p[side]
+        written = sp["written"] if sp["written"] is not None else "(no written form)"
+        line = f"            {side} {written}: {sp['rule']}"
+        if sp["implied"]:
+            line += f", ±{_g(sp['implied'])} {unit}"
+        out.append(line)
+    return out
+
+
 def _write_receipt(path, receipt) -> None:
     Path(path).write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n",
                           encoding="utf-8")
@@ -123,7 +148,8 @@ def _write_receipt(path, receipt) -> None:
 def cmd_compare(args) -> int:
     try:
         r = compare(args.a, args.b, pack=args.pack, abs_tol=args.abs_tol,
-                    rel_tol=args.rel_tol, floor=args.floor)
+                    rel_tol=args.rel_tol, floor=args.floor,
+                    precision="exact" if args.exact else "stated")
     except (InputError, RuleFileError) as exc:
         print(f"consilience: error: {exc}", file=sys.stderr)
         return EXIT_USAGE
@@ -299,6 +325,10 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--rel-tol", help="relative tolerance as a fraction, e.g. 0.01 for 1%%")
     c.add_argument("--floor", help="spread below which a difference is within_floor, e.g. "
                                    "'13 mV' (measured lab-to-lab spread)")
+    c.add_argument("--exact", action="store_true",
+                   help="compare the values exactly as numbers; by default a value written "
+                        "with k decimal places (and no uncertainty) carries an implied "
+                        "half-unit in its last place, so 0.777 means 0.7765 to 0.7775")
     c.add_argument("--json", action="store_true", help="print the full result as JSON")
     c.add_argument("--receipt", metavar="FILE", help="also write the receipt to FILE")
     c.set_defaults(func=cmd_compare)

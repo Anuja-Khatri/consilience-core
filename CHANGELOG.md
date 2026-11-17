@@ -13,6 +13,22 @@ Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
   unknown word is still `unparseable(unknown_unit)`; pint's `count` stays a plain pure
   number, as in 0.1.0.
 
+- `compare --exact` (Python: `compare(..., precision="exact")`) compares the numbers
+  exactly, as 0.1.0 did.
+- `read_json` keeps the digits of a JSON number as written (`WrittenFloat`), so `1.50`
+  in a measurement file is two decimal places, not one.
+
+### Changed
+- **Stated precision is on by default.** A value with no stated uncertainty, written
+  with k decimal places, carries an implied half-unit in its last place: `"0.777"`
+  means 0.7765 to 0.7775, so `"0.777"` against 0.776943 is now `agree` (0.1.0 said
+  `disagree` unless `--abs-tol 0.0005` was given). The two half-units are added to the
+  tolerance and to the floor. Numbers without a decimal point (`1200`, `1e-6`) are
+  exact; in scientific notation the mantissa's places count (`1.23e-5` means ±5e-8). The
+  output prints a `precision:` line and the receipt records, per side, the digits as
+  written, the implied half-unit and the rule (`result.precision`), and the mode
+  (`options.precision`). `--exact` restores the 0.1.0 behaviour. `check` is unchanged.
+
 ### Fixed
 - `verify` re-runs a receipt by the rules of the consilience version that wrote it, so
   receipts made by 0.1.0 keep verifying even where 0.1.1 reads an input differently.

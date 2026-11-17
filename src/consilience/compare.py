@@ -11,6 +11,20 @@ Verdicts (a closed set):
 
 tolerance = max(abs_tol, rel_tol * max(|a|, |b|)) in the unit of measurement a.
 floor     = max(floor option, uncertainty of a, uncertainty of b).
+implied   = the precision implied by how each value is written, added to both.
+
+Stated precision (the default; ``precision="exact"`` or ``--exact`` turns it off). A
+value with no stated uncertainty that is written with k decimal places carries an
+implied half-unit in its last place: "0.777" means 0.7765 to 0.7775 (see
+``consilience.units.implied_precision``). The two half-units (b's converted to a's
+unit) are added to the tolerance and to the floor:
+
+    agree         |a - b| <= tolerance + implied
+    within_floor  |a - b| <= floor + implied   (floor > 0)
+
+Numbers without a decimal point ("1200", 17) are exact. A value given as text keeps its
+digits; a JSON number read from a file keeps the digits written in the file (1.50 is two
+places); a number given as a Python float has no written form and is exact.
 Differences below one part in 10^9 of the values are treated as rounding from unit
 conversion. When several problems are found, all are listed; the verdict is the first by
 rank: unparseable, then not_comparable, then not_stated.
@@ -42,7 +56,10 @@ from .units import (
     as_quantity,
     convert,
     convert_difference,
+    implied_precision,
     is_offset_unit,
+    legacy,
+    number_text,
     parse_number,
     parse_unit,
     split_quantity,
@@ -50,6 +67,7 @@ from .units import (
 )
 
 RECEIPT_SCHEMA = "consilience-receipt/v1"
+PRECISION_MODES = ("stated", "exact")
 PINT_VERSION = pint.__version__
 ROUNDING = 1e-9
 MEASUREMENT_KEYS = {"value", "unit", "uncertainty", "conditions", "label", "note", "source"}
@@ -77,6 +95,7 @@ class CompareResult:
     conditions: dict
     pack: Optional[dict]
     receipt: dict = field(repr=False)
+    precision: Optional[dict] = None
 
     @property
     def exit_code(self) -> int:
@@ -84,6 +103,25 @@ class CompareResult:
 
     def to_dict(self) -> dict:
         return copy.deepcopy(self.receipt)
+
+
+class WrittenFloat(float):
+    """A float read from a JSON file that remembers how it was written ("1.50").
+
+    JSON parsers drop trailing zeros; this keeps them so that the stated precision of a
+    number in a measurement file is not lost. It behaves as a float everywhere and is
+    written back to JSON as a plain float.
+    """
+
+    __slots__ = ("text",)
+
+    def __new__(cls, text):
+        v = super().__new__(cls, text)
+        v.text = str(text)
+        return v
+
+    def __getnewargs__(self):
+        return (self.text,)
 
 
 # ----------------------------------------------------------------- helpers
@@ -111,13 +149,14 @@ def _refuse_pairs(pairs):
 
 def read_json(path: Union[str, Path]):
     """Read a JSON file. Duplicate keys are refused; NaN/Infinity literals become text
-    (and are then refused as ``non_finite`` wherever a number is needed)."""
+    (and are then refused as ``non_finite`` wherever a number is needed). Numbers with
+    a decimal point or exponent become ``WrittenFloat``, which keeps the written digits."""
     p = Path(path)
     if not p.is_file():
         raise InputError(f"file not found: {path}")
     try:
         return json.loads(p.read_text(encoding="utf-8"), object_pairs_hook=_refuse_pairs,
-                          parse_constant=lambda c: c)
+                          parse_constant=lambda c: c, parse_float=WrittenFloat)
     except UnicodeDecodeError:
         raise InputError(f"{path}: not UTF-8 text") from None
     except json.JSONDecodeError as exc:
@@ -157,8 +196,23 @@ def _close(x: float, y: float, slack_scale: float, tol: float = 0.0) -> bool:
 
 
 # ------------------------------------------------------------- quantities
+def _written_text(value, recorded: Optional[str]) -> Optional[str]:
+    """How a numeric value was written, or None for a float with no written form."""
+    if isinstance(value, str):
+        return number_text(value)
+    if isinstance(value, int):
+        return str(value)
+    if recorded is not None:   # verify: the digits recorded in the receipt
+        try:
+            if float(recorded) == float(value):
+                return recorded
+        except ValueError:
+            pass
+    return getattr(value, "text", None)
+
+
 def _read_value(m: dict, side: str, defects: list):
-    """(pint quantity or None) for one measurement's value and unit."""
+    """(pint quantity, unit text) or None for one measurement's value and unit."""
     if "value" not in m or m["value"] is None or m["value"] == "":
         defects.append(_defect("not_stated", f"{side}.value", "missing"))
         return None
@@ -485,21 +539,44 @@ def _option_in(q, unit, name) -> float:
 
 
 # --------------------------------------------------------------------- main
+def _side_precision(m: dict, written: Optional[str]) -> dict:
+    """Implied precision of one side, in that side's own unit."""
+    if m.get("uncertainty") is not None:
+        return {"written": written, "implied": 0.0, "rule": "uncertainty stated"}
+    if written is None:
+        return {"written": None, "implied": 0.0,
+                "rule": "a number with no written form (a Python float): exact"}
+    half, rule = implied_precision(written)
+    return {"written": written, "implied": half, "rule": rule}
+
+
 def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
-            rel_tol=None, floor=None) -> CompareResult:
+            rel_tol=None, floor=None, precision: str = "stated",
+            _written: Optional[dict] = None) -> CompareResult:
     """Compare measurement ``a`` with measurement ``b``.
 
     ``a`` and ``b`` are dicts or paths to JSON files with ``value``, ``unit``, and
     optionally ``uncertainty``, ``conditions`` (an object), ``label``, ``note``,
     ``source``. ``pack`` is a bundled pack name, a path, or a loaded RuleSet.
     ``abs_tol`` and ``floor`` are quantities ("5 mV"; a bare number is in a's unit);
-    ``rel_tol`` is a fraction. Raises ``InputError`` for unusable input or options.
+    ``rel_tol`` is a fraction. ``precision`` is ``"stated"`` (default: a value written
+    with k decimal places carries an implied half-unit in its last place) or
+    ``"exact"``. Raises ``InputError`` for unusable input or options.
+    ``_written`` is for ``verify``: the written digits recorded in a receipt.
     """
+    old = legacy()   # re-running a 0.1.0 receipt: 0.1.0 rules and receipt shape
+    if precision not in PRECISION_MODES:
+        raise InputError(f"precision must be one of {PRECISION_MODES}, not {precision!r}")
+    if old:
+        precision = "exact"
+    _written = _written or {}
     ma, mb = _measurement(a, "a"), _measurement(b, "b")
     ps = load_rules(pack) if pack is not None else None
     if ps is not None and ps.kind != "compare-pack":
         raise InputError(f"{ps.origin} is a {ps.kind} file, not a compare pack")
     given, opts = _options(abs_tol, rel_tol, floor)
+    if not old:
+        given["precision"] = precision
 
     defects: list[dict] = []
     ra = _read_value(ma, "a", defects)
@@ -534,17 +611,26 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
     defects.extend(cond_defects)
 
     difference = tolerance = floor_applied = None
+    prec: dict = {"mode": precision, "implied": 0.0 if precision == "exact" else None}
     if defects:
         defects.sort(key=lambda d: RANK[d["verdict"]])
         verdict, label = defects[0]["verdict"], _label(defects[0])
     else:
+        implied = 0.0
+        if precision == "stated":
+            pa = _side_precision(ma, _written_text(ma["value"], _written.get("a")))
+            pb = _side_precision(mb, _written_text(mb["value"], _written.get("b")))
+            if pb["implied"]:
+                pb["implied"] = convert_difference(pb["implied"], qb.units, qa.units)
+            implied = pa["implied"] + pb["implied"]
+            prec = {"mode": precision, "implied": implied, "a": pa, "b": pb}
         difference = abs(a_val - b_val)
         scale = max(abs(a_val), abs(b_val))
         tolerance = max(abs_t, opts["rel_tol"] * scale)
         floor_applied = max(floor_t, ua, ub)
-        if _close(a_val, b_val, scale, tolerance):
+        if _close(a_val, b_val, scale, tolerance + implied):
             verdict = "agree"
-        elif floor_applied > 0 and _close(a_val, b_val, scale, floor_applied):
+        elif floor_applied > 0 and _close(a_val, b_val, scale, floor_applied + implied):
             verdict = "within_floor"
         else:
             verdict = "disagree"
@@ -574,6 +660,8 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
         "floor": floor_applied,
         "conditions": cond_summary,
     }
+    if not old:
+        result["precision"] = prec
     receipt = {
         "receipt": RECEIPT_SCHEMA,
         "command": "compare",
@@ -589,7 +677,9 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
         verdict=verdict, label=label, defects=defects, a=a_out, b=b_out,
         unit=result["unit"], difference=difference, tolerance=tolerance,
         floor=floor_applied, conditions=cond_summary,
-        pack=ps.describe() if ps is not None else None, receipt=receipt)
+        pack=ps.describe() if ps is not None else None, receipt=receipt,
+        precision=None if old else prec)
 
 
-__all__ = ["CompareResult", "InputError", "compare", "read_json", "RECEIPT_SCHEMA"]
+__all__ = ["CompareResult", "InputError", "WrittenFloat", "compare", "read_json",
+           "RECEIPT_SCHEMA", "PRECISION_MODES"]

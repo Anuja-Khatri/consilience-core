@@ -136,8 +136,13 @@ def _rerun(rec, rpath, data, command, recorded, version, integrity, steps) -> Ve
             inp, opt = rec["inputs"], rec["options"]
             if rec.get("pack") is not None and ruleset is None:
                 raise InputError("the embedded pack is unusable")
+            prec = rec["result"].get("precision") or {}
+            written = {k: prec[k].get("written") for k in ("a", "b")
+                       if isinstance(prec.get(k), dict)}
             fresh = compare(inp["a"], inp["b"], pack=ruleset, abs_tol=opt.get("abs_tol"),
-                            rel_tol=opt.get("rel_tol"), floor=opt.get("floor")).receipt
+                            rel_tol=opt.get("rel_tol"), floor=opt.get("floor"),
+                            precision=opt.get("precision", "exact"),
+                            _written=written).receipt
         except (KeyError, TypeError) as exc:
             raise InputError(f"the receipt is missing a field: {exc}") from None
     else:

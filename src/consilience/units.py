@@ -50,6 +50,7 @@ from __future__ import annotations
 import contextlib
 import contextvars
 import math
+from decimal import Decimal
 import re
 from typing import Optional, Union
 
@@ -177,6 +178,42 @@ def split_quantity(text: str):
     if not isinstance(text, str):
         raise UnitError("not_a_quantity", text, "expected text")
     return _split(text)
+
+
+def number_text(text: str) -> str:
+    """The number exactly as written at the start of a quantity string ("0.777 V" ->
+    "0.777"). Call after the string has been accepted by ``split_quantity``."""
+    m = _NUMBER.match(text.strip())
+    if not m:
+        raise UnitError("not_a_number", text, "it does not start with a plain number")
+    return m.group()
+
+
+def implied_precision(text: str) -> tuple[float, str]:
+    """The half-unit in the last written place of a number, and the rule that gave it.
+
+    A value written with k decimal places carries an implied half-unit in its last
+    place: "0.777" means 0.7765 to 0.7775, so it gives 0.0005. In scientific notation
+    the mantissa's places count, scaled by the exponent: "1.23e-5" gives 5e-8. A number
+    without a decimal point ("1200", "17", "1e-6") is exact (0): trailing zeros are
+    ambiguous, and a count is exact. Write "1200." to state precision to the unit.
+    """
+    lit = number_text(text)
+    mant, _, exp = lit.lower().partition("e")
+    if "." not in mant:
+        return 0.0, "no decimal point: exact"
+    k = len(mant.split(".", 1)[1])
+    e = int(exp) if exp else 0
+    half = float(Decimal(5).scaleb(-k - 1 + e))
+    rule = f"{k} decimal place{'' if k == 1 else 's'}"
+    if exp:
+        rule += f" in the mantissa, exponent {e}"
+    return half, rule
+
+
+def implied_half_unit(text: str) -> float:
+    """The half-unit implied by how ``text`` is written (see ``implied_precision``)."""
+    return implied_precision(text)[0]
 
 
 def parse_number(value) -> float:
@@ -309,7 +346,10 @@ __all__ = [
     "as_quantity",
     "convert",
     "convert_difference",
+    "implied_half_unit",
+    "implied_precision",
     "is_offset_unit",
+    "number_text",
     "parse_number",
     "parse_unit",
     "rules_of",
