@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      9994,
+      10016
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L9994-L10016"
+  },
+  "receipt": {
+    "content_hash": "533f5dca186b0496394fa84847e4396aa3afbaf084db582831a07f73c9f1da20",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1145-L1184",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__002",
+    "claim_a_sentence": "After 500 h of testing at 10 mA cm–2, Pd-55 shows superior stability with little decay in 1 M HClO4.",
+    "claim_b_id": "ref40_peng2023__033",
+    "claim_b_sentence": "The overpotential at a current density of 10 mA cm–2 decreases dramatically from 348 mV for Pd-25 to 280 mV for Pd-40, and Pd-55 displays the best OER catalytic activity with an ultralow overpotential of 196 mV, which surpasses that of commercial IrO2 and Pd/C (Fig. 3c).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "533f5dca186b0496394fa84847e4396aa3afbaf084db582831a07f73c9f1da20",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "operational_stability_duration vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__002|ref40_peng2023__033",
+    "rules_version": "comparability-v0.1"
+  }
+}

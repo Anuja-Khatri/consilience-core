@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      11451,
+      11473
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L11451-L11473"
+  },
+  "receipt": {
+    "content_hash": "f64e7e41f3366e2f5c722f6706347d5969f6c8fadb6d863a9b2c8bba902a28cd",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L867-L902",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__011",
+    "claim_a_sentence": "Furthermore, the high durability of >40 h for Pd-55 at 100 mA cm–2 also confirms that hierarchical Pd is quite stable under a large current density.",
+    "claim_b_id": "ref40_peng2023__013",
+    "claim_b_sentence": "In contrast, the PdCoO2 precursors without etching display poor catalytic activity with an overpotential of 528 mV (Supplementary Fig. S9b).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "f64e7e41f3366e2f5c722f6706347d5969f6c8fadb6d863a9b2c8bba902a28cd",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "operational_stability_duration vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__011|ref40_peng2023__013",
+    "rules_version": "comparability-v0.1"
+  }
+}

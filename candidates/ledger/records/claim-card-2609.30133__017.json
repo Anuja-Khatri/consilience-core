@@ -1,0 +1,61 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      427,
+      462
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L427-L462"
+  },
+  "receipt": {
+    "content_hash": "b12b3d894e8d642e33a1564d72c2603d9f2b341600a317edc109001165c6dda4",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://arxiv.org/abs/2609.30133",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "overpotential_reproducibility_between_film_formats",
+    "causal_direction": "independent",
+    "claim_id": "2609.30133__017",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "sec_scanning_electrochemical_cell",
+    "object": "InMnPdOx_combinatorial_gradient_film",
+    "physical_scale": "molecular",
+    "provenance_hash": "f014f7a8796409f6",
+    "quantity": {
+      "bound": "upper",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "mV",
+      "value": 15.0
+    },
+    "relation": "has_overpotential_agreement_with",
+    "source_document": "2609.30133",
+    "source_sentence": "Screening the uniform films by SEC reproduced the overpotentials of their combinatorial (gradient) counterparts within 15 mV (Fig. S 3).",
+    "subject": "InMnPdOx_uniform_film"
+  }
+}

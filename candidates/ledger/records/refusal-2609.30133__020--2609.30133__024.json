@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7838,
+      7860
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7838-L7860"
+  },
+  "receipt": {
+    "content_hash": "f20aabdef08aa5fefd372195c3b6b0e849530c83d3795d989f9c107445727940",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L463-L502",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L583-L622",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__020",
+    "claim_a_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "claim_b_id": "2609.30133__024",
+    "claim_b_sentence": "Two material systems stand out in the Pareto front, which are defined by Pd-rich, non-annealed compositions with either In-Mn or Ni-Ta as additives, reaching overpotentials below 0.46 V at 10 mA cm-2 with 0.3–0.7 µmol cm-2 loss (~60–75% molar retention after screening).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "f20aabdef08aa5fefd372195c3b6b0e849530c83d3795d989f9c107445727940",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_at_current_density vs total_molar_loss"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__020|2609.30133__024",
+    "rules_version": "comparability-v0.1"
+  }
+}

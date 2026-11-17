@@ -1,0 +1,64 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      903,
+      941
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L903-L941"
+  },
+  "receipt": {
+    "content_hash": "84d914ca4b5a2725363fea6322fa1eb5fbaa825b34303cd6c80de252c7bfbb5c",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "tafel_slope",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__019",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": {
+        "unit": "degC",
+        "value": 55.0
+      },
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "tafel_analysis",
+    "object": "tafel_slope",
+    "physical_scale": "molecular",
+    "provenance_hash": "06b936311e4fb737",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "mV/decade",
+      "value": 51.3
+    },
+    "relation": "has_tafel_slope",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "Moreover, from Fig. 3b, the Pd catalyst prepared at 55°C exhibits the best kinetics with a Tafel slope of 51.3 mV dec–1, which outperforms hierarchical Pd at a lower etching temperature and the benchmark IrO2 catalyst.",
+    "subject": "Pd-55"
+  }
+}

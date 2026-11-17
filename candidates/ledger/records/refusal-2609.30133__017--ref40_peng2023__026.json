@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7638,
+      7660
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7638-L7660"
+  },
+  "receipt": {
+    "content_hash": "13d277850a0bdd701ab9fd155ebd7c18128237294de568a15a42c0ac831fde95",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L427-L462",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1109-L1144",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_reproducibility_between_film_formats",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__017",
+    "claim_a_sentence": "Screening the uniform films by SEC reproduced the overpotentials of their combinatorial (gradient) counterparts within 15 mV (Fig. S 3).",
+    "claim_b_id": "ref40_peng2023__026",
+    "claim_b_sentence": "Prominently, the OER performance of the Pd catalyst is dramatically enhanced and exhibits an ultralow overpotential of 196 mV at 10 mA cm–2 and high mass activity of 407.2 A g–1 at 1.53 VRHE (RHE, reversible hydrogen electrode) in 1 M HClO4 when the size shrinks to ∼2.8 nm.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "13d277850a0bdd701ab9fd155ebd7c18128237294de568a15a42c0ac831fde95",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_reproducibility_between_film_formats vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__017|ref40_peng2023__026",
+    "rules_version": "comparability-v0.1"
+  }
+}

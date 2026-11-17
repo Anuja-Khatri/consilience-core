@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      6971,
+      6993
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L6971-L6993"
+  },
+  "receipt": {
+    "content_hash": "cd7f2a67adfa3cc740209aec7537efdf38b1d4e9b8fab2cc0162faeb1a319480",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L388-L426",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Ru_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__014",
+    "claim_a_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "claim_b_id": "ref40_peng2023__011",
+    "claim_b_sentence": "Furthermore, the high durability of >40 h for Pd-55 at 100 mA cm–2 also confirms that hierarchical Pd is quite stable under a large current density.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "cd7f2a67adfa3cc740209aec7537efdf38b1d4e9b8fab2cc0162faeb1a319480",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Ru_retention vs operational_stability_duration"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__014|ref40_peng2023__011",
+    "rules_version": "comparability-v0.1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7477,
+      7499
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7477-L7499"
+  },
+  "receipt": {
+    "content_hash": "826aaa2f21071506c9ff0924cefc801df4d4c32fe68024f69d8c97e698f25791",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L427-L462",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_reproducibility_between_film_formats",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__017",
+    "claim_a_sentence": "Screening the uniform films by SEC reproduced the overpotentials of their combinatorial (gradient) counterparts within 15 mV (Fig. S 3).",
+    "claim_b_id": "ref40_peng2023__011",
+    "claim_b_sentence": "Furthermore, the high durability of >40 h for Pd-55 at 100 mA cm–2 also confirms that hierarchical Pd is quite stable under a large current density.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "826aaa2f21071506c9ff0924cefc801df4d4c32fe68024f69d8c97e698f25791",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_reproducibility_between_film_formats vs operational_stability_duration"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__017|ref40_peng2023__011",
+    "rules_version": "comparability-v0.1"
+  }
+}

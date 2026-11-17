@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      11866,
+      11888
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L11866-L11888"
+  },
+  "receipt": {
+    "content_hash": "cd90b643b37df816d6dc42bcbfd22a358d725ee47beb213fc1e745bb53feee11",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L867-L902",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1109-L1144",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__013",
+    "claim_a_sentence": "In contrast, the PdCoO2 precursors without etching display poor catalytic activity with an overpotential of 528 mV (Supplementary Fig. S9b).",
+    "claim_b_id": "ref40_peng2023__026",
+    "claim_b_sentence": "Prominently, the OER performance of the Pd catalyst is dramatically enhanced and exhibits an ultralow overpotential of 196 mV at 10 mA cm–2 and high mass activity of 407.2 A g–1 at 1.53 VRHE (RHE, reversible hydrogen electrode) in 1 M HClO4 when the size shrinks to ∼2.8 nm.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "cd90b643b37df816d6dc42bcbfd22a358d725ee47beb213fc1e745bb53feee11",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_at_current_density vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__013|ref40_peng2023__026",
+    "rules_version": "comparability-v0.1"
+  }
+}

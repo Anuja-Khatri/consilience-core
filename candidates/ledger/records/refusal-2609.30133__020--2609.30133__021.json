@@ -1,0 +1,55 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7776,
+      7806
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7776-L7806"
+  },
+  "receipt": {
+    "content_hash": "206a8b253f468506c89a906f4fa1581081003044964f3b8ae4a5e5fc6c21c1c3",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L463-L502",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L503-L542",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__020",
+    "claim_a_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "claim_b_id": "2609.30133__021",
+    "claim_b_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "206a8b253f468506c89a906f4fa1581081003044964f3b8ae4a5e5fc6c21c1c3",
+    "defects": [
+      {
+        "defect_type": "condition_unstated",
+        "target": "electrolyte"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "temperature"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "ir_correction"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "not_comparable",
+    "pair_id": "2609.30133__020|2609.30133__021",
+    "rules_version": "comparability-v0.1"
+  }
+}

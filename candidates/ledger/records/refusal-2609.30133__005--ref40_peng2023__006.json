@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      3359,
+      3381
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L3359-L3381"
+  },
+  "receipt": {
+    "content_hash": "23b84329599a00b6b37e5e14e3f11a6771408b52b51344236837d645b8c99b4d",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L160-L198",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L705-L740",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__005",
+    "claim_a_sentence": "From XRF results, InMnPdOx retains 96% of its Pd after 1,000 h, a marked improvement in corrosion stability over the other systems.",
+    "claim_b_id": "ref40_peng2023__006",
+    "claim_b_sentence": "Consequently, the strong oxygen binding results in an ultra-high energy barrier of ΔG3 (2.79 eV, ΔGHOO*−ΔGO*) despite HOO* having a normal adsorption energy, and the potential determining steps (PDS) for the Pd catalyst are between HOO* and O*.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "23b84329599a00b6b37e5e14e3f11a6771408b52b51344236837d645b8c99b4d",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Pd_retention vs reaction_free_energy_barrier"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__005|ref40_peng2023__006",
+    "rules_version": "comparability-v0.1"
+  }
+}

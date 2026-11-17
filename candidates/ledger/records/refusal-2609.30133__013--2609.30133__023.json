@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      6281,
+      6303
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L6281-L6303"
+  },
+  "receipt": {
+    "content_hash": "2d629e18703a2a26b302e2c4de4c6ecb2ae50d7f1710fccfdc2d5da846a8f28d",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L349-L387",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L543-L582",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__013",
+    "claim_a_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "claim_b_id": "2609.30133__023",
+    "claim_b_sentence": "Two material systems stand out in the Pareto front, which are defined by Pd-rich, non-annealed compositions with either In-Mn or Ni-Ta as additives, reaching overpotentials below 0.46 V at 10 mA cm-2 with 0.3–0.7 µmol cm-2 loss (~60–75% molar retention after screening).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "2d629e18703a2a26b302e2c4de4c6ecb2ae50d7f1710fccfdc2d5da846a8f28d",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Pd_retention vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__013|2609.30133__023",
+    "rules_version": "comparability-v0.1"
+  }
+}

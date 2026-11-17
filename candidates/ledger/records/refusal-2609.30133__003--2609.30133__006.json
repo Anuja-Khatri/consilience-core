@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      1559,
+      1581
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L1559-L1581"
+  },
+  "receipt": {
+    "content_hash": "3685d4d714f1e9fbb1cb5f1e46c4e01132db77a1e867a0590cfa11c3ae1a4c99",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L80-L119",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L199-L234",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__003",
+    "claim_a_sentence": "During the initial 10 mA cm-2 hold, InMnPdOx held a stable overpotential of 0.45 V (not iR-corrected), within 40 mV of RuOx (0.41 V) and roughly 90 mV below the best non-PGM catalyst.",
+    "claim_b_id": "2609.30133__006",
+    "claim_b_sentence": "However, both failed medium-term acidic stability screening, with lifetimes under 4 h (Fig. S1).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "3685d4d714f1e9fbb1cb5f1e46c4e01132db77a1e867a0590cfa11c3ae1a4c99",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_at_current_density vs stability_lifetime"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__003|2609.30133__006",
+    "rules_version": "comparability-v0.1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      8388,
+      8410
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L8388-L8410"
+  },
+  "receipt": {
+    "content_hash": "db1ec9ffdd4f018c03fb6ba776648b16e8dfe9d88d1387b00b1bb14420fee7c8",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L503-L542",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L669-L704",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__021",
+    "claim_a_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "claim_b_id": "ref40_peng2023__004",
+    "claim_b_sentence": "As can be seen in Supplementary Fig. S15, the quite low ΔG2 of only 0.13 eV demonstrates binding of O* that is too strong, which is consistent with previously reported elucidations towards the poor OER performance of Pd.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "db1ec9ffdd4f018c03fb6ba776648b16e8dfe9d88d1387b00b1bb14420fee7c8",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_at_current_density vs reaction_free_energy"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__021|ref40_peng2023__004",
+    "rules_version": "comparability-v0.1"
+  }
+}

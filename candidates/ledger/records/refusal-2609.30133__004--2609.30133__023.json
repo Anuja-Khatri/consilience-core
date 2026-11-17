@@ -1,0 +1,55 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      2532,
+      2562
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L2532-L2562"
+  },
+  "receipt": {
+    "content_hash": "2d76c5b5c743577efda9b0ae3e0bf5ff95c283631de82423ec7e7097893eded4",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L120-L159",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L543-L582",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__004",
+    "claim_a_sentence": "During the initial 10 mA cm-2 hold, InMnPdOx held a stable overpotential of 0.45 V (not iR-corrected), within 40 mV of RuOx (0.41 V) and roughly 90 mV below the best non-PGM catalyst.",
+    "claim_b_id": "2609.30133__023",
+    "claim_b_sentence": "Two material systems stand out in the Pareto front, which are defined by Pd-rich, non-annealed compositions with either In-Mn or Ni-Ta as additives, reaching overpotentials below 0.46 V at 10 mA cm-2 with 0.3–0.7 µmol cm-2 loss (~60–75% molar retention after screening).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "2d76c5b5c743577efda9b0ae3e0bf5ff95c283631de82423ec7e7097893eded4",
+    "defects": [
+      {
+        "defect_type": "condition_unstated",
+        "target": "electrolyte"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "temperature"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "ir_correction"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "not_comparable",
+    "pair_id": "2609.30133__004|2609.30133__023",
+    "rules_version": "comparability-v0.1"
+  }
+}

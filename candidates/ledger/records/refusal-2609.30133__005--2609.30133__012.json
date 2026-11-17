@@ -1,0 +1,59 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      3105,
+      3139
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L3105-L3139"
+  },
+  "receipt": {
+    "content_hash": "e3949f8b9745e036b7f3d37dfd100af28b83baedc6924085574e7f954ff7b98e",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L160-L198",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L310-L348",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__005",
+    "claim_a_sentence": "From XRF results, InMnPdOx retains 96% of its Pd after 1,000 h, a marked improvement in corrosion stability over the other systems.",
+    "claim_b_id": "2609.30133__012",
+    "claim_b_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "e3949f8b9745e036b7f3d37dfd100af28b83baedc6924085574e7f954ff7b98e",
+    "defects": [
+      {
+        "defect_type": "condition_unstated",
+        "target": "electrolyte"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "current_density"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "temperature"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "ir_correction"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "not_comparable",
+    "pair_id": "2609.30133__005|2609.30133__012",
+    "rules_version": "comparability-v0.1"
+  }
+}

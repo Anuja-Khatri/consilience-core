@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      10339,
+      10361
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10339-L10361"
+  },
+  "receipt": {
+    "content_hash": "c6748507872b44b80681c304228b2f14771582da59c0bc6a9c7b46281f11d7f1",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L669-L704",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1109-L1144",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "reaction_free_energy",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__004",
+    "claim_a_sentence": "As can be seen in Supplementary Fig. S15, the quite low ΔG2 of only 0.13 eV demonstrates binding of O* that is too strong, which is consistent with previously reported elucidations towards the poor OER performance of Pd.",
+    "claim_b_id": "ref40_peng2023__026",
+    "claim_b_sentence": "Prominently, the OER performance of the Pd catalyst is dramatically enhanced and exhibits an ultralow overpotential of 196 mV at 10 mA cm–2 and high mass activity of 407.2 A g–1 at 1.53 VRHE (RHE, reversible hydrogen electrode) in 1 M HClO4 when the size shrinks to ∼2.8 nm.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "c6748507872b44b80681c304228b2f14771582da59c0bc6a9c7b46281f11d7f1",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "reaction_free_energy vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__004|ref40_peng2023__026",
+    "rules_version": "comparability-v0.1"
+  }
+}

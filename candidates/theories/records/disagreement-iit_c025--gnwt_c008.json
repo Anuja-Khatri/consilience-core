@@ -1,0 +1,43 @@
+{
+  "kind": "fork",
+  "pair_id": "iit_c025|gnwt_c008",
+  "claim_a_id": "iit_c025",
+  "claim_b_id": "gnwt_c008",
+  "axis": "connectivity",
+  "claim_a_value": "heterogeneous_connectivity_required",
+  "claim_b_value": "global_workspace_connectivity_required",
+  "polarity_opposed": false,
+  "type_divergence": false,
+  "testability": "testable_now",
+  "instrument": "shared observable: connectivity metrics",
+  "claim_a": {
+    "claim_id": "iit_c025",
+    "theory": "IIT",
+    "axis": "connectivity",
+    "value": "heterogeneous_connectivity_required",
+    "polarity": "asserts",
+    "statement": "The richness and level of consciousness increase with the diversity and specialization of causal connections; homogeneous connectivity reduces consciousness."
+  },
+  "claim_b": {
+    "claim_id": "gnwt_c008",
+    "theory": "GNWT",
+    "axis": "connectivity",
+    "value": "global_workspace_connectivity_required",
+    "polarity": "asserts",
+    "statement": "Without a functional global neuronal workspace, cortical representations cannot be broadcast and are not experienced; functional connectivity of GNW is a necessary condition for consciousness."
+  },
+  "claim_a_locators": [
+    "p.17",
+    "p.17"
+  ],
+  "claim_b_locators": [
+    "p.16",
+    "p.18"
+  ],
+  "source": {
+    "url": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+    "sha256": "91f4bbec746ea145d69b9aa6e05752a4dd12547e622a277cdcdf1a573f3acfdf",
+    "retrieved": "2026-11-17"
+  },
+  "status": "candidate, not exportable yet: no pinned public commit, matcher code not public"
+}

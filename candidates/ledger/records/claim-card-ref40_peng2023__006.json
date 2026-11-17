@@ -1,0 +1,61 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      705,
+      740
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L705-L740"
+  },
+  "receipt": {
+    "content_hash": "fec4056c2c15246be1c6aefedc2d67aaed88c35ac5bf6aca6933cec8abb36087",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "reaction_free_energy_barrier",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__006",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "dft_calculation",
+    "object": "delta_G3_HOO*_minus_O*",
+    "physical_scale": "atomic",
+    "provenance_hash": "1ee4dc3075f5fcf5",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "eV",
+      "value": 2.79
+    },
+    "relation": "has_free_energy_step",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "Consequently, the strong oxygen binding results in an ultra-high energy barrier of ΔG3 (2.79 eV, ΔGHOO*−ΔGO*) despite HOO* having a normal adsorption energy, and the potential determining steps (PDS) for the Pd catalyst are between HOO* and O*.",
+    "subject": "Pd_(111)_facet"
+  }
+}

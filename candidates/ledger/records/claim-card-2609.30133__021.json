@@ -1,0 +1,65 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      503,
+      542
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L503-L542"
+  },
+  "receipt": {
+    "content_hash": "b920a617a9ee2e18f524c815713cff2d671ac1a1604a82b0dccb114ac04db115",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://arxiv.org/abs/2609.30133",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "causal_direction": "independent",
+    "claim_id": "2609.30133__021",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": {
+        "normalization": "geometric",
+        "unit": "mA/cm^2",
+        "value": 10.0
+      },
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "cp_chronopotentiometry",
+    "object": "overpotential",
+    "physical_scale": "molecular",
+    "provenance_hash": "77e9ff8e4addc6f6",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "V",
+      "value": 0.55
+    },
+    "relation": "has_overpotential",
+    "source_document": "2609.30133",
+    "source_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "subject": "CoInZrOx"
+  }
+}

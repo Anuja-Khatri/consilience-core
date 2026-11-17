@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      13145,
+      13167
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L13145-L13167"
+  },
+  "receipt": {
+    "content_hash": "7d8fff19a7a3a8c7efdb1d377a90baf4462b533d35bb7d6d9f88ed9cc0b4b528",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1145-L1184",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1268-L1303",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__033",
+    "claim_a_sentence": "The overpotential at a current density of 10 mA cm–2 decreases dramatically from 348 mV for Pd-25 to 280 mV for Pd-40, and Pd-55 displays the best OER catalytic activity with an ultralow overpotential of 196 mV, which surpasses that of commercial IrO2 and Pd/C (Fig. 3c).",
+    "claim_b_id": "ref40_peng2023__044",
+    "claim_b_sentence": "The size effect was further evidenced by synthesizing ∼5.4 nm of Pd nanoparticles and obtaining a similar MA of 34.6 A g–1 to that of Pd-40 (∼5.8 nm-sized Pd nanoparticles) as revealed in Supplementary Fig. S13.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "7d8fff19a7a3a8c7efdb1d377a90baf4462b533d35bb7d6d9f88ed9cc0b4b528",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_at_current_density vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__033|ref40_peng2023__044",
+    "rules_version": "comparability-v0.1"
+  }
+}

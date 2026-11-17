@@ -1,0 +1,58 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix nt: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <http://purl.org/nanopub/temp/np/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:refusal a cv:ComparisonRefusal ;
+        dct:identifier "2609.30133__010|2609.30133__023" ;
+        cv:axis "overpotential_stability" ;
+        cv:claimA <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L271-L309> ;
+        cv:claimASentence "InMnPdOx is the most stable, sustaining an overpotential below 0.5 V over 1,000 h (repeated measurements over a partial duration on planar and porous supports are shown in Figs. S4 – S6)." ;
+        cv:claimB <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L543-L582> ;
+        cv:claimBSentence "Two material systems stand out in the Pareto front, which are defined by Pd-rich, non-annealed compositions with either In-Mn or Ni-Ta as additives, reaching overpotentials below 0.46 V at 10 mA cm-2 with 0.3–0.7 µmol cm-2 loss (~60–75% molar retention after screening)." ;
+        cv:hasDefect sub:defect ;
+        cv:outcome cv:AxisMismatch .
+
+    sub:defect cv:defectTarget "overpotential_stability vs overpotential_at_current_density" ;
+        cv:defectType cv:AxisMismatch .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L5142-L5164> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "44e1c2964b014902072e113cb2e5796c72e15d4de3f46031b3d0537006d18b5f" ;
+        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "verdict-sha256-v0" ;
+        cv:mapVersion "materials_oer-v0" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:pubinfo {
+    sub: rdfs:label "Comparison refused, 2609.30133__010 vs 2609.30133__023: different quantity axes (overpotential_stability vs overpotential_at_current_density)" ;
+        dct:created "2026-11-17T00:00:00+00:00"^^xsd:dateTime ;
+        dct:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:ComparisonRefusal ;
+        npx:introduces sub:refusal ;
+        nt:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
+        nt:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        nt:wasCreatedFromTemplate <https://w3id.org/np/RAr2wiuk3YGzyw123e9k0lc-c8Om_WRhv5zQEyP6Rz9Dw/templateVersion> .
+}
+
+sub:Head {
+    sub: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

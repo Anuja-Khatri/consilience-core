@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      5050,
+      5072
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L5050-L5072"
+  },
+  "receipt": {
+    "content_hash": "5a0abc69469df67208acb73175cff11afeb671972711aec7b8a493235b527369",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L271-L309",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L388-L426",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_stability",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__010",
+    "claim_a_sentence": "InMnPdOx is the most stable, sustaining an overpotential below 0.5 V over 1,000 h (repeated measurements over a partial duration on planar and porous supports are shown in Figs. S4 – S6).",
+    "claim_b_id": "2609.30133__014",
+    "claim_b_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "5a0abc69469df67208acb73175cff11afeb671972711aec7b8a493235b527369",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_stability vs Ru_retention"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__010|2609.30133__014",
+    "rules_version": "comparability-v0.1"
+  }
+}

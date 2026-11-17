@@ -1,0 +1,14 @@
+# ASSERTION PREVIEW ONLY. Not a nanopublication: no provenance, no publication
+# info, not signed. Claim links are placeholders until the demo results are
+# committed to a public repository at a pinned commit.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <https://theconsilience.io/ns/cv#> .
+
+<http://purl.org/nanopub/temp/np/disagreement> a ns1:TestableDisagreement ;
+    dcterms:identifier "iit_n007|gnwt_c003" ;
+    ns1:axis "locus" ;
+    ns1:claimA <https://consilience-demo.netlify.app/results/iitxgnwt_judge.json#iit_n007> ;
+    ns1:claimB <https://consilience-demo.netlify.app/results/iitxgnwt_judge.json#gnwt_c003> ;
+    ns1:instrument "shared observable: regional decoding" ;
+    ns1:testability ns1:TestableNow .
+

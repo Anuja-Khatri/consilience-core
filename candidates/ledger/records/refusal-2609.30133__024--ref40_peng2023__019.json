@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      9449,
+      9471
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L9449-L9471"
+  },
+  "receipt": {
+    "content_hash": "ac49987124ab8c3a0ea94ba90e32727ad184ba2e91b034e1a84d6a26c6379309",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L583-L622",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L903-L941",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "total_molar_loss",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__024",
+    "claim_a_sentence": "Two material systems stand out in the Pareto front, which are defined by Pd-rich, non-annealed compositions with either In-Mn or Ni-Ta as additives, reaching overpotentials below 0.46 V at 10 mA cm-2 with 0.3–0.7 µmol cm-2 loss (~60–75% molar retention after screening).",
+    "claim_b_id": "ref40_peng2023__019",
+    "claim_b_sentence": "Moreover, from Fig. 3b, the Pd catalyst prepared at 55°C exhibits the best kinetics with a Tafel slope of 51.3 mV dec–1, which outperforms hierarchical Pd at a lower etching temperature and the benchmark IrO2 catalyst.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "ac49987124ab8c3a0ea94ba90e32727ad184ba2e91b034e1a84d6a26c6379309",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "total_molar_loss vs tafel_slope"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__024|ref40_peng2023__019",
+    "rules_version": "comparability-v0.1"
+  }
+}

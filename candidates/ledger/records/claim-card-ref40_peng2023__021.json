@@ -1,0 +1,71 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      978,
+      1023
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L978-L1023"
+  },
+  "receipt": {
+    "content_hash": "501b97b6a3a68f2c6b13c92e27c7ecf5b3ece78c8ae722584435300563f371d5",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__021",
+    "claim_kind": "stability_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": {
+        "normalization": "geometric",
+        "unit": "mA/cm^2",
+        "value": 10.0
+      },
+      "electrolyte": {
+        "concentration": {
+          "unit": "mol/L",
+          "value": 1.0
+        },
+        "identity": "HClO4"
+      },
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "cp_chronopotentiometry",
+    "object": "durability",
+    "physical_scale": "nanoscale",
+    "provenance_hash": "d8a7af851b0ea3c9",
+    "quantity": {
+      "bound": "upper",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "h",
+      "value": 500.0
+    },
+    "relation": "has_durability",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "Pd-55 with particle size that has been shrunk to 2.8 nm exhibits optimal performance, where the overpotential at 10 mA cm–2 can decrease to 196 mV and the durability reaches up to 500 h in 1 M HClO4.",
+    "subject": "Pd-55"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      1486,
+      1508
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L1486-L1508"
+  },
+  "receipt": {
+    "content_hash": "1d6f10c8be81c1e3c01829d35bc1d8a5283ce2a9cb6fc6c091a8926bf27b833d",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L41-L79",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1304-L1339",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "hours_to_threshold",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__002",
+    "claim_a_sentence": "During long-term testing, NiTaPdOx operated at lower overpotential than PdOx, but both eventually exceeded 0.5 V: PdOx at ~200 h and NiTaPdOx at ~470 h.",
+    "claim_b_id": "ref40_peng2023__045",
+    "claim_b_sentence": "The transmission electron microscopy (TEM) statistic results reveal that the size decreases rapidly and gradually stabilizes to ∼3 nm (Fig. 1f) when heating to above room temperature.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "1d6f10c8be81c1e3c01829d35bc1d8a5283ce2a9cb6fc6c091a8926bf27b833d",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "hours_to_threshold vs particle_size_stabilization"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__002|ref40_peng2023__045",
+    "rules_version": "comparability-v0.1"
+  }
+}

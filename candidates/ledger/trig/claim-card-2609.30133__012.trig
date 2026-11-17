@@ -1,0 +1,76 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix nt: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sub: <http://purl.org/nanopub/temp/np/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L310-L348> a cv:ClaimCard ;
+        dct:identifier "2609.30133__012" ;
+        dct:source <https://arxiv.org/abs/2609.30133> ;
+        cv:axis "Pd_retention" ;
+        cv:claimKind "performance_value" ;
+        cv:conditionUnstated "anneal_temperature",
+            "current_density",
+            "electrolyte",
+            "ir_correction",
+            "loading",
+            "ph",
+            "protocol_tier",
+            "substrate",
+            "temperature" ;
+        cv:hasCondition sub:condition ;
+        cv:hasQuantity sub:quantity ;
+        cv:measurability "measurable_now" ;
+        cv:measurableWith "xrf" ;
+        cv:objectName "Pd_retention" ;
+        cv:relation "retains_fraction_Pd" ;
+        cv:sourceSentence "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7)." ;
+        cv:subjectName "NiTaPdOx" .
+
+    sub:condition cv:conditionName "prior_operation_duration" ;
+        cv:conditionValueJson "{\"unit\": \"h\", \"value\": 575.0}" .
+
+    sub:quantity a schema:QuantitativeValue ;
+        schema:unitText "%" ;
+        schema:value 88.0 ;
+        cv:bound "exact" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L310-L348> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "7366e8b3537b54b50f085e297f74867edcd2f4407d9d78f027b2f9b5cb0a3f4b" ;
+        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:pubinfo {
+    sub: rdfs:label "Claim card 2609.30133__012: NiTaPdOx, Pd_retention 88.0 %" ;
+        dct:created "2026-11-17T00:00:00+00:00"^^xsd:dateTime ;
+        dct:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:ClaimCard ;
+        nt:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
+        nt:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        nt:wasCreatedFromTemplate <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/templateVersion> .
+}
+
+sub:Head {
+    sub: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

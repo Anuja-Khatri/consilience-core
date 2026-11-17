@@ -1,0 +1,61 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      669,
+      704
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L669-L704"
+  },
+  "receipt": {
+    "content_hash": "72e7800c928a98cc067204c74f146e7cc7a84ccfd7f6e320cd73c6c7b77ce3ec",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "reaction_free_energy",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__004",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "dft_calculation",
+    "object": "delta_G2_O*_formation",
+    "physical_scale": "atomic",
+    "provenance_hash": "6152bb3f8207a7ac",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "eV",
+      "value": 0.13
+    },
+    "relation": "has_free_energy_step",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "As can be seen in Supplementary Fig. S15, the quite low ΔG2 of only 0.13 eV demonstrates binding of O* that is too strong, which is consistent with previously reported elucidations towards the poor OER performance of Pd.",
+    "subject": "Pd_(111)_facet"
+  }
+}

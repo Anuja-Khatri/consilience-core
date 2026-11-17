@@ -1,0 +1,43 @@
+{
+  "kind": "fork",
+  "pair_id": "iit_n007|gnwt_c003",
+  "claim_a_id": "iit_n007",
+  "claim_b_id": "gnwt_c003",
+  "axis": "locus",
+  "claim_a_value": "maximal_irreducible_complex",
+  "claim_b_value": "prefrontal_parietal_cortical_network",
+  "polarity_opposed": false,
+  "type_divergence": true,
+  "testability": "testable_now",
+  "instrument": "shared observable: regional decoding",
+  "claim_a": {
+    "claim_id": "iit_n007",
+    "theory": "IIT",
+    "axis": "locus",
+    "value": "maximal_irreducible_complex",
+    "polarity": "asserts",
+    "statement": "The PSC is a bounded complex of elements with maximal integrated information; elements outside this boundary (e.g., cerebellar neurons, peripheral sensory/motor pathways, basal ganglia loops) do not directly contribute to consciousness despite influencing cortical activity."
+  },
+  "claim_b": {
+    "claim_id": "gnwt_c003",
+    "theory": "GNWT",
+    "axis": "locus",
+    "value": "prefrontal_parietal_cortical_network",
+    "polarity": "asserts",
+    "statement": "The locus of conscious processing is a large-scale prefrontal-parietal (and cingulate/temporal) cortical network, not posterior sensory cortices alone."
+  },
+  "claim_a_locators": [
+    "p.9",
+    "p.2"
+  ],
+  "claim_b_locators": [
+    "p.1",
+    "p.4"
+  ],
+  "source": {
+    "url": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+    "sha256": "91f4bbec746ea145d69b9aa6e05752a4dd12547e622a277cdcdf1a573f3acfdf",
+    "retrieved": "2026-11-17"
+  },
+  "status": "candidate, not exportable yet: no pinned public commit, matcher code not public"
+}

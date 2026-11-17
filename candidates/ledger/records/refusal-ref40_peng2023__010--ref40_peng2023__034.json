@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      11359,
+      11381
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L11359-L11381"
+  },
+  "receipt": {
+    "content_hash": "6d66458374465c6ee9e27d0c890f9273cdcab3660681ddd7c7a550c41c082cfc",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L784-L826",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1185-L1224",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "cell_voltage_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__010",
+    "claim_a_sentence": "From the polarization curves at 65°C in Fig. 5b and Supplementary Figs S16 and S17, a voltage of only 1.664 and 1.771 V is required to achieve 1 and 2 A cm–2, respectively, demonstrating superior performance for acidic water electrolysis [10,42].",
+    "claim_b_id": "ref40_peng2023__034",
+    "claim_b_sentence": "The overpotential at a current density of 10 mA cm–2 decreases dramatically from 348 mV for Pd-25 to 280 mV for Pd-40, and Pd-55 displays the best OER catalytic activity with an ultralow overpotential of 196 mV, which surpasses that of commercial IrO2 and Pd/C (Fig. 3c).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "6d66458374465c6ee9e27d0c890f9273cdcab3660681ddd7c7a550c41c082cfc",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "cell_voltage_at_current_density vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__010|ref40_peng2023__034",
+    "rules_version": "comparability-v0.1"
+  }
+}

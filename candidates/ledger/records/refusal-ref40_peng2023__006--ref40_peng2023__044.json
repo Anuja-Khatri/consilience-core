@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      10776,
+      10798
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10776-L10798"
+  },
+  "receipt": {
+    "content_hash": "68cca23613b5ec2a421ce20ff6040e3b678ed7992846cf5cf9eb6747a978c576",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L705-L740",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1268-L1303",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "reaction_free_energy_barrier",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__006",
+    "claim_a_sentence": "Consequently, the strong oxygen binding results in an ultra-high energy barrier of ΔG3 (2.79 eV, ΔGHOO*−ΔGO*) despite HOO* having a normal adsorption energy, and the potential determining steps (PDS) for the Pd catalyst are between HOO* and O*.",
+    "claim_b_id": "ref40_peng2023__044",
+    "claim_b_sentence": "The size effect was further evidenced by synthesizing ∼5.4 nm of Pd nanoparticles and obtaining a similar MA of 34.6 A g–1 to that of Pd-40 (∼5.8 nm-sized Pd nanoparticles) as revealed in Supplementary Fig. S13.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "68cca23613b5ec2a421ce20ff6040e3b678ed7992846cf5cf9eb6747a978c576",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "reaction_free_energy_barrier vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__006|ref40_peng2023__044",
+    "rules_version": "comparability-v0.1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      6787,
+      6809
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L6787-L6809"
+  },
+  "receipt": {
+    "content_hash": "5af8422c69433b3eee99b83568673091a6eb92868a2b4d769730c96cf154bdf6",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L388-L426",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L503-L542",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Ru_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__014",
+    "claim_a_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "claim_b_id": "2609.30133__021",
+    "claim_b_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "5af8422c69433b3eee99b83568673091a6eb92868a2b4d769730c96cf154bdf6",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Ru_retention vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__014|2609.30133__021",
+    "rules_version": "comparability-v0.1"
+  }
+}

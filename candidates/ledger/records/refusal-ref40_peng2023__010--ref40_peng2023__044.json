@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      11405,
+      11427
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L11405-L11427"
+  },
+  "receipt": {
+    "content_hash": "c0ce06864894d8017183fd33780757eed5b3fcba51ac6dbf2012bf1a966eed09",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L784-L826",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1268-L1303",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "cell_voltage_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__010",
+    "claim_a_sentence": "From the polarization curves at 65°C in Fig. 5b and Supplementary Figs S16 and S17, a voltage of only 1.664 and 1.771 V is required to achieve 1 and 2 A cm–2, respectively, demonstrating superior performance for acidic water electrolysis [10,42].",
+    "claim_b_id": "ref40_peng2023__044",
+    "claim_b_sentence": "The size effect was further evidenced by synthesizing ∼5.4 nm of Pd nanoparticles and obtaining a similar MA of 34.6 A g–1 to that of Pd-40 (∼5.8 nm-sized Pd nanoparticles) as revealed in Supplementary Fig. S13.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "c0ce06864894d8017183fd33780757eed5b3fcba51ac6dbf2012bf1a966eed09",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "cell_voltage_at_current_density vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__010|ref40_peng2023__044",
+    "rules_version": "comparability-v0.1"
+  }
+}

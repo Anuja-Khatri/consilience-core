@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      9875,
+      9897
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L9875-L9897"
+  },
+  "receipt": {
+    "content_hash": "13840b35f02fcaf2ab0c13d26139bcf77739426c2b302ae1a8af2d6d5000c2d4",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L942-L977",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__002",
+    "claim_a_sentence": "After 500 h of testing at 10 mA cm–2, Pd-55 shows superior stability with little decay in 1 M HClO4.",
+    "claim_b_id": "ref40_peng2023__020",
+    "claim_b_sentence": "Pd-25 has a similar mass activity (MA) of 3.7 A g–1 to 3.2 A g–1 for commercial Pd/C.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "13840b35f02fcaf2ab0c13d26139bcf77739426c2b302ae1a8af2d6d5000c2d4",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "operational_stability_duration vs mass_activity_at_overpotential"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__002|ref40_peng2023__020",
+    "rules_version": "comparability-v0.1"
+  }
+}

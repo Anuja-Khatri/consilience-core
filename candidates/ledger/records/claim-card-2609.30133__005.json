@@ -1,0 +1,64 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      160,
+      198
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L160-L198"
+  },
+  "receipt": {
+    "content_hash": "6b80830e4efd5b1541d219c9e02020fc7a67f20f6ad29fc1a297f89dc85b739b",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://arxiv.org/abs/2609.30133",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "causal_direction": "independent",
+    "claim_id": "2609.30133__005",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": {
+        "unit": "h",
+        "value": 1000.0
+      },
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "xrf",
+    "object": "Pd_retention",
+    "physical_scale": "molecular",
+    "provenance_hash": "d3c94011a3256156",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "%",
+      "value": 96.0
+    },
+    "relation": "retains_fraction_Pd",
+    "source_document": "2609.30133",
+    "source_sentence": "From XRF results, InMnPdOx retains 96% of its Pd after 1,000 h, a marked improvement in corrosion stability over the other systems.",
+    "subject": "InMnPdOx"
+  }
+}

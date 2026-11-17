@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      6511,
+      6533
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L6511-L6533"
+  },
+  "receipt": {
+    "content_hash": "5e31b197dfa7350420145b5b758b9fd6eb5a4a138bb36aeced0d848d61b80229",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L349-L387",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L942-L977",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__013",
+    "claim_a_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "claim_b_id": "ref40_peng2023__020",
+    "claim_b_sentence": "Pd-25 has a similar mass activity (MA) of 3.7 A g–1 to 3.2 A g–1 for commercial Pd/C.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "5e31b197dfa7350420145b5b758b9fd6eb5a4a138bb36aeced0d848d61b80229",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Pd_retention vs mass_activity_at_overpotential"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__013|ref40_peng2023__020",
+    "rules_version": "comparability-v0.1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      12941,
+      12963
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L12941-L12963"
+  },
+  "receipt": {
+    "content_hash": "6b28cf54ca54967e590a9f68361f511774c1eaf6246cfb4ae98ed57884e400f2",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1070-L1108",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1304-L1339",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "mass_dissolution_rate",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__025",
+    "claim_a_sentence": "Prominently, the mass dissolution rate for Pd-55 was 0.14 ng cm–2 s–1 during 500-h test.",
+    "claim_b_id": "ref40_peng2023__045",
+    "claim_b_sentence": "The transmission electron microscopy (TEM) statistic results reveal that the size decreases rapidly and gradually stabilizes to ∼3 nm (Fig. 1f) when heating to above room temperature.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "6b28cf54ca54967e590a9f68361f511774c1eaf6246cfb4ae98ed57884e400f2",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "mass_dissolution_rate vs particle_size_stabilization"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__025|ref40_peng2023__045",
+    "rules_version": "comparability-v0.1"
+  }
+}

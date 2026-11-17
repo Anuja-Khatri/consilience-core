@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      5556,
+      5578
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L5556-L5578"
+  },
+  "receipt": {
+    "content_hash": "4c10a3d6e87a502d4e3504721b6c7b6cf47182d2eb420de3e3c4753f686028e4",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L271-L309",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1268-L1303",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_stability",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__010",
+    "claim_a_sentence": "InMnPdOx is the most stable, sustaining an overpotential below 0.5 V over 1,000 h (repeated measurements over a partial duration on planar and porous supports are shown in Figs. S4 – S6).",
+    "claim_b_id": "ref40_peng2023__044",
+    "claim_b_sentence": "The size effect was further evidenced by synthesizing ∼5.4 nm of Pd nanoparticles and obtaining a similar MA of 34.6 A g–1 to that of Pd-40 (∼5.8 nm-sized Pd nanoparticles) as revealed in Supplementary Fig. S13.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "4c10a3d6e87a502d4e3504721b6c7b6cf47182d2eb420de3e3c4753f686028e4",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_stability vs mass_activity"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__010|ref40_peng2023__044",
+    "rules_version": "comparability-v0.1"
+  }
+}

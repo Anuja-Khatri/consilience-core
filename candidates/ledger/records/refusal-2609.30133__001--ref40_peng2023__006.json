@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      405,
+      427
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L405-L427"
+  },
+  "receipt": {
+    "content_hash": "f48f7ae9d31fcc02ce1985a3252d9656d3100418439d33e3a7d55ef92a2b4420",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L2-L40",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L705-L740",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "hours_to_threshold",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__001",
+    "claim_a_sentence": "During long-term testing, NiTaPdOx operated at lower overpotential than PdOx, but both eventually exceeded 0.5 V: PdOx at ~200 h and NiTaPdOx at ~470 h.",
+    "claim_b_id": "ref40_peng2023__006",
+    "claim_b_sentence": "Consequently, the strong oxygen binding results in an ultra-high energy barrier of ΔG3 (2.79 eV, ΔGHOO*−ΔGO*) despite HOO* having a normal adsorption energy, and the potential determining steps (PDS) for the Pd catalyst are between HOO* and O*.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "f48f7ae9d31fcc02ce1985a3252d9656d3100418439d33e3a7d55ef92a2b4420",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "hours_to_threshold vs reaction_free_energy_barrier"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__001|ref40_peng2023__006",
+    "rules_version": "comparability-v0.1"
+  }
+}

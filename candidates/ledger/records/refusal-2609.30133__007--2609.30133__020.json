@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      4498,
+      4520
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L4498-L4520"
+  },
+  "receipt": {
+    "content_hash": "b1e2adcf85b71e40fb26de83bc91ed837a129bb367386096ea987392bbd8719d",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L235-L270",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L463-L502",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "stability_lifetime",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__007",
+    "claim_a_sentence": "However, both failed medium-term acidic stability screening, with lifetimes under 4 h (Fig. S1).",
+    "claim_b_id": "2609.30133__020",
+    "claim_b_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "b1e2adcf85b71e40fb26de83bc91ed837a129bb367386096ea987392bbd8719d",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "stability_lifetime vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__007|2609.30133__020",
+    "rules_version": "comparability-v0.1"
+  }
+}

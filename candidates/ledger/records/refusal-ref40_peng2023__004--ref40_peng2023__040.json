@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      10408,
+      10430
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10408-L10430"
+  },
+  "receipt": {
+    "content_hash": "16b73bde4c1e7b213999773d082224475086ea6f47b74249b0c121a2a4b2e4a2",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L669-L704",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1225-L1267",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "reaction_free_energy",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__004",
+    "claim_a_sentence": "As can be seen in Supplementary Fig. S15, the quite low ΔG2 of only 0.13 eV demonstrates binding of O* that is too strong, which is consistent with previously reported elucidations towards the poor OER performance of Pd.",
+    "claim_b_id": "ref40_peng2023__040",
+    "claim_b_sentence": "The Pd catalysts also display excellent durability with little degradation (66 μV h−1 at 10 mA cm–2) for 500 h.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "16b73bde4c1e7b213999773d082224475086ea6f47b74249b0c121a2a4b2e4a2",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "reaction_free_energy vs degradation_rate_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__004|ref40_peng2023__040",
+    "rules_version": "comparability-v0.1"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      1070,
+      1108
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1070-L1108"
+  },
+  "receipt": {
+    "content_hash": "0cdbe9517dea93514fa7e408c9f7aaf6ae6ee8df15d8c64b61b1cdd59cc16598",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "mass_dissolution_rate",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__025",
+    "claim_kind": "stability_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": {
+        "unit": "h",
+        "value": 500.0
+      },
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "icp_ms_dissolution",
+    "object": "mass_dissolution_rate",
+    "physical_scale": "nanoscale",
+    "provenance_hash": "f770c4ebcede766e",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "ng cm^-2 s^-1",
+      "value": 0.14
+    },
+    "relation": "has_mass_dissolution_rate",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "Prominently, the mass dissolution rate for Pd-55 was 0.14 ng cm–2 s–1 during 500-h test.",
+    "subject": "Pd-55"
+  }
+}

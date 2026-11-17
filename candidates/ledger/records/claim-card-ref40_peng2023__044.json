@@ -1,0 +1,61 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      1268,
+      1303
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1268-L1303"
+  },
+  "receipt": {
+    "content_hash": "d09be3d86818190c44fa8617b49fc38f7b7c08dd586dd5e496a063f870ab15af",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "mass_activity",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__044",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "rde_mass_activity",
+    "object": "mass_activity",
+    "physical_scale": "nanoscale",
+    "provenance_hash": "bdb04c3f61bace9e",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "A/g",
+      "value": 34.6
+    },
+    "relation": "has_mass_activity",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "The size effect was further evidenced by synthesizing ∼5.4 nm of Pd nanoparticles and obtaining a similar MA of 34.6 A g–1 to that of Pd-40 (∼5.8 nm-sized Pd nanoparticles) as revealed in Supplementary Fig. S13.",
+    "subject": "Pd nanoparticles (~5.4 nm)"
+  }
+}

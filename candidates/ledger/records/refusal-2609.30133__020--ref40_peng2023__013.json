@@ -1,0 +1,59 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7999,
+      8033
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7999-L8033"
+  },
+  "receipt": {
+    "content_hash": "66a05967a4f8c07fec803027e187ec364847d2e7c0f21674d0a9dfc121aed807",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L463-L502",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L867-L902",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__020",
+    "claim_a_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "claim_b_id": "ref40_peng2023__013",
+    "claim_b_sentence": "In contrast, the PdCoO2 precursors without etching display poor catalytic activity with an overpotential of 528 mV (Supplementary Fig. S9b).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "66a05967a4f8c07fec803027e187ec364847d2e7c0f21674d0a9dfc121aed807",
+    "defects": [
+      {
+        "defect_type": "condition_unstated",
+        "target": "electrolyte"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "current_density"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "temperature"
+      },
+      {
+        "defect_type": "condition_unstated",
+        "target": "ir_correction"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "not_comparable",
+    "pair_id": "2609.30133__020|ref40_peng2023__013",
+    "rules_version": "comparability-v0.1"
+  }
+}

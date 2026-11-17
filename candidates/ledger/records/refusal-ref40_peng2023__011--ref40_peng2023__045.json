@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      11716,
+      11738
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L11716-L11738"
+  },
+  "receipt": {
+    "content_hash": "9ee4c885261358db30c832051364f7ca17b8e874b425843168015db53d413446",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1304-L1339",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__011",
+    "claim_a_sentence": "Furthermore, the high durability of >40 h for Pd-55 at 100 mA cm–2 also confirms that hierarchical Pd is quite stable under a large current density.",
+    "claim_b_id": "ref40_peng2023__045",
+    "claim_b_sentence": "The transmission electron microscopy (TEM) statistic results reveal that the size decreases rapidly and gradually stabilizes to ∼3 nm (Fig. 1f) when heating to above room temperature.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "9ee4c885261358db30c832051364f7ca17b8e874b425843168015db53d413446",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "operational_stability_duration vs particle_size_stabilization"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__011|ref40_peng2023__045",
+    "rules_version": "comparability-v0.1"
+  }
+}

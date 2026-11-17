@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7753,
+      7775
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7753-L7775"
+  },
+  "receipt": {
+    "content_hash": "fbae594f1452d74b9e7f59081b3c943dff69c0c252c4a544fe0806acfd860d33",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L427-L462",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1304-L1339",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_reproducibility_between_film_formats",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__017",
+    "claim_a_sentence": "Screening the uniform films by SEC reproduced the overpotentials of their combinatorial (gradient) counterparts within 15 mV (Fig. S 3).",
+    "claim_b_id": "ref40_peng2023__045",
+    "claim_b_sentence": "The transmission electron microscopy (TEM) statistic results reveal that the size decreases rapidly and gradually stabilizes to ∼3 nm (Fig. 1f) when heating to above room temperature.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "fbae594f1452d74b9e7f59081b3c943dff69c0c252c4a544fe0806acfd860d33",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_reproducibility_between_film_formats vs particle_size_stabilization"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__017|ref40_peng2023__045",
+    "rules_version": "comparability-v0.1"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      13068,
+      13090
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L13068-L13090"
+  },
+  "receipt": {
+    "content_hash": "837552188eb3b68befa325f29a6a14ffe204f2e842ba02d94368715a63331edb",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1109-L1144",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1304-L1339",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "mass_activity",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__026",
+    "claim_a_sentence": "Prominently, the OER performance of the Pd catalyst is dramatically enhanced and exhibits an ultralow overpotential of 196 mV at 10 mA cm–2 and high mass activity of 407.2 A g–1 at 1.53 VRHE (RHE, reversible hydrogen electrode) in 1 M HClO4 when the size shrinks to ∼2.8 nm.",
+    "claim_b_id": "ref40_peng2023__045",
+    "claim_b_sentence": "The transmission electron microscopy (TEM) statistic results reveal that the size decreases rapidly and gradually stabilizes to ∼3 nm (Fig. 1f) when heating to above room temperature.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "837552188eb3b68befa325f29a6a14ffe204f2e842ba02d94368715a63331edb",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "mass_activity vs particle_size_stabilization"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__026|ref40_peng2023__045",
+    "rules_version": "comparability-v0.1"
+  }
+}

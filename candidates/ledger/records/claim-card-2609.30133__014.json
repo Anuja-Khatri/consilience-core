@@ -1,0 +1,64 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      388,
+      426
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L388-L426"
+  },
+  "receipt": {
+    "content_hash": "91ce12c41b52e107b746e40bd0948a8f8974eba8fd25cd870f412b71008c603e",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://arxiv.org/abs/2609.30133",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "Ru_retention",
+    "causal_direction": "independent",
+    "claim_id": "2609.30133__014",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": "unstated",
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": {
+        "unit": "h",
+        "value": 661.0
+      },
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": "unstated"
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "xrf",
+    "object": "Ru_retention",
+    "physical_scale": "molecular",
+    "provenance_hash": "eb0ce91628547fcd",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "%",
+      "value": 59.0
+    },
+    "relation": "retains_fraction_Ru",
+    "source_document": "2609.30133",
+    "source_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "subject": "RuOx"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      3497,
+      3519
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L3497-L3519"
+  },
+  "receipt": {
+    "content_hash": "8770413388afa63efbf3742f3687f20b755b9465e193073e0cbe5e6d7b78c06d",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L160-L198",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L942-L977",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__005",
+    "claim_a_sentence": "From XRF results, InMnPdOx retains 96% of its Pd after 1,000 h, a marked improvement in corrosion stability over the other systems.",
+    "claim_b_id": "ref40_peng2023__020",
+    "claim_b_sentence": "Pd-25 has a similar mass activity (MA) of 3.7 A g–1 to 3.2 A g–1 for commercial Pd/C.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "8770413388afa63efbf3742f3687f20b755b9465e193073e0cbe5e6d7b78c06d",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Pd_retention vs mass_activity_at_overpotential"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__005|ref40_peng2023__020",
+    "rules_version": "comparability-v0.1"
+  }
+}

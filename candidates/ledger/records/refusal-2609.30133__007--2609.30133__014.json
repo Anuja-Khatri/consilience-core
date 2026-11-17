@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      4452,
+      4474
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L4452-L4474"
+  },
+  "receipt": {
+    "content_hash": "8eb71903ac805de4199a2054c780d94bae43b4cd2ebb37ac4cb40586d6197398",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L235-L270",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L388-L426",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "stability_lifetime",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__007",
+    "claim_a_sentence": "However, both failed medium-term acidic stability screening, with lifetimes under 4 h (Fig. S1).",
+    "claim_b_id": "2609.30133__014",
+    "claim_b_sentence": "NiTaPdOx retains 88% Pd after 575 h, PdOx retains 87% Pd after 828 h, and RuOx retains 59% Ru after 661 h of operation (Fig. S7).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "8eb71903ac805de4199a2054c780d94bae43b4cd2ebb37ac4cb40586d6197398",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "stability_lifetime vs Ru_retention"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__007|2609.30133__014",
+    "rules_version": "comparability-v0.1"
+  }
+}

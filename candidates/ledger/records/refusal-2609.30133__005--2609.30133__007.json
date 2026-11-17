@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      3059,
+      3081
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L3059-L3081"
+  },
+  "receipt": {
+    "content_hash": "6414e083aef2fbb75be7b49733a7af01491431a725b2c9712e39579bfeff6390",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L160-L198",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L235-L270",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "Pd_retention",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__005",
+    "claim_a_sentence": "From XRF results, InMnPdOx retains 96% of its Pd after 1,000 h, a marked improvement in corrosion stability over the other systems.",
+    "claim_b_id": "2609.30133__007",
+    "claim_b_sentence": "However, both failed medium-term acidic stability screening, with lifetimes under 4 h (Fig. S1).",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "6414e083aef2fbb75be7b49733a7af01491431a725b2c9712e39579bfeff6390",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "Pd_retention vs stability_lifetime"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__005|2609.30133__007",
+    "rules_version": "comparability-v0.1"
+  }
+}

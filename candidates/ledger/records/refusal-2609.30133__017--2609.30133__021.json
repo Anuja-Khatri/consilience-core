@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      7293,
+      7315
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L7293-L7315"
+  },
+  "receipt": {
+    "content_hash": "aae610b2e6fe6dff0c0cb52fc75f93b372317d69f01b0c4a38e053b3bd996f93",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L427-L462",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L503-L542",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "overpotential_reproducibility_between_film_formats",
+    "canonical_unit": null,
+    "claim_a_id": "2609.30133__017",
+    "claim_a_sentence": "Screening the uniform films by SEC reproduced the overpotentials of their combinatorial (gradient) counterparts within 15 mV (Fig. S 3).",
+    "claim_b_id": "2609.30133__021",
+    "claim_b_sentence": "The most active were consistently Co-rich and Zr-containing, clustering near Co78In12Zr10Ox and Co86Fe7Zr7Ox (CoInZrOx and CoFeZrOx), reaching 0.55 V at 10 mA cm-2.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "aae610b2e6fe6dff0c0cb52fc75f93b372317d69f01b0c4a38e053b3bd996f93",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "overpotential_reproducibility_between_film_formats vs overpotential_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "2609.30133__017|2609.30133__021",
+    "rules_version": "comparability-v0.1"
+  }
+}

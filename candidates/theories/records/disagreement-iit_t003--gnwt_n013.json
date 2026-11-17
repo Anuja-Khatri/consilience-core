@@ -1,0 +1,42 @@
+{
+  "kind": "fork",
+  "pair_id": "iit_t003|gnwt_n013",
+  "claim_a_id": "iit_t003",
+  "claim_b_id": "gnwt_n013",
+  "axis": "temporal_profile",
+  "claim_a_value": "sustained_maintenance",
+  "claim_b_value": "serial_all_or_none",
+  "polarity_opposed": false,
+  "type_divergence": false,
+  "testability": "testable_now",
+  "instrument": "shared observable: ignition signature and temporal generalisation",
+  "claim_a": {
+    "claim_id": "iit_t003",
+    "theory": "IIT",
+    "axis": "temporal_profile",
+    "value": "sustained_maintenance",
+    "polarity": "asserts",
+    "statement": "IIT predicts that the duration of a conscious instant is definite and sustained over tens to hundreds of milliseconds, not transient or phasic, as required by the exclusion postulate governing the cause–effect structure of the PSC."
+  },
+  "claim_b": {
+    "claim_id": "gnwt_n013",
+    "theory": "GNWT",
+    "axis": "temporal_profile",
+    "value": "serial_all_or_none",
+    "polarity": "asserts",
+    "statement": "Conscious processing is serial and all-or-none: at any moment only one interpretation reaches consciousness, and access to one item prevents or delays conscious access to a competing item."
+  },
+  "claim_a_locators": [
+    "p.3",
+    "p.6"
+  ],
+  "claim_b_locators": [
+    "p.6"
+  ],
+  "source": {
+    "url": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+    "sha256": "91f4bbec746ea145d69b9aa6e05752a4dd12547e622a277cdcdf1a573f3acfdf",
+    "retrieved": "2026-11-17"
+  },
+  "status": "candidate, not exportable yet: no pinned public commit, matcher code not public"
+}

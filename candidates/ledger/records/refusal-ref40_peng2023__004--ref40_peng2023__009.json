@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      10132,
+      10154
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10132-L10154"
+  },
+  "receipt": {
+    "content_hash": "2d77b733d831e085fbd2c453e7a5c040c7e1f76b33f1f3eee161585af2b90038",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L669-L704",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L741-L783",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "reaction_free_energy",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__004",
+    "claim_a_sentence": "As can be seen in Supplementary Fig. S15, the quite low ΔG2 of only 0.13 eV demonstrates binding of O* that is too strong, which is consistent with previously reported elucidations towards the poor OER performance of Pd.",
+    "claim_b_id": "ref40_peng2023__009",
+    "claim_b_sentence": "From the polarization curves at 65°C in Fig. 5b and Supplementary Figs S16 and S17, a voltage of only 1.664 and 1.771 V is required to achieve 1 and 2 A cm–2, respectively, demonstrating superior performance for acidic water electrolysis [10,42].",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "2d77b733d831e085fbd2c453e7a5c040c7e1f76b33f1f3eee161585af2b90038",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "reaction_free_energy vs cell_voltage_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__004|ref40_peng2023__009",
+    "rules_version": "comparability-v0.1"
+  }
+}

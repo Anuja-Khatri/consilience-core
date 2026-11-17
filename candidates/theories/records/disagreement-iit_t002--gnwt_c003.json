@@ -1,0 +1,43 @@
+{
+  "kind": "fork",
+  "pair_id": "iit_t002|gnwt_c003",
+  "claim_a_id": "iit_t002",
+  "claim_b_id": "gnwt_c003",
+  "axis": "locus",
+  "claim_a_value": "posterior_hot_zone",
+  "claim_b_value": "prefrontal_parietal_cortical_network",
+  "polarity_opposed": false,
+  "type_divergence": false,
+  "testability": "testable_now",
+  "instrument": "shared observable: regional decoding",
+  "claim_a": {
+    "claim_id": "iit_t002",
+    "theory": "IIT",
+    "axis": "locus",
+    "value": "posterior_hot_zone",
+    "polarity": "asserts",
+    "statement": "IIT predicts that the neural substrate of consciousness (PSC/complex) corresponds to elements with maximum intrinsic cause–effect power, locating the content-specific NCC in the neural elements of the PSC rather than in prefrontal or other regions, consistent with a posterior cortical hot zone."
+  },
+  "claim_b": {
+    "claim_id": "gnwt_c003",
+    "theory": "GNWT",
+    "axis": "locus",
+    "value": "prefrontal_parietal_cortical_network",
+    "polarity": "asserts",
+    "statement": "The locus of conscious processing is a large-scale prefrontal-parietal (and cingulate/temporal) cortical network, not posterior sensory cortices alone."
+  },
+  "claim_a_locators": [
+    "p.1",
+    "p.4"
+  ],
+  "claim_b_locators": [
+    "p.1",
+    "p.4"
+  ],
+  "source": {
+    "url": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+    "sha256": "91f4bbec746ea145d69b9aa6e05752a4dd12547e622a277cdcdf1a573f3acfdf",
+    "retrieved": "2026-11-17"
+  },
+  "status": "candidate, not exportable yet: no pinned public commit, matcher code not public"
+}

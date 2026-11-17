@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      10040,
+      10062
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10040-L10062"
+  },
+  "receipt": {
+    "content_hash": "2c8c5231412cd10c86ba0ef32bcfd1d59fdead37998a37c9f69dd68e196960cb",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1225-L1267",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "operational_stability_duration",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__002",
+    "claim_a_sentence": "After 500 h of testing at 10 mA cm–2, Pd-55 shows superior stability with little decay in 1 M HClO4.",
+    "claim_b_id": "ref40_peng2023__040",
+    "claim_b_sentence": "The Pd catalysts also display excellent durability with little degradation (66 μV h−1 at 10 mA cm–2) for 500 h.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "2c8c5231412cd10c86ba0ef32bcfd1d59fdead37998a37c9f69dd68e196960cb",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "operational_stability_duration vs degradation_rate_at_current_density"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__002|ref40_peng2023__040",
+    "rules_version": "comparability-v0.1"
+  }
+}

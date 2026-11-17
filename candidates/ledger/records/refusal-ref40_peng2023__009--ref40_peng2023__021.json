@@ -1,0 +1,47 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "comparison_refusal",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/rejections.json",
+    "lines": [
+      10945,
+      10967
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/rejections.json#L10945-L10967"
+  },
+  "receipt": {
+    "content_hash": "8c721d662ec68810dd53aeeaa440e4852ee454605474daf0adf000ed526626e9",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L741-L783",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L978-L1023",
+    "condition_rules": {},
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+  },
+  "record": {
+    "axis": "cell_voltage_at_current_density",
+    "canonical_unit": null,
+    "claim_a_id": "ref40_peng2023__009",
+    "claim_a_sentence": "From the polarization curves at 65°C in Fig. 5b and Supplementary Figs S16 and S17, a voltage of only 1.664 and 1.771 V is required to achieve 1 and 2 A cm–2, respectively, demonstrating superior performance for acidic water electrolysis [10,42].",
+    "claim_b_id": "ref40_peng2023__021",
+    "claim_b_sentence": "Pd-55 with particle size that has been shrunk to 2.8 nm exhibits optimal performance, where the overpotential at 10 mA cm–2 can decrease to 196 mV and the durability reaches up to 500 h in 1 M HClO4.",
+    "code_version": "lab-extension-0.1.0",
+    "content_hash": "8c721d662ec68810dd53aeeaa440e4852ee454605474daf0adf000ed526626e9",
+    "defects": [
+      {
+        "defect_type": "axis_mismatch",
+        "target": "cell_voltage_at_current_density vs operational_stability_duration"
+      }
+    ],
+    "floor_applied": null,
+    "kind": "rejection",
+    "map_version": "materials_oer-v0",
+    "margin": null,
+    "outcome": "axis_mismatch",
+    "pair_id": "ref40_peng2023__009|ref40_peng2023__021",
+    "rules_version": "comparability-v0.1"
+  }
+}

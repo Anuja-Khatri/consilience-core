@@ -1,0 +1,741 @@
+{
+  "snapshot_date": "2026-11-17",
+  "snapshots": {
+    "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json": "91f4bbec746ea145d69b9aa6e05752a4dd12547e622a277cdcdf1a573f3acfdf",
+    "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json": "63cdc761108c1619021ec844df80f5ede826972e0ac5599d568549a1026c988f",
+    "https://consilience-demo.netlify.app/results/iitxgnwt_vs_cogitate.json": "51f416fd7c7465c519aadf32231b2889cc303343b6cfae78f9a29106d887e369"
+  },
+  "candidates": [
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_c010|gnwt_c003",
+      "axis": "locus",
+      "decidability": "now",
+      "id": "disagreement-iit_c010--gnwt_c003",
+      "instrument": "shared observable: regional decoding",
+      "label": "Disagreement iit_c010 vs gnwt_c003 is testable with shared observable: regional decoding"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_c025|gnwt_c008",
+      "axis": "connectivity",
+      "decidability": "now",
+      "id": "disagreement-iit_c025--gnwt_c008",
+      "instrument": "shared observable: connectivity metrics",
+      "label": "Disagreement iit_c025 vs gnwt_c008 is testable with shared observable: connectivity metrics"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n007|gnwt_c003",
+      "axis": "locus",
+      "decidability": "now",
+      "id": "disagreement-iit_n007--gnwt_c003",
+      "instrument": "shared observable: regional decoding",
+      "label": "Disagreement iit_n007 vs gnwt_c003 is testable with shared observable: regional decoding"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n013|gnwt_c003",
+      "axis": "locus",
+      "decidability": "now",
+      "id": "disagreement-iit_n013--gnwt_c003",
+      "instrument": "shared observable: regional decoding",
+      "label": "Disagreement iit_n013 vs gnwt_c003 is testable with shared observable: regional decoding"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t002|gnwt_c003",
+      "axis": "locus",
+      "decidability": "now",
+      "id": "disagreement-iit_t002--gnwt_c003",
+      "instrument": "shared observable: regional decoding",
+      "label": "Disagreement iit_t002 vs gnwt_c003 is testable with shared observable: regional decoding"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t003|gnwt_c018",
+      "axis": "temporal_profile",
+      "decidability": "now",
+      "id": "disagreement-iit_t003--gnwt_c018",
+      "instrument": "shared observable: ignition signature and temporal generalisation",
+      "label": "Disagreement iit_t003 vs gnwt_c018 is testable with shared observable: ignition signature and temporal generalisation"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t003|gnwt_c025",
+      "axis": "temporal_profile",
+      "decidability": "now",
+      "id": "disagreement-iit_t003--gnwt_c025",
+      "instrument": "shared observable: ignition signature and temporal generalisation",
+      "label": "Disagreement iit_t003 vs gnwt_c025 is testable with shared observable: ignition signature and temporal generalisation"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t003|gnwt_n013",
+      "axis": "temporal_profile",
+      "decidability": "now",
+      "id": "disagreement-iit_t003--gnwt_n013",
+      "instrument": "shared observable: ignition signature and temporal generalisation",
+      "label": "Disagreement iit_t003 vs gnwt_n013 is testable with shared observable: ignition signature and temporal generalisation"
+    }
+  ],
+  "not_eligible": [
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n005",
+        "iit_t001"
+      ],
+      "right_ids": [
+        "gnwt_c004",
+        "gnwt_c022"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c004"
+      ],
+      "right_ids": [
+        "gnwt_c001"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c004"
+      ],
+      "right_ids": [
+        "gnwt_c015"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c006"
+      ],
+      "right_ids": [
+        "gnwt_c002"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c006"
+      ],
+      "right_ids": [
+        "gnwt_n007"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c007"
+      ],
+      "right_ids": [
+        "gnwt_c001"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c007"
+      ],
+      "right_ids": [
+        "gnwt_c015"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c016"
+      ],
+      "right_ids": [
+        "gnwt_c013"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c016"
+      ],
+      "right_ids": [
+        "gnwt_c017"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c016"
+      ],
+      "right_ids": [
+        "gnwt_c020"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c016"
+      ],
+      "right_ids": [
+        "gnwt_n004"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c016"
+      ],
+      "right_ids": [
+        "gnwt_n008"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c016"
+      ],
+      "right_ids": [
+        "gnwt_n010"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c023"
+      ],
+      "right_ids": [
+        "gnwt_c002"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_c023"
+      ],
+      "right_ids": [
+        "gnwt_n007"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n006"
+      ],
+      "right_ids": [
+        "gnwt_c013"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n006"
+      ],
+      "right_ids": [
+        "gnwt_c017"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n006"
+      ],
+      "right_ids": [
+        "gnwt_c020"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n006"
+      ],
+      "right_ids": [
+        "gnwt_n004"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n006"
+      ],
+      "right_ids": [
+        "gnwt_n008"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n006"
+      ],
+      "right_ids": [
+        "gnwt_n010"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n015"
+      ],
+      "right_ids": [
+        "gnwt_c002"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxgnwt",
+      "left_ids": [
+        "iit_n015"
+      ],
+      "right_ids": [
+        "gnwt_n007"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_c002|gnwt_c012",
+      "axis": "substrate_dependence",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_c002|gnwt_n011",
+      "axis": "substrate_dependence",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n005|gnwt_c004",
+      "axis": "observable_commitment",
+      "decidability": "now",
+      "reason": "decidable now, but the demo names no shared observable for it (the disagreement is about what to measure), so there is no instrument to name"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n005|gnwt_c022",
+      "axis": "observable_commitment",
+      "decidability": "now",
+      "reason": "decidable now, but the demo names no shared observable for it (the disagreement is about what to measure), so there is no instrument to name"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t001|gnwt_c004",
+      "axis": "observable_commitment",
+      "decidability": "now",
+      "reason": "decidable now, but the demo names no shared observable for it (the disagreement is about what to measure), so there is no instrument to name"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxgnwt_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t001|gnwt_c022",
+      "axis": "observable_commitment",
+      "decidability": "now",
+      "reason": "decidable now, but the demo names no shared observable for it (the disagreement is about what to measure), so there is no instrument to name"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c002"
+      ],
+      "right_ids": [
+        "orch-or_c002"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c003"
+      ],
+      "right_ids": [
+        "orch-or_c003"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c004"
+      ],
+      "right_ids": [
+        "orch-or_c015"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c006"
+      ],
+      "right_ids": [
+        "orch-or_c001"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c007"
+      ],
+      "right_ids": [
+        "orch-or_c015"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c013"
+      ],
+      "right_ids": [
+        "orch-or_c004"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c013"
+      ],
+      "right_ids": [
+        "orch-or_c006"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c013"
+      ],
+      "right_ids": [
+        "orch-or_c016"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_c023"
+      ],
+      "right_ids": [
+        "orch-or_c001"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_n002"
+      ],
+      "right_ids": [
+        "orch-or_c003"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_n015"
+      ],
+      "right_ids": [
+        "orch-or_c001"
+      ],
+      "demo_grade": "generative",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_n022"
+      ],
+      "right_ids": [
+        "orch-or_c004"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_n022"
+      ],
+      "right_ids": [
+        "orch-or_c006"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "correspondence",
+      "pair": "iitxorch-or",
+      "left_ids": [
+        "iit_n022"
+      ],
+      "right_ids": [
+        "orch-or_c016"
+      ],
+      "demo_grade": "partial",
+      "demo_status": "draft",
+      "reason": "the demo marks every correspondence as a draft, and its grade labels ('generative', 'partial') are not the four-rung ladder the graded-correspondence template needs; publishing it would present a draft as a verdict"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_c010|orch-or_c009",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_c010|orch-or_c012",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n007|orch-or_c009",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n007|orch-or_c012",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n013|orch-or_c009",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_n013|orch-or_c012",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t002|orch-or_c009",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t002|orch-or_c012",
+      "axis": "locus",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t003|orch-or_c010",
+      "axis": "temporal_profile",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    },
+    {
+      "source": "https://consilience-demo.netlify.app/results/iitxorch-or_judge.json",
+      "kind": "fork",
+      "pair_id": "iit_t003|orch-or_c017",
+      "axis": "temporal_profile",
+      "decidability": "not_current",
+      "reason": "the demo rules this disagreement not decidable with current instruments; the template says 'testable now with instrument Y'"
+    }
+  ],
+  "cogitate_note": "The COGITATE comparison is reported as: 2 of 3 preregistered disagreements recovered after a disclosed re-review (originally 1 of 3); p = 0.075 against a 1,000-key permutation null, suggestive only. No nanopub template fits a recovery score, so it is not a candidate record. The demo tags these forks as lying on the axes of the COGITATE key (a tag, not the recovery count above): c010×c003, c025×c008, n007×c003, n013×c003, t002×c003, t003×c018, t003×c025, t003×n013"
+}
