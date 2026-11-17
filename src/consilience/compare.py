@@ -8,6 +8,17 @@ Verdicts (a closed set):
     not_comparable(<what>)      a condition differs, or the units measure different things
     not_stated(<what>)          a value, unit or condition is missing on one or both sides
     unparseable(<what>: <why>)  something could not be read exactly (named reason)
+    undecidable_bounds          both values are one-sided bounds ("< 1e-6", "< 1e-5")
+                                that can both hold: there is no single value to compare
+
+A value may be a one-sided bound: "<1e-6", "<= 0.30 V", "≤ 0.30 V", "> 5", ">= 5 mV",
+"≥ 5 mV" (see ``consilience.units.parse_bound``; "<<1" and "< nan" are unparseable).
+A bound has no uncertainty. Value against bound: ``agree`` if the value satisfies the
+bound within tolerance + implied precision, ``within_floor`` if only within floor +
+implied precision, else ``disagree``. Bound against bound: ``disagree`` if they cannot
+both hold (beyond the larger of tolerance and floor, + implied precision), else
+``undecidable_bounds`` (exit 2). With no tolerance at all, ``<`` needs the value clearly
+below the bound and ``<=`` allows it to equal the bound.
 
 tolerance = max(abs_tol, rel_tol * max(|a|, |b|)) in the unit of measurement a.
 floor     = max(floor option, uncertainty of a, uncertainty of b).
@@ -57,9 +68,11 @@ from .units import (
     convert,
     convert_difference,
     implied_precision,
+    is_bound_text,
     is_offset_unit,
     legacy,
     number_text,
+    parse_bound,
     parse_number,
     parse_unit,
     split_quantity,
@@ -73,7 +86,7 @@ ROUNDING = 1e-9
 MEASUREMENT_KEYS = {"value", "unit", "uncertainty", "conditions", "label", "note", "source"}
 RANK = {"unparseable": 0, "not_comparable": 1, "not_stated": 2}
 EXIT = {"agree": 0, "within_floor": 0, "disagree": 1, "not_comparable": 2, "not_stated": 2,
-        "unparseable": 3}
+        "undecidable_bounds": 2, "unparseable": 3}
 UNSTATED = object()
 
 
@@ -199,7 +212,8 @@ def _close(x: float, y: float, slack_scale: float, tol: float = 0.0) -> bool:
 def _written_text(value, recorded: Optional[str]) -> Optional[str]:
     """How a numeric value was written, or None for a float with no written form."""
     if isinstance(value, str):
-        return number_text(value)
+        return parse_bound(value).number_text if is_bound_text(value) else \
+            number_text(value)
     if isinstance(value, int):
         return str(value)
     if recorded is not None:   # verify: the digits recorded in the receipt
@@ -212,7 +226,8 @@ def _written_text(value, recorded: Optional[str]) -> Optional[str]:
 
 
 def _read_value(m: dict, side: str, defects: list):
-    """(pint quantity, unit text) or None for one measurement's value and unit."""
+    """(pint quantity, unit text, bound sign or None) or None for one measurement's
+    value and unit. Outside the 0.1.0 rules, a value written "< 1e-6" is a bound."""
     if "value" not in m or m["value"] is None or m["value"] == "":
         defects.append(_defect("not_stated", f"{side}.value", "missing"))
         return None
@@ -220,8 +235,13 @@ def _read_value(m: dict, side: str, defects: list):
     unit = m.get("unit")
     if isinstance(unit, str) and not unit.strip():
         unit = None
+    op = None
     try:
-        if isinstance(value, str):
+        if isinstance(value, str) and not legacy() and is_bound_text(value):
+            b = parse_bound(value)
+            number, inline = b.number, b.unit
+            op = b.op
+        elif isinstance(value, str):
             number, inline = split_quantity(value)
         elif isinstance(value, bool) or not isinstance(value, (int, float)):
             raise UnitError("not_a_quantity", value, "the value must be a number")
@@ -240,7 +260,7 @@ def _read_value(m: dict, side: str, defects: list):
                                "write 'dimensionless' for a pure number"))
         return None
     try:
-        return UREG.Quantity(number, parse_unit(text)), text.strip()
+        return UREG.Quantity(number, parse_unit(text)), text.strip(), op
     except UnitError as exc:
         where = f"{side}.value" if inline is not None else f"{side}.unit"
         defects.append(_defect("unparseable", where, exc.reason, exc.detail))
@@ -539,6 +559,51 @@ def _option_in(q, unit, name) -> float:
 
 
 # --------------------------------------------------------------------- main
+def _satisfies(d: float, strict: bool, slack: float, scale: float) -> bool:
+    """Is a value that lies ``d`` past a bound (d <= 0: inside it) acceptable with
+    ``slack``? Strictness matters only when there is no slack: then ``<`` needs the
+    value clearly below the bound, ``<=`` allows it to equal the bound."""
+    r = ROUNDING * scale
+    if strict and slack == 0:
+        return d < -r
+    return d <= slack + r
+
+
+def _bounded(a_val, opa, b_val, opb, scale, tolerance, floor, implied):
+    """Verdict and difference when one or both sides are one-sided bounds.
+
+    Value against bound: d is how far the value lies past the bound (0 or less: it
+    satisfies it). agree if acceptable with tolerance + implied; within_floor if only
+    with floor + implied (the floor includes the value's uncertainty); else disagree.
+    The difference reported is max(d, 0).
+
+    Bound against bound: bounds in the same direction always both hold, and opposite
+    bounds both hold unless the lower one lies above the upper one by more than the
+    larger of tolerance and floor, plus implied. When both can hold there is no single
+    value to compare: undecidable_bounds (exit 2). When they cannot: disagree, and the
+    difference is the gap between them.
+    """
+    if opa is not None and opb is not None:
+        if (opa in ("<", "<=")) == (opb in ("<", "<=")):
+            return "undecidable_bounds", None
+        (tu, su), (tl, sl) = (((a_val, opa), (b_val, opb)) if opa in ("<", "<=") else
+                              ((b_val, opb), (a_val, opa)))
+        d = tl - tu
+        strict = su in ("<", ">") or sl in ("<", ">")
+        ok = _satisfies(d, strict, max(tolerance, floor) + implied, scale)
+        return ("undecidable_bounds" if ok else "disagree"), max(d, 0.0)
+    value, (t, op) = (a_val, (b_val, opb)) if opb is not None else (b_val, (a_val, opa))
+    d = value - t if op in ("<", "<=") else t - value
+    strict = op in ("<", ">")
+    if _satisfies(d, strict, tolerance + implied, scale):
+        verdict = "agree"
+    elif floor > 0 and _satisfies(d, strict, floor + implied, scale):
+        verdict = "within_floor"
+    else:
+        verdict = "disagree"
+    return verdict, max(d, 0.0)
+
+
 def _side_precision(m: dict, written: Optional[str]) -> dict:
     """Implied precision of one side, in that side's own unit."""
     if m.get("uncertainty") is not None:
@@ -581,10 +646,14 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
     defects: list[dict] = []
     ra = _read_value(ma, "a", defects)
     rb = _read_value(mb, "b", defects)
-    qa, ta = ra if ra is not None else (None, None)
-    qb, tb = rb if rb is not None else (None, None)
+    qa, ta, opa = ra if ra is not None else (None, None, None)
+    qb, tb, opb = rb if rb is not None else (None, None, None)
     ua = _read_uncertainty(ma, "a", qa, defects)
     ub = _read_uncertainty(mb, "b", qb, defects)
+    for sd, op, m in (("a", opa, ma), ("b", opb, mb)):
+        if op is not None and m.get("uncertainty") is not None:
+            defects.append(_defect("unparseable", f"{sd}.uncertainty", "uncertainty_on_bound",
+                                   "a bound has no uncertainty; give it on a value"))
 
     a_val = b_val = None
     unit = None
@@ -624,30 +693,36 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
                 pb["implied"] = convert_difference(pb["implied"], qb.units, qa.units)
             implied = pa["implied"] + pb["implied"]
             prec = {"mode": precision, "implied": implied, "a": pa, "b": pb}
-        difference = abs(a_val - b_val)
         scale = max(abs(a_val), abs(b_val))
         tolerance = max(abs_t, opts["rel_tol"] * scale)
         floor_applied = max(floor_t, ua, ub)
-        if _close(a_val, b_val, scale, tolerance + implied):
-            verdict = "agree"
-        elif floor_applied > 0 and _close(a_val, b_val, scale, floor_applied + implied):
-            verdict = "within_floor"
+        if opa is None and opb is None:
+            difference = abs(a_val - b_val)
+            if _close(a_val, b_val, scale, tolerance + implied):
+                verdict = "agree"
+            elif floor_applied > 0 and _close(a_val, b_val, scale, floor_applied + implied):
+                verdict = "within_floor"
+            else:
+                verdict = "disagree"
         else:
-            verdict = "disagree"
+            verdict, difference = _bounded(a_val, opa, b_val, opb, scale, tolerance,
+                                           floor_applied, implied)
         label = verdict
 
-    def side(m, q, val, unc):
+    def side(m, q, val, unc, op):
         out = {"label": m.get("label"), "as_given": {k: m.get(k) for k in
                                                        ("value", "unit", "uncertainty")
                                                        if k in m}}
         if q is not None:
             out["value"] = val
             out["uncertainty"] = unc
+            if op is not None:
+                out["bound"] = op
         return out
 
     a_out = side(ma, qa, a_val if a_val is not None else
-                 (float(qa.magnitude) if qa is not None else None), ua)
-    b_out = side(mb, qb, b_val, ub)
+                 (float(qa.magnitude) if qa is not None else None), ua, opa)
+    b_out = side(mb, qb, b_val, ub, opb)
     result = {
         "verdict": verdict,
         "label": label,
@@ -661,6 +736,9 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
         "conditions": cond_summary,
     }
     if not old:
+        result["comparison"] = ("values" if opa is None and opb is None else
+                                "bounds" if opa is not None and opb is not None else
+                                "value_vs_bound")
         result["precision"] = prec
     receipt = {
         "receipt": RECEIPT_SCHEMA,

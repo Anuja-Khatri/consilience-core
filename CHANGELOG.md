@@ -12,7 +12,14 @@ Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
   `not_comparable(unit)`. They combine (`cells/mL`) but take no SI prefix. Every other
   unknown word is still `unparseable(unknown_unit)`; pint's `count` stays a plain pure
   number, as in 0.1.0.
-
+- One-sided bounds as values: `"<1e-6"`, `"<= 0.30 V"`, `"≤ 0.30 V"`, `"> 5"`,
+  `">= 5 mV"`, `"≥ 5 mV"`. A value against a bound is `agree` if it satisfies the bound
+  within tolerance + implied precision, `within_floor` if only within floor + implied
+  precision, else `disagree`. Two bounds are `disagree` if they cannot both hold,
+  otherwise the new verdict `undecidable_bounds` (exit 2). A bound cannot carry an
+  uncertainty (`uncertainty_on_bound`); `"<<1"` is `unparseable(malformed_bound)` and
+  `"< nan"` is `unparseable(non_finite)`. The receipt records `result.comparison` (`values`,
+  `value_vs_bound`, `bounds`) and the bound sign of each side.
 - `compare --exact` (Python: `compare(..., precision="exact")`) compares the numbers
   exactly, as 0.1.0 did.
 - `read_json` keeps the digits of a JSON number as written (`WrittenFloat`), so `1.50`
@@ -28,6 +35,13 @@ Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
   output prints a `precision:` line and the receipt records, per side, the digits as
   written, the implied half-unit and the rule (`result.precision`), and the mode
   (`options.precision`). `--exact` restores the 0.1.0 behaviour. `check` is unchanged.
+- Inputs that 0.1.0 refused are now read: the unit `"1"` (was
+  `unparseable(unit_contains_number)`), `fold`, `cell`, `event`, `sample` (were
+  `unparseable(unknown_unit)`), and bounds such as `"<1e-6"` (were
+  `unparseable(not_a_number)`).
+- `compare` receipts gain `options.precision`, `result.precision` and
+  `result.comparison`, and a bound side carries `"bound"`. The schema name stays
+  `consilience-receipt/v1`; `check` receipts are unchanged.
 
 ### Fixed
 - `verify` re-runs a receipt by the rules of the consilience version that wrote it, so

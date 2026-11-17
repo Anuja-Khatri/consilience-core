@@ -234,6 +234,46 @@ uncertainty, when given, is used instead). A number without a decimal point (`12
 JSON file keeps the digits written in the file (`1.50` is two places); a Python float
 passed to `compare()` has no written form and is exact. `check` compares cells exactly.
 
+Papers also report bounds, such as `p < 1e-6` or `≤ 0.30 V`. A value may be a one-sided
+bound (`<`, `<=`, `≤`, `>`, `>=`, `≥`), and the run's value is checked against it:
+
+```console
+$ echo '{"value": "<1e-6", "unit": "1"}' > bound.json
+$ echo '{"value": 2.3e-7, "unit": "1"}' > p_value.json
+$ consilience compare bound.json p_value.json
+verdict:    agree
+a:          < 1e-06 dimensionless   (as given: <1e-6 1)
+b:          2.3e-07 dimensionless   (as given: 2.3e-07 1)
+beyond:     0 dimensionless   (how far b lies past a's bound; 0 means it satisfies it)
+tolerance:  0 dimensionless   (larger of --abs-tol and --rel-tol x the larger value)
+floor:      0 dimensionless   (largest of --floor and the two uncertainties)
+precision:  ±5e-09 dimensionless implied by stated precision (added to the tolerance and the floor; --exact turns this off)
+            a 1e-6: no decimal point: exact
+            b 2.3e-7: 1 decimal place in the mantissa, exponent -7, ±5e-09 dimensionless
+conditions: no pack: every condition on either side must match (none given)
+receipt:    sha256 ...
+$ echo '{"value": "< 1e-5", "unit": "1"}' > other_bound.json
+$ consilience compare bound.json other_bound.json
+verdict:    undecidable_bounds
+a:          < 1e-06 dimensionless   (as given: <1e-6 1)
+b:          < 1e-05 dimensionless   (as given: < 1e-5 1)
+bounds:     a < 1e-06 dimensionless and b < 1e-05 dimensionless can both hold, so there is no single value to compare
+...
+$ echo $?
+2
+```
+
+A value against a bound: `agree` if it satisfies the bound within the tolerance plus
+the implied precision; `within_floor` if it does so only within the floor (which
+includes the value's own uncertainty) plus the implied precision; `disagree` if it
+lies past it by more. With no tolerance at all, `<` needs the value strictly below the
+bound and `<=` allows it to equal the bound. Two bounds: `disagree` if no value can
+satisfy both (`< 1` against `> 2`), otherwise `undecidable_bounds` (exit 2), because
+there is no single value to compare. A bound cannot carry an uncertainty
+(`unparseable(a.uncertainty: uncertainty_on_bound)`), and a malformed one is refused:
+`"<<1"` is `malformed_bound`, `"< nan"` is `non_finite`. Bounds are read in a
+measurement's `value` only, not in conditions or `check` cells.
+
 Add `--json` to any `compare` or `check` to get the full result as JSON (the same content
 as the receipt).
 
@@ -317,6 +357,7 @@ an exception. `c.to_html()` gives the HTML report.
 | `disagree` | The difference is larger than both. | 1 |
 | `not_comparable(<what>)` | A condition differs (`not_comparable(temperature)`), or the two values measure different things (`not_comparable(unit)`: millivolts against milliamps). | 2 |
 | `not_stated(<what>)` | A value, unit or condition is missing on one or both sides, so the comparison cannot be made. | 2 |
+| `undecidable_bounds` | Both values are one-sided bounds (`< 1e-6` and `< 1e-5`) that can both hold, so there is no single value to compare. | 2 |
 | `unparseable(<what>: <why>)` | Something could not be read exactly. The reason is named, e.g. `ambiguous_separator`, `non_finite`, `unknown_unit`. | 3 |
 
 When there are several problems, all are listed and the verdict is the first by rank:
@@ -345,7 +386,8 @@ exponent), never evaluated as arithmetic. These are refused with a named reason:
 | `"5M"`, `"5k"` | `ambiguous_scale_suffix` | molar or million? |
 | `"25 C"` | `ambiguous_unit` | Celsius or coulomb? Write `degC`. |
 | `"10 mA/cm2"` | `unit_contains_number` | write `cm^2` |
-| `"5 banana"` | `unknown_unit` | |
+| `"5 banana"`, `"5 kcells"` | `unknown_unit` | |
+| `"<<1"`, `"=<1"`, `"<"` | `malformed_bound` | not a one-sided bound |
 | empty | `empty` / `missing_unit` | |
 
 Units are [pint](https://pint.readthedocs.io/) unit names, and case matters (`m` is

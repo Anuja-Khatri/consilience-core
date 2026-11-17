@@ -31,6 +31,7 @@ reason                      example input
 ``ambiguous_unit``          ``"C"`` (Celsius or coulomb?), ``"F"``, ``"k"``, ``"B"``, ...
 ``unknown_unit``            ``"banana"`` as a unit, ``"kcells"`` (count words take no prefix)
 ``dimension_mismatch``      converting ``"300 mA"`` to volts
+``malformed_bound``         ``"<<1"``, ``"=<1"``, ``"<"`` (see ``parse_bound``)
 ==========================  ==============================================================
 
 Unit names are pint's (case matters: ``m`` is metre, ``M`` is molar; ``K`` is kelvin).
@@ -52,7 +53,7 @@ import contextvars
 import math
 from decimal import Decimal
 import re
-from typing import Optional, Union
+from typing import NamedTuple, Optional, Union
 
 import pint
 
@@ -216,6 +217,63 @@ def implied_half_unit(text: str) -> float:
     return implied_precision(text)[0]
 
 
+class Bound(NamedTuple):
+    """A one-sided bound read from text such as ``"<= 0.30 V"``."""
+    op: str               # "<", "<=", ">" or ">="
+    number: float
+    number_text: str      # the number as written ("0.30")
+    unit: Optional[str]   # the unit text, or None if the text gives none
+
+    @property
+    def upper(self) -> bool:
+        return self.op in ("<", "<=")
+
+    @property
+    def strict(self) -> bool:
+        return self.op in ("<", ">")
+
+
+_BOUND_OPS = (("<=", "<="), (">=", ">="), ("≤", "<="), ("≥", ">="), ("<", "<"), (">", ">"))
+_COMPARISON_SIGNS = "<>=≤≥≦≧"
+
+
+def is_bound_text(text) -> bool:
+    """True if ``text`` is written as an inequality (starts with <, >, ≤, ≥, =< or =>)."""
+    if not isinstance(text, str):
+        return False
+    s = text.strip()
+    return bool(s) and (s[0] in "<>≤≥" or s[:2] in ("=<", "=>"))
+
+
+def parse_bound(text: str) -> Bound:
+    """Read a one-sided bound: ``<``, ``<=``, ``≤``, ``>``, ``>=`` or ``≥``, optional
+    spaces, then a quantity read by the strict grammar ("< 1e-6", "≤ 0.30 V").
+
+    Refused with ``malformed_bound``: no number after the sign, a second comparison
+    sign ("<<1", "<= <1"), or a sign this grammar does not use ("=<1", "<>1"). The
+    quantity after the sign is refused for the same reasons as any other ("< nan" is
+    ``non_finite``).
+    """
+    if not isinstance(text, str):
+        raise UnitError("not_a_quantity", text, "expected text")
+    s = text.strip()
+    for sign, op in _BOUND_OPS:
+        if s.startswith(sign):
+            rest = s[len(sign):].strip()
+            break
+    else:
+        raise UnitError("malformed_bound", text,
+                        "a bound starts with <, <=, ≤, >, >= or ≥")
+    if not rest:
+        raise UnitError("malformed_bound", text, "no number after the comparison sign")
+    if rest[0] in _COMPARISON_SIGNS:
+        raise UnitError("malformed_bound", text, "more than one comparison sign")
+    if any(c in _COMPARISON_SIGNS for c in rest):
+        raise UnitError("compound_quantity", text, "more than one comparison in one value")
+    number, unit = _split(rest, text)
+    return Bound(op, number, number_text(rest), unit)
+
+
 def parse_number(value) -> float:
     """A plain finite number from an int, float or string. No unit is allowed."""
     if isinstance(value, bool):
@@ -340,6 +398,7 @@ def unit_text(u) -> str:
 
 
 __all__ = [
+    "Bound",
     "COUNT_UNITS",
     "UREG",
     "UnitError",
@@ -348,8 +407,10 @@ __all__ = [
     "convert_difference",
     "implied_half_unit",
     "implied_precision",
+    "is_bound_text",
     "is_offset_unit",
     "number_text",
+    "parse_bound",
     "parse_number",
     "parse_unit",
     "rules_of",

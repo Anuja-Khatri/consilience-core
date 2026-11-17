@@ -9,8 +9,8 @@
     consilience version
 
 Exit codes
-    compare  0 agree or within_floor · 1 disagree · 2 not_comparable or not_stated ·
-             3 unparseable
+    compare  0 agree or within_floor · 1 disagree · 2 not_comparable, not_stated or
+             undecidable_bounds · 3 unparseable
     check    0 no violations · 1 violations · 3 some cells could not be read
     verify   0 re-run reproduces the receipt · 1 it does not
     all      64 usage or input error (missing file, unknown field, bad rule file)
@@ -64,6 +64,8 @@ def _side_line(s: dict, unit) -> str:
         out = given or "(no value)"
     else:
         out = f"{_g(s['value'])} {unit}"
+        if s.get("bound"):
+            out = f"{s['bound']} {out}"
         if s.get("uncertainty"):
             out += f" ± {_g(s['uncertainty'])} {unit}"
         if given and given != out:
@@ -82,9 +84,13 @@ def _fmt_compare(r) -> str:
     out = [f"verdict:    {r.label}",
            f"a:          {_side_line(res['a'], unit)}",
            f"b:          {_side_line(res['b'], unit)}"]
-    if r.difference is not None:
-        out += [f"difference: {_g(r.difference)} {unit}",
-                f"tolerance:  {_g(r.tolerance)} {unit}   (larger of --abs-tol and "
+    comparison = res.get("comparison", "values")
+    if r.tolerance is not None and comparison != "values":
+        out += _bound_lines(res, r, unit)
+    if r.tolerance is not None:
+        if comparison == "values":
+            out.append(f"difference: {_g(r.difference)} {unit}")
+        out += [f"tolerance:  {_g(r.tolerance)} {unit}   (larger of --abs-tol and "
                 "--rel-tol x the larger value)",
                 f"floor:      {_g(r.floor)} {unit}   (largest of --floor and the two "
                 "uncertainties)"]
@@ -118,6 +124,22 @@ def _fmt_compare(r) -> str:
     return "\n".join(out)
 
 
+def _bound_lines(res, r, unit) -> list:
+    """What was compared when one or both sides are bounds."""
+    a, b = res["a"], res["b"]
+    if res["comparison"] == "value_vs_bound":
+        v, bs = ("a", "b") if b.get("bound") else ("b", "a")
+        return [f"beyond:     {_g(r.difference)} {unit}   (how far {v} lies past {bs}'s "
+                "bound; 0 means it satisfies it)"]
+    pair = (f"a {a['bound']} {_g(a['value'])} {unit} and b {b['bound']} "
+            f"{_g(b['value'])} {unit}")
+    if r.verdict == "undecidable_bounds":
+        return [f"bounds:     {pair} can both hold, so there is no single value to "
+                "compare"]
+    return [f"bounds:     {pair} cannot both hold (they are {_g(r.difference)} {unit} "
+            "apart)"]
+
+
 def _precision_lines(p, unit) -> list:
     """The stated-precision lines of a compare result (none for a 0.1.0 receipt)."""
     if not p:
@@ -128,8 +150,12 @@ def _precision_lines(p, unit) -> list:
     if p.get("implied") is None or all(p[s]["rule"] == "uncertainty stated"
                                        for s in ("a", "b")):
         return []
-    out = [f"precision:  ±{_g(p['implied'])} {unit} implied by stated precision (added to "
-           "the tolerance and the floor; --exact turns this off)"]
+    if p["implied"]:
+        out = [f"precision:  ±{_g(p['implied'])} {unit} implied by stated precision (added "
+               "to the tolerance and the floor; --exact turns this off)"]
+    else:
+        out = ["precision:  none implied by stated precision (no value has decimal places "
+               "without an uncertainty)"]
     for side in ("a", "b"):
         sp = p[side]
         written = sp["written"] if sp["written"] is not None else "(no written form)"
@@ -307,7 +333,7 @@ def build_parser() -> argparse.ArgumentParser:
                  description="Compare two measurements with units and conditions, and check "
                              "a table against written limits. Every result has a receipt.",
                  epilog="Exit codes: compare 0 agree/within_floor, 1 disagree, 2 "
-                        "not_comparable/not_stated, 3 unparseable; check 0 clean, 1 "
+                        "not_comparable/not_stated/undecidable_bounds, 3 unparseable; check 0 clean, 1 "
                         "violations, 3 unreadable cells; verify 0 ok, 1 failed; 64 usage or "
                         "input error.")
     ap.add_argument("--version", action="version", version=f"consilience {__version__}")
