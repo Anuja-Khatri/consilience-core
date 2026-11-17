@@ -108,6 +108,14 @@ LABELS = {
     CV.mapVersion: "with the axis map version",
     CV.ledgerHash: "is covered by the ledger hash",
     CV.exportedWith: "was exported with",
+    CV.TheoryClaimCard: "theory claim card",
+    CV.theory: "is a claim of the theory",
+    CV.claimStatement: "has the claim statement",
+    CV.statementForm: "has a statement that is",
+    CV.ReviewedParaphrase: "a paraphrase reviewed by a person, not a quotation",
+    CV.polarity: "has the polarity",
+    CV.restsOn: "rests on the source location",
+    CV.pageLocator: "at the page",
 }
 
 __all__ = [

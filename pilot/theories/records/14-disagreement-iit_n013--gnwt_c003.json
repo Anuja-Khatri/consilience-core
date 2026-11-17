@@ -1,0 +1,68 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "testable_disagreement",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      2227,
+      2266
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2227-L2266",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "4db8a1c59f60b834e53a76a8bb92b567d3decfd638beebe3d8f814d4b3fdf80b",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "record_format": "consilience-demo/fork-v0",
+    "disagreement": "location",
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1077-L1121",
+    "testability": "testable_now",
+    "instrument": "shared observable: regional decoding",
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable with instruments that exist today and names the shared observable both claims bear on. This is a statement about the two claim cards, not a verdict on either theory. The axis is an axis of theoretical commitment, not a quantity axis, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations. The demo marks this pair as a type divergence: the two claims are different kinds of claim (process and substrate)."
+  },
+  "record": {
+    "pair": "IITxGNWT",
+    "axis": "locus",
+    "left_ids": [
+      "iit_n013"
+    ],
+    "right_ids": [
+      "gnwt_c003"
+    ],
+    "left_value": "intrinsic_not_broadcast",
+    "right_value": "prefrontal_parietal_cortical_network",
+    "type_divergence": true,
+    "polarity_opposed": false,
+    "decidability": "now",
+    "sketch": {
+      "axis": "locus",
+      "shared_observables": [
+        "regional_decoding"
+      ],
+      "left": {
+        "theory": "IIT",
+        "claim": "n013",
+        "statement": "Conscious information is not transmitted or broadcast from one brain region to another; the locus of consciousness is intrinsic to the PSC, not a relay or global broadcast.",
+        "expected_on": [
+          "regional_decoding"
+        ],
+        "direction": "“Conscious information is not transmitted or broadcast from one brain region to another; the locus of consciousness is intrinsic to the PSC, not a relay or global broadcast.” (n013) — expected on shared observables: regional_decoding"
+      },
+      "right": {
+        "theory": "GNWT",
+        "claim": "c003",
+        "statement": "The locus of conscious processing is a large-scale prefrontal-parietal (and cingulate/temporal) cortical network, not posterior sensory cortices alone.",
+        "expected_on": [
+          "regional_decoding"
+        ],
+        "direction": "“The locus of conscious processing is a large-scale prefrontal-parietal (and cingulate/temporal) cortical network, not posterior sensory cortices alone.” (c003) — expected on shared observables: regional_decoding"
+      },
+      "oracle_annotation": null
+    }
+  }
+}

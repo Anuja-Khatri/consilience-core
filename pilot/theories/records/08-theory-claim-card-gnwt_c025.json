@@ -1,0 +1,51 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "theory_claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      1349,
+      1373
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "080b2024d3815ab3fd5af9311d4d6c610725f493dd132228b98135299d9970dd",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "documents": {
+      "gnwt_neuron_2011": "https://doi.org/10.1016/j.neuron.2011.03.018",
+      "gnwt_neuron_2020": "https://doi.org/10.1016/j.neuron.2020.01.026"
+    },
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+  },
+  "record": {
+    "claim_id": "gnwt_c025",
+    "theory": "GNWT",
+    "entity_type": "state",
+    "axis": "temporal_profile",
+    "value": "gradual_buildup",
+    "polarity": "asserts",
+    "statement": "Neural correlates of conscious experience build up gradually across cortical areas, implying a temporal profile for the emergence of conscious content.",
+    "passage_ids": [
+      "gnwt_neuron_2011_0241",
+      "gnwt_neuron_2020_0001"
+    ],
+    "agreement": true,
+    "status": "approved",
+    "prov": [
+      {
+        "id": "gnwt_neuron_2011_0241",
+        "locator": "p.21"
+      },
+      {
+        "id": "gnwt_neuron_2020_0001",
+        "locator": "p.1"
+      }
+    ]
+  }
+}

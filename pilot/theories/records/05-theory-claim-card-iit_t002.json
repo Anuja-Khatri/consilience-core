@@ -1,0 +1,58 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "theory_claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      607,
+      639
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L607-L639",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "518d4ac8615013e9616178d7ed208902e027cd1dc204fa7360ddfca32d1945bd",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "documents": {
+      "iit_nrn_2016": "https://doi.org/10.1038/nrn.2016.44"
+    },
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+  },
+  "record": {
+    "claim_id": "iit_t002",
+    "theory": "IIT",
+    "entity_type": "substrate",
+    "axis": "locus",
+    "value": "posterior_hot_zone",
+    "polarity": "asserts",
+    "statement": "IIT predicts that the neural substrate of consciousness (PSC/complex) corresponds to elements with maximum intrinsic cause–effect power, locating the content-specific NCC in the neural elements of the PSC rather than in prefrontal or other regions, consistent with a posterior cortical hot zone.",
+    "passage_ids": [
+      "iit_nrn_2016_0001",
+      "iit_nrn_2016_0041",
+      "iit_nrn_2016_0060",
+      "iit_nrn_2016_0061",
+      "iit_nrn_2016_0066",
+      "iit_nrn_2016_0079",
+      "iit_nrn_2016_0098",
+      "iit_nrn_2016_0115",
+      "iit_nrn_2016_0116",
+      "iit_nrn_2016_0162"
+    ],
+    "agreement": false,
+    "status": "approved",
+    "prov": [
+      {
+        "id": "iit_nrn_2016_0001",
+        "locator": "p.1"
+      },
+      {
+        "id": "iit_nrn_2016_0041",
+        "locator": "p.4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "theory_claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      476,
+      500
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "e137dd98975be02738da52173b97c8b57c68dd571c6a267d085630d8630b9e67",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "documents": {
+      "iit_nrn_2016": "https://doi.org/10.1038/nrn.2016.44"
+    },
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+  },
+  "record": {
+    "claim_id": "iit_n013",
+    "theory": "IIT",
+    "entity_type": "process",
+    "axis": "locus",
+    "value": "intrinsic_not_broadcast",
+    "polarity": "asserts",
+    "statement": "Conscious information is not transmitted or broadcast from one brain region to another; the locus of consciousness is intrinsic to the PSC, not a relay or global broadcast.",
+    "passage_ids": [
+      "iit_nrn_2016_0096",
+      "iit_nrn_2016_0094"
+    ],
+    "agreement": false,
+    "status": "approved",
+    "prov": [
+      {
+        "id": "iit_nrn_2016_0096",
+        "locator": "p.8"
+      },
+      {
+        "id": "iit_nrn_2016_0094",
+        "locator": "p.8"
+      }
+    ]
+  }
+}

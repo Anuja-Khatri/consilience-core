@@ -1,0 +1,70 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "theory_claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      1077,
+      1121
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1077-L1121",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "af94395105e86f0fa49d8b120f2534ee37988897d960f7ec3ad59139a134a3c6",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "documents": {
+      "gnwt_neuron_2011": "https://doi.org/10.1016/j.neuron.2011.03.018"
+    },
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+  },
+  "record": {
+    "claim_id": "gnwt_c003",
+    "theory": "GNWT",
+    "entity_type": "substrate",
+    "axis": "locus",
+    "value": "prefrontal_parietal_cortical_network",
+    "polarity": "asserts",
+    "statement": "The locus of conscious processing is a large-scale prefrontal-parietal (and cingulate/temporal) cortical network, not posterior sensory cortices alone.",
+    "passage_ids": [
+      "gnwt_neuron_2011_0001",
+      "gnwt_neuron_2011_0034",
+      "gnwt_neuron_2011_0064",
+      "gnwt_neuron_2011_0072",
+      "gnwt_neuron_2011_0077",
+      "gnwt_neuron_2011_0086",
+      "gnwt_neuron_2011_0098",
+      "gnwt_neuron_2011_0118",
+      "gnwt_neuron_2011_0167",
+      "gnwt_neuron_2020_0016",
+      "gnwt_neuron_2020_0023",
+      "gnwt_neuron_2020_0026",
+      "gnwt_neuron_2020_0031",
+      "gnwt_neuron_2020_0043",
+      "gnwt_neuron_2020_0075",
+      "gnwt_neuron_2020_0133",
+      "gnwt_neuron_2020_0134",
+      "gnwt_science_2017_0025",
+      "gnwt_science_2017_0050",
+      "gnwt_science_2017_0060",
+      "gnwt_science_2017_0063",
+      "gnwt_science_2017_0074"
+    ],
+    "agreement": false,
+    "status": "approved",
+    "prov": [
+      {
+        "id": "gnwt_neuron_2011_0001",
+        "locator": "p.1"
+      },
+      {
+        "id": "gnwt_neuron_2011_0034",
+        "locator": "p.4"
+      }
+    ]
+  }
+}

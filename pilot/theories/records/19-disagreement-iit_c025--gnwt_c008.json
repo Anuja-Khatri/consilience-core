@@ -1,0 +1,68 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "testable_disagreement",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      2117,
+      2156
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2117-L2156",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "cfd55cd0236677bc83af80a13c095a41dca0709d4e4e88918870ca92014087ca",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "record_format": "consilience-demo/fork-v0",
+    "disagreement": "connectivity",
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L360-L384",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1148-L1172",
+    "testability": "testable_now",
+    "instrument": "shared observable: connectivity metrics",
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable with instruments that exist today and names the shared observable both claims bear on. This is a statement about the two claim cards, not a verdict on either theory. The axis is an axis of theoretical commitment, not a quantity axis, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations."
+  },
+  "record": {
+    "pair": "IITxGNWT",
+    "axis": "connectivity",
+    "left_ids": [
+      "iit_c025"
+    ],
+    "right_ids": [
+      "gnwt_c008"
+    ],
+    "left_value": "heterogeneous_connectivity_required",
+    "right_value": "global_workspace_connectivity_required",
+    "type_divergence": false,
+    "polarity_opposed": false,
+    "decidability": "now",
+    "sketch": {
+      "axis": "connectivity",
+      "shared_observables": [
+        "connectivity_metrics"
+      ],
+      "left": {
+        "theory": "IIT",
+        "claim": "c025",
+        "statement": "The richness and level of consciousness increase with the diversity and specialization of causal connections; homogeneous connectivity reduces consciousness.",
+        "expected_on": [
+          "connectivity_metrics"
+        ],
+        "direction": "“The richness and level of consciousness increase with the diversity and specialization of causal connections; homogeneous connectivity reduces consciousness.” (c025) — expected on shared observables: connectivity_metrics"
+      },
+      "right": {
+        "theory": "GNWT",
+        "claim": "c008",
+        "statement": "Without a functional global neuronal workspace, cortical representations cannot be broadcast and are not experienced; functional connectivity of GNW is a necessary condition for consciousness.",
+        "expected_on": [
+          "connectivity_metrics"
+        ],
+        "direction": "“Without a functional global neuronal workspace, cortical representations cannot be broadcast and are not experienced; functional connectivity of GNW is a necessary condition for consciousness.” (c008) — expected on shared observables: connectivity_metrics"
+      },
+      "oracle_annotation": null
+    }
+  }
+}

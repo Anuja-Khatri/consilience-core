@@ -109,6 +109,7 @@ class Built:
     main: URIRef           # the record's main resource
     introduced: bool       # whether the nanopub introduces ``main``
     label: str
+    note: str | None = None  # plain-words note for the publication info (dct:description)
 
 
 def _pair_claims(env: Envelope) -> tuple[URIRef, URIRef]:
@@ -239,7 +240,87 @@ def _correspondence(env: Envelope) -> Built:
     return Built(S.CORRESPONDENCE, g, me, True, _short(label))
 
 
+DEMO_FORK = "consilience-demo/fork-v0"
+DEMO_OBSERVABLES = {
+    "regional_decoding": "regional decoding",
+    "connectivity_metrics": "connectivity metrics",
+    "ignition_signature": "ignition signature",
+    "temporal_generalization": "temporal generalisation",
+}
+
+
+def demo_instrument(fork: dict) -> str:
+    """The instrument wording for a demo fork: its shared observables, in words."""
+    obs = (fork.get("sketch") or {}).get("shared_observables") or []
+    _need(obs, "demo_fork_names_no_shared_observable")
+    return "shared observable: " + " and ".join(DEMO_OBSERVABLES.get(o, o.replace("_", " ")) for o in obs)
+
+
+def _demo_disagreement(env: Envelope) -> Built:
+    """A disagreement (fork) from the cross-theory demo's judge output, as published."""
+    r = env.record
+    _need(r.get("decidability") == "now",
+          f"demo_fork_not_decidable_now: {r.get('decidability')!r}")
+    left, right = r.get("left_ids") or [], r.get("right_ids") or []
+    _need(len(left) == 1 and len(right) == 1, "demo_fork_is_not_a_single_claim_pair")
+    _need(env.context.get("testability") == "testable_now",
+          f"demo_fork_testability_must_be_testable_now: {env.context.get('testability')!r}")
+    instrument = demo_instrument(r)
+    _need(env.context.get("instrument") == instrument,
+          f"instrument_differs_from_the_record: {env.context.get('instrument')!r} vs {instrument!r}")
+    a, b = _pair_claims(env)
+    _need("/blob/" in str(a) and "#L" in str(a) and "/blob/" in str(b) and "#L" in str(b),
+          "claim_links_must_be_pinned_line_ranges")
+    g = Graph()
+    me = SUB["disagreement"]
+    pid = f"{left[0]}|{right[0]}"
+    g.add((me, RDF.type, CV.TestableDisagreement))
+    g.add((me, DCT.identifier, _lit(pid)))
+    g.add((me, CV.claimA, a))
+    g.add((me, CV.claimB, b))
+    g.add((me, CV.axis, _lit(r.get("axis"))))
+    g.add((me, CV.testability, CV.TestableNow))
+    g.add((me, CV.instrument, _lit(instrument)))
+    label = (f"Disagreement {left[0]} vs {right[0]} ({r['axis'].replace('_', ' ')}) "
+             f"is testable with {instrument}")
+    return Built(S.DISAGREEMENT, g, me, True, _short(label))
+
+
+def _theory_claim_card(env: Envelope) -> Built:
+    c = env.record
+    _need(c.get("status") == "approved", f"claim_card_not_approved: {c.get('status')!r}")
+    me = _iri(env.receipt_url, "source.receipt_url")
+    docs = env.context.get("documents") or {}
+    g = Graph()
+    g.add((me, RDF.type, CV.TheoryClaimCard))
+    g.add((me, DCT.identifier, _lit(c.get("claim_id"))))
+    g.add((me, CV.theory, _lit(c.get("theory"))))
+    g.add((me, CV.claimStatement, _lit(c.get("statement"))))
+    g.add((me, CV.statementForm, CV.ReviewedParaphrase))
+    g.add((me, CV.axis, _lit(c.get("axis"))))
+    g.add((me, RDF.value, _lit(c.get("value"))))
+    if c.get("polarity"):
+        g.add((me, CV.polarity, _lit(c["polarity"])))
+    seen = []
+    for p in c.get("prov") or []:
+        prefix = str(p.get("id", "")).rsplit("_", 1)[0]
+        _need(prefix in docs, f"no_document_for_passage: {p.get('id')!r}")
+        key = (docs[prefix], p.get("locator"))
+        if key not in seen:
+            seen.append(key)
+    for i, (doc, page) in enumerate(seen):
+        node = _local("location", i)
+        g.add((me, CV.restsOn, node))
+        g.add((node, DCT.source, _iri(doc, "context.documents")))
+        g.add((node, CV.pageLocator, _lit(page)))
+    label = (f"Theory claim card {c['claim_id']} ({c['theory']}): "
+             f"{c['axis'].replace('_', ' ')} = {c['value'].replace('_', ' ')}")
+    return Built(S.THEORY_CLAIM_CARD, g, me, False, _short(label))
+
+
 def _disagreement(env: Envelope) -> Built:
+    if env.context.get("record_format") == DEMO_FORK:
+        return _demo_disagreement(env)
     r = env.record
     _need(r.get("kind") == "fork", f"not_a_fork_record: kind={r.get('kind')!r}")
     t = _TESTABILITY.get(env.context.get("testability"))
@@ -292,6 +373,7 @@ _BUILDERS = {
     "graded_correspondence": _correspondence,
     "testable_disagreement": _disagreement,
     "data_quality_finding": _data_quality,
+    "theory_claim_card": _theory_claim_card,
 }
 
 
@@ -301,7 +383,11 @@ def build_assertion(env: Envelope) -> Built:
         verify(env)
     except ReceiptError as exc:
         raise ExportError(f"receipt_does_not_verify: {exc}") from None
-    return _BUILDERS[env.record_type](env)
+    built = _BUILDERS[env.record_type](env)
+    note = env.context.get("pubinfo_note")
+    if note:
+        built.note = _lit(note).toPython()
+    return built
 
 
 # ---------------------------------------------------------------------------------------
@@ -349,6 +435,8 @@ def build_pubinfo(built: Built, agent_iri: URIRef, templates: dict, created: str
     g = Graph()
     _common_pubinfo(g, agent_iri, built.label, created)
     g.add((THIS, NPX.hasNanopubType, built.spec.target_type))
+    if built.note:
+        g.add((THIS, DCT.description, Literal(built.note)))
     if built.introduced:
         g.add((THIS, NPX.introduces, built.main))
     tmpl = templates.get(built.spec.key)

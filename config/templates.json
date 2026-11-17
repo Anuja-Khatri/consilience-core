@@ -4,5 +4,6 @@
   "testable_disagreement": "https://w3id.org/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE/templateVersion",
   "data_quality_finding": "https://w3id.org/np/RAIVWy9da47nSVGrlPGhVsqyvFTkFgzrpw42l_t12iVPo/templateVersion",
   "claim_card": "https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/templateVersion",
-  "receipt_provenance": "https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion"
+  "receipt_provenance": "https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion",
+  "theory_claim_card": "https://w3id.org/np/RACZUHT12nd9MbRugZ2gND5k0NgdlyCQFD0Fa2w7kof7o/templateVersion"
 }

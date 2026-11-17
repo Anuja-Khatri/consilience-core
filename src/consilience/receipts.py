@@ -40,6 +40,7 @@ RECORD_TYPES = (
     "graded_correspondence",
     "testable_disagreement",
     "data_quality_finding",
+    "theory_claim_card",
 )
 
 # Hash methods.
@@ -53,8 +54,16 @@ RECORD_TYPES = (
 #   source document and sentence, and the whole set of cards is covered by
 #   ledger/ledger.hash). The exporter computes this hash with the same hasher so that
 #   each published card has a checkable content hash of its own.
+# json-sha256-v0: SHA-256 over json.dumps(record, sort_keys=True, default=str), for records
+#   copied from a receipt file that stores no hash of its own (the cross-theory demo's
+#   claim cards and disagreements). The formula is the same as card-sha256-v0; the name
+#   says that no claim-card provenance hash is involved. The receipt file as a whole is
+#   covered by its SHA-256 in the source repository's manifest (source.file_sha256).
 VERDICT_METHOD = "verdict-sha256-v0"
 CARD_METHOD = "card-sha256-v0"
+JSON_METHOD = "json-sha256-v0"
+# Record types that may use JSON_METHOD.
+JSON_METHOD_TYPES = ("theory_claim_card", "testable_disagreement")
 
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 _HEX40 = re.compile(r"^[0-9a-f]{40}$")
@@ -77,6 +86,11 @@ def verdict_hash(record: dict) -> str:
 def card_hash(card: dict) -> str:
     """Content hash of a claim card (the whole card)."""
     return hashlib.sha256(_canonical(card).encode()).hexdigest()
+
+
+def json_hash(record: dict) -> str:
+    """Content hash of a record that carries no hash of its own (json-sha256-v0)."""
+    return hashlib.sha256(_canonical(record).encode()).hexdigest()
 
 
 def card_provenance_hash(card: dict) -> str:
@@ -134,7 +148,7 @@ def parse_envelope(data: dict, path: Path | None = None) -> Envelope:
     _require(isinstance(rec, dict) and rec, "missing_record")
     receipt = data.get("receipt")
     _require(isinstance(receipt, dict), "missing_receipt")
-    _require(receipt.get("hash_method") in (VERDICT_METHOD, CARD_METHOD),
+    _require(receipt.get("hash_method") in (VERDICT_METHOD, CARD_METHOD, JSON_METHOD),
              f"unknown_hash_method: {receipt.get('hash_method')!r}")
     _require(bool(_HEX64.match(str(receipt.get("content_hash", "")))), "receipt_hash_not_sha256_hex")
     ctx = data.get("context", {})
@@ -158,6 +172,8 @@ def recompute(env: Envelope) -> str:
         return verdict_hash(env.record)
     if method == CARD_METHOD:
         return card_hash(env.record)
+    if method == JSON_METHOD:
+        return json_hash(env.record)
     raise ReceiptError(f"unknown_hash_method: {method!r}")  # unreachable after parse
 
 
@@ -180,6 +196,11 @@ def verify(env: Envelope) -> str:
         ph = env.record.get("provenance_hash")
         _require(ph == card_provenance_hash(env.record),
                  f"provenance_hash_mismatch: card says {ph!r}")
+    elif env.receipt["hash_method"] == JSON_METHOD:
+        _require(env.record_type in JSON_METHOD_TYPES,
+                 f"json_hash_method_not_allowed_for: {env.record_type}")
+    elif env.record_type == "theory_claim_card":
+        raise ReceiptError("theory_claim_card_needs_json_hash_method")
     else:
         _require(env.receipt["hash_method"] == VERDICT_METHOD, "verdict_needs_verdict_hash_method")
     return got

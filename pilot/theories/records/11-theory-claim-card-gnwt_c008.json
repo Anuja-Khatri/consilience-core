@@ -1,0 +1,50 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "theory_claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      1148,
+      1172
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1148-L1172",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "4a32bdf5620056ca15d5111b1afe2c03f36d657da9860bcefe6d123fb9e1febc",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "documents": {
+      "gnwt_neuron_2020": "https://doi.org/10.1016/j.neuron.2020.01.026"
+    },
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+  },
+  "record": {
+    "claim_id": "gnwt_c008",
+    "theory": "GNWT",
+    "entity_type": "constraint",
+    "axis": "connectivity",
+    "value": "global_workspace_connectivity_required",
+    "polarity": "asserts",
+    "statement": "Without a functional global neuronal workspace, cortical representations cannot be broadcast and are not experienced; functional connectivity of GNW is a necessary condition for consciousness.",
+    "passage_ids": [
+      "gnwt_neuron_2020_0102",
+      "gnwt_neuron_2020_0118"
+    ],
+    "agreement": false,
+    "status": "approved",
+    "prov": [
+      {
+        "id": "gnwt_neuron_2020_0102",
+        "locator": "p.16"
+      },
+      {
+        "id": "gnwt_neuron_2020_0118",
+        "locator": "p.18"
+      }
+    ]
+  }
+}

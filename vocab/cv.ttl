@@ -256,6 +256,46 @@ cv:testability a rdf:Property ;
     rdfs:label "has testability" ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
+cv:TheoryClaimCard a owl:Class ;
+    rdfs:label "theory claim card" ;
+    rdfs:comment "One claim of a scientific theory as a reviewed claim card: the theory, a claim statement (a reviewed paraphrase, not a quotation), the axis of the commitment and its value there, and the source locations (document and page) it rests on." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ReviewedParaphrase a owl:NamedIndividual ;
+    rdfs:label "a paraphrase reviewed by a person, not a quotation" ;
+    rdfs:comment "Statement form: the claim statement paraphrases its source and has been reviewed by a person; it is not a quotation." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:theory a rdf:Property ;
+    rdfs:label "is a claim of the theory" ;
+    rdfs:comment "The theory the claim belongs to (e.g. IIT, GNWT)." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:claimStatement a rdf:Property ;
+    rdfs:label "has the claim statement" ;
+    rdfs:comment "The claim in one sentence. Its form (for example a reviewed paraphrase) is given by cv:statementForm." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:statementForm a rdf:Property ;
+    rdfs:label "has a statement that is" ;
+    rdfs:comment "What kind of text the claim statement is, e.g. cv:ReviewedParaphrase." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:polarity a rdf:Property ;
+    rdfs:label "has the polarity" ;
+    rdfs:comment "Whether the claim asserts or denies its value on the axis." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:restsOn a rdf:Property ;
+    rdfs:label "rests on the source location" ;
+    rdfs:comment "A location in a source document (dct:source plus cv:pageLocator) the claim card rests on." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:pageLocator a rdf:Property ;
+    rdfs:label "at the page" ;
+    rdfs:comment "A page in the PDF that was read, written p.N; it can differ from the printed page number." ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
 <https://theconsilience.io/ns/cv> a owl:Ontology ;
     rdfs:label "Consilience verdict vocabulary (cv), version 0" ;
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;

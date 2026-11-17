@@ -208,6 +208,43 @@ CLAIM_CARD = TemplateSpec(
 )
 
 # ---------------------------------------------------------------------------------------
+# theory claim card (claims of scientific theories, which state no measured quantity)
+
+_TCLAIM = _ext("claim", "the claim card (its location in the source repository)")
+_LOCATION = PH("location", ("LocalResource",), "a source location")
+THEORY_CLAIM_CARD = TemplateSpec(
+    key="theory_claim_card",
+    kind="assertion",
+    label="Consilience: theory claim card",
+    description=(
+        "One claim of a scientific theory as a reviewed Consilience claim card: the "
+        "theory, the claim statement, the axis it is on and the value it takes there, "
+        "and the source locations it rests on (document and page). The statement is a "
+        "paraphrase of the source that a person has reviewed; it is not a quotation. A "
+        "page is the page of the PDF that was read, which can differ from the printed "
+        "page number."
+    ),
+    statements=(
+        St("st01", _TCLAIM, RDF.type, CV.TheoryClaimCard),
+        St("st02", _TCLAIM, DCT.identifier, _lit("claimId", "claim identifier in the source repository")),
+        St("st03", _TCLAIM, CV.theory, _lit("theory", "theory")),
+        St("st04", _TCLAIM, CV.claimStatement,
+           _long("statement", "claim statement (a reviewed paraphrase, not a quotation)")),
+        St("st05", _TCLAIM, CV.statementForm, CV.ReviewedParaphrase),
+        St("st06", _TCLAIM, CV.axis, _lit("axis", "axis of the commitment")),
+        St("st07", _TCLAIM, RDF.value, _lit("value", "value on that axis")),
+        St("st08", _TCLAIM, CV.polarity, _lit("polarity", "polarity (asserts or denies)"),
+           optional=True),
+        St("st09", _TCLAIM, CV.restsOn, _LOCATION),
+        St("st10", _LOCATION, DCT.source, _ext("document", "source document")),
+        St("st11", _LOCATION, CV.pageLocator, _lit("page", "page in the PDF read (e.g. p.4)")),
+    ),
+    groups=(Group("st20", ("st09", "st10", "st11"), optional=True, repeatable=True),),
+    label_pattern="Theory claim card ${claimId}",
+    target_type=CV.TheoryClaimCard,
+)
+
+# ---------------------------------------------------------------------------------------
 # (a) graded correspondence
 
 _CORR = _local("correspondence", "this correspondence")
@@ -329,7 +366,8 @@ RECEIPT_PROVENANCE = TemplateSpec(
     ),
 )
 
-ASSERTION_SPECS = {s.key: s for s in (CORRESPONDENCE, REFUSAL, DISAGREEMENT, DATA_QUALITY, CLAIM_CARD)}
+ASSERTION_SPECS = {s.key: s for s in (CORRESPONDENCE, REFUSAL, DISAGREEMENT, DATA_QUALITY, CLAIM_CARD,
+                                        THEORY_CLAIM_CARD)}
 ALL_SPECS = {**ASSERTION_SPECS, RECEIPT_PROVENANCE.key: RECEIPT_PROVENANCE}
 
 

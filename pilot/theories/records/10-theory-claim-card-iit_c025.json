@@ -1,0 +1,50 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "theory_claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      360,
+      384
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L360-L384",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "5a1b3bd91466003d40de2cf410d06161d9af8cf74ded826c78416f400f75ecc1",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "documents": {
+      "iit_3_0": "https://doi.org/10.1371/journal.pcbi.1003588"
+    },
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+  },
+  "record": {
+    "claim_id": "iit_c025",
+    "theory": "IIT",
+    "entity_type": "constraint",
+    "axis": "connectivity",
+    "value": "heterogeneous_connectivity_required",
+    "polarity": "asserts",
+    "statement": "The richness and level of consciousness increase with the diversity and specialization of causal connections; homogeneous connectivity reduces consciousness.",
+    "passage_ids": [
+      "iit_3_0_0161",
+      "iit_3_0_0167"
+    ],
+    "agreement": false,
+    "status": "approved",
+    "prov": [
+      {
+        "id": "iit_3_0_0161",
+        "locator": "p.17"
+      },
+      {
+        "id": "iit_3_0_0167",
+        "locator": "p.17"
+      }
+    ]
+  }
+}

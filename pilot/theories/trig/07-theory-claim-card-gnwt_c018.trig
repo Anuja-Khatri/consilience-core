@@ -1,0 +1,67 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAUAJpD4nYYQl6NyalNi0OZWy5ee1jMDzUkbLfJv3SuXU/> .
+@prefix this: <https://w3id.org/np/RAUAJpD4nYYQl6NyalNi0OZWy5ee1jMDzUkbLfJv3SuXU> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:assertion {
+    <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1273-L1297> a cv:TheoryClaimCard ;
+        dcterms:identifier "gnwt_c018" ;
+        rdf:value "late_onset_threshold" ;
+        cv:axis "temporal_profile" ;
+        cv:claimStatement "Conscious access has a late temporal signature (>300 ms), with massive amplification of gamma-band power, long-distance phase synchrony, and causal propagation; early responses do not constitute conscious access." ;
+        cv:polarity "asserts" ;
+        cv:restsOn sub:location,
+            sub:location__1 ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory "GNWT" .
+
+    sub:location dcterms:source <https://doi.org/10.1016/j.neuron.2011.03.018> ;
+        cv:pageLocator "p.6" .
+
+    sub:location__1 dcterms:source <https://doi.org/10.1016/j.neuron.2011.03.018> ;
+        cv:pageLocator "p.7" .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "u/I8lL7ouM/vRm1DdN1puNi9JeJB/tEc/AA4H3aAV//EJGZIVgM2CTvvJP45+DbJrSCNDwbKNxcpT5vlgoToFZSlMX29j22M5xYqlNkfCldPhu3k7vFdB5tcjMb2QbZ0LuDyDrLQYFAFcXidPp5yK+l2jMMI0mmGZU5RQDCtFgM7wcMvQqshwudW5jvBecm6xxBHzhCctAxEqbxSU8sCtbRhhFoMIq/8dZm5VKRbBSeH2K6SyeLTBYMV+nfqPGxI1Jqir4KwlyANzpE+7lr6N7dDntYD/bBB30WZskswW5G86nRneJPePjkVKQma2GfPQUhF5XxCAIsKcvm+kKSjSw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Theory claim card gnwt_c018 (GNWT): temporal profile = late onset threshold" ;
+        dcterms:created "2026-11-17T12:11:47+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaimCard ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RACZUHT12nd9MbRugZ2gND5k0NgdlyCQFD0Fa2w7kof7o/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1273-L1297> ;
+        cv:contentHash "56cb1b33cfff947306ce9118501cd0efe03717b708f1e122a3b7a54cb83d5e06" ;
+        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+

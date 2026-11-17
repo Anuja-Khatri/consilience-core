@@ -19,8 +19,9 @@ TEMPLATES = load_json(ROOT / "config" / "templates.json")
 PUBS = load_json(ROOT / "pilot" / "publications.json")
 AGENT = URIRef(AGENT_CFG["agent_iri"])
 
-SIGNED = sorted((ROOT / "pilot" / "trig").glob("*.trig")) + sorted((ROOT / "templates").glob("*.trig")) \
-    + [ROOT / "agent" / "introduction.trig"]
+SIGNED = sorted((ROOT / "pilot" / "trig").glob("*.trig")) \
+    + sorted((ROOT / "pilot" / "theories" / "trig").glob("*.trig")) \
+    + sorted((ROOT / "templates").glob("*.trig")) + [ROOT / "agent" / "introduction.trig"]
 
 
 def _parse(path: Path):

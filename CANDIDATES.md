@@ -73,6 +73,14 @@ Files: `records/` (record envelopes, the input to `consilience export --nanopub`
 
 ## 2. Cross-theory comparisons, consciousness science (`candidates/theories/`)
 
+> **Update (17 Nov 2026): published on the TEST registry.** The demo's results are now pinned
+> in the public engine repository (theconsilience-engine, `results/demo/`, commit
+> `96ba4e435bd13718d36435cc3436d938d2d1f894`, with a SHA-256 manifest). From those receipts
+> the 8 testable disagreements were published as 8 records (the template takes one claim
+> pair per record), together with 11 theory claim cards under a new *theory claim card*
+> template. See the COGITATE section of `PILOT.md` and `pilot/theories/`. The text below is
+> the preparation note as it was written before that; its blocker is resolved.
+
 Source: the public demo at https://consilience-demo.netlify.app, whose results are JSON
 files under `/results/`, retrieved 2026-11-17 (SHA-256 of each file in
 `candidates/theories/index.json`). The demo was regenerated from its corpus by its

@@ -1,0 +1,71 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "testable_disagreement",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
+    "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
+    "path": "results/demo/files/iitxgnwt_judge.json",
+    "lines": [
+      2337,
+      2379
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2337-L2379",
+    "file_sha256": "e4ad57fddd0781d98233afa852d015fb4fdb107004b0fc020c152a85134615c0"
+  },
+  "receipt": {
+    "content_hash": "983ad695ed876691c2d374c57acf911429d448e45103daa2042e3a55acfa533e",
+    "hash_method": "json-sha256-v0"
+  },
+  "context": {
+    "record_format": "consilience-demo/fork-v0",
+    "disagreement": "time course",
+    "claim_a_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L640-L665",
+    "claim_b_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1273-L1297",
+    "testability": "testable_now",
+    "instrument": "shared observable: ignition signature and temporal generalisation",
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable with instruments that exist today and names the shared observable both claims bear on. This is a statement about the two claim cards, not a verdict on either theory. The axis is an axis of theoretical commitment, not a quantity axis, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations."
+  },
+  "record": {
+    "pair": "IITxGNWT",
+    "axis": "temporal_profile",
+    "left_ids": [
+      "iit_t003"
+    ],
+    "right_ids": [
+      "gnwt_c018"
+    ],
+    "left_value": "sustained_maintenance",
+    "right_value": "late_onset_threshold",
+    "type_divergence": false,
+    "polarity_opposed": false,
+    "decidability": "now",
+    "sketch": {
+      "axis": "temporal_profile",
+      "shared_observables": [
+        "ignition_signature",
+        "temporal_generalization"
+      ],
+      "left": {
+        "theory": "IIT",
+        "claim": "t003",
+        "statement": "IIT predicts that the duration of a conscious instant is definite and sustained over tens to hundreds of milliseconds, not transient or phasic, as required by the exclusion postulate governing the cause–effect structure of the PSC.",
+        "expected_on": [
+          "ignition_signature",
+          "temporal_generalization"
+        ],
+        "direction": "“IIT predicts that the duration of a conscious instant is definite and sustained over tens to hundreds of milliseconds, not transient or phasic, as required by the exclusion postulate governing the cause–effect structure of the PSC.” (t003) — expected on shared observables: ignition_signature, temporal_generalization"
+      },
+      "right": {
+        "theory": "GNWT",
+        "claim": "c018",
+        "statement": "Conscious access has a late temporal signature (>300 ms), with massive amplification of gamma-band power, long-distance phase synchrony, and causal propagation; early responses do not constitute conscious access.",
+        "expected_on": [
+          "ignition_signature",
+          "temporal_generalization"
+        ],
+        "direction": "“Conscious access has a late temporal signature (>300 ms), with massive amplification of gamma-band power, long-distance phase synchrony, and causal propagation; early responses do not constitute conscious access.” (c018) — expected on shared observables: ignition_signature, temporal_generalization"
+      },
+      "oracle_annotation": null
+    }
+  }
+}
