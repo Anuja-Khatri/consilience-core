@@ -1,0 +1,13 @@
+{
+  "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement. Same conditions as measurement_a.json, written with other spellings and units.",
+  "label": "Example lab B, overpotential at 10 mA/cm^2",
+  "value": 331,
+  "unit": "mV",
+  "uncertainty": "3 mV",
+  "conditions": {
+    "electrolyte": {"identity": "sulfuric acid", "concentration": "500 mmol/L"},
+    "current_density": {"value": 0.01, "unit": "A/cm^2", "normalization": "geometric"},
+    "temperature": "298.15 K",
+    "ir_correction": true
+  }
+}

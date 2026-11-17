@@ -1,0 +1,12 @@
+{
+  "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement. The value uses a decimal comma, which is ambiguous.",
+  "label": "Example lab E, value written as 0,32",
+  "value": "0,32",
+  "unit": "V",
+  "conditions": {
+    "electrolyte": {"identity": "H2SO4", "concentration": "0.5 mol/L"},
+    "current_density": {"value": 10, "unit": "mA/cm^2", "normalization": "geometric"},
+    "temperature": "25 degC",
+    "ir_correction": true
+  }
+}

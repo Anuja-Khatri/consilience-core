@@ -1,0 +1,11 @@
+{
+  "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement. The temperature is not stated.",
+  "label": "Example lab D, temperature not reported",
+  "value": 0.318,
+  "unit": "V",
+  "conditions": {
+    "electrolyte": {"identity": "H2SO4", "concentration": "0.5 mol/L"},
+    "current_density": {"value": 10, "unit": "mA/cm^2", "normalization": "geometric"},
+    "ir_correction": true
+  }
+}

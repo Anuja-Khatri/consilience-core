@@ -1,0 +1,45 @@
+# Example rules for the MADE-UP table readings.csv (consilience quickstart).
+# They show the two kinds of rule: a value checked against a limit recorded in the same
+# row ("limit"), and a value checked against fixed physical bounds ("bound").
+kind: check-rules
+name: example-bench-readings
+version: example-bench-readings-v1
+plain_english: >
+  Example rules for a made-up table of bench readings: each reading must stay within its
+  own recorded limit, temperatures cannot be below absolute zero, and relative humidity
+  lies between 0 and 100 percent.
+source: Written for the consilience quickstart; the data it checks is made up.
+id_column: sample_id
+columns:
+  reading:
+    unit_column: reading_unit
+    plain_english: The reading; its unit is given row by row in reading_unit.
+  limit_v:
+    unit: V
+    plain_english: The limit recorded for that reading.
+  temperature_c:
+    unit: degC
+  humidity_pct:
+    unit: percent
+rules:
+  - id: R1
+    kind: limit
+    column: reading
+    limit_column: limit_v
+    must_be: at_most
+    margin: 0.02 V
+    plain_english: A reading must not exceed its own recorded limit by more than 0.02 V.
+    rationale: A reading above the limit the instrument was set to is not a valid reading.
+  - id: R2
+    kind: bound
+    column: temperature_c
+    min: 0 K
+    plain_english: No temperature is below absolute zero.
+    rationale: Physically impossible; usually a sign or transcription error.
+  - id: R3
+    kind: bound
+    column: humidity_pct
+    min: 0
+    max: 100
+    plain_english: Relative humidity lies between 0 and 100 percent.
+    rationale: Physically impossible outside this range.

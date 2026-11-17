@@ -1,220 +1,359 @@
-"""Command line: ``consilience``.
+"""The ``consilience`` command.
 
-    consilience verify <record.json>
-        Check a record envelope against its receipt (content hash).
+    consilience compare A.json B.json [--pack NAME|FILE] [--abs-tol Q] [--rel-tol X]
+                        [--floor Q] [--json] [--receipt FILE]
+    consilience check DATA.csv --rules RULES.yaml [--json] [--html FILE] [--receipt FILE]
+    consilience verify RECEIPT.json [--data FILE]
+    consilience examples [DIR] [--force]
+    consilience packs
+    consilience version
 
-    consilience export --nanopub <record.json> [--dry-run] [--unsigned] [--out FILE]
-        Map the record to a nanopublication. With --dry-run, write TriG and stop
-        (signed if the agent's key is available, unless --unsigned). Without it, sign,
-        publish to the Knowledge Pixels TEST registry, fetch it back and check it.
+Exit codes
+    compare  0 agree or within_floor · 1 disagree · 2 not_comparable or not_stated ·
+             3 unparseable
+    check    0 no violations · 1 violations · 3 some cells could not be read
+    verify   0 re-run reproduces the receipt · 1 it does not
+    all      64 usage or input error (missing file, unknown field, bad rule file)
 
-    consilience agent keygen
-        Create the engine's RSA key outside the repository (never overwrites).
-
-    consilience agent introduce [--dry-run]
-        Publish the engine's introduction nanopub (declares its public key).
-
-    consilience templates publish [--dry-run] [--only KEY ...]
-        Publish the nanopublication templates.
-
-Only the test registry is supported. There is no production option.
+Optional, from a source checkout with ``pip install "consilience[nanopub]"``:
+    consilience export --nanopub RECORD.json ... · consilience agent ... ·
+    consilience templates publish ...   (these exit 2 when they refuse)
 """
 
 from __future__ import annotations
 
 import argparse
-import datetime as _dt
 import json
+import shutil
 import sys
+from importlib import resources
 from pathlib import Path
 
 from . import __version__
-from .agent import AgentConfig, AgentError, REPO_ROOT, TEST_REGISTRY_URL, generate_keys, \
-    key_dir, load_keys, profile_for, signer_of
-from .export import nanopub as X
-from .export import spec as S
-from .receipts import ReceiptError, load_envelope, verify
+from .check import check
+from .compare import InputError, compare
+from .rules import BUNDLED_PACKS, RuleFileError, bundled_path, load_rules
+from .verify import verify
 
-TEMPLATES_CONFIG = REPO_ROOT / "config" / "templates.json"
-PUBLICATIONS = REPO_ROOT / "pilot" / "publications.json"
-
-
-def _now() -> str:
-    return _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+EXIT_USAGE = 64
+REPO_ROOT = Path(__file__).resolve().parents[2]   # a source checkout (nanopub commands)
+EXAMPLE_FILES = ("measurement_a.json", "measurement_b.json", "measurement_c.json",
+                 "measurement_d.json", "measurement_e.json", "readings.csv",
+                 "readings_rules.yaml")
 
 
-def _read_json(p: Path, default):
-    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
+class _Parser(argparse.ArgumentParser):
+    """argparse exits 2 on a usage error; 2 is a verdict here, so use 64."""
+
+    def error(self, message: str):  # pragma: no cover - exercised via subprocess
+        self.print_usage(sys.stderr)
+        self.exit(EXIT_USAGE, f"{self.prog}: error: {message}\n")
 
 
-def _write_json(p: Path, data) -> None:
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+def _g(x) -> str:
+    return f"{x:.6g}" if isinstance(x, float) else str(x)
 
 
-def _record_publication(logical: str, uri: str, file: Path, signer: str, note: str = "") -> None:
-    pubs = _read_json(PUBLICATIONS, {})
-    if logical in pubs:
-        raise SystemExit(f"refusing: {logical} is already recorded as published ({pubs[logical]['nanopub']})")
-    pubs[logical] = {
-        "nanopub": uri,
-        "registry": "test",
-        "resolves_at": X.test_server_url(uri),
-        "published": _now(),
-        "supersedes": None,
-        "signer": signer,
-        "file": str(file.relative_to(REPO_ROOT)) if file.is_absolute() else str(file),
-        "note": note,
-    }
-    _write_json(PUBLICATIONS, pubs)
+# ------------------------------------------------------------------ compare
+def _side_line(s: dict, unit) -> str:
+    ag = s.get("as_given", {})
+    given = " ".join(str(ag[k]) for k in ("value", "unit") if ag.get(k) is not None)
+    if ag.get("uncertainty") is not None:
+        given += f" ± {ag['uncertainty']}"
+    if s.get("value") is None:
+        out = given or "(no value)"
+    else:
+        out = f"{_g(s['value'])} {unit}"
+        if s.get("uncertainty"):
+            out += f" ± {_g(s['uncertainty'])} {unit}"
+        if given and given != out:
+            out += f"   (as given: {given})"
+    if s.get("label"):
+        out += f"   [{s['label']}]"
+    return out
 
 
-def _sign_publish_check(ds, profile, out: Path, logical: str, dry_run: bool, note: str) -> str:
-    uri, trig = X.sign(ds, profile)
-    X.check_signed(trig)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(trig, encoding="utf-8")
-    if dry_run:
-        print(f"dry run: signed, not published: {uri}\n  wrote {out}")
-        return uri
-    X.publish_to_test_server(trig)
-    back = X.fetch_from_test_server(uri)
-    if X.check_signed(back) != uri:
-        raise SystemExit(f"fetched nanopub does not match: {uri}")
-    signer = signer_of(profile)
-    if signer.startswith(str(S.TEMP_NS)):  # a self-signed introduction names its own sub-IRI
-        signer = uri + "/" + signer[len(str(S.TEMP_NS)):]
-    _record_publication(logical, uri, out, signer, note)
-    print(f"published to TEST registry: {uri}\n  resolves at {X.test_server_url(uri)}\n  wrote {out}")
-    return uri
+def _fmt_compare(r) -> str:
+    rec = r.receipt
+    res = rec["result"]
+    unit = res["unit"] or ""
+    out = [f"verdict:    {r.label}",
+           f"a:          {_side_line(res['a'], unit)}",
+           f"b:          {_side_line(res['b'], unit)}"]
+    if r.difference is not None:
+        out += [f"difference: {_g(r.difference)} {unit}",
+                f"tolerance:  {_g(r.tolerance)} {unit}   (larger of --abs-tol and "
+                "--rel-tol x the larger value)",
+                f"floor:      {_g(r.floor)} {unit}   (largest of --floor and the two "
+                "uncertainties)"]
+    rule_text = {}
+    if rec["pack"] is not None:
+        rule_text = {c["id"]: c["plain_english"] for c in rec["pack"]["content"]["conditions"]}
+    for d in r.defects:
+        line = f"  {d['verdict']:<15} {d['target']}"
+        if d["verdict"] == "unparseable" or d["reason"] not in ("differs", "missing",
+                                                                "unstated"):
+            line += f": {d['reason']}"
+        if d["detail"]:
+            line += f" ({d['detail']})"
+        if d.get("rule"):
+            line += f"\n                  rule {d['rule']}: {rule_text.get(d['rule'], '')}"
+        out.append(line)
+    cond = res["conditions"]
+    if rec["pack"] is not None:
+        p = rec["pack"]
+        out.append(f"conditions: checked with pack {p['name']} ({p['version']}): "
+                   + (", ".join(cond["checked"])))
+        if cond["ignored"]:
+            out.append(f"            not checked (not in the pack): {', '.join(cond['ignored'])}")
+        out.append(f"pack hash:  {p['sha256']}")
+    else:
+        out.append("conditions: no pack: every condition on either side must match"
+                   + (f" ({', '.join(cond['checked'])})" if cond["checked"] else
+                      " (none given)"))
+    out.append(f"receipt:    sha256 {rec['sha256']}")
+    return "\n".join(out)
 
 
-def cmd_verify(args) -> int:
-    env = load_envelope(args.record)
-    h = verify(env)
-    print(f"ok: {args.record}\n  content hash {h} ({env.receipt['hash_method']})\n  receipt {env.receipt_url}")
-    return 0
+def _write_receipt(path, receipt) -> None:
+    Path(path).write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n",
+                          encoding="utf-8")
 
 
-def cmd_export(args) -> int:
-    cfg = AgentConfig.load(args.config)
-    templates = _read_json(Path(args.templates), {})
-    env = load_envelope(args.nanopub)
-    agent_iri = cfg.agent_iri
-    if not agent_iri:
-        if not args.dry_run:
-            raise SystemExit("the agent is not introduced yet: run `consilience agent introduce` first")
-        agent_iri = "https://example.org/unintroduced-agent"  # dry run only, never signed
-        args.unsigned = True
-    ds = X.record_nanopub(env, agent_iri, templates, created=args.created)
-    stem = Path(args.nanopub).stem
-    default_dir = REPO_ROOT / ("tmp" if args.dry_run else "pilot/trig")
-    out = Path(args.out) if args.out else default_dir / f"{stem}.trig"
-    if args.dry_run and (args.unsigned or not _have_keys()):
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(X.to_trig(ds), encoding="utf-8")
-        print(f"dry run: unsigned TriG written to {out}")
-        return 0
-    profile = profile_for(agent_iri, cfg.name)
-    _sign_publish_check(ds, profile, out, f"record:{stem}", args.dry_run,
-                        note=f"{env.record_type}; receipt {env.receipt_url}")
-    return 0
-
-
-def _have_keys() -> bool:
+def cmd_compare(args) -> int:
     try:
-        load_keys()
-        return True
-    except AgentError:
-        return False
+        r = compare(args.a, args.b, pack=args.pack, abs_tol=args.abs_tol,
+                    rel_tol=args.rel_tol, floor=args.floor)
+    except (InputError, RuleFileError) as exc:
+        print(f"consilience: error: {exc}", file=sys.stderr)
+        return EXIT_USAGE
+    if args.receipt:
+        _write_receipt(args.receipt, r.receipt)
+    if args.json:
+        print(json.dumps(r.receipt, indent=2, ensure_ascii=False))
+    else:
+        print(_fmt_compare(r))
+        if args.receipt:
+            print(f"wrote:      {args.receipt}")
+    return r.exit_code
 
 
-def cmd_agent(args) -> int:
-    cfg = AgentConfig.load(args.config)
-    if args.action == "keygen":
-        p = generate_keys()
-        print(f"key written outside the repository: {p} (and {p}.pub)")
-        return 0
-    # introduce
-    if cfg.agent_iri and not args.dry_run:
-        raise SystemExit(f"already introduced: {cfg.agent_iri}")
-    _, pub = load_keys()
-    ds = X.introduction_nanopub(cfg.name, cfg.local_name, pub, cfg.responsible_name,
-                                cfg.responsible_orcid, created=args.created)
-    temp_agent = str(S.TEMP_NS[cfg.local_name])
-    profile = profile_for(temp_agent, cfg.name)
-    out = REPO_ROOT / ("tmp" if args.dry_run else "agent") / "introduction.trig"
-    uri = _sign_publish_check(ds, profile, out, "agent:introduction", args.dry_run,
-                              note="self-signed introduction of the engine as a software agent")
-    if not args.dry_run:
-        cfg.data["agent_iri"] = f"{uri}/{cfg.local_name}"
-        cfg.data["introduction_nanopub"] = uri
-        cfg.data["public_key"] = pub
-        cfg.save()
-        print(f"agent IRI: {cfg.data['agent_iri']}")
+# -------------------------------------------------------------------- check
+def _fmt_check(c, data, rules_arg) -> str:
+    rec = c.receipt
+    s = c.summary
+    res = rec["result"]
+    out = [f"data:        {data} ({s['rows']} rows; sha256 {rec['inputs']['data']['sha256']})",
+           f"rules:       {rec['rules']['version']} ({rules_arg})",
+           f"rule hash:   {rec['rules']['sha256']}",
+           f"violations:  {s['violations']}"]
+    for v in res["violations"]:
+        who = f"{v['id']}  " if v["id"] is not None else ""
+        if "bound" in v:
+            op = {"min": "<" if v["inclusive"] else "<=",
+                  "max": ">" if v["inclusive"] else ">="}[v["bound"]]
+            what = f"{op} {v['bound']} {_g(v['limit'])} {v['limit_unit']}"
+        else:
+            op = ">" if v["must_be"] == "at_most" else "<"
+            sign = "+" if v["must_be"] == "at_most" else "-"
+            src = "fallback limit" if v["route"] == "fallback_limit" else v["limit_column"]
+            what = (f"{op} {src} {_g(v['limit'])} {v['limit_unit']} {sign} margin "
+                    f"{_g(v['margin'])} {v['limit_unit']}")
+            if v["value_offset"]:
+                what = f"(+ offset {_g(v['value_offset'])} {v['limit_unit']}) " + what
+        out.append(f"  line {v['line']:<4} {who}{v['rule']}  {v['column']} {v['value']} "
+                   f"{v['unit']} {what}   row receipt {v['row_sha256'][:12]}")
+    n = s["unparseable_cells"]
+    out.append(f"could not read: {n} cell{'s' if n != 1 else ''}"
+               + (" (not checked; nothing was guessed)" if n else ""))
+    for u in res["unparseable"]:
+        who = f"{u['id']}  " if u["id"] is not None else ""
+        col = u["column"] or "(whole row)"
+        rules = ", ".join(x for x in u["rules"] if x)
+        out.append(f"  line {u['line']:<4} {who}{col} {json.dumps(u['text'], ensure_ascii=False)}: "
+                   f"{u['reason']} (needed by {rules})")
+    out.append(f"skipped empty: {s['skipped_empty']}")
+    if s["blank_lines"]:
+        out.append(f"blank lines: {s['blank_lines']}")
+    meaning = {0: "no violations; every needed cell was read",
+               1: "violations found",
+               3: "some cells could not be read, so the check is incomplete"}
+    out.append(f"result:      exit {c.exit_code}: {meaning[c.exit_code]}")
+    out.append(f"receipt:     sha256 {rec['sha256']}")
+    return "\n".join(out)
+
+
+def cmd_check(args) -> int:
+    try:
+        c = check(args.data, args.rules)
+    except (InputError, RuleFileError) as exc:
+        print(f"consilience: error: {exc}", file=sys.stderr)
+        return EXIT_USAGE
+    if args.receipt:
+        _write_receipt(args.receipt, c.receipt)
+    if args.html:
+        Path(args.html).write_text(c.to_html(), encoding="utf-8")
+    if args.json:
+        print(json.dumps(c.receipt, indent=2, ensure_ascii=False))
+    else:
+        print(_fmt_check(c, args.data, args.rules))
+        for label, path in (("wrote", args.html), ("wrote", args.receipt)):
+            if path:
+                print(f"{label}:       {path}")
+    return c.exit_code
+
+
+# ------------------------------------------------------------------- verify
+def cmd_verify(args) -> int:
+    try:
+        v = verify(args.receipt, data=args.data)
+    except (InputError, RuleFileError) as exc:
+        print(f"consilience: error: {exc}", file=sys.stderr)
+        return EXIT_USAGE
+    print(f"{'ok' if v.ok else 'FAILED'}: {args.receipt} ({v.command})")
+    for name, ok, detail in v.steps:
+        print(f"  {'ok ' if ok else 'BAD'} {name}: {detail}")
+    if v.recorded_sha256:
+        print(f"  recorded sha256   {v.recorded_sha256}")
+    if v.recomputed_sha256 and v.recomputed_sha256 != v.recorded_sha256:
+        print(f"  recomputed sha256 {v.recomputed_sha256}")
+    if v.note:
+        print(f"  note: {v.note}")
+    return v.exit_code
+
+
+# ----------------------------------------------------------------- examples
+def cmd_examples(args) -> int:
+    dest = Path(args.dir)
+    dest.mkdir(parents=True, exist_ok=True)
+    src = resources.files("consilience").joinpath("data", "examples")
+    files = [(src.joinpath(n), n) for n in EXAMPLE_FILES]
+    files += [(bundled_path(p), f"{p}.yaml") for p in BUNDLED_PACKS]
+    clash = [n for _, n in files if (dest / n).exists()]
+    if clash and not args.force:
+        print(f"consilience: error: {dest} already has {clash}; use --force to overwrite",
+              file=sys.stderr)
+        return EXIT_USAGE
+    for s, n in files:
+        with s.open("rb") as fh, open(dest / n, "wb") as out:
+            shutil.copyfileobj(fh, out)
+        print(f"wrote {dest / n}")
+    print("These examples are MADE UP for trying the tool; they are not real data.")
     return 0
 
 
-def cmd_templates(args) -> int:
-    cfg = AgentConfig.load(args.config)
-    if not cfg.agent_iri:
-        raise SystemExit("the agent is not introduced yet: run `consilience agent introduce` first")
-    profile = profile_for(cfg.agent_iri, cfg.name)
-    published = _read_json(Path(args.templates), {})
-    keys = args.only or list(S.ALL_SPECS)
-    for key in keys:
-        spec = S.ALL_SPECS[key]
-        if key in published and not args.dry_run:
-            print(f"skip {key}: already published ({published[key]})")
-            continue
-        ds = X.template_nanopub(spec, cfg.agent_iri, created=args.created)
-        out = REPO_ROOT / ("tmp" if args.dry_run else "templates") / f"{key}.trig"
-        uri = _sign_publish_check(ds, profile, out, f"template:{key}", args.dry_run,
-                                  note=spec.label)
-        if not args.dry_run:
-            published[key] = f"{uri}/templateVersion"
-            _write_json(Path(args.templates), published)
+def cmd_packs(args) -> int:
+    for name in BUNDLED_PACKS:
+        p = load_rules(name)
+        print(f"{name}  {p.version}  sha256 {p.sha256}")
+        print(f"  {p.content['plain_english']}")
+        print(f"  conditions: {', '.join(c['field'] for c in p.rules)}")
     return 0
 
 
-def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(prog="consilience", description=__doc__.split("\n")[0])
+# ----------------------------------------------------------------- nanopub
+def _nanopub(name):
+    def run(args) -> int:
+        try:
+            from . import nanopub_cli as N
+        except ImportError as exc:
+            print(f"consilience: error: the nanopub commands need the optional "
+                  f"dependencies: pip install \"consilience[nanopub]\" ({exc})",
+                  file=sys.stderr)
+            return EXIT_USAGE
+        from .agent import AgentError
+        from .export.nanopub import ExportError
+        from .receipts import ReceiptError
+        if args.config is None:
+            args.config = str(REPO_ROOT / "config" / "agent.json")
+        if args.templates is None:
+            args.templates = str(N.TEMPLATES_CONFIG)
+        try:
+            return getattr(N, name)(args)
+        except (ReceiptError, ExportError, AgentError) as exc:
+            print(f"refused: {exc}", file=sys.stderr)
+            return 2
+    return run
+
+
+def build_parser() -> argparse.ArgumentParser:
+    ap = _Parser(prog="consilience",
+                 description="Compare two measurements with units and conditions, and check "
+                             "a table against written limits. Every result has a receipt.",
+                 epilog="Exit codes: compare 0 agree/within_floor, 1 disagree, 2 "
+                        "not_comparable/not_stated, 3 unparseable; check 0 clean, 1 "
+                        "violations, 3 unreadable cells; verify 0 ok, 1 failed; 64 usage or "
+                        "input error.")
     ap.add_argument("--version", action="version", version=f"consilience {__version__}")
-    ap.add_argument("--config", default=str(REPO_ROOT / "config" / "agent.json"))
-    ap.add_argument("--templates", default=str(TEMPLATES_CONFIG))
-    sub = ap.add_subparsers(dest="cmd", required=True)
+    ap.add_argument("--config", default=None, help=argparse.SUPPRESS)
+    ap.add_argument("--templates", default=None, help=argparse.SUPPRESS)
+    sub = ap.add_subparsers(dest="cmd", metavar="COMMAND", parser_class=_Parser)
 
-    v = sub.add_parser("verify", help="check a record against its receipt")
-    v.add_argument("record")
+    c = sub.add_parser("compare", help="compare two measurements (exit 0/1/2/3, 64 error)")
+    c.add_argument("a", help="measurement A (JSON file)")
+    c.add_argument("b", help="measurement B (JSON file)")
+    c.add_argument("--pack", help="domain pack: a bundled name (electrochemistry) or a YAML "
+                                  "file; without one, every condition must match")
+    c.add_argument("--abs-tol", help="absolute tolerance, e.g. '5 mV' (a bare number is in "
+                                     "A's unit)")
+    c.add_argument("--rel-tol", help="relative tolerance as a fraction, e.g. 0.01 for 1%%")
+    c.add_argument("--floor", help="spread below which a difference is within_floor, e.g. "
+                                   "'13 mV' (measured lab-to-lab spread)")
+    c.add_argument("--json", action="store_true", help="print the full result as JSON")
+    c.add_argument("--receipt", metavar="FILE", help="also write the receipt to FILE")
+    c.set_defaults(func=cmd_compare)
+
+    k = sub.add_parser("check", help="check a CSV table against rules (exit 0/1/3, 64 error)")
+    k.add_argument("data", help="the table (CSV with a header row)")
+    k.add_argument("--rules", required=True, help="the rule file (YAML)")
+    k.add_argument("--json", action="store_true", help="print the full report as JSON")
+    k.add_argument("--html", metavar="FILE", help="also write a readable HTML report")
+    k.add_argument("--receipt", metavar="FILE", help="also write the JSON report to FILE")
+    k.set_defaults(func=cmd_check)
+
+    v = sub.add_parser("verify", help="re-run a result from its receipt and confirm the hash")
+    v.add_argument("receipt", help="a receipt written by --receipt (or a record envelope)")
+    v.add_argument("--data", help="where the data file of a check receipt is now")
     v.set_defaults(func=cmd_verify)
 
-    e = sub.add_parser("export", help="export a record")
-    e.add_argument("--nanopub", required=True, metavar="RECORD_JSON")
-    e.add_argument("--dry-run", action="store_true", help="write TriG, do not publish")
-    e.add_argument("--unsigned", action="store_true", help="with --dry-run: do not sign")
-    e.add_argument("--out", help="output TriG path")
-    e.add_argument("--created", help="override dct:created (for reproducible dry runs)")
-    e.set_defaults(func=cmd_export)
+    e = sub.add_parser("examples", help="write the made-up example files into DIR")
+    e.add_argument("dir", nargs="?", default=".", help="target directory (default: .)")
+    e.add_argument("--force", action="store_true", help="overwrite existing files")
+    e.set_defaults(func=cmd_examples)
 
-    a = sub.add_parser("agent", help="the engine's software-agent identity")
+    sub.add_parser("packs", help="list the bundled domain packs").set_defaults(func=cmd_packs)
+    sub.add_parser("version", help="print the version").set_defaults(
+        func=lambda a: print(f"consilience {__version__}") or 0)
+
+    # optional nanopublication commands (need the [nanopub] extra and a source checkout)
+    x = sub.add_parser("export", help="(nanopub extra) export a record as a nanopublication")
+    x.add_argument("--nanopub", required=True, metavar="RECORD_JSON")
+    x.add_argument("--dry-run", action="store_true", help="write TriG, do not publish")
+    x.add_argument("--unsigned", action="store_true", help="with --dry-run: do not sign")
+    x.add_argument("--out", help="output TriG path")
+    x.add_argument("--created", help="override dct:created (for reproducible dry runs)")
+    x.set_defaults(func=_nanopub("cmd_export"))
+    a = sub.add_parser("agent", help="(nanopub extra) the engine's software-agent identity")
     a.add_argument("action", choices=["keygen", "introduce"])
     a.add_argument("--dry-run", action="store_true")
     a.add_argument("--created")
-    a.set_defaults(func=cmd_agent)
-
-    t = sub.add_parser("templates", help="nanopublication templates")
+    a.set_defaults(func=_nanopub("cmd_agent"))
+    t = sub.add_parser("templates", help="(nanopub extra) nanopublication templates")
     t.add_argument("action", choices=["publish"])
     t.add_argument("--dry-run", action="store_true")
-    t.add_argument("--only", nargs="*", choices=list(S.ALL_SPECS))
+    t.add_argument("--only", nargs="*")
     t.add_argument("--created")
-    t.set_defaults(func=cmd_templates)
+    t.set_defaults(func=_nanopub("cmd_templates"))
+    return ap
 
+
+def main(argv=None) -> int:
+    ap = build_parser()
     args = ap.parse_args(argv)
-    try:
-        return args.func(args)
-    except (ReceiptError, X.ExportError, AgentError) as exc:
-        print(f"refused: {exc}", file=sys.stderr)
-        return 2
+    if not getattr(args, "func", None):
+        ap.print_help(sys.stderr)
+        return EXIT_USAGE
+    return args.func(args)
 
 
 if __name__ == "__main__":

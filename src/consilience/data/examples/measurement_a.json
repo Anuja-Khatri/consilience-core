@@ -1,0 +1,13 @@
+{
+  "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement.",
+  "label": "Example lab A, overpotential at 10 mA/cm^2",
+  "value": 0.320,
+  "unit": "V",
+  "uncertainty": "4 mV",
+  "conditions": {
+    "electrolyte": {"identity": "H2SO4", "concentration": "0.5 mol/L"},
+    "current_density": {"value": 10, "unit": "mA/cm^2", "normalization": "geometric"},
+    "temperature": "25 degC",
+    "ir_correction": true
+  }
+}
