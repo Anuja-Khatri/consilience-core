@@ -5,18 +5,39 @@
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RAwUE9RbZdoNjq0SJI0Wvo4U_VQtN-fQ7_MJrLrq0yKIY/> .
-@prefix this: <https://w3id.org/np/RAwUE9RbZdoNjq0SJI0Wvo4U_VQtN-fQ7_MJrLrq0yKIY> .
+@prefix sub: <https://w3id.org/np/RAP8MuzqQq0aB8RFBCEg9vwJugskVJiq-738P0TJYGnCA/> .
+@prefix this: <https://w3id.org/np/RAP8MuzqQq0aB8RFBCEg9vwJugskVJiq-738P0TJYGnCA> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2187-L2226> ;
-        cv:contentHash "6f2ef72a9ed138fd4e9487843aa76256df262e8e565103d269bad2fd1047b71b" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
-        cv:hashMethod "json-sha256-v0" ;
-        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
-        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+sub:assertion {
+    sub:disagreement a cv:Disagreement ;
+        dcterms:identifier "iit_n007|gnwt_c003" ;
+        cv:claimA <https://w3id.org/np/RAQxM1GZMybxUjNLr9N_HVbPc4Pzq4FKi2gsFWbYVOOK8/claim> ;
+        cv:claimB <https://w3id.org/np/RAa-vpaVwm_kbfqQn9cRFE1TaBS3CSgAW2mTCWnyEiiig/claim> ;
+        cv:dimension cv:Locus ;
+        cv:observable cv:RegionalDecoding ;
+        cv:testability cv:TestableNow ;
+        cv:testabilityReason "The demo's check rules this disagreement decidable now: both claims bear on a shared observable (regional decoding) that current methods measure. The demo names no specific instrument, so none is recorded." .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "pm3F5pBUMX1nrxMAmfVUy5y1T3OijTI9JFGHgyDfT6NdgJUo/YZfJXtoH/DCQWPpis/KFbmgpvZgcKhGFzF8wTBHfJHlJtBoLSCHExPLgvMYttm9wgi/1Ke+e2teqPVHdpG4Rzaa2Zw5aP2wIYPSnYG1qDOTOQDosO5VPJG8WdSvcDKOkeVLHzftgTDowFB3bWgrAszYAjQMigxcitacQRY7d94/u/cEWFgqRo+gNuEGfU4T9i6pS0n/oI3qCep5aRHUoKhWxuasrpCMWYD2LEYfz7412CY+BSLqyL0AqzNdfEkQAjOem9WcIsfEtmDk/FRQuRMQwmZk1H9fx5eCxw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Disagreement iit_n007 vs gnwt_c003 on locus: testable now (observable: regional decoding)" ;
+        dcterms:created "2026-11-18T14:38:58+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable now and names the shared observable both claims bear on; it names no instrument, so none is recorded. This is a statement about the two claims, not a verdict on either theory. The dimension is a dimension of theoretical commitment, not a quantity, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations. The demo marks this pair as a type divergence: the two claims are different kinds of claim (boundary and substrate)." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:Disagreement ;
+        npx:introduces sub:disagreement ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAvL0WIJTJQOs6TMYrzsRV3CWbxhdoBKbsHkMhCSs98X0/templateVersion> .
 }
 
 sub:Head {
@@ -26,33 +47,13 @@ sub:Head {
         np:hasPublicationInfo sub:pubinfo .
 }
 
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "f93fuh5bHiAZ+M9FXFuQe0yEUw5Cax9Sz0iEcBx79OMQ1v0ocwa4BaS3id4ubsum75DKjWJElwa715SlwopzmdM6T9FHa4MyiAwlM9n2KX5eOkeWzC/h4jKc4wL0Ebd3yAfrYupPCEJ1Chtieblat8rwFLQykpIGBT/riDWANsI4So9Mip2qjXVHw3lWzSXPfz5va0hapV0u61OHUKHIkplmTtD/oFOUMOBONTBOn3MJUPj3/rO1E+UChC8UQXPpBmnepoqlv/mWTK9zH//hRw+ht0Eq2FdrPhLrf+s/3qQqTH+81pbaT4GjZiJKLgijBBhQ0ytE3dg7VuMUzN+lmg==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Disagreement iit_n007 vs gnwt_c003 (locus) is testable with shared observable: regional decoding" ;
-        dcterms:created "2026-11-17T12:11:57+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable with instruments that exist today and names the shared observable both claims bear on. This is a statement about the two claim cards, not a verdict on either theory. The axis is an axis of theoretical commitment, not a quantity axis, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations. The demo marks this pair as a type divergence: the two claims are different kinds of claim (boundary and substrate)." ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:TestableDisagreement ;
-        npx:introduces sub:disagreement ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE/templateVersion> .
-}
-
-sub:assertion {
-    sub:disagreement a cv:TestableDisagreement ;
-        dcterms:identifier "iit_n007|gnwt_c003" ;
-        cv:axis "locus" ;
-        cv:claimA <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L450-L475> ;
-        cv:claimB <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1077-L1121> ;
-        cv:instrument "shared observable: regional decoding" ;
-        cv:testability cv:TestableNow .
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2187-L2226> ;
+        cv:contentHash "6f2ef72a9ed138fd4e9487843aa76256df262e8e565103d269bad2fd1047b71b" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
 }
 

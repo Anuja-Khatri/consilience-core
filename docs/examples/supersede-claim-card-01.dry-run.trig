@@ -1,0 +1,93 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix nt: <https://w3id.org/np/o/ntemplate/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <http://purl.org/nanopub/temp/np/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    <https://w3id.org/np/RA-wwFLLedctNlBcSNtQWif97OzFredyblCEDRMo6TmRU/claim> a cv:MeasuredClaim ;
+        dct:identifier "ref40_peng2023__002" ;
+        dct:source <https://doi.org/10.1093/nsr/nwac108> ;
+        cv:axis cv:OperationalStabilityDuration ;
+        cv:claimKind cv:StabilityValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:IRCorrection,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
+        cv:hasQuantity sub:quantity ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith obo:CHMO_0000017 ;
+        cv:sourceSentence "After 500 h of testing at 10 mA cm–2, Pd-55 shows superior stability with little decay in 1 M HClO4." ;
+        cv:statesCategoricalCondition sub:categoricalCondition,
+            sub:categoricalCondition__1 ;
+        cv:statesQuantityCondition sub:quantityCondition,
+            sub:quantityCondition__1 ;
+        cv:subjectName "Pd-55" .
+
+    sub:categoricalCondition cv:condition cv:CurrentDensityNormalization ;
+        cv:conditionValue cv:GeometricArea .
+
+    sub:categoricalCondition__1 cv:condition cv:Electrolyte ;
+        cv:conditionValue obo:CHEBI_29221 .
+
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 500.0 ;
+        qudt:unit unit:HR ;
+        cv:bound cv:ExactValue ;
+        cv:unitAsWritten "h" .
+
+    sub:quantityCondition qudt:numericValue 10.0 ;
+        qudt:unit cv:MilliA-PER-CentiM2 ;
+        cv:condition cv:CurrentDensity .
+
+    sub:quantityCondition__1 qudt:numericValue 1.0 ;
+        qudt:unit unit:MOL-PER-L ;
+        cv:condition cv:ElectrolyteConcentration .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "7db34c10cd4496de0dc7674beeb3fd2574ab9d683fe82f19c73c40b86eddc18a" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:Head {
+    sub: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub: rdfs:label "Measured claim ref40_peng2023__002: Pd-55, operational stability duration 500 h" ;
+        dct:created "2026-11-18T00:00:00+00:00"^^xsd:dateTime ;
+        dct:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces <https://w3id.org/np/RA-wwFLLedctNlBcSNtQWif97OzFredyblCEDRMo6TmRU/claim> ;
+        npx:supersedes <https://w3id.org/np/RA-wwFLLedctNlBcSNtQWif97OzFredyblCEDRMo6TmRU> ;
+        nt:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        nt:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8>,
+            <https://w3id.org/np/RAoTD7udB2KtUuOuAe74tJi1t3VzK0DyWS7rYVAq1GRvw> ;
+        nt:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
+}
+

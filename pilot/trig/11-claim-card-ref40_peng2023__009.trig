@@ -1,0 +1,93 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAYjDglVZBgAnaAuVzkH4u_fN_Cscue18BYFy8J2tINyU/> .
+@prefix this: <https://w3id.org/np/RAYjDglVZBgAnaAuVzkH4u_fN_Cscue18BYFy8J2tINyU> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:assertion {
+    sub:claim a cv:MeasuredClaim ;
+        dcterms:identifier "ref40_peng2023__009" ;
+        dcterms:source <https://doi.org/10.1093/nsr/nwac108> ;
+        cv:axis cv:CellVoltageAtCurrentDensity ;
+        cv:claimKind cv:PerformanceValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:Electrolyte,
+            cv:IRCorrection,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate ;
+        cv:hasQuantity sub:quantity ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith cv:PolarizationCurve ;
+        cv:sourceSentence "From the polarization curves at 65°C in Fig. 5b and Supplementary Figs S16 and S17, a voltage of only 1.664 and 1.771 V is required to achieve 1 and 2 A cm–2, respectively, demonstrating superior performance for acidic water electrolysis [10,42]." ;
+        cv:statesCategoricalCondition sub:categoricalCondition ;
+        cv:statesQuantityCondition sub:quantityCondition,
+            sub:quantityCondition__1 ;
+        cv:subjectName "PEM electrolyser with Pd-55 (2 mg cm–2) as both cathode and anode catalysts" .
+
+    sub:categoricalCondition cv:condition cv:CurrentDensityNormalization ;
+        cv:conditionValue cv:GeometricArea .
+
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 1.664 ;
+        qudt:unit unit:V ;
+        cv:bound cv:ExactValue ;
+        cv:unitAsWritten "V" .
+
+    sub:quantityCondition qudt:numericValue 1.0 ;
+        qudt:unit unit:A-PER-CentiM2 ;
+        cv:condition cv:CurrentDensity .
+
+    sub:quantityCondition__1 qudt:numericValue 65.0 ;
+        qudt:unit unit:DEG_C ;
+        cv:condition cv:Temperature .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L741-L783> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "ab3bcfb685d28322b6b400e697dba5f080369c5ce0cb6b1d3a3554db13b3f9f1" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "d6lnUCAP97klYKL9Qm7ZXhrrBJJRusIVHKqr5GwH9kpkyo/9XSd6UzU+6U6r2TEeHhjq/eLRBoCvv3izuU/mhgXwCDDbgZXaIEl4bqIutPLs1koCek/upbUh51GnTsRTvjSj9UaL6BQ1oErcznm/AdhWyy5t+J5s2OeNwaFb+35rH7Kqtq/FSsokY410nBEl9idwsO+Kh0n3dcjxFWAvPup5EEk4JBmC1r3R9LyJBG+73g3zoN0h5hobrZpisqARM6KP5/W2F1gZLsCe2oMuCIY5xjVWaYyXro4ic399bLB12WiwQ43GVAKzJ8j19KCjqk0g1uwAAWSATtSKkegndg==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim ref40_peng2023__009: PEM electrolyser with Pd-55 (2 mg cm–2) as both cathode and anode catalysts, cell voltage at a stated current density 1.664 V" ;
+        dcterms:created "2026-11-18T14:38:03+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
+}
+

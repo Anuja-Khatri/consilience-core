@@ -3,62 +3,80 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix sub: <https://w3id.org/np/RA49qRFK9XtXtIu5XcFvkTDIo-rzeFSGpfavK5oim8j58/> .
-@prefix this: <https://w3id.org/np/RA49qRFK9XtXtIu5XcFvkTDIo-rzeFSGpfavK5oim8j58> .
+@prefix sub: <https://w3id.org/np/RAts0acUjDGEa2bpHZ4p6K4uA8CoJwQI-3i3pTI6AktWE/> .
+@prefix this: <https://w3id.org/np/RAts0acUjDGEa2bpHZ4p6K4uA8CoJwQI-3i3pTI6AktWE> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sub:Head {
-    this: a np:Nanopublication ;
-        np:hasAssertion sub:assertion ;
-        np:hasProvenance sub:provenance ;
-        np:hasPublicationInfo sub:pubinfo .
-}
-
 sub:assertion {
-    <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L80-L119> a cv:ClaimCard ;
+    sub:claim a cv:MeasuredClaim ;
         dcterms:identifier "2609.30133__003" ;
         dcterms:source <https://arxiv.org/abs/2609.30133> ;
-        cv:axis "overpotential_at_current_density" ;
-        cv:claimKind "performance_value" ;
-        cv:conditionUnstated "anneal_temperature",
-            "electrolyte",
-            "loading",
-            "ph",
-            "prior_operation_duration",
-            "protocol_tier",
-            "substrate",
-            "temperature" ;
-        cv:hasCondition sub:condition,
-            sub:condition__1 ;
+        cv:axis cv:OverpotentialAtCurrentDensity ;
+        cv:claimKind cv:PerformanceValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:Electrolyte,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
         cv:hasQuantity sub:quantity ;
-        cv:measurability "measurable_now" ;
-        cv:measurableWith "cp_chronopotentiometry" ;
-        cv:objectName "overpotential" ;
-        cv:relation "has_overpotential" ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith obo:CHMO_0000017 ;
         cv:sourceSentence "During the initial 10 mA cm-2 hold, InMnPdOx held a stable overpotential of 0.45 V (not iR-corrected), within 40 mV of RuOx (0.41 V) and roughly 90 mV below the best non-PGM catalyst." ;
+        cv:statesCategoricalCondition sub:categoricalCondition,
+            sub:categoricalCondition__1 ;
+        cv:statesQuantityCondition sub:quantityCondition ;
         cv:subjectName "InMnPdOx" .
 
-    sub:condition cv:conditionName "current_density" ;
-        cv:conditionValueJson "{\"normalization\": \"geometric\", \"unit\": \"mA/cm^2\", \"value\": 10.0}" .
+    sub:categoricalCondition cv:condition cv:CurrentDensityNormalization ;
+        cv:conditionValue cv:GeometricArea .
 
-    sub:condition__1 cv:conditionName "ir_correction" ;
-        cv:conditionValueJson "false" .
+    sub:categoricalCondition__1 cv:condition cv:IRCorrection ;
+        cv:conditionValue cv:NotIRCorrected .
 
-    sub:quantity a schema:QuantitativeValue ;
-        schema:unitText "V" ;
-        schema:value 0.45 ;
-        cv:bound "exact" .
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 0.45 ;
+        qudt:unit unit:V ;
+        cv:bound cv:ExactValue ;
+        cv:unitAsWritten "V" .
+
+    sub:quantityCondition qudt:numericValue 10.0 ;
+        qudt:unit cv:MilliA-PER-CentiM2 ;
+        cv:condition cv:CurrentDensity .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "ye0N5BV11frfUdy0ceh7iWQOi3XCcy+3h0CFii8LPo+FHDSypZGjUO5KFEazTY29IH3WDeHWQrCLLQtdkimqRT9UQ3qk9yEBmpce1CGsOs/DWCJi4DmuvE9YWKWI2xlHaJBy8bDdMYhuMOq/N1/whOcBorGHj20/IL2KazQvL8eX/Nj1R+OUYCK673hUGRys2YgC0pQjk/kaG6Kzphoj1OQ4/CIBIrLti8n4XQF5GbqQXGAV1qgoG4syC0WPRUSrkgFVBM3ZO32RdFk51hhVFfI04ph60fiA8dt3ipn2rqMprwFMOXymK9jmf/VmK6k3RGpGbqE3iKeWhFlPaL9LLQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim 2609.30133__003: InMnPdOx, overpotential at a stated current density 0.45 V" ;
+        dcterms:created "2026-11-18T14:38:00+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
 }
 
 sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
         prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L80-L119> ;
         cv:codeVersion "lab-extension-0.1.0" ;
         cv:contentHash "b5dd40fd6d959eb8e330a4587c72a9ee2ac340a7564030dc717c367fe2e20a55" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
         cv:hashMethod "card-sha256-v0" ;
         cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
         cv:rulesVersion "comparability-v0.1" ;
@@ -66,21 +84,10 @@ sub:provenance {
         cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
 }
 
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "UOqBr8EO28hM1DBDj8L0OFVnc7RCNaazyTkxQ2Gr7UHHROgrmW0e1jJFdHRZ/DO6RUvzUb7CKMbFmk61G8s8CjGYZ3KHDB+0rNhPhK8+EWLpQ0evsM55qUxol0C2xiP/6cz70zNTGgnDqNxmdwalLOc5GrjBrSR0PewW78XtkT93cJ9m/4KQapuQwLotluTE4qRifo/cJp8cPOmzplR9XEiqQ4XEBKaori5nRCz0IEtHo9zgnL3eyu9I5kFRIbttocCppjVyw9HIBAaFgCFray2i9ZEDVKdnM4uS3uo65l4ye8aCPdMyEnRxAHw4boYC9Xpv7OwRvfW6+2p/BiwSgQ==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Claim card 2609.30133__003: InMnPdOx, overpotential_at_current_density 0.45 V" ;
-        dcterms:created "2026-11-16T19:28:46+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:ClaimCard ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/templateVersion> .
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
 }
 

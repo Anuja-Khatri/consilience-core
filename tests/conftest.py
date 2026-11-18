@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 # The nanopublication exporter is an optional extra (nanopub needs Python 3.12+). Without
 # it, its tests are not collected; the core tests (units, compare, check, verify) still run.
 if importlib.util.find_spec("nanopub") is None:
-    collect_ignore = ["test_mapping.py", "test_no_keys.py", "test_theories.py",
-                      "test_trig.py"]
+    collect_ignore = ["test_mapping.py", "test_no_keys.py", "test_review_v2.py",
+                      "test_theories.py", "test_trig.py"]
 RECORDS = sorted((ROOT / "pilot" / "records").glob("*.json"))
 THEORY_RECORDS = sorted((ROOT / "pilot" / "theories" / "records").glob("*.json"))
 LEDGER_RAW = "https://raw.githubusercontent.com/Anuja-Khatri/consilience-ledger"

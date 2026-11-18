@@ -1,21 +1,23 @@
 @prefix cv: <https://theconsilience.io/ns/cv#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix sub: <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/> .
-@prefix this: <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8> .
+@prefix sub: <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/> .
+@prefix this: <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 sub:assertion {
     sub:templateVersion a ntemplate:AssertionTemplate ;
-        rdfs:label "Consilience: claim card" ;
-        dcterms:description "One measured claim as an approved Consilience claim card: the exact source sentence, the source document, the subject, the quantity on its axis with its unit, the conditions the sentence states and the conditions it does not state. Comparisons between claims are made only from these cards." ;
-        ntemplate:hasNanopubLabelPattern "Claim card ${claimId}" ;
+        rdfs:label "Consilience: measured claim (claim card)" ;
+        dcterms:description "One measured claim, introduced with its own IRI, which stays the same if a corrected card supersedes this one. It gives the exact source sentence, the source document, the subject, the quantity on its axis (a QUDT numeric value and unit, with the bound and the unit as written), the conditions the sentence states (each as a condition IRI with a number and unit, or with an IRI value such as a ChEBI electrolyte) and the conditions it does not state. Comparisons between claims are made only from these cards. Where the card comes from (its record at a pinned commit, and its content hash) is in the provenance." ;
+        ntemplate:hasNanopubLabelPattern "Measured claim ${claimId}" ;
         ntemplate:hasStatement sub:st01,
             sub:st02,
             sub:st03,
@@ -23,33 +25,41 @@ sub:assertion {
             sub:st05,
             sub:st06,
             sub:st07,
-            sub:st08,
-            sub:st09,
             sub:st10,
             sub:st11,
             sub:st12,
             sub:st13,
             sub:st14,
             sub:st15,
-            sub:st16,
-            sub:st17,
-            sub:st18,
-            sub:st19,
+            sub:st20,
             sub:st21,
+            sub:st22,
+            sub:st23,
             sub:st30,
-            sub:st31 ;
+            sub:st31,
+            sub:st32,
+            sub:st40,
+            sub:st41,
+            sub:st42,
+            sub:st50,
+            sub:st51,
+            sub:st52 ;
         ntemplate:hasTag "Consilience" ;
-        ntemplate:hasTargetNanopubType cv:ClaimCard .
+        ntemplate:hasTargetNanopubType cv:MeasuredClaim .
 
     dcterms:identifier rdfs:label "has the identifier" .
 
     dcterms:source rdfs:label "comes from the source document" .
 
-    schema:QuantitativeValue rdfs:label "quantitative value" .
+    qudt:QuantityValue rdfs:label "quantity value" .
 
-    schema:unitText rdfs:label "has the unit" .
+    cv:ApproximateValue rdfs:label "approximate value" .
 
-    schema:value rdfs:label "has the numeric value" .
+    cv:ExactValue rdfs:label "exact value" .
+
+    cv:LowerBound rdfs:label "lower bound" .
+
+    cv:UpperBound rdfs:label "upper bound" .
 
     cv:axis rdfs:label "is on the quantity axis" .
 
@@ -57,65 +67,68 @@ sub:assertion {
 
     cv:claimKind rdfs:label "is of claim kind" .
 
-    cv:conditionName rdfs:label "has the condition name" .
-
     cv:conditionUnstated rdfs:label "does not state the condition" .
 
-    cv:conditionValueJson rdfs:label "has the condition value (JSON)" .
-
-    cv:hasCondition rdfs:label "states the condition" .
+    cv:conditionValue rdfs:label "has the condition value" .
 
     cv:hasQuantity rdfs:label "states the quantity" .
 
     cv:measurability rdfs:label "has measurability" .
 
-    cv:measurableWith rdfs:label "is measurable with" .
-
-    cv:objectName rdfs:label "measures" .
-
-    cv:relation rdfs:label "has the relation" .
+    cv:measurableWith rdfs:label "is measurable with the technique" .
 
     cv:sourceSentence rdfs:label "has the source sentence" .
 
+    cv:statesCategoricalCondition rdfs:label "states the categorical condition" .
+
+    cv:statesQuantityCondition rdfs:label "states the quantitative condition" .
+
     cv:subjectName rdfs:label "is about the subject" .
 
-    sub:axis a ntemplate:LiteralPlaceholder ;
+    cv:unitAsWritten rdfs:label "has the unit as written" .
+
+    sub:axis a ntemplate:ExternalUriPlaceholder ;
         rdfs:label "quantity axis" .
 
-    sub:bound a ntemplate:LiteralPlaceholder ;
-        rdfs:label "bound (exact, approx, lower, upper)" .
+    sub:bound a ntemplate:RestrictedChoicePlaceholder ;
+        rdfs:label "bound" ;
+        ntemplate:possibleValue cv:ApproximateValue,
+            cv:ExactValue,
+            cv:LowerBound,
+            cv:UpperBound .
+
+    sub:cCondition a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "condition" .
+
+    sub:cValue a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "value (an IRI, e.g. a ChEBI entity)" .
 
     sub:claimId a ntemplate:LiteralPlaceholder ;
         rdfs:label "claim identifier in the source repository" .
 
-    sub:claimKind a ntemplate:LiteralPlaceholder ;
+    sub:claimKind a ntemplate:ExternalUriPlaceholder ;
         rdfs:label "claim kind" .
-
-    sub:conditionName a ntemplate:LiteralPlaceholder ;
-        rdfs:label "condition name" .
-
-    sub:conditionValue a ntemplate:LiteralPlaceholder ;
-        rdfs:label "condition value as JSON" .
 
     sub:document a ntemplate:ExternalUriPlaceholder ;
         rdfs:label "source document" .
 
-    sub:instrumentId a ntemplate:LiteralPlaceholder ;
-        rdfs:label "instrument class" .
-
-    sub:measurability a ntemplate:LiteralPlaceholder ;
+    sub:measurability a ntemplate:ExternalUriPlaceholder ;
         rdfs:label "measurability" .
 
-    sub:objectName a ntemplate:LiteralPlaceholder ;
-        rdfs:label "what is measured" .
+    sub:qCondition a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "condition" .
 
-    sub:relation a ntemplate:LiteralPlaceholder ;
-        rdfs:label "relation" .
+    sub:qUnit a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "unit (QUDT or cv)" .
+
+    sub:qValue a ntemplate:LiteralPlaceholder ;
+        rdfs:label "numeric value" ;
+        ntemplate:hasDatatype xsd:decimal .
 
     sub:sentence a ntemplate:LongLiteralPlaceholder ;
         rdfs:label "exact source sentence" .
 
-    sub:st01 rdf:object cv:ClaimCard ;
+    sub:st01 rdf:object cv:MeasuredClaim ;
         rdf:predicate rdf:type ;
         rdf:subject sub:claim .
 
@@ -135,115 +148,150 @@ sub:assertion {
         rdf:predicate cv:subjectName ;
         rdf:subject sub:claim .
 
-    sub:st06 a ntemplate:OptionalStatement ;
-        rdf:object sub:objectName ;
-        rdf:predicate cv:objectName ;
-        rdf:subject sub:claim .
-
-    sub:st07 a ntemplate:OptionalStatement ;
-        rdf:object sub:relation ;
-        rdf:predicate cv:relation ;
-        rdf:subject sub:claim .
-
-    sub:st08 rdf:object sub:claimKind ;
+    sub:st06 rdf:object sub:claimKind ;
         rdf:predicate cv:claimKind ;
         rdf:subject sub:claim .
 
-    sub:st09 rdf:object sub:axis ;
+    sub:st07 rdf:object sub:axis ;
         rdf:predicate cv:axis ;
         rdf:subject sub:claim .
 
-    sub:st18 a ntemplate:OptionalStatement,
+    sub:st40 a ntemplate:OptionalStatement,
             ntemplate:RepeatableStatement ;
         rdf:object sub:unstatedCondition ;
         rdf:predicate cv:conditionUnstated ;
         rdf:subject sub:claim .
 
-    sub:st19 a ntemplate:OptionalStatement ;
+    sub:st41 a ntemplate:OptionalStatement ;
         rdf:object sub:measurability ;
         rdf:predicate cv:measurability ;
         rdf:subject sub:claim .
 
-    sub:st21 a ntemplate:OptionalStatement ;
-        rdf:object sub:instrumentId ;
+    sub:st42 a ntemplate:OptionalStatement ;
+        rdf:object sub:technique ;
         rdf:predicate cv:measurableWith ;
         rdf:subject sub:claim .
 
-    sub:st30 a ntemplate:GroupedStatement ;
+    sub:st50 a ntemplate:GroupedStatement ;
         ntemplate:hasStatement sub:st10,
             sub:st11,
             sub:st12,
             sub:st13,
-            sub:st14 .
+            sub:st14,
+            sub:st15 .
 
-    sub:st31 a ntemplate:GroupedStatement,
+    sub:st51 a ntemplate:GroupedStatement,
             ntemplate:OptionalStatement,
             ntemplate:RepeatableStatement ;
-        ntemplate:hasStatement sub:st15,
-            sub:st16,
-            sub:st17 .
+        ntemplate:hasStatement sub:st20,
+            sub:st21,
+            sub:st22,
+            sub:st23 .
+
+    sub:st52 a ntemplate:GroupedStatement,
+            ntemplate:OptionalStatement,
+            ntemplate:RepeatableStatement ;
+        ntemplate:hasStatement sub:st30,
+            sub:st31,
+            sub:st32 .
 
     sub:subjectName a ntemplate:LiteralPlaceholder ;
         rdfs:label "subject (e.g. the material)" .
 
-    sub:unit a ntemplate:LiteralPlaceholder ;
-        rdfs:label "unit as written" .
+    sub:technique a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "measurement technique" .
 
-    sub:unstatedCondition a ntemplate:LiteralPlaceholder ;
+    sub:unit a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "unit (QUDT or cv)" .
+
+    sub:unitAsWritten a ntemplate:LiteralPlaceholder ;
+        rdfs:label "unit as written in the source" .
+
+    sub:unstatedCondition a ntemplate:ExternalUriPlaceholder ;
         rdfs:label "condition not stated" .
 
     sub:value a ntemplate:LiteralPlaceholder ;
         rdfs:label "numeric value" ;
         ntemplate:hasDatatype xsd:decimal .
 
+    qudt:numericValue rdfs:label "has the numeric value" .
+
+    qudt:unit rdfs:label "in the unit" .
+
     rdf:type rdfs:label "is a" .
 
-    cv:ClaimCard rdfs:label "claim card" .
+    cv:MeasuredClaim rdfs:label "measured claim" .
+
+    cv:condition rdfs:label "concerns the condition" .
 
     sub:st10 rdf:object sub:quantity ;
         rdf:predicate cv:hasQuantity ;
         rdf:subject sub:claim .
 
-    sub:st11 rdf:object schema:QuantitativeValue ;
+    sub:st11 rdf:object qudt:QuantityValue ;
         rdf:predicate rdf:type ;
         rdf:subject sub:quantity .
 
     sub:st12 rdf:object sub:value ;
-        rdf:predicate schema:value ;
+        rdf:predicate qudt:numericValue ;
         rdf:subject sub:quantity .
 
     sub:st13 rdf:object sub:unit ;
-        rdf:predicate schema:unitText ;
+        rdf:predicate qudt:unit ;
         rdf:subject sub:quantity .
 
     sub:st14 rdf:object sub:bound ;
         rdf:predicate cv:bound ;
         rdf:subject sub:quantity .
 
-    sub:st15 rdf:object sub:condition ;
-        rdf:predicate cv:hasCondition ;
+    sub:st15 rdf:object sub:unitAsWritten ;
+        rdf:predicate cv:unitAsWritten ;
+        rdf:subject sub:quantity .
+
+    sub:st20 rdf:object sub:quantityCondition ;
+        rdf:predicate cv:statesQuantityCondition ;
         rdf:subject sub:claim .
 
-    sub:st16 rdf:object sub:conditionName ;
-        rdf:predicate cv:conditionName ;
-        rdf:subject sub:condition .
+    sub:st21 rdf:object sub:qCondition ;
+        rdf:predicate cv:condition ;
+        rdf:subject sub:quantityCondition .
 
-    sub:st17 rdf:object sub:conditionValue ;
-        rdf:predicate cv:conditionValueJson ;
-        rdf:subject sub:condition .
+    sub:st22 rdf:object sub:qValue ;
+        rdf:predicate qudt:numericValue ;
+        rdf:subject sub:quantityCondition .
 
-    sub:condition a ntemplate:LocalResource ;
-        rdfs:label "a stated condition" .
+    sub:st23 rdf:object sub:qUnit ;
+        rdf:predicate qudt:unit ;
+        rdf:subject sub:quantityCondition .
+
+    sub:st30 rdf:object sub:categoricalCondition ;
+        rdf:predicate cv:statesCategoricalCondition ;
+        rdf:subject sub:claim .
+
+    sub:st31 rdf:object sub:cCondition ;
+        rdf:predicate cv:condition ;
+        rdf:subject sub:categoricalCondition .
+
+    sub:st32 rdf:object sub:cValue ;
+        rdf:predicate cv:conditionValue ;
+        rdf:subject sub:categoricalCondition .
+
+    sub:categoricalCondition a ntemplate:LocalResource ;
+        rdfs:label "a stated condition whose value is an IRI" .
+
+    sub:quantityCondition a ntemplate:LocalResource ;
+        rdfs:label "a stated condition with a number and a unit" .
 
     sub:quantity a ntemplate:LocalResource ;
         rdfs:label "the stated quantity" .
 
-    sub:claim a ntemplate:ExternalUriPlaceholder ;
-        rdfs:label "the claim card (its location in the source repository)" .
+    sub:claim a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this claim (its IRI is the claim's identity)" .
 }
 
 sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
 }
 
 sub:Head {
@@ -256,13 +304,15 @@ sub:Head {
 sub:pubinfo {
     sub:sig npx:hasAlgorithm "RSA" ;
         npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "tVoskWcuHSHH/i5FptdeRnQ6ktLWSFBE2RtX9C8r9KdhZlq7ECF6E3XDggoy72WMken6fbP6gB1AZMQ1zqh0NSiCkuje/gBYFI83OQDDMN8Z8NyciHCRe4IUEsQB5PIQv6s5UMRR9d/TQoh8xqUNfVir63A+Uuk07HRZIzk+5/mGI5bk8V03I4Ma6WBdTUXqQFbZk2Mbo9AIowee4bRafE1sM2TMw6udRlidq+ZREYOUfl/W/9kqq3NNLL5w1Scs774bp0u4i5Sgp/uODcL8+kyBeSyXFA6YBbd8Ykqj2DBw3FLHnWvGg5Wi8YYDU83TCRjyWt+pTEsIQr4FpXX+iQ==" ;
+        npx:hasSignature "wHwmKmJ4/6nrgQvNGikeMIEgNRjV/00dyjhYKPzPDL9smIEsuGrFr7zy8rkdFtawYJlKTnPzVLuW5/FeuJKi50oTPjEGwrKSGPoN1M2mEY/6M8NdE+Fqiq9Zp37zCMTjb4+/DVz3VWH0CXIMzKrBYzZppEFvdI3fk/D2hRm/9BfyoasYI01v+//LrPe9TgWR8U8Kk4yFnWpVxA6diYmb6VoA9sVCkGO9NCrSt/zNfGSZ90mYc8RXnK4gJ+onir+alnYqS4n7WZH6tlGhdV1G/densXS7u/UuVhM7e8yIlC5Utl5XOFnKb6TO+ujkzISbx8fLezM3FEmjkbwRWXKgMw==" ;
         npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
 
-    this: rdfs:label "Consilience: claim card" ;
-        dcterms:created "2026-11-16T19:27:46Z"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
+
+    this: rdfs:label "Consilience: measured claim (claim card)" ;
+        dcterms:created "2026-11-18T14:37:45Z"^^xsd:dateTime ;
+        dcterms:creator orcid:0009-0008-3375-7858 ;
         dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
         npx:embeds sub:templateVersion ;
         ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;

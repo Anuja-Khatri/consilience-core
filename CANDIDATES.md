@@ -1,5 +1,14 @@
 # Candidate nanopublications: prepared, NOT published
 
+> **v1 format (16-17 Nov 2026), not rebuilt for v2.** These candidates were prepared with
+> the v1 exporter: claims identified by GitHub line ranges, conditions as JSON strings, the
+> v1 "testable disagreement" template. v2 (see [`PILOT.md`](PILOT.md), "Changes from v1")
+> changed all three after Tobias Kuhn's review, so these files are kept only as a record of
+> what was considered. `scripts/build_ledger_candidates.py` and
+> `scripts/build_theory_candidates.py` were written against v1 and do not run against the
+> v2 exporter: under v2 a refusal needs the claim IRIs of published claim cards
+> (`pilot/claims.json`), so any rebuild publishes the claim cards first.
+
 Nothing in `candidates/` has been signed or sent to any server, test or live. The TriG
 files are unsigned and use the temporary nanopub namespace. They cite the templates and
 the agent introduced on the Knowledge Pixels **test** registry; publishing on the live

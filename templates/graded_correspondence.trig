@@ -1,30 +1,21 @@
 @prefix cv: <https://theconsilience.io/ns/cv#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RAliOt1I-l8MmIehzK8wqRenfljWJk4SED3XyJmVCIftY/> .
-@prefix this: <https://w3id.org/np/RAliOt1I-l8MmIehzK8wqRenfljWJk4SED3XyJmVCIftY> .
+@prefix sub: <https://w3id.org/np/RAKPMZ4Fshl3xW2kdiIybJxhts61nTmWsGvfXFDTs9vOg/> .
+@prefix this: <https://w3id.org/np/RAKPMZ4Fshl3xW2kdiIybJxhts61nTmWsGvfXFDTs9vOg> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-}
-
-sub:Head {
-    this: a np:Nanopublication ;
-        np:hasAssertion sub:assertion ;
-        np:hasProvenance sub:provenance ;
-        np:hasPublicationInfo sub:pubinfo .
-}
 
 sub:assertion {
     sub:templateVersion a ntemplate:AssertionTemplate ;
         rdfs:label "Consilience: claim A corresponds to claim B at grade X" ;
-        dcterms:description "Two claims were compared by structure and judged to correspond at a grade on a four-rung ladder, from rung 1 (structural identity) to rung 4 (thematic resonance only). The ceiling says what that grade does not license. The equivocation check records whether the correspondence survives removing the vocabulary the two claims share." ;
+        dcterms:description "Two claims were compared by structure and judged to correspond at a grade on a four-rung ladder, from rung 1 (structural identity) to rung 4 (thematic resonance only). The ceiling says what that grade does not license. The equivocation check records whether the correspondence survives removing the vocabulary the two claims share. Claim A and claim B are the claim IRIs their claim-card nanopublications introduce." ;
         ntemplate:hasNanopubLabelPattern "Correspondence at grade ${grade}: ${identifier}" ;
         ntemplate:hasStatement sub:st01,
             sub:st02,
@@ -60,10 +51,10 @@ sub:assertion {
         rdfs:label "what this grade does not license" .
 
     sub:claimA a ntemplate:ExternalUriPlaceholder ;
-        rdfs:label "claim A (link to its claim card)" .
+        rdfs:label "claim A (the claim IRI its claim card introduces)" .
 
     sub:claimB a ntemplate:ExternalUriPlaceholder ;
-        rdfs:label "claim B (link to its claim card)" .
+        rdfs:label "claim B (the claim IRI its claim card introduces)" .
 
     sub:equivocation a ntemplate:LiteralPlaceholder ;
         rdfs:label "equivocation-check result" .
@@ -131,18 +122,31 @@ sub:assertion {
 sub:pubinfo {
     sub:sig npx:hasAlgorithm "RSA" ;
         npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "gvmgUQeT2hmmViH15qdEtElC0uNDWAA9xpvtmDGUwZu6TRrC+VhCSiUunnKEAwavO88jt0/+5AVSTbCzSouVTgfmM6JIZhkrKMpFtAQ7WEowu8J+sgOrFkX2a1XPtmvf7JIqh1uZBGkI2uRwxMJBDCk8gq/I3R4RGdZGsxflCJfSfmwafy23veATa7RTYzVLar2MVYrbD27DQKLPH5+T8qIwL75NVhPkdH2wqWdpFl+SeIpZn1fn/FtrM5eBL39e73jEVmlhdJEUfJ8aIUWurPVtpofOcf0VINb/lnN7nY+TUjje/9I2DgIYrMY4QFJ08Y2EL+8WT4D/aII6m67Y8Q==" ;
+        npx:hasSignature "VmwJGDoWQqrozfH/MJ7T+wBE9nL3JryBFvFdjHy+eK2ZMEBa7Z6chxxCDR0Qeon2XV5b1JkouR/+374gu/JEdaoD7RaIB/3G70uHCeswaKLZiv6KphtE0PIUNsxRGClq4+y2LSmdJONH1ozOxtVrNOG0W9cQq9UmV7BYrV0WKqS1Qk0YHzKnbqdR92JLyva3hLgukXWK6c8OvyHuG9HUktC+E9m/p2uq1Qv0S/wrsquWJN2NIoDMCNID4U8rysO8L8C9C7QiKMwnApAj8qIFs4rpx1c8Pp8q5RPuFKNBKHyicY6/qYypeGe+U29KjHy/mR1tCmJRjVyoaEqQXp/lTg==" ;
         npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
 
     this: rdfs:label "Consilience: claim A corresponds to claim B at grade X" ;
-        dcterms:created "2026-11-16T19:27:40Z"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:created "2026-11-18T14:37:39Z"^^xsd:dateTime ;
+        dcterms:creator orcid:0009-0008-3375-7858 ;
         dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
         npx:embeds sub:templateVersion ;
         ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
         ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
             <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
         ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
 }
 

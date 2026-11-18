@@ -3,70 +3,58 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix sub: <https://w3id.org/np/RA1HAG4dZ9aJB5NCD-Ig6yATyHiCT9uRnTYwJ0Hm_7vKg/> .
-@prefix this: <https://w3id.org/np/RA1HAG4dZ9aJB5NCD-Ig6yATyHiCT9uRnTYwJ0Hm_7vKg> .
+@prefix sub: <https://w3id.org/np/RAwrBLENKiXnwhDiTib8_27psAe1kARtzKe0yzcfS_WeA/> .
+@prefix this: <https://w3id.org/np/RAwrBLENKiXnwhDiTib8_27psAe1kARtzKe0yzcfS_WeA> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 sub:assertion {
-    <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866> a cv:ClaimCard ;
+    sub:claim a cv:MeasuredClaim ;
         dcterms:identifier "ref40_peng2023__011" ;
         dcterms:source <https://doi.org/10.1093/nsr/nwac108> ;
-        cv:axis "operational_stability_duration" ;
-        cv:claimKind "stability_value" ;
-        cv:conditionUnstated "anneal_temperature",
-            "electrolyte",
-            "ir_correction",
-            "loading",
-            "ph",
-            "prior_operation_duration",
-            "protocol_tier",
-            "substrate",
-            "temperature" ;
-        cv:hasCondition sub:condition ;
+        cv:axis cv:OperationalStabilityDuration ;
+        cv:claimKind cv:StabilityValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:Electrolyte,
+            cv:IRCorrection,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
         cv:hasQuantity sub:quantity ;
-        cv:measurability "measurable_now" ;
-        cv:measurableWith "cp_chronopotentiometry" ;
-        cv:objectName "stability_duration" ;
-        cv:relation "has_stability_duration" ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith obo:CHMO_0000017 ;
         cv:sourceSentence "Furthermore, the high durability of >40 h for Pd-55 at 100 mA cm–2 also confirms that hierarchical Pd is quite stable under a large current density." ;
+        cv:statesCategoricalCondition sub:categoricalCondition ;
+        cv:statesQuantityCondition sub:quantityCondition ;
         cv:subjectName "Pd-55" .
 
-    sub:condition cv:conditionName "current_density" ;
-        cv:conditionValueJson "{\"normalization\": \"geometric\", \"unit\": \"mA/cm^2\", \"value\": 100.0}" .
+    sub:categoricalCondition cv:condition cv:CurrentDensityNormalization ;
+        cv:conditionValue cv:GeometricArea .
 
-    sub:quantity a schema:QuantitativeValue ;
-        schema:unitText "h" ;
-        schema:value 40.0 ;
-        cv:bound "lower" .
-}
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 40.0 ;
+        qudt:unit unit:HR ;
+        cv:bound cv:LowerBound ;
+        cv:unitAsWritten "h" .
 
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "YpOghu5YqR58Iqpkk0w87Tk0+XwjO+exlKkQsSkwmmmc2qZDAknrKekC7jePRFmVeGx1BhclTRiFqkeHYvivpiTUAc2gimD35e5oj5gZ3/yBLRY4409UrDwyX8IykZ6OeRzlSmCCD5hlbYQeKijqWL1MhjxXxZ/7GQRuXEG/5ATHmgfL55ns3pDC4j0rQVa4UCNg3akLynxbCwHCEd4rcEmsobN/Lw9TL7eWreVEkQkUiovumQENxokxLJ33GJdUdFwwYN/iFcLmWS1GEp2PBqR1uUUdh5ImVnMKcVPKKDGonO71ypaStsPbUDDPUQWEenE3zjkHnpm45/RyXY2nJA==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Claim card ref40_peng2023__011: Pd-55, operational_stability_duration 40.0 h (bound: lower)" ;
-        dcterms:created "2026-11-16T19:28:44+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:ClaimCard ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/templateVersion> .
+    sub:quantityCondition qudt:numericValue 100.0 ;
+        qudt:unit cv:MilliA-PER-CentiM2 ;
+        cv:condition cv:CurrentDensity .
 }
 
 sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
         prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L827-L866> ;
         cv:codeVersion "lab-extension-0.1.0" ;
         cv:contentHash "2230f435fe816a257d689ec4c9f9a786b257df301d34697029be09d29c316778" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
         cv:hashMethod "card-sha256-v0" ;
         cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
         cv:rulesVersion "comparability-v0.1" ;
@@ -79,5 +67,24 @@ sub:Head {
         np:hasAssertion sub:assertion ;
         np:hasProvenance sub:provenance ;
         np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "imsfg8hKDAPHkj3nvrn07EKfJ//j8mYCxHPqi/mV/tLn0S73BhmFOmczp7r7/N3K6EzAkN/sXg1z5xvtFGSb8TnuecOHy0wkJ1EIWQ7U4Wo6mhg7fawN0ea3F2vLnnIJGpwpyCP9e2cLR/23XMjTrgpor8u3twbSmj6gg/IXiYcg9qqPFiyQdlUF4f/P5DPzIcrrO8Qh/Mkj5jvrn+k2l6EBKrQIGrHVB967QZqX5woWam/srgYx1PqnL+V9M19IUXOUvW9lZyt6qCr0Azk/N6KV78C88FtnB7tr8oq07w0czLDJEuQMwpf9K1v58C95scD1l/mRyX/vj1AMWEk1BA==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim ref40_peng2023__011: Pd-55, operational stability duration 40 h (lower bound)" ;
+        dcterms:created "2026-11-18T14:37:58+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
 }
 

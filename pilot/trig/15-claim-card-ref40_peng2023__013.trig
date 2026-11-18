@@ -1,0 +1,82 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RA8Cv0LXELNkuYr36peGb3odESK3zqKEnZ-BHHjl60djs/> .
+@prefix this: <https://w3id.org/np/RA8Cv0LXELNkuYr36peGb3odESK3zqKEnZ-BHHjl60djs> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "YvbeXfYBg9oP4VktIasXZVRfrq8/IJbi95qbvDxO4OFETU/+LIcf/zTHqFq8yWMTYF7HZ6KtwHDe8VqQI8Co/GO/6jHzks9wvwxshXsy2bToB/65vAMhtDvdkt70Cc97iH/hPhddum6ID1CtpPozrkB5QiDk8yUDrPTC3toG/bLH67WBBUlwsH6xP+UhdZjVzok9Tc0e26JYHQZCvaIES8XD8xgGI9247aRhX2ahq7saQvHUxaR7clItfEZ1LiLl3zdlNUXKkhR3yr8Bi3d2HMG7Wp9txyeTSP+GT/BuHnVf+B/LrcRkxz3BcSDJPBVROwIrEDyo/lrOdDtMqoyXWQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim ref40_peng2023__013: PdCoO2 precursor (without etching), overpotential at a stated current density 528 mV" ;
+        dcterms:created "2026-11-18T14:38:11+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L867-L902> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "32b722e40338e672912a17fc1b4155df1801b6d907ef350777a4f73e96c7c7c9" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:assertion {
+    sub:claim a cv:MeasuredClaim ;
+        dcterms:identifier "ref40_peng2023__013" ;
+        dcterms:source <https://doi.org/10.1093/nsr/nwac108> ;
+        cv:axis cv:OverpotentialAtCurrentDensity ;
+        cv:claimKind cv:PerformanceValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:CurrentDensity,
+            cv:Electrolyte,
+            cv:IRCorrection,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
+        cv:hasQuantity sub:quantity ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith obo:CHMO_0000017 ;
+        cv:sourceSentence "In contrast, the PdCoO2 precursors without etching display poor catalytic activity with an overpotential of 528 mV (Supplementary Fig. S9b)." ;
+        cv:subjectName "PdCoO2 precursor (without etching)" .
+
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 528.0 ;
+        qudt:unit unit:MilliV ;
+        cv:bound cv:ExactValue ;
+        cv:unitAsWritten "mV" .
+}
+

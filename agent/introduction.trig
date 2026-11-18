@@ -4,10 +4,11 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/> .
-@prefix this: <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc> .
+@prefix sub: <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/> .
+@prefix this: <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 sub:Head {
@@ -17,10 +18,6 @@ sub:Head {
         np:hasPublicationInfo sub:pubinfo .
 }
 
-sub:provenance {
-    sub:assertion prov:wasAttributedTo sub:consilience-engine .
-}
-
 sub:assertion {
     sub:decl npx:declaredBy sub:consilience-engine ;
         npx:hasAlgorithm "RSA" ;
@@ -28,21 +25,25 @@ sub:assertion {
 
     sub:consilience-engine a npx:SoftwareAgent,
             npx:SoftwareTool ;
-        frbr:owner sub:responsible-person ;
+        frbr:owner orcid:0009-0008-3375-7858 ;
         foaf:name "The Consilience engine" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
 }
 
 sub:pubinfo {
     sub:sig npx:hasAlgorithm "RSA" ;
         npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "L2utp4FcJaTsf9Ii13Kcuqtf/62rAFzPtYTQmm7Eaq7MztCV+b7SAQ8/rE8xrfVocKX/FtS2kdKJWcepBWnwYqCCefi3M/vKbx3WcAJ7+Ef2I0WjlH6NBnR2GASoF79cPgffxAfpeE2+y6sOwms6HGakEE9y9U31RZz9ejmhaZHqQAzRIwbVHShaAS1UivPp5y2jOAt3+sMg7sEz587F+7vqD5fUzmIflyEtlDD5JJPARMRJlSMa43RMD21X2O0KaMX0CY25f+DJFViU00Uz7ruOI6OF+uHqSkE2KG1iU7Xtq0omiM9Om/95S+u8vlUz/I4bwEHCugX6K11QRUoYXA==" ;
+        npx:hasSignature "M0fwI1ABYFyWeBEkO0PLzjav5HWP02lY64yn7hoOVAqKFXGtxuNAaqYU2g5qoCsdV/45YCGjj2mthQ36EiDA4/wzc7GN2vccobKfKF3y7CvfNY5KivH7LayVzFQnvR7mg35NfZ+C4BHGfbtwI0/ybmw9g3d6KAvB8DL/3lsj+JYJokmrVFVlhpgflKL/M2bBLBfnammCYlQxrpDgzriC2rNIYJf+vqm+rT05mpIqZzqnbUr7JK62EZUhF/4+eGw4/V5Z6p5KAZzevlZ65G61zlkcX2NaqXZOlV/2LFnhmeO3JUIkj36OZYTL4x7ZOzeYLDNJXpBGy2EPPDNog7YAPQ==" ;
         npx:hasSignatureTarget this: ;
         npx:signedBy sub:consilience-engine .
 
-    sub:responsible-person foaf:name "Anuja Khatri" .
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
 
     this: rdfs:label "The Consilience engine" ;
-        dcterms:created "2026-11-16T19:26:23+00:00"^^xsd:dateTime ;
+        dcterms:created "2026-11-18T14:37:36+00:00"^^xsd:dateTime ;
         dcterms:creator sub:consilience-engine ;
         dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
         npx:hasNanopubType npx:declaredBy ;

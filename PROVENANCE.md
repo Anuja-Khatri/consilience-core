@@ -30,16 +30,41 @@ Differences between the electrochemistry pack and the ledger's rules CR1-CR4:
 The made-up example files in `src/consilience/data/examples/` were written for this
 package and describe no real instrument, sample or experiment.
 
-## The nanopublication pilot (WP3)
+## The nanopublication pilot (WP3), v2
+
+v2 (18 Nov 2026) regenerates the pilot after Tobias Kuhn's review; see `PILOT.md`,
+"Changes from v1". v1's signed files and its publication record are kept unchanged in
+`archive/v1/`.
 
 | What | From | Commit | How |
 |---|---|---|---|
-| Ten records in `pilot/records/` (three claim cards from `ledger/claims.json`, seven refused comparisons from `ledger/rejections.json`), copied unchanged inside record envelopes | [consilience-ledger](https://github.com/Anuja-Khatri/consilience-ledger), branch `wp1-public-truth` | `7c1f9235b582666403537dd929c844e4b2dfc8cf` | `scripts/select_pilot_records.py`, which reads the ledger with `git show` (read only) and checks every hash before writing |
+| Ten records in `pilot/records/01-10` (three claim cards from `ledger/claims.json`, seven refused comparisons from `ledger/rejections.json`), plus eight supporting claim cards in `pilot/records/11-18` (the other claims the refusals name), copied unchanged inside record envelopes | [consilience-ledger](https://github.com/Anuja-Khatri/consilience-ledger), branch `wp1-public-truth` | `7c1f9235b582666403537dd929c844e4b2dfc8cf` | `scripts/select_pilot_records.py`, which reads the ledger with `git show` (read only) and checks every hash before writing |
 | The verdict hash method (`compute_verdict_hash`: SHA-256 over sorted-key JSON) and the ledger-hash recipe, re-implemented in `src/consilience/receipts.py` | consilience-ledger, `vendor/engine/judge/hash/determinism_check.py` and `labext/ledger.py` | same | re-implemented, no code copied |
-| Condition rule names (CR1–CR4 and their fields), used only for readable labels | consilience-ledger, `rules/comparability_rules.yaml` | same | read by the selection script into each envelope's `context` |
+| Condition rules CR1–CR4 and their fields, in each refusal envelope's `context` (which rule requires an unstated condition; which field a mismatched rule is about) | consilience-ledger, `rules/comparability_rules.yaml` | same | read by the selection script |
+| Which claim lacks a condition, and the two values of a condition that differs | the two claim cards' records (above) | same | derived at export time from the two claim-card envelopes, each checked against its own content hash; the refusal's own record is unchanged |
 | Source document links | consilience-ledger, `corpus/MANIFEST.yaml` | same | copied into `scripts/select_pilot_records.py` |
-| Nineteen records in `pilot/theories/records/` (eleven theory claim cards and eight testable disagreements), copied unchanged inside record envelopes | [theconsilience-engine](https://github.com/Anuja-Khatri/theconsilience-engine), branch `claude/practical-newton-8fmocf`, `results/demo/files/iitxgnwt_judge.json` (the cross-theory demo's results, pinned there with a SHA-256 manifest) | `96ba4e435bd13718d36435cc3436d938d2d1f894` | `scripts/build_theory_records.py`, which reads the file at that commit, checks it against the manifest and writes each record with its line range and content hash |
-| Nanopublication structure, the agent-introduction pattern, template shapes and the default provenance and pubinfo templates | [knowledgepixels/nanopub-skill](https://github.com/knowledgepixels/nanopub-skill) (documentation) and the templates it mirrors | read 16 Nov 2026 | followed, no code copied |
+| Nineteen records in `pilot/theories/records/` (eleven theory claim cards and eight disagreements), copied unchanged inside record envelopes | [theconsilience-engine](https://github.com/Anuja-Khatri/theconsilience-engine), branch `claude/practical-newton-8fmocf`, `results/demo/files/iitxgnwt_judge.json` (the cross-theory demo's results, pinned there with a SHA-256 manifest) | `96ba4e435bd13718d36435cc3436d938d2d1f894` | `scripts/build_theory_records.py`, which reads the file at that commit, checks it against the manifest and writes each record with its line range and content hash |
+| Two example envelopes in `pilot/examples/` (made-up data under example.org) | written for this repository | | `scripts/build_examples.py` |
+| Nanopublication structure, the agent-introduction pattern (`frbr:owner`), `npx:introduces` for records other nanopubs link to, supersession that keeps introduced IRIs, `npx:ExampleNanopub` with "Example: " labels, template shapes, and the checker scripts used to verify the publications | [knowledgepixels/nanopub-skill](https://github.com/knowledgepixels/nanopub-skill) (documentation and `scripts/`) | `eb353dfb134203dbb4fabc19be31bbffdb372666` (read 18 Nov 2026) | followed; the checkers were run from a scratch clone, no code copied |
+| Units and quantity kinds; chemicals; techniques; theory and observable mappings | QUDT, ChEBI, CHMO, UBERON, Wikidata | looked up 18 Nov 2026 | IRIs reused, each choice listed in `docs/VOCABULARY.md` |
 | Signing and trusty URIs | [`nanopub`](https://pypi.org/project/nanopub/) 2.2.2 from PyPI (Nanopublication/nanopub-py) | release 2.2.2 | used as a dependency |
 
 No record was taken from a non-public repository.
+
+### People and keys
+
+- **Owner of the engine:** Anuja Khatri, ORCID iD `0009-0008-3375-7858`, named as
+  `frbr:owner` in the v2 agent introduction.
+- **Templates:** attributed to Anuja Khatri (`dct:creator`, `prov:wasAttributedTo` her
+  ORCID iD) and signed with the engine's key.
+- **Trust on the live network:** comes from Tobias Kuhn (Knowledge Pixels) approving the
+  engine's introduction, which he offered and the owner accepted on 18 Nov 2026. Anuja
+  Khatri is not creating a key of her own for now. Nothing is published live until then.
+- **Theory claim statements:** drafted by a large language model and reviewed by Anuja
+  Khatri; each theory claim card names her as reviewer (`cv:reviewedBy`) and says
+  `cv:draftedBy "a large language model"`. By the owner's decision, no model name or
+  version is recorded (`config/review.json`).
+- **Signing key:** the engine's key lives outside the repository
+  (`CONSILIENCE_NANOPUB_KEY_DIR`, default `~/.consilience-nanopub/`); v1 and v2 are signed
+  with the same key. `tests/test_no_keys.py` checks that no private key is in the tree or
+  in git history.

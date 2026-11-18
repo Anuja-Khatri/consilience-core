@@ -3,43 +3,14 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix sub: <https://w3id.org/np/RA4UmeZBdq6pNgWcg5zCH6yvBZeLDjwWnDwAjEGdeU1DQ/> .
-@prefix this: <https://w3id.org/np/RA4UmeZBdq6pNgWcg5zCH6yvBZeLDjwWnDwAjEGdeU1DQ> .
+@prefix sub: <https://w3id.org/np/RA-wwFLLedctNlBcSNtQWif97OzFredyblCEDRMo6TmRU/> .
+@prefix this: <https://w3id.org/np/RA-wwFLLedctNlBcSNtQWif97OzFredyblCEDRMo6TmRU> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668> ;
-        cv:codeVersion "lab-extension-0.1.0" ;
-        cv:contentHash "7db34c10cd4496de0dc7674beeb3fd2574ab9d683fe82f19c73c40b86eddc18a" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
-        cv:hashMethod "card-sha256-v0" ;
-        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
-        cv:rulesVersion "comparability-v0.1" ;
-        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
-        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
-}
-
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "jUW6acxRW5PbbmPnHJBA4Bi0U1SB2jPEjSo5Nx7+mqSXSBXg93tzuaT9tSGKleLF1KHfcpBvzIyGGs7p3xkgQ3+OQFL5sIhqoeVHTWIZs8SA4O2KE2+YD/+gsALXsvN9K7QGNUR5NVHgW1n99TXBW8hTRxYjMqG+L2sC4gwnyZ00V4FKCUSLouSJEi+QhEm+BaOkLPn5hff6I+W1DQadVvsBN2NQfS6MVfCIz9lpmEflWWVQaJ+CeG9gcOIBa2dAxbQMQ8G4Q3l/N7jFGAC76eZdvcDJ7DIexTuDqoQCLNaW8sdJ4Tpv9xnzkutB9nJJpvxvv8lUMV9Fvy/xXVzrpg==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Claim card ref40_peng2023__002: Pd-55, operational_stability_duration 500.0 h" ;
-        dcterms:created "2026-11-16T19:28:43+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:ClaimCard ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAeUz0d9B-nQjoyXJQwXNJKx5gyD6li8FOjfFcKBzq5f8/templateVersion> .
-}
 
 sub:Head {
     this: a np:Nanopublication ;
@@ -48,39 +19,80 @@ sub:Head {
         np:hasPublicationInfo sub:pubinfo .
 }
 
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "au15Zcvkc/VhrY/hRgmJBOg32f1pgllZkwnYMFhJuN/+Vin+Tpix1rdzEGHfx3PlFbnj2iSphxMsUDHstS7XqB6ZUDuXdyjQHmCztEn8S1Pynn1pMqUp83NSaNWviRO1KnNMql8wrdp8N+Fxk+vwxbc1e//WLVysE5+NNt2QJ8VVWFXZqvLLhERDNz/FtFhWFbSlVuNubqN9zL53L/fh+hgeOBo/T8ST4wZNr8N/5Mej3rwnZAdo4qPwLSh+xhiPcoHz1JBNzE9IC90EFhaFnuA3rey/CPtyR15LKYesU4G9L+nbphnflukRfG+ZzKcQ1xYEL9dFxnLMcI+E+rcWsw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim ref40_peng2023__002: Pd-55, operational stability duration 500 h" ;
+        dcterms:created "2026-11-18T14:37:56+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
+}
+
 sub:assertion {
-    <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668> a cv:ClaimCard ;
+    sub:categoricalCondition cv:condition cv:CurrentDensityNormalization ;
+        cv:conditionValue cv:GeometricArea .
+
+    sub:categoricalCondition__1 cv:condition cv:Electrolyte ;
+        cv:conditionValue obo:CHEBI_29221 .
+
+    sub:claim a cv:MeasuredClaim ;
         dcterms:identifier "ref40_peng2023__002" ;
         dcterms:source <https://doi.org/10.1093/nsr/nwac108> ;
-        cv:axis "operational_stability_duration" ;
-        cv:claimKind "stability_value" ;
-        cv:conditionUnstated "anneal_temperature",
-            "ir_correction",
-            "loading",
-            "ph",
-            "prior_operation_duration",
-            "protocol_tier",
-            "substrate",
-            "temperature" ;
-        cv:hasCondition sub:condition,
-            sub:condition__1 ;
+        cv:axis cv:OperationalStabilityDuration ;
+        cv:claimKind cv:StabilityValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:IRCorrection,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
         cv:hasQuantity sub:quantity ;
-        cv:measurability "measurable_now" ;
-        cv:measurableWith "cp_chronopotentiometry" ;
-        cv:objectName "stability_duration" ;
-        cv:relation "has_stability_duration" ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith obo:CHMO_0000017 ;
         cv:sourceSentence "After 500 h of testing at 10 mA cm–2, Pd-55 shows superior stability with little decay in 1 M HClO4." ;
+        cv:statesCategoricalCondition sub:categoricalCondition,
+            sub:categoricalCondition__1 ;
+        cv:statesQuantityCondition sub:quantityCondition,
+            sub:quantityCondition__1 ;
         cv:subjectName "Pd-55" .
 
-    sub:condition cv:conditionName "current_density" ;
-        cv:conditionValueJson "{\"normalization\": \"geometric\", \"unit\": \"mA/cm^2\", \"value\": 10.0}" .
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 500.0 ;
+        qudt:unit unit:HR ;
+        cv:bound cv:ExactValue ;
+        cv:unitAsWritten "h" .
 
-    sub:condition__1 cv:conditionName "electrolyte" ;
-        cv:conditionValueJson "{\"concentration\": {\"unit\": \"mol/L\", \"value\": 1.0}, \"identity\": \"HClO4\"}" .
+    sub:quantityCondition qudt:numericValue 10.0 ;
+        qudt:unit cv:MilliA-PER-CentiM2 ;
+        cv:condition cv:CurrentDensity .
 
-    sub:quantity a schema:QuantitativeValue ;
-        schema:unitText "h" ;
-        schema:value 500.0 ;
-        cv:bound "exact" .
+    sub:quantityCondition__1 qudt:numericValue 1.0 ;
+        qudt:unit unit:MOL-PER-L ;
+        cv:condition cv:ElectrolyteConcentration .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L623-L668> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "7db34c10cd4496de0dc7674beeb3fd2574ab9d683fe82f19c73c40b86eddc18a" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
 }
 

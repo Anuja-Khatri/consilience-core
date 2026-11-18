@@ -3,41 +3,12 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RABfFZtwNxfmbu-jY640J0FYh563_7y7fiJhWu2ABQYxA/> .
-@prefix this: <https://w3id.org/np/RABfFZtwNxfmbu-jY640J0FYh563_7y7fiJhWu2ABQYxA> .
+@prefix sub: <https://w3id.org/np/RA6RqKIPG8P_E8s5TEH_xwFit70NttjX3pCqS0kSmv1yw/> .
+@prefix this: <https://w3id.org/np/RA6RqKIPG8P_E8s5TEH_xwFit70NttjX3pCqS0kSmv1yw> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "tmybtFd62EOmS2gjErmolz5EXI6FW5OqN2ZsxysYxA/ENbfZJSb9MGgTZChOZ1bgEyBqKQbPinMHFVbc+a5FfHt20jJrz2EYKpqO5v9pN/YvyWw/HcUz0+eaU5eaAd0abYUfdHRl6OVXFu6r5xpSKVYxkFB62dPsM2HzY5gqNLd0kEQJ+OJAhiLLKIATzAMvQcBkwiNr9hrKts8mxzG8F/7JEX4edl/IjC/z4/fpnNjZv5OOm8ymtBkcT2AWckc/PT0WMnq6dqY+mT5xzP74Lub53z2vNSvfo+niRdt/raZQMlEAKnetHwhJ/77vsAYLR2BjczbmSiQYBKSJ3FSDVQ==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Theory claim card gnwt_c025 (GNWT): temporal profile = gradual buildup" ;
-        dcterms:created "2026-11-17T12:11:48+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:TheoryClaimCard ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RACZUHT12nd9MbRugZ2gND5k0NgdlyCQFD0Fa2w7kof7o/templateVersion> .
-}
-
-sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373> ;
-        cv:contentHash "080b2024d3815ab3fd5af9311d4d6c610725f493dd132228b98135299d9970dd" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
-        cv:hashMethod "json-sha256-v0" ;
-        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
-        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
-}
 
 sub:Head {
     this: a np:Nanopublication ;
@@ -47,21 +18,53 @@ sub:Head {
 }
 
 sub:assertion {
-    <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373> a cv:TheoryClaimCard ;
+    sub:claim a cv:TheoryClaim ;
         dcterms:identifier "gnwt_c025" ;
-        rdf:value "gradual_buildup" ;
-        cv:axis "temporal_profile" ;
         cv:claimStatement "Neural correlates of conscious experience build up gradually across cortical areas, implying a temporal profile for the emergence of conscious content." ;
-        cv:polarity "asserts" ;
+        cv:dimension cv:TemporalProfile ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:GradualBuildup ;
         cv:restsOn sub:location,
             sub:location__1 ;
         cv:statementForm cv:ReviewedParaphrase ;
-        cv:theory "GNWT" .
+        cv:theory cv:GlobalNeuronalWorkspaceTheory .
 
     sub:location dcterms:source <https://doi.org/10.1016/j.neuron.2011.03.018> ;
         cv:pageLocator "p.21" .
 
     sub:location__1 dcterms:source <https://doi.org/10.1016/j.neuron.2020.01.026> ;
         cv:pageLocator "p.1" .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "pSOegpyMm88ZZiNR5RQYuWGDhbXaBw1LC+rCzR6qgXm0vQk2mgydjgNSpSaiwJgoUFb395EwDNoVhA8cuMhP9Hive1/Q6UjG9NkNMsAk3HcsQFmCTm1JQ3m+SGk80ngQn9NdCVfA/6g0oPYOmsUYiR096f3f+W74Dq5XlT6ATUjfQSSOHGQ7zcRRbmVJHzbqDuDLPyK3vvq+BjygjSdQpYpokQimt6HFPJ8WpnjMNZZVOBHpSSDSCfwxPMziDk6Rokl1Y97kuth1W3loTCKBumytIFY7geTpADYLqI/TVlDf6Wiluyuo25qdG+JPJ2bdGL373G8l/xWRYW+XU+q57g==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Theory claim gnwt_c025 (GNWT): time course = gradual build-up" ;
+        dcterms:created "2026-11-18T14:38:33+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAFG829UOpp6HfOO52oExBDOZr0qfRTflwTb_hbPkEqOU/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373> ;
+        cv:contentHash "080b2024d3815ab3fd5af9311d4d6c610725f493dd132228b98135299d9970dd" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
 }
 

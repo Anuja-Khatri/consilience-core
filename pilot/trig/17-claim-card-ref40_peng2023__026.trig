@@ -1,0 +1,81 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAhjxsxrrpeXT98NDzWkSR-FKOAMKqWrO7cql1KD-8bfc/> .
+@prefix this: <https://w3id.org/np/RAhjxsxrrpeXT98NDzWkSR-FKOAMKqWrO7cql1KD-8bfc> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:claim a cv:MeasuredClaim ;
+        dcterms:identifier "ref40_peng2023__026" ;
+        dcterms:source <https://doi.org/10.1093/nsr/nwac108> ;
+        cv:axis cv:MassActivity ;
+        cv:claimKind cv:PerformanceValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:CurrentDensity,
+            cv:Electrolyte,
+            cv:IRCorrection,
+            cv:PH,
+            cv:PriorOperationDuration,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
+        cv:hasQuantity sub:quantity ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith cv:CVOrLSV ;
+        cv:sourceSentence "Prominently, the OER performance of the Pd catalyst is dramatically enhanced and exhibits an ultralow overpotential of 196 mV at 10 mA cm–2 and high mass activity of 407.2 A g–1 at 1.53 VRHE (RHE, reversible hydrogen electrode) in 1 M HClO4 when the size shrinks to ∼2.8 nm." ;
+        cv:subjectName "hierarchical Pd catalyst" .
+
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 407.2 ;
+        qudt:unit unit:A-PER-GM ;
+        cv:bound cv:ExactValue ;
+        cv:unitAsWritten "A/g" .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "O49JYPrqLYl4aco2U80HUBP7Sk13SLxFQ2EeV18LvZMF6JgJI8Ax2DBUcdsvZ8XPiWYxkClfnRcj43Ro0akbK9Dz45P9K9jukoTuQGk8VT1dyDn11lFPLx5Hwvv5q0zjZHDhO0AtZHRxf+jUmIFxp4ZX0EV6mfjkDyMyT4+dE77+x7EYF0WIRu91A0FmTIKiUJkyjHcK8qLc7wkPMoyn2s5/ocxjn6wU1WVHOhqeMroKQTasve3rpfGTsy5cFUXdr2TcUwwpLXucJsav+M8kmDVBPn5rr6BrkTlSPPDgnNMX5Xz1l0pARPouUtz0o3Y2KUhdA7jLDI24SKJCJkJTEg==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim ref40_peng2023__026: hierarchical Pd catalyst, mass activity 407.2 A/g" ;
+        dcterms:created "2026-11-18T14:38:15+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1109-L1144> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "3c8c60c23802d713b60c4b51f7307c7743dc42b4193fa937452a656ed5720d80" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

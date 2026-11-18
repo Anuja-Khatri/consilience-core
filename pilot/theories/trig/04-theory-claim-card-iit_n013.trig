@@ -3,26 +3,44 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RAJf7HO9UPujsV_auArh4aOthZ8zhawL4gMF2LimxSbTQ/> .
-@prefix this: <https://w3id.org/np/RAJf7HO9UPujsV_auArh4aOthZ8zhawL4gMF2LimxSbTQ> .
+@prefix sub: <https://w3id.org/np/RAdefljm4iiFIraCwqwgd_oUwNOcyEzh7f6AvZ4AwC1v4/> .
+@prefix this: <https://w3id.org/np/RAdefljm4iiFIraCwqwgd_oUwNOcyEzh7f6AvZ4AwC1v4> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sub:assertion {
-    <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500> a cv:TheoryClaimCard ;
-        dcterms:identifier "iit_n013" ;
-        rdf:value "intrinsic_not_broadcast" ;
-        cv:axis "locus" ;
-        cv:claimStatement "Conscious information is not transmitted or broadcast from one brain region to another; the locus of consciousness is intrinsic to the PSC, not a relay or global broadcast." ;
-        cv:polarity "asserts" ;
-        cv:restsOn sub:location ;
-        cv:statementForm cv:ReviewedParaphrase ;
-        cv:theory "IIT" .
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500> ;
+        cv:contentHash "e137dd98975be02738da52173b97c8b57c68dd571c6a267d085630d8630b9e67" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
 
-    sub:location dcterms:source <https://doi.org/10.1038/nrn.2016.44> ;
-        cv:pageLocator "p.8" .
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "shcMGnwhiQ6cUeJQ5YASvoqvbo8if85YGc5ZiCIR3WW+1jN9Ox6M6uDkIuTDgmZxY9tUvbWsXx8RJpPy8n/vnFBEA12D5ijhzSn0J/BrMeqc4a+jh5xVA7xhBds/X/RiBUDuBaNFvdUCEV507ZPjdQ2j0YCWbW/1crWZfM9lzsxtS5tC6b46IF/dG07cHQkXQ+x4oLBGaYk5c4RxSlIGwaQXMkcHpmJFltSIn2imt+MWtEuCPHpmzKyn5i+lR2M0R+T1+FCkaavxqlSbkg8WjOnn9dG4O3/VZNaiXybGLJUCL08I+FkddZNPF55HLzvRxGJXApvNxBNUVCBXlxSfkQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Theory claim iit_n013 (IIT): locus = intrinsic, not broadcast" ;
+        dcterms:created "2026-11-18T14:38:25+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAFG829UOpp6HfOO52oExBDOZr0qfRTflwTb_hbPkEqOU/templateVersion> .
 }
 
 sub:Head {
@@ -32,32 +50,18 @@ sub:Head {
         np:hasPublicationInfo sub:pubinfo .
 }
 
-sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500> ;
-        cv:contentHash "e137dd98975be02738da52173b97c8b57c68dd571c6a267d085630d8630b9e67" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
-        cv:hashMethod "json-sha256-v0" ;
-        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
-        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
-}
+sub:assertion {
+    sub:claim a cv:TheoryClaim ;
+        dcterms:identifier "iit_n013" ;
+        cv:claimStatement "Conscious information is not transmitted or broadcast from one brain region to another; the locus of consciousness is intrinsic to the PSC, not a relay or global broadcast." ;
+        cv:dimension cv:Locus ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:IntrinsicNotBroadcast ;
+        cv:restsOn sub:location ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory wd:Q6042884 .
 
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "zsLQoQshMvKOXW8qJAbHdEZPVFCfAhaP7JNRpuCQLo8cddVIsblypPfu/T2z6VKisUkfG1uDtlFqiwD8/GLSbchmGuySx5VteKw2Q9n8pdzBqmU5t3mjxw6LztWIiRjZIWFDSyuKMWm/E5XAxlzZr5CrwCpTz+T3a2pDIXpshcewBnpnSC+77s/eFOarxUqO4YdPxbIFCXsc9qjxed54pL1O/shmFPf+zj4EfRbIK2NwDmB0mfX+IlHetcfty+lfdrNxidj39ac0e+3Yo4DwDRTsCjiiKj3dSJPfqH/0UfjMulVjT3KDwIFvdF1eaFTr4I8BAH7dPKjGb7Vc6P7F9w==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Theory claim card iit_n013 (IIT): locus = intrinsic not broadcast" ;
-        dcterms:created "2026-11-17T12:11:41+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:TheoryClaimCard ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RACZUHT12nd9MbRugZ2gND5k0NgdlyCQFD0Fa2w7kof7o/templateVersion> .
+    sub:location dcterms:source <https://doi.org/10.1038/nrn.2016.44> ;
+        cv:pageLocator "p.8" .
 }
 

@@ -5,39 +5,9 @@
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RAcaV0PBm_IKNY-BsodL6wEE87FzOQ0CqD9zOjW5mKYRY/> .
-@prefix this: <https://w3id.org/np/RAcaV0PBm_IKNY-BsodL6wEE87FzOQ0CqD9zOjW5mKYRY> .
+@prefix sub: <https://w3id.org/np/RAPbdTBz4u9zXHaKb_jJAwI0k6PPvvnuAkj9XJdlxiGCE/> .
+@prefix this: <https://w3id.org/np/RAPbdTBz4u9zXHaKb_jJAwI0k6PPvvnuAkj9XJdlxiGCE> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-sub:assertion {
-    sub:disagreement a cv:TestableDisagreement ;
-        dcterms:identifier "iit_c025|gnwt_c008" ;
-        cv:axis "connectivity" ;
-        cv:claimA <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L360-L384> ;
-        cv:claimB <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1148-L1172> ;
-        cv:instrument "shared observable: connectivity metrics" ;
-        cv:testability cv:TestableNow .
-}
-
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "AUZaqxljKjbxFDeDY3hyzTVX2wC9yZw9Ipqk/jVzCfIwLG9sqlTWLVVxzeGuHVaLSRfqJTLuLhwGsDmS38b7yf9Ooj45WVYmEmxQwMQ1MQ0Ytmj61nD9uVaJi9ZRtoPpYJUhTaakNl61jP4vHOk3iAn3y1MT8ZNcpRLSyY9B9ke/E/GJQUamu0oCSExXwxbrfMlK7ZAudfS7ZDYI7O/R//BvjtB8L7Zt5oZ5ojiCKwdmM1iTXbYotXxRtgFUBXkizNe6q57MnNmEkSn0B2DyZpltFV/2tvGL8x1i1khPzb64DIeV40ZPkClzTV08898ALqCuH5CmzylNlxFi/fvo+w==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Disagreement iit_c025 vs gnwt_c008 (connectivity) is testable with shared observable: connectivity metrics" ;
-        dcterms:created "2026-11-17T12:12:08+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable with instruments that exist today and names the shared observable both claims bear on. This is a statement about the two claim cards, not a verdict on either theory. The axis is an axis of theoretical commitment, not a quantity axis, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations." ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:TestableDisagreement ;
-        npx:introduces sub:disagreement ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RA_JMm5qvBGcYZ05pWiJualxOVTFNj6_qJiI_6oaAU9vE/templateVersion> .
-}
 
 sub:Head {
     this: a np:Nanopublication ;
@@ -46,13 +16,44 @@ sub:Head {
         np:hasPublicationInfo sub:pubinfo .
 }
 
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "cd+ZW/Y9DTu+UN53sjyArR6CTvVsAEfmTY0AIpMA8vBkjpJbx1J7thKj7RL69NCEn/xZgxZNCJHLfEM+SQ5Lq3WcjJk1Wf61MiDsO5l/EPaECay4V5rwcIzYaAZMkElnDgyd3wOZqtWAc5xSwy9LClV7gf43gi4ApjHGaWaiqlQm2KjtMdX1NQipniYtZ+VDNbUNvejbqYBDSOj9MYMUoKzCEW2Ibp3xEJ6qQGCiPuP7OHB0aFMHELMpKlt8s1UXbZHnf6oO7IqDvg2sIlmBgj6+uPC83ezsQEpwpur5oA/CsDPGILuW00kX4YMzjo+DxjxDJyQKGbhDLQLK+lcKDw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Disagreement iit_c025 vs gnwt_c008 on connectivity: testable now (observable: connectivity metrics)" ;
+        dcterms:created "2026-11-18T14:39:11+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable now and names the shared observable both claims bear on; it names no instrument, so none is recorded. This is a statement about the two claims, not a verdict on either theory. The dimension is a dimension of theoretical commitment, not a quantity, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:Disagreement ;
+        npx:introduces sub:disagreement ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAvL0WIJTJQOs6TMYrzsRV3CWbxhdoBKbsHkMhCSs98X0/templateVersion> .
+}
+
 sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
         prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2117-L2156> ;
         cv:contentHash "cfd55cd0236677bc83af80a13c095a41dca0709d4e4e88918870ca92014087ca" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
         cv:hashMethod "json-sha256-v0" ;
         cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
         cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:assertion {
+    sub:disagreement a cv:Disagreement ;
+        dcterms:identifier "iit_c025|gnwt_c008" ;
+        cv:claimA <https://w3id.org/np/RAi76_ncq9y0gCjpthbm3eOrFi6OMZGajuOZj6BVEDFHI/claim> ;
+        cv:claimB <https://w3id.org/np/RAWr9a-oouwf4WScdI6iNrR36-2Wr3yWnHaag4dhDyhFk/claim> ;
+        cv:dimension cv:Connectivity ;
+        cv:observable cv:ConnectivityMetrics ;
+        cv:testability cv:TestableNow ;
+        cv:testabilityReason "The demo's check rules this disagreement decidable now: both claims bear on a shared observable (connectivity metrics) that current methods measure. The demo names no specific instrument, so none is recorded." .
 }
 

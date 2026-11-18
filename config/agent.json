@@ -1,13 +1,22 @@
 {
   "agent_name": "The Consilience engine",
   "agent_local_name": "consilience-engine",
-  "agent_iri": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
-  "introduction_nanopub": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc",
+  "agent_iri": "https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine",
+  "introduction_nanopub": "https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk",
   "public_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB",
   "responsible_person_name": "Anuja Khatri",
   "responsible_person_orcid": "0009-0008-3375-7858",
-  "responsible_person_orcid_note": "Supplied by Anuja Khatri on 2026-11-17. The test-server introduction (published 2026-11-16) names her by name only; the production introduction will name this ORCID iD as the owner.",
+  "responsible_person_orcid_note": "Supplied by Anuja Khatri on 2026-11-17. The v2 introduction names this ORCID iD as frbr:owner; templates are attributed to it.",
   "registry": "test",
   "registry_url": "https://test.registry.knowledgepixels.com/np/",
-  "key_location_note": "The private key is never in this repository. Default: ~/.consilience-nanopub/consilience-engine_id_rsa (override with CONSILIENCE_NANOPUB_KEY_DIR)."
+  "key_location_note": "The private key is never in this repository. Default: ~/.consilience-nanopub/consilience-engine_id_rsa (override with CONSILIENCE_NANOPUB_KEY_DIR).",
+  "previous_introductions": [
+    {
+      "agent_iri": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine",
+      "introduction_nanopub": "https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc",
+      "registry": "test",
+      "note": "v1 introduction (16 Nov 2026): named the responsible person by name only, without frbr:owner. Replaced by the v2 introduction, which names her ORCID iD as frbr:owner."
+    }
+  ],
+  "live_trust_note": "Live network: Tobias Kuhn (Knowledge Pixels) has offered to approve the engine's introduction (npx:approvesOf) once he is happy with v2; the owner accepted on 18 Nov 2026. Until then nothing is published live."
 }

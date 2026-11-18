@@ -3,55 +3,46 @@
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RA9hIxkRaYAqg2cUQSOdVRIM_jFZZSDaR1L1RVkeTqCLU/> .
-@prefix this: <https://w3id.org/np/RA9hIxkRaYAqg2cUQSOdVRIM_jFZZSDaR1L1RVkeTqCLU> .
+@prefix sub: <https://w3id.org/np/RAmSMj_S_Rey7EIPt9OEeSuclJl98WT6x3Rjlzl0Gv8yA/> .
+@prefix this: <https://w3id.org/np/RAmSMj_S_Rey7EIPt9OEeSuclJl98WT6x3Rjlzl0Gv8yA> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-sub:assertion {
-    <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1502-L1521> a cv:TheoryClaimCard ;
-        dcterms:identifier "gnwt_n013" ;
-        rdf:value "serial_all_or_none" ;
-        cv:axis "temporal_profile" ;
-        cv:claimStatement "Conscious processing is serial and all-or-none: at any moment only one interpretation reaches consciousness, and access to one item prevents or delays conscious access to a competing item." ;
-        cv:polarity "asserts" ;
-        cv:restsOn sub:location ;
-        cv:statementForm cv:ReviewedParaphrase ;
-        cv:theory "GNWT" .
-
-    sub:location dcterms:source <https://doi.org/10.1007/978-3-030-54173-6_4> ;
-        cv:pageLocator "p.6" .
-}
 
 sub:pubinfo {
     sub:sig npx:hasAlgorithm "RSA" ;
         npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "jVmOq1fYHteFi/rIiepIQHZgMN+QH1qkI7YtrungBeJbP4+2Tflj0dk/9gd0GwBGGhHvhOIiApLAak0tIevDmOyBPyOKelsijlPoQfl46nxlwb9KBvu8s10L4DniuqbSjtg/dFzj5LdtmdM707aTQhcsHLbpbz5Qam2zAICez3vUy6/Lo0eAmrreewWIljO711Wo1HYA+Z4AZv9BXT4pmFELZs33jQczRyjVMm8k1pHr1Eqxlztsu6Cm4UPXJa05r9D5zA5R6+dya6fLzDqMI5knEdA2SvKsP2NJiUB7WhNZwWI0cZWuCn6l71/tOuDTtaQFGIoPcv+hIbTieSEw9g==" ;
+        npx:hasSignature "MM8hPXb9Pq0foTEDbIkSXbTmSSbpeyqIYb9r7eCw9UxDJH2F7EWKz4QGYyM8NHVuNELK+033QOAb61/sRsVIQ7YW18Mm7pvprAnZ7gKWjm3kePj1yPD2Zr4NOoDMV2Gxts5KEVNJmZEv6gzG31eykAXbXof/lcWZ2lBEJTmIqkl0pn47fTDcp8r24wMzTSmRv6gQoc4pYSPFFhuTbuWydVG7QoCvJHvdVBqjWieGoDXmZKOj4P2ypnkHdwj4JJ4LQ9AfhnDn9we+HF42BnadlMonNHwF/7f3vCNii0cNwG7TeXe/wl/573/0Y0p9OGQJcLGJig61xgLNvf5A3bJWoA==" ;
         npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
 
-    this: rdfs:label "Theory claim card gnwt_n013 (GNWT): temporal profile = serial all or none" ;
-        dcterms:created "2026-11-17T12:11:50+00:00"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+    this: rdfs:label "Theory claim gnwt_n013 (GNWT): time course = serial and all-or-none" ;
+        dcterms:created "2026-11-18T14:38:36+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
         dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:hasNanopubType cv:TheoryClaimCard ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/templateVersion> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
         ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
             <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RACZUHT12nd9MbRugZ2gND5k0NgdlyCQFD0Fa2w7kof7o/templateVersion> .
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAFG829UOpp6HfOO52oExBDOZr0qfRTflwTb_hbPkEqOU/templateVersion> .
 }
 
-sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1502-L1521> ;
-        cv:contentHash "6eb8fa2d9e2f666670ad88299c34affd2226c2537b989574194a39ea61c99632" ;
-        cv:exportedWith "consilience 0.1.0.dev0 (github.com/Anuja-Khatri/consilience-core)" ;
-        cv:hashMethod "json-sha256-v0" ;
-        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
-        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+sub:assertion {
+    sub:claim a cv:TheoryClaim ;
+        dcterms:identifier "gnwt_n013" ;
+        cv:claimStatement "Conscious processing is serial and all-or-none: at any moment only one interpretation reaches consciousness, and access to one item prevents or delays conscious access to a competing item." ;
+        cv:dimension cv:TemporalProfile ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:SerialAllOrNone ;
+        cv:restsOn sub:location ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory cv:GlobalNeuronalWorkspaceTheory .
+
+    sub:location dcterms:source <https://doi.org/10.1007/978-3-030-54173-6_4> ;
+        cv:pageLocator "p.6" .
 }
 
 sub:Head {
@@ -59,5 +50,17 @@ sub:Head {
         np:hasAssertion sub:assertion ;
         np:hasProvenance sub:provenance ;
         np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1502-L1521> ;
+        cv:contentHash "6eb8fa2d9e2f666670ad88299c34affd2226c2537b989574194a39ea61c99632" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
 }
 

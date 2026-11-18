@@ -12,11 +12,18 @@ from consilience.receipts import (
 from conftest import RECORDS, load_json
 
 
-def test_pilot_has_ten_records():
-    assert len(RECORDS) == 10
-    kinds = [load_json(p)["record_type"] for p in RECORDS]
+def test_pilot_has_ten_records_and_eight_supporting_claim_cards():
+    assert len(RECORDS) == 18
+    kinds = [load_json(p)["record_type"] for p in RECORDS[:10]]
     assert kinds.count("claim_card") == 3
     assert kinds.count("comparison_refusal") == 7
+    # records 11-18 are the claim cards the refusals name, so that every claim A and claim B
+    # is a claim IRI introduced by a published claim card
+    assert [load_json(p)["record_type"] for p in RECORDS[10:]] == ["claim_card"] * 8
+    named = {load_json(p)["record"][k] for p in RECORDS if "refusal" in p.name
+             for k in ("claim_a_id", "claim_b_id")}
+    cards = {load_json(p)["record"]["claim_id"] for p in RECORDS if "claim-card" in p.name}
+    assert named == cards
 
 
 @pytest.mark.parametrize("path", RECORDS, ids=lambda p: p.stem)

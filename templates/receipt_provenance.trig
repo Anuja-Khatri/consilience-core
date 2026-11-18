@@ -1,45 +1,39 @@
 @prefix cv: <https://theconsilience.io/ns/cv#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix np: <http://www.nanopub.org/nschema#> .
 @prefix npx: <http://purl.org/nanopub/x/> .
 @prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sub: <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/> .
-@prefix this: <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4> .
+@prefix sub: <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/> .
+@prefix this: <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 sub:provenance {
-    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-}
-
-sub:Head {
-    this: a np:Nanopublication ;
-        np:hasAssertion sub:assertion ;
-        np:hasProvenance sub:provenance ;
-        np:hasPublicationInfo sub:pubinfo .
-}
-
-sub:pubinfo {
-    sub:sig npx:hasAlgorithm "RSA" ;
-        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
-        npx:hasSignature "tk8IQDXONj8ouUxvxHyN0Y5ugcIOYkfOu2IIXPOv3DB9RR1FpPW0KqN5WR92nFIYPaGUeIYk6edKxCFGMDxva6kt6AfSCW+FfSAkh+Y2v6ZTlgzoQfIuCGD4XsFUm+xVArcyMzTEYtE+dVZLCnsiMv2Gnu5+in/PAoa0BfutqmiS4tbxgxI0KT9ZNoB8VYvmHyei3bqGJHAnecTb6nWvg0EnthINRsr5RBDtRFdBfCO+YqQcrzMn4PelyUQ9rDym0I1GWnC388sJz5iXA66UJJtxGjw6Zii3CyXsiMuZ9ha5AXriuxpbpfo9SAQPYRWDEjJil7OUHKxLGvgXs2x4QQ==" ;
-        npx:hasSignatureTarget this: ;
-        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
-
-    this: rdfs:label "Consilience: receipt" ;
-        dcterms:created "2026-11-16T19:27:47Z"^^xsd:dateTime ;
-        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
-        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-        npx:embeds sub:templateVersion ;
-        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
-        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
-            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
-        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RA-yPZEYODCS39dWOWm7NA_ClOGFHzPi8iYhLzoZf19GI/templateVersion> .
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
 }
 
 sub:assertion {
+    sub:templateVersion a ntemplate:ProvenanceTemplate ;
+        rdfs:label "Consilience: receipt" ;
+        dcterms:description "Where a Consilience record comes from and how to check it: the receipt (the record at a pinned commit of a public repository), the content hash and the method that reproduces it, and the code, rule and map versions that produced the record. For statements a person reviewed, who reviewed them and what drafted them." ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11,
+            sub:st12,
+            sub:st13 .
+
     prov:wasAttributedTo rdfs:label "is attributed to" .
 
     prov:wasDerivedFrom rdfs:label "was derived from the receipt" .
@@ -48,6 +42,8 @@ sub:assertion {
 
     cv:contentHash rdfs:label "has the content hash" .
 
+    cv:draftedBy rdfs:label "was drafted by" .
+
     cv:exportedWith rdfs:label "was exported with" .
 
     cv:hashMethod rdfs:label "hashed with the method" .
@@ -55,6 +51,8 @@ sub:assertion {
     cv:ledgerHash rdfs:label "is covered by the ledger hash" .
 
     cv:mapVersion rdfs:label "with the axis map version" .
+
+    cv:reviewedBy rdfs:label "was reviewed by" .
 
     cv:rulesVersion rdfs:label "under the rule version" .
 
@@ -76,6 +74,9 @@ sub:assertion {
     sub:contentHash a ntemplate:LiteralPlaceholder ;
         rdfs:label "content hash (SHA-256)" .
 
+    sub:draftedBy a ntemplate:LiteralPlaceholder ;
+        rdfs:label "drafted by (in words)" .
+
     sub:exporter a ntemplate:LiteralPlaceholder ;
         rdfs:label "exporter and version" .
 
@@ -93,6 +94,10 @@ sub:assertion {
 
     sub:repository a ntemplate:ExternalUriPlaceholder ;
         rdfs:label "source repository" .
+
+    sub:reviewer a ntemplate:AgentPlaceholder,
+            ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "reviewer (ORCID iD)" .
 
     sub:rulesVersion a ntemplate:LiteralPlaceholder ;
         rdfs:label "rule version" .
@@ -145,20 +150,41 @@ sub:assertion {
         rdf:predicate cv:exportedWith ;
         rdf:subject ntemplate:ASSERTION .
 
-    sub:templateVersion a ntemplate:ProvenanceTemplate ;
-        rdfs:label "Consilience: receipt" ;
-        dcterms:description "Where a Consilience record comes from and how to check it: the receipt (the record at a pinned commit of a public repository), the content hash and the method that reproduces it, and the code, rule and map versions that produced the record." ;
-        ntemplate:hasStatement sub:st01,
-            sub:st02,
-            sub:st03,
-            sub:st04,
-            sub:st05,
-            sub:st06,
-            sub:st07,
-            sub:st08,
-            sub:st09,
-            sub:st10,
-            sub:st11 ;
-        ntemplate:hasTag "Consilience" .
+    sub:st12 a ntemplate:OptionalStatement ;
+        rdf:object sub:reviewer ;
+        rdf:predicate cv:reviewedBy ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st13 a ntemplate:OptionalStatement ;
+        rdf:object sub:draftedBy ;
+        rdf:predicate cv:draftedBy ;
+        rdf:subject ntemplate:ASSERTION .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "t7721W9NGzZGGL0GdLUe6WILkDQmoI2U88GFNFXQWdfR0W0waB3DdB5n7+v6IIaphfCQmboPxWaB6YH9u3aVRxIpsFmSTrBURPoi8Qtgq+7AH/iM7GzDN5rlvJ6cPa15OoHqjr8Ygx+3xJFzAHeNUKSup2jDOcr/dxw348AKu5aE4jwuUJm98Q78FXYvV6+WvZ98PIwCRL6Q7qumK607lD6PlhbP2wkq/o5WhWs4/BBaNK8G9hfCUXTlaXwsxE/YXylRPyRXAjw4L1mAjdwaZlaOnuLsfqlppbp9AOWoX2erZbrOeAsJnSW47ZpH2R+SH7MLdw3CWGEHYbKCFcq99g==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Consilience: receipt" ;
+        dcterms:created "2026-11-18T14:37:48Z"^^xsd:dateTime ;
+        dcterms:creator orcid:0009-0008-3375-7858 ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RA-yPZEYODCS39dWOWm7NA_ClOGFHzPi8iYhLzoZf19GI/templateVersion> .
+
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
 }
 

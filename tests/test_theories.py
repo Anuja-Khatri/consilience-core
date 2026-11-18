@@ -11,11 +11,14 @@ from rdflib import Dataset, Literal, URIRef
 
 from consilience.export import nanopub as X
 from consilience.export import spec as S
-from consilience.export.vocab import CV, DCT, NP, NT, PROV, RDF
+from consilience.export.vocab import CV, DCT, NP, NT, PROV, RDF, WD
 from consilience.receipts import JSON_METHOD, ReceiptError, json_hash, load_envelope, parse_envelope, verify
 from conftest import ROOT, THEORY_RECORDS, load_json
 
 TEMPLATES = load_json(ROOT / "config" / "templates.json")
+CLAIMS = X.Claims.load(ROOT / "pilot" / "claims.json")
+REVIEW = load_json(ROOT / "config" / "review.json")
+REVIEWER = URIRef(f"https://orcid.org/{REVIEW['reviewer_orcid']}")
 TRIG = ROOT / "pilot" / "theories" / "trig"
 CARDS = [p for p in THEORY_RECORDS if "theory-claim-card" in p.name]
 FORKS = [p for p in THEORY_RECORDS if "disagreement" in p.name]
@@ -68,7 +71,7 @@ def test_record_is_identical_to_the_receipt_at_pinned_commit(path, engine):
     assert json_hash(json.loads(chunk)) == env.content_hash
 
 
-def test_disagreements_link_to_published_claim_cards():
+def test_disagreements_point_at_the_claim_iris_of_published_claim_cards():
     card_urls = {load_envelope(p).receipt_url for p in CARDS}
     used = set()
     for p in FORKS:
@@ -79,6 +82,16 @@ def test_disagreements_link_to_published_claim_cards():
         left, right = env.record["left_ids"][0], env.record["right_ids"][0]
         ids = {load_envelope(c).receipt_url: load_envelope(c).record["claim_id"] for c in CARDS}
         assert (ids[a], ids[b]) == (left, right)
+        g = X.build_assertion(env, CLAIMS).assertion
+        me = S.TEMP_NS["disagreement"]
+        assert g.value(me, CV.claimA) == URIRef(CLAIMS.entries[a]["claim_iri"])
+        assert g.value(me, CV.claimB) == URIRef(CLAIMS.entries[b]["claim_iri"])
+        assert "github.com" not in str(g.value(me, CV.claimA))
+        # observables are observables, and the demo names no instrument
+        assert set(g.objects(me, CV.observable)) and not set(g.objects(me, CV.instrument))
+        assert g.value(me, CV.dimension) in (CV.Locus, CV.TemporalProfile, CV.Connectivity)
+        assert g.value(me, CV.testability) == CV.TestableNow
+        assert "names no specific instrument" in str(g.value(me, CV.testabilityReason))
     assert used == card_urls
 
 
@@ -90,7 +103,7 @@ def test_signed_trig_matches_the_envelope(path):
     np_uri, parts = _parse(trig)
     ns = str(np_uri) + "/"
     a = URIRef(ns + "assertion")
-    built = X.build_assertion(env)
+    built = X.build_assertion(env, CLAIMS)
     assert {(_sub(s, ns), p, _sub(o, ns)) for s, p, o in built.assertion} == set(parts["assertion"])
     res = S.check_conformance(built.spec, parts["assertion"], ns, a)
     assert res.ok, (res.unmatched, res.missing, res.bad_values)
@@ -104,14 +117,22 @@ def test_signed_trig_matches_the_envelope(path):
     note = str(pub.value(np_uri, DCT.description))
     assert "not a quotation" in note or "not quotations" in note
     assert env.source["commit"] in note
+    if env.record_type == "theory_claim_card":
+        # the reviewer is named, and what drafted the statement is stated generically
+        assert prov.value(a, CV.reviewedBy) == REVIEWER
+        assert prov.value(a, CV.draftedBy) == Literal(REVIEW["drafted_by"]) == Literal("a large language model")
 
 
 @pytest.mark.parametrize("path", CARDS, ids=lambda p: p.stem)
 def test_claim_card_states_reviewed_paraphrase_and_page(path):
     env = load_envelope(path)
     g = X.build_assertion(env).assertion
-    me = URIRef(env.receipt_url)
+    me = S.TEMP_NS["claim"]
+    assert (me, RDF.type, CV.TheoryClaim) in g
     assert (me, CV.statementForm, CV.ReviewedParaphrase) in g
+    # theory, dimension and position are IRIs, not strings
+    assert g.value(me, CV.theory) in (WD.Q6042884, CV.GlobalNeuronalWorkspaceTheory)
+    assert isinstance(g.value(me, CV.dimension), URIRef) and isinstance(g.value(me, CV.position), URIRef)
     assert g.value(me, CV.claimStatement) == Literal(env.record["statement"])
     pages = {str(o) for loc in g.objects(me, CV.restsOn) for o in g.objects(loc, CV.pageLocator)}
     assert pages == {p["locator"] for p in env.record["prov"]}
@@ -135,11 +156,17 @@ def test_fork_not_decidable_now_is_refused():
         X.build_assertion(parse_envelope(data))
 
 
-def test_instrument_must_come_from_the_record():
+def test_an_instrument_the_record_does_not_name_is_refused():
     data = copy.deepcopy(load_json(FORKS[0]))
     data["context"]["instrument"] = "a better-sounding instrument"
-    with pytest.raises(X.ExportError, match="instrument_differs_from_the_record"):
-        X.build_assertion(parse_envelope(data))
+    with pytest.raises(X.ExportError, match="instrument_not_named_by_the_record"):
+        X.build_assertion(parse_envelope(data), CLAIMS)
+
+
+def test_theory_card_needs_the_reviewer():
+    env = load_envelope(CARDS[0])
+    with pytest.raises(X.ExportError, match="needs_reviewer"):
+        X.build_provenance(env, URIRef("https://example.org/agent"), None)
 
 
 def test_tampered_theory_record_is_refused():
@@ -162,7 +189,9 @@ COGITATE = "2 of 3 after a disclosed re-review, originally 1 of 3, p = 0.075"
 
 
 def _theory_texts():
-    files = list(THEORY_RECORDS) + sorted(TRIG.glob("*.trig")) + [ROOT / "templates" / "theory_claim_card.trig"]
+    files = list(THEORY_RECORDS) + sorted(TRIG.glob("*.trig")) + [
+        ROOT / "templates" / "theory_claim_card.trig", ROOT / "templates" / "disagreement.trig",
+        ROOT / "config" / "review.json", ROOT / "PILOT.md", ROOT / "vocab" / "cv.ttl"]
     return [(p, p.read_text(encoding="utf-8")) for p in files]
 
 
@@ -171,7 +200,7 @@ def test_no_forbidden_wording_and_no_model_identifier():
         low = text.lower()
         for pat in FORBIDDEN:
             assert not re.search(pat, low), (p.name, pat)
-        for marker in ("extractor_model", "claude", "sonnet", "haiku", "gpt-"):
+        for marker in ("extractor_model", "drafting_model", "claude", "sonnet", "haiku", "gpt-"):
             assert marker not in low, (p.name, marker)
 
 

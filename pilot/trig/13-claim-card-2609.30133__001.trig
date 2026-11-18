@@ -1,0 +1,86 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RACGvgVe-XqVcXhs3IuiRpRsHDPmmL8nUULjsAr4jGopU/> .
+@prefix this: <https://w3id.org/np/RACGvgVe-XqVcXhs3IuiRpRsHDPmmL8nUULjsAr4jGopU> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L2-L40> ;
+        cv:codeVersion "lab-extension-0.1.0" ;
+        cv:contentHash "d7e326e2810cddae85d0b502f922d46b3e08daee7b20193ac498d28f54554b2f" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "card-sha256-v0" ;
+        cv:ledgerHash "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd" ;
+        cv:rulesVersion "comparability-v0.1" ;
+        cv:sourceCommit "7c1f9235b582666403537dd929c844e4b2dfc8cf" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/consilience-ledger> .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "ZQqYAQ65H1VyrLFvWgChSBkSfUXEfbP1jHwI8TGiCxB/QKbGnCr+rR+h5gJCoQMksI0x2+AeeqBb5SdLDMY/ib5K7QXqlQAfIOZyP8WjSN1ell2T3lLiAP//GgXDlrI2rdYkpiM/vKNulxHMfKMmVP53vs78FEuGexW7S+P+mFHDOGgz/FA/wbmYWrY/uKcqtzX1SzJ21qyXabuIIKvM5k4zmlY/zVBL3VtQaIZkI61ECnYZwKIXdpkcZD1LYvWucYiwQ6gs/n2m8VJIfo/wdRGwgcmifRcqVz2lXQoXQwVsD8kOf2H4FQuE32cT6L9GPZp2PfGQ+dCU0UTdpAS/jQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Measured claim 2609.30133__001: NiTaPdOx, time to a potential threshold 470 h (approximate value)" ;
+        dcterms:created "2026-11-18T14:38:07+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:MeasuredClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAsswIIF8a9__hit4OQs17fbfCjXPlc32hmREpFpl1Suw/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAcq68QGDna2fNM4nSvPs95YQFbYSC80fHUWxO4_wGFs0/templateVersion> .
+}
+
+sub:assertion {
+    sub:claim a cv:MeasuredClaim ;
+        dcterms:identifier "2609.30133__001" ;
+        dcterms:source <https://arxiv.org/abs/2609.30133> ;
+        cv:axis cv:HoursToThreshold ;
+        cv:claimKind cv:StabilityValue ;
+        cv:conditionUnstated cv:AnnealTemperature,
+            cv:CatalystLoading,
+            cv:CurrentDensity,
+            cv:Electrolyte,
+            cv:IRCorrection,
+            cv:PH,
+            cv:ProtocolTier,
+            cv:Substrate,
+            cv:Temperature ;
+        cv:hasQuantity sub:quantity ;
+        cv:measurability cv:MeasurableNow ;
+        cv:measurableWith obo:CHMO_0000017 ;
+        cv:sourceSentence "During long-term testing, NiTaPdOx operated at lower overpotential than PdOx, but both eventually exceeded 0.5 V: PdOx at ~200 h and NiTaPdOx at ~470 h." ;
+        cv:statesQuantityCondition sub:quantityCondition ;
+        cv:subjectName "NiTaPdOx" .
+
+    sub:quantity a qudt:QuantityValue ;
+        qudt:numericValue 470.0 ;
+        qudt:unit unit:HR ;
+        cv:bound cv:ApproximateValue ;
+        cv:unitAsWritten "h" .
+
+    sub:quantityCondition qudt:numericValue 470.0 ;
+        qudt:unit unit:HR ;
+        cv:condition cv:PriorOperationDuration .
+}
+

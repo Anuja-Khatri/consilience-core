@@ -1,0 +1,211 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAvL0WIJTJQOs6TMYrzsRV3CWbxhdoBKbsHkMhCSs98X0/> .
+@prefix this: <https://w3id.org/np/RAvL0WIJTJQOs6TMYrzsRV3CWbxhdoBKbsHkMhCSs98X0> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: claims A and B disagree on a dimension; testability and reason" ;
+        dcterms:description "Two claims take different values on the same dimension. The record names the dimension of disagreement, the observables the disagreement bears on and the instruments that could measure them (separate fields; either may be absent if the source names none), and a testability status: testable now, testable under a stated assumption, or not yet testable, always with the reason. For measured claims, the margin and the floor are given in one unit. Claim A and claim B are the claim IRIs their claim-card nanopublications introduce. A disagreement is a statement about two claims, not a verdict on either." ;
+        ntemplate:hasNanopubLabelPattern "Disagreement: ${identifier}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11,
+            sub:st12,
+            sub:st13,
+            sub:st20 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:Disagreement .
+
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    qudt:unit rdfs:label "in the unit" .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:NotYetTestable rdfs:label "not yet testable" .
+
+    cv:TestableNow rdfs:label "testable now" .
+
+    cv:TestableUnderAssumption rdfs:label "testable under a stated assumption" .
+
+    cv:assumption rdfs:label "under the assumption" .
+
+    cv:claimA rdfs:label "compares claim A" .
+
+    cv:claimB rdfs:label "with claim B" .
+
+    cv:dimension rdfs:label "concerns the dimension" .
+
+    cv:floor rdfs:label "beyond the floor" .
+
+    cv:instrument rdfs:label "can be tested with the instrument" .
+
+    cv:margin rdfs:label "differs by the margin" .
+
+    cv:observable rdfs:label "bears on the observable" .
+
+    cv:testability rdfs:label "has testability" .
+
+    cv:testabilityReason rdfs:label "for the reason" .
+
+    sub:assumption a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "the assumption (if testable under one)" .
+
+    sub:claimA a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim A (the claim IRI its claim card introduces)" .
+
+    sub:claimB a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "claim B (the claim IRI its claim card introduces)" .
+
+    sub:dimension a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "dimension of disagreement" .
+
+    sub:floor a ntemplate:LiteralPlaceholder ;
+        rdfs:label "floor applied" ;
+        ntemplate:hasDatatype xsd:decimal .
+
+    sub:identifier a ntemplate:LiteralPlaceholder ;
+        rdfs:label "identifier of the record in its source repository" .
+
+    sub:instrument a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "instrument or technique that could test it" .
+
+    sub:margin a ntemplate:LiteralPlaceholder ;
+        rdfs:label "margin" ;
+        ntemplate:hasDatatype xsd:decimal .
+
+    sub:observable a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "observable it bears on" .
+
+    sub:reason a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "why (the reason for this testability)" .
+
+    sub:st01 rdf:object cv:Disagreement ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:disagreement .
+
+    sub:st02 rdf:object sub:identifier ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:disagreement .
+
+    sub:st03 rdf:object sub:claimA ;
+        rdf:predicate cv:claimA ;
+        rdf:subject sub:disagreement .
+
+    sub:st04 rdf:object sub:claimB ;
+        rdf:predicate cv:claimB ;
+        rdf:subject sub:disagreement .
+
+    sub:st05 rdf:object sub:dimension ;
+        rdf:predicate cv:dimension ;
+        rdf:subject sub:disagreement .
+
+    sub:st06 a ntemplate:OptionalStatement,
+            ntemplate:RepeatableStatement ;
+        rdf:object sub:observable ;
+        rdf:predicate cv:observable ;
+        rdf:subject sub:disagreement .
+
+    sub:st07 a ntemplate:OptionalStatement,
+            ntemplate:RepeatableStatement ;
+        rdf:object sub:instrument ;
+        rdf:predicate cv:instrument ;
+        rdf:subject sub:disagreement .
+
+    sub:st08 rdf:object sub:testability ;
+        rdf:predicate cv:testability ;
+        rdf:subject sub:disagreement .
+
+    sub:st09 rdf:object sub:reason ;
+        rdf:predicate cv:testabilityReason ;
+        rdf:subject sub:disagreement .
+
+    sub:st10 a ntemplate:OptionalStatement ;
+        rdf:object sub:assumption ;
+        rdf:predicate cv:assumption ;
+        rdf:subject sub:disagreement .
+
+    sub:st20 a ntemplate:GroupedStatement,
+            ntemplate:OptionalStatement ;
+        ntemplate:hasStatement sub:st11,
+            sub:st12,
+            sub:st13 .
+
+    sub:testability a ntemplate:RestrictedChoicePlaceholder ;
+        rdfs:label "testability" ;
+        ntemplate:possibleValue cv:NotYetTestable,
+            cv:TestableNow,
+            cv:TestableUnderAssumption .
+
+    sub:unit a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "unit of margin and floor" .
+
+    cv:Disagreement rdfs:label "disagreement" .
+
+    sub:st11 rdf:object sub:margin ;
+        rdf:predicate cv:margin ;
+        rdf:subject sub:disagreement .
+
+    sub:st12 rdf:object sub:floor ;
+        rdf:predicate cv:floor ;
+        rdf:subject sub:disagreement .
+
+    sub:st13 rdf:object sub:unit ;
+        rdf:predicate qudt:unit ;
+        rdf:subject sub:disagreement .
+
+    sub:disagreement a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this disagreement" .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "bFsRmA5wA9CyC5JBOHbRzZQlAIwCgak0wW9gY0rKYnb9km3ar/y4BJElAJltngVKdxOKX3POgE+Tvy0Yd8Gb1Epl/L48BMJTgc58wlr2Jat0eLERPcFIDkIAIf+qMJmUEqnXUjrwcS/uO3TqDV38J3fbIPyffd5sFuNB6+Jlq97f/JoGE3nDk6dll6dVUFChqFAfXeljK3l6oo4cg2OKfkhTOYmLtC2ZlQ1DJo4rPMq6e6P8OxpBcAewIXmCOd5shOhkxJIZGO++8ng0CP3Hd6YsWV1tNq1Ye1/0apIAUx7Nlqawr72UEmiVdT5eRYMKmvMY8N23LY4ifWO/TDgvWw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
+
+    this: rdfs:label "Consilience: claims A and B disagree on a dimension; testability and reason" ;
+        dcterms:created "2026-11-18T14:37:42Z"^^xsd:dateTime ;
+        dcterms:creator orcid:0009-0008-3375-7858 ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

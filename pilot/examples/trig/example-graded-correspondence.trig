@@ -1,0 +1,53 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAusc9czRDvO8hEmRp6V7qP-_UIO-cNSpd4Zo6c9qWnkQ/> .
+@prefix this: <https://w3id.org/np/RAusc9czRDvO8hEmRp6V7qP-_UIO-cNSpd4Zo6c9qWnkQ> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "D74RwKypMf9kdkI8yt5vT3cBTqgasMBjJGBuFlccUR60enT5sAdgyXkLPaBYvxZ2faPBjwbsUPlgUdYbFGt/YETT5oeaQLeylWRfenJApGiDtvA/mcf2pgQIrVeDXtMZPDhjjQ4heRTN+p7ES5nmefcjVjuGX0ega8TCaKfpeRqTGhgoTcE/4X5AjC5LbeoSAIuy7ccn+9RTkHiogoW3wEis0YIp6QQB0cw6PvD4lV6yHsncjEoomqIIn1L/P+YVut+BXWkx0ovc1MvQZqkx3K6z2M2HmdvwbXYeaSKVzhPCZlG/8aAdlvRjiVD/F2WmkRDRBMOEtrVg1bKBSk/8jQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> .
+
+    this: rdfs:label "Example: Claim example-A corresponds to claim example-B at grade 2" ;
+        dcterms:created "2026-11-18T14:39:15+00:00"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine> ;
+        dcterms:description "Example only: this nanopublication shows how the template is filled. Its data is made up, refers to no real claim or dataset, and is not a Consilience result." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType npx:ExampleNanopub,
+            cv:GradedCorrespondence ;
+        npx:introduces sub:correspondence ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAKPMZ4Fshl3xW2kdiIybJxhts61nTmWsGvfXFDTs9vOg/templateVersion> .
+}
+
+sub:assertion {
+    sub:correspondence a cv:GradedCorrespondence ;
+        dcterms:identifier "example-A|example-B" ;
+        cv:claimA <https://example.org/claim/example-A> ;
+        cv:claimB <https://example.org/claim/example-B> ;
+        cv:equivocation "survives (made-up example)" ;
+        cv:grade 2 ;
+        cv:gradeCeiling "Made-up example: a rung-2 correspondence would not license treating the two claims as the same finding." .
+}
+

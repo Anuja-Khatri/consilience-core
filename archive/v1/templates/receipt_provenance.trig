@@ -1,0 +1,164 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4/> .
+@prefix this: <https://w3id.org/np/RAjkzVXYgeEW-ORY5ZYAa_l_mgd-3Ki7HFItomg2I8el4> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0hCxFvUCRuTm1VLWoD8NlLmbCLbLRqp6axzjDK+f9XvxRn9Yy0rkzu7vrlEjOYj/2xvbvUTG13Dtoad5QOVndux9WH/Ui2nZVRqf86e8MI8D7sVN3iHdWl3i5ZV58I4MgPy/DL9WACAf50Dopgk8Qf0YKx2HZ0S3X+1v+i5p6cRbgYzIsu1oOswQdwahb9GYu89pi5K9OL6Xcq4hRsySe32Mbwv4uplmhw71PVuJMqfmmKzr6yH9iTnMPNnAV9wCZXK+pwvPxfey1z1IMGIH+w1TCK+aV/4GnY3dE+Tf+hTi2KkIaWPuECMJkO4fvQQay0MXO8K5oJKH14rnLSO2OwIDAQAB" ;
+        npx:hasSignature "tk8IQDXONj8ouUxvxHyN0Y5ugcIOYkfOu2IIXPOv3DB9RR1FpPW0KqN5WR92nFIYPaGUeIYk6edKxCFGMDxva6kt6AfSCW+FfSAkh+Y2v6ZTlgzoQfIuCGD4XsFUm+xVArcyMzTEYtE+dVZLCnsiMv2Gnu5+in/PAoa0BfutqmiS4tbxgxI0KT9ZNoB8VYvmHyei3bqGJHAnecTb6nWvg0EnthINRsr5RBDtRFdBfCO+YqQcrzMn4PelyUQ9rDym0I1GWnC388sJz5iXA66UJJtxGjw6Zii3CyXsiMuZ9ha5AXriuxpbpfo9SAQPYRWDEjJil7OUHKxLGvgXs2x4QQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> .
+
+    this: rdfs:label "Consilience: receipt" ;
+        dcterms:created "2026-11-16T19:27:47Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RASIkcye4-dV2TVAUvTeacEPqwkEZuy3oAwgp6Tn12OGc/consilience-engine> ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RA-yPZEYODCS39dWOWm7NA_ClOGFHzPi8iYhLzoZf19GI/templateVersion> .
+}
+
+sub:assertion {
+    prov:wasAttributedTo rdfs:label "is attributed to" .
+
+    prov:wasDerivedFrom rdfs:label "was derived from the receipt" .
+
+    cv:codeVersion rdfs:label "was computed by the code version" .
+
+    cv:contentHash rdfs:label "has the content hash" .
+
+    cv:exportedWith rdfs:label "was exported with" .
+
+    cv:hashMethod rdfs:label "hashed with the method" .
+
+    cv:ledgerHash rdfs:label "is covered by the ledger hash" .
+
+    cv:mapVersion rdfs:label "with the axis map version" .
+
+    cv:rulesVersion rdfs:label "under the rule version" .
+
+    cv:sourceCommit rdfs:label "at the commit" .
+
+    cv:sourceRepository rdfs:label "comes from the repository" .
+
+    sub:agent a ntemplate:AgentPlaceholder,
+            ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "software agent" ;
+        ntemplate:hasDefaultValue ntemplate:CREATOR .
+
+    sub:codeVersion a ntemplate:LiteralPlaceholder ;
+        rdfs:label "code version" .
+
+    sub:commit a ntemplate:LiteralPlaceholder ;
+        rdfs:label "source commit" .
+
+    sub:contentHash a ntemplate:LiteralPlaceholder ;
+        rdfs:label "content hash (SHA-256)" .
+
+    sub:exporter a ntemplate:LiteralPlaceholder ;
+        rdfs:label "exporter and version" .
+
+    sub:hashMethod a ntemplate:LiteralPlaceholder ;
+        rdfs:label "hash method" .
+
+    sub:ledgerHash a ntemplate:LiteralPlaceholder ;
+        rdfs:label "ledger hash" .
+
+    sub:mapVersion a ntemplate:LiteralPlaceholder ;
+        rdfs:label "axis map version" .
+
+    sub:receipt a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "receipt (record at a pinned commit)" .
+
+    sub:repository a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "source repository" .
+
+    sub:rulesVersion a ntemplate:LiteralPlaceholder ;
+        rdfs:label "rule version" .
+
+    sub:st01 rdf:object sub:agent ;
+        rdf:predicate prov:wasAttributedTo ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st02 rdf:object sub:receipt ;
+        rdf:predicate prov:wasDerivedFrom ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st03 rdf:object sub:repository ;
+        rdf:predicate cv:sourceRepository ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st04 rdf:object sub:commit ;
+        rdf:predicate cv:sourceCommit ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st05 rdf:object sub:contentHash ;
+        rdf:predicate cv:contentHash ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st06 rdf:object sub:hashMethod ;
+        rdf:predicate cv:hashMethod ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st07 a ntemplate:OptionalStatement ;
+        rdf:object sub:codeVersion ;
+        rdf:predicate cv:codeVersion ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st08 a ntemplate:OptionalStatement ;
+        rdf:object sub:rulesVersion ;
+        rdf:predicate cv:rulesVersion ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st09 a ntemplate:OptionalStatement ;
+        rdf:object sub:mapVersion ;
+        rdf:predicate cv:mapVersion ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st10 a ntemplate:OptionalStatement ;
+        rdf:object sub:ledgerHash ;
+        rdf:predicate cv:ledgerHash ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st11 rdf:object sub:exporter ;
+        rdf:predicate cv:exportedWith ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:templateVersion a ntemplate:ProvenanceTemplate ;
+        rdfs:label "Consilience: receipt" ;
+        dcterms:description "Where a Consilience record comes from and how to check it: the receipt (the record at a pinned commit of a public repository), the content hash and the method that reproduces it, and the code, rule and map versions that produced the record." ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11 ;
+        ntemplate:hasTag "Consilience" .
+}
+
