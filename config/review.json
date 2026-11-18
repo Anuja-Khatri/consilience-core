@@ -1,0 +1,7 @@
+{
+  "reviewer_name": "Anuja Khatri",
+  "reviewer_orcid": "0009-0008-3375-7858",
+  "drafted_by": "a large language model",
+  "applies_to": "theory claim cards (pilot/theories/records/*-theory-claim-card-*.json)",
+  "note": "The theory claim statements were drafted by a large language model and reviewed by Anuja Khatri. By the owner's decision (18 Nov 2026) no model name or version is recorded: the records say only \"drafted by a large language model\"."
+}

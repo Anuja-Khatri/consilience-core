@@ -1,0 +1,35 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "graded_correspondence",
+  "source": {
+    "repository": "https://github.com/example/example",
+    "commit": "0000000000000000000000000000000000000000",
+    "path": "example.json",
+    "lines": [
+      1,
+      1
+    ],
+    "receipt_url": "https://github.com/example/example/blob/0000000000000000000000000000000000000000/example.json#L1-L1"
+  },
+  "receipt": {
+    "content_hash": "c4df68f38fcca0ecb2e7c2d387236db098efbffa41ee94a492ca8d709de1bced",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "claim_a_receipt_url": "https://example.org/claim-card/example-A",
+    "claim_b_receipt_url": "https://example.org/claim-card/example-B",
+    "pubinfo_note": "Example only: this nanopublication shows how the template is filled. Its data is made up, refers to no real claim or dataset, and is not a Consilience result."
+  },
+  "record": {
+    "kind": "correspondence",
+    "pair_id": "example-A|example-B",
+    "claim_a_id": "example-A",
+    "claim_b_id": "example-B",
+    "rung": 2,
+    "ceiling": "Made-up example: a rung-2 correspondence would not license treating the two claims as the same finding.",
+    "equivocation": "survives (made-up example)",
+    "code_version": "example",
+    "rules_version": "example",
+    "content_hash": "c4df68f38fcca0ecb2e7c2d387236db098efbffa41ee94a492ca8d709de1bced"
+  }
+}

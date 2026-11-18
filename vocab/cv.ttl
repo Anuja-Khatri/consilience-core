@@ -1,303 +1,850 @@
-# Consilience verdict vocabulary (cv). CC BY 4.0. Generated from src/consilience/export/vocab.py.
+# Consilience verdict vocabulary (cv). CC BY 4.0.
+# Generated from src/consilience/export/vocab.py by scripts/write_vocab.py; do not edit.
 @prefix cv: <https://theconsilience.io/ns/cv#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cv:AnnealTemperature a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "anneal temperature"@en ;
+    rdfs:comment "The temperature at which the catalyst was annealed. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:Temperature .
+
+cv:ApproximateValue a owl:NamedIndividual ;
+    rdfs:label "approximate value"@en ;
+    rdfs:comment "Bound: the value is stated as approximate (for example, \"about 470 h\")."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Asserts a owl:NamedIndividual ;
+    rdfs:label "asserts"@en ;
+    rdfs:comment "Polarity: the theory asserts the position."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:AxisMismatch a owl:NamedIndividual ;
-    rdfs:label "different quantity axes" ;
-    rdfs:comment "Outcome and defect type: the two claims are on different quantity axes." ;
+    rdfs:label "different quantity axes"@en ;
+    rdfs:comment "Outcome and defect type: the two claims are on different quantity axes."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:CVOrLSV a owl:NamedIndividual,
+        cv:MeasurementTechnique ;
+    rdfs:label "cyclic or linear-sweep voltammetry"@en ;
+    rdfs:comment "Either cyclic voltammetry or linear-sweep voltammetry; the source does not say which. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:narrowMatch obo:CHMO_0000025,
+        obo:CHMO_0000028 .
+
+cv:CatalystLoading a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "catalyst loading"@en ;
+    rdfs:comment "The mass of catalyst per electrode area. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:CellVoltageAtCurrentDensity a owl:NamedIndividual,
+        cv:QuantityAxis ;
+    rdfs:label "cell voltage at a stated current density"@en ;
+    rdfs:comment "The voltage of a whole electrolysis cell at a stated current density. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:Voltage .
 
 cv:ClaimCard a owl:Class ;
-    rdfs:label "claim card" ;
-    rdfs:comment "One measured claim as an approved claim card: exact source sentence, source document, subject, quantity on an axis with its unit, and the conditions stated and not stated." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+    rdfs:label "claim card (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:MeasuredClaim."@en,
+        "v1: the claim card identified by its GitHub line range."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
 
 cv:ComparisonRefusal a owl:Class ;
-    rdfs:label "comparison refusal" ;
-    rdfs:comment "A comparison between two claims that was refused, with each reason (defect) named." ;
+    rdfs:label "comparison refusal"@en ;
+    rdfs:comment "A comparison between two claims that was refused, with each reason named: which condition is not stated in which claim, which condition differs and its two values, or which axes differ."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:ConditionMismatch a owl:NamedIndividual ;
-    rdfs:label "condition differs" ;
-    rdfs:comment "Defect type: a condition rule (named in defectTarget) is not met because the stated conditions differ." ;
+    rdfs:label "condition differs"@en ;
+    rdfs:comment "Defect type: a condition is stated in both claims with different values."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:ConditionUnstated a owl:NamedIndividual ;
-    rdfs:label "condition not stated" ;
-    rdfs:comment "Defect type: a condition the rule set requires is not stated in a claim card." ;
+    rdfs:label "condition not stated"@en ;
+    rdfs:comment "Defect type: a condition the rule set requires is not stated in a claim."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Connectivity a owl:NamedIndividual,
+        cv:CommitmentDimension ;
+    rdfs:label "connectivity"@en ;
+    rdfs:comment "What pattern of connections consciousness requires. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ConnectivityMetrics a owl:NamedIndividual,
+        cv:Observable ;
+    rdfs:label "connectivity metrics"@en ;
+    rdfs:comment "Measures of how brain regions are connected, structurally or functionally. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:broadMatch wd:Q66812725 ;
+    skos:relatedMatch wd:Q56711521 .
+
+cv:CurrentDensity a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "current density"@en ;
+    rdfs:comment "The current density at which the claim was measured. Comparability rule CR2. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:ElectricCurrentDensity .
+
+cv:CurrentDensityNormalization a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "current-density normalisation"@en ;
+    rdfs:comment "What area the current density is normalised to (geometric electrode area or electrochemically active surface area). Part of rule CR2. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:DataQualityFinding a owl:Class ;
-    rdfs:label "data-quality finding" ;
-    rdfs:comment "A check run over a dataset and how many records it flagged out of how many it checked. Credits the dataset; not a statement about its authors." ;
+    rdfs:label "data-quality finding"@en ;
+    rdfs:comment "A check run over a dataset and how many records it flagged out of how many it checked. Credits the dataset; not a statement about its authors."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Denies a owl:NamedIndividual ;
+    rdfs:label "denies"@en ;
+    rdfs:comment "Polarity: the theory denies the position."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Disagreement a owl:Class ;
+    rdfs:label "disagreement"@en ;
+    rdfs:comment "Two claims take different values on the same dimension. Records the dimension, the observables and instruments that bear on it, and whether the disagreement is testable now, testable under a stated assumption, or not yet testable, with the reason."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Electrolyte a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "electrolyte"@en ;
+    rdfs:comment "The electrolyte the claim was measured in; its value is a ChEBI entity. Comparability rule CR1, together with cv:ElectrolyteConcentration. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ElectrolyteConcentration a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "electrolyte concentration"@en ;
+    rdfs:comment "The concentration of the electrolyte. Part of rule CR1. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:AmountOfSubstanceConcentration .
+
+cv:ExactValue a owl:NamedIndividual ;
+    rdfs:label "exact value"@en ;
+    rdfs:comment "Bound: the value is stated as exact."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:GeometricArea a owl:NamedIndividual ;
+    rdfs:label "normalised to the geometric electrode area"@en ;
+    rdfs:comment "Value of cv:CurrentDensityNormalization."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:GlobalNeuronalWorkspaceTheory a owl:NamedIndividual ;
+    rdfs:label "Global Neuronal Workspace Theory (GNWT)"@en ;
+    rdfs:comment "The theory of consciousness of Dehaene, Changeux and colleagues. Wikidata's 'Dehaene–Changeux model' item is a close match; 'Global Workspace Theory' is broader. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:broadMatch wd:Q5570791 ;
+    skos:closeMatch wd:Q5252204 .
+
+cv:GlobalWorkspaceConnectivityRequired a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "global-workspace connectivity required"@en ;
+    rdfs:comment "Connectivity: a functional global neuronal workspace is required. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:GradedCorrespondence a owl:Class ;
-    rdfs:label "graded correspondence" ;
-    rdfs:comment "Two claims judged to correspond at a grade on a four-rung ladder (rung 1 strongest, 4 weakest), with a ceiling stating what the grade does not license." ;
+    rdfs:label "graded correspondence"@en ;
+    rdfs:comment "Two claims judged to correspond at a grade on a four-rung ladder (rung 1 strongest, 4 weakest), with a ceiling stating what the grade does not license."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
+cv:GradualBuildup a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "gradual build-up"@en ;
+    rdfs:comment "Time course: builds up gradually across cortical areas. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:HeterogeneousConnectivityRequired a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "heterogeneous connectivity required"@en ;
+    rdfs:comment "Connectivity: diverse, specialised causal connections are required. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:HoursToThreshold a owl:NamedIndividual,
+        cv:QuantityAxis ;
+    rdfs:label "time to a potential threshold"@en ;
+    rdfs:comment "How long a catalyst operated before its potential reached a stated threshold. A different axis from operational stability duration, though both are times. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:Time .
+
+cv:IRCorrected a owl:NamedIndividual ;
+    rdfs:label "iR-corrected"@en ;
+    rdfs:comment "Value of cv:IRCorrection."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:IRCorrection a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "iR correction"@en ;
+    rdfs:comment "Whether the reported potential is corrected for the ohmic (iR) drop. Comparability rule CR4. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:IgnitionSignature a owl:NamedIndividual,
+        cv:Observable ;
+    rdfs:label "ignition signature"@en ;
+    rdfs:comment "A sudden, sustained, widespread rise of activity when content becomes conscious. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:IntrinsicNotBroadcast a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "intrinsic, not broadcast"@en ;
+    rdfs:comment "Locus: intrinsic to the physical substrate, not a relay or global broadcast. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:LateOnsetThreshold a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "late onset past a threshold"@en ;
+    rdfs:comment "Time course: a late (>300 ms) all-or-none onset. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Locus a owl:NamedIndividual,
+        cv:CommitmentDimension ;
+    rdfs:label "locus"@en ;
+    rdfs:comment "Where consciousness is located (which system or brain regions). Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:LowerBound a owl:NamedIndividual ;
+    rdfs:label "lower bound"@en ;
+    rdfs:comment "Bound: the true value is at least this (for example, \">40 h\")."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:MassActivity a owl:NamedIndividual,
+        cv:QuantityAxis ;
+    rdfs:label "mass activity"@en ;
+    rdfs:comment "Current per mass of catalyst. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:SpecificElectricCurrent .
+
+cv:MaximalIrreducibleComplex a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "a bounded maximal irreducible complex"@en ;
+    rdfs:comment "Locus: a bounded complex of elements with maximal integrated information. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:MeasurableNow a owl:NamedIndividual ;
+    rdfs:label "measurable now"@en ;
+    rdfs:comment "Measurability: the quantity can be measured with techniques that exist today."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:MeasuredClaim a owl:Class ;
+    rdfs:label "measured claim"@en ;
+    rdfs:comment "A claim that states a measured quantity on an axis, with its unit, the conditions stated for it and the conditions not stated."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    rdfs:subClassOf cv:Claim .
+
+cv:MilliA-PER-CentiM2 a qudt:Unit ;
+    rdfs:label "milliampere per square centimetre"@en ;
+    qudt:conversionMultiplier 10.0 ;
+    qudt:hasQuantityKind quantitykind:ElectricCurrentDensity ;
+    rdfs:comment "mA/cm²: QUDT has A/cm² (unit:A-PER-CentiM2) but no mA/cm². One mA/cm² is 10 A/m² (the conversion multiplier to the SI unit)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:broadMatch unit:A-PER-CentiM2 .
+
 cv:NotComparable a owl:NamedIndividual ;
-    rdfs:label "not comparable" ;
-    rdfs:comment "Outcome: the two claims cannot be compared under the rule set." ;
+    rdfs:label "not comparable"@en ;
+    rdfs:comment "Outcome: the two claims cannot be compared under the rule set."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:NotIRCorrected a owl:NamedIndividual ;
+    rdfs:label "not iR-corrected"@en ;
+    rdfs:comment "Value of cv:IRCorrection."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:NotTestable a owl:NamedIndividual ;
-    rdfs:label "not testable" ;
-    rdfs:comment "Testability: not testable, with the reason." ;
+    rdfs:label "not testable (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:NotYetTestable."@en,
+        "v1 testability value."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
+cv:NotYetTestable a owl:NamedIndividual ;
+    rdfs:label "not yet testable"@en ;
+    rdfs:comment "Testability: no observable or instrument that exists today can settle the disagreement; the reason says why."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:OperationalStabilityDuration a owl:NamedIndividual,
+        cv:QuantityAxis ;
+    rdfs:label "operational stability duration"@en ;
+    rdfs:comment "How long a catalyst operated stably in a test. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:Time .
+
+cv:OverpotentialAtCurrentDensity a owl:NamedIndividual,
+        cv:QuantityAxis ;
+    rdfs:label "overpotential at a stated current density"@en ;
+    rdfs:comment "The overpotential needed to reach a stated current density. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:closeMatch wd:Q333853 ;
+    cv:quantityKind quantitykind:ElectricPotential .
+
+cv:PH a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "pH"@en ;
+    rdfs:comment "The pH of the electrolyte. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:PerformanceValue a owl:NamedIndividual ;
+    rdfs:label "performance value"@en ;
+    rdfs:comment "Claim kind: a measured performance figure. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:PolarizationCurve a owl:NamedIndividual,
+        cv:MeasurementTechnique ;
+    rdfs:label "polarisation curve of an electrolysis cell"@en ;
+    rdfs:comment "Cell voltage recorded against current density for a whole cell. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:PosteriorHotZone a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "a posterior cortical hot zone"@en ;
+    rdfs:comment "Locus: posterior cortex rather than prefrontal regions. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:PrefrontalParietalCorticalNetwork a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "a prefrontal-parietal cortical network"@en ;
+    rdfs:comment "Locus: a large-scale network of prefrontal and parietal (and cingulate and temporal) cortex. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:relatedMatch obo:UBERON_0000451,
+        obo:UBERON_0001872 .
+
+cv:PriorOperationDuration a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "prior operation duration"@en ;
+    rdfs:comment "How long the catalyst had operated before the measurement. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:Time .
+
+cv:ProtocolTier a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "protocol tier"@en ;
+    rdfs:comment "Which tier of a stated testing protocol was followed. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:QuantityRefused a owl:NamedIndividual ;
-    rdfs:label "quantity could not be read" ;
-    rdfs:comment "Defect type: a quantity could not be read or converted, with the reason." ;
+    rdfs:label "quantity could not be read"@en ;
+    rdfs:comment "Defect type: a claim's quantity could not be read."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:RDEMassActivity a owl:NamedIndividual,
+        cv:MeasurementTechnique ;
+    rdfs:label "mass activity from rotating-disk-electrode measurements"@en ;
+    rdfs:comment "Mass activity measured with a rotating-disk electrode. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:relatedMatch obo:CHMO_0002631 .
+
+cv:RegionalDecoding a owl:NamedIndividual,
+        cv:Observable ;
+    rdfs:label "regional decoding"@en ;
+    rdfs:comment "Decoding conscious content from the activity of particular brain regions. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    skos:broadMatch wd:Q7002049 .
+
+cv:ReviewedParaphrase a owl:NamedIndividual ;
+    rdfs:label "a paraphrase reviewed by a person, not a quotation"@en ;
+    rdfs:comment "Statement form: the claim statement paraphrases its source and was reviewed by a person. It is not a quotation."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:SerialAllOrNone a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "serial and all-or-none"@en ;
+    rdfs:comment "Time course: one interpretation at a time reaches consciousness. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:SingleMaximalComplex a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "a single maximal complex"@en ;
+    rdfs:comment "Locus: one maximally irreducible system, not any subset or superset. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:StabilityValue a owl:NamedIndividual ;
+    rdfs:label "stability value"@en ;
+    rdfs:comment "Claim kind: a measured stability figure. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Substrate a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "substrate"@en ;
+    rdfs:comment "The substrate the catalyst is supported on. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:SustainedMaintenance a owl:NamedIndividual,
+        cv:TheoryPosition ;
+    rdfs:label "sustained maintenance"@en ;
+    rdfs:comment "Time course: sustained over tens to hundreds of milliseconds, not transient. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Temperature a owl:NamedIndividual,
+        cv:ConditionType ;
+    rdfs:label "temperature"@en ;
+    rdfs:comment "The temperature of measurement. Comparability rule CR3. Used by the claim cards of the consilience-ledger (electrocatalysis)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    cv:quantityKind quantitykind:Temperature .
+
+cv:TemporalGeneralization a owl:NamedIndividual,
+        cv:Observable ;
+    rdfs:label "temporal generalisation"@en ;
+    rdfs:comment "Whether a decoder trained at one time point also decodes at others, which shows whether a representation is sustained. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:TemporalProfile a owl:NamedIndividual,
+        cv:CommitmentDimension ;
+    rdfs:label "time course"@en ;
+    rdfs:comment "How conscious content unfolds in time. Used by the cross-theory demo's claim cards (consciousness science)."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:TestableDisagreement a owl:Class ;
-    rdfs:label "testable disagreement" ;
-    rdfs:comment "Two comparable claims that disagree beyond the floor on their axis, with the instrument that could test the disagreement." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+    rdfs:label "testable disagreement (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:Disagreement."@en,
+        "v1: a disagreement said to be testable now with an instrument."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
 
 cv:TestableNow a owl:NamedIndividual ;
-    rdfs:label "testable now" ;
-    rdfs:comment "Testability: testable with an instrument that exists today." ;
+    rdfs:label "testable now"@en ;
+    rdfs:comment "Testability: the disagreement can be tested with observables and instruments that exist today."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:TestableUnderAssumption a owl:NamedIndividual ;
-    rdfs:label "testable under a named assumption" ;
-    rdfs:comment "Testability: testable under a named assumption." ;
+    rdfs:label "testable under a stated assumption"@en ;
+    rdfs:comment "Testability: the disagreement can be tested if the stated assumption holds."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
+cv:TheoryClaim a owl:Class ;
+    rdfs:label "theory claim"@en ;
+    rdfs:comment "A claim of a scientific theory: the position the theory takes on one dimension of commitment. It states no measured quantity."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    rdfs:subClassOf cv:Claim .
+
+cv:TheoryClaimCard a owl:Class ;
+    rdfs:label "theory claim card (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:TheoryClaim."@en,
+        "v1: the theory claim card identified by its GitHub line range."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
 cv:TypeMismatch a owl:NamedIndividual ;
-    rdfs:label "different claim kinds" ;
-    rdfs:comment "Defect type: the two claims are of different kinds." ;
+    rdfs:label "different claim kinds"@en ;
+    rdfs:comment "Defect type: the two claims are of different kinds."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:UpperBound a owl:NamedIndividual ;
+    rdfs:label "upper bound"@en ;
+    rdfs:comment "Bound: the true value is at most this."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:assumption a rdf:Property ;
-    rdfs:label "under the assumption" ;
+    rdfs:label "under the assumption"@en ;
+    rdfs:comment "The assumption under which a disagreement is testable."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:axis a rdf:Property ;
-    rdfs:label "is on the quantity axis" ;
+    rdfs:label "is on the quantity axis"@en ;
+    rdfs:comment "The quantity axis (a cv:QuantityAxis) a measured claim's number is a value of."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:axisOfClaimA a rdf:Property ;
+    rdfs:label "claim A is on the axis"@en ;
+    rdfs:comment "A cv:QuantityAxis."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:axisOfClaimB a rdf:Property ;
+    rdfs:label "claim B is on the axis"@en ;
+    rdfs:comment "A cv:QuantityAxis."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:bound a rdf:Property ;
-    rdfs:label "with bound" ;
+    rdfs:label "with bound"@en ;
+    rdfs:comment "Whether the value is exact, approximate, a lower bound or an upper bound."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:canonicalUnit a rdf:Property ;
-    rdfs:label "in the unit" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+    rdfs:label "in the unit (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see qudt:unit."@en,
+        "v1: a unit as a string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
 
 cv:check a rdf:Property ;
-    rdfs:label "applies the check" ;
+    rdfs:label "applies the check"@en ;
+    rdfs:comment "The check, in plain words."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:claimA a rdf:Property ;
-    rdfs:label "compares claim A" ;
+    rdfs:label "compares claim A"@en ;
+    rdfs:comment "Claim A: a claim IRI."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:claimASentence a rdf:Property ;
-    rdfs:label "claim A's source sentence" ;
+    rdfs:label "claim A's source sentence"@en ;
+    rdfs:comment "Copied for readability."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:claimB a rdf:Property ;
-    rdfs:label "with claim B" ;
+    rdfs:label "with claim B"@en ;
+    rdfs:comment "Claim B: a claim IRI."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:claimBSentence a rdf:Property ;
-    rdfs:label "claim B's source sentence" ;
+    rdfs:label "claim B's source sentence"@en ;
+    rdfs:comment "Copied for readability."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:claimKind a rdf:Property ;
-    rdfs:label "is of claim kind" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:codeVersion a rdf:Property ;
-    rdfs:label "was computed by the code version" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:conditionName a rdf:Property ;
-    rdfs:label "has the condition name" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:conditionUnstated a rdf:Property ;
-    rdfs:label "does not state the condition" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:conditionValueJson a rdf:Property ;
-    rdfs:label "has the condition value (JSON)" ;
-    rdfs:comment "The stated value of a condition, as JSON with sorted keys, exactly as in the claim card." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:contentHash a rdf:Property ;
-    rdfs:label "has the content hash" ;
-    rdfs:comment "SHA-256 content hash of the source record (hex). Reproduce it with the method named by hashMethod." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:dataset a rdf:Property ;
-    rdfs:label "concerns the dataset" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:defectTarget a rdf:Property ;
-    rdfs:label "concerns" ;
-    rdfs:comment "What a defect concerns: a condition name, a rule identifier (for ConditionMismatch), or the two axes." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:defectType a rdf:Property ;
-    rdfs:label "is of defect type" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:equivocation a rdf:Property ;
-    rdfs:label "has the equivocation-check result" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:exportedWith a rdf:Property ;
-    rdfs:label "was exported with" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:floor a rdf:Property ;
-    rdfs:label "beyond the floor" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:grade a rdf:Property ;
-    rdfs:label "has the grade" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:gradeCeiling a rdf:Property ;
-    rdfs:label "with the ceiling" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:hasCondition a rdf:Property ;
-    rdfs:label "states the condition" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:hasDefect a rdf:Property ;
-    rdfs:label "has the defect" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:hasQuantity a rdf:Property ;
-    rdfs:label "states the quantity" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:hashMethod a rdf:Property ;
-    rdfs:label "hashed with the method" ;
-    rdfs:comment "How contentHash is computed. verdict-sha256-v0: SHA-256 of the record minus its content_hash field, JSON with sorted keys. card-sha256-v0: SHA-256 of the whole claim card, JSON with sorted keys." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:instrument a rdf:Property ;
-    rdfs:label "is testable with the instrument" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:ledgerHash a rdf:Property ;
-    rdfs:label "is covered by the ledger hash" ;
-    rdfs:comment "The ledger hash that covers the full set of claim cards, the rules lock and the code version at the source commit." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:mapVersion a rdf:Property ;
-    rdfs:label "with the axis map version" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:margin a rdf:Property ;
-    rdfs:label "differs by the margin" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:measurability a rdf:Property ;
-    rdfs:label "has measurability" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:measurableWith a rdf:Property ;
-    rdfs:label "is measurable with" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:objectName a rdf:Property ;
-    rdfs:label "measures" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:outcome a rdf:Property ;
-    rdfs:label "has the outcome" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:recordsChecked a rdf:Property ;
-    rdfs:label "checked this many records" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:recordsFlagged a rdf:Property ;
-    rdfs:label "flagged this many records" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:relation a rdf:Property ;
-    rdfs:label "has the relation" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:rulesVersion a rdf:Property ;
-    rdfs:label "under the rule version" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:sourceCommit a rdf:Property ;
-    rdfs:label "at the commit" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:sourceRepository a rdf:Property ;
-    rdfs:label "comes from the repository" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:sourceSentence a rdf:Property ;
-    rdfs:label "has the source sentence" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:subjectName a rdf:Property ;
-    rdfs:label "is about the subject" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:testability a rdf:Property ;
-    rdfs:label "has testability" ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:TheoryClaimCard a owl:Class ;
-    rdfs:label "theory claim card" ;
-    rdfs:comment "One claim of a scientific theory as a reviewed claim card: the theory, a claim statement (a reviewed paraphrase, not a quotation), the axis of the commitment and its value there, and the source locations (document and page) it rests on." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:ReviewedParaphrase a owl:NamedIndividual ;
-    rdfs:label "a paraphrase reviewed by a person, not a quotation" ;
-    rdfs:comment "Statement form: the claim statement paraphrases its source and has been reviewed by a person; it is not a quotation." ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
-
-cv:theory a rdf:Property ;
-    rdfs:label "is a claim of the theory" ;
-    rdfs:comment "The theory the claim belongs to (e.g. IIT, GNWT)." ;
+    rdfs:label "is of claim kind"@en ;
+    rdfs:comment "The kind of claim (an IRI)."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:claimStatement a rdf:Property ;
-    rdfs:label "has the claim statement" ;
-    rdfs:comment "The claim in one sentence. Its form (for example a reviewed paraphrase) is given by cv:statementForm." ;
+    rdfs:label "has the claim statement"@en ;
+    rdfs:comment "The claim in words. For theory claims, a reviewed paraphrase, not a quotation."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
-cv:statementForm a rdf:Property ;
-    rdfs:label "has a statement that is" ;
-    rdfs:comment "What kind of text the claim statement is, e.g. cv:ReviewedParaphrase." ;
+cv:codeVersion a rdf:Property ;
+    rdfs:label "was computed by the code version"@en ;
+    rdfs:comment "A version string."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
-cv:polarity a rdf:Property ;
-    rdfs:label "has the polarity" ;
-    rdfs:comment "Whether the claim asserts or denies its value on the axis." ;
+cv:condition a rdf:Property ;
+    rdfs:label "concerns the condition"@en ;
+    rdfs:comment "Which condition (a cv:ConditionType) a node is about."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
-cv:restsOn a rdf:Property ;
-    rdfs:label "rests on the source location" ;
-    rdfs:comment "A location in a source document (dct:source plus cv:pageLocator) the claim card rests on." ;
+cv:conditionName a rdf:Property ;
+    rdfs:label "has the condition name (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:condition."@en,
+        "v1: a condition name as a string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
+cv:conditionUnstated a rdf:Property ;
+    rdfs:label "does not state the condition"@en ;
+    rdfs:comment "A condition (a cv:ConditionType) the claim's source sentence does not state."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:conditionValue a rdf:Property ;
+    rdfs:label "has the condition value"@en ;
+    rdfs:comment "The value of a categorical condition (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:conditionValueJson a rdf:Property ;
+    rdfs:label "has the condition value as JSON (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:statesQuantityCondition and cv:statesCategoricalCondition."@en,
+        "v1: a condition value as a JSON string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
+cv:contentHash a rdf:Property ;
+    rdfs:label "has the content hash"@en ;
+    rdfs:comment "SHA-256, hex."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:dataset a rdf:Property ;
+    rdfs:label "concerns the dataset"@en ;
+    rdfs:comment "A persistent link to the dataset."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:defectTarget a rdf:Property ;
+    rdfs:label "concerns"@en ;
+    rdfs:comment "What a defect of a kind with no more specific statement concerns, in words."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:defectType a rdf:Property ;
+    rdfs:label "is of defect type"@en ;
+    rdfs:comment "The kind of defect."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:dimension a rdf:Property ;
+    rdfs:label "concerns the dimension"@en ;
+    rdfs:comment "The dimension of commitment of a theory claim, or the dimension two claims disagree on (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:draftedBy a rdf:Property ;
+    rdfs:label "was drafted by"@en ;
+    rdfs:comment "What drafted the statement before review, in words (for example, \"a large language model\")."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:equivocation a rdf:Property ;
+    rdfs:label "has the equivocation-check result"@en ;
+    rdfs:comment "Whether the correspondence survives removing the vocabulary the two claims share."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:exportedWith a rdf:Property ;
+    rdfs:label "was exported with"@en ;
+    rdfs:comment "Exporter and version."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:floor a rdf:Property ;
+    rdfs:label "beyond the floor"@en ;
+    rdfs:comment "In the node's qudt:unit."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:grade a rdf:Property ;
+    rdfs:label "has the grade"@en ;
+    rdfs:comment "Rung 1 (strongest) to 4 (weakest)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:gradeCeiling a rdf:Property ;
+    rdfs:label "with the ceiling"@en ;
+    rdfs:comment "What the grade does not license."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasCondition a rdf:Property ;
+    rdfs:label "states the condition (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:statesQuantityCondition and cv:statesCategoricalCondition."@en,
+        "v1: a stated condition node."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
+cv:hasConditionMismatch a rdf:Property ;
+    rdfs:label "is refused because a condition differs"@en ;
+    rdfs:comment "A node naming the condition (cv:condition), the rule (cv:rule), the value in each claim (cv:valueInClaimA, cv:valueInClaimB) and their unit (qudt:unit)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasDefect a rdf:Property ;
+    rdfs:label "has the defect"@en ;
+    rdfs:comment "A defect of a kind with no more specific statement (cv:defectType, cv:defectTarget)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasQuantity a rdf:Property ;
+    rdfs:label "states the quantity"@en ;
+    rdfs:comment "The stated quantity (a qudt:QuantityValue with qudt:numericValue and qudt:unit)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hasUnstatedCondition a rdf:Property ;
+    rdfs:label "is refused because a condition is not stated"@en ;
+    rdfs:comment "A node naming the condition (cv:condition), the claim that does not state it (cv:unstatedIn) and the rule that requires it (cv:rule). One node per claim: if both claims lack a condition, there are two."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:hashMethod a rdf:Property ;
+    rdfs:label "hashed with the method"@en ;
+    rdfs:comment "How the content hash is recomputed (see docs/VOCABULARY.md)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:instrument a rdf:Property ;
+    rdfs:label "can be tested with the instrument"@en ;
+    rdfs:comment "An instrument or technique (an IRI). Not an observable."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ledgerHash a rdf:Property ;
+    rdfs:label "is covered by the ledger hash"@en ;
+    rdfs:comment "SHA-256, hex."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:mapVersion a rdf:Property ;
+    rdfs:label "with the axis map version"@en ;
+    rdfs:comment "A version string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:margin a rdf:Property ;
+    rdfs:label "differs by the margin"@en ;
+    rdfs:comment "In the node's qudt:unit."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:measurability a rdf:Property ;
+    rdfs:label "has measurability"@en ;
+    rdfs:comment "Whether the quantity can be measured today (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:measurableWith a rdf:Property ;
+    rdfs:label "is measurable with the technique"@en ;
+    rdfs:comment "A technique the quantity is measured with (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:objectName a rdf:Property ;
+    rdfs:label "measures (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:axis."@en,
+        "v1: what is measured, as a string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
+cv:observable a rdf:Property ;
+    rdfs:label "bears on the observable"@en ;
+    rdfs:comment "A cv:Observable or other IRI."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:outcome a rdf:Property ;
+    rdfs:label "has the outcome"@en ;
+    rdfs:comment "The outcome of a refused comparison."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:pageLocator a rdf:Property ;
-    rdfs:label "at the page" ;
-    rdfs:comment "A page in the PDF that was read, written p.N; it can differ from the printed page number." ;
+    rdfs:label "at the page"@en ;
+    rdfs:comment "A page of the PDF that was read, which can differ from the printed page number."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:polarity a rdf:Property ;
+    rdfs:label "has the polarity"@en ;
+    rdfs:comment "Asserts or denies (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:position a rdf:Property ;
+    rdfs:label "takes the position"@en ;
+    rdfs:comment "The position a theory claim takes on its dimension (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:quantityKind a rdf:Property ;
+    rdfs:label "has the quantity kind"@en ;
+    rdfs:comment "The QUDT quantity kind of an axis or condition."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:recordsChecked a rdf:Property ;
+    rdfs:label "checked this many records"@en ;
+    rdfs:comment "An integer."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:recordsFlagged a rdf:Property ;
+    rdfs:label "flagged this many records"@en ;
+    rdfs:comment "An integer."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:relation a rdf:Property ;
+    rdfs:label "has the relation (v1)"@en ;
+    rdfs:comment "Not used from v2 on; see cv:axis."@en,
+        "v1: the relation, as a string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
+    owl:deprecated true .
+
+cv:restsOn a rdf:Property ;
+    rdfs:label "rests on the source location"@en ;
+    rdfs:comment "A source location (dct:source and cv:pageLocator) the claim rests on."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:reviewedBy a rdf:Property ;
+    rdfs:label "was reviewed by"@en ;
+    rdfs:comment "The person who reviewed the record's statement (an ORCID iD)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:rule a rdf:Property ;
+    rdfs:label "under the rule"@en ;
+    rdfs:comment "The identifier of a rule in the rule set named in the provenance (for example, CR2)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:rulesVersion a rdf:Property ;
+    rdfs:label "under the rule version"@en ;
+    rdfs:comment "A version string."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:sourceCommit a rdf:Property ;
+    rdfs:label "at the commit"@en ;
+    rdfs:comment "A full 40-hex commit."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:sourceRepository a rdf:Property ;
+    rdfs:label "comes from the repository"@en ;
+    rdfs:comment "A public repository."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:sourceSentence a rdf:Property ;
+    rdfs:label "has the source sentence"@en ;
+    rdfs:comment "The exact sentence of the source document the claim is extracted from."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:statementForm a rdf:Property ;
+    rdfs:label "has a statement that is"@en ;
+    rdfs:comment "What kind of text the claim statement is (for example, a reviewed paraphrase)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:statesCategoricalCondition a rdf:Property ;
+    rdfs:label "states the categorical condition"@en ;
+    rdfs:comment "A stated condition whose value is an IRI (cv:condition, cv:conditionValue), for example the electrolyte as a ChEBI entity."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:statesQuantityCondition a rdf:Property ;
+    rdfs:label "states the quantitative condition"@en ;
+    rdfs:comment "A stated condition with a number and a unit (cv:condition, qudt:numericValue, qudt:unit)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:subjectName a rdf:Property ;
+    rdfs:label "is about the subject"@en ;
+    rdfs:comment "What the claim is about (for example, a catalyst), as named in the source."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:testability a rdf:Property ;
+    rdfs:label "has testability"@en ;
+    rdfs:comment "Testable now, testable under a stated assumption, or not yet testable."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:testabilityReason a rdf:Property ;
+    rdfs:label "for the reason"@en ;
+    rdfs:comment "Why the testability is what it is."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:theory a rdf:Property ;
+    rdfs:label "is a claim of the theory"@en ;
+    rdfs:comment "The theory (an IRI)."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:unitAsWritten a rdf:Property ;
+    rdfs:label "has the unit as written"@en ;
+    rdfs:comment "The unit exactly as the source wrote it, next to its qudt:unit IRI."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:unstatedIn a rdf:Property ;
+    rdfs:label "is not stated in the claim"@en ;
+    rdfs:comment "A claim IRI."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:valueInClaimA a rdf:Property ;
+    rdfs:label "has in claim A the value"@en ;
+    rdfs:comment "A number, in the node's qudt:unit."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:valueInClaimB a rdf:Property ;
+    rdfs:label "has in claim B the value"@en ;
+    rdfs:comment "A number, in the node's qudt:unit."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Claim a owl:Class ;
+    rdfs:label "claim"@en ;
+    rdfs:comment "A claim, identified by the IRI that its claim-card nanopublication introduces. The IRI stays the same when a corrected card supersedes the first one."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:CommitmentDimension a owl:Class ;
+    rdfs:label "dimension of commitment"@en ;
+    rdfs:comment "A dimension on which a theory commits to a position (for example, where consciousness is located). Not a quantity."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:MeasurementTechnique a owl:Class ;
+    rdfs:label "measurement technique"@en ;
+    rdfs:comment "A technique a quantity is measured with."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:Observable a owl:Class ;
+    rdfs:label "observable"@en ;
+    rdfs:comment "Something that can be measured and that a disagreement bears on (for example, regional decoding of conscious content). Not an instrument."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:QuantityAxis a owl:Class ;
+    rdfs:label "quantity axis"@en ;
+    rdfs:comment "What a measured claim's number is a value of (for example, the overpotential at a stated current density). Mapped to a QUDT quantity kind with cv:quantityKind."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:TheoryPosition a owl:Class ;
+    rdfs:label "position of a theory"@en ;
+    rdfs:comment "A position a theory's claim takes on a dimension of commitment."@en ;
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
+
+cv:ConditionType a owl:Class ;
+    rdfs:label "condition"@en ;
+    rdfs:comment "A condition under which a measured claim was made (for example, the electrolyte or the current density)."@en ;
     rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 <https://theconsilience.io/ns/cv> a owl:Ontology ;
-    rdfs:label "Consilience verdict vocabulary (cv), version 0" ;
+    rdfs:label "Consilience verdict vocabulary (cv)" ;
+    dct:creator <https://orcid.org/0009-0008-3375-7858> ;
     dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-    rdfs:comment "Minimal terms for Consilience records published as nanopublications, defined only where no existing vocabulary fits. Draft; not yet served at this address." .
+    rdfs:comment "Terms for Consilience records published as nanopublications: claims, refused comparisons, disagreements, receipts, and the axes, conditions, observables and positions the records refer to. Existing vocabularies (QUDT, ChEBI, CHMO, Wikidata, PROV-O, Dublin Core) are used directly where they fit; terms here map to them with SKOS where possible." .
 

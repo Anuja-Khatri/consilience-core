@@ -20,7 +20,7 @@
     "documents": {
       "gnwt_neuron_2011": "https://doi.org/10.1016/j.neuron.2011.03.018"
     },
-    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a language model and reviewed by a person. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers."
   },
   "record": {
     "claim_id": "gnwt_c018",

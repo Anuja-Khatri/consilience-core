@@ -43,6 +43,21 @@ REFUSALS = [
     "ref40_peng2023__026|ref40_peng2023__044",   # mass activity, four conditions not stated
 ]
 CLAIMS = ["ref40_peng2023__002", "ref40_peng2023__011", "2609.30133__003"]
+# v2: a refusal names its two claims by the claim IRIs their claim-card nanopubs introduce,
+# so every claim a pilot refusal refers to needs a published claim card. These eight are
+# the supporting cards (records 11-18); they are written after the ten pilot records so
+# that records 01-10 keep their numbers.
+SUPPORTING_CLAIMS = ["ref40_peng2023__009", "ref40_peng2023__010", "2609.30133__001",
+                     "2609.30133__004", "ref40_peng2023__013", "2609.30133__002",
+                     "ref40_peng2023__026", "ref40_peng2023__044"]
+
+REFUSAL_NOTE = (
+    "A refused comparison from the public consilience-ledger, under its rule set "
+    "comparability-v0.1. Which claim does not state each condition, and the two values of a "
+    "condition that differs, are read from the two claims' cards (claim A and claim B), whose "
+    "receipts are in their own nanopublications. It records what the two claim cards, as "
+    "extracted from their source sentences, allow; it is not a judgement of either paper."
+)
 
 # From the ledger's corpus/MANIFEST.yaml at the same commit.
 SOURCE_DOCUMENTS = {
@@ -100,7 +115,8 @@ def main() -> int:
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     n = 0
-    for cid in CLAIMS:
+
+    def write_card(cid: str, n: int) -> None:
         i = claim_idx[cid]
         card = claims[i]
         lines = line_range_of_list_item(claims_text, i)
@@ -123,8 +139,11 @@ def main() -> int:
             "record": card,
         }
         verify(parse_envelope(env))
-        n += 1
         (out / f"{n:02d}-claim-card-{cid}.json").write_text(json.dumps(env, indent=2, ensure_ascii=False) + "\n")
+
+    for cid in CLAIMS:
+        n += 1
+        write_card(cid, n)
     for pid in REFUSALS:
         i = rej_idx[pid]
         rec = rejections[i]
@@ -138,9 +157,11 @@ def main() -> int:
             "context": {
                 "claim_a_receipt_url": claim_url(rec["claim_a_id"]),
                 "claim_b_receipt_url": claim_url(rec["claim_b_id"]),
-                "condition_rules": {d["target"]: condition_rules[d["target"]]
-                                    for d in rec["defects"] if d["defect_type"] == "condition_mismatch"},
+                # every condition rule and its fields: which rule requires an unstated
+                # condition, and which field a mismatched rule is about
+                "condition_rules": condition_rules,
                 "rules_url": f"{REPO}/blob/{commit}/rules/comparability_rules.yaml",
+                "pubinfo_note": REFUSAL_NOTE,
             },
             "record": rec,
         }
@@ -148,6 +169,9 @@ def main() -> int:
         n += 1
         safe = pid.replace("|", "--")
         (out / f"{n:02d}-refusal-{safe}.json").write_text(json.dumps(env, indent=2, ensure_ascii=False) + "\n")
+    for cid in SUPPORTING_CLAIMS:
+        n += 1
+        write_card(cid, n)
     print(f"wrote {n} envelopes to {out}; ledger hash {lh} reproduces")
     return 0
 

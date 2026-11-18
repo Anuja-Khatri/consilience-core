@@ -30,7 +30,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from consilience.export.nanopub import DEMO_FORK, demo_instrument  # noqa: E402
+from consilience.export.nanopub import DEMO_FORK, demo_observables  # noqa: E402
 from consilience.receipts import JSON_METHOD, SCHEMA, json_hash  # noqa: E402
 
 REPO = "https://github.com/Anuja-Khatri/theconsilience-engine"
@@ -59,16 +59,17 @@ SOURCE_NOTE = (
     f"pinned in {REPO} at commit {ENGINE_COMMIT}, results/demo/. "
 )
 CARD_NOTE = SOURCE_NOTE + (
-    "The claim statement is a paraphrase of the source paper, drafted by a language model "
-    "and reviewed by a person. It is not a quotation. Page locators are pages of the PDF "
+    "The claim statement is a paraphrase of the source paper, drafted by a large language "
+    "model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF "
     "the demo read, which can differ from printed page numbers."
 )
 FORK_NOTE = SOURCE_NOTE + (
-    "The demo's check rules this disagreement decidable with instruments that exist today "
-    "and names the shared observable both claims bear on. This is a statement about the "
-    "two claim cards, not a verdict on either theory. The axis is an axis of theoretical "
-    "commitment, not a quantity axis, so no margin or floor applies. The claim statements "
-    "in the linked claim cards are reviewed paraphrases with page locators, not quotations."
+    "The demo's check rules this disagreement decidable now and names the shared observable "
+    "both claims bear on; it names no instrument, so none is recorded. This is a statement "
+    "about the two claims, not a verdict on either theory. The dimension is a dimension of "
+    "theoretical commitment, not a quantity, so no margin or floor applies. The claim "
+    "statements in the linked claim cards are reviewed paraphrases with page locators, not "
+    "quotations."
 )
 
 
@@ -156,13 +157,13 @@ def main() -> int:
     for f in forks:
         n += 1
         a, b = f["left_ids"][0], f["right_ids"][0]
-        env = envelope("testable_disagreement", text, f, 4, file_sha, {
+        demo_observables(f)  # every observable must have an IRI
+        env = envelope("disagreement", text, f, 4, file_sha, {
             "record_format": DEMO_FORK,
             "disagreement": GROUPS[f["axis"]],
             "claim_a_receipt_url": card_url[a],
             "claim_b_receipt_url": card_url[b],
             "testability": "testable_now",
-            "instrument": demo_instrument(f),
             "pubinfo_note": FORK_NOTE + (
                 f" The demo marks this pair as a type divergence: the two claims are different "
                 f"kinds of claim ({nodes[a]['entity_type']} and {nodes[b]['entity_type']})."

@@ -1,0 +1,68 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "claim_card",
+  "source": {
+    "repository": "https://github.com/Anuja-Khatri/consilience-ledger",
+    "commit": "7c1f9235b582666403537dd929c844e4b2dfc8cf",
+    "path": "ledger/claims.json",
+    "lines": [
+      784,
+      826
+    ],
+    "receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L784-L826"
+  },
+  "receipt": {
+    "content_hash": "234ae55fc3fd6105a94ff9b6dc9074f771d60ca789cea9bc771c36e460e07f4b",
+    "hash_method": "card-sha256-v0"
+  },
+  "context": {
+    "source_document_url": "https://doi.org/10.1093/nsr/nwac108",
+    "ledger_hash": "a11ee946669360b4327e2dd22391b2711cbba60c15e9f1f447286351abe69bdd",
+    "code_version": "lab-extension-0.1.0",
+    "rules_version": "comparability-v0.1",
+    "note": "The ledger stores no per-card content hash; this one is computed with the ledger's own hasher over the card exactly as committed. The card set is covered by ledger_hash."
+  },
+  "record": {
+    "axis": "cell_voltage_at_current_density",
+    "causal_direction": "independent",
+    "claim_id": "ref40_peng2023__010",
+    "claim_kind": "performance_value",
+    "commitment_direction": "asserts",
+    "conditions": {
+      "anneal_temperature": "unstated",
+      "current_density": {
+        "normalization": "geometric",
+        "unit": "A/cm^2",
+        "value": 2.0
+      },
+      "electrolyte": "unstated",
+      "ir_correction": "unstated",
+      "loading": "unstated",
+      "ph": "unstated",
+      "prior_operation_duration": "unstated",
+      "protocol_tier": "unstated",
+      "substrate": "unstated",
+      "temperature": {
+        "unit": "degC",
+        "value": 65.0
+      }
+    },
+    "domain": "materials_oer",
+    "measurability": "measurable_now",
+    "measurable_with": "polarization_curve",
+    "object": "cell_voltage",
+    "physical_scale": "device",
+    "provenance_hash": "848a71ea73c9f1d1",
+    "quantity": {
+      "bound": "exact",
+      "uncertainty": null,
+      "uncertainty_kind": "none_stated",
+      "unit": "V",
+      "value": 1.771
+    },
+    "relation": "has_cell_voltage_at_current_density",
+    "source_document": "ref40_peng2023",
+    "source_sentence": "From the polarization curves at 65°C in Fig. 5b and Supplementary Figs S16 and S17, a voltage of only 1.664 and 1.771 V is required to achieve 1 and 2 A cm–2, respectively, demonstrating superior performance for acidic water electrolysis [10,42].",
+    "subject": "PEM electrolyser with Pd-55 (2 mg cm–2) as both cathode and anode catalysts"
+  }
+}

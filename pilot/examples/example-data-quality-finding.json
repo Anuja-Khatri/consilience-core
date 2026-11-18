@@ -1,0 +1,33 @@
+{
+  "schema": "consilience-record/v0",
+  "record_type": "data_quality_finding",
+  "source": {
+    "repository": "https://github.com/example/example",
+    "commit": "0000000000000000000000000000000000000000",
+    "path": "example.json",
+    "lines": [
+      1,
+      1
+    ],
+    "receipt_url": "https://github.com/example/example/blob/0000000000000000000000000000000000000000/example.json#L1-L1"
+  },
+  "receipt": {
+    "content_hash": "51aa48d69dbef49007d06043c56bbd8b7486c1d0ba4da6417c46eee923e056bc",
+    "hash_method": "verdict-sha256-v0"
+  },
+  "context": {
+    "pubinfo_note": "Example only: this nanopublication shows how the template is filled. Its data is made up, refers to no real claim or dataset, and is not a Consilience result."
+  },
+  "record": {
+    "kind": "data_quality_finding",
+    "finding_id": "example-1",
+    "dataset": "https://example.org/dataset/example-1",
+    "check": "A measured value must not exceed the instrument limit recorded in the same row (made-up example).",
+    "n_checked": 1000,
+    "n_flagged": 3,
+    "finding": "Made-up example: 3 of 1,000 rows of a made-up dataset record a value above the instrument limit recorded in the same row.",
+    "code_version": "example",
+    "rules_version": "example",
+    "content_hash": "51aa48d69dbef49007d06043c56bbd8b7486c1d0ba4da6417c46eee923e056bc"
+  }
+}

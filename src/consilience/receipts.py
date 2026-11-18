@@ -5,8 +5,8 @@ public Consilience repository, together with where it came from:
 
     {
       "schema": "consilience-record/v0",
-      "record_type": "comparison_refusal" | "claim_card" | "graded_correspondence"
-                     | "testable_disagreement" | "data_quality_finding",
+      "record_type": "comparison_refusal" | "claim_card" | "theory_claim_card"
+                     | "graded_correspondence" | "disagreement" | "data_quality_finding",
       "source": {
         "repository": "https://github.com/<owner>/<repo>",
         "commit": "<40-hex commit>",
@@ -38,7 +38,8 @@ RECORD_TYPES = (
     "comparison_refusal",
     "claim_card",
     "graded_correspondence",
-    "testable_disagreement",
+    "disagreement",
+    "testable_disagreement",   # v1 name of "disagreement", still read
     "data_quality_finding",
     "theory_claim_card",
 )
@@ -63,7 +64,7 @@ VERDICT_METHOD = "verdict-sha256-v0"
 CARD_METHOD = "card-sha256-v0"
 JSON_METHOD = "json-sha256-v0"
 # Record types that may use JSON_METHOD.
-JSON_METHOD_TYPES = ("theory_claim_card", "testable_disagreement")
+JSON_METHOD_TYPES = ("theory_claim_card", "disagreement", "testable_disagreement")
 
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 _HEX40 = re.compile(r"^[0-9a-f]{40}$")

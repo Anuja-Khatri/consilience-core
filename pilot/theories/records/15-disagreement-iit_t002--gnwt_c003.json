@@ -1,6 +1,6 @@
 {
   "schema": "consilience-record/v0",
-  "record_type": "testable_disagreement",
+  "record_type": "disagreement",
   "source": {
     "repository": "https://github.com/Anuja-Khatri/theconsilience-engine",
     "commit": "96ba4e435bd13718d36435cc3436d938d2d1f894",
@@ -22,8 +22,7 @@
     "claim_a_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L607-L639",
     "claim_b_receipt_url": "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1077-L1121",
     "testability": "testable_now",
-    "instrument": "shared observable: regional decoding",
-    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable with instruments that exist today and names the shared observable both claims bear on. This is a statement about the two claim cards, not a verdict on either theory. The axis is an axis of theoretical commitment, not a quantity axis, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations."
+    "pubinfo_note": "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable now and names the shared observable both claims bear on; it names no instrument, so none is recorded. This is a statement about the two claims, not a verdict on either theory. The dimension is a dimension of theoretical commitment, not a quantity, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations."
   },
   "record": {
     "pair": "IITxGNWT",

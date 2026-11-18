@@ -18,8 +18,22 @@
   "context": {
     "claim_a_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1109-L1144",
     "claim_b_receipt_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/ledger/claims.json#L1268-L1303",
-    "condition_rules": {},
-    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml"
+    "condition_rules": {
+      "CR1": [
+        "electrolyte"
+      ],
+      "CR2": [
+        "current_density"
+      ],
+      "CR3": [
+        "temperature"
+      ],
+      "CR4": [
+        "ir_correction"
+      ]
+    },
+    "rules_url": "https://github.com/Anuja-Khatri/consilience-ledger/blob/7c1f9235b582666403537dd929c844e4b2dfc8cf/rules/comparability_rules.yaml",
+    "pubinfo_note": "A refused comparison from the public consilience-ledger, under its rule set comparability-v0.1. Which claim does not state each condition, and the two values of a condition that differs, are read from the two claims' cards (claim A and claim B), whose receipts are in their own nanopublications. It records what the two claim cards, as extracted from their source sentences, allow; it is not a judgement of either paper."
   },
   "record": {
     "axis": "mass_activity",

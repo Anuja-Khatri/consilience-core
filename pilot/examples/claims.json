@@ -1,0 +1,10 @@
+{
+  "https://example.org/claim-card/example-A": {
+    "claim_id": "example-A",
+    "claim_iri": "https://example.org/claim/example-A"
+  },
+  "https://example.org/claim-card/example-B": {
+    "claim_id": "example-B",
+    "claim_iri": "https://example.org/claim/example-B"
+  }
+}

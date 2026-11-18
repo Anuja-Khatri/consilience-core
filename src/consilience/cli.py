@@ -389,10 +389,16 @@ def build_parser() -> argparse.ArgumentParser:
     x.add_argument("--unsigned", action="store_true", help="with --dry-run: do not sign")
     x.add_argument("--out", help="output TriG path")
     x.add_argument("--created", help="override dct:created (for reproducible dry runs)")
+    x.add_argument("--example", action="store_true",
+                   help="publish as an npx:ExampleNanopub (label \"Example: ...\")")
+    x.add_argument("--supersedes", metavar="NANOPUB_URI",
+                   help="a corrected claim card: supersede this nanopub, keep its claim IRI")
     x.set_defaults(func=_nanopub("cmd_export"))
     a = sub.add_parser("agent", help="(nanopub extra) the engine's software-agent identity")
     a.add_argument("action", choices=["keygen", "introduce"])
     a.add_argument("--dry-run", action="store_true")
+    a.add_argument("--replace", action="store_true",
+                   help="introduce the agent anew (a new agent IRI); the old one is kept in the config")
     a.add_argument("--created")
     a.set_defaults(func=_nanopub("cmd_agent"))
     t = sub.add_parser("templates", help="(nanopub extra) nanopublication templates")

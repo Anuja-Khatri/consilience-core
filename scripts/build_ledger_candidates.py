@@ -1,4 +1,6 @@
-"""Prepare (do not publish) every eligible consilience-ledger record as an unsigned
+"""NOTE (v2): written against the v1 exporter and not updated; see CANDIDATES.md.
+
+Prepare (do not publish) every eligible consilience-ledger record as an unsigned
 candidate nanopublication.
 
 Reads the public ledger at a pinned commit with ``git show`` (read only), wraps every

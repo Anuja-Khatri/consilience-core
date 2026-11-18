@@ -1,4 +1,6 @@
-"""Prepare (do not publish) candidate testable-disagreement records from the public
+"""NOTE (v2): written against the v1 exporter and not updated; see CANDIDATES.md.
+
+Prepare (do not publish) candidate testable-disagreement records from the public
 cross-theory demo (consilience-demo.netlify.app), and list everything that does not
 qualify with the reason.
 

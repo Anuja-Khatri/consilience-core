@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 from rdflib import Graph, Literal, Namespace, URIRef
 
 from .vocab import (
-    CV, DCT, LABELS, NT, PROV, RDF, RDFS, SCHEMA, XSD,
+    CV, DCT, LABELS, NT, PROV, QUDT, RDF, RDFS, XSD,
 )
 
 TEMP_NS = Namespace("http://purl.org/nanopub/temp/np/")
@@ -93,7 +93,14 @@ class TemplateSpec:
 # Placeholders shared across templates
 
 def _local(name, label):
+    """A resource the nanopub introduces: other nanopubs link to it, and a superseding
+    version keeps its IRI."""
     return PH(name, ("IntroducedResource", "LocalResource"), label)
+
+
+def _node(name, label):
+    """A resource that belongs to this nanopub only (a value node, a defect node)."""
+    return PH(name, ("LocalResource",), label)
 
 
 def _lit(name, label, datatype=None):
@@ -108,140 +115,176 @@ def _ext(name, label):
     return PH(name, ("ExternalUriPlaceholder",), label)
 
 
-CLAIM_A = _ext("claimA", "claim A (link to its claim card)")
-CLAIM_B = _ext("claimB", "claim B (link to its claim card)")
+def _choice(name, label, values):
+    return PH(name, ("RestrictedChoicePlaceholder",), label, values=tuple(values))
+
+
+CLAIM_A = _ext("claimA", "claim A (the claim IRI its claim card introduces)")
+CLAIM_B = _ext("claimB", "claim B (the claim IRI its claim card introduces)")
 IDENT = _lit("identifier", "identifier of the record in its source repository")
-AXIS = _lit("axis", "quantity axis")
 SENT_A = _long("sentenceA", "source sentence of claim A")
 SENT_B = _long("sentenceB", "source sentence of claim B")
 
-DEFECT_TYPES = (CV.ConditionUnstated, CV.ConditionMismatch, CV.AxisMismatch,
-                CV.TypeMismatch, CV.QuantityRefused)
+DEFECT_TYPES = (CV.TypeMismatch, CV.QuantityRefused)
 OUTCOMES = (CV.NotComparable, CV.AxisMismatch)
-TESTABILITY = (CV.TestableNow, CV.TestableUnderAssumption, CV.NotTestable)
+TESTABILITY = (CV.TestableNow, CV.TestableUnderAssumption, CV.NotYetTestable)
+BOUNDS = (CV.ExactValue, CV.ApproximateValue, CV.LowerBound, CV.UpperBound)
 
 # ---------------------------------------------------------------------------------------
 # (b) comparison refused
 
 _REF = _local("refusal", "this refusal")
-_DEFECT = PH("defect", ("LocalResource",), "a defect")
+_UNSTATED = _node("unstated", "a condition not stated in one claim")
+_MISMATCH = _node("mismatch", "a condition that differs")
+_DEFECT = _node("defect", "another defect")
 REFUSAL = TemplateSpec(
     key="comparison_refusal",
     kind="assertion",
     label="Consilience: comparison refused",
     description=(
-        "A comparison between two claims that was refused, with the reason named. "
-        "Two claims are compared only if they are on the same quantity axis and every "
-        "condition the rule set requires is stated for both and matches. Otherwise the "
-        "comparison is refused, and each defect is recorded: a condition that is not "
-        "stated in a claim card, a condition that differs between the two, or different "
-        "quantity axes. A refusal is a statement about what the two claim cards, as "
-        "recorded, allow; it is not a judgement of either source. The rule set, code "
-        "version and content hash of the original verdict are in the provenance."
+        "A comparison between two claims that was refused, with each reason named. Two "
+        "claims are compared only if they are on the same quantity axis and every condition "
+        "the rule set requires is stated for both and matches. Each reason is recorded with "
+        "IRIs: a condition that one claim does not state (which condition, which claim, "
+        "under which rule; if both claims lack it, once for each), a condition that differs "
+        "(which condition, under which rule, its value in claim A and in claim B, and the "
+        "unit), or the two different quantity axes. Claim A and claim B are the claim IRIs "
+        "their claim-card nanopublications introduce. A refusal is a statement about what "
+        "the two claims, as recorded, allow; it is not a judgement of either source. The "
+        "rule set, code version and content hash of the original verdict are in the "
+        "provenance."
     ),
     statements=(
         St("st01", _REF, RDF.type, CV.ComparisonRefusal),
         St("st02", _REF, DCT.identifier, IDENT),
         St("st03", _REF, CV.claimA, CLAIM_A),
         St("st04", _REF, CV.claimB, CLAIM_B),
-        St("st05", _REF, CV.axis, AXIS, optional=True),
-        St("st06", _REF, CV.outcome, PH("outcome", ("RestrictedChoicePlaceholder",),
-                                        "outcome", values=OUTCOMES)),
-        St("st07", _REF, CV.hasDefect, _DEFECT),
-        St("st08", _DEFECT, CV.defectType, PH("defectType", ("RestrictedChoicePlaceholder",),
-                                               "defect type", values=DEFECT_TYPES)),
-        St("st09", _DEFECT, CV.defectTarget, _lit("defectTarget",
-                                                   "condition, rule or axes concerned")),
-        St("st10", _REF, CV.claimASentence, SENT_A, optional=True),
-        St("st11", _REF, CV.claimBSentence, SENT_B, optional=True),
+        St("st05", _REF, CV.axis, _ext("axis", "quantity axis of both claims"), optional=True),
+        St("st06", _REF, CV.outcome, _choice("outcome", "outcome", OUTCOMES)),
+        # a condition not stated in one claim
+        St("st10", _REF, CV.hasUnstatedCondition, _UNSTATED),
+        St("st11", _UNSTATED, CV.condition, _ext("unstatedCondition", "condition not stated")),
+        St("st12", _UNSTATED, CV.unstatedIn, _ext("lackingClaim", "the claim that does not state it")),
+        St("st13", _UNSTATED, CV.rule, _lit("unstatedRule", "rule that requires it (e.g. CR1)")),
+        # a condition that differs
+        St("st20", _REF, CV.hasConditionMismatch, _MISMATCH),
+        St("st21", _MISMATCH, CV.condition, _ext("differingCondition", "condition that differs")),
+        St("st22", _MISMATCH, CV.rule, _lit("mismatchRule", "rule not met (e.g. CR2)")),
+        St("st23", _MISMATCH, CV.valueInClaimA, _lit("valueA", "value in claim A", XSD.decimal)),
+        St("st24", _MISMATCH, CV.valueInClaimB, _lit("valueB", "value in claim B", XSD.decimal)),
+        St("st25", _MISMATCH, QUDT.unit, _ext("mismatchUnit", "unit of both values (QUDT or cv)")),
+        # different quantity axes
+        St("st30", _REF, CV.axisOfClaimA, _ext("axisA", "quantity axis of claim A")),
+        St("st31", _REF, CV.axisOfClaimB, _ext("axisB", "quantity axis of claim B")),
+        # another defect
+        St("st40", _REF, CV.hasDefect, _DEFECT),
+        St("st41", _DEFECT, CV.defectType, _choice("defectType", "defect type", DEFECT_TYPES)),
+        St("st42", _DEFECT, CV.defectTarget, _lit("defectTarget", "what the defect concerns")),
+        St("st50", _REF, CV.claimASentence, SENT_A, optional=True),
+        St("st51", _REF, CV.claimBSentence, SENT_B, optional=True),
     ),
-    groups=(Group("st20", ("st07", "st08", "st09"), repeatable=True),),
+    groups=(
+        Group("st60", ("st10", "st11", "st12", "st13"), optional=True, repeatable=True),
+        Group("st61", ("st20", "st21", "st22", "st23", "st24", "st25"), optional=True, repeatable=True),
+        Group("st62", ("st30", "st31"), optional=True),
+        Group("st63", ("st40", "st41", "st42"), optional=True, repeatable=True),
+    ),
     label_pattern="Comparison refused: ${identifier}",
     target_type=CV.ComparisonRefusal,
 )
 
 # ---------------------------------------------------------------------------------------
-# claim card (needed so the pilot's claim cards have a template too)
+# measured claim (the ledger's claim cards)
 
-_CLAIM = _ext("claim", "the claim card (its location in the source repository)")
-_QTY = PH("quantity", ("LocalResource",), "the stated quantity")
-_COND = PH("condition", ("LocalResource",), "a stated condition")
+_CLAIM = _local("claim", "this claim (its IRI is the claim's identity)")
+_QTY = _node("quantity", "the stated quantity")
+_QCOND = _node("quantityCondition", "a stated condition with a number and a unit")
+_CCOND = _node("categoricalCondition", "a stated condition whose value is an IRI")
 CLAIM_CARD = TemplateSpec(
     key="claim_card",
     kind="assertion",
-    label="Consilience: claim card",
+    label="Consilience: measured claim (claim card)",
     description=(
-        "One measured claim as an approved Consilience claim card: the exact source "
-        "sentence, the source document, the subject, the quantity on its axis with its "
-        "unit, the conditions the sentence states and the conditions it does not state. "
-        "Comparisons between claims are made only from these cards."
+        "One measured claim, introduced with its own IRI, which stays the same if a "
+        "corrected card supersedes this one. It gives the exact source sentence, the source "
+        "document, the subject, the quantity on its axis (a QUDT numeric value and unit, "
+        "with the bound and the unit as written), the conditions the sentence states (each "
+        "as a condition IRI with a number and unit, or with an IRI value such as a ChEBI "
+        "electrolyte) and the conditions it does not state. Comparisons between claims are "
+        "made only from these cards. Where the card comes from (its record at a pinned "
+        "commit, and its content hash) is in the provenance."
     ),
     statements=(
-        St("st01", _CLAIM, RDF.type, CV.ClaimCard),
+        St("st01", _CLAIM, RDF.type, CV.MeasuredClaim),
         St("st02", _CLAIM, DCT.identifier, _lit("claimId", "claim identifier in the source repository")),
         St("st03", _CLAIM, CV.sourceSentence, _long("sentence", "exact source sentence")),
         St("st04", _CLAIM, DCT.source, _ext("document", "source document")),
         St("st05", _CLAIM, CV.subjectName, _lit("subjectName", "subject (e.g. the material)")),
-        St("st06", _CLAIM, CV.objectName, _lit("objectName", "what is measured"), optional=True),
-        St("st07", _CLAIM, CV.relation, _lit("relation", "relation"), optional=True),
-        St("st08", _CLAIM, CV.claimKind, _lit("claimKind", "claim kind")),
-        St("st09", _CLAIM, CV.axis, AXIS),
+        St("st06", _CLAIM, CV.claimKind, _ext("claimKind", "claim kind")),
+        St("st07", _CLAIM, CV.axis, _ext("axis", "quantity axis")),
         St("st10", _CLAIM, CV.hasQuantity, _QTY),
-        St("st11", _QTY, RDF.type, SCHEMA.QuantitativeValue),
-        St("st12", _QTY, SCHEMA.value, _lit("value", "numeric value", XSD.decimal)),
-        St("st13", _QTY, SCHEMA.unitText, _lit("unit", "unit as written")),
-        St("st14", _QTY, CV.bound, _lit("bound", "bound (exact, approx, lower, upper)")),
-        St("st15", _CLAIM, CV.hasCondition, _COND),
-        St("st16", _COND, CV.conditionName, _lit("conditionName", "condition name")),
-        St("st17", _COND, CV.conditionValueJson, _lit("conditionValue", "condition value as JSON")),
-        St("st18", _CLAIM, CV.conditionUnstated, _lit("unstatedCondition", "condition not stated"),
+        St("st11", _QTY, RDF.type, QUDT.QuantityValue),
+        St("st12", _QTY, QUDT.numericValue, _lit("value", "numeric value", XSD.decimal)),
+        St("st13", _QTY, QUDT.unit, _ext("unit", "unit (QUDT or cv)")),
+        St("st14", _QTY, CV.bound, _choice("bound", "bound", BOUNDS)),
+        St("st15", _QTY, CV.unitAsWritten, _lit("unitAsWritten", "unit as written in the source")),
+        St("st20", _CLAIM, CV.statesQuantityCondition, _QCOND),
+        St("st21", _QCOND, CV.condition, _ext("qCondition", "condition")),
+        St("st22", _QCOND, QUDT.numericValue, _lit("qValue", "numeric value", XSD.decimal)),
+        St("st23", _QCOND, QUDT.unit, _ext("qUnit", "unit (QUDT or cv)")),
+        St("st30", _CLAIM, CV.statesCategoricalCondition, _CCOND),
+        St("st31", _CCOND, CV.condition, _ext("cCondition", "condition")),
+        St("st32", _CCOND, CV.conditionValue, _ext("cValue", "value (an IRI, e.g. a ChEBI entity)")),
+        St("st40", _CLAIM, CV.conditionUnstated, _ext("unstatedCondition", "condition not stated"),
            optional=True, repeatable=True),
-        St("st19", _CLAIM, CV.measurability, _lit("measurability", "measurability"), optional=True),
-        St("st21", _CLAIM, CV.measurableWith, _lit("instrumentId", "instrument class"), optional=True),
+        St("st41", _CLAIM, CV.measurability, _ext("measurability", "measurability"), optional=True),
+        St("st42", _CLAIM, CV.measurableWith, _ext("technique", "measurement technique"), optional=True),
     ),
     groups=(
-        Group("st30", ("st10", "st11", "st12", "st13", "st14")),
-        Group("st31", ("st15", "st16", "st17"), optional=True, repeatable=True),
+        Group("st50", ("st10", "st11", "st12", "st13", "st14", "st15")),
+        Group("st51", ("st20", "st21", "st22", "st23"), optional=True, repeatable=True),
+        Group("st52", ("st30", "st31", "st32"), optional=True, repeatable=True),
     ),
-    label_pattern="Claim card ${claimId}",
-    target_type=CV.ClaimCard,
+    label_pattern="Measured claim ${claimId}",
+    target_type=CV.MeasuredClaim,
 )
 
 # ---------------------------------------------------------------------------------------
-# theory claim card (claims of scientific theories, which state no measured quantity)
+# theory claim (claims of scientific theories, which state no measured quantity)
 
-_TCLAIM = _ext("claim", "the claim card (its location in the source repository)")
-_LOCATION = PH("location", ("LocalResource",), "a source location")
+_TCLAIM = _local("claim", "this claim (its IRI is the claim's identity)")
+_LOCATION = _node("location", "a source location")
 THEORY_CLAIM_CARD = TemplateSpec(
     key="theory_claim_card",
     kind="assertion",
-    label="Consilience: theory claim card",
+    label="Consilience: theory claim (claim card)",
     description=(
-        "One claim of a scientific theory as a reviewed Consilience claim card: the "
-        "theory, the claim statement, the axis it is on and the value it takes there, "
-        "and the source locations it rests on (document and page). The statement is a "
-        "paraphrase of the source that a person has reviewed; it is not a quotation. A "
-        "page is the page of the PDF that was read, which can differ from the printed "
-        "page number."
+        "One claim of a scientific theory, introduced with its own IRI, which stays the same "
+        "if a corrected card supersedes this one: the theory, the claim statement, the "
+        "dimension of commitment it is on and the position it takes there (all IRIs), and "
+        "the source locations it rests on (document and page). The statement is a "
+        "paraphrase of the source that a person has reviewed; it is not a quotation. Who "
+        "reviewed it, and what drafted it, are in the provenance. A page is the page of the "
+        "PDF that was read, which can differ from the printed page number."
     ),
     statements=(
-        St("st01", _TCLAIM, RDF.type, CV.TheoryClaimCard),
+        St("st01", _TCLAIM, RDF.type, CV.TheoryClaim),
         St("st02", _TCLAIM, DCT.identifier, _lit("claimId", "claim identifier in the source repository")),
-        St("st03", _TCLAIM, CV.theory, _lit("theory", "theory")),
+        St("st03", _TCLAIM, CV.theory, _ext("theory", "theory")),
         St("st04", _TCLAIM, CV.claimStatement,
            _long("statement", "claim statement (a reviewed paraphrase, not a quotation)")),
         St("st05", _TCLAIM, CV.statementForm, CV.ReviewedParaphrase),
-        St("st06", _TCLAIM, CV.axis, _lit("axis", "axis of the commitment")),
-        St("st07", _TCLAIM, RDF.value, _lit("value", "value on that axis")),
-        St("st08", _TCLAIM, CV.polarity, _lit("polarity", "polarity (asserts or denies)"),
+        St("st06", _TCLAIM, CV.dimension, _ext("dimension", "dimension of commitment")),
+        St("st07", _TCLAIM, CV.position, _ext("position", "position taken on that dimension")),
+        St("st08", _TCLAIM, CV.polarity, _choice("polarity", "polarity", (CV.Asserts, CV.Denies)),
            optional=True),
         St("st09", _TCLAIM, CV.restsOn, _LOCATION),
         St("st10", _LOCATION, DCT.source, _ext("document", "source document")),
         St("st11", _LOCATION, CV.pageLocator, _lit("page", "page in the PDF read (e.g. p.4)")),
     ),
     groups=(Group("st20", ("st09", "st10", "st11"), optional=True, repeatable=True),),
-    label_pattern="Theory claim card ${claimId}",
-    target_type=CV.TheoryClaimCard,
+    label_pattern="Theory claim ${claimId}",
+    target_type=CV.TheoryClaim,
 )
 
 # ---------------------------------------------------------------------------------------
@@ -257,7 +300,8 @@ CORRESPONDENCE = TemplateSpec(
         "four-rung ladder, from rung 1 (structural identity) to rung 4 (thematic "
         "resonance only). The ceiling says what that grade does not license. The "
         "equivocation check records whether the correspondence survives removing the "
-        "vocabulary the two claims share."
+        "vocabulary the two claims share. Claim A and claim B are the claim IRIs their "
+        "claim-card nanopublications introduce."
     ),
     statements=(
         St("st01", _CORR, RDF.type, CV.GradedCorrespondence),
@@ -277,35 +321,44 @@ CORRESPONDENCE = TemplateSpec(
 )
 
 # ---------------------------------------------------------------------------------------
-# (c) testable disagreement
+# (c) disagreement, with its testability (replaces v1's "testable disagreement")
 
 _DIS = _local("disagreement", "this disagreement")
 DISAGREEMENT = TemplateSpec(
-    key="testable_disagreement",
+    key="disagreement",
     kind="assertion",
-    label="Consilience: this disagreement is testable now with instrument Y",
+    label="Consilience: claims A and B disagree on a dimension; testability and reason",
     description=(
-        "Two comparable claims disagree beyond the floor that applies on their axis, "
-        "and the disagreement can be tested with an instrument that exists today (or "
-        "under a named assumption, or not at all, with the reason). The margin and the "
-        "floor are given in the canonical unit of the axis."
+        "Two claims take different values on the same dimension. The record names the "
+        "dimension of disagreement, the observables the disagreement bears on and the "
+        "instruments that could measure them (separate fields; either may be absent if the "
+        "source names none), and a testability status: testable now, testable under a "
+        "stated assumption, or not yet testable, always with the reason. For measured "
+        "claims, the margin and the floor are given in one unit. Claim A and claim B are "
+        "the claim IRIs their claim-card nanopublications introduce. A disagreement is a "
+        "statement about two claims, not a verdict on either."
     ),
     statements=(
-        St("st01", _DIS, RDF.type, CV.TestableDisagreement),
+        St("st01", _DIS, RDF.type, CV.Disagreement),
         St("st02", _DIS, DCT.identifier, IDENT),
         St("st03", _DIS, CV.claimA, CLAIM_A),
         St("st04", _DIS, CV.claimB, CLAIM_B),
-        St("st05", _DIS, CV.axis, AXIS),
-        St("st06", _DIS, CV.testability, PH("testability", ("RestrictedChoicePlaceholder",),
-                                             "testability", values=TESTABILITY)),
-        St("st07", _DIS, CV.instrument, _lit("instrument", "instrument (class or name)")),
-        St("st08", _DIS, CV.assumption, _long("assumption", "assumption needed"), optional=True),
-        St("st09", _DIS, CV.margin, _lit("margin", "margin", XSD.decimal), optional=True),
-        St("st10", _DIS, CV.floor, _lit("floor", "floor applied", XSD.decimal), optional=True),
-        St("st11", _DIS, CV.canonicalUnit, _lit("canonicalUnit", "canonical unit"), optional=True),
+        St("st05", _DIS, CV.dimension, _ext("dimension", "dimension of disagreement")),
+        St("st06", _DIS, CV.observable, _ext("observable", "observable it bears on"),
+           optional=True, repeatable=True),
+        St("st07", _DIS, CV.instrument, _ext("instrument", "instrument or technique that could test it"),
+           optional=True, repeatable=True),
+        St("st08", _DIS, CV.testability, _choice("testability", "testability", TESTABILITY)),
+        St("st09", _DIS, CV.testabilityReason, _long("reason", "why (the reason for this testability)")),
+        St("st10", _DIS, CV.assumption, _long("assumption", "the assumption (if testable under one)"),
+           optional=True),
+        St("st11", _DIS, CV.margin, _lit("margin", "margin", XSD.decimal)),
+        St("st12", _DIS, CV.floor, _lit("floor", "floor applied", XSD.decimal)),
+        St("st13", _DIS, QUDT.unit, _ext("unit", "unit of margin and floor")),
     ),
-    label_pattern="Testable disagreement: ${identifier}",
-    target_type=CV.TestableDisagreement,
+    groups=(Group("st20", ("st11", "st12", "st13"), optional=True),),
+    label_pattern="Disagreement: ${identifier}",
+    target_type=CV.Disagreement,
 )
 
 # ---------------------------------------------------------------------------------------
@@ -342,12 +395,14 @@ DATA_QUALITY = TemplateSpec(
 RECEIPT_PROVENANCE = TemplateSpec(
     key="receipt_provenance",
     kind="provenance",
+    tags=(),  # the provenance meta-template has no nt:hasTag
     label="Consilience: receipt",
     description=(
         "Where a Consilience record comes from and how to check it: the receipt (the "
         "record at a pinned commit of a public repository), the content hash and the "
         "method that reproduces it, and the code, rule and map versions that produced "
-        "the record."
+        "the record. For statements a person reviewed, who reviewed them and what drafted "
+        "them."
     ),
     statements=(
         St("st01", ASSERTION, PROV.wasAttributedTo,
@@ -363,6 +418,10 @@ RECEIPT_PROVENANCE = TemplateSpec(
         St("st09", ASSERTION, CV.mapVersion, _lit("mapVersion", "axis map version"), optional=True),
         St("st10", ASSERTION, CV.ledgerHash, _lit("ledgerHash", "ledger hash"), optional=True),
         St("st11", ASSERTION, CV.exportedWith, _lit("exporter", "exporter and version")),
+        St("st12", ASSERTION, CV.reviewedBy,
+           PH("reviewer", ("AgentPlaceholder", "ExternalUriPlaceholder"), "reviewer (ORCID iD)"),
+           optional=True),
+        St("st13", ASSERTION, CV.draftedBy, _lit("draftedBy", "drafted by (in words)"), optional=True),
     ),
 )
 
@@ -464,12 +523,15 @@ class Conformance:
         return not (self.unmatched or self.missing or self.bad_values)
 
 
-def _matches(term, slot, ns: str, assertion_iri) -> bool:
+def _matches(term, slot, ns: str, assertion_iri, carried=None) -> bool:
     if isinstance(slot, URIRef):
         if slot == ASSERTION:
             return term == assertion_iri
         return term == slot
     ph: PH = slot
+    if carried and ph.name in carried:
+        # a superseding version keeps the IRI that the first version introduced
+        return term == carried[ph.name]
     if ph.is_local:
         if not isinstance(term, URIRef) or not str(term).startswith(ns):
             return False
@@ -487,19 +549,22 @@ def _matches(term, slot, ns: str, assertion_iri) -> bool:
     return isinstance(term, URIRef)  # External / Agent placeholder
 
 
-def check_conformance(spec: TemplateSpec, graph: Graph, np_namespace: str, assertion_iri) -> Conformance:
+def check_conformance(spec: TemplateSpec, graph: Graph, np_namespace: str, assertion_iri,
+                      carried: dict | None = None) -> Conformance:
     """Match each triple of ``graph`` against the spec's statements.
 
     ``np_namespace`` is the namespace local resources live in (the temp namespace for
-    unsigned output, ``https://w3id.org/np/RA…/`` once signed).
+    unsigned output, ``https://w3id.org/np/RA…/`` once signed). ``carried`` maps the name
+    of an introduced resource to the IRI an earlier version introduced, for a version that
+    supersedes it (the IRI stays; it is not in this nanopub's namespace).
     """
     res = Conformance()
     hits: dict[str, int] = {s.id: 0 for s in spec.statements}
     for s, p, o in graph:
         found = None
         for st in spec.statements:
-            if st.p == p and _matches(s, st.s, np_namespace, assertion_iri) \
-                    and _matches(o, st.o, np_namespace, assertion_iri):
+            if st.p == p and _matches(s, st.s, np_namespace, assertion_iri, carried) \
+                    and _matches(o, st.o, np_namespace, assertion_iri, carried):
                 found = st
                 break
         if found is None:
