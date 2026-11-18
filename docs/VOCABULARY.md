@@ -42,7 +42,7 @@ pages, EBI OLS for ChEBI, CHMO and UBERON).
 | `A/cm^2` | `unit:A-PER-CentiM2` | |
 | `mol/L` | `unit:MOL-PER-L` | |
 | `degC` | `unit:DEG_C` | |
-| `mA/cm^2` | **`cv:MilliA-PER-CentiM2`** (minted) | QUDT has no mA/cm²; the minted unit is a `qudt:Unit` with quantity kind `ElectricCurrentDensity`, conversion multiplier 10 (to A/m²), `skos:broadMatch unit:A-PER-CentiM2`. Converting to A/cm² would change the number the source states, so the unit is kept. |
+| `mA/cm^2` | **`cv:MilliA-PER-CentiM2`** (minted) | QUDT has no mA/cm²; the minted unit is a `qudt:Unit` with quantity kind `ElectricCurrentDensity`, conversion multiplier 10 (to A/m²). It has no SKOS link to `unit:A-PER-CentiM2`: that is another unit of the same quantity, not a broader concept, and the quantity kind already says what is needed. If QUDT adds mA/cm², an `skos:exactMatch` to it will be added. Converting to A/cm² would change the number the source states, so the unit is kept. |
 
 Every quantity also keeps `cv:unitAsWritten`, the unit exactly as the source wrote it.
 
@@ -124,8 +124,9 @@ That domain belongs to the project owner. Every term has an English label and co
 SKOS mappings where possible. The single source is the `TERMS` table in
 [`src/consilience/export/vocab.py`](../src/consilience/export/vocab.py);
 [`vocab/cv.ttl`](../vocab/cv.ttl) is written from it by `scripts/write_vocab.py`, and a test
-checks they agree. The terms are **not yet served** at that address (it returned 404 on
-18 Nov 2026); making them resolvable is a step before live publication.
+checks they agree. The terms are served at that address: https://theconsilience.io/ns/cv
+is a readable page with one anchor per term (for example `#claimA`), and the Turtle file is at
+https://theconsilience.io/ns/cv.ttl.
 
 - **Record classes**: `cv:Claim`, with `cv:MeasuredClaim` and `cv:TheoryClaim`;
   `cv:ComparisonRefusal`, `cv:Disagreement`, `cv:GradedCorrespondence`,

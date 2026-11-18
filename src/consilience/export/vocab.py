@@ -19,7 +19,8 @@ ledger's axes and conditions, the positions theories take), terms are minted und
 ``https://theconsilience.io/ns/cv#`` (prefix ``cv``), each with a label, a comment and,
 where possible, a SKOS mapping. ``TERMS`` below is the single source: ``vocab/cv.ttl`` is
 written from it by ``scripts/write_vocab.py`` and a test checks that the two agree. The
-namespace is on a domain the project owner controls; it is not yet served at that address.
+namespace is on a domain the project owner controls and is served there (a page with one
+anchor per term at https://theconsilience.io/ns/cv; Turtle at https://theconsilience.io/ns/cv.ttl).
 """
 
 from rdflib import Namespace, URIRef
@@ -214,8 +215,7 @@ TERMS: dict[str, dict] = {
     "MilliA-PER-CentiM2": dict(kind="unit", unit_qk=QK.ElectricCurrentDensity, multiplier="10.0",
                                label="milliampere per square centimetre",
                                comment="mA/cm²: QUDT has A/cm² (unit:A-PER-CentiM2) but no mA/cm². One mA/cm² "
-                                       "is 10 A/m² (the conversion multiplier to the SI unit).",
-                               broad=[UNIT["A-PER-CentiM2"]]),
+                                       "is 10 A/m² (the conversion multiplier to the SI unit)."),
 
     # --- measurement techniques with no clean existing term
     "PolarizationCurve": dict(kind="individual", type=CV.MeasurementTechnique,

@@ -9,7 +9,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -249,8 +248,7 @@ cv:MilliA-PER-CentiM2 a qudt:Unit ;
     qudt:conversionMultiplier 10.0 ;
     qudt:hasQuantityKind quantitykind:ElectricCurrentDensity ;
     rdfs:comment "mA/cm²: QUDT has A/cm² (unit:A-PER-CentiM2) but no mA/cm². One mA/cm² is 10 A/m² (the conversion multiplier to the SI unit)."@en ;
-    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> ;
-    skos:broadMatch unit:A-PER-CentiM2 .
+    rdfs:isDefinedBy <https://theconsilience.io/ns/cv> .
 
 cv:NotComparable a owl:NamedIndividual ;
     rdfs:label "not comparable"@en ;
