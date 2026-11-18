@@ -28,3 +28,4 @@ venv/
 # --- Local scratch
 tmp/
 .cache/
+live/plan-tmp/

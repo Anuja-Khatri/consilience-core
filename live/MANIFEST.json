@@ -1,0 +1,91 @@
+{
+  "what": "The live set agreed by the owner on 18 Nov 2026: the engine's introduction, all templates, and the COGITATE (IIT vs GNWT) theory claim cards and disagreements. Not included: the claims-ledger (electrocatalysis) records, INTREPID, example records.",
+  "templates": [
+    "graded_correspondence",
+    "comparison_refusal",
+    "disagreement",
+    "data_quality_finding",
+    "claim_card",
+    "theory_claim_card",
+    "receipt_provenance"
+  ],
+  "examples": [],
+  "records": [
+    {
+      "path": "pilot/theories/records/01-theory-claim-card-iit_c010.json",
+      "sha256": "f2ecd9daef154d4417f6d2e24506e39e68ccbe5b974709cb7c47fc7fbc1055fc"
+    },
+    {
+      "path": "pilot/theories/records/02-theory-claim-card-gnwt_c003.json",
+      "sha256": "2bb91c92bad6a4c08c837445cda23a9e8747b40b5212f7e86443123d77112b97"
+    },
+    {
+      "path": "pilot/theories/records/03-theory-claim-card-iit_n007.json",
+      "sha256": "28e61994d248ba2d0a0c3ceb93a2f3a337728b010939ccd1724dc1534ad3f6cc"
+    },
+    {
+      "path": "pilot/theories/records/04-theory-claim-card-iit_n013.json",
+      "sha256": "0efe541baa0134338e7529a4261b5420d6073a2cdbe4e36440a4ca71a3723a4d"
+    },
+    {
+      "path": "pilot/theories/records/05-theory-claim-card-iit_t002.json",
+      "sha256": "6e95ccd5c68c038f0cd82569474d5eea771bcdd565ae406159998d52553fef3b"
+    },
+    {
+      "path": "pilot/theories/records/06-theory-claim-card-iit_t003.json",
+      "sha256": "e75112d277fddaab235b9648e535670829291e17abfac3714ba8d031c210aa85"
+    },
+    {
+      "path": "pilot/theories/records/07-theory-claim-card-gnwt_c018.json",
+      "sha256": "f28be8c88e1060b174816072a30f0fd45ac4d76c66044219abf523db2d687749"
+    },
+    {
+      "path": "pilot/theories/records/08-theory-claim-card-gnwt_c025.json",
+      "sha256": "288e64a454fd020915363c85fe2ac46e1aa04ce29c72b74f76d556d9b6fffa27"
+    },
+    {
+      "path": "pilot/theories/records/09-theory-claim-card-gnwt_n013.json",
+      "sha256": "c8c36d5cb11778b19ab0931e023ffbe73bfe3a2039490c56e3e34a460de61432"
+    },
+    {
+      "path": "pilot/theories/records/10-theory-claim-card-iit_c025.json",
+      "sha256": "5cbb43c207356054df7f3d17babae7391cc9e4a2eaed65de08834f2725cc26db"
+    },
+    {
+      "path": "pilot/theories/records/11-theory-claim-card-gnwt_c008.json",
+      "sha256": "847ebeac3bb69810535fdf833d74face58ab1c1fa95c7aca43c60e2e118a20ff"
+    },
+    {
+      "path": "pilot/theories/records/12-disagreement-iit_c010--gnwt_c003.json",
+      "sha256": "1ceff5a5b3668ba625954e5e20ab8da89cc1e71abe19477da0958d1019cae1e8"
+    },
+    {
+      "path": "pilot/theories/records/13-disagreement-iit_n007--gnwt_c003.json",
+      "sha256": "1d6ad5ae6b1bf7cb93b6f52d4dabb33db325d0d7b16e422fe839ea4c4627658d"
+    },
+    {
+      "path": "pilot/theories/records/14-disagreement-iit_n013--gnwt_c003.json",
+      "sha256": "7eb5f7712873b408987e150013e3753dcbdb1522bb3c30c070449ca184c8b96f"
+    },
+    {
+      "path": "pilot/theories/records/15-disagreement-iit_t002--gnwt_c003.json",
+      "sha256": "c1da7328347eb8a5580a89d146a07d92348fb3ddecb479577291fb4b2c0411b1"
+    },
+    {
+      "path": "pilot/theories/records/16-disagreement-iit_t003--gnwt_c018.json",
+      "sha256": "9c7605d3e3bd1982ac5cf952312aab9b9fb4aed6c128f084b5f473d22f0f56c0"
+    },
+    {
+      "path": "pilot/theories/records/17-disagreement-iit_t003--gnwt_c025.json",
+      "sha256": "67558906592d27d2c7192fb021101a6b0930667f775f325695ee106331ef8cb3"
+    },
+    {
+      "path": "pilot/theories/records/18-disagreement-iit_t003--gnwt_n013.json",
+      "sha256": "73598322c813f464806862be28d23a4a2aaa39db6752ebff5abd09374995469b"
+    },
+    {
+      "path": "pilot/theories/records/19-disagreement-iit_c025--gnwt_c008.json",
+      "sha256": "b5203dbe6b718f209ccf976c5ca40a246356e1d20caec8f191d07464bd7ba721"
+    }
+  ]
+}

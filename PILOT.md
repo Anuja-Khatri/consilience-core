@@ -22,6 +22,19 @@ Tobias Kuhn's review (18 Nov 2026) found v1 technically clean (valid signatures,
 
 Tobias Kuhn found v2 ready to go live, with one small fix: the minted unit `cv:MilliA-PER-CentiM2` (mA/cm²) no longer carries `skos:broadMatch unit:A-PER-CentiM2`. A/cm² is another unit of the same quantity, not a broader concept, and the quantity kind already says what is needed. This changes the vocabulary file only, not any record. The `cv:` namespace is now served at https://theconsilience.io/ns/cv (one anchor per term), with the Turtle file at https://theconsilience.io/ns/cv.ttl, which settles his other point before live publication.
 
+## Going live (the agreed set)
+
+`scripts/publish_live.py` publishes exactly what `live/MANIFEST.json` lists, and nothing else:
+
+- the engine's introduction;
+- the seven templates;
+- the 11 COGITATE theory claim cards;
+- the 8 IIT-vs-GNWT disagreements.
+
+That is 27 nanopubs. The claims-ledger (electrocatalysis) records, INTREPID and the example records are not included, and the command refuses them. It needs `--confirm-permanent` for the live network. It keeps its own identity and state in `live/`, separate from the test pilot. It fetches back every nanopub and checks it. A run that stops part-way can be resumed.
+
+A full rehearsal with a fresh key on the test registry (18 Nov 2026) published and verified all 27. The signed records were identical to the reviewed v2 records apart from the key.
+
 ## The publishing agent
 
 - **The Consilience engine**, a software agent (`npx:SoftwareAgent`, `npx:SoftwareTool`) with its own key. Agent IRI: `https://w3id.org/np/RAQKzFFaKhdmfiZ2VPyzUhrplPf0E6vit1i1hsMWfiSHk/consilience-engine`.
