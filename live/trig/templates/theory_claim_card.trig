@@ -1,0 +1,181 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk/> .
+@prefix this: <https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:templateVersion a ntemplate:AssertionTemplate ;
+        rdfs:label "Consilience: theory claim (claim card)" ;
+        dcterms:description "One claim of a scientific theory, introduced with its own IRI, which stays the same if a corrected card supersedes this one: the theory, the claim statement, the dimension of commitment it is on and the position it takes there (all IRIs), and the source locations it rests on (document and page). The statement is a paraphrase of the source that a person has reviewed; it is not a quotation. Who reviewed it, and what drafted it, are in the provenance. A page is the page of the PDF that was read, which can differ from the printed page number." ;
+        ntemplate:hasNanopubLabelPattern "Theory claim ${claimId}" ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11,
+            sub:st20 ;
+        ntemplate:hasTag "Consilience" ;
+        ntemplate:hasTargetNanopubType cv:TheoryClaim .
+
+    dcterms:identifier rdfs:label "has the identifier" .
+
+    dcterms:source rdfs:label "comes from the source document" .
+
+    rdf:type rdfs:label "is a" .
+
+    cv:Asserts rdfs:label "asserts" .
+
+    cv:Denies rdfs:label "denies" .
+
+    cv:ReviewedParaphrase rdfs:label "a paraphrase reviewed by a person, not a quotation" .
+
+    cv:claimStatement rdfs:label "has the claim statement" .
+
+    cv:dimension rdfs:label "concerns the dimension" .
+
+    cv:pageLocator rdfs:label "at the page" .
+
+    cv:polarity rdfs:label "has the polarity" .
+
+    cv:position rdfs:label "takes the position" .
+
+    cv:restsOn rdfs:label "rests on the source location" .
+
+    cv:statementForm rdfs:label "has a statement that is" .
+
+    cv:theory rdfs:label "is a claim of the theory" .
+
+    sub:claimId a ntemplate:LiteralPlaceholder ;
+        rdfs:label "claim identifier in the source repository" .
+
+    sub:dimension a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "dimension of commitment" .
+
+    sub:document a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "source document" .
+
+    sub:page a ntemplate:LiteralPlaceholder ;
+        rdfs:label "page in the PDF read (e.g. p.4)" .
+
+    sub:polarity a ntemplate:RestrictedChoicePlaceholder ;
+        rdfs:label "polarity" ;
+        ntemplate:possibleValue cv:Asserts,
+            cv:Denies .
+
+    sub:position a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "position taken on that dimension" .
+
+    sub:st01 rdf:object cv:TheoryClaim ;
+        rdf:predicate rdf:type ;
+        rdf:subject sub:claim .
+
+    sub:st02 rdf:object sub:claimId ;
+        rdf:predicate dcterms:identifier ;
+        rdf:subject sub:claim .
+
+    sub:st03 rdf:object sub:theory ;
+        rdf:predicate cv:theory ;
+        rdf:subject sub:claim .
+
+    sub:st04 rdf:object sub:statement ;
+        rdf:predicate cv:claimStatement ;
+        rdf:subject sub:claim .
+
+    sub:st05 rdf:object cv:ReviewedParaphrase ;
+        rdf:predicate cv:statementForm ;
+        rdf:subject sub:claim .
+
+    sub:st06 rdf:object sub:dimension ;
+        rdf:predicate cv:dimension ;
+        rdf:subject sub:claim .
+
+    sub:st07 rdf:object sub:position ;
+        rdf:predicate cv:position ;
+        rdf:subject sub:claim .
+
+    sub:st08 a ntemplate:OptionalStatement ;
+        rdf:object sub:polarity ;
+        rdf:predicate cv:polarity ;
+        rdf:subject sub:claim .
+
+    sub:st20 a ntemplate:GroupedStatement,
+            ntemplate:OptionalStatement,
+            ntemplate:RepeatableStatement ;
+        ntemplate:hasStatement sub:st09,
+            sub:st10,
+            sub:st11 .
+
+    sub:statement a ntemplate:LongLiteralPlaceholder ;
+        rdfs:label "claim statement (a reviewed paraphrase, not a quotation)" .
+
+    sub:theory a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "theory" .
+
+    cv:TheoryClaim rdfs:label "theory claim" .
+
+    sub:st09 rdf:object sub:location ;
+        rdf:predicate cv:restsOn ;
+        rdf:subject sub:claim .
+
+    sub:st10 rdf:object sub:document ;
+        rdf:predicate dcterms:source ;
+        rdf:subject sub:location .
+
+    sub:st11 rdf:object sub:page ;
+        rdf:predicate cv:pageLocator ;
+        rdf:subject sub:location .
+
+    sub:location a ntemplate:LocalResource ;
+        rdfs:label "a source location" .
+
+    sub:claim a ntemplate:IntroducedResource,
+            ntemplate:LocalResource ;
+        rdfs:label "this claim (its IRI is the claim's identity)" .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "CPyC9XI7W7F0Xppst2bPDvK/3o8SOJRyBJklGbKA/E4FwASUsdZhnXbK+9X2ZMpcs2b08B0dpAt0smjdL5fUu6PFOh0c2vcmbILWYYHlKheOY7INlRN+ncBtW65NU7zQxB716N/VeanlM1LNCktEVclea4BRvfyulhZiZ5y2Pg3lBzMbIZwPThvAn+4XjwRYNpQqyh+zqypLTSJyGsv3ZR4/+3TSenvTtRHiEi9my4dGoehT+9uMAS7mCsdN+GU4ONA/LJWwgy/4l+4CX0lf5bh9X2GhFOFRbU3JudzQlMvQHFqOmBVzAyde3bL+WVut+/fxTfRw3O+5IxyXj+QG+A==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
+
+    this: rdfs:label "Consilience: theory claim (claim card)" ;
+        dcterms:created "2026-11-18T17:51:47Z"^^xsd:dateTime ;
+        dcterms:creator orcid:0009-0008-3375-7858 ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAgeON_vGgJCt5E4DPMi0eOPaGwNv9tbfFTRZtBwdQL0w/templateVersion> .
+}
+

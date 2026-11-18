@@ -1,0 +1,67 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RA8tvjpdSIBtbQ0RlNRYUTYO2Ct2XnK1FygM56rSXlhmE/> .
+@prefix this: <https://w3id.org/np/RA8tvjpdSIBtbQ0RlNRYUTYO2Ct2XnK1FygM56rSXlhmE> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "opyW2NlCQCCYVeA0tNFckLExOvtvtS7wD0WiHes5HVran0YBYyI+lAajxiw8+24zrQ/bznVvbjKyeiqkQ0EgqKQmtFcd2NQgCnvbcxQNqsn1FmRDLlaUah73jdZ/fnAheIFOPJsBApRuw2RmshmsnAQJy1zolpT53iJ9mOkk+AQfDmIhz/gNCdamhs3yt3ZwUOuA3Mw3GqEdz6hGqGzYavfdbQzxkiIutFCPPxA8Bc733UwCXc/aNj3SbgX8bYSruX832jJdWvfv5zT4z/M8T5BJ7c3FcuWYUPy2bo+bQyvDDLCCxBev5eVM0eCH8EhJKyCjdfrDkZYdHdPyEhLouQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Theory claim iit_n013 (IIT): locus = intrinsic, not broadcast" ;
+        dcterms:created "2026-11-18T17:51:55Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk/templateVersion> .
+}
+
+sub:assertion {
+    sub:claim a cv:TheoryClaim ;
+        dcterms:identifier "iit_n013" ;
+        cv:claimStatement "Conscious information is not transmitted or broadcast from one brain region to another; the locus of consciousness is intrinsic to the PSC, not a relay or global broadcast." ;
+        cv:dimension cv:Locus ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:IntrinsicNotBroadcast ;
+        cv:restsOn sub:location ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory wd:Q6042884 .
+
+    sub:location dcterms:source <https://doi.org/10.1038/nrn.2016.44> ;
+        cv:pageLocator "p.8" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500> ;
+        cv:contentHash "e137dd98975be02738da52173b97c8b57c68dd571c6a267d085630d8630b9e67" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

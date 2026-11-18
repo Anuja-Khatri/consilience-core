@@ -1,0 +1,68 @@
+{
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L239-L264": {
+    "claim_id": "iit_c010",
+    "claim_iri": "https://w3id.org/np/RAfs4_dYLqZWACbgtjvXF4dMeRe7MLBdQoYlmSMVT_sz0/claim",
+    "nanopub": "https://w3id.org/np/RAfs4_dYLqZWACbgtjvXF4dMeRe7MLBdQoYlmSMVT_sz0",
+    "envelope": "pilot/theories/records/01-theory-claim-card-iit_c010.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1077-L1121": {
+    "claim_id": "gnwt_c003",
+    "claim_iri": "https://w3id.org/np/RACrUIP9aqJdKYoVm42mWO7vrXrgIs0oeQh_aOXJJcw8E/claim",
+    "nanopub": "https://w3id.org/np/RACrUIP9aqJdKYoVm42mWO7vrXrgIs0oeQh_aOXJJcw8E",
+    "envelope": "pilot/theories/records/02-theory-claim-card-gnwt_c003.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L450-L475": {
+    "claim_id": "iit_n007",
+    "claim_iri": "https://w3id.org/np/RAitF_rOR4zUt7-8j0RCPBJzfl0kX1l4Wiqmdg4o2E4k0/claim",
+    "nanopub": "https://w3id.org/np/RAitF_rOR4zUt7-8j0RCPBJzfl0kX1l4Wiqmdg4o2E4k0",
+    "envelope": "pilot/theories/records/03-theory-claim-card-iit_n007.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500": {
+    "claim_id": "iit_n013",
+    "claim_iri": "https://w3id.org/np/RA8tvjpdSIBtbQ0RlNRYUTYO2Ct2XnK1FygM56rSXlhmE/claim",
+    "nanopub": "https://w3id.org/np/RA8tvjpdSIBtbQ0RlNRYUTYO2Ct2XnK1FygM56rSXlhmE",
+    "envelope": "pilot/theories/records/04-theory-claim-card-iit_n013.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L607-L639": {
+    "claim_id": "iit_t002",
+    "claim_iri": "https://w3id.org/np/RA9f62iHvzbEv8f2QUlWbb-SWcaYC8ocDYLDVfHBr-XAE/claim",
+    "nanopub": "https://w3id.org/np/RA9f62iHvzbEv8f2QUlWbb-SWcaYC8ocDYLDVfHBr-XAE",
+    "envelope": "pilot/theories/records/05-theory-claim-card-iit_t002.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L640-L665": {
+    "claim_id": "iit_t003",
+    "claim_iri": "https://w3id.org/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc/claim",
+    "nanopub": "https://w3id.org/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc",
+    "envelope": "pilot/theories/records/06-theory-claim-card-iit_t003.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1273-L1297": {
+    "claim_id": "gnwt_c018",
+    "claim_iri": "https://w3id.org/np/RAIZxrAd1cBIM3kbG9zdSaaQJazB7gqfs0wiuHbAkjMwQ/claim",
+    "nanopub": "https://w3id.org/np/RAIZxrAd1cBIM3kbG9zdSaaQJazB7gqfs0wiuHbAkjMwQ",
+    "envelope": "pilot/theories/records/07-theory-claim-card-gnwt_c018.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373": {
+    "claim_id": "gnwt_c025",
+    "claim_iri": "https://w3id.org/np/RA-gEsYS2o6G8dYAnXq23QkrDyJChDu79TQxePRYa0EUk/claim",
+    "nanopub": "https://w3id.org/np/RA-gEsYS2o6G8dYAnXq23QkrDyJChDu79TQxePRYa0EUk",
+    "envelope": "pilot/theories/records/08-theory-claim-card-gnwt_c025.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1502-L1521": {
+    "claim_id": "gnwt_n013",
+    "claim_iri": "https://w3id.org/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU/claim",
+    "nanopub": "https://w3id.org/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU",
+    "envelope": "pilot/theories/records/09-theory-claim-card-gnwt_n013.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L360-L384": {
+    "claim_id": "iit_c025",
+    "claim_iri": "https://w3id.org/np/RAob9CIQoyQcgaJaeQwtS_QdN_oxPE16ywans-y_p5YTg/claim",
+    "nanopub": "https://w3id.org/np/RAob9CIQoyQcgaJaeQwtS_QdN_oxPE16ywans-y_p5YTg",
+    "envelope": "pilot/theories/records/10-theory-claim-card-iit_c025.json"
+  },
+  "https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1148-L1172": {
+    "claim_id": "gnwt_c008",
+    "claim_iri": "https://w3id.org/np/RAj0FElO3VmUKP1bdXqP9jYd0wlMlghNIj_dVt34Pdhpw/claim",
+    "nanopub": "https://w3id.org/np/RAj0FElO3VmUKP1bdXqP9jYd0wlMlghNIj_dVt34Pdhpw",
+    "envelope": "pilot/theories/records/11-theory-claim-card-gnwt_c008.json"
+  }
+}
