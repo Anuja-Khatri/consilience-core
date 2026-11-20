@@ -28,6 +28,7 @@ FIELDS_EMPTY_EQUAL = ["assay_type", "assay_organism", "assay_category", "assay_t
                       "assay_strain", "assay_tissue", "assay_cell_type",
                       "assay_subcellular_fraction", "bao_format", "assay_variant_mutation"]
 LOG_TOL, LOG_FLOOR, ROUND = 0.3, 1.0, 1e-9
+MASS_UNITS = {"ug.mL-1", "mg.mL-1", "ng.mL-1", "pg.mL-1", "ug ml-1"}   # the chembl map's lookups
 MOLAR_NM = {"nM": 1.0, "uM": 1e3, "µM": 1e3, "μM": 1e3, "mM": 1e6, "M": 1e9, "pM": 1e-3,
             "fM": 1e-6}
 R0_NM = {"nm": 1.0, "um": 1e3, "µm": 1e3, "mm": 1e6, "m": 1e9, "pm": 1e-3, "fm": 1e-6}
@@ -46,12 +47,7 @@ def cond_value(field, raw):
         return UNSTATED
     if s == "":
         return ("EMPTY",) if field != "standard_type" else UNSTATED
-    try:
-        if s[0].isdigit() or s[0] in "+-.":
-            return ("num", float(s))
-    except ValueError:
-        pass
-    return ("txt", s)
+    return ("txt", s)                 # every bioactivity condition is compared as text
 
 
 def half_unit(text: str) -> float:
@@ -94,9 +90,14 @@ def prepare(df: pd.DataFrame, key_mol: bool):
         rec = {"row": i, "status": st, "raw": r}
         if st == "ok":
             u = norm(r["standard_units"])
-            if u not in MOLAR_NM:
-                rec["status"] = "other_unit"     # not molar: its own class(es)
-                rec["unit_class"] = u or "(none)"
+            if u == "":
+                rec["status"] = "excluded:unit"   # unit not stated
+            elif u in MASS_UNITS:
+                rec["status"] = "other_unit"      # mass concentration: its own class(es)
+                rec["unit_class"] = "mass"
+            elif u not in MOLAR_NM:
+                rec["status"] = "other_unit_unknown"
+                rec["unit_class"] = u
             else:
                 rec["unit_class"] = "molar"
                 v_own = float(norm(r["standard_value"]))

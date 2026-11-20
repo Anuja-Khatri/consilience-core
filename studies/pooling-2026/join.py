@@ -60,6 +60,10 @@ def main() -> int:
                         key=lambda e: e["file"]):
             acts.extend(json.loads((DATA / e["file"]).read_bytes())["activities"])
         acts.sort(key=lambda a: a["activity_id"])
+        blank = sum(1 for a in acts if not (a.get("assay_chembl_id") and a.get("target_chembl_id")))
+        if blank:
+            raise SystemExit(f"{t}: {blank} activities with blank assay/target fields "
+                             "(a damaged API page); run fetch.py --recover first")
         ids = [a["activity_id"] for a in acts]
         if len(ids) != len(set(ids)):
             raise SystemExit(f"{t}: duplicate activity ids across pages")

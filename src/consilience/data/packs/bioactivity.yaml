@@ -17,6 +17,9 @@
 #   variant record (Landrum & Riniker drop these by a text search). Not a rule here.
 # - Repeat citations of one measurement (`potential_duplicate`): kept, and reported.
 #
+# Every condition is compared as text (as_text: true): they are identifiers and labels
+# (a cell line such as "3T3-L1", a tax id), never quantities.
+#
 # Licence: CC BY 4.0. The pack's hash is printed with every result that uses it.
 kind: compare-pack
 name: bioactivity
@@ -43,6 +46,7 @@ conditions:
   - id: BA1
     field: standard_type
     predicate: equal
+    as_text: true
     plain_english: Only the same kind of value is pooled (IC50 with IC50, Ki with Ki, ...).
     rationale: >
       IC50 depends on the assay conditions; Ki does not. They are different quantities
@@ -52,6 +56,7 @@ conditions:
   - id: BA2
     field: assay_type
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same assay type (B binding, F functional, A ADME, T toxicity, P physicochemical, U unassigned).
     rationale: Binding and functional (often cell-based) potencies differ systematically.
@@ -59,6 +64,7 @@ conditions:
   - id: BA3
     field: assay_organism
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same assay organism.
     rationale: The target may be expressed in, or assayed with, different organisms.
@@ -66,6 +72,7 @@ conditions:
   - id: BA4
     field: assay_category
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same assay category (for example screening, confirmatory, panel).
     rationale: Part of the assay metadata that must match before assays are combined.
@@ -73,6 +80,7 @@ conditions:
   - id: BA5
     field: assay_tax_id
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same assay taxonomy id.
     rationale: Part of the assay metadata that must match before assays are combined.
@@ -80,6 +88,7 @@ conditions:
   - id: BA6
     field: assay_strain
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same strain.
     rationale: Part of the assay metadata that must match before assays are combined.
@@ -87,6 +96,7 @@ conditions:
   - id: BA7
     field: assay_tissue
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same tissue.
     rationale: Part of the assay metadata that must match before assays are combined.
@@ -94,6 +104,7 @@ conditions:
   - id: BA8
     field: assay_cell_type
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same cell type (cell line).
     rationale: >
@@ -104,6 +115,7 @@ conditions:
   - id: BA9
     field: assay_subcellular_fraction
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same subcellular fraction.
     rationale: Part of the assay metadata that must match before assays are combined.
@@ -111,6 +123,7 @@ conditions:
   - id: BA10
     field: bao_format
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same BioAssay Ontology format (for example single protein, cell-based, organism-based).
     rationale: Biochemical and cell-based formats measure potency in different settings.
@@ -118,6 +131,7 @@ conditions:
   - id: BA11
     field: assay_variant_mutation
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: >
       Same target variant (for example wild type, L858R, T790M). An "undefined mutation"

@@ -35,6 +35,7 @@ KINASES = {"CHEMBL203", "CHEMBL1862", "CHEMBL4203", "CHEMBL262", "CHEMBL2835", "
            "CHEMBL2147", "CHEMBL4005"}
 # EGFR, ABL1, CLK4, GSK3B, JAK1, JAK2, PIM1, PIK3CA (MoleculeACE metadata receptor class
 # "Kinase", plus EGFR and PIK3CA, a lipid kinase listed there as "Transferase")
+MOLAR = "[substance] / [length] ** 3"
 MUTANT_TEXT = re.compile(r"\b(mutant|mutants|mutation|mutations|variant|variants)\b", re.I)
 
 # --- R0: google-deepmind/science-skills @370f8f3, skills/chembl_database/scripts/chembl_api.py
@@ -153,6 +154,8 @@ def largest_valid(classes: list) -> dict:
     for c in classes:
         if c["consensus"] not in ("agree", "within_floor", "single") or c["pooled_value"] is None:
             continue
+        if c["unit_dimension"] != MOLAR:   # preregistered: "only molar units"
+            continue
         k = c["key"]
         cur = best.get(k)
         if cur is None or (c["n_usable"], -_class_order(c["class"])) > \
@@ -178,7 +181,7 @@ def m3(rows: list, res_mol) -> dict:
                      "classes: " + "+".join(sorted(set(cons)))] += 1
             continue
         q = as_quantity(f"{c['pooled_value']!r} {c['pooled_unit']}")
-        if str(q.dimensionality) != "[substance] / [length] ** 3":
+        if str(q.dimensionality) != MOLAR:
             non_molar += 1
             continue
         p = -math.log10(q.to("molar").magnitude)

@@ -84,9 +84,25 @@ def _query(t: str, types: list, extra: dict, offset: int, limit: int = PAGE) -> 
     return q
 
 
+def _valid(acts: list) -> bool:
+    """Every ChEMBL activity has an assay and a target. Under load the API sometimes
+    returns whole pages with those joined fields blank (20 Nov 2026: 80 pages); such a
+    page is fetched again, never used."""
+    return all(a.get("assay_chembl_id") and a.get("target_chembl_id") for a in acts)
+
+
 def _page(t, types, extra, offset, tag):
-    raw = get(f"{API}/activity.json?{urllib.parse.urlencode(_query(t, types, extra, offset))}")
-    d = json.loads(raw)
+    url = f"{API}/activity.json?{urllib.parse.urlencode(_query(t, types, extra, offset))}"
+    for attempt in range(8):
+        raw = get(url)
+        d = json.loads(raw)
+        if _valid(d["activities"]):
+            break
+        print(f"  {t} {tag} offset {offset}: page with blank assay/target fields; "
+              f"fetching again ({attempt + 1})", flush=True)
+        time.sleep(10 * (attempt + 1))
+    else:
+        raise RuntimeError(f"{t} {tag} offset {offset}: blank assay/target fields after 8 tries")
     entry = save(DATA / "activity" / t / f"{tag}_{offset:05d}.json", raw)
     return d["page_meta"]["total_count"], d["activities"], entry
 
@@ -276,6 +292,9 @@ def _from_disk(t: str, types: list) -> tuple:
         for o in need:
             raw = pages[o].read_bytes()
             acts = json.loads(raw)["activities"]
+            if not _valid(acts):       # a damaged page saved earlier: fetch it again
+                _, acts, _e = _page(t, ty, f, o, tag)
+                raw = pages[o].read_bytes()
             ids.update(a["activity_id"] for a in acts)
             entries.append((o, acts, {"file": str(pages[o].relative_to(DATA)),
                                       "sha256": hashlib.sha256(raw).hexdigest(),

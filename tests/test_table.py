@@ -644,3 +644,14 @@ def test_as_text_only_for_equal():
                          "plain_english": "t",
                          "conditions": [{"id": "C1", "field": "t", "predicate": "quantity_equal",
                                          "as_text": True, "plain_english": "t"}]})
+
+
+def test_digit_led_condition_text_is_a_label_not_a_quantity():
+    # real ChEMBL cell lines and strains start with digits; they must stay labels
+    rows = [rec(assay_cell_type="3T3-L1"), rec(value="45", assay_cell_type="3T3-L1"),
+            rec(value="46", assay_cell_type="293T")]
+    r = compare_table(rows, key="mol,tgt", pack="bioactivity")
+    assert r.summary["record_status"] == {"usable": 3}
+    labels = {(p["a"], p["b"]): p["label"] for p in r.pairs}
+    assert labels[(1, 2)] == "agree"
+    assert labels[(1, 3)] == "not_comparable(assay_cell_type)"
