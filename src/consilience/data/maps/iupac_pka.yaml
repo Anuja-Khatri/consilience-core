@@ -1,0 +1,21 @@
+# Column map: the IUPAC Digitized pKa Dataset (iupac_high-confidence_v2_4.csv).
+kind: column-map
+name: iupac_pka
+version: iupac-pka-v1
+plain_english: >
+  IUPAC digitized pKa values, grouped by molecule (InChI) and dissociation step
+  (pka_type). Temperature in degrees Celsius; pKa is a pure number.
+source: >
+  Zheng JW, Lafontant-Joseph O. IUPAC Digitized pKa Dataset, v2.4a (2026), doi
+  10.5281/zenodo.7236452; column definitions in its digitization report.
+key: [InChI, pka_type]
+id: unique_ID
+value: pka_value
+method: method
+fields:
+  temperature: T
+lookups:
+  temperature:
+    "not_stated": unstated
+units:
+  temperature: degC

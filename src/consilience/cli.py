@@ -176,6 +176,7 @@ def cmd_compare(args) -> int:
     try:
         r = compare(args.a, args.b, pack=args.pack, abs_tol=args.abs_tol,
                     rel_tol=args.rel_tol, floor=args.floor,
+                    log_tol=args.log_tol, log_floor=args.log_floor,
                     precision="exact" if args.exact else "stated")
     except (InputError, RuleFileError) as exc:
         print(f"consilience: error: {exc}", file=sys.stderr)
@@ -256,10 +257,34 @@ def cmd_check(args) -> int:
     return c.exit_code
 
 
+# ------------------------------------------------------------ compare-table
+def cmd_compare_table(args) -> int:
+    from .table import compare_table
+    try:
+        r = compare_table(args.table, key=args.key, pack=args.pack, map=args.map,
+                          out=args.out, abs_tol=args.abs_tol, rel_tol=args.rel_tol,
+                          floor=args.floor, log_tol=args.log_tol, log_floor=args.log_floor,
+                          assume=args.assume or [],
+                          precision="exact" if args.exact else "stated")
+    except (InputError, RuleFileError) as exc:
+        print(f"consilience: error: {exc}", file=sys.stderr)
+        return EXIT_USAGE
+    if args.json:
+        print(json.dumps(r.receipt, indent=2, ensure_ascii=False))
+    else:
+        print(r.text)
+        if args.out:
+            print(f"wrote: {args.out}/records.csv, classes.csv, pairs.csv, summary.json, "
+                  f"receipt.json")
+            print(f"check: consilience verify {args.out}/receipt.json")
+        print(f"receipt: sha256 {r.receipt['sha256']}")
+    return r.exit_code
+
+
 # ------------------------------------------------------------------- verify
 def cmd_verify(args) -> int:
     try:
-        v = verify(args.receipt, data=args.data)
+        v = verify(args.receipt, data=args.data, input=getattr(args, "input", None))
     except (InputError, RuleFileError) as exc:
         print(f"consilience: error: {exc}", file=sys.stderr)
         return EXIT_USAGE
@@ -335,8 +360,9 @@ def build_parser() -> argparse.ArgumentParser:
                              "a table against written limits. Every result has a receipt.",
                  epilog="Exit codes: compare 0 agree/within_floor, 1 disagree, 2 "
                         "not_comparable/not_stated/undecidable_bounds, 3 unparseable; check 0 clean, 1 "
-                        "violations, 3 unreadable cells; verify 0 ok, 1 failed; 64 usage or "
-                        "input error.")
+                        "violations, 3 unreadable cells; compare-table 0 no disagreement "
+                        "inside a class, 1 a class disagrees, 3 a record could not be read; "
+                        "verify 0 ok, 1 failed; 64 usage or input error.")
     ap.add_argument("--version", action="version", version=f"consilience {__version__}")
     ap.add_argument("--config", default=None, help=argparse.SUPPRESS)
     ap.add_argument("--templates", default=None, help=argparse.SUPPRESS)
@@ -356,9 +382,37 @@ def build_parser() -> argparse.ArgumentParser:
                    help="compare the values exactly as numbers; by default a value written "
                         "with k decimal places (and no uncertainty) carries an implied "
                         "half-unit in its last place, so 0.777 means 0.7765 to 0.7775")
+    c.add_argument("--log-tol", help="tolerance in base-10 log units, for positive "
+                                     "quantities (e.g. 0.3: about 2-fold)")
+    c.add_argument("--log-floor", help="floor in base-10 log units (e.g. 1.0: 10-fold)")
     c.add_argument("--json", action="store_true", help="print the full result as JSON")
     c.add_argument("--receipt", metavar="FILE", help="also write the receipt to FILE")
     c.set_defaults(func=cmd_compare)
+
+    t = sub.add_parser("compare-table",
+                       help="which records of a table may be pooled, and do they agree "
+                            "(exit 0/1/3, 64 error)")
+    t.add_argument("table", help="the table: CSV, JSON (list or ChEMBL API response), "
+                                 "JSONL or Parquet")
+    t.add_argument("--key", help="column(s) that identify the same quantity, comma-separated "
+                                 "(default: the map's key)")
+    t.add_argument("--map", help="column map: bundled (chembl, iupac_pka) or a YAML file")
+    t.add_argument("--pack", help="domain pack: bundled (bioactivity, pka, electrochemistry) "
+                                  "or a YAML file")
+    t.add_argument("--out", metavar="DIR", help="write records.csv, classes.csv, pairs.csv, "
+                                                "summary.json and receipt.json here")
+    t.add_argument("--abs-tol", help="absolute tolerance, e.g. '0.05' or '5 mV'")
+    t.add_argument("--rel-tol", help="relative tolerance as a fraction")
+    t.add_argument("--floor", help="spread below which a difference is within_floor")
+    t.add_argument("--log-tol", help="tolerance in base-10 log units (positive quantities)")
+    t.add_argument("--log-floor", help="floor in base-10 log units")
+    t.add_argument("--assume", action="append", metavar="ID",
+                   help="switch on a named assumption of the pack (e.g. ki_ic50_x2); "
+                        "repeat for more")
+    t.add_argument("--exact", action="store_true",
+                   help="compare values exactly as numbers (no implied precision)")
+    t.add_argument("--json", action="store_true", help="print the receipt as JSON")
+    t.set_defaults(func=cmd_compare_table)
 
     k = sub.add_parser("check", help="check a CSV table against rules (exit 0/1/3, 64 error)")
     k.add_argument("data", help="the table (CSV with a header row)")
@@ -371,6 +425,7 @@ def build_parser() -> argparse.ArgumentParser:
     v = sub.add_parser("verify", help="re-run a result from its receipt and confirm the hash")
     v.add_argument("receipt", help="a receipt written by --receipt (or a record envelope)")
     v.add_argument("--data", help="where the data file of a check receipt is now")
+    v.add_argument("--input", help="where the table of a compare-table receipt is now")
     v.set_defaults(func=cmd_verify)
 
     e = sub.add_parser("examples", help="write the made-up example files into DIR")

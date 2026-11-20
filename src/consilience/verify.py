@@ -71,11 +71,12 @@ def _resolve(stored: str, override, receipt_path: Optional[Path]) -> Path:
                      "its location with --data")
 
 
-def verify(receipt: Union[str, Path, dict], *, data=None) -> VerifyResult:
+def verify(receipt: Union[str, Path, dict], *, data=None, input=None) -> VerifyResult:  # noqa: A002
     """Re-run the result recorded in ``receipt`` (a path or a dict) and confirm its hash.
 
-    ``data`` overrides where to find the data file of a ``check`` receipt. Raises
-    ``InputError`` if the receipt or its inputs cannot be used.
+    ``data`` overrides where to find the data file of a ``check`` receipt; ``input`` the
+    table of a ``compare-table`` receipt. Raises ``InputError`` if the receipt or its
+    inputs cannot be used.
     """
     rpath = None
     if isinstance(receipt, (str, Path)):
@@ -90,6 +91,13 @@ def verify(receipt: Union[str, Path, dict], *, data=None) -> VerifyResult:
     if rec.get("schema") == ENVELOPE_SCHEMA:
         return _verify_envelope(rpath, rec)
 
+    from .table import TABLE_RECEIPT_SCHEMA, verify_table
+    if rec.get("receipt") == TABLE_RECEIPT_SCHEMA:
+        ok, steps, note = verify_table(rec, input_path=input or data, receipt_path=rpath)
+        return VerifyResult(ok=ok, command="compare-table",
+                            recorded_sha256=rec.get("sha256"),
+                            recomputed_sha256=rec.get("sha256") if ok else None,
+                            steps=steps, note=note)
     if rec.get("receipt") != RECEIPT_SCHEMA:
         raise InputError(f"not a consilience receipt (expected \"receipt\": "
                          f"\"{RECEIPT_SCHEMA}\")")

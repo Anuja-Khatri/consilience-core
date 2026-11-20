@@ -1,0 +1,30 @@
+# Column map: ChEMBL activity records (the ChEMBL web API's /activity JSON, or a CSV or SQL
+# export with the same column names), optionally joined with assay fields from /assay on
+# assay_chembl_id (confidence_score, assay_organism, assay_category, assay_tax_id,
+# assay_strain, assay_tissue, assay_cell_type, assay_subcellular_fraction).
+#
+# It renames nothing else: the bioactivity pack uses ChEMBL's own field names.
+kind: column-map
+name: chembl
+version: chembl-v1
+plain_english: >
+  ChEMBL activity records: standard_value with standard_relation and standard_units,
+  grouped by parent molecule and target.
+source: ChEMBL web services and schema documentation, release 37.
+records: activities
+key: [parent_molecule_chembl_id, target_chembl_id]
+id: activity_id
+value: standard_value
+relation: standard_relation
+unit: standard_units
+lookups:
+  # ChEMBL's VARIANT_ID is -1 for unclassified variants: unknown, never pooled.
+  assay_variant_mutation:
+    "UNDEFINED MUTATION": unstated
+  # ChEMBL writes some units in its own notation.
+  unit:
+    "ug.mL-1": "ug/mL"
+    "mg.mL-1": "mg/mL"
+    "ng.mL-1": "ng/mL"
+    "pg.mL-1": "pg/mL"
+    "ug ml-1": "ug/mL"

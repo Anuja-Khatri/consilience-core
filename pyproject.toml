@@ -54,7 +54,7 @@ Changelog = "https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/CHANGE
 where = ["src"]
 
 [tool.setuptools.package-data]
-"consilience" = ["data/packs/*.yaml", "data/examples/*.json", "data/examples/*.csv",
+"consilience" = ["data/packs/*.yaml", "data/maps/*.yaml", "data/examples/*.json", "data/examples/*.csv",
                  "data/examples/*.yaml"]
 
 [tool.pytest.ini_options]
