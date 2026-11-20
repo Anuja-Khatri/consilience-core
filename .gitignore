@@ -29,3 +29,5 @@ venv/
 tmp/
 .cache/
 live/plan-tmp/
+studies/pooling-2026/data/
+studies/pooling-2026/work/

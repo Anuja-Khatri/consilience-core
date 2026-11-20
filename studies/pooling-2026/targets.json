@@ -1,0 +1,10 @@
+{
+ "note": "Fixed before any full run. EGFR (CHEMBL203) is the example in DeepMind's ChEMBL skill (google-deepmind/science-skills @370f8f3, skills/chembl_database/SKILL.md). The other 29 are the targets of the 30 MoleculeACE benchmark sets (van Tilborg et al. 2022; molML/MoleculeACE @7e6de0b, MoleculeACE/Data/benchmark_data/metadata/datasets.csv), chosen by others.",
+ "demonstration": "CHEMBL203",
+ "panel": ["CHEMBL1862", "CHEMBL1871", "CHEMBL2034", "CHEMBL2047", "CHEMBL204", "CHEMBL2147",
+           "CHEMBL214", "CHEMBL218", "CHEMBL219", "CHEMBL228", "CHEMBL231", "CHEMBL233",
+           "CHEMBL234", "CHEMBL235", "CHEMBL236", "CHEMBL237", "CHEMBL238", "CHEMBL239",
+           "CHEMBL244", "CHEMBL262", "CHEMBL264", "CHEMBL2835", "CHEMBL287", "CHEMBL2971",
+           "CHEMBL3979", "CHEMBL4005", "CHEMBL4203", "CHEMBL4616", "CHEMBL4792"],
+ "standard_types": ["IC50", "Ki", "Kd", "EC50"]
+}
