@@ -98,3 +98,8 @@ The study is about how pooling choices change potency datasets. It credits ChEMB
 ## Amendments
 
 - **20 Nov 2026 (before any analysis run): how the data is fetched, not which data.** The public API failed on deep offsets: offset 5,000 and beyond for EGFR timed out or returned HTTP 500, on four tries with no other load. So `fetch.py` now asks for each target in slices by document year, and further by measurement type when a year is still large, so that no slice needs a deep offset. The set of records is the same as defined above. Completeness is checked exactly: for each target, the slices' counts must add up to the target's total count, and the union of activity ids must have that size. Incomplete targets are reported, never replaced.
+- **20 Nov 2026, AFTER the first full analysis run (disclosed; see VERIFICATION_LOG.md).** Three changes, each forced by a problem the second-way check found. None changes a measure's definition.
+  - **(a)** The bioactivity conditions are compared as text (`as_text`). A cell line such as "3T3-L1" had been read as a quantity, making records unreadable.
+  - **(b)** M3's "largest valid class … only molar units" is applied as written: the choice is among molar classes. The first script chose among all units and then skipped non-molar ones.
+  - **(c)** 80 API pages that came back with blank assay and target fields are refused and fetched again. The first run's numbers were computed on them, are void, and are not reported as results.
+
