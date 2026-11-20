@@ -1,0 +1,39 @@
+kind: evaluator-contract
+name: openevolve/circle_packing_with_artifacts (n = 26) @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.12 (README, initial_program docstring): 26 disjoint circles inside the unit
+  square, maximise the sum of radii. run_packing() (fixed, outside the evolve block) returns
+  (centers [26,2], radii [26], sum_radii); sum_radii is a self-report (claimed). The evaluator runs the
+  candidate in a subprocess. Score = sum(radii) / 2.635. The evaluator returns an EvaluationResult (metrics + artifacts); glue.compose unwraps it.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: run_packing
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 120
+fields:
+  - {name: centers, type: real_array, shape: [26, 2], role: construction}
+  - {name: radii, type: real_array, shape: [26], role: construction}
+  - {name: sum_radii, type: real, role: claimed, quantity: sum_radii}
+returns: [centers, radii, sum_radii]
+validity:
+  - {rule: finite, field: centers}
+  - {rule: shape, field: centers, shape: [26, 2]}
+  - {rule: finite, field: radii}
+  - {rule: shape, field: radii, shape: [26]}
+  - {rule: range, field: radii, min: "0"}
+  - {rule: in_box, field: centers, box: [["0", "1"], ["0", "1"]], margin_from: radii}
+  - {rule: pairwise_separation, field: centers, radii_from: radii}
+invariances:
+  - {transform: dihedral, field: centers, order: 4, center: ["0.5", "0.5"]}
+score:
+  direction: maximize
+  record:
+    value: "1.000"
+    kind: best_known
+    source: "AlphaEvolve sum of radii 2.635 for n = 26 (the evaluator's TARGET_VALUE) -> combined_score 1; 4 significant digits"
+reference: {file: reference.npz}
+glue: glue.py

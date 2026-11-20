@@ -1,0 +1,47 @@
+# Reference: AlphaEvolve's packing (alphaevolve_results @ 4226acb, B.7 data cell 88).
+# Validity of rotated hexagons involves cos/sin of degrees, so the glue predicate evaluates it with mpmath at 60 digits.
+kind: evaluator-contract
+name: codeevolve/hexagon_packing (n=11)
+description: '11 unit regular hexagons (x, y, angle_deg), pairwise disjoint interiors, inside a regular hexagon
+  (cx, cy, angle_deg) of side s; minimise s (scorer: benchmark_ratio = (1/s)*3.930092).'
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: hexagon_packing_11
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+dims: {n: 11}
+fields:
+- name: inner
+  type: real_array
+  shape: [n, 3]
+  role: construction
+- name: outer
+  type: real_array
+  shape: [3]
+  role: construction
+- {name: side, type: real, role: construction}
+returns: [inner, outer, side]
+validity:
+- {rule: finite, field: inner}
+- rule: shape
+  field: inner
+  shape: [n, 3]
+- {rule: finite, field: outer}
+- rule: shape
+  field: outer
+  shape: [3]
+- {rule: finite, field: side}
+- {rule: range, field: side, min: '0'}
+- {rule: predicate, call: packing, name: hexagons_disjoint_and_contained}
+invariances:
+- {transform: permute, field: inner}
+score:
+  direction: maximize
+  record: {value: '3.930092', quantity: outer_hex_side_length, map: ratio, kind: best_known, source: 'CodeEvolve
+      README (problem page): ''inv_outer_hex_side_length > 1/3.930092 (AlphaEvolve''s reported best)'''}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

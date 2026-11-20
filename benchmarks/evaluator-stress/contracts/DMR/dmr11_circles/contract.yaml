@@ -1,0 +1,46 @@
+# Label DMR-11 (pre, 4226acb): https://github.com/google-deepmind/alphaevolve_results/issues/11 - verify_circles (cell 116).
+# Validity from the B.12 problem text (cell 115). Reference: Construction 1 (cell 118), split into centers/radii.
+kind: evaluator-contract
+name: alphaevolve_results/B.12 verify_circles (n=26) [DMR-11 pre]
+description: 'Pack 26 disjoint circles inside the unit square, maximise the sum of radii (B.12). Scorer: verify_circles
+  (raises AssertionError on failure); score = sum of radii.'
+harness: {kind: function, evaluator: scorer.py, entry: verify_circles, timeout_s: 30}
+dims: {n: 26}
+fields:
+- name: centers
+  type: real_array
+  shape: [n, 2]
+  role: construction
+- name: radii
+  type: real_array
+  shape: [n]
+  role: construction
+validity:
+- {rule: finite, field: centers}
+- rule: shape
+  field: centers
+  shape: [n, 2]
+- {rule: finite, field: radii}
+- rule: shape
+  field: radii
+  shape: [n]
+- {rule: range, field: radii, min: '0'}
+- rule: in_box
+  field: centers
+  box:
+  - ['0', '1']
+  - ['0', '1']
+  margin_from: radii
+- {rule: pairwise_separation, field: centers, radii_from: radii}
+invariances:
+- transform: dihedral
+  field: centers
+  order: 4
+  center: ['0.5', '0.5']
+score:
+  direction: maximize
+  record: {value: '2.635', kind: best_known, source: 'AlphaEvolve (Novikov et al. 2025), alphaevolve_results @ 4226acb
+      B.12: n=26 sum of radii 2.635 (stated to 3 decimals)'}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

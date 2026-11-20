@@ -1,0 +1,36 @@
+kind: evaluator-contract
+name: openevolve/heilbronn_convex/13 @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.10 (README, config.yaml, initial_program docstring): 13 points in the plane;
+  the convex region is their convex hull; maximise the smallest area of a triangle formed by three of
+  the points divided by the hull's area (affine invariant). Score = min_area_normalized / BENCHMARK.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: heilbronn_convex13
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: points, type: real_array, shape: [13, 2], role: construction}
+validity:
+  - {rule: finite, field: points}
+  - {rule: shape, field: points, shape: [13, 2]}
+  - {rule: predicate, call: not_all_collinear, name: not_all_collinear}
+invariances:
+  - {transform: permute, field: points}
+  - {transform: translate, field: points}
+  - {transform: rotate, field: points, dims: 2}
+  - {transform: scale, field: points, score_exponent: 0}
+  - {transform: reflect, field: points}
+score:
+  direction: maximize
+  record:
+    value: "1.000"
+    kind: best_known
+    source: "evaluator BENCHMARK 0.030936889034895654 (AlphaEvolve, config.yaml) -> combined_score 1; published as 0.0309 (3 significant digits)"
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

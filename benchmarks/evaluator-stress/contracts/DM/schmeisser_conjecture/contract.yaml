@@ -1,0 +1,44 @@
+kind: evaluator-contract
+name: deepmind/schmeisser_conjecture evaluate_construction_h
+description: >
+  Problem 21 (Schmeisser's conjecture): for a polynomial of degree n >= 2 with zeros in the unit
+  disk, every convex combination of the zeros is within distance 1 of a critical point. evaluate()
+  scores the search output with evaluate_construction_h (code cell 0), which tests the points
+  (2 z_i + z_j)/3 of modulus > 0.4 and subtracts penalties; a score above 1 would be a counterexample.
+  Only the zeros are the construction (the weights are fixed by the scorer). No shipped construction
+  exists; the reference is the initial program's root list (code cell 1).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_construction_h
+fields:
+- name: z
+  type: complex_array
+  role: construction
+validity:
+- rule: finite
+  field: z
+- rule: count
+  field: z
+  min: 2
+- rule: in_disk
+  field: z
+  radius: '1'
+  center: ['0', '0']
+invariances:
+- transform: permute
+  field: z
+- transform: negate
+  field: z
+score:
+  direction: maximize
+  record:
+    value: '1'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: problem page 21 (Schmeisser conjectured C(n) = 1)
+reference:
+  file: reference.npz
+glue: glue.py

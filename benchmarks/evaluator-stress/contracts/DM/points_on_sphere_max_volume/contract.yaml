@@ -1,0 +1,34 @@
+kind: evaluator-contract
+name: deepmind/points_on_sphere_max_volume calculate_polytope_volume (n = 8)
+description: >
+  Problem 41: C(n) = maximum volume of a polyhedron with n vertices on the unit sphere S^2 (here n = 8).
+  Construction = 8 points on the unit sphere. Score = volume of their convex hull.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_polytope_volume
+  reject:
+    values: [0.0]
+fields:
+  - {name: X, type: real_array, shape: [8, 3], role: construction}
+validity:
+  - {rule: finite, field: X}
+  - {rule: shape, field: X, shape: [8, 3]}
+  - {rule: norm, field: X, axis: 1, equals: "1", tolerance: "1e-12"}
+invariances:
+  - {transform: permute, field: X}
+  - {transform: rotate, field: X, dims: 3}
+  - {transform: reflect, field: X}
+score:
+  direction: maximize
+  record:
+    value: "1.815716104224"
+    kind: best_known
+    source: "Berman & Hanes (1970): C(8) = sqrt((475 + 29 sqrt(145))/250), proven optimal; written to the 13 digits of Sloane's table cited in the notebook"
+  bound:
+    value: "1.8157161042244204"
+    kind: proven
+    source: "Berman & Hanes (1970) optimality of the n = 8 maximum, sqrt((475 + 29 sqrt(145))/250) = 1.81571610422442039..."
+reference: {file: reference.npz}
+glue: glue.py

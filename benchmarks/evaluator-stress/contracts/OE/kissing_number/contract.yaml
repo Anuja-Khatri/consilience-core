@@ -1,0 +1,34 @@
+kind: evaluator-contract
+name: openevolve/kissing_number (d = 11) @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.11 (README, config.yaml, initial_program docstring): a set S of points in Z^11,
+  0 not in S, with max |p| <= min pairwise distance; maximise |S|. Score = |S| / 593.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: kissing_number11
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 120
+fields:
+  - {name: points, type: int_array, role: construction}
+validity:
+  - {rule: finite, field: points}
+  - {rule: integral, field: points}
+  - {rule: distinct, field: points}
+  - {rule: count, field: points, min: 1}
+  - {rule: predicate, call: kissing_config, name: kissing_config}
+invariances:
+  - {transform: permute, field: points}
+  - {transform: negate, field: points}
+score:
+  direction: maximize
+  record:
+    value: "1"
+    kind: best_known
+    source: "AlphaEvolve 593 points in dimension 11 (the evaluator's BENCHMARK, config.yaml) -> combined_score = |S| / 593 = 1 (an integer count, exact)"
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

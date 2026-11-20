@@ -1,0 +1,50 @@
+kind: evaluator-contract
+name: deepmind/de_bruijn_sharma_problem calculate_area_score (n = 5)
+description: >
+  Problem 24 (de Bruijn-Sharma): Omega(n) is the set of (alpha, beta) >= 0 with
+  sum |xi_j|^4 <= alpha sum |z_i|^4 + beta (sum |z_i|^2)^2 for every degree-n polynomial whose
+  zeros z_i sum to zero (xi_j its critical points). Each polynomial cuts a half-plane; the scorer
+  (code cell 0) returns minus the area of the remaining region in [0,1]^2, minus (number of
+  polynomials)/10000. evaluate(params) takes n as a parameter; fixed here to n = 5 (odd n is where
+  AlphaEvolve improved the x-intercept). No shipped construction exists; the reference is two
+  simple zero-sum polynomials, z^5 - 1 and z^5 - z.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_area_score
+  reject:
+    values:
+    - -4.0
+    - -1000000.0
+fields:
+- name: P
+  type: complex_array
+  role: construction
+validity:
+- rule: finite
+  field: P
+- rule: count
+  field: P
+  min: 1
+- rule: predicate
+  call: degree_n
+  name: each_row_has_n_roots
+- rule: predicate
+  call: roots_sum_to_zero
+  name: zeros_sum_to_zero
+  equality: true
+  tolerance: '1e-12'
+invariances:
+- transform: permute
+  field: P
+- transform: negate
+  field: P
+- transform: scale
+  field: P
+  score_exponent: 0
+score:
+  direction: maximize
+reference:
+  file: reference.npz
+glue: glue.py

@@ -1,0 +1,48 @@
+kind: evaluator-contract
+name: deepmind/autocorrelation_problems evaluate_sequence_1 (problem 2, code cell 2)
+description: >
+  Problem 2 (first autocorrelation inequality, related to Sidon sets): the largest C with
+  max_t (f*f)(t) >= C (int f)^2 for every non-negative f. A non-negative step function with n
+  equal steps of heights a_i gives the upper bound 2 n max(a*a) / (sum a)^2, which the scorer
+  returns; smaller is better.
+  This is the notebook's second version (code cell 2), superseded by code cells 4 and 6.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_sequence_1
+fields:
+- name: a
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: a
+- rule: count
+  field: a
+  min: 1
+- rule: range
+  field: a
+  min: '0'
+- rule: predicate
+  call: positive_mass
+  name: integral_positive
+invariances:
+- transform: scale
+  field: a
+  score_exponent: 0
+score:
+  direction: minimize
+  record:
+    value: '1.5029'
+    kind: best_known
+    source: problem page 2, upper bounds table (Yuksekgonul et al., Jan 2026); the notebook's best
+      shipped construction (code cell 24) is the 1.5032 entry (Georgiev-Gomez-Serrano-Tao-Wagner, 20 Dec 2025)
+  bound:
+    value: '1.2748'
+    kind: proven
+    source: problem page 2, lower bounds table (Matolcsi-Vinuesa, 8 Jul 2009); the score of a valid
+      step function is an upper bound on C, so it cannot fall below a proven lower bound
+reference:
+  file: reference.npz
+glue: glue.py

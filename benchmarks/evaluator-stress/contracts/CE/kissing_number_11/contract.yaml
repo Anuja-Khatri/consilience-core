@@ -1,0 +1,29 @@
+# Reference: AlphaEvolve's 593 integer vectors (alphaevolve_results @ 4226acb, B.11 data cell 113).
+kind: evaluator-contract
+name: codeevolve/kissing_number (d=11)
+description: Integer vectors in Z^11, none zero, min pairwise squared distance >= max squared norm; maximise their
+  number.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: kissing_number11
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 180
+fields:
+- {name: C, type: int_array, role: construction}
+validity:
+- {rule: finite, field: C}
+- {rule: integral, field: C}
+- {rule: predicate, call: kissing, name: kissing_condition}
+invariances:
+- {transform: permute, field: C}
+- {transform: negate, field: C}
+score:
+  direction: maximize
+  record: {value: '593', quantity: num_points, map: ratio, kind: best_known, source: 'CodeEvolve README (problem
+      page): ''the benchmark target is >= 593 (AlphaEvolve''s reported best)'''}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

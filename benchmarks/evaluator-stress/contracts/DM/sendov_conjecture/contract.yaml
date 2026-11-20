@@ -1,0 +1,50 @@
+kind: evaluator-contract
+name: deepmind/sendov_conjecture evaluate_sendov_conjecture_h
+description: >
+  Problem 20 (Sendov's conjecture): for a polynomial of degree n >= 2 with all zeros in the closed
+  unit disk, every zero is within distance 1 of a critical point. evaluate() scores the search
+  output with evaluate_sendov_conjecture_h (code cell 0): the largest zero-to-nearest-critical-point
+  distance minus penalties for the known extremal family; a score above 1 would be a counterexample.
+  (The search loop uses the visible evaluate_sendov_conjecture, identical except it returns 0 for
+  n < 15.) The reference is the shipped best_roots (code cell 1) with the 11 roots that lie up to
+  5.4e-5 outside the unit circle scaled back onto it; the raw shipped roots are claimed_best.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_sendov_conjecture_h
+fields:
+- name: z
+  type: complex_array
+  role: construction
+validity:
+- rule: finite
+  field: z
+- rule: count
+  field: z
+  min: 2
+- rule: in_disk
+  field: z
+  radius: '1'
+  center: ['0', '0']
+invariances:
+- transform: permute
+  field: z
+- transform: negate
+  field: z
+score:
+  direction: maximize
+  record:
+    value: '1'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: problem page 20 (Sendov conjectured C(n) = 1); the prompt states a final score greater than 1
+      is a counterexample
+reference:
+  file: reference.npz
+initial:
+  file: initial.npz
+claimed_best:
+  file: claimed_best.npz
+glue: glue.py

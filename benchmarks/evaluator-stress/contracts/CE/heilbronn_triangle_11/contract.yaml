@@ -1,0 +1,40 @@
+# claimed_best: AlphaEvolve's points (alphaevolve_results @ 4226acb, B.9 data cell 100).
+# reference: the same points with x moved by single ulps towards x = 1/2 where a point lies outside the closed
+# triangle in exact arithmetic (the README asks for points inside the triangle).
+kind: evaluator-contract
+name: codeevolve/heilbronn_triangle (n=11)
+description: 11 points in the closed equilateral triangle (0,0),(1,0),(1/2,sqrt3/2); maximise the smallest triangle
+  area / triangle area.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: heilbronn_triangle11
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+dims: {n: 11}
+fields:
+- name: P
+  type: real_array
+  shape: [n, 2]
+  role: construction
+validity:
+- {rule: finite, field: P}
+- rule: shape
+  field: P
+  shape: [n, 2]
+- {rule: predicate, call: in_equilateral_triangle, name: inside_triangle}
+invariances:
+- {transform: permute, field: P}
+- transform: reflect
+  field: P
+  center: ['0.5', '0']
+score:
+  direction: maximize
+  record: {value: '0.036529889880030156', quantity: min_area_normalized, map: ratio, kind: best_known, source: 'CodeEvolve
+      README (problem page): ''min_area_normalized > 0.036529889880030156 (AlphaEvolve''s reported best)'''}
+reference: {file: reference.npz}
+claimed_best: {file: claimed_best.npz}
+glue: glue.py
+contract_author: model

@@ -1,0 +1,36 @@
+kind: evaluator-contract
+name: openevolve/sums_diffs_finite_sets @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.6 (README, config.yaml): a finite set U of non-negative integers containing 0
+  (with max U > 0 so the bound is defined); C6(U) = 1 + log(|U-U| / |U+U|) / log(2 max U + 1), larger
+  is better (a lower bound on C6). run() returns (U, c6); c6 is a self-report (claimed).
+  Score = c6 / BENCHMARK.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: run
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: U, type: int_set, role: construction}
+  - {name: c6, type: real, role: claimed, quantity: c6}
+returns: [U, c6]
+validity:
+  - {rule: finite, field: U}
+  - {rule: integral, field: U}
+  - {rule: distinct, field: U}
+  - {rule: range, field: U, min: "0"}
+  - {rule: predicate, call: contains_zero_and_positive, name: contains_zero_and_positive}
+invariances:
+  - {transform: permute, field: U}
+score:
+  direction: maximize
+  record:
+    value: "1.0000"
+    kind: best_known
+    source: "evaluator BENCHMARK 1.158417281556896 (AlphaEvolve, config.yaml) -> combined_score 1; published as C6 >= 1.1584 (5 significant digits)"
+reference: {file: reference.npz}
+glue: glue.py

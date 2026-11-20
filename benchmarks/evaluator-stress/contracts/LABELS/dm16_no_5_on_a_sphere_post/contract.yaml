@@ -1,0 +1,33 @@
+# Label DM-16 (post, 7b6a34b): https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16; fix PR #19
+# Reference: the notebook's construction_n_8_8_8 (code cell 0, 23 points).
+kind: evaluator-contract
+name: deepmind/no_5_on_a_sphere verify_3d_construction (n=8) [DM-16 post]
+description: 'Problem 60: a subset of the n x n x n grid (coordinates 0..n-1, as in the notebook prompt) with no
+  5 points on a sphere or a plane; maximise its size. n = 8. Score = |P| if the verifier returns True.'
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: verify_3d_construction
+  reject:
+    values: [-1.0]
+  timeout_s: 60
+fields:
+- {name: P, type: int_array, role: construction}
+validity:
+- {rule: finite, field: P}
+- {rule: integral, field: P}
+- {rule: range, field: P, min: '0', max: '7'}
+- {rule: distinct, field: P}
+- {rule: predicate, call: no5, name: no_five_on_a_sphere_or_plane}
+invariances:
+- {transform: permute, field: P}
+- transform: reflect
+  field: P
+  center: ['3.5', '3.5', '3.5']
+score:
+  direction: maximize
+  record: {value: '22', kind: best_known, source: 'notebook prompt (no_5_on_a_sphere.ipynb): ''the maximum known
+      size for n=8 is 22'''}
+reference: {file: reference.npz}
+contract_author: model
+glue: glue.py

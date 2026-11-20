@@ -1,0 +1,28 @@
+kind: evaluator-contract
+name: deepmind/finite_field_sum_product_problem calculate_score (p = 1000033)
+description: >
+  Problem 45: C(R, N) = least max(|A+A|, |A.A|) over subsets A of R with |A| = N. Here R = F_p with
+  p = 1000033 (a prime = 1 mod 4, as the notebook's prompt requires; the prompt's p ~ 1e9 makes one
+  call ~1e9 set operations) and N = floor(sqrt(p)) = 1000. Construction = 1000 distinct elements of
+  {0, ..., p-1}. Score = max(|X+X|, |X.X|) mod p.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+  timeout_s: 60
+fields:
+  - {name: X, type: int_set, role: construction}
+validity:
+  - {rule: finite, field: X}
+  - {rule: count, field: X, equals: 1000}
+  - {rule: integral, field: X}
+  - {rule: distinct, field: X}
+  - {rule: range, field: X, min: "0", max: "1000032"}
+invariances:
+  - {transform: permute, field: X}
+score:
+  direction: minimize
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

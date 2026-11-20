@@ -1,0 +1,59 @@
+kind: evaluator-contract
+name: deepmind/crouzeix_conjecture evaluate_construction (num_theta_points = 10000)
+description: >
+  Problem 25 (Crouzeix's conjecture): ||p(A)|| <= C sup_{z in W(A)} |p(z)| for every square matrix A
+  and polynomial p; conjectured C = 2, proven C <= 1 + sqrt(2). evaluate() scores the pair (A, p)
+  with evaluate_construction(A, p, num_theta_points=10000) (code cell 0): ||p(A)||_2 divided by a
+  sampled maximum of |p| on W(A). p holds coefficients in increasing degree. The reference is the
+  evolved program's starting construction (code cell 2): A = [[0, 2I], [0, 0]] (20 x 20), p(z) = z,
+  whose ratio is exactly 2; initial is the initial program's (I_15, 1 + 2z + (3 - i) z^2).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_construction
+  timeout_s: 120
+fields:
+- name: A
+  type: complex_array
+  role: construction
+- name: p
+  type: complex_array
+  role: construction
+validity:
+- rule: finite
+  field: A
+- rule: predicate
+  call: square
+  name: A_is_square
+- rule: finite
+  field: p
+- rule: count
+  field: p
+  min: 1
+- rule: predicate
+  call: nonzero_polynomial
+  name: p_not_identically_zero
+invariances:
+- transform: conjugate
+  field: A
+- transform: scale
+  field: p
+  score_exponent: 0
+score:
+  direction: maximize
+  record:
+    value: '2'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: Crouzeix's conjecture C = 2 (problem page 25 asks for C); a score above 2 would be a counterexample
+  bound:
+    value: '2.4142135624'
+    kind: proven
+    source: Crouzeix and Palencia (2017), C <= 1 + sqrt(2) = 2.41421356237..., written rounded up
+reference:
+  file: reference.npz
+initial:
+  file: initial.npz
+glue: glue.py

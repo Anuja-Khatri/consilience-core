@@ -1,0 +1,33 @@
+kind: evaluator-contract
+name: openevolve/function_minimization (OE-514 post-fix, bc36680)
+description: >
+  README / config.yaml: minimise f(x, y) = sin(x) cos(y) + sin(x y) + (x^2 + y^2)/20 over the plane
+  (global minimum approximately at (-1.704, 0.678), value -1.519). The construction is the point
+  (x, y); search_algorithm() (inside the evolve block) returns (x, y, value), and the fixed
+  run_search() outside the block passes it on. value is a self-report (claimed, issue #514).
+  The scorer runs run_search() 10 times and mixes value, distance to the approximate minimum and
+  reliability into combined_score. Post-fix: value recomputed from (x, y).
+contract_author: model
+harness:
+  kind: template
+  evaluator: evaluator.py
+  entry: evaluate
+  program_template: program_template.py
+  block_start: "# EVOLVE-BLOCK-START"
+  block_end: "# EVOLVE-BLOCK-END"
+  program_function: search_algorithm
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: x, type: real, role: construction}
+  - {name: y, type: real, role: construction}
+  - {name: value, type: real, role: claimed, quantity: value}
+returns: [x, y, value]
+validity:
+  - {rule: finite, field: x}
+  - {rule: finite, field: y}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+glue: glue.py

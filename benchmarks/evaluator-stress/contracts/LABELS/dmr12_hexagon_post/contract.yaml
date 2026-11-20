@@ -1,0 +1,42 @@
+# Label DMR-12 (post, 976da27): https://github.com/google-deepmind/alphaevolve_results/issues/12 - verify_construction (cell 86); fix PR #13.
+# Validity from the B.7 problem text (cell 85); rotated hexagons are checked with mpmath at 60 digits.
+# Reference: Construction 1 (cell 88).
+kind: evaluator-contract
+name: alphaevolve_results/B.7 hexagon verify_construction (n=11) [post]
+description: 11 unit regular hexagons with disjoint interiors inside a regular hexagon of side s (centre, angle
+  free); minimise s (B.7).
+harness: {kind: function, evaluator: scorer.py, entry: verify_construction, timeout_s: 30}
+dims: {n: 11}
+fields:
+- name: inner
+  type: real_array
+  shape: [n, 3]
+  role: construction
+- name: center
+  type: real_array
+  shape: [2]
+  role: construction
+- {name: side, type: real, role: construction}
+- {name: angle, type: real, role: construction}
+validity:
+- {rule: finite, field: inner}
+- rule: shape
+  field: inner
+  shape: [n, 3]
+- {rule: finite, field: center}
+- rule: shape
+  field: center
+  shape: [2]
+- {rule: finite, field: side}
+- {rule: range, field: side, min: '0'}
+- {rule: finite, field: angle}
+- {rule: predicate, call: packing, name: hexagons_disjoint_and_contained}
+invariances:
+- {transform: permute, field: inner}
+score:
+  direction: minimize
+  record: {value: '3.931', kind: best_known, source: 'AlphaEvolve (Novikov et al. 2025), alphaevolve_results B.7
+      text (cell 85): n=11 outer side 3.931'}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

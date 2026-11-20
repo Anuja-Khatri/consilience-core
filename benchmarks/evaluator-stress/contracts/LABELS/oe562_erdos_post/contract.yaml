@@ -1,0 +1,48 @@
+kind: evaluator-contract
+name: openevolve/erdos_min_overlap (post-fix)
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: run
+  score_key: combined_score
+  reject:
+    keys_present:
+    - error
+fields:
+- name: h
+  type: real_array
+  role: construction
+- name: c5
+  type: real
+  role: claimed
+  quantity: c5
+- name: n
+  type: int
+  role: derived
+  from: len(h)
+returns:
+- h
+- c5
+- n
+validity:
+- rule: finite
+  field: h
+- rule: range
+  field: h
+  min: '0'
+  max: '1'
+- rule: predicate
+  call: integral_one
+  name: integral_one
+  equality: true
+  tolerance: 1e-12
+score:
+  direction: maximize
+  record:
+    value: '1.0000'
+    kind: best_known
+    source: AlphaEvolve 2025 value (the evaluator's BENCHMARK) -> combined_score 1
+reference:
+  file: reference.npz
+glue: glue.py

@@ -1,0 +1,36 @@
+kind: evaluator-contract
+name: deepmind/smale_problem evaluate_smale_conjecture_h (grid 91)
+description: >
+  Problem 23 (Smale's mean value problem): C(n) is the least constant with
+  |f(z) - f(xi)| / |z - xi| <= C(n) |f'(z)| for some critical point xi, for all f of degree n and
+  z with f'(z) != 0. evaluate() scores with evaluate_smale_conjecture_h(roots, 91) (code cell 0),
+  the largest such ratio over a 91 x 91 grid on [-2, 2]^2; a polynomial with ratio R shows
+  C(n) >= R, so larger is better. No shipped construction exists; the reference is the initial
+  program's root list (code cell 1).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_smale_conjecture_h
+fields:
+- name: z
+  type: complex_array
+  role: construction
+validity:
+- rule: finite
+  field: z
+- rule: count
+  field: z
+  min: 2
+invariances:
+- transform: permute
+  field: z
+score:
+  direction: maximize
+  bound:
+    value: '4'
+    kind: proven
+    source: Smale (1981) proved C(n) < 4 (mean value theorem for polynomials); the problem page states no number
+reference:
+  file: reference.npz
+glue: glue.py

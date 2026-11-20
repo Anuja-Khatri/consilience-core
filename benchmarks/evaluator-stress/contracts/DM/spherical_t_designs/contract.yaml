@@ -1,0 +1,56 @@
+kind: evaluator-contract
+name: deepmind/spherical_t_designs calculate_design_score (d = 2, t = 15, N = 120)
+description: >
+  Problem 32 (spherical designs): a t-design on S^d is a finite X on the sphere on which every
+  polynomial of degree <= t averages to its sphere average. calculate_design_score (code cell 0)
+  returns minus the Gegenbauer design error (0 for an exact design; the error is a sum of
+  non-negative terms). The notebook ships numerical designs for (2, 15, N), (2, 19, N), (2, 21, N)
+  (code cell 1); this contract fixes (d, t, N) = (2, 15, 120), whose shipped points are the reference.
+  The record is the notebook's own acceptance criterion: an error below 1e-8 counts as a correct
+  numerical design (the verification cell writes the test as score < 1e-8).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_design_score
+  reject:
+    values:
+    - -1000000.0
+fields:
+- name: X
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: X
+- rule: shape
+  field: X
+  shape: [120, 3]
+- rule: norm
+  field: X
+  axis: 1
+  equals: '1'
+  tolerance: '1e-12'
+invariances:
+- transform: permute
+  field: X
+- transform: rotate
+  field: X
+  dims: 3
+- transform: negate
+  field: X
+score:
+  direction: maximize
+  record:
+    value: '-0.00000001'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: notebook code cell 1 (design error below 1e-8 = "Correct numerical construction of a (2, 15, 120) design")
+  bound:
+    value: '0'
+    kind: proven
+    source: the design error is a non-negative combination of Gegenbauer sums (positive definite kernels), 0 exactly for a design
+reference:
+  file: reference.npz
+glue: glue.py

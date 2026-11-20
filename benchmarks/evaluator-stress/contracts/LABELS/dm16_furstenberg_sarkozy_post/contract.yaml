@@ -1,0 +1,31 @@
+# Label DM-16 (post, 7b6a34b): https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16; fix PR #19
+# reference: the greedy subset of 0..204 (built for this contract; it passes the predicate).
+# claimed_best: the notebook's get_optimal_sarkozy_subset(205, 2) (code cell 1); it does not pass this contract's
+# predicate (which follows the notebook's own check), so no record is set.
+kind: evaluator-contract
+name: deepmind/furstenberg_sarkozy check_sarkozy_subset (m=205, k=2) [DM-16 post]
+description: Subset of Z/mZ (representatives 0..m-1) with no two elements differing by a k-th power (x^k mod m,
+  x in 1..m-1, as the notebook defines it); maximise its size. m=205, k=2 as in the notebook's verification cell.
+  Score = |S| if the checker returns True.
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: check_sarkozy_subset
+  reject:
+    values: [-1.0]
+  timeout_s: 30
+fields:
+- {name: S, type: int_set, role: construction}
+validity:
+- {rule: finite, field: S}
+- {rule: integral, field: S}
+- {rule: distinct, field: S}
+- {rule: range, field: S, min: '0', max: '204'}
+- {rule: predicate, call: sarkozy, name: no_kth_power_difference}
+invariances:
+- {transform: permute, field: S}
+score: {direction: maximize}
+reference: {file: reference.npz}
+claimed_best: {file: claimed_best.npz}
+contract_author: model
+glue: glue.py

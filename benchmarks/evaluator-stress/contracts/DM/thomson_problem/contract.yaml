@@ -1,0 +1,48 @@
+kind: evaluator-contract
+name: deepmind/thomson_problem get_score (N = 282)
+description: >
+  Problem 33 (Thomson problem): the least Coulomb energy sum_{i<j} 1/|z_i - z_j| of N points on the
+  unit sphere S^2. get_score (code cell 2) normalises the points and returns minus the energy.
+  N is not an argument of the scorer (the caller asks get_positions(n) for n points), so the
+  point count is a caller-enforced fact. The notebook ships configurations for N = 282, 292, 306
+  (code cell 3, printed to 8 decimals); this contract fixes N = 282. The reference is the shipped
+  N = 282 configuration renormalised to unit length; the raw shipped points are claimed_best.
+  The notebook states no energy for them, so no record is given.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+fields:
+- name: X
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: X
+- rule: norm
+  field: X
+  axis: 1
+  equals: '1'
+  tolerance: '1e-12'
+- rule: distinct
+  field: X
+caller_enforced:
+- rule: shape
+  field: X
+  shape: [282, 3]
+invariances:
+- transform: permute
+  field: X
+- transform: rotate
+  field: X
+  dims: 3
+- transform: negate
+  field: X
+score:
+  direction: maximize
+reference:
+  file: reference.npz
+claimed_best:
+  file: claimed_best.npz
+glue: glue.py

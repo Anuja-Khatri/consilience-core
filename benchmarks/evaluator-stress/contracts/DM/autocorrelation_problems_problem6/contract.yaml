@@ -1,0 +1,42 @@
+kind: evaluator-contract
+name: deepmind/autocorrelation_problems problem_6.ipynb evaluate_autocorrelation
+description: >
+  problem_6.ipynb in the autocorrelation_problems folder (problem 6, autocorrelation related to
+  difference bases). The notebook prompt asks for n non-negative step heights; the scorer returns
+  minus the peak off-centre autocorrelation divided by (sum h)^2, and its search loop keeps the
+  larger score. Validity is taken from the prompt (non-negative heights; the unit-L1 normalisation
+  is a convention, the score is homogeneous of degree 0). No shipped construction exists: the
+  reference is the evolved search's starting point, uniform heights 1/5.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_autocorrelation
+  reject:
+    values:
+    - -1.0
+fields:
+- name: h
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: h
+- rule: count
+  field: h
+  min: 1
+- rule: range
+  field: h
+  min: '0'
+- rule: predicate
+  call: positive_mass
+  name: integral_positive
+invariances:
+- transform: scale
+  field: h
+  score_exponent: 0
+score:
+  direction: maximize
+reference:
+  file: reference.npz
+glue: glue.py

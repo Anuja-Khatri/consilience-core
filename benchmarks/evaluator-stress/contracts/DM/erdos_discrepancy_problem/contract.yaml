@@ -1,0 +1,30 @@
+kind: evaluator-contract
+name: deepmind/erdos_discrepancy_problem calculate_discrepancy_score (C = 2)
+description: >
+  Problem 40: C(D) = largest N with a sign pattern a_1..a_N in {-1,+1} of discrepancy at most D
+  (here D = 2, the notebook's case). Construction = a +-1 list [a_0, a_1, ..., a_N] (a_0 a placeholder
+  the scorer drops). Score = length of the longest prefix with discrepancy <= 2 (with a fractional
+  tie-break when the whole sequence exceeds it).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_discrepancy_score
+  timeout_s: 300
+  reject:
+    values: [-1000000.0]
+fields:
+  - {name: a, type: int_array, role: construction}
+validity:
+  - {rule: finite, field: a}
+  - {rule: count, field: a, min: 2}
+  - {rule: integral, field: a}
+  - {rule: alphabet, field: a, values: ["-1", "1"]}
+score:
+  direction: maximize
+  record:
+    value: "1160"
+    kind: best_known
+    source: "notebook 'What AlphaEvolve found' (arXiv:2511.02864): the known optimal value C(2) = 1160"
+reference: {file: reference.npz}
+glue: glue.py

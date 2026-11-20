@@ -1,0 +1,50 @@
+kind: evaluator-contract
+name: deepmind/sidorenko_conjecture score_weighted_h
+description: >
+  Problem 26 (Sidorenko's conjecture) for H = K_{5,5} minus a 10-cycle (the Moebius graph): a graphon
+  W is symmetric with values in [0,1]; a counterexample has t(H, W) < t(K_2, W)^15. evaluate()
+  clips and symmetrises the search output, then scores it with score_weighted_h (code cell 0):
+  (2 e(W))^15 / (v^20 hom(H, W)) - 1 after rescaling W to mean 1/2; a positive score would be a
+  counterexample. The notebook fixes the step graphon to 30 x 30 ("DON'T CHANGE THIS NUMBER").
+  No shipped construction exists; the reference is a fixed random symmetric 0/1 matrix (seed 0).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: score_weighted_h
+  timeout_s: 60
+  reject:
+    values:
+    - -1.0
+fields:
+- name: W
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: W
+- rule: shape
+  field: W
+  shape: [30, 30]
+- rule: range
+  field: W
+  min: '0'
+  max: '1'
+- rule: predicate
+  call: symmetric
+  name: symmetric_matrix
+  equality: true
+  tolerance: '1e-12'
+invariances: []
+score:
+  direction: maximize
+  record:
+    value: '0'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: score_weighted docstring and prompt (code cell 0, prompt cell) - a positive score would suggest a
+      counterexample to weighted Sidorenko for the Moebius graph
+reference:
+  file: reference.npz
+glue: glue.py

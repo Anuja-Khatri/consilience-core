@@ -1,0 +1,33 @@
+kind: evaluator-contract
+name: openevolve/circle_packing_rect @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.13 (README, initial_program docstring): 21 disjoint circles (x, y, r), r >= 0,
+  inside a rectangle of perimeter 4; maximise the sum of radii. The glue predicate takes the
+  axis-parallel bounding rectangle (as in the pilot contract oe_cpr_*). Score = sum(r) / BENCHMARK.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: circle_packing21
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: circles, type: real_array, shape: [21, 3], role: construction}
+validity:
+  - {rule: finite, field: circles}
+  - {rule: shape, field: circles, shape: [21, 3]}
+  - {rule: predicate, call: packing, name: packing}
+invariances:
+  - {transform: permute, field: circles}
+  - {transform: reflect, field: circles}
+score:
+  direction: maximize
+  record:
+    value: "1.0000"
+    kind: best_known
+    source: "evaluator BENCHMARK 2.3658321334167627 (AlphaEvolve sum of radii, config.yaml) -> combined_score 1; published as 2.3658 (5 significant digits)"
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

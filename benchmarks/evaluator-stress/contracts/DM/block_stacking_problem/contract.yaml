@@ -1,0 +1,57 @@
+kind: evaluator-contract
+name: deepmind/block_stacking_problem get_positions_score (n = 20)
+description: >
+  Problem 29 (block stacking): C(n) is the supremum of x_n over 0 = x_0 <= x_1 <= ... <= x_n with
+  (x_{i+1} + ... + x_n)/(n - i) < x_i + 1/2 for all 0 <= i < n (strict). get_positions_score (code
+  cell 0) takes the right endpoints of the n blocks, which equal x_1..x_n, and returns x_n (or -1).
+  get_score_of_algorithm loops n = 2..49; this contract fixes n = 20
+  (get_score_of_algorithm rejects a list of the wrong length before scoring, so the length is a
+  caller-enforced fact). The known answer is
+  C(n) = H_n / 2, a supremum that is not attained. The reference is AlphaEvolve's formula
+  0.5 (H_n - H_{n-k-1}) (notebook text) scaled by (1 - 1e-9) so the strict inequalities hold;
+  claimed_best is the unscaled formula, which meets them with equality.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_positions_score
+  reject:
+    values:
+    - -1.0
+fields:
+- name: x
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: x
+- rule: range
+  field: x
+  min: '0'
+- rule: predicate
+  call: nondecreasing
+  name: x_nondecreasing
+- rule: predicate
+  call: stable
+  name: strict_stability_constraints
+caller_enforced:
+- rule: shape
+  field: x
+  shape: [20]
+invariances: []
+score:
+  direction: maximize
+  record:
+    value: '1.7988698285718410'
+    kind: best_known
+    source: notebook "What AlphaEvolve found" cell, C(n) = H_n / 2 (here H_20 / 2 = 55835135/31039008
+      = 1.79886982857184095...), a supremum that valid stacks approach but do not attain
+  bound:
+    value: '1.7988698285718410'
+    kind: proven
+    source: C(n) = H_n / 2 is the exact supremum (classical; restated in the notebook)
+reference:
+  file: reference.npz
+claimed_best:
+  file: claimed_best.npz
+glue: glue.py

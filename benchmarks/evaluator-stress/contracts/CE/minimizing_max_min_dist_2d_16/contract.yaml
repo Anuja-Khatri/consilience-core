@@ -1,0 +1,40 @@
+# Reference: AlphaEvolve's construction (alphaevolve_results @ 4226acb, B.8 data cell 93).
+# Record: the README's text writes the benchmark as 1/x^2 while the evaluator's BENCHMARK is 1/x; the record here
+# is AlphaEvolve's published ratio^2 mapped through the evaluator's own definition.
+kind: evaluator-contract
+name: codeevolve/minimizing_max_min_dist (d=2, n=16)
+description: 16 distinct points in R^2; maximise (d_min/d_max)^2; scorer outputs benchmark_ratio = (d_min/d_max)^2
+  * 12.889266112.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: min_max_dist_dim2_16
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+dims: {n: 16, d: 2}
+fields:
+- name: P
+  type: real_array
+  shape: [n, d]
+  role: construction
+validity:
+- {rule: finite, field: P}
+- rule: shape
+  field: P
+  shape: [n, d]
+- {rule: distinct, field: P}
+invariances:
+- {transform: permute, field: P}
+- {transform: translate, field: P}
+- {transform: rotate, field: P, dims: 2}
+- {transform: scale, field: P, score_exponent: 0}
+- {transform: reflect, field: P}
+score:
+  direction: maximize
+  record: {value: '12.889266112', quantity: ratio_squared_max_over_min, map: ratio, kind: best_known, source: 'AlphaEvolve
+      (alphaevolve_results @ 4226acb, B.8): ratio ~ sqrt(12.889266112); also the evaluator''s BENCHMARK = 1/12.889266112'}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

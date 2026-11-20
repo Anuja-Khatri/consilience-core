@@ -1,0 +1,49 @@
+# Reference: AlphaEvolve's 600-step function (alphaevolve_results @ 4226acb, B.1 data cell 53; C1 = 1.5053).
+# The harness argv wraps the evaluator in a small inline shim that only converts the returned ndarray to a list,
+# because evaluate_sequence() requires `list` (cli_json has no to_program conversion hook).
+kind: evaluator-contract
+name: codeevolve/first_autocorr_ineq
+description: Non-negative step function a (equal steps); C1 = 2n max(a*a)/(sum a)^2 is minimised; the scorer outputs
+  benchmark_ratio = 1.5031/C1.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: search_for_best_sequence
+  argv:
+  - '{python}'
+  - -c
+  - |
+    import os, sys, runpy, importlib.util
+    ev, prog, res = sys.argv[1:4]
+    name = os.path.splitext(os.path.basename(prog))[0]
+    spec = importlib.util.spec_from_file_location(name, prog)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    _f = mod.search_for_best_sequence
+    mod.search_for_best_sequence = lambda: [float(x) for x in _f()]  # ndarray -> list (the evaluator requires a list)
+    sys.modules[name] = mod
+    sys.argv = [ev, prog, res]
+    runpy.run_path(ev, run_name='__main__')
+  - '{evaluator}'
+  - '{program}'
+  - '{outdir}/results.json'
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+fields:
+- {name: a, type: real_array, role: construction}
+validity:
+- {rule: finite, field: a}
+- {rule: range, field: a, min: '0', max: '1000'}
+- {rule: predicate, call: positive_sum, name: f_not_zero}
+invariances:
+- {transform: scale, field: a, score_exponent: 0}
+score:
+  direction: maximize
+  record: {value: '1.5031', quantity: c1, map: benchmark_ratio_from_c1, kind: best_known, source: 'CodeEvolve README
+      (problem page): ''Benchmark: C1 < 1.5031 ... matching AlphaEvolve''s reported best'''}
+  bound: {value: '1.174296875', kind: proven, source: 'C1 >= 1.28 (Cloninger & Steinerberger 2017, stated in the
+      README); the step-function C1 is exact, so benchmark_ratio <= 1.5031/1.28'}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

@@ -1,0 +1,65 @@
+kind: evaluator-contract
+name: deepmind/furstenberg_sarkozy_problem get_score (k = 2)
+description: >
+  Problem 31 (Furstenberg-Sarkozy): C(k, Z/mZ) is the largest subset of Z/mZ with no two elements
+  differing by a perfect k-th power. get_score (code cell 0) uses k = 2, requires m square-free,
+  reduces A modulo m and returns 1/2 + log|A| / (2 log m), or 0 if two elements differ by a
+  nonzero square residue. The construction is the pair (A, m). The notebook reports AlphaEvolve
+  reproduced the known 12-element subset of Z/205Z; no list is shipped, so the reference is a
+  12-element square-difference-free subset of Z/205Z found by exact maximum-clique search.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values:
+    - 0.0   # returned for invalid input; a valid set scores at least 1/2
+fields:
+- name: A
+  type: int_set
+  role: construction
+- name: m
+  type: int
+  role: construction
+validity:
+- rule: finite
+  field: A
+- rule: integral
+  field: A
+- rule: count
+  field: A
+  min: 1
+- rule: finite
+  field: m
+- rule: integral
+  field: m
+- rule: range
+  field: m
+  min: '2'
+- rule: predicate
+  call: square_free_modulus
+  name: m_square_free
+- rule: predicate
+  call: distinct_mod_m
+  name: elements_distinct_mod_m
+- rule: predicate
+  call: no_square_difference
+  name: no_two_elements_differ_by_a_square
+invariances:
+- transform: permute
+  field: A
+- transform: translate
+  field: A
+score:
+  direction: maximize
+  record:
+    quantity: set_size_mod_205
+    map: score_from_size_mod_205
+    value: '12'
+    kind: best_known
+    source: notebook "What AlphaEvolve found" cell - the known 12-element subset of Z/205Z avoiding square
+      differences, which AlphaEvolve reproduced but did not beat (score 1/2 + log 12 / (2 log 205))
+reference:
+  file: reference.npz
+glue: glue.py

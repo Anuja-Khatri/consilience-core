@@ -1,0 +1,46 @@
+kind: evaluator-contract
+name: openevolve/matmul <2,4,5> (OE-514 pre-fix, a1e9d91)
+description: >
+  AlphaEvolve Appendix A (config.yaml, initial_program): an exact decomposition of the <2,4,5> matrix
+  multiplication tensor T[i*4+j, j*5+k, k*2+i] = 1 as a sum of R rank-one terms; minimise R. run()
+  returns ((U, V, W), n, m, p, loss, rank). n, m, p, loss and rank are self-reports (claimed, recomputed
+  by glue from the factors; issue #514). The problem allows real or complex factors; this contract
+  types them as real. Score = 32 / R. Pre-fix: the scorer used the reported rank and n, m, p.
+contract_author: model
+harness:
+  kind: template
+  evaluator: evaluator.py
+  entry: evaluate
+  program_template: program_template.py
+  block_start: "# EVOLVE-BLOCK-START"
+  block_end: "# EVOLVE-BLOCK-END"
+  program_function: _consilience_flat
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: U, type: real_array, role: construction}
+  - {name: V, type: real_array, role: construction}
+  - {name: W, type: real_array, role: construction}
+  - {name: n, type: int, role: claimed, quantity: n}
+  - {name: m, type: int, role: claimed, quantity: m}
+  - {name: p, type: int, role: claimed, quantity: p}
+  - {name: loss, type: real, role: claimed, quantity: loss}
+  - {name: rank, type: int, role: claimed, quantity: rank}
+returns: [U, V, W, n, m, p, loss, rank]
+validity:
+  - {rule: finite, field: U}
+  - {rule: count, field: U, equals: 8}
+  - {rule: finite, field: V}
+  - {rule: count, field: V, equals: 20}
+  - {rule: finite, field: W}
+  - {rule: count, field: W, equals: 10}
+  - {rule: predicate, call: exact_decomposition, name: exact_decomposition, equality: true, tolerance: "0"}
+score:
+  direction: maximize
+  record:
+    value: "1"
+    kind: best_known
+    source: "AlphaEvolve rank-32 decomposition of <2,4,5> (the evaluator's BENCHMARK = 32, config.yaml) -> combined_score = 32 / R = 1 (integer rank, exact)"
+reference: {file: reference.npz}
+glue: glue.py

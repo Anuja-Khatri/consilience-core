@@ -1,0 +1,35 @@
+# Label DM-16 (pre, 8f44745): https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16
+# Reference: the notebook's sol_64 (code cell 0, 112 points).
+kind: evaluator-contract
+name: deepmind/subsets_of_the_grid_with_no_isosceles_triangles verify_construction (n=64) [DM-16 pre]
+description: 'Problem 59: a subset of the n x n grid (coordinates 0..n-1, as in the notebook prompt) with no three
+  distinct points a, b, c with |ab| = |bc| (flat cases included); maximise its size. n = 64. Score = |P| if the
+  verifier returns True.'
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: verify_construction
+  reject:
+    values: [-1.0]
+  timeout_s: 60
+fields:
+- {name: P, type: int_array, role: construction}
+validity:
+- {rule: finite, field: P}
+- {rule: integral, field: P}
+- {rule: range, field: P, min: '0', max: '63'}
+- {rule: distinct, field: P}
+- {rule: predicate, call: iso, name: no_isosceles_triangle}
+invariances:
+- {transform: permute, field: P}
+- transform: dihedral
+  field: P
+  order: 4
+  center: ['31.5', '31.5']
+score:
+  direction: maximize
+  record: {value: '110', kind: best_known, source: 'notebook prompt: ''For n=64, the best known construction has
+      110 points'''}
+reference: {file: reference.npz}
+contract_author: model
+glue: glue.py

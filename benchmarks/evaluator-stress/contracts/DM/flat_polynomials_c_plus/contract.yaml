@@ -1,0 +1,42 @@
+kind: evaluator-contract
+name: deepmind/flat_polynomials get_c_plus_score (n = 50)
+description: >
+  Problem 28 (flat polynomials / Golay's merit factor). Polynomials with coefficients +-1; the
+  notebook prompt asks for a list of n coefficients c_1..c_n (g(z) = c_1 z + ... + c_n z^n) and
+  scores max |g(z)| over 10^6 points of the unit circle, divided by sqrt(n + 1). The notebook ships
+  constructions for n = 10..89 (code cell 2); this contract fixes n = 50 (n is not an argument
+  of the scorer, so the length is a caller-enforced fact), whose shipped construction
+  is the reference. The initial program starts from all ones.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_c_plus_score
+fields:
+- name: c
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: c
+- rule: alphabet
+  field: c
+  values: ['-1', '1']
+caller_enforced:
+- rule: shape
+  field: c
+  shape: [50]
+invariances:
+- transform: negate
+  field: c
+score:
+  direction: minimize
+  record:
+    value: '1.3530605466590535'
+    kind: best_known
+    source: notebook code cell 2, c_plus_results[50][0] (the score stored with the shipped n = 50 construction, stored negated as -1.3530605466590535); the problem page states no number
+reference:
+  file: reference.npz
+initial:
+  file: initial.npz
+glue: glue.py

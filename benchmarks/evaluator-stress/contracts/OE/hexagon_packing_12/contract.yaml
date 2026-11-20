@@ -1,0 +1,39 @@
+kind: evaluator-contract
+name: openevolve/hexagon_packing/12 @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.7 (README, config.yaml, initial_program docstring): 12 unit regular hexagons
+  (x, y, angle) with disjoint interiors inside a regular hexagon (x, y, angle) of side s; minimise s.
+  hexagon_packing_12() returns (inner [12,3], outer [3], s). Score = (1/s) / BENCHMARK, BENCHMARK = 1/3.9419123.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: hexagon_packing_12
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: inner, type: real_array, shape: [12, 3], role: construction}
+  - {name: outer, type: real_array, shape: [3], role: construction}
+  - {name: side, type: real, role: construction}
+returns: [inner, outer, side]
+validity:
+  - {rule: finite, field: inner}
+  - {rule: shape, field: inner, shape: [12, 3]}
+  - {rule: finite, field: outer}
+  - {rule: shape, field: outer, shape: [3]}
+  - {rule: finite, field: side}
+  - {rule: range, field: side, min: "0"}
+  - {rule: predicate, call: packing, name: packing}
+invariances:
+  - {transform: permute, field: inner}
+score:
+  direction: maximize
+  record:
+    value: "1.000"
+    kind: best_known
+    source: "evaluator BENCHMARK 1/3.9419123 (AlphaEvolve outer side 3.9419123, config.yaml) -> combined_score 1; published as 3.942 (4 significant digits)"
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

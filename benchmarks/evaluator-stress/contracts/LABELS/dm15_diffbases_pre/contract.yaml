@@ -1,0 +1,26 @@
+# Label DM-15 (pre, 8f44745): https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/15
+# Contract, glue and reference copied from pilot/dm_diffbases (only name and contract_author changed);
+# scorer.py re-extracted from the notebook at this label's commit.
+kind: evaluator-contract
+name: deepmind/difference_bases get_score [DM-15 pre]
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values: [-100.0]
+fields:
+- {name: B, type: int_set, role: construction}
+validity:
+- {rule: finite, field: B}
+- {rule: integral, field: B}
+- {rule: distinct, field: B}
+invariances:
+- {transform: translate, field: B}
+- {transform: permute, field: B}
+score:
+  direction: minimize
+  record: {value: '2.6390', kind: best_known, source: problem page (AlphaEvolve bound)}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

@@ -1,0 +1,35 @@
+kind: evaluator-contract
+name: openevolve/minimizing_max_min_dist/3 (n=14, d=3) @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.8 (README, config.yaml, initial_program docstring): 14 distinct points in R^3;
+  minimise the ratio of maximum to minimum pairwise distance. The scorer outputs
+  (min/max)^2 / BENCHMARK, BENCHMARK = 1/4.165849767 (larger is better).
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: min_max_dist_dim3_14
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: points, type: real_array, shape: [14, 3], role: construction}
+validity:
+  - {rule: finite, field: points}
+  - {rule: shape, field: points, shape: [14, 3]}
+  - {rule: distinct, field: points}
+invariances:
+  - {transform: permute, field: points}
+  - {transform: translate, field: points}
+  - {transform: rotate, field: points, dims: 3}
+  - {transform: scale, field: points, score_exponent: 0}
+  - {transform: reflect, field: points}
+score:
+  direction: maximize
+  record:
+    value: "1.0000"
+    kind: best_known
+    source: "evaluator BENCHMARK 1/4.165849767 (AlphaEvolve ratio^2 = 4.165849767, config.yaml) -> combined_score 1; written to 4 decimals as in the pilot"
+reference: {file: reference.npz}
+initial: {file: initial.npz}

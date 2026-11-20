@@ -1,0 +1,27 @@
+kind: evaluator-contract
+name: deepmind/sums_differences_problems compute_lower_bound (problem 44, code cell 6)
+description: >
+  Problem 44: C = sup of constants with arbitrarily large finite A, B with |A+B| <~ |A| and
+  |A-B| >~ |A|^C. Construction (the reduction in code cell 6) = a finite set U of non-negative integers
+  with 0 in U. Score = 1 + log(|U-U|/|U+U|) / log(2 max(U) + 1), a lower bound on C.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer_p44.py
+  entry: compute_lower_bound
+  timeout_s: 120
+fields:
+  - {name: U, type: int_set, role: construction}
+validity:
+  - {rule: finite, field: U}
+  - {rule: count, field: U, min: 2}
+  - {rule: integral, field: U}
+  - {rule: distinct, field: U}
+  - {rule: range, field: U, min: "0"}
+  - {rule: predicate, call: contains_zero, name: contains_zero}
+invariances:
+  - {transform: permute, field: U}
+score:
+  direction: maximize
+reference: {file: reference_p44.npz}
+glue: glue_p44.py

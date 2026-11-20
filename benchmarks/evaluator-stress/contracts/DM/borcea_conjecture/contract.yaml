@@ -1,0 +1,43 @@
+kind: evaluator-contract
+name: deepmind/borcea_conjecture evaluate_sendov_conjecture_h (p = 1)
+description: >
+  Problem 22 (Borcea's conjecture): C(p, n) is the least constant such that, when
+  (1/n) sum |z_i|^p <= 1, every zero is within C(p, n) of a critical point. The notebook focuses on
+  p = 1, and evaluate() scores with evaluate_sendov_conjecture_h (code cell 0), which rescales the
+  zeros to mean modulus 1 and returns the largest zero-to-critical-point distance minus penalties.
+  No shipped construction exists; the reference is the initial program's root list (code cell 1).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_sendov_conjecture_h
+fields:
+- name: z
+  type: complex_array
+  role: construction
+validity:
+- rule: finite
+  field: z
+- rule: count
+  field: z
+  min: 2
+- rule: predicate
+  call: mean_modulus
+  name: mean_modulus_at_most_1
+invariances:
+- transform: permute
+  field: z
+- transform: negate
+  field: z
+score:
+  direction: maximize
+  record:
+    value: '1'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: Borcea's conjecture C(p, n) = 1 (the notebook's "What AlphaEvolve found" cell describes the
+      search as one for a counterexample, p = 1); the problem page asks for C(p, n) and states no number
+reference:
+  file: reference.npz
+glue: glue.py

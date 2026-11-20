@@ -9,6 +9,7 @@ harness:
   kind: function
   evaluator: scorer.py
   entry: get_score
+  timeout_s: 120
 fields:
   - {name: w, type: real_array, shape: [20000], role: construction}
 validity:

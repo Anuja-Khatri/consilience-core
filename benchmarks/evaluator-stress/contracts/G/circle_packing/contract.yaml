@@ -1,0 +1,60 @@
+# Validity from examples/circle_packing/instructions.md ('Problem' and 'Constraints'). Reference: AlphaEvolve's n=26 packing
+# (alphaevolve_results @ 4226acb, B.12 cell 118). program.py is both the vendored template and what evaluate.py reads at import.
+# evaluator = sdk_adapter.py (unvendored, 15 lines) because the template harness does not build the SDK envelope.
+kind: evaluator-contract
+name: google-cloud-alphaevolve/circle_packing (n=26)
+description: 26 disjoint circles in the unit square, maximise the sum of radii. The candidate file is program.py
+  with its EVOLVE-BLOCK replaced; the validity code outside the block is kept.
+harness:
+  kind: template
+  evaluator: sdk_adapter.py
+  entry: evaluate_file
+  program_template: program.py
+  block_start: '# EVOLVE-BLOCK-START'
+  block_end: '# EVOLVE-BLOCK-END'
+  program_function: construct_packing
+  score_key: scores.scores[metric=sum_of_radii].score
+  reject:
+    values: [-1000000000000.0]
+  timeout_s: 60
+dims: {n: 26}
+fields:
+- name: centers
+  type: real_array
+  shape: [n, 2]
+  role: construction
+- name: radii
+  type: real_array
+  shape: [n]
+  role: construction
+- {name: reported_sum, type: real, role: claimed, quantity: sum_radii}
+returns: [centers, radii, reported_sum]
+validity:
+- {rule: finite, field: centers}
+- rule: shape
+  field: centers
+  shape: [n, 2]
+- {rule: finite, field: radii}
+- rule: shape
+  field: radii
+  shape: [n]
+- {rule: range, field: radii, min: '0'}
+- rule: in_box
+  field: centers
+  box:
+  - ['0', '1']
+  - ['0', '1']
+  margin_from: radii
+- {rule: pairwise_separation, field: centers, radii_from: radii}
+invariances:
+- transform: dihedral
+  field: centers
+  order: 4
+  center: ['0.5', '0.5']
+score:
+  direction: maximize
+  record: {value: '2.635', kind: best_known, source: 'AlphaEvolve (Novikov et al. 2025), alphaevolve_results @ 4226acb
+      B.12: n=26 sum of radii 2.635 (stated to 3 decimals)'}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

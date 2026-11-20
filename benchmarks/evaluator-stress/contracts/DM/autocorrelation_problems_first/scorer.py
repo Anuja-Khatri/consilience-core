@@ -1,0 +1,50 @@
+# Vendored from https://github.com/google-deepmind/alphaevolve_repository_of_problems @ 8f447457957deac61e28bf1676746f0753b3b2f8, experiments/autocorrelation_problems/autocorrelation_problems.ipynb, notebook code cells 6 (Apache-2.0).
+# Scoring cells copied verbatim; only imports added
+import numpy as np
+
+
+def evaluate_sequence(sequence: list[float]) -> float:
+  """
+  Evaluates a sequence of coefficients with enhanced security checks.
+  Returns np.inf if the input is invalid.
+  """
+  # --- Security Checks ---
+
+  # Verify that the input is a list
+  if not isinstance(sequence, list):
+    return np.inf
+
+  # Reject empty lists
+  if not sequence:
+    return np.inf
+
+  # Check each element in the list for validity
+  for x in sequence:
+    # Reject boolean types (as they are a subclass of int) and
+    # any other non-integer/non-float types (like strings or complex numbers).
+    if isinstance(x, bool) or not isinstance(x, (int, float)):
+        return np.inf
+
+    # Reject Not-a-Number (NaN) and infinity values.
+    if np.isnan(x) or np.isinf(x):
+        return np.inf
+
+  # Convert all elements to float for consistency
+  sequence = [float(x) for x in sequence]
+
+  # Protect against negative numbers
+  sequence = [max(0, x) for x in sequence]
+
+  # Protect against numbers that are too large
+  sequence = [min(1000.0, x) for x in sequence]
+
+  n = len(sequence)
+  b_sequence = np.convolve(sequence, sequence)
+  max_b = max(b_sequence)
+  sum_a = np.sum(sequence)
+
+  # Protect against the case where the sum is too close to zero
+  if sum_a < 0.01:
+    return np.inf
+
+  return float(2 * n * max_b / (sum_a**2))

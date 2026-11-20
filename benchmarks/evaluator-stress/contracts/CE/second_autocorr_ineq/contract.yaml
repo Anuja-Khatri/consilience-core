@@ -1,0 +1,30 @@
+# Reference: AlphaEvolve's 50-step function (alphaevolve_results @ 4226acb, B.2 data cell 57; C2 = 0.8962).
+kind: evaluator-contract
+name: codeevolve/second_autocorr_ineq
+description: Non-negative step function f; C2 = ||f*f||_2^2 / (||f*f||_1 ||f*f||_inf) is maximised; scorer outputs
+  benchmark_ratio = C2/0.962.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: construct_function
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+fields:
+- {name: f, type: real_array, role: construction}
+validity:
+- {rule: finite, field: f}
+- {rule: range, field: f, min: '0'}
+- {rule: predicate, call: positive_sum, name: f_not_zero}
+invariances:
+- {transform: scale, field: f, score_exponent: 0}
+score:
+  direction: maximize
+  record: {value: '0.962', quantity: c2, map: benchmark_ratio_from_c2, kind: best_known, source: 'CodeEvolve README
+      (problem page): ''Benchmark: C2 > 0.962, matching AlphaEvolve''s reported best'''}
+  bound: {value: '1.0395010396', kind: proven, source: C2 <= 1 by Hoelder (README 'Known bounds'); the scorer's
+      C2 is exact for a step function; 1/0.962 rounded up}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

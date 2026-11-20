@@ -1,0 +1,36 @@
+kind: evaluator-contract
+name: openevolve/second_autocorr_ineq @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.2 (README, config.yaml): a non-negative step function f with n equal steps;
+  C2(f) = ||f*f||_2^2 / (||f*f||_1 ||f*f||_inf), larger is better (a lower bound on C2).
+  run() returns (f, c2, loss, n); c2 is a self-report (claimed; the scorer recomputes its own),
+  n is len(f), loss is not part of the problem. Score = c2 / BENCHMARK.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: run
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: f, type: real_array, role: construction}
+  - {name: c, type: real, role: claimed, quantity: c2}
+  - {name: loss, type: real, role: fixed, value: 0.0}
+  - {name: n, type: int, role: derived, from: "len(f)"}
+returns: [f, c, loss, n]
+validity:
+  - {rule: finite, field: f}
+  - {rule: range, field: f, min: "0"}
+  - {rule: predicate, call: positive_integral, name: positive_integral}
+invariances:
+  - {transform: scale, field: f, score_exponent: 0}
+score:
+  direction: maximize
+  record:
+    value: "1.000"
+    kind: best_known
+    source: "evaluator BENCHMARK 0.8962799441554086 (AlphaEvolve, config.yaml) -> combined_score 1; published as C2 >= 0.8962 (4 significant digits; DM problem page 3)"
+reference: {file: reference.npz}
+glue: glue.py

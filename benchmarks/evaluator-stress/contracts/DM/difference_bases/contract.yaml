@@ -1,0 +1,43 @@
+kind: evaluator-contract
+name: deepmind/difference_bases get_score
+description: >
+  Problem 7 (difference bases): Delta(n) is the least size of a set B of integers whose differences
+  cover 1..n; C(n) = Delta(n)^2 / n and C = inf_n C(n); smaller upper bounds are better. get_score
+  returns |B|^2 / n for the largest n with 1..n covered (it adds 0 to B if absent), and -100 when
+  1 is not a difference. Direction: the problem minimises C(n); the notebook's search loops (code
+  cells 1 and 2) keep the LARGER get_score. We follow the problem statement (minimize); see COVERAGE_A.md.
+  Adapted from pilot/dm_diffbases; the reference is now the notebook's shipped construction.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values:
+    - -100.0
+fields:
+- name: B
+  type: int_set
+  role: construction
+validity:
+- rule: finite
+  field: B
+- rule: integral
+  field: B
+- rule: distinct
+  field: B
+invariances:
+- transform: translate
+  field: B
+- transform: permute
+  field: B
+score:
+  direction: minimize
+  record:
+    value: '2.6390'
+    kind: best_known
+    source: notebook code cell 0, shipped construction L = combine_A_B(A, B, 89^2+89+1) (|L| = 360),
+      whose recomputed score is 2.639027; the problem page states no number
+reference:
+  file: reference.npz
+glue: glue.py

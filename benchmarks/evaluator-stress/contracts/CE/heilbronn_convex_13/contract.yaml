@@ -1,0 +1,37 @@
+# Reference: AlphaEvolve's construction (alphaevolve_results @ 4226acb, B.10 data cell 106).
+kind: evaluator-contract
+name: codeevolve/heilbronn_convex (n=13)
+description: 13 points in the plane; maximise the smallest triangle area divided by the convex-hull area.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: heilbronn_convex13
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+dims: {n: 13}
+fields:
+- name: P
+  type: real_array
+  shape: [n, 2]
+  role: construction
+validity:
+- {rule: finite, field: P}
+- rule: shape
+  field: P
+  shape: [n, 2]
+- {rule: predicate, call: hull_nondegenerate, name: hull_positive_area}
+invariances:
+- {transform: permute, field: P}
+- {transform: translate, field: P}
+- {transform: rotate, field: P, dims: 2}
+- {transform: scale, field: P, score_exponent: 0}
+- {transform: reflect, field: P}
+score:
+  direction: maximize
+  record: {value: '0.030936889034895654', quantity: min_area_normalized, map: ratio, kind: best_known, source: 'CodeEvolve
+      README (problem page): ''min_area_normalized > 0.030936889034895654 (AlphaEvolve''s reported best)'''}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

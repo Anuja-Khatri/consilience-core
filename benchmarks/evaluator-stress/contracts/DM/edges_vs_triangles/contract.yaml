@@ -1,0 +1,28 @@
+kind: evaluator-contract
+name: deepmind/edges_vs_triangles get_score (max_length = 20)
+description: >
+  Problem 46: C(rho) = least triangle density of graphs with edge density rho. Construction = 100 rows (the prompt's num_problems; the shipped best_solutions is 100 x 20) of
+  20 part weights in [0, 1] (the prompt: 'All numbers have to be between 0 and 1'), each row a complete
+  multipartite graph after normalisation. Score = -(area under the slope-3-capped interpolant of the
+  (edge, triangle) density points + 10 * largest gap in edge density); higher is better.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values: [-10000001, -10000002, -10000003, -10000004, -10000005]
+fields:
+  - {name: S, type: real_array, shape: [100, 20], role: construction}
+validity:
+  - {rule: finite, field: S}
+  - {rule: shape, field: S, shape: [100, 20]}
+  - {rule: range, field: S, min: "0", max: "1"}
+  - {rule: predicate, call: rows_positive_mass, name: rows_positive_mass}
+invariances:
+  - {transform: permute, field: S}
+  - {transform: scale, field: S, score_exponent: 0}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+glue: glue.py

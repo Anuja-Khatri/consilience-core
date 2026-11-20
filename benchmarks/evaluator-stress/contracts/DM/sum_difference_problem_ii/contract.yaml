@@ -1,0 +1,31 @@
+kind: evaluator-contract
+name: deepmind/sum_difference_problem_ii get_score
+description: >
+  Problem 43: C = least constant with |A-A| <= |A+A|^C for every non-empty finite set A of integers.
+  Construction = a finite set A of distinct integers (|A| >= 2). Score = log|A-A| / log|A+A| plus the
+  scorer's tie-break (1 - 1/|A|)/100.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  timeout_s: 60
+  reject:
+    values: [0.0]
+fields:
+  - {name: A, type: int_set, role: construction}
+validity:
+  - {rule: finite, field: A}
+  - {rule: count, field: A, min: 2}
+  - {rule: integral, field: A}
+  - {rule: distinct, field: A}
+invariances:
+  - {transform: permute, field: A}
+  - {transform: translate, field: A}
+  - {transform: negate, field: A}
+  - {transform: scale, field: A, score_exponent: 0}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

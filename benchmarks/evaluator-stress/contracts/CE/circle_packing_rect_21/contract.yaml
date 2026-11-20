@@ -1,0 +1,33 @@
+# Reference: AlphaEvolve's packing (alphaevolve_results @ 4226acb, B.13 data cell 125).
+kind: evaluator-contract
+name: codeevolve/circle_packing_rect (n=21)
+description: 21 disjoint circles (x, y, r) inside some rectangle of perimeter 4; maximise the sum of radii.
+harness:
+  kind: cli_json
+  evaluator: evaluate.py
+  program_function: circle_packing21
+  argv: ['{python}', '{evaluator}', '{program}', '{outdir}/results.json']
+  result_file: '{outdir}/results.json'
+  score_key: benchmark_ratio
+  timeout_s: 60
+dims: {n: 21}
+fields:
+- name: circles
+  type: real_array
+  shape: [n, 3]
+  role: construction
+validity:
+- {rule: finite, field: circles}
+- rule: shape
+  field: circles
+  shape: [n, 3]
+- {rule: predicate, call: packing, name: packing_in_perimeter4_rectangle}
+invariances:
+- {transform: permute, field: circles}
+score:
+  direction: maximize
+  record: {value: '2.3658321334167627', quantity: radii_sum, map: ratio, kind: best_known, source: 'CodeEvolve README
+      (problem page): ''radii_sum > 2.3658321334167627 (AlphaEvolve''s reported best)'''}
+reference: {file: reference.npz}
+glue: glue.py
+contract_author: model

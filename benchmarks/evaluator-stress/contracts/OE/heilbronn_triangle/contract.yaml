@@ -1,0 +1,34 @@
+kind: evaluator-contract
+name: openevolve/heilbronn_triangle @ ac5f8f5
+description: >
+  AlphaEvolve Appendix B.9 (README, config.yaml, initial_program docstring): 11 points on or inside the
+  equilateral triangle with vertices (0,0), (1,0), (1/2, sqrt(3)/2); maximise the smallest area of a
+  triangle formed by three of the points, normalised by the triangle's area.
+  Score = min_area_normalized / BENCHMARK.
+contract_author: model
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: heilbronn_triangle11
+  score_key: combined_score
+  reject: {keys_present: [error]}
+  timeout_s: 60
+fields:
+  - {name: points, type: real_array, shape: [11, 2], role: construction}
+validity:
+  - {rule: finite, field: points}
+  - {rule: shape, field: points, shape: [11, 2]}
+  - {rule: predicate, call: in_triangle, name: in_triangle}
+invariances:
+  - {transform: permute, field: points}
+  - {transform: reflect, field: points, center: ["0.5", "0"]}
+score:
+  direction: maximize
+  record:
+    value: "1.000"
+    kind: best_known
+    source: "evaluator BENCHMARK 0.036529889880030156 (AlphaEvolve, config.yaml) -> combined_score 1; published as 0.0365 (3 significant digits)"
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py
