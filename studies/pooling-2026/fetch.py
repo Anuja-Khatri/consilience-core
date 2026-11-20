@@ -239,5 +239,156 @@ def main() -> int:
     return 0
 
 
+def _tag_filters(tag: str, types: list) -> tuple:
+    """Filters and types of a slice from its file tag (y2010-2012, ynull, y2016-2016_tIC50)."""
+    base, _, tpart = tag.partition("_t")
+    ty = [tpart] if tpart else list(types)
+    if base == "ynull":
+        return {"document_year__isnull": "true"}, ty
+    a, b = base[1:].split("-")
+    return {"document_year__range": f"{a},{b}"}, ty
+
+
+def _from_disk(t: str, types: list) -> tuple:
+    """Rebuild a target's leaf slices from the saved pages. Returns (slices, ids, ok_pages):
+    a slice whose first page reports more than MAX_SLICE rows was split, so it is not a
+    leaf and is left out."""
+    d = DATA / "activity" / t
+    by_tag: dict = {}
+    for f in sorted(d.glob("*.json")):
+        tag, off = f.stem.rsplit("_", 1)
+        by_tag.setdefault(tag, {})[int(off)] = f
+    slices, ids, ok = [], set(), True
+    for tag, pages in sorted(by_tag.items()):
+        if 0 not in pages:
+            ok = False
+            continue
+        first = json.loads(pages[0].read_bytes())
+        total = first["page_meta"]["total_count"]
+        if total > MAX_SLICE:
+            continue                       # split into smaller slices: not a leaf
+        need = list(range(0, total, PAGE)) or [0]
+        if any(o not in pages for o in need):
+            ok = False
+            continue
+        f, ty = _tag_filters(tag, types)
+        entries = []
+        for o in need:
+            raw = pages[o].read_bytes()
+            acts = json.loads(raw)["activities"]
+            ids.update(a["activity_id"] for a in acts)
+            entries.append((o, acts, {"file": str(pages[o].relative_to(DATA)),
+                                      "sha256": hashlib.sha256(raw).hexdigest(),
+                                      "bytes": len(raw)}))
+        slices.append({"tag": tag, "filters": f, "types": ty, "total": total,
+                       "pages": entries})
+    return slices, ids, ok
+
+
+def recover() -> int:
+    """``fetch.py --recover``: rebuild the manifest from the pages already saved (each
+    target re-checked: leaf slices complete, slice counts = the API's total = unique
+    ids), re-fetch whole any target that does not check out, then fetch the assays not
+    yet saved, retrying failed batches in rounds instead of stopping."""
+    from concurrent.futures import ThreadPoolExecutor
+    global TRIES
+    TRIES = 8
+    spec = json.loads((HERE / "targets.json").read_text(encoding="utf-8"))
+    targets = [spec["demonstration"]] + spec["panel"]
+    types = spec["standard_types"]
+    status = json.loads(get(f"{API}/status.json"))
+    manifest = {"fetched_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+                "recovered": "manifest rebuilt from the saved pages, each target re-checked",
+                "chembl_db_version": status.get("chembl_db_version"),
+                "chembl_release_date": status.get("chembl_release_date"),
+                "api": API, "targets": targets, "standard_types": types,
+                "method": "slices by document year (then type), offset < 4000 in each",
+                "files": [], "counts": {}, "slices": {}, "missing_targets": []}
+    print(f"ChEMBL {manifest['chembl_db_version']} (recover)", flush=True)
+    assays: set = set()
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        for t in targets:
+            total = json.loads(get(f"{API}/activity.json?" + urllib.parse.urlencode(
+                _query(t, types, {}, 0, limit=1))))["page_meta"]["total_count"]
+            slices, ids, ok = _from_disk(t, types)
+            if not (ok and sum(s["total"] for s in slices) == total == len(ids)):
+                print(f"{t}: saved pages incomplete; fetching again", flush=True)
+                for f in (DATA / "activity" / t).glob("*.json"):
+                    f.unlink()
+                try:
+                    slices = _slices(t, types, pool)
+                    rest = [(sl, off, pool.submit(_page, t, sl["types"], sl["filters"],
+                                                  off, sl["tag"]))
+                            for sl in slices for off in range(PAGE, sl["total"], PAGE)]
+                    for sl, off, fu in rest:
+                        _, acts, entry = fu.result()
+                        sl["pages"].append((off, acts, entry))
+                except Exception as exc:  # noqa: BLE001 (reported, never replaced)
+                    print(f"{t}: FAILED ({exc!r}); reported as missing", flush=True)
+                    manifest["missing_targets"].append({"target": t, "error": repr(exc)})
+                    continue
+                ids = {a["activity_id"] for sl in slices for _, acts, _ in sl["pages"]
+                       for a in acts}
+            for sl in slices:
+                for _, acts, entry in sl["pages"]:
+                    manifest["files"].append(entry)
+                    assays.update(a["assay_chembl_id"] for a in acts if a.get("assay_chembl_id"))
+            ssum = sum(sl["total"] for sl in slices)
+            good = ssum == total == len(ids)
+            manifest["counts"][t] = {"api_total": total, "slice_total": ssum,
+                                     "unique_activities": len(ids), "complete": good}
+            manifest["slices"][t] = [{"tag": sl["tag"], "filters": sl["filters"],
+                                      "types": sl["types"], "total": sl["total"]}
+                                     for sl in slices]
+            print(f"{t}: total {total}, slices {ssum}, unique {len(ids)}"
+                  + ("" if good else "  INCOMPLETE"), flush=True)
+            if not good:
+                manifest["missing_targets"].append({"target": t, "error": "incomplete"})
+        # assays: keep what is saved, fetch the rest in rounds
+        have, nxt = set(), 0
+        for f in sorted((DATA / "assay").glob("*.json")):
+            raw = f.read_bytes()
+            got = json.loads(raw)["assays"]
+            have.update(a["assay_chembl_id"] for a in got)
+            manifest["files"].append({"file": str(f.relative_to(DATA)),
+                                      "sha256": hashlib.sha256(raw).hexdigest(),
+                                      "bytes": len(raw)})
+            nxt = max(nxt, int(f.stem) + 1)
+        missing = sorted(assays - have)
+        print(f"assays: {len(assays)} needed, {len(have & assays)} saved, {len(missing)} "
+              "to fetch", flush=True)
+        for rnd in range(6):
+            if not missing:
+                break
+            batches = [missing[i:i + ASSAY_BATCH] for i in range(0, len(missing), ASSAY_BATCH)]
+            futs = []
+            for b in batches:
+                futs.append((b, pool.submit(_assay_page, nxt, b)))
+                nxt += 1
+            failed = []
+            for b, fu in futs:
+                try:
+                    _, entry = fu.result()
+                    manifest["files"].append(entry)
+                except Exception:  # noqa: BLE001 (retried next round)
+                    failed.extend(b)
+            missing = failed
+            print(f"  round {rnd + 1}: {len(failed)} assays still to fetch", flush=True)
+            if missing:
+                time.sleep(60)
+        got_all = set()
+        for e in manifest["files"]:
+            if e["file"].startswith("assay/"):
+                got_all.update(a["assay_chembl_id"] for a in
+                               json.loads((DATA / e["file"]).read_bytes())["assays"])
+        manifest["assays_requested"] = len(assays)
+        manifest["assays_returned"] = len(assays & got_all)
+        manifest["assays_not_returned"] = sorted(assays - got_all)
+    manifest["files"].sort(key=lambda e: e["file"])
+    (DATA / "MANIFEST.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
+    print(f"done (assays returned {manifest['assays_returned']} of {len(assays)})", flush=True)
+    return 0
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(recover() if "--recover" in sys.argv else main())
