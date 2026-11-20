@@ -201,14 +201,17 @@ def render(contract: Contract, result: StressResult, budget: str, seed: int) -> 
 
 
 def stress(contract: Union[str, Path, dict, Contract], *, budget: str = "standard", seed: int = 0,
-           out: Union[str, Path, None] = None, only=None, base=None) -> StressRun:
-    """Run the five checks on the scorer named in `contract`. Writes a receipt if `out` is given."""
+           out: Union[str, Path, None] = None, only=None, base=None, steps=None) -> StressRun:
+    """Run the five checks on the scorer named in `contract`. Writes a receipt if `out` is given.
+
+    `steps` pins the search sizes (see `run_checks`); `steps_from_receipt(path)` reads them from an
+    earlier receipt so that a re-run reproduces it on any machine."""
     if budget not in BUDGETS:
         raise ContractError(f"budget must be one of {list(BUDGETS)}")
     c = load_contract(contract, base=base)
     outp = Path(out) if out else None
     with Harness(c) as h:
-        res = run_checks(c, h, seed=seed, budget=budget, only=only)
+        res = run_checks(c, h, seed=seed, budget=budget, only=only, steps=steps)
     if isinstance(contract, (str, Path)):
         cp = Path(contract).resolve()
         rel = os.path.relpath(cp, outp.resolve()) if outp else str(cp.name)
@@ -216,6 +219,13 @@ def stress(contract: Union[str, Path, dict, Contract], *, budget: str = "standar
         rel = None
     rec = build_receipt(c, res, rel, outp)
     return StressRun(res, rec, render(c, res, budget, seed))
+
+
+def steps_from_receipt(path: Union[str, Path]) -> dict:
+    """The search sizes an earlier run used: {} if it did not scale them, else {"c3": .., "esc": ..}."""
+    rec = json.loads(Path(path).read_text(encoding="utf-8"))
+    sb = untag(rec.get("info", {})).get("scaled_budget")
+    return {"c3": list(sb["c3"]), "esc": list(sb["esc"])} if sb else {}
 
 
 # ------------------------------------------------------------------------------------- verify

@@ -294,7 +294,15 @@ def cmd_stress(args) -> int:
         print("consilience: error: --only takes C1..C5, comma-separated", file=sys.stderr)
         return EXIT_USAGE
     try:
-        r = stress(args.contract, budget=args.budget, seed=args.seed, out=args.out, only=only)
+        steps = None
+        if args.steps_from:
+            from .stress.receipt import steps_from_receipt
+            try:
+                steps = steps_from_receipt(args.steps_from)
+            except (OSError, ValueError, KeyError) as exc:
+                print(f"consilience: error: --steps-from: cannot read {args.steps_from} ({exc})", file=sys.stderr)
+                return EXIT_USAGE
+        r = stress(args.contract, budget=args.budget, seed=args.seed, out=args.out, only=only, steps=steps)
     except ContractError as exc:
         print(f"consilience: error: {exc}", file=sys.stderr)
         return EXIT_USAGE
@@ -457,6 +465,9 @@ def build_parser() -> argparse.ArgumentParser:
     st.add_argument("--out", metavar="DIR", help="write receipt.json and candidates/ into DIR")
     st.add_argument("--json", action="store_true", help="print the receipt as JSON")
     st.add_argument("--only", metavar="C1,C2,...", help="run only these checks")
+    st.add_argument("--steps-from", metavar="RECEIPT",
+                    help="use the search sizes recorded in an earlier receipt instead of scaling them by "
+                         "this machine's call time, so the re-run reproduces that receipt")
     st.set_defaults(func=cmd_stress)
 
     v = sub.add_parser("verify", help="re-run a result from its receipt and confirm the hash")

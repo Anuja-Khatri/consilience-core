@@ -93,7 +93,7 @@ consilience stress contract.yaml --out receipts/
 
 ## 5. The five checks, in plain words
 
-All checks are deterministic for a given seed. No language model takes part in any verdict.
+All checks are deterministic for a given seed and the same search sizes. No language model takes part in any verdict. (Slow scorers have their search sizes scaled by measured call time, which varies between machines; `--steps-from RECEIPT` reuses the sizes an earlier run recorded, see §8.)
 
 | Check | Question | How |
 |---|---|---|
@@ -276,7 +276,13 @@ score:
 | `standard` (default) | 8 × 800 | 3 × 500 | 100 | 10 min |
 | `large` | 32 × 2000 | 6 × 1000 | 400 | 60 min |
 
-- **Scorers slower than 0.05 s per call** have their search budget scaled down, and the scaled budget is printed and stored.
+- **Scorers slower than 0.05 s per call** have their search budget scaled down, and the scaled budget is printed and stored. The scaling depends on this machine's call time, so the same contract can search a little deeper or shallower elsewhere. To reproduce a receipt exactly, pin the recorded sizes:
+
+  ```bash
+  consilience stress contract.yaml --steps-from old/receipt.json --out new
+  ```
+
+  In Python: `stress(contract, steps=steps_from_receipt("old/receipt.json"))`. The new receipt has the same content; its hash matches only if it is written to the same place, because the stored contract path is relative to `--out`.
 - **In our benchmark at `standard`,** most contracts took 6 seconds to 10 minutes.
 - **Use `large`** before a big search, or when C3 matters. In one case, the equidistant-points scorer, C3 found the loophole only at `large`.
 

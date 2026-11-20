@@ -70,7 +70,7 @@ Every statement below concerns **the published code at the commit named in `../S
 ## 5. Reading these results
 
 The capability works as designed:
-- deterministic;
+- deterministic for a given seed and search sizes (a re-run with `--steps-from` reproduces each receipt's content exactly, §6);
 - receipted;
 - confirmed by an independent second way (76/76, plus 9/9 on the extra runs);
 - no confirmed false alarm after the v1.1 rule fixes.
@@ -85,3 +85,13 @@ for r in $(find benchmarks/evaluator-stress/results -name receipt.json); do cons
 ```
 
 On a fresh clone (20 Nov 2026, Python 3.13), all 47 stored receipts verify once `requirements.txt` is installed. The first fresh-clone attempt, using only the packages listed earlier in the external note, failed on 3 receipts: their scorers import `matplotlib` and `pydantic`. Those two are now in `requirements.txt`.
+
+**Determinism.** On the same fresh clone, 17 labelled contracts (all under 100 s) were run again:
+- **Unpinned:** all 17 gave the same verdicts and the same blocking findings. But 8 receipts differed in detail (the depth of the naive search and the values it reported), because their search sizes were scaled by measured call time.
+- **Pinned** to the recorded sizes (`--steps-from`) and written to the original location: **17 of 17 receipt hashes are identical** to the stored ones, on Python 3.13 against 3.12 for the original run. Written elsewhere, only the stored contract path differs, because it is relative to `--out` (checked on `DM/flat_polynomials_c_minus`).
+
+```bash
+consilience stress benchmarks/evaluator-stress/contracts/LABELS/oe562_erdos_pre/contract.yaml \
+  --steps-from benchmarks/evaluator-stress/results/receipts/LABELS/oe562_erdos_pre/receipt.json --out /tmp/rerun
+```
+

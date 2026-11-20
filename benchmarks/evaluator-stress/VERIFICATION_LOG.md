@@ -52,3 +52,9 @@
 - **Fix 1:** `requirements.txt` now pins every third-party package the scorers import, at the versions used for runs 1–3. With it installed, all 47 receipts verify.
 - **Fix 2:** `verify` printed a raw traceback when a scorer could not run. It now fails with "could not run the scorer" and names the missing module (test `test_verify_reports_unrunnable_scorer_cleanly`).
 - No verdict or number changed.
+- **Determinism (step 10):** the 17 labelled contracts under 100 s were re-run on the fresh clone.
+  - **Unpinned:** verdicts and blocking findings were the same in all 17. But 8 receipt hashes differed, because the search sizes of slow scorers are scaled by measured call time, which differs between machines. This contradicted the unqualified "deterministic" wording.
+  - **Fix 3:** `--steps-from RECEIPT` (and `steps=` in the API) reuses the recorded sizes.
+  - **With it, 17 of 17 receipt hashes match the stored receipts** when written to the original location (Python 3.13 against 3.12). Written elsewhere, only `contract_file` differs (it is relative to `--out`); checked on `DM/flat_polynomials_c_minus`, all findings identical. Test `test_steps_from_receipt_reproduces_a_scaled_run`.
+  - The docs now say "deterministic for a given seed and search sizes".
+

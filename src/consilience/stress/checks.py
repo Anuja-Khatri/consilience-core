@@ -225,12 +225,16 @@ class Runner:
         return x, (None if s == -math.inf else s)
 
 
-def run_checks(contract, harness: Harness, seed: int = 0, budget: str = "standard", only=None) -> StressResult:
+def run_checks(contract, harness: Harness, seed: int = 0, budget: str = "standard", only=None,
+               steps=None) -> StressResult:
+    """`steps` pins the search sizes instead of scaling them by measured call time:
+    None scales (spec 7.1); {} disables scaling; {"c3": [r, s], "esc": [n, s]} uses those sizes.
+    Pinning to a receipt's recorded sizes makes a re-run reproduce that receipt exactly."""
     with np.errstate(all="ignore"):
-        return _run_checks(contract, harness, seed, budget, only)
+        return _run_checks(contract, harness, seed, budget, only, steps)
 
 
-def _run_checks(contract, harness: Harness, seed: int, budget: str, only) -> StressResult:
+def _run_checks(contract, harness: Harness, seed: int, budget: str, only, steps=None) -> StressResult:
     R = Runner(contract, harness, seed, budget, only)
     c = contract
     t_start = time.time()
@@ -324,7 +328,11 @@ def _run_checks(contract, harness: Harness, seed: int, budget: str, only) -> Str
 
         # scale the search budgets for slow scorers (spec §7.1)
         mc = harness.mean_call_seconds
-        if mc > SLOW_CALL_SECONDS:
+        if steps is not None:
+            if steps:
+                R.B["c3"], R.B["esc"] = tuple(steps["c3"]), tuple(steps["esc"])
+                info["scaled_budget"] = {"c3": list(R.B["c3"]), "esc": list(R.B["esc"])}
+        elif mc > SLOW_CALL_SECONDS:
             fit = max(10, int(R.B["cap"] / (mc * 3)))
             n_r, n_s = R.B["c3"]
             if n_r * n_s > fit:

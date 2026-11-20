@@ -4,4 +4,4 @@ Needs numpy: ``pip install consilience[stress]``. See docs/stress.md and the pro
 """
 from .contract import Contract, ContractError, load_contract  # noqa: F401
 from .checks import StressResult  # noqa: F401,E402
-from .receipt import SCHEMA as STRESS_RECEIPT_SCHEMA, stress, verify_stress  # noqa: F401,E402
+from .receipt import SCHEMA as STRESS_RECEIPT_SCHEMA, stress, steps_from_receipt, verify_stress  # noqa: F401,E402

@@ -84,3 +84,19 @@ def test_verify_reports_unrunnable_scorer_cleanly(tmp_path):
     assert not v.ok
     msg = " ".join(d for _, _, d in v.steps)
     assert "could not run the scorer" in msg and "consilience_no_such_module_xyz" in msg
+
+
+def test_steps_from_receipt_reproduces_a_scaled_run(tmp_path, monkeypatch):
+    """A run whose budget was scaled by call time is reproduced exactly when its sizes are pinned."""
+    from consilience.stress import checks, stress, steps_from_receipt
+    _setup(tmp_path, leaky=True)
+    monkeypatch.setattr(checks, "SLOW_CALL_SECONDS", 0.0)          # force scaling on a fast toy
+    a = stress(tmp_path / "contract.yaml", out=tmp_path / "a")
+    st = steps_from_receipt(tmp_path / "a" / "receipt.json")
+    assert st and set(st) == {"c3", "esc"}
+    monkeypatch.setattr(checks, "SLOW_CALL_SECONDS", 1e9)          # this "machine" would not scale
+    b = stress(tmp_path / "contract.yaml", out=tmp_path / "b", steps=st)
+    assert a.receipt["sha256"] == b.receipt["sha256"]
+    c = stress(tmp_path / "contract.yaml", out=tmp_path / "c")     # unpinned: different search sizes
+    assert c.receipt["sha256"] != a.receipt["sha256"]
+    assert steps_from_receipt(tmp_path / "c" / "receipt.json") == {}
