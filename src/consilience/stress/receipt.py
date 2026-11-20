@@ -238,9 +238,19 @@ def verify_stress(rec: dict, receipt_path: Optional[Path], contract_path=None):
     steps.append(("scorer and input files", fh_ok, "same bytes" if fh_ok else
                   f"changed: {sorted(k for k in set(c.file_hashes) | set(rec['file_hashes']) if c.file_hashes.get(k) != rec['file_hashes'].get(k))}"))
     info = untag(rec["info"])
+    from .checks import Runner, _Abstain
+    try:
+        return _verify_findings(rec, c, base, steps, info, Runner)
+    except _Abstain as a:
+        last = [ln for ln in (a.detail or "").splitlines() if ln.strip()]
+        why = f"{a.reason}: {last[-1].strip()}" if last else a.reason
+        hint = " (install the scorer's dependencies)" if "ModuleNotFoundError" in (a.detail or "") else ""
+        return False, steps + [("scorer", False, f"could not run the scorer: {why}{hint}")], None
+
+
+def _verify_findings(rec, c, base, steps, info, Runner):
     m = info.get("m", 0.0)
     sign = c.direction_sign
-    from .checks import Runner
     with Harness(c) as h:
         R = Runner(c, h, seed=0, budget=info.get("budget", "standard"))
         ref = R.complete(dict(np.load(c.path(c.data["reference"]["file"]), allow_pickle=False)))

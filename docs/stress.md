@@ -325,3 +325,12 @@ It exits 0 if every verdict reproduces and 1 if not. Use `--input` to point to t
 - 22 pre-fix and post-fix versions of 13 known bugs.
 
 It also holds the preregistration, the labels, the runner, an independent second-way checker and the results (`results/RESULTS.md`). Findings concern **the published code at the stated commit** only, never anyone's internal systems or published results.
+
+To reproduce the benchmark, install the scorers' own dependencies (pinned to the versions used for the runs) and re-check any receipt:
+
+```bash
+pip install -e '.[stress]' -r benchmarks/evaluator-stress/requirements.txt
+consilience verify benchmarks/evaluator-stress/results/receipts/DM/flat_polynomials_c_minus/receipt.json
+```
+
+If a scorer's dependency is missing, `verify` fails with "could not run the scorer" and names the missing module. A worked walk-through is in `examples/stress_demo.ipynb`.

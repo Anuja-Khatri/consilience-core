@@ -67,3 +67,20 @@ def test_antigravity_post_then_inject(tmp_path):
     out = json.loads(_hook(tmp_path, {}, "--antigravity-inject"))
     assert "BLOCK" in out["injectSteps"][0]["ephemeralMessage"]
     assert _hook(tmp_path, {}, "--antigravity-inject") == "{}"          # injected once
+
+
+def test_verify_reports_unrunnable_scorer_cleanly(tmp_path):
+    """A receipt whose scorer cannot be imported fails verify with a message, not a traceback."""
+    from consilience import verify
+    from consilience.stress import stress
+    _setup(tmp_path, leaky=True)
+    src = (tmp_path / "scorer.py").read_text()
+    (tmp_path / "scorer.py").write_text("import os\nif os.path.exists(os.path.join(os.path.dirname(__file__), 'FLAG')):\n"
+                                        "    import consilience_no_such_module_xyz\n" + src)
+    r = stress(tmp_path / "contract.yaml", out=tmp_path / "out")
+    assert r.verdict == "BLOCK"
+    (tmp_path / "FLAG").write_text("")
+    v = verify(tmp_path / "out" / "receipt.json")
+    assert not v.ok
+    msg = " ".join(d for _, _, d in v.steps)
+    assert "could not run the scorer" in msg and "consilience_no_such_module_xyz" in msg

@@ -43,3 +43,12 @@
 - **verify** and the independent check were updated to the same purpose. The independent check now also requires a gain over the valid reference: it challenges the rule's purpose, not only its arithmetic.
 - **Run 3:** the same `SELECTION_45.txt`, from scratch, `standard` budget, seed 0. Run 2's results stay in history and are summarised in RESULTS_45_ANALYSIS.md (consilience-docs).
 - **Note on run 3:** the version string was bumped to 0.3.0.dev0 (docs and plugin work) while run 3 was in progress, so some receipts say 0.2.0.dev0 and later ones 0.3.0.dev0. No engine code changed during the run: the last engine commit before it was 34350aa.
+
+## Fresh-clone check (20 Nov 2026, after run 3)
+
+- **Setup:** a clean clone of `stress-check` at f53af29 into a new Python 3.13 virtual environment.
+- **Tests:** with `.[test]` installed, 999 passed and 16 skipped. The 2 skips beyond the local run are optional `pyarrow` and `pandas` tests.
+- **Receipts:** `consilience verify` passed on 44 of the 47 stored receipts with the packages first listed in the external note. The other 3 (`G/circle_packing`, `DMR/dmr12_hexagon`, `LABELS/dmr12_hexagon_post`) failed because their scorers import `matplotlib` and `pydantic`.
+- **Fix 1:** `requirements.txt` now pins every third-party package the scorers import, at the versions used for runs 1–3. With it installed, all 47 receipts verify.
+- **Fix 2:** `verify` printed a raw traceback when a scorer could not run. It now fails with "could not run the scorer" and names the missing module (test `test_verify_reports_unrunnable_scorer_cleanly`).
+- No verdict or number changed.

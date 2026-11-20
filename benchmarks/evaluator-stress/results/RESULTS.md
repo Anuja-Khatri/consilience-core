@@ -76,3 +76,12 @@ The capability works as designed:
 - no confirmed false alarm after the v1.1 rule fixes.
 
 It reliably finds the **common classes** of scorer loopholes: invalid input, self-reports, missing type checks, integer invariance. On a random sample of public scorers it found few problems, and none in the self-report or invariance classes. It is a useful pre-run checker. It is not a discovery engine for deep loopholes.
+
+## 6. Reproducing
+
+```bash
+pip install -e '.[stress]' -r benchmarks/evaluator-stress/requirements.txt
+for r in $(find benchmarks/evaluator-stress/results -name receipt.json); do consilience verify "$r" > /dev/null && echo "ok  $r" || echo "BAD $r"; done
+```
+
+On a fresh clone (20 Nov 2026, Python 3.13), all 47 stored receipts verify once `requirements.txt` is installed. The first fresh-clone attempt, using only the packages listed earlier in the external note, failed on 3 receipts: their scorers import `matplotlib` and `pydantic`. Those two are now in `requirements.txt`.
