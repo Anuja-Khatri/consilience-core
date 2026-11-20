@@ -422,6 +422,14 @@ class _Cmp:
                                         rid))
             return
         pred = rule["predicate"]
+        if pred == "equal" and rule.get("as_text"):
+            ta, tb = _as_text(va, rule), _as_text(vb, rule)
+            if ta is None or tb is None:
+                self.defects.append(_defect("not_stated", path, "unstated", rule=rid))
+            elif ta != tb:
+                self.defects.append(_defect("not_comparable", path, "differs",
+                                            f"{_raw(va)} vs {_raw(vb)}", rid))
+            return
         if pred == "record":
             if not isinstance(va, dict) or not isinstance(vb, dict):
                 for side, v in (("a", va), ("b", vb)):
@@ -485,6 +493,18 @@ class _Cmp:
         for key in rule.get("also_equal", []):
             self.rule({"id": rid, "predicate": "equal"}, f"{path}.{key}", ra.get(key),
                       rb.get(key), ra.get(key) is not None, rb.get(key) is not None)
+
+
+def _as_text(v, rule: dict):
+    """A condition value read as text (pack option ``as_text``): whitespace collapsed,
+    case folded if ``ignore_case``, aliases applied. None if empty or "unstated"."""
+    if v is None or isinstance(v, (dict, list)):
+        return None if v is None else _raw(v)
+    s = " ".join(str(v).split())
+    if not s or s.casefold() == "unstated":
+        return None
+    s = s.casefold() if rule.get("ignore_case") else s
+    return rule.get("aliases", {}).get(s, s)
 
 
 def _absent(v) -> bool:

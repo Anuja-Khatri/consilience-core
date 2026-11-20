@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash|mcp__.*[Cc]hembl.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/after_fetch.py\" --claude",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

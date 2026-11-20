@@ -103,7 +103,7 @@ _PACK_TOP = {"kind", "name", "version", "plain_english", "rationale", "source", 
              "conditions", "record_rules", "assumptions", "defaults"}
 _COND_KEYS = {"id", "field", "predicate", "plain_english", "rationale", "source",
               "ignore_case", "aliases", "tolerance", "words", "also_equal", "parts",
-              "absent_on_both"}
+              "absent_on_both", "as_text"}
 _RECORD_RULE_KEYS = {"id", "field", "kind", "values", "allow_empty", "threshold",
                      "plain_english", "rationale", "source"}
 RECORD_RULE_KINDS = ("empty", "present", "in", "at_least")
@@ -111,7 +111,8 @@ _ASSUMPTION_KEYS = {"id", "condition", "from", "to", "factor", "plain_english", 
                     "source"}
 _DEFAULT_KEYS = {"log_tol", "log_floor", "abs_tol", "rel_tol", "floor", "plain_english",
                  "source"}
-_PART_KEYS = {"predicate", "ignore_case", "aliases", "tolerance", "words", "also_equal"}
+_PART_KEYS = {"predicate", "ignore_case", "aliases", "tolerance", "words", "also_equal",
+              "as_text"}
 PREDICATES = ("equal", "quantity_equal", "record")
 
 
@@ -121,6 +122,8 @@ def _predicate_params(d: dict, where: str, allow_record: bool) -> dict:
     if pred not in names:
         raise _err(where, f"'predicate' must be one of {list(names)} (got {pred!r})")
     out: dict[str, Any] = {"predicate": pred}
+    if pred != "equal" and "as_text" in d:
+        raise _err(where, "'as_text' applies only to predicate 'equal'")
     if pred == "equal":
         for k in ("tolerance", "words", "also_equal", "parts"):
             if k in d:
@@ -138,6 +141,11 @@ def _predicate_params(d: dict, where: str, allow_record: bool) -> dict:
                 raise _err(where, f"alias {k!r} maps to two different names")
             norm[key] = " ".join(v.split())
         out.update(ignore_case=ic, aliases=dict(sorted(norm.items())))
+        if "as_text" in d:
+            # written only when set (old packs hash as before): compare the value as
+            # text even when it starts with a digit ("1% ethanol", "1000 (bar)")
+            if _bool(d, "as_text", where, False):
+                out["as_text"] = True
     elif pred == "quantity_equal":
         for k in ("ignore_case", "aliases", "parts"):
             if k in d:

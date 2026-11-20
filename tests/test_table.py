@@ -615,3 +615,32 @@ def test_map_nested_paths_and_fixed_unit():
     with pytest.raises(RuleFileError, match="not both"):
         map_from_dict({"kind": "column-map", "name": "n", "version": "n1",
                        "plain_english": "x", "value": "v", "unit": "u", "fixed_unit": "nM"})
+
+
+def test_as_text_condition_reads_digit_led_text():
+    pk = rules_from_dict({"kind": "compare-pack", "name": "t", "version": "t1",
+                          "plain_english": "t",
+                          "conditions": [{"id": "C1", "field": "cosolvent", "predicate": "equal",
+                                          "as_text": True, "ignore_case": True,
+                                          "absent_on_both": "equal", "plain_english": "t"}]})
+    rows = [rec(cosolvent="1% Ethanol"), rec(value="42", cosolvent="1%  ethanol"),
+            rec(value="43", cosolvent="2% ethanol"), rec(value="44", cosolvent="")]
+    r = compare_table(rows, key="mol,tgt", pack=pk, log_tol=0.3)
+    assert r.summary["record_status"] == {"usable": 4}
+    assert by_row(r)[1]["condition_class"] == by_row(r)[2]["condition_class"]
+    labels = {(p["a"], p["b"]): p["label"] for p in r.pairs}
+    assert labels[(1, 3)] == "not_comparable(cosolvent)"
+    assert labels[(1, 4)] == "not_stated(cosolvent)"
+    # compare() itself gives the same answers
+    m = lambda c: {"value": "41", "unit": "nM", "conditions": {"cosolvent": c}}  # noqa: E731
+    assert compare(m("1% Ethanol"), m("1% ethanol"), pack=pk, log_tol=0.3).verdict == "agree"
+    assert compare(m("1% ethanol"), m("2% ethanol"), pack=pk,
+                   log_tol=0.3).label == "not_comparable(cosolvent)"
+
+
+def test_as_text_only_for_equal():
+    with pytest.raises(RuleFileError, match="as_text"):
+        rules_from_dict({"kind": "compare-pack", "name": "t", "version": "t1",
+                         "plain_english": "t",
+                         "conditions": [{"id": "C1", "field": "t", "predicate": "quantity_equal",
+                                         "as_text": True, "plain_english": "t"}]})

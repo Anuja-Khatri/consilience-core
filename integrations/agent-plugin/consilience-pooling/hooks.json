@@ -1,0 +1,15 @@
+{
+  "consilience-pooling": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {"type": "command", "command": "python3 hooks/after_fetch.py --antigravity-post", "timeout": 30}
+        ]
+      }
+    ],
+    "PreInvocation": [
+      {"type": "command", "command": "python3 hooks/after_fetch.py --antigravity-inject", "timeout": 10}
+    ]
+  }
+}

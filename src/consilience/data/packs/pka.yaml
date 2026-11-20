@@ -37,6 +37,7 @@ conditions:
   - id: PK2
     field: cosolvent
     predicate: equal
+    as_text: true
     ignore_case: true
     absent_on_both: equal
     plain_english: Same cosolvent; empty on both counts as the same (no cosolvent parsed).
@@ -45,6 +46,7 @@ conditions:
   - id: PK3
     field: pressure
     predicate: equal
+    as_text: true
     absent_on_both: equal
     plain_english: Same pressure; empty on both counts as the same (ordinary pressure).
     rationale: The dataset marks the few very-high-pressure entries in this column.

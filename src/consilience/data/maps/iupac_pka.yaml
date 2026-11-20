@@ -17,6 +17,13 @@ fields:
   temperature: T
 lookups:
   temperature:
+    # spellings of "not stated" in the T column, and entries that are not temperatures
     "not_stated": unstated
+    "not stated": unstated
+    "Not stated": unstated
+    "not": unstated
+    "Not given": unstated
+    "Few details": unstated
+    "Neutral molecule unstable": unstated
 units:
   temperature: degC

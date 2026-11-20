@@ -1,0 +1,9 @@
+{
+  "name": "consilience-pooling",
+  "version": "0.2.0",
+  "description": "Before potency values gathered from ChEMBL are averaged or ranked: which records may be pooled, why the others may not, and whether the poolable ones agree. Deterministic, with a receipt anyone can re-run.",
+  "author": {"name": "The Consilience", "url": "https://theconsilience.io"},
+  "homepage": "https://github.com/Anuja-Khatri/consilience-core",
+  "license": "MIT",
+  "keywords": ["chembl", "bioactivity", "ic50", "data-quality", "science-agents"]
+}

@@ -3,7 +3,12 @@
     python studies/pooling-2026/fetch.py            # writes data/ (not committed)
 
 For every target in targets.json: every activity of type IC50, Ki, Kd or EC50 with a
-standard_value, ordered by activity_id; then every assay those activities use. Each raw
+standard_value; then every assay those activities use. The public API fails on deep
+offsets (offset 5,000 and beyond times out or returns HTTP 500 for EGFR, 20 Nov 2026), so
+each target is fetched in slices by document year (and, if a single year is still large,
+by measurement type), each slice small enough to need no deep offset. Completeness is
+checked exactly: the slices' counts must add up to the target's total count, and the
+union of activity ids must have that size. Each raw
 API page is saved as returned, and data/MANIFEST.json lists every file with its SHA-256,
 the ChEMBL release the API reported, and the time of the fetch. join.py then builds the
 study's input table from these files only.
@@ -40,6 +45,8 @@ ASSAY_FIELDS = [
     "assay_subcellular_fraction", "assay_parameters"]
 PAGE = 1000
 ASSAY_BATCH = 50
+WORKERS = 4
+MAX_SLICE = 4000
 
 
 def get(url: str, tries: int = 6) -> bytes:
@@ -65,58 +72,133 @@ def save(path: Path, data: bytes) -> dict:
             "bytes": len(data)}
 
 
+def _query(t: str, types: list, extra: dict, offset: int, limit: int = PAGE) -> dict:
+    q = {"target_chembl_id": t, "standard_type__in": ",".join(types),
+         "standard_value__isnull": "false", "order_by": "activity_id",
+         "limit": limit, "offset": offset, "only": ",".join(ACTIVITY_FIELDS)}
+    q.update(extra)
+    return q
+
+
+def _page(t, types, extra, offset, tag):
+    raw = get(f"{API}/activity.json?{urllib.parse.urlencode(_query(t, types, extra, offset))}")
+    d = json.loads(raw)
+    entry = save(DATA / "activity" / t / f"{tag}_{offset:05d}.json", raw)
+    return d["page_meta"]["total_count"], d["activities"], entry
+
+
+def _slices(t: str, types: list, pool) -> list:
+    """Adaptive slices: (tag, filters, types). Each slice has at most MAX_SLICE rows."""
+    first = [("y1900-1999", {"document_year__range": "1900,1999"}),
+             ("y2000-2004", {"document_year__range": "2000,2004"}),
+             ("y2005-2009", {"document_year__range": "2005,2009"}),
+             ("y2010-2012", {"document_year__range": "2010,2012"}),
+             ("y2013-2015", {"document_year__range": "2013,2015"}),
+             ("y2016-2018", {"document_year__range": "2016,2018"}),
+             ("y2019-2021", {"document_year__range": "2019,2021"}),
+             ("y2022-2030", {"document_year__range": "2022,2030"}),
+             ("ynull", {"document_year__isnull": "true"})]
+    todo = [(tag, f, types) for tag, f in first]
+    done = []
+    while todo:
+        futs = [(tag, f, ty, pool.submit(_page, t, ty, f, 0, tag)) for tag, f, ty in todo]
+        todo = []
+        for tag, f, ty, fu in futs:
+            total, acts, entry = fu.result()
+            if total <= MAX_SLICE:
+                done.append({"tag": tag, "filters": f, "types": ty, "total": total,
+                             "pages": [(0, acts, entry)]})
+                continue
+            # too large: split by year, then by type
+            if "document_year__range" in f:
+                a, b = (int(x) for x in f["document_year__range"].split(","))
+                if b > a:
+                    m = (a + b) // 2
+                    todo.append((f"y{a}-{m}" + _tsuffix(ty, types), dict(f, document_year__range=f"{a},{m}"), ty))
+                    todo.append((f"y{m + 1}-{b}" + _tsuffix(ty, types), dict(f, document_year__range=f"{m + 1},{b}"), ty))
+                    continue
+            if len(ty) > 1:
+                for x in ty:
+                    todo.append((tag.split("_t")[0] + f"_t{x}", f, [x]))
+                continue
+            raise RuntimeError(f"{t} slice {tag} ({f}, {ty}) has {total} rows and cannot "
+                               "be split further")
+    return done
+
+
+def _tsuffix(ty, types):
+    return "" if len(ty) == len(types) else f"_t{ty[0]}"
+
+
+def _assay_page(i: int, batch: list) -> tuple:
+    q = urllib.parse.urlencode({"assay_chembl_id__in": ",".join(batch),
+                                "limit": ASSAY_BATCH, "only": ",".join(ASSAY_FIELDS)})
+    raw = get(f"{API}/assay.json?{q}")
+    got = len(json.loads(raw)["assays"])
+    return got, save(DATA / "assay" / f"{i:07d}.json", raw)
+
+
 def main() -> int:
+    from concurrent.futures import ThreadPoolExecutor
     spec = json.loads((HERE / "targets.json").read_text(encoding="utf-8"))
     targets = [spec["demonstration"]] + spec["panel"]
+    types = spec["standard_types"]
     status = json.loads(get(f"{API}/status.json"))
     manifest = {"fetched_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                 "chembl_db_version": status.get("chembl_db_version"),
                 "chembl_release_date": status.get("chembl_release_date"),
-                "api": API, "targets": targets, "standard_types": spec["standard_types"],
-                "files": [], "counts": {}, "missing_targets": []}
-    print(f"ChEMBL {manifest['chembl_db_version']} ({manifest['chembl_release_date']})")
+                "api": API, "targets": targets, "standard_types": types,
+                "method": "slices by document year (then type), offset < 4000 in each",
+                "files": [], "counts": {}, "slices": {}, "missing_targets": []}
+    print(f"ChEMBL {manifest['chembl_db_version']} ({manifest['chembl_release_date']})",
+          flush=True)
     assays: set = set()
-    for t in targets:
-        n_got, offset, total = 0, 0, None
-        try:
-            while True:
-                q = urllib.parse.urlencode({
-                    "target_chembl_id": t,
-                    "standard_type__in": ",".join(spec["standard_types"]),
-                    "standard_value__isnull": "false", "order_by": "activity_id",
-                    "limit": PAGE, "offset": offset, "only": ",".join(ACTIVITY_FIELDS)})
-                raw = get(f"{API}/activity.json?{q}")
-                d = json.loads(raw)
-                total = d["page_meta"]["total_count"]
-                manifest["files"].append(save(DATA / "activity" / t / f"{offset:07d}.json", raw))
-                acts = d["activities"]
-                n_got += len(acts)
-                assays.update(a["assay_chembl_id"] for a in acts if a.get("assay_chembl_id"))
-                offset += PAGE
-                if not acts or offset >= total:
-                    break
-        except Exception as exc:  # noqa: BLE001 (reported, never replaced)
-            print(f"{t}: FAILED ({exc!r}); reported as missing", flush=True)
-            manifest["missing_targets"].append({"target": t, "error": repr(exc)})
-            continue
-        manifest["counts"][t] = {"api_total": total, "fetched": n_got}
-        print(f"{t}: {n_got} / {total}", flush=True)
-        if n_got != total:
-            print(f"{t}: count mismatch", flush=True)
-    ids = sorted(assays)
-    print(f"assays: {len(ids)}", flush=True)
-    for i in range(0, len(ids), ASSAY_BATCH):
-        batch = ids[i:i + ASSAY_BATCH]
-        q = urllib.parse.urlencode({"assay_chembl_id__in": ",".join(batch),
-                                    "limit": ASSAY_BATCH, "only": ",".join(ASSAY_FIELDS)})
-        raw = get(f"{API}/assay.json?{q}")
-        got = len(json.loads(raw)["assays"])
-        if got != len(batch):
-            print(f"  assay batch {i}: {got} of {len(batch)} returned", flush=True)
-        manifest["files"].append(save(DATA / "assay" / f"{i:07d}.json", raw))
-        if (i // ASSAY_BATCH) % 100 == 0:
-            print(f"  assays {i}/{len(ids)}", flush=True)
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        for t in targets:
+            try:
+                total = json.loads(get(f"{API}/activity.json?" + urllib.parse.urlencode(
+                    _query(t, types, {}, 0, limit=1))))["page_meta"]["total_count"]
+                slices = _slices(t, types, pool)
+                rest = []
+                for sl in slices:
+                    for off in range(PAGE, sl["total"], PAGE):
+                        rest.append((sl, off, pool.submit(_page, t, sl["types"], sl["filters"],
+                                                          off, sl["tag"])))
+                for sl, off, fu in rest:
+                    _, acts, entry = fu.result()
+                    sl["pages"].append((off, acts, entry))
+            except Exception as exc:  # noqa: BLE001 (reported, never replaced)
+                print(f"{t}: FAILED ({exc!r}); reported as missing", flush=True)
+                manifest["missing_targets"].append({"target": t, "error": repr(exc)})
+                continue
+            ids = set()
+            for sl in slices:
+                for _, acts, entry in sl["pages"]:
+                    manifest["files"].append(entry)
+                    ids.update(a["activity_id"] for a in acts)
+                    assays.update(a["assay_chembl_id"] for a in acts if a.get("assay_chembl_id"))
+            ssum = sum(sl["total"] for sl in slices)
+            ok = (ssum == total == len(ids))
+            manifest["counts"][t] = {"api_total": total, "slice_total": ssum,
+                                     "unique_activities": len(ids), "complete": ok}
+            manifest["slices"][t] = [{"tag": sl["tag"], "filters": sl["filters"],
+                                      "types": sl["types"], "total": sl["total"]}
+                                     for sl in slices]
+            print(f"{t}: total {total}, slices {ssum}, unique {len(ids)}"
+                  + ("" if ok else "  INCOMPLETE"), flush=True)
+            if not ok:
+                manifest["missing_targets"].append({"target": t, "error": "incomplete"})
+        ids = sorted(assays)
+        print(f"assays: {len(ids)}", flush=True)
+        futs = [(i, pool.submit(_assay_page, i, ids[i:i + ASSAY_BATCH]))
+                for i in range(0, len(ids), ASSAY_BATCH)]
+        for i, f in futs:
+            got, entry = f.result()
+            if got != len(ids[i:i + ASSAY_BATCH]):
+                print(f"  assay batch {i}: {got} of {len(ids[i:i + ASSAY_BATCH])}", flush=True)
+            manifest["files"].append(entry)
     manifest["assays_requested"] = len(ids)
+    manifest["files"].sort(key=lambda e: e["file"])
     (DATA / "MANIFEST.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
     print("done", flush=True)
     return 0

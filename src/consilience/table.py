@@ -47,7 +47,8 @@ from pathlib import Path
 from typing import Any, Optional, Union
 
 from . import __version__
-from .compare import (PINT_VERSION, RANK, InputError, WrittenFloat, _absent, _bounded,
+from .compare import (PINT_VERSION, RANK, InputError, WrittenFloat, _absent, _as_text,
+                      _bounded,
                       _check_conditions, _close, _defect, _label, _leaf, _log_options,
                       _options, _option_in, _raw, _read_uncertainty, _read_value,
                       _resolve_options, _side_precision, _written_text, read_json)
@@ -267,6 +268,9 @@ def _canon(rule: dict, v):
         return ("absent",)
     if v is None:
         return ("unstated",)
+    if rule["predicate"] == "equal" and rule.get("as_text"):
+        t = _as_text(v, rule)
+        return ("unstated",) if t is None else ("text", t)
     leaf = _leaf(v)                        # may raise UnitError: record unparseable
     if leaf[0] == "unstated":
         return ("unstated",)
