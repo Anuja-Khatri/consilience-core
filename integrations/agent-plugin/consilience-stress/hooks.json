@@ -1,0 +1,15 @@
+{
+  "consilience-stress": {
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_file_content|multi_replace_file_content",
+        "hooks": [
+          {"type": "command", "command": "python3 hooks/after_edit.py --antigravity-post", "timeout": 300}
+        ]
+      }
+    ],
+    "PreInvocation": [
+      {"type": "command", "command": "python3 hooks/after_edit.py --antigravity-inject", "timeout": 10}
+    ]
+  }
+}

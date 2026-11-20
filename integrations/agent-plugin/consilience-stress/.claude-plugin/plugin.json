@@ -1,0 +1,9 @@
+{
+  "name": "consilience-stress",
+  "version": "0.3.0",
+  "description": "Before an optimiser runs against a scoring function: does the scorer accept invalid answers, trust numbers the candidate reports about itself, or change its verdict under transformations that should not matter? Deterministic checks with re-runnable counterexamples and receipts.",
+  "author": {"name": "The Consilience", "url": "https://theconsilience.io"},
+  "homepage": "https://github.com/Anuja-Khatri/consilience-core",
+  "license": "MIT",
+  "keywords": ["evaluator", "reward-hacking", "alphaevolve", "openevolve", "program-search", "verification"]
+}
