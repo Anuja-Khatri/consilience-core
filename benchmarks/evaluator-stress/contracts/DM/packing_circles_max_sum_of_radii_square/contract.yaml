@@ -1,0 +1,63 @@
+kind: evaluator-contract
+name: deepmind/packing_circles_max_sum_of_radii check_construction (unit square, n = 26)
+description: >
+  Problem 36 (circle packing): C(n) is the largest sum of radii of n disjoint open disks inside
+  the unit square. check_construction (code cell 0) checks containment and pairwise disjointness
+  and returns {'sum_of_radii': ...} (-inf if invalid). The notebook ships n = 26 and n = 32
+  constructions; this contract fixes n = 26. The shipped radii_26 has three pairs overlapping by
+  a few ulps in exact arithmetic, so the reference is the shipped construction with radii scaled by
+  (1 - 1e-12); the raw shipped construction is claimed_best.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: check_construction
+  score_key: sum_of_radii
+dims:
+  n: 26
+fields:
+- name: centers
+  type: real_array
+  role: construction
+- name: radii
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: centers
+- rule: shape
+  field: centers
+  shape: [n, 2]
+- rule: finite
+  field: radii
+- rule: shape
+  field: radii
+  shape: [n]
+- rule: range
+  field: radii
+  min: '0'
+- rule: in_box
+  field: centers
+  box: [['0', '1'], ['0', '1']]
+  margin_from: radii
+- rule: pairwise_separation
+  field: centers
+  radii_from: radii
+invariances:
+- transform: dihedral
+  field: centers
+  order: 4
+  center: ['0.5', '0.5']
+score:
+  direction: maximize
+  record:
+    value: '2.635'
+    kind: best_known
+    source: notebook text above code cell 0 ("For n=26, the SOTA was 2.634, and AlphaEvolve improved it to 2.635");
+      the recomputed sum for the shipped construction is 2.63598; the problem page notes later slight
+      improvements (Berthold; Deza) without stating numbers
+reference:
+  file: reference.npz
+claimed_best:
+  file: claimed_best.npz
+glue: glue.py

@@ -1,0 +1,35 @@
+kind: evaluator-contract
+name: deepmind/matrix_multiplication_amgm get_score (n = 3, m = 2, d = 2)
+description: >
+  Problem 47: matrix AM-GM (Duchi's conjecture C(n,m,d) = 1), trace (nuclear) norm, n = 3, m = 2,
+  d = 2 (as in the pilot). Construction = B with A_j = B_j B_j^T positive semidefinite (real B; the
+  problem allows complex). Score = RHS - LHS; a positive score is a counterexample.
+  Copied from pilot/dm_amgm; the pilot's range [-1000, 1000] rule is dropped (it mirrored the scorer's
+  clip, not the problem) and the pilot's claimed_best is not carried over (the notebook ships no
+  construction).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values: [-1000000.0]
+fields:
+  - {name: B, type: real_array, shape: [3, 2, 2], role: construction}
+validity:
+  - {rule: finite, field: B}
+  - {rule: shape, field: B, shape: [3, 2, 2]}
+invariances:
+  - {transform: permute, field: B}
+  - {transform: conjugate, field: B}
+  - {transform: scale, field: B, score_exponent: 4}
+score:
+  direction: maximize
+  record:
+    value: "0"
+    kind: threshold
+    success: ">"
+    margin: "0"
+    source: "notebook: a positive score indicates a counterexample (Duchi's conjecture C(n,m,d) = 1)"
+reference: {file: reference.npz}
+glue: glue.py

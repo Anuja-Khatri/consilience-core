@@ -1,0 +1,74 @@
+kind: evaluator-contract
+name: deepmind/packing_circles_max_sum_of_radii check_construction_rectangle (perimeter 4, n = 21)
+description: >
+  Problem 36 (circle packing, C'(n)): the largest sum of radii of n disjoint open disks inside a
+  rectangle of perimeter 4. check_construction_rectangle (code cell 10) checks the perimeter
+  (np.isclose), containment and disjointness and returns {'sum_of_radii': ...}. The construction is
+  (centers, radii, width, height); the shipped n = 21 construction (code cell 9) is the reference.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: check_construction_rectangle
+  score_key: sum_of_radii
+dims:
+  n: 21
+fields:
+- name: centers
+  type: real_array
+  role: construction
+- name: radii
+  type: real_array
+  role: construction
+- name: width
+  type: real
+  role: construction
+- name: height
+  type: real
+  role: construction
+validity:
+- rule: finite
+  field: centers
+- rule: shape
+  field: centers
+  shape: [n, 2]
+- rule: finite
+  field: radii
+- rule: shape
+  field: radii
+  shape: [n]
+- rule: range
+  field: radii
+  min: '0'
+- rule: finite
+  field: width
+- rule: range
+  field: width
+  min: '0'
+- rule: finite
+  field: height
+- rule: range
+  field: height
+  min: '0'
+- rule: predicate
+  call: perimeter_4
+  name: perimeter_equals_4
+  equality: true
+  tolerance: '1e-12'
+- rule: predicate
+  call: inside_rectangle
+  name: disks_inside_rectangle
+- rule: pairwise_separation
+  field: centers
+  radii_from: radii
+invariances: []
+score:
+  direction: maximize
+  record:
+    value: '2.365'
+    kind: best_known
+    source: notebook text above code cell 9 ("For n=21, the SOTA was 2.364, and AlphaEvolve improved it to 2.365");
+      the recomputed sum for the shipped construction is 2.36583
+reference:
+  file: reference.npz
+glue: glue.py
