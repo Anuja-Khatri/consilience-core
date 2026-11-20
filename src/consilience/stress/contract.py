@@ -425,7 +425,7 @@ def _norm_invariance(t: dict, names: dict, where: str) -> dict:
     T = _need(t, "transform", where)
     if T not in TRANSFORMS:
         raise _err(where, f"transform must be one of {list(TRANSFORMS)}; got {T!r}")
-    _only(t, {"transform", "field", "score_exponent", "dims", "order", "invariance_tolerance"}, where)
+    _only(t, {"transform", "field", "score_exponent", "dims", "order", "invariance_tolerance", "center"}, where)
     f = _need(t, "field", where)
     if f not in names:
         raise _err(where, f"unknown field {f!r}")
@@ -445,6 +445,10 @@ def _norm_invariance(t: dict, names: dict, where: str) -> dict:
         if isinstance(o, bool) or not isinstance(o, int) or o < 1:
             raise _err(where, "dihedral order must be a positive integer")
         out["order"] = o
+    if t.get("center") is not None:
+        if T not in ("rotate", "dihedral", "reflect"):
+            raise _err(where, "center applies only to rotate, dihedral and reflect")
+        out["center"] = [_decimal_text(str(v) if not isinstance(v, str) else v, where + ".center") for v in t["center"]]
     if t.get("invariance_tolerance") is not None:
         out["invariance_tolerance"] = _decimal_text(t["invariance_tolerance"], where + ".invariance_tolerance")
     return out

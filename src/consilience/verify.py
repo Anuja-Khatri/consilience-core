@@ -91,6 +91,15 @@ def verify(receipt: Union[str, Path, dict], *, data=None, input=None) -> VerifyR
     if rec.get("schema") == ENVELOPE_SCHEMA:
         return _verify_envelope(rpath, rec)
 
+    if rec.get("receipt") == "consilience-stress-receipt/v1":
+        try:
+            from .stress.receipt import verify_stress
+        except ImportError as exc:  # numpy missing
+            raise InputError(f"stress receipts need the [stress] extra (numpy): {exc}") from None
+        ok, steps, note = verify_stress(rec, rpath, contract_path=input)
+        return VerifyResult(ok=ok, command="stress", recorded_sha256=rec.get("sha256"),
+                            recomputed_sha256=rec.get("sha256") if ok else None, steps=steps, note=note)
+
     from .table import TABLE_RECEIPT_SCHEMA, verify_table
     if rec.get("receipt") == TABLE_RECEIPT_SCHEMA:
         ok, steps, note = verify_table(rec, input_path=input or data, receipt_path=rpath)

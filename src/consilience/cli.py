@@ -281,6 +281,34 @@ def cmd_compare_table(args) -> int:
     return r.exit_code
 
 
+# ------------------------------------------------------------------- stress
+def cmd_stress(args) -> int:
+    try:
+        from .stress import stress
+        from .stress.contract import ContractError
+    except ImportError as exc:
+        print(f"consilience: error: stress needs numpy: pip install 'consilience[stress]' ({exc})", file=sys.stderr)
+        return EXIT_USAGE
+    only = [s.strip().upper() for s in args.only.split(",")] if args.only else None
+    if only and not set(only) <= {"C1", "C2", "C3", "C4", "C5"}:
+        print("consilience: error: --only takes C1..C5, comma-separated", file=sys.stderr)
+        return EXIT_USAGE
+    try:
+        r = stress(args.contract, budget=args.budget, seed=args.seed, out=args.out, only=only)
+    except ContractError as exc:
+        print(f"consilience: error: {exc}", file=sys.stderr)
+        return EXIT_USAGE
+    if args.json:
+        print(json.dumps(r.receipt, indent=1, ensure_ascii=False))
+    else:
+        print(r.text)
+        if args.out:
+            print(f"wrote: {args.out}/receipt.json (and candidates/)")
+            print(f"check: consilience verify {args.out}/receipt.json")
+        print(f"receipt: sha256 {r.receipt['sha256']}")
+    return r.exit_code
+
+
 # ------------------------------------------------------------------- verify
 def cmd_verify(args) -> int:
     try:
@@ -422,10 +450,20 @@ def build_parser() -> argparse.ArgumentParser:
     k.add_argument("--receipt", metavar="FILE", help="also write the JSON report to FILE")
     k.set_defaults(func=cmd_check)
 
+    st = sub.add_parser("stress", help="check scoring code before optimising against it (needs [stress])")
+    st.add_argument("contract", help="an evaluator contract (YAML)")
+    st.add_argument("--budget", choices=["small", "standard", "large"], default="standard")
+    st.add_argument("--seed", type=int, default=0)
+    st.add_argument("--out", metavar="DIR", help="write receipt.json and candidates/ into DIR")
+    st.add_argument("--json", action="store_true", help="print the receipt as JSON")
+    st.add_argument("--only", metavar="C1,C2,...", help="run only these checks")
+    st.set_defaults(func=cmd_stress)
+
     v = sub.add_parser("verify", help="re-run a result from its receipt and confirm the hash")
     v.add_argument("receipt", help="a receipt written by --receipt (or a record envelope)")
     v.add_argument("--data", help="where the data file of a check receipt is now")
-    v.add_argument("--input", help="where the table of a compare-table receipt is now")
+    v.add_argument("--input", help="where the table of a compare-table receipt is now "
+                   "(for a stress receipt: where its contract file is now)")
     v.set_defaults(func=cmd_verify)
 
     e = sub.add_parser("examples", help="write the made-up example files into DIR")

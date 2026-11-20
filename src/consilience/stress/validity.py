@@ -290,8 +290,12 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
                 add(math.inf, f"{r['k']} or more coplanar")
         elif k == "predicate":
             fn = contract.glue_fn("predicates", r["call"])
-            ok, mag = fn(cand)
-            mag = float(mag)
+            try:
+                ok, mag = fn(cand)
+                mag = float(mag)
+            except Exception as exc:          # a predicate that cannot judge the candidate: not valid
+                out.append(Violation(idx + offset, r["name"], math.inf, "large", f"predicate raised {type(exc).__name__}"))
+                continue
             if not ok and (mag > float(tol) or math.isinf(mag) or math.isnan(mag)):
                 mag = math.inf if math.isnan(mag) else mag
                 out.append(Violation(idx + offset, r["name"], mag,
