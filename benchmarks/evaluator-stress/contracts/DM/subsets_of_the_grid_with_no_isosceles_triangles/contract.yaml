@@ -1,0 +1,31 @@
+kind: evaluator-contract
+name: deepmind/subsets_of_the_grid_with_no_isosceles_triangles verify_construction (64 x 64)
+description: >
+  Problem 59: C(n) = largest S in [n]^2 with no (possibly flat) isosceles triangle (here n = 64, the
+  grid {0..63}^2 as in the shipped sol_64). Construction = the point set S. The scorer verifies; glue
+  composes score = |S| if verified else 0.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: verify_construction
+  timeout_s: 120
+  reject:
+    values: [0.0]
+fields:
+  - {name: S, type: int_array, role: construction}
+validity:
+  - {rule: finite, field: S}
+  - {rule: count, field: S, min: 1}
+  - {rule: integral, field: S}
+  - {rule: range, field: S, min: "0", max: "63"}
+  - {rule: distinct, field: S}
+  - {rule: predicate, call: no_isosceles, name: no_isosceles}
+invariances:
+  - {transform: permute, field: S}
+  - {transform: dihedral, field: S, order: 4, center: ["31.5", "31.5"]}
+  - {transform: translate, field: S}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+glue: glue.py
