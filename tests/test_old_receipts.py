@@ -53,3 +53,23 @@ def test_a_new_receipt_relabelled_as_0_1_0_fails():
 def test_0_1_0_note_names_the_rules():
     v = verify(OLD / "compare-precision.json")
     assert "by the 0.1.0 rules" in v.note
+
+
+# ---- receipts written by 0.1.1 (frozen 20 Nov 2026, before the 0.2.0 table work) ----
+
+OLD11 = Path(__file__).resolve().parent / "fixtures" / "receipts-0.1.1"
+RECEIPTS11 = sorted(OLD11.glob("*.json"))
+
+
+def test_fixture_receipts_are_from_0_1_1():
+    assert len(RECEIPTS11) == 10
+    for p in RECEIPTS11:
+        rec = json.loads(p.read_text(encoding="utf-8"))
+        assert rec["consilience_version"] == "0.1.1", p.name
+
+
+@pytest.mark.parametrize("path", RECEIPTS11, ids=lambda p: p.name)
+def test_0_1_1_receipt_verifies(path):
+    v = verify(path)
+    assert v.ok, (path.name, v.steps)
+    assert v.recomputed_sha256 == v.recorded_sha256

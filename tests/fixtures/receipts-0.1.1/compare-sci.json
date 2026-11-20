@@ -1,0 +1,71 @@
+{
+ "receipt": "consilience-receipt/v1",
+ "command": "compare",
+ "consilience_version": "0.1.1",
+ "pint_version": "0.26.2",
+ "inputs": {
+  "a": {
+   "value": "1.23e-5",
+   "unit": "mol/L"
+  },
+  "b": {
+   "value": "1.2337e-5",
+   "unit": "mol/L"
+  }
+ },
+ "options": {
+  "abs_tol": null,
+  "rel_tol": 0.001,
+  "floor": null,
+  "precision": "stated"
+ },
+ "pack": null,
+ "result": {
+  "verdict": "agree",
+  "label": "agree",
+  "defects": [],
+  "unit": "mol/L",
+  "a": {
+   "label": null,
+   "as_given": {
+    "value": "1.23e-5",
+    "unit": "mol/L"
+   },
+   "value": 1.23e-05,
+   "uncertainty": 0.0
+  },
+  "b": {
+   "label": null,
+   "as_given": {
+    "value": "1.2337e-5",
+    "unit": "mol/L"
+   },
+   "value": 1.2337e-05,
+   "uncertainty": 0.0
+  },
+  "difference": 3.6999999999999815e-08,
+  "tolerance": 1.2337000000000002e-08,
+  "floor": 0.0,
+  "conditions": {
+   "mode": "all conditions on either side",
+   "checked": [],
+   "ignored": []
+  },
+  "comparison": "values",
+  "precision": {
+   "mode": "stated",
+   "implied": 5.0499999999999996e-08,
+   "a": {
+    "written": "1.23e-5",
+    "implied": 5e-08,
+    "rule": "2 decimal places in the mantissa, exponent -5"
+   },
+   "b": {
+    "written": "1.2337e-5",
+    "implied": 5e-10,
+    "rule": "4 decimal places in the mantissa, exponent -5"
+   }
+  }
+ },
+ "sha256": "28e60653650c2e16113deee48b4f107e75497f1fea8e73b2342bc7c1b24814a3"
+}

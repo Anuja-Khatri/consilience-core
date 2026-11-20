@@ -1,0 +1,191 @@
+{
+ "receipt": "consilience-receipt/v1",
+ "command": "compare",
+ "consilience_version": "0.1.1",
+ "pint_version": "0.26.2",
+ "inputs": {
+  "a": {
+   "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement.",
+   "label": "Example lab A, overpotential at 10 mA/cm^2",
+   "value": 0.32,
+   "unit": "V",
+   "uncertainty": "4 mV",
+   "conditions": {
+    "electrolyte": {
+     "identity": "H2SO4",
+     "concentration": "0.5 mol/L"
+    },
+    "current_density": {
+     "value": 10,
+     "unit": "mA/cm^2",
+     "normalization": "geometric"
+    },
+    "temperature": "25 degC",
+    "ir_correction": true
+   }
+  },
+  "b": {
+   "note": "MADE-UP EXAMPLE for the consilience quickstart. Not a real measurement. Same conditions as measurement_a.json, written with other spellings and units.",
+   "label": "Example lab B, overpotential at 10 mA/cm^2",
+   "value": 331,
+   "unit": "mV",
+   "uncertainty": "3 mV",
+   "conditions": {
+    "electrolyte": {
+     "identity": "sulfuric acid",
+     "concentration": "500 mmol/L"
+    },
+    "current_density": {
+     "value": 0.01,
+     "unit": "A/cm^2",
+     "normalization": "geometric"
+    },
+    "temperature": "298.15 K",
+    "ir_correction": true
+   }
+  }
+ },
+ "options": {
+  "abs_tol": "15 mV",
+  "rel_tol": null,
+  "floor": null,
+  "precision": "stated"
+ },
+ "pack": {
+  "name": "electrochemistry",
+  "version": "electrochemistry-v1",
+  "sha256": "cbf7aea81b7f7eb070538e6049b2b2bd4ebcb00ae409c9ecfde9737d3ef1f97c",
+  "content": {
+   "kind": "compare-pack",
+   "name": "electrochemistry",
+   "version": "electrochemistry-v1",
+   "plain_english": "Two electrochemical measurements are compared only when they were made in the same electrolyte at the same concentration, at the same current density with the same normalisation, at the same temperature, and with the same iR correction.",
+   "rationale": null,
+   "source": "consilience-ledger rules/comparability_rules.yaml (comparability-v0.1), CR1-CR4, which cite B2 (PMC13707403, Molecules 2026).",
+   "licence": "CC BY 4.0",
+   "conditions": [
+    {
+     "id": "EC1",
+     "field": "electrolyte",
+     "plain_english": "Two measurements are comparable only in the same electrolyte at the same concentration.",
+     "rationale": "Electrolyte identity and concentration set the reaction environment.",
+     "source": "Ledger CR1. B2 (PMC13707403, Molecules 2026), abstract: comparability asserted only \"on a matched basis (1 M KOH, room temperature)\".",
+     "predicate": "record",
+     "parts": {
+      "concentration": {
+       "predicate": "quantity_equal",
+       "tolerance": 0,
+       "words": [],
+       "also_equal": []
+      },
+      "identity": {
+       "predicate": "equal",
+       "ignore_case": true,
+       "aliases": {
+        "h2so4": "sulfuric acid",
+        "hclo4": "perchloric acid",
+        "perchloric acid": "perchloric acid",
+        "perchloric_acid": "perchloric acid",
+        "sulfuric acid": "sulfuric acid",
+        "sulfuric_acid": "sulfuric acid",
+        "sulphuric acid": "sulfuric acid",
+        "sulphuric_acid": "sulfuric acid"
+       }
+      }
+     }
+    },
+    {
+     "id": "EC2",
+     "field": "current_density",
+     "plain_english": "Overpotentials are comparable only at the same current density and the same normalisation (geometric or ECSA).",
+     "rationale": "Overpotential is reported at a current density; ECSA- and geometric-normalised current densities are not interchangeable.",
+     "source": "Ledger CR2. B2 (PMC13707403, Molecules 2026), section 3.2 \"The 10 mA cm-2 Benchmark\": divergence \"by more than 150 mV at 100 mA cm-2\" relative to 10 mA cm-2.",
+     "predicate": "quantity_equal",
+     "tolerance": 0,
+     "words": [],
+     "also_equal": [
+      "normalization"
+     ]
+    },
+    {
+     "id": "EC3",
+     "field": "temperature",
+     "plain_english": "Measurements are comparable only at the same temperature; room_temperature matches room_temperature only, never a number.",
+     "rationale": "Temperature shifts kinetics; room_temperature is a word, never a number.",
+     "source": "Ledger CR3. B2 (PMC13707403, Molecules 2026), abstract: the matched basis is explicitly \"(1 M KOH, room temperature)\".",
+     "predicate": "quantity_equal",
+     "tolerance": 0,
+     "words": [
+      "room_temperature"
+     ],
+     "also_equal": []
+    },
+    {
+     "id": "EC4",
+     "field": "ir_correction",
+     "plain_english": "Measurements are comparable only if both are iR-corrected or both are not.",
+     "rationale": "iR correction changes the reported overpotential materially; mixing corrected and uncorrected values is not comparable.",
+     "source": "Ledger CR4. B2 (PMC13707403, Molecules 2026), section 3: a RuO2 electrode's overpotential at 25 mA cm-2 \"slid continuously from 437 mV uncompensated down to 382 mV at full compensation, depending on which fraction the author chose\".",
+     "predicate": "equal",
+     "ignore_case": false,
+     "aliases": {}
+    }
+   ]
+  }
+ },
+ "result": {
+  "verdict": "agree",
+  "label": "agree",
+  "defects": [],
+  "unit": "V",
+  "a": {
+   "label": "Example lab A, overpotential at 10 mA/cm^2",
+   "as_given": {
+    "value": 0.32,
+    "unit": "V",
+    "uncertainty": "4 mV"
+   },
+   "value": 0.32,
+   "uncertainty": 0.004
+  },
+  "b": {
+   "label": "Example lab B, overpotential at 10 mA/cm^2",
+   "as_given": {
+    "value": 331,
+    "unit": "mV",
+    "uncertainty": "3 mV"
+   },
+   "value": 0.331,
+   "uncertainty": 0.003
+  },
+  "difference": 0.01100000000000001,
+  "tolerance": 0.015,
+  "floor": 0.004,
+  "conditions": {
+   "mode": "pack electrochemistry",
+   "checked": [
+    "electrolyte",
+    "current_density",
+    "temperature",
+    "ir_correction"
+   ],
+   "ignored": []
+  },
+  "comparison": "values",
+  "precision": {
+   "mode": "stated",
+   "implied": 0.0,
+   "a": {
+    "written": null,
+    "implied": 0.0,
+    "rule": "uncertainty stated"
+   },
+   "b": {
+    "written": "331",
+    "implied": 0.0,
+    "rule": "uncertainty stated"
+   }
+  }
+ },
+ "sha256": "e807ca3c0000cbe0ed7459b015505211b90931ccc7893ccc35e5addaca767c2b"
+}

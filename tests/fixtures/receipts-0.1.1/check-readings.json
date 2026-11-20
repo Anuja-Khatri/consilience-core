@@ -1,0 +1,231 @@
+{
+ "receipt": "consilience-receipt/v1",
+ "command": "check",
+ "consilience_version": "0.1.1",
+ "pint_version": "0.26.2",
+ "inputs": {
+  "data": {
+   "path": "readings.csv",
+   "sha256": "ce1f95d5ff15ebab30b57e7d37d1e3793d88c2bbedc0e8f42f59d3a6f1d2e84f",
+   "bytes": 755
+  }
+ },
+ "rules": {
+  "name": "example-bench-readings",
+  "version": "example-bench-readings-v1",
+  "sha256": "b6a64e8fab26a07da5ca9fbcc0c50a3460781ba722f224bd0a27221fb80bbcff",
+  "content": {
+   "kind": "check-rules",
+   "name": "example-bench-readings",
+   "version": "example-bench-readings-v1",
+   "plain_english": "Example rules for a made-up table of bench readings: each reading must stay within its own recorded limit, temperatures cannot be below absolute zero, and relative humidity lies between 0 and 100 percent.",
+   "rationale": null,
+   "source": "Written for the consilience quickstart; the data it checks is made up.",
+   "licence": null,
+   "id_column": "sample_id",
+   "columns": {
+    "humidity_pct": {
+     "plain_english": null,
+     "unit": "percent"
+    },
+    "limit_v": {
+     "plain_english": "The limit recorded for that reading.",
+     "unit": "V"
+    },
+    "reading": {
+     "plain_english": "The reading; its unit is given row by row in reading_unit.",
+     "unit_column": "reading_unit"
+    },
+    "temperature_c": {
+     "plain_english": null,
+     "unit": "degC"
+    }
+   },
+   "rules": [
+    {
+     "id": "R1",
+     "kind": "limit",
+     "column": "reading",
+     "if_empty": "refuse",
+     "plain_english": "A reading must not exceed its own recorded limit by more than 0.02 V.",
+     "rationale": "A reading above the limit the instrument was set to is not a valid reading.",
+     "source": null,
+     "limit_column": "limit_v",
+     "must_be": "at_most",
+     "margin": "0.02 V",
+     "value_offset": 0,
+     "if_limit_empty": "refuse"
+    },
+    {
+     "id": "R2",
+     "kind": "bound",
+     "column": "temperature_c",
+     "if_empty": "refuse",
+     "plain_english": "No temperature is below absolute zero.",
+     "rationale": "Physically impossible; usually a sign or transcription error.",
+     "source": null,
+     "min": "0 K",
+     "min_inclusive": true,
+     "max_inclusive": true
+    },
+    {
+     "id": "R3",
+     "kind": "bound",
+     "column": "humidity_pct",
+     "if_empty": "refuse",
+     "plain_english": "Relative humidity lies between 0 and 100 percent.",
+     "rationale": "Physically impossible outside this range.",
+     "source": null,
+     "min": 0,
+     "max": 100,
+     "min_inclusive": true,
+     "max_inclusive": true
+    }
+   ]
+  }
+ },
+ "result": {
+  "summary": {
+   "rows": 20,
+   "blank_lines": 0,
+   "rules": 3,
+   "violations": 5,
+   "unparseable_cells": 2,
+   "skipped_empty": 0,
+   "by_rule": {
+    "R1": {
+     "violations": 2,
+     "unparseable": 1,
+     "skipped": 0,
+     "passed": 17
+    },
+    "R2": {
+     "violations": 1,
+     "unparseable": 1,
+     "skipped": 0,
+     "passed": 18
+    },
+    "R3": {
+     "violations": 2,
+     "unparseable": 0,
+     "skipped": 0,
+     "passed": 18
+    }
+   }
+  },
+  "violations": [
+   {
+    "rule": "R1",
+    "line": 7,
+    "id": "S-004",
+    "column": "reading",
+    "value": "2.71",
+    "unit": "V",
+    "plain_english": "A reading must not exceed its own recorded limit by more than 0.02 V.",
+    "limit_column": "limit_v",
+    "limit_text": "2.50",
+    "limit": 2.5,
+    "limit_unit": "V",
+    "margin": 0.02,
+    "value_offset": 0.0,
+    "must_be": "at_most",
+    "route": "recorded_limit",
+    "row_sha256": "f6ebb38ff21a4b08cdcb08bd52c1181c3ac1ff336b9e108b03bd9d682a306546"
+   },
+   {
+    "rule": "R2",
+    "line": 10,
+    "id": "S-007",
+    "column": "temperature_c",
+    "value": "-280",
+    "unit": "degC",
+    "plain_english": "No temperature is below absolute zero.",
+    "bound": "min",
+    "limit": -273.15,
+    "limit_unit": "degC",
+    "inclusive": true,
+    "row_sha256": "bda89ad69f3a1837fed781b89b826ff15d3cd482959fdfb97862b80eb0ac061f"
+   },
+   {
+    "rule": "R1",
+    "line": 14,
+    "id": "S-011",
+    "column": "reading",
+    "value": "850",
+    "unit": "mV",
+    "plain_english": "A reading must not exceed its own recorded limit by more than 0.02 V.",
+    "limit_column": "limit_v",
+    "limit_text": "0.80",
+    "limit": 800.0,
+    "limit_unit": "mV",
+    "margin": 20.0,
+    "value_offset": 0.0,
+    "must_be": "at_most",
+    "route": "recorded_limit",
+    "row_sha256": "511d51f9d275a039c17e959ca00a5458c7310cbe9daaf93b5b95107ac2f53c83"
+   },
+   {
+    "rule": "R3",
+    "line": 18,
+    "id": "S-015",
+    "column": "humidity_pct",
+    "value": "104",
+    "unit": "percent",
+    "plain_english": "Relative humidity lies between 0 and 100 percent.",
+    "bound": "max",
+    "limit": 100.0,
+    "limit_unit": "percent",
+    "inclusive": true,
+    "row_sha256": "be633f7a4560ea2b3c5304a63c048901231a4590a8cf9dc063d74c51e112f94a"
+   },
+   {
+    "rule": "R3",
+    "line": 21,
+    "id": "S-018",
+    "column": "humidity_pct",
+    "value": "-3",
+    "unit": "percent",
+    "plain_english": "Relative humidity lies between 0 and 100 percent.",
+    "bound": "min",
+    "limit": 0.0,
+    "limit_unit": "percent",
+    "inclusive": true,
+    "row_sha256": "3a7f9477333ae4ed42b26d28384579c51b86e501cdff6ee4fd412b64562c5c58"
+   }
+  ],
+  "unparseable": [
+   {
+    "line": 12,
+    "id": "S-009",
+    "column": "limit_v",
+    "reason": "not_a_number",
+    "text": "n/a",
+    "detail": "it does not start with a plain number",
+    "rules": [
+     "R1"
+    ]
+   },
+   {
+    "line": 16,
+    "id": "S-013",
+    "column": "temperature_c",
+    "reason": "ambiguous_separator",
+    "text": "21,5",
+    "detail": "a comma may be a decimal or a thousands separator",
+    "rules": [
+     "R2"
+    ]
+   }
+  ],
+  "header": [
+   "sample_id",
+   "reading",
+   "reading_unit",
+   "limit_v",
+   "temperature_c",
+   "humidity_pct"
+  ],
+  "exit_code": 3
+ },
+ "sha256": "20258880f7107da4c5eb473905695442b4a432694ea1ecc4deaa1bbac3de25a7"
+}

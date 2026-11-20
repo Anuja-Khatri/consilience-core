@@ -1,0 +1,71 @@
+{
+ "receipt": "consilience-receipt/v1",
+ "command": "compare",
+ "consilience_version": "0.1.1",
+ "pint_version": "0.26.2",
+ "inputs": {
+  "a": {
+   "value": 1.5,
+   "unit": "V"
+  },
+  "b": {
+   "value": 1.46,
+   "unit": "V"
+  }
+ },
+ "options": {
+  "abs_tol": null,
+  "rel_tol": null,
+  "floor": null,
+  "precision": "stated"
+ },
+ "pack": null,
+ "result": {
+  "verdict": "disagree",
+  "label": "disagree",
+  "defects": [],
+  "unit": "V",
+  "a": {
+   "label": null,
+   "as_given": {
+    "value": 1.5,
+    "unit": "V"
+   },
+   "value": 1.5,
+   "uncertainty": 0.0
+  },
+  "b": {
+   "label": null,
+   "as_given": {
+    "value": 1.46,
+    "unit": "V"
+   },
+   "value": 1.46,
+   "uncertainty": 0.0
+  },
+  "difference": 0.040000000000000036,
+  "tolerance": 0.0,
+  "floor": 0.0,
+  "conditions": {
+   "mode": "all conditions on either side",
+   "checked": [],
+   "ignored": []
+  },
+  "comparison": "values",
+  "precision": {
+   "mode": "stated",
+   "implied": 0.0,
+   "a": {
+    "written": null,
+    "implied": 0.0,
+    "rule": "a number with no written form (a Python float): exact"
+   },
+   "b": {
+    "written": null,
+    "implied": 0.0,
+    "rule": "a number with no written form (a Python float): exact"
+   }
+  }
+ },
+ "sha256": "90e9ae9b5647851273d109d15973f22570121c9c4819f94fa2bd6ff4bbf9f58f"
+}
