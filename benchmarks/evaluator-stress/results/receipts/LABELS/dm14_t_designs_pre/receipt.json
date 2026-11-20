@@ -1,0 +1,527 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {
+   "D": 3,
+   "N": 120
+  },
+  "fields": [
+   {
+    "name": "X",
+    "role": "construction",
+    "shape": [
+     120,
+     3
+    ],
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "calculate_design_score",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     -1000000.0
+    ]
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "X",
+    "transform": "permute"
+   },
+   {
+    "dims": 3,
+    "field": "X",
+    "transform": "rotate"
+   },
+   {
+    "field": "X",
+    "transform": "negate"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/spherical_t_designs calculate_design_score (d=2, t=15, N=120) [DM-14 pre]",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "X"
+  ],
+  "score": {
+   "bound": {
+    "kind": "proven",
+    "source": "the score is minus a sum over k of dim_k/C_k(1) * sum_ij C_k(<x_i,x_j>), each term >= 0 by the addition theorem (positive-definite Gegenbauer kernels)",
+    "value": "0"
+   },
+   "direction": "maximize",
+   "record": {
+    "kind": "threshold",
+    "margin": "0",
+    "source": "notebook data cell (code cell 1): a set is reported a 'correct numerical construction' when its design error is below 1e-8 (score > -1e-8)",
+    "success": ">",
+    "value": "-0.00000001"
+   }
+  },
+  "validity": [
+   {
+    "field": "X",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "X",
+    "rule": "shape",
+    "shape": [
+     120,
+     3
+    ],
+    "tolerance": "0"
+   },
+   {
+    "axis": 1,
+    "equals": "1",
+    "field": "X",
+    "rule": "norm",
+    "tolerance": "1e-12"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/dm14_t_designs_pre/contract.yaml",
+ "contract_sha256": "3fd4a9893622dc77e8980e16c9107d2dab623b572adeb5de538d1db3fa24bf2b",
+ "created": "2026-11-20T18:27:30+00:00",
+ "environment": {
+  "mean_call_seconds": 0.007635448132893156,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 59.223
+ },
+ "file_hashes": {
+  "glue.py": "d36cafb5043fb089a24df8f479f303aeddf68980ff952fba11712b709b54d753",
+  "reference.npz": "cb48b86a1e6f3088c8ad74f7eea6b72acaa884792b31ee524150971478186f51",
+  "scorer.py": "1201429190d68da90f153df554bac716dd3adc46272c443f6989ecb37ff9624c"
+ },
+ "findings": [
+  {
+   "attack": "X:magnitude*1e+150",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_exploitable_invalid_candidate.json",
+     "sha256": "0b34e11ff3860fee61b606080c5358489d1aa443f66ca23f996169a939b151de"
+    },
+    "worst_member": {
+     "file": "candidates/f00_C1_exploitable_invalid_worst_member.json",
+     "sha256": "15f26700de4fe376663a26cc6fdcde5011e43849b69ca6b8a4e5c3bd8292d624"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.3635537143841248e-10,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 1.0000000000000002e+150,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": 7.87636622590071e-12,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:magnitude*1e+300",
+   "block": true,
+   "bound": "0",
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_exceeds_bound_candidate.json",
+     "sha256": "5bfb3ee93ecc2b2e43438419cf1a5d9fcd0372a5e2892dccd4ec7172b8b327c3"
+    }
+   },
+   "check": "C1",
+   "kind": "exceeds_bound",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "norm"
+    }
+   ],
+   "worst": 59646.093749999985
+  },
+  {
+   "attack": "X:scale*(1+1e-09)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_exploitable_invalid_candidate.json",
+     "sha256": "b00b2198371038072bd9ec8bca97acae0439f4191e50d595c81c3cedd8e68300"
+    },
+    "worst_member": {
+     "file": "candidates/f02_C1_exploitable_invalid_worst_member.json",
+     "sha256": "b941192023bcb981181333d5d73aeb45ac3863a21652e0aafdc35917efb8a8f1"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.6335044428217316e-10,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 1.000000082740371e-09,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": -1.911870661785997e-11,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:scale*(1-1e-09)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f03_C1_exploitable_invalid_candidate.json",
+     "sha256": "0645ad7ecebf12848cbe9d2c6bbe96b5ff2de068b16ea41326d47c137c7f4241"
+    },
+    "worst_member": {
+     "file": "candidates/f03_C1_exploitable_invalid_worst_member.json",
+     "sha256": "7d0a441b1eca9134d30707b847b37eaa734eb74ed05c6099b21bd0569f94d536"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.6346657361054895e-10,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 1.000000082740371e-09,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": -1.9234835946235762e-11,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:scale*(1+1e-06)",
+   "block": true,
+   "bound": "0",
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f04_C1_exceeds_bound_candidate.json",
+     "sha256": "b952645f97f66e4a196489c4172619e847afc2c66d3808e879d56c6d415d5ceb"
+    },
+    "worst_member": {
+     "file": "candidates/f04_C1_exceeds_bound_worst_member.json",
+     "sha256": "91c36b6c8509124f92a443f03b7ba44ad67f4f7067a7124eeb7c26cd566735a6"
+    }
+   },
+   "check": "C1",
+   "kind": "exceeds_bound",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 9.999999999177334e-07,
+     "rule": "norm"
+    }
+   ],
+   "worst": 3.335232090506679e-11
+  },
+  {
+   "attack": "X:scale*(1-1e-06)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f05_C1_exploitable_invalid_candidate.json",
+     "sha256": "448bf855cd92857be065a992d030c191ef53235758b4e0cfe081845dbafbc500"
+    },
+    "worst_member": {
+     "file": "candidates/f05_C1_exploitable_invalid_worst_member.json",
+     "sha256": "e358de7bf728a6a4a4f43876d2b97e6a4778f9942e4972e8c29da66c7ff5f088"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.7916368388881665e-10,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 1.000000000139778e-06,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": -3.493194622450346e-11,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:scale*(1+0.0001)",
+   "block": true,
+   "bound": "0",
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f06_C1_exceeds_bound_candidate.json",
+     "sha256": "f9161123bdb32b28af11814d588797b475495d2a6e51b37f31de945f1a4e7b5e"
+    },
+    "worst_member": {
+     "file": "candidates/f06_C1_exceeds_bound_worst_member.json",
+     "sha256": "835a764c063c0b0392bd2bf6ebde28198ca26f828cfea1034754eb3ce5a9a8f2"
+    }
+   },
+   "check": "C1",
+   "kind": "exceeds_bound",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 9.999999999998899e-05,
+     "rule": "norm"
+    }
+   ],
+   "worst": 2.3404944649030313e-11
+  },
+  {
+   "attack": "X:scale*(1-0.0001)",
+   "block": true,
+   "bound": "0",
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f07_C1_exceeds_bound_candidate.json",
+     "sha256": "6e223652e8022535401d4d4447cc9d2d7a3561a97dd9355011ac0078b7cb8a63"
+    },
+    "worst_member": {
+     "file": "candidates/f07_C1_exceeds_bound_worst_member.json",
+     "sha256": "0fb47a1d23ee682268c41dd84efe5e0aa9ad2344f11b715db8dc635234ddd30a"
+    }
+   },
+   "check": "C1",
+   "kind": "exceeds_bound",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 0.00010000000000010001,
+     "rule": "norm"
+    }
+   ],
+   "worst": 2.7878699349059843e-11
+  },
+  {
+   "attack": "X:scale*(1+0.001)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f08_C1_exploitable_invalid_candidate.json",
+     "sha256": "cfff3947bc61464ef6b6bf5d83ad7616b184b23a5208c2061d43c3f2bc4b6c4d"
+    },
+    "worst_member": {
+     "file": "candidates/f08_C1_exploitable_invalid_worst_member.json",
+     "sha256": "e6631efab8803feac8366cc142ff9e80b60b61f7684325014cd9338230f3c4ec"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.3667256215654788e-10,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 0.0009999999999998899,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": 7.559175507765303e-12,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:scale*(1-0.001)",
+   "block": true,
+   "bound": "0",
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f09_C1_exceeds_bound_candidate.json",
+     "sha256": "e24b3f10360e1adfc98790fd0fe2f505a6162cc7b5502a519fac31ed674413ac"
+    },
+    "worst_member": {
+     "file": "candidates/f09_C1_exceeds_bound_worst_member.json",
+     "sha256": "5e88c7c5d80834eda0e2096745cd942d3e5a64dd4c3849c3362425a59af2ead4"
+    }
+   },
+   "check": "C1",
+   "kind": "exceeds_bound",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 0.001000000000000112,
+     "rule": "norm"
+    }
+   ],
+   "worst": 2.5446089679803663e-11
+  },
+  {
+   "attack": "X:scale*(1+0.01)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f10_C1_exploitable_invalid_candidate.json",
+     "sha256": "54ada30e0333c00014cc0b831ecd23c99a55ff42efa562ec5d484425c69f576f"
+    },
+    "worst_member": {
+     "file": "candidates/f10_C1_exploitable_invalid_worst_member.json",
+     "sha256": "aa46ff5efd31fd9086a1e8aa6678e06a0217d920521bd9d966f29b653713b084"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.7037882216186517e-10,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 0.010000000000000009,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": -2.6147084497551987e-11,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:scale*(1-0.01)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f11_C1_exploitable_invalid_candidate.json",
+     "sha256": "9244c3884b614af51d98a28f29ba2647d3bd6e6164103a800b45b477ed197369"
+    },
+    "worst_member": {
+     "file": "candidates/f11_C1_exploitable_invalid_worst_member.json",
+     "sha256": "c81d4269521fb43b209ac64ffb6fc6a3280a0bf6706e7004cf642f27475de57c"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": -1.6866485985644886e-10,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 0.01000000000000012,
+     "rule": "norm"
+    }
+   ],
+   "valid_base": 1.4423173766431319e-10,
+   "worst": -2.443312219213567e-11,
+   "worst_factor": 1.0
+  }
+ ],
+ "glue_sha256": "d36cafb5043fb089a24df8f479f303aeddf68980ff952fba11712b709b54d753",
+ "info": {
+  "C3": {
+   "best_invalid": -11347.976361962452,
+   "best_valid": 1.4423173766431319e-10,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.875
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 7590,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 5e-09,
+  "margin_source": "record_resolution",
+  "record_score_units": -1e-08,
+  "reference_score": 1.4423173766431319e-10,
+  "resolution": 5e-09,
+  "seed": 0,
+  "sigma_ref": 1.8753831820816913e-10,
+  "timeouts": 0,
+  "valid_twin_base": null
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "block": false,
+   "check": "C3",
+   "kind": "unpaired_gain",
+   "note": "equality rule without a projection: no valid base",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "norm differs",
+     "index": 2,
+     "magnitude": 0.9071397765591154,
+     "rule": "norm"
+    }
+   ],
+   "score": -11347.976361962452
+  }
+ ],
+ "sha256": "7d009a06af6af5b37fc9633425054fc7c715a9cbbd7e4be02896145e94481169",
+ "verdict": "BLOCK"
+}

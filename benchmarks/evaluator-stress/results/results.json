@@ -1,0 +1,66 @@
+{
+ "budget": "standard",
+ "seed": 0,
+ "rows": [
+  {
+   "key": "DM/packing_circles_max_sum_of_radii_square",
+   "verdict": "PASS",
+   "exit": 0,
+   "seconds": 7.4,
+   "blocks": "",
+   "reported": "",
+   "abstain": "",
+   "c5": "beats_record",
+   "m": 0.0005,
+   "margin_source": "record_resolution",
+   "calls": 6563,
+   "scaled_budget": "\"\"",
+   "receipt_sha256": "d44e79cbb26f8d5a0d374149447bd4e08fad67dbf7c90db8bd0803a705ee5fde"
+  },
+  {
+   "key": "DMR/dmr11_circles",
+   "verdict": "PASS",
+   "exit": 0,
+   "seconds": 41.8,
+   "blocks": "",
+   "reported": "C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score",
+   "abstain": "",
+   "c5": "",
+   "m": 0.0005,
+   "margin_source": "record_resolution",
+   "calls": 8516,
+   "scaled_budget": "\"\"",
+   "receipt_sha256": "3983cfb1fa5d25f8a6e8c18bb311a62b830a824941ef6ddf72012692d95dc223"
+  },
+  {
+   "key": "G/circle_packing",
+   "verdict": "PASS",
+   "exit": 0,
+   "seconds": 17.0,
+   "blocks": "",
+   "reported": "",
+   "abstain": "",
+   "c5": "",
+   "m": 0.0005,
+   "margin_source": "record_resolution",
+   "calls": 6737,
+   "scaled_budget": "\"\"",
+   "receipt_sha256": "2c6c2c9d90701657e0dbcf5279c4aced6825e40a4395ddc98d41798ce9f97365"
+  },
+  {
+   "key": "SH/circle_packing",
+   "verdict": "PASS",
+   "exit": 0,
+   "seconds": 206.1,
+   "blocks": "",
+   "reported": "C2:self_report_headroom",
+   "abstain": "",
+   "c5": "",
+   "m": 0.0005,
+   "margin_source": "record_resolution",
+   "calls": 1266,
+   "scaled_budget": "{\"c3\": [8, 116], \"esc\": [3, 309]}",
+   "receipt_sha256": "fc110749882117b5e3e44f9197860932f0370032aa1a226aa5cf94d44a058df1"
+  }
+ ]
+}

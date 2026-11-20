@@ -1,0 +1,5 @@
+key,verdict,exit,seconds,blocks,reported,abstain,c5,m,margin_source,calls,scaled_budget,receipt_sha256
+DM/packing_circles_max_sum_of_radii_square,PASS,0,7.4,,,,beats_record,0.0005,record_resolution,6563,"""""",d44e79cbb26f8d5a0d374149447bd4e08fad67dbf7c90db8bd0803a705ee5fde
+DMR/dmr11_circles,PASS,0,41.8,,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,0.0005,record_resolution,8516,"""""",3983cfb1fa5d25f8a6e8c18bb311a62b830a824941ef6ddf72012692d95dc223
+G/circle_packing,PASS,0,17.0,,,,,0.0005,record_resolution,6737,"""""",2c6c2c9d90701657e0dbcf5279c4aced6825e40a4395ddc98d41798ce9f97365
+SH/circle_packing,PASS,0,206.1,,C2:self_report_headroom,,,0.0005,record_resolution,1266,"{""c3"": [8, 116], ""esc"": [3, 309]}",fc110749882117b5e3e44f9197860932f0370032aa1a226aa5cf94d44a058df1

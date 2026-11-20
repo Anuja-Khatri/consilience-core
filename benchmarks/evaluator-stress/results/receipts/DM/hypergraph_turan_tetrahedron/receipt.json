@@ -1,0 +1,805 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "s",
+    "role": "construction",
+    "shape": [
+     50
+    ],
+    "type": "int_array"
+   },
+   {
+    "name": "w",
+    "role": "construction",
+    "shape": [
+     6
+    ],
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "evaluate_sequences",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "w",
+    "score_exponent": 0,
+    "transform": "scale"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/hypergraph_turan_tetrahedron evaluate_sequences (n = 6 classes)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "s",
+   "w"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "Turan's construction, C >= 5/9 (conjectured optimal); notebook 'What AlphaEvolve found'. Written as the float nearest 5/9",
+    "value": "0.5555555555555556"
+   }
+  },
+  "validity": [
+   {
+    "field": "s",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "s",
+    "rule": "shape",
+    "shape": [
+     50
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "s",
+    "rule": "alphabet",
+    "tolerance": "0",
+    "values": [
+     "0",
+     "1"
+    ]
+   },
+   {
+    "call": "tetrahedron_free",
+    "equality": false,
+    "name": "tetrahedron_free",
+    "rule": "predicate",
+    "tolerance": "0"
+   },
+   {
+    "field": "w",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "w",
+    "rule": "shape",
+    "shape": [
+     6
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "w",
+    "max": "1",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "call": "positive_weight",
+    "equality": false,
+    "name": "positive_weight",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DM/hypergraph_turan_tetrahedron/contract.yaml",
+ "contract_sha256": "ceee1200d9ee821853fdc01787108052476392a1637ceb1c6957c6e65341a796",
+ "created": "2026-11-20T18:05:09+00:00",
+ "environment": {
+  "mean_call_seconds": 0.0009272026834449041,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 10.557
+ },
+ "file_hashes": {
+  "glue.py": "1255098e0c5f4dae4a8374e3f8912d96d6351f9eb609cb819cd1f8273aa0443c",
+  "reference.npz": "d5fec25d515fb42ba5abd7bbf13a3a2d810732254a00ef434a0dd003864cdc73",
+  "scorer.py": "58662263db2ddfb4759e3fa96e75dac127e8fa6e25e9444a92e922ed876836ef"
+ },
+ "findings": [
+  {
+   "attack": "s:count+1",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "7eae64174661c6cf1c0ef2688a698ea6cbc7fdf6e665d4f8db97e254ef3f2a97"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.5555555555555556,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "shape [51] != [50]",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "shape"
+    }
+   ],
+   "score": 0.5555555555555556
+  },
+  {
+   "attack": "s:magnitude*1e+150",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_exploitable_type_violation_candidate.json",
+     "sha256": "bfe5981368d088477190ef5665e5bdd2ebf36bbe5bdcec3bc6b2156203df3fd8"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_type_violation",
+   "projected_score": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "4 value(s) outside the alphabet",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "alphabet"
+    }
+   ],
+   "score": 0.5555555555555556
+  },
+  {
+   "attack": "s:magnitude*1e+300",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_exploitable_type_violation_candidate.json",
+     "sha256": "3abc88028aa7d5611d791523fe28c623e6545cc7b85439abbae4b5cff89712f5"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_type_violation",
+   "projected_score": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "4 value(s) outside the alphabet",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "alphabet"
+    }
+   ],
+   "score": 0.5555555555555556
+  },
+  {
+   "attack": "w:nonfinite[0]=inf",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f03_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "883e5fa1ae6056267591ac84a9629bd5267ef29d4460da80c1e90f5921e01c16"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.5555555555555556,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.5555555555555556
+  },
+  {
+   "attack": "w:nonfinite[3]=-inf",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f04_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "c820a360fdced171204076e8fd921e744b54177cca0ae2d01808e18f8feeef61"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.5555555555555556,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ],
+   "score": 0.5555555555555556
+  },
+  {
+   "attack": "w:nonfinite[5]=-inf",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f05_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "7225ce1d0bf7abcac36dcfbb20933f8490f50e00d8a5c0c73ce56e93f17a88b9"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.5555555555555556,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ],
+   "score": 0.5555555555555556
+  },
+  {
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f06_C1-escalation_accepts_gross_invalid_candidate.json",
+     "sha256": "434d3705a8ddddb480e4a1ab2e4056b6a7914f3ad845d966eeec5223cfc77a08"
+    }
+   },
+   "check": "C1-escalation",
+   "escalated_from": "w:nonfinite[3]=inf",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.5555555555555556,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "43 value(s) outside the alphabet",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "alphabet"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 3,
+     "magnitude": "inf",
+     "rule": "tetrahedron_free"
+    },
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.5555555555555556
+  }
+ ],
+ "glue_sha256": "1255098e0c5f4dae4a8374e3f8912d96d6351f9eb609cb819cd1f8273aa0443c",
+ "info": {
+  "C3": {
+   "best_invalid": 0.5555555555555556,
+   "best_valid": null,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 1.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 9077,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1e-09,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": 0.5555555555555556,
+  "reference_score": 0.5555555555555556,
+  "resolution": 5e-17,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 0.5555555555555556
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "w:nonfinite[0]=nan",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ]
+  },
+  {
+   "attack": "w:nonfinite[3]=nan",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ]
+  },
+  {
+   "attack": "w:nonfinite[5]=nan",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ]
+  },
+  {
+   "attack": "w:nonfinite[3]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.234375
+  },
+  {
+   "attack": "w:nonfinite[5]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.234375
+  },
+  {
+   "attack": "w:nonfinite[0]=-inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ],
+   "score": 0.375
+  },
+  {
+   "attack": "w:count-1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "shape [5] != [6]",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "shape"
+    }
+   ],
+   "score": 0.1111111111111111
+  },
+  {
+   "attack": "w:empty",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "shape [0] != [6]",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "shape"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "attack": "w:magnitude*1e+150",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1e+150,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:magnitude*1e+300",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1e+300,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:scale*(1+1e-09)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1.000000082740371e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:scale*(1+1e-06)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 9.999999999177334e-07,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:scale*(1+0.0001)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 9.999999999998899e-05,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:scale*(1+0.001)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 0.0009999999999998899,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:scale*(1+0.01)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 0.010000000000000009,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:range-1e-12",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:range-1e-09",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:range-1e-06",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:range-0.001",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:range-0.1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 0.1,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "w:range-1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 6,
+     "magnitude": 1.0,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "w:nonfinite[5]=inf",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "42 value(s) outside the alphabet",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "alphabet"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 3,
+     "magnitude": "inf",
+     "rule": "tetrahedron_free"
+    },
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.5503705319072411
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "w:nonfinite[0]=-inf",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "40 value(s) outside the alphabet",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "alphabet"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 3,
+     "magnitude": "inf",
+     "rule": "tetrahedron_free"
+    },
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 4,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "positive_weight"
+    }
+   ],
+   "score": 0.5555527105968633
+  }
+ ],
+ "sha256": "415e4e7048f18c7231befae8b69f8a50d425ec7bf8b8a9f4f5b17f946da3c75d",
+ "verdict": "BLOCK"
+}

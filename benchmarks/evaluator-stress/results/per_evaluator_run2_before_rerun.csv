@@ -1,0 +1,46 @@
+key,verdict,exit,seconds,blocks,reported,abstain,c5,m,margin_source,calls,scaled_budget,receipt_sha256
+CE/circle_packing_rect_21,PASS,0,224.5,,,,,0.00021134212902845784,record_resolution,1055,"{""c3"": [8, 115], ""esc"": [3, 308]}",b51dea37cb401546792c911eccdc5c443283271d65599678ad0d8553f1809af3
+CE/heilbronn_triangle_11,PASS,0,502.4,,C1:accepts_invalid_low_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score;C1-escalation:tolerance_headroom,,within_resolution,0.0013687421496261787,record_resolution,926,"{""c3"": [6, 53], ""esc"": [3, 106]}",89acc0fa1bbfc30616ad6905130d950819b0512e312e0e3faa2c23f22966cd69
+CE/second_autocorr_ineq,BLOCK,1,398.3,C1:exploitable_invalid,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,5.1975051975072795e-05,record_resolution,1971,"{""c3"": [8, 117], ""esc"": [3, 314]}",32ae94051f5834cd2425448c94351c4c6c907df3ddbca078eade10b227e49a57
+DM/edges_vs_triangles,PASS,0,19.5,,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,1e-09,default_1e-9_relative,8078,"""""",607969111ab3f46db0ff68188a8d65d9fb2b333628b131efeed311b492d57c7c
+DM/erdos_squares_in_a_square,PASS,0,9.4,,,,,3.0000000000000004e-09,default_1e-9_relative,3776,"{""c3"": [8, 454], ""esc"": [3, 500]}",c04282b63ce0bef65df9d44ee8abf8a9b124479c71b36239902f3a2c3fd316a6
+DM/finite_field_kakeya_problem,PASS,0,237.1,,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,1.28e-07,default_1e-9_relative,7736,"""""",ae43d8aa86ba345186b53d9dc3692217b21e942acc05c2bbf3c16cb838ce0720
+DM/flat_polynomials_c_minus,BLOCK,1,220.4,C1:exploitable_type_violation;C3:exploitable_type_violation,C1:nan_score;C1:type_violation_harmless,,,1e-09,default_1e-9_relative,1395,"{""c3"": [8, 156], ""esc"": [3, 417]}",7f77485cb95388b3c57ef0b45628ea29e9fafcd4f8e35f150f534014e7b6ee3f
+DM/hypergraph_turan_tetrahedron,BLOCK,1,11.3,C1:accepts_gross_invalid;C1:exploitable_type_violation;C1-escalation:accepts_gross_invalid,C1:accepts_invalid_low_score;C1:nan_score;C1-escalation:accepts_invalid_low_score,,,1e-09,default_1e-9_relative,9077,"""""",415e4e7048f18c7231befae8b69f8a50d425ec7bf8b8a9f4f5b17f946da3c75d
+DM/kakeya_needle_2d_triangles,BLOCK,1,38.2,C1:accepts_gross_invalid,C1:nan_score,,,1e-09,default_1e-9_relative,6532,"""""",ec99454fdc42e14f8754ed755ef9b2bc74e98c75395906cdab2f7d1f23052353
+DM/packing_circles_max_sum_of_radii_square,NO_RECEIPT,1,1.8,,,,,,,,"""""",
+DM/packing_unit_cubes,PASS,0,158.2,,C1:accepts_invalid_low_score;C1:nan_score;C1-escalation:accepts_invalid_low_score;C4:invariance_suspect,,,300.0,reference_floor,7704,"""""",5588bc69922a0fa613ee6ac2779fd01129bceb2b65a2531247214cbd7383ada1
+DM/points_on_sphere_max_volume,NO_RECEIPT,1,1.4,,,,,,,,"""""",
+DM/sendov_conjecture,NO_RECEIPT,1,1.2,,,,,,,,"""""",
+DM/the_2d_moving_sofa,PASS,0,16.7,,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,5e-05,record_resolution,3270,"{""c3"": [8, 163], ""esc"": [3, 435]}",a25b7c8821664a1e34e18144e0f0b6bf8be48303f90b18ef0bbc5e1b99423c73
+DMR/dmr11_circles,NO_RECEIPT,1,1.6,,,,,,,,"""""",
+DMR/dmr12_hexagon,BLOCK,1,21.9,C1:accepts_gross_invalid;C1:exploitable_invalid,C1:nan_score,,,0.0005,record_resolution,6792,"""""",b4c39012fd9f14223fa4f1192ce3ef03dde3a1a655150862a6bb648b504e25ff
+G/circle_packing,NO_RECEIPT,1,2.5,,,,,,,,"""""",
+LABELS/dm14_t_designs_pre,NO_RECEIPT,1,3.0,,,,,,,,"""""",
+LABELS/dm15_diffbases_post,BLOCK,1,6.1,C4:invariance_broken_integer,C1:type_violation_harmless,,,5e-05,record_resolution,6537,"""""",374341ef087a83c27fc1d081f6822698871848204ae063d968aedd4eddd0f3cb
+LABELS/dm15_diffbases_pre,BLOCK,1,6.2,C4:invariance_broken_integer,C1:type_violation_harmless,,,5e-05,record_resolution,6537,"""""",e470a66aa8a035d45e420438798f77d55516c665dd423bf44fc36b780b8a91ff
+LABELS/dm16_furstenberg_sarkozy_post,BLOCK,1,9.0,C1:exploitable_type_violation,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,9.000000000000001e-09,default_1e-9_relative,9390,"""""",602493cace2b82e3be7813e406855ae544aff0b5bc8d507f348fc8fa0727dca2
+LABELS/dm16_furstenberg_sarkozy_pre,BLOCK,1,8.8,C1:accepts_gross_invalid;C1:exploitable_type_violation,C1:accepts_invalid_low_score;C1-escalation:accepts_invalid_low_score,,,9.000000000000001e-09,default_1e-9_relative,9390,"""""",473c6cbf7e4181472efdfede1f9e5a5d7170eec9ec487dfef22c65d52c490b0b
+LABELS/dm16_no_5_on_a_sphere_post,BLOCK,1,228.6,C1:exploitable_invalid,,,,2.3e-08,default_1e-9_relative,733,"{""c3"": [8, 50], ""esc"": [3, 135]}",a20631e8ecb4166d724b2f5b0604b027a4d1eb3faf8f74064304d4e00f839c43
+LABELS/dm16_no_5_on_a_sphere_pre,BLOCK,1,234.7,C1:accepts_gross_invalid;C1:exploitable_invalid,,,,2.3e-08,default_1e-9_relative,724,"{""c3"": [7, 56], ""esc"": [3, 132]}",4ef98c79cf5dac69b634ba16c0ba564650bc06957de84635aaaf9b79c94d5547
+LABELS/dm16_no_isosceles_triangles_post,BLOCK,1,417.6,C1:exploitable_invalid,,,,1.1200000000000001e-07,default_1e-9_relative,1104,"{""c3"": [8, 78], ""esc"": [3, 210]}",9779f10dfdc39c6f8883a4b9668b7a07aa16fe98493b8b50ba272e2ce605780c
+LABELS/dm16_no_isosceles_triangles_pre,BLOCK,1,418.2,C1:accepts_gross_invalid;C1:exploitable_invalid,,,,1.1200000000000001e-07,default_1e-9_relative,1096,"{""c3"": [8, 77], ""esc"": [3, 206]}",56a24bcbca4143113fdff70308d59ddcad9cbb8aefc90bfbe14aeea7eb8ba608
+LABELS/dm16_squares_in_square_post,BLOCK,1,10.6,C1:accepts_gross_invalid,C1:accepts_invalid_low_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score,,,2.999999999999999e-09,default_1e-9_relative,8316,"""""",f4f855821260663c975e642236bc5caf8c2242ae2b7113d677d9fdfd20e75cc5
+LABELS/dm16_squares_in_square_pre,BLOCK,1,10.2,C1:accepts_gross_invalid,C1:accepts_invalid_low_score;C1:nan_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score,,,2.999999999999999e-09,default_1e-9_relative,8616,"""""",66a9dbe1839cc2f83f472be105e778b26d94b696712f4953872d11ea256e453e
+LABELS/dmr12_hexagon_post,BLOCK,1,21.8,C1:accepts_gross_invalid;C1:exploitable_invalid,,,,0.0005,record_resolution,6792,"""""",9c9f65af9c50455bcc00f89b9320fe87f5936aa85a6455b913f8768c9f2f1956
+LABELS/oe514_funcmin_post,PASS,0,13.6,,,,,1.4997641483797084e-09,default_1e-9_relative,1667,"{""c3"": [8, 184], ""esc"": [3, 492]}",89e619902bdb78b54bd1bad118c4c7ad988f9aaec45fcddc333a1f5df5952271
+LABELS/oe514_funcmin_pre,BLOCK,1,13.7,C2:trusts_self_report,,,,1.4997641483797084e-09,default_1e-9_relative,1620,"{""c3"": [8, 178], ""esc"": [3, 477]}",e7df0cfe4471a0c3cb9c87183e26890b12a5842578e3150cdc8042f95147eca2
+LABELS/oe514_matmul_post,PASS,0,15.0,,,,,1e-09,default_1e-9_relative,4157,"{""c3"": [8, 197], ""esc"": [3, 500]}",dcd2b139e19f88a5cd047a42d1e0f22067acfdb8a8f3e04fbc6b3ba93d3e8c3c
+LABELS/oe514_matmul_pre,PASS,0,15.8,,,,,1e-09,default_1e-9_relative,4285,"{""c3"": [8, 213], ""esc"": [3, 500]}",53729cb7adeb9cda1268ace7ca5112bf299e775fcf367c8ba2d6809209008b20
+LABELS/oe548_cpr_post,PASS,0,11.8,,,,,5e-05,record_resolution,6535,"""""",0d280a2e3849b990236d5d6f53b2c72d71b29057c86b142f1c1a890e33b6da6a
+LABELS/oe548_cpr_pre,BLOCK,1,14.0,C1:accepts_gross_invalid,,,,5e-05,record_resolution,6535,"""""",7b70d334175b93745006df3d6534480ce5306d84140eb74728aeb8404d24f2b2
+LABELS/oe549_first_autocorr_post,PASS,0,6.8,,C2:self_report_headroom,,,5e-05,record_resolution,1804,"{""c3"": [8, 201], ""esc"": [3, 500]}",3a4e009da143bf060b52aa6c954a43fb3bd56a7f6c33d622354b0f12f39f9e40
+LABELS/oe549_first_autocorr_pre,BLOCK,1,6.9,C1:accepts_gross_invalid,C1:nan_score;C2:self_report_headroom,,,5e-05,record_resolution,1852,"{""c3"": [8, 207], ""esc"": [3, 500]}",3e5e8c56731876bcd9f4d755abca98957b7c86626f1298de3063ec910eceab4a
+LABELS/oe562_erdos_post,PASS,0,13.5,,C1:accepts_invalid_low_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score,,,5e-05,record_resolution,4051,"{""c3"": [8, 196], ""esc"": [3, 500]}",a10ba3b874ec84f96188324a9d0f20aeaa84b46e0a432a544e8d0093e7723ded
+LABELS/oe562_erdos_pre,BLOCK,1,13.5,C2:trusts_self_report,C1:accepts_invalid_low_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score,,,5e-05,record_resolution,4244,"{""c3"": [8, 212], ""esc"": [3, 500]}",2e82159b1e2f4eb407d60c51e440a344a05cf3cfb88ce7578cfab6c5865200d3
+OE/erdos_min_overlap,PASS,0,12.9,,C1:accepts_invalid_low_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score,,,1.3125944637315534e-06,record_resolution,4219,"{""c3"": [8, 210], ""esc"": [3, 500]}",9a426f1d0a066fe8e9fbe445b22724cbb804b2017421538d7690537b2e31d449
+OE/first_autocorr_ineq,PASS,0,19.2,,C2:self_report_headroom,,,3.321583718268739e-05,record_resolution,6696,"""""",ebe2403196d821f104139f58f614acc661882f0bf8474c3baf636c334df13dac
+OE/heilbronn_triangle,PASS,0,14.5,,,,,0.0013687421496261787,record_resolution,6532,"""""",684ac50a433b33029c833510ede7dafb46088c34110156469fd306ab48d35727
+OE/second_autocorr_ineq,PASS,0,31.2,,C1:accepts_invalid_low_score;C1:tolerance_headroom;C1-escalation:accepts_invalid_low_score,,,5.578614173623597e-05,record_resolution,11614,"""""",761e458d7a82225c49eed647929b9fbe954ba6fcfe78deb80e5ced9999b63e2b
+OE/uncertainty_ineq,ABSTAIN,2,618.2,,,budget_exhausted,,0.0001554664687321572,record_resolution,2075,"""""",bc1e244bdc4bf2398fbd42269fd69b988dc49a95a112005670660d0fbda73fed
+SH/circle_packing,NO_RECEIPT,1,27.9,,,,,,,,"""""",

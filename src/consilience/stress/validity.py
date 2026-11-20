@@ -38,6 +38,19 @@ class Violation:
                 "magnitude": ("inf" if math.isinf(m) else m)}
 
 
+def _f(x) -> float:
+    """float() that returns inf instead of raising on huge exact values."""
+    try:
+        return float(x)
+    except OverflowError:
+        return math.inf if x > 0 else -math.inf
+
+
+def _sqrt(x) -> float:
+    v = _f(x)
+    return math.sqrt(v) if math.isfinite(v) else math.inf
+
+
 def F(x) -> Fraction:
     return Fraction(float(x)) if not isinstance(x, (str, Fraction)) else Fraction(x)
 
@@ -163,7 +176,7 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
         tol = Fraction(r.get("tolerance", "0"))
 
         def add(mag, detail=""):
-            mag = float(mag)
+            mag = _f(mag)
             out.append(Violation(idx + offset, k, mag, _cls_for(k, mag, a), detail))
 
         if k == "finite":
@@ -191,6 +204,9 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
             continue
         # rules below need finite values; non-finite is the 'finite' rule's business
         if a is not None and not _finite(a):
+            continue
+        # an empty field breaks no element-wise or geometric rule (count/shape rules catch emptiness)
+        if a is not None and a.size == 0 and k != "predicate":
             continue
         if k == "integral":
             af = a.astype(float)
@@ -237,7 +253,7 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
                 lo2 = (v - tol) ** 2 if v > tol else Fraction(0)
                 hi2 = (v + tol) ** 2
                 if sq < lo2 or sq > hi2:
-                    worst = max(worst, abs(math.sqrt(float(sq)) - float(v)))
+                    worst = max(worst, abs(_sqrt(sq) - float(v)))
             if worst > 0:
                 add(worst, "norm differs")
         elif k == "in_disk":
@@ -248,12 +264,15 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
             for t in z:
                 d2 = (F(t.real) - cx) ** 2 + (F(t.imag) - cy) ** 2
                 if d2 > R * R:
-                    worst = max(worst, math.sqrt(float(d2)) - float(R - tol))
+                    worst = max(worst, _sqrt(d2) - float(R - tol))
             if worst > 0:
                 add(worst, "outside disk")
         elif k == "in_box":
             pts = a.astype(float).reshape(a.shape[0], -1)
             rad = _arr(cand[r["margin_from"]]).astype(float).ravel() if "margin_from" in r else np.zeros(len(pts))
+            if len(rad) != len(pts) or not np.isfinite(rad).all():
+                add(math.inf, "margins and points differ in number, or a margin is not finite")
+                continue
             box = [(Fraction(lo), Fraction(hi)) for lo, hi in r["box"]]
             worst = Fraction(0)
             for p, rr in zip(pts, rad):
@@ -262,10 +281,13 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
                     x = F(p[d])
                     worst = max(worst, (lo + fr) - x, x - (hi - fr))
             if worst > tol:
-                add(worst, "outside box")
+                add(_f(worst), "outside box")
         elif k == "pairwise_separation":
             pts = a.astype(float).reshape(a.shape[0], -1)
             rad = _arr(cand[r["radii_from"]]).astype(float).ravel() if "radii_from" in r else None
+            if rad is not None and (len(rad) != len(pts) or not np.isfinite(rad).all()):
+                add(math.inf, "radii and centres differ in number, or a radius is not finite")
+                continue
             md = Fraction(r["min_distance"]) if "min_distance" in r else Fraction(0)
             worst = 0.0
             for i, j in itertools.combinations(range(len(pts)), 2):
@@ -275,7 +297,7 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
                 d2 = sum((F(pts[i][t]) - F(pts[j][t])) ** 2 for t in range(pts.shape[1]))
                 allowed = need - tol
                 if allowed > 0 and d2 < allowed * allowed:
-                    worst = max(worst, float(need) - math.sqrt(float(d2)))
+                    worst = max(worst, _f(need) - _sqrt(d2))
             if worst > 0:
                 add(worst, "too close")
         elif k == "convex_position":

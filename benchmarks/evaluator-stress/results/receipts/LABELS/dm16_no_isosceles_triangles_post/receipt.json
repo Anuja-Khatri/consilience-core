@@ -1,0 +1,390 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "P",
+    "role": "construction",
+    "type": "int_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "verify_construction",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     -1.0
+    ]
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "P",
+    "transform": "permute"
+   },
+   {
+    "center": [
+     "31.5",
+     "31.5"
+    ],
+    "field": "P",
+    "order": 4,
+    "transform": "dihedral"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/subsets_of_the_grid_with_no_isosceles_triangles verify_construction (n=64) [DM-16 post]",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "P"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "notebook prompt: 'For n=64, the best known construction has 110 points'",
+    "value": "110"
+   }
+  },
+  "validity": [
+   {
+    "field": "P",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "rule": "integral",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "max": "63",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "rule": "distinct",
+    "tolerance": "0"
+   },
+   {
+    "call": "iso",
+    "equality": false,
+    "name": "no_isosceles_triangle",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/dm16_no_isosceles_triangles_post/contract.yaml",
+ "contract_sha256": "5d9c901fa51908a1f82ff8f08135218d5cb9cce13bad5254324c1b21d84f315a",
+ "created": "2026-11-20T18:14:47+00:00",
+ "environment": {
+  "mean_call_seconds": 0.373586416028548,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 417.154
+ },
+ "file_hashes": {
+  "glue.py": "59a6b3c2f0a2936247bad7f641096b72dfe969ec6d93ada0d22ee35c882e32af",
+  "reference.npz": "59faf5406c7e7ffa0dc96d7851561c262dcbd734cb73e61e072dbfebb61dbfc9",
+  "scorer.py": "c96a89a31e8417541fcec09a06754de3cea314af6f54f5e07594364eb46aee83"
+ },
+ "findings": [
+  {
+   "attack": "P:magnitude*1e+150",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_exploitable_invalid_candidate.json",
+     "sha256": "72e736e8e9120abdd2841aa903b5835300d7c24ecf7614723cdf2a5554b420ba"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 6.3e+151,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:magnitude*1e+300",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_exploitable_invalid_candidate.json",
+     "sha256": "f64d3a769b64f23b203004cb4aa337f417f7080a08578b0113a37b9ab2345d54"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 6.300000000000001e+301,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-1e-12",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_exploitable_invalid_candidate.json",
+     "sha256": "1b66111657e8cf9ea833d16f31dbc930f1d5df18151cea6905d7448a090637a8"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-1e-09",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f03_C1_exploitable_invalid_candidate.json",
+     "sha256": "bb19129bbffeb40bdbdfb4021706791fad5eb4afbf4e3923669f11db37b97923"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-1e-06",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f04_C1_exploitable_invalid_candidate.json",
+     "sha256": "fb4d210c69426dfe231f79ae798fc95cacd50cb0c66e52335b2c961d22e2e4ce"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-0.001",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f05_C1_exploitable_invalid_candidate.json",
+     "sha256": "aa36ef34060349b58f3490a5407d775b3acf8bb69c6e3808b56614780761ab95"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-0.1",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f06_C1_exploitable_invalid_candidate.json",
+     "sha256": "574ed5c8f59763b5a32dd7399d45322b5071ac017aece52bb39b99f407c9bf82"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 0.1,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 112.0,
+   "worst": 112.0,
+   "worst_factor": 1.0
+  }
+ ],
+ "glue_sha256": "59a6b3c2f0a2936247bad7f641096b72dfe969ec6d93ada0d22ee35c882e32af",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 112.0,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 1104,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1.1200000000000001e-07,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": 110.0,
+  "reference_score": 112.0,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    8,
+    78
+   ],
+   "esc": [
+    3,
+    210
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "9779f10dfdc39c6f8883a4b9668b7a07aa16fe98493b8b50ba272e2ce605780c",
+ "verdict": "BLOCK"
+}

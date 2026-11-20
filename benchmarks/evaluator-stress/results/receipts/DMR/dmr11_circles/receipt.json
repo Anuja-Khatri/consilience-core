@@ -1,0 +1,334 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {
+   "n": 26
+  },
+  "fields": [
+   {
+    "name": "centers",
+    "role": "construction",
+    "shape": [
+     26,
+     2
+    ],
+    "type": "real_array"
+   },
+   {
+    "name": "radii",
+    "role": "construction",
+    "shape": [
+     26
+    ],
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "verify_circles",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "score_key": null,
+   "timeout_s": 30.0
+  },
+  "invariances": [
+   {
+    "center": [
+     "0.5",
+     "0.5"
+    ],
+    "field": "centers",
+    "order": 4,
+    "transform": "dihedral"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "alphaevolve_results/B.12 verify_circles (n=26) [DMR-11 pre]",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "centers",
+   "radii"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "AlphaEvolve (Novikov et al. 2025), alphaevolve_results @ 4226acb B.12: n=26 sum of radii 2.635 (stated to 3 decimals)",
+    "value": "2.635"
+   }
+  },
+  "validity": [
+   {
+    "field": "centers",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "centers",
+    "rule": "shape",
+    "shape": [
+     26,
+     2
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "radii",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "radii",
+    "rule": "shape",
+    "shape": [
+     26
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "radii",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "box": [
+     [
+      "0",
+      "1"
+     ],
+     [
+      "0",
+      "1"
+     ]
+    ],
+    "field": "centers",
+    "margin_from": "radii",
+    "rule": "in_box",
+    "tolerance": "0"
+   },
+   {
+    "field": "centers",
+    "radii_from": "radii",
+    "rule": "pairwise_separation",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DMR/dmr11_circles/contract.yaml",
+ "contract_sha256": "20b3d9a98af2011b78576796a7e532315cc22e5d596aedddce2e96fb6f9b4d74",
+ "created": "2026-11-20T18:28:25+00:00",
+ "environment": {
+  "mean_call_seconds": 0.0011489817154357108,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 41.249
+ },
+ "file_hashes": {
+  "glue.py": "4b1e6e5e740d38908687dec6471930dcff281b92e8fa1337b111b04653249310",
+  "reference.npz": "7cb84d24ad5d3ee518710654b2792a855925fd20dc41fc14062fd5545b493517",
+  "scorer.py": "2face9bf205817f817d3dedab189c38f7f101e219c3245ec3e8c634e902d1ba0"
+ },
+ "findings": [],
+ "glue_sha256": "4b1e6e5e740d38908687dec6471930dcff281b92e8fa1337b111b04653249310",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 2.6358627564136983,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 8516,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 0.0005,
+  "margin_source": "record_resolution",
+  "record_score_units": 2.635,
+  "reference_score": 2.6358627564136983,
+  "resolution": 0.0005,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 2.6358627564136983
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "radii:range-1e-12",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "radii:range-1e-09",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "radii:range-1e-06",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "radii:range-0.001",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "radii:range-0.1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.1,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "radii:range-1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1.0,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "radii:range-1e-12",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "radii:range-1e-09",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "radii:range-1e-06",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ]
+  }
+ ],
+ "sha256": "3983cfb1fa5d25f8a6e8c18bb311a62b830a824941ef6ddf72012692d95dc223",
+ "verdict": "PASS"
+}

@@ -1,0 +1,282 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "path",
+    "role": "construction",
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "calculate_intersection_area",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "invariances": [],
+  "kind": "evaluator-contract",
+  "name": "deepmind/the_2d_moving_sofa calculate_intersection_area (single turn)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "path"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "Gerver's sofa (area 2.2195...), proved optimal by Baek (2024); the notebook calls the shipped path an approximation of Gerver's sofa",
+    "value": "2.2195"
+   }
+  },
+  "validity": [
+   {
+    "field": "path",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "path",
+    "min": 1,
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "call": "angles_in_quarter_turn",
+    "equality": false,
+    "name": "angles_in_quarter_turn",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DM/the_2d_moving_sofa/contract.yaml",
+ "contract_sha256": "8cc4c89fa9a3e40f2ebdef203b410c38df6b407c344bdc1fd3c8e7cb1987f4ca",
+ "created": "2026-11-20T18:06:06+00:00",
+ "environment": {
+  "mean_call_seconds": 0.004827932188634843,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 16.193
+ },
+ "file_hashes": {
+  "glue.py": "85c82490b11808bf194e09f54be6ab7a4e203ec5205bd347c3fb62f040bb667c",
+  "reference.npz": "6fe41b60af56aa12224305af811b062adb40e95c74946e8a9eb25931c09f0bb3",
+  "scorer.py": "124a7d091fa5e708c47c8af0743650c6b55f9764a412c8a979c756fb07da30c2"
+ },
+ "findings": [],
+ "glue_sha256": "85c82490b11808bf194e09f54be6ab7a4e203ec5205bd347c3fb62f040bb667c",
+ "info": {
+  "C3": {
+   "best_invalid": 0.0,
+   "best_valid": 2.2192697096945864,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.875
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 3270,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 5e-05,
+  "margin_source": "record_resolution",
+  "record_score_units": 2.2195,
+  "reference_score": 2.2192697096945864,
+  "resolution": 5e-05,
+  "scaled_budget": {
+   "c3": [
+    8,
+    163
+   ],
+   "esc": [
+    3,
+    435
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 2.2192697096945864
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "path:nonfinite[0, 0]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "attack": "path:nonfinite[0, 1]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "attack": "path:nonfinite[0, 0]=-inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "attack": "path:nonfinite[0, 1]=-inf",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "attack": "path:empty",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "count 0",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "count"
+    },
+    {
+     "class": "large",
+     "detail": "predicate raised ValueError",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "angles_in_quarter_turn"
+    }
+   ],
+   "score": 1.4501476994330034
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "path:nonfinite[0, 0]=inf",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "path:nonfinite[0, 1]=inf",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "path:nonfinite[0, 0]=-inf",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.0
+  }
+ ],
+ "sha256": "a25b7c8821664a1e34e18144e0f0b6bf8be48303f90b18ef0bbc5e1b99423c73",
+ "verdict": "PASS"
+}

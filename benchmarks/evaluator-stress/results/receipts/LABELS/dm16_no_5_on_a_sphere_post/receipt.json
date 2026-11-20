@@ -1,0 +1,298 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "P",
+    "role": "construction",
+    "type": "int_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "verify_3d_construction",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     -1.0
+    ]
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "P",
+    "transform": "permute"
+   },
+   {
+    "center": [
+     "3.5",
+     "3.5",
+     "3.5"
+    ],
+    "field": "P",
+    "transform": "reflect"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/no_5_on_a_sphere verify_3d_construction (n=8) [DM-16 post]",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "P"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "notebook prompt (no_5_on_a_sphere.ipynb): 'the maximum known size for n=8 is 22'",
+    "value": "22"
+   }
+  },
+  "validity": [
+   {
+    "field": "P",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "rule": "integral",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "max": "7",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "rule": "distinct",
+    "tolerance": "0"
+   },
+   {
+    "call": "no5",
+    "equality": false,
+    "name": "no_five_on_a_sphere_or_plane",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/dm16_no_5_on_a_sphere_post/contract.yaml",
+ "contract_sha256": "c6aece10b36baa788c34790d775ac90106d1a65e3ddac5d61d107c4b6eed81af",
+ "created": "2026-11-20T18:10:54+00:00",
+ "environment": {
+  "mean_call_seconds": 0.22331046049786785,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 228.093
+ },
+ "file_hashes": {
+  "glue.py": "eb5b7bc4e84a5757f2683ab1ce8955fbbe3c6851eaa67ddafa06d65295a70040",
+  "reference.npz": "a7d73148289a8270852d3f7731fb69b37c9d1ba6ef73546c747a3e7d0e9b3257",
+  "scorer.py": "ad6777eeb709f9f752619861d9bfa926d42af15e4996cf62b5c73b9bba57517c"
+ },
+ "findings": [
+  {
+   "attack": "P:magnitude*1e+150",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_exploitable_invalid_candidate.json",
+     "sha256": "55a263be1b3c17d8fe5306ad065d29f3f394ca1c193abd85e3cfd54350d2da51"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 7e+150,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 23.0,
+   "worst": 23.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-1e-06",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_exploitable_invalid_candidate.json",
+     "sha256": "abec9b6c556859de3998b0c5e4460f01a95f32bef9123192b5865f9b343f9916"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 23.0,
+   "worst": 23.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-0.001",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_exploitable_invalid_candidate.json",
+     "sha256": "5e290a4595924b9b5612d8314eb1ff18895a77f5bd12320017ecccde85ece10f"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 23.0,
+   "worst": 23.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "P:range-0.1",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f03_C1_exploitable_invalid_candidate.json",
+     "sha256": "191b36ce08577fb6b9accf82f1e1efed1d64482df3a361cc6dd53f436ebb5965"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 2,
+     "magnitude": 0.1,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 23.0,
+   "worst": 23.0,
+   "worst_factor": 1.0
+  }
+ ],
+ "glue_sha256": "eb5b7bc4e84a5757f2683ab1ce8955fbbe3c6851eaa67ddafa06d65295a70040",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 23.0,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 733,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 2.3e-08,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": 22.0,
+  "reference_score": 23.0,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    8,
+    50
+   ],
+   "esc": [
+    3,
+    135
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "a20631e8ecb4166d724b2f5b0604b027a4d1eb3faf8f74064304d4e00f839c43",
+ "verdict": "BLOCK"
+}

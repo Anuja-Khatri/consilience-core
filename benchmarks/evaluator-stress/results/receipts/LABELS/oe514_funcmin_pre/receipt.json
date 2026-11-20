@@ -1,0 +1,170 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "x",
+    "role": "construction",
+    "type": "real"
+   },
+   {
+    "name": "y",
+    "role": "construction",
+    "type": "real"
+   },
+   {
+    "name": "value",
+    "quantity": "value",
+    "role": "claimed",
+    "type": "real"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "block_end": "# EVOLVE-BLOCK-END",
+   "block_start": "# EVOLVE-BLOCK-START",
+   "call_args": {},
+   "entry": "evaluate",
+   "evaluator": "evaluator.py",
+   "extra_files": [],
+   "kind": "template",
+   "program_function": "search_algorithm",
+   "program_template": "program_template.py",
+   "reject": {
+    "file": null,
+    "keys_present": [
+     "error"
+    ],
+    "values": []
+   },
+   "score_key": "combined_score",
+   "timeout_s": 60.0
+  },
+  "invariances": [],
+  "kind": "evaluator-contract",
+  "name": "openevolve/function_minimization (OE-514 pre-fix, a1e9d91)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "x",
+   "y",
+   "value"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": null
+  },
+  "validity": [
+   {
+    "field": "x",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "y",
+    "rule": "finite",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/oe514_funcmin_pre/contract.yaml",
+ "contract_sha256": "edd883ec9953fc021ec33f7ca95c580fca281207d0d53d8b2cd9d7b5aa5c641b",
+ "created": "2026-11-20T18:12:11+00:00",
+ "environment": {
+  "mean_call_seconds": 0.008092099207418936,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 13.258
+ },
+ "file_hashes": {
+  "evaluator.py": "49ef364593bdb579d3ca1b4a1314fb760697ed8b26945d99a0240a830b7e2e56",
+  "glue.py": "82a53c0da89decde96bb571f72882c5f7d5efb6d0d329fb9b2a90d26527f9cf5",
+  "program_template.py": "f106c81adc58689274d7e4622535c4be48ebf0fec7b310fdd1b27b32ae1c6a69",
+  "reference.npz": "f1d5cec7c02c578908f73d3075a0351c4f8beaf69e349f84f9d5de81e1ea14b6"
+ },
+ "findings": [
+  {
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C2_trusts_self_report_candidate.json",
+     "sha256": "4302952b17a7f846bfc78bd0ce799b4d523ea2576b2e12d9b7b7c45146230140"
+    }
+   },
+   "check": "C2",
+   "field": "value",
+   "kind": "trusts_self_report",
+   "m": 1.4997641483797084e-09,
+   "score_gain": 0.00011384706615014117,
+   "slack_claim_units": 0.0006291354976128043,
+   "true_value": -1.5186854322511936
+  }
+ ],
+ "glue_sha256": "82a53c0da89decde96bb571f72882c5f7d5efb6d0d329fb9b2a90d26527f9cf5",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 1.4997641483797082,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 1620,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1.4997641483797084e-09,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": null,
+  "reference_score": 1.4997641483797082,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    8,
+    178
+   ],
+   "esc": [
+    3,
+    477
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "e7df0cfe4471a0c3cb9c87183e26890b12a5842578e3150cdc8042f95147eca2",
+ "verdict": "BLOCK"
+}

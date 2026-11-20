@@ -23,3 +23,15 @@
   - M3: on the 21-contract sample only, reported with that denominator (no extrapolation as a headline);
   - M5 and M6: on the 45.
 - **Decision point:** after the 45, analyse against the forecast and the early-warning lines, and report to Anu with a recommendation to stop or continue.
+
+## Run 2 (capped, 45 contracts): completed 20 Nov 2026
+
+- **Engine crash bugs** found during the run (all fixed, with regression tests): float overflow in the in_disk and norm rules on ×1e300 attacks; mismatched counts between paired fields in pairwise_separation and in_box; empty inputs in geometric rules.
+- **Re-runs:** the 7 contracts that crashed were re-run, 4 of them twice. The fixes touch only code paths that raised exceptions, so no completed contract executed them.
+- **Independent check:** 113 findings; 102 re-implemented, all agree; 11 (`exploitable_type_violation`) checked by verify only.
+- **Two decision-rule flaws found by hand.** They produce zero-gain BLOCKs, and the independent check cannot catch them because it re-checks the same inequality:
+  1. "beats the record" compares with the record alone, not with the better of reference and record;
+  2. `exploitable_type_violation` compares only with the projected equivalent, which for magnitude attacks is a different construction.
+
+  Not fixed: a fix changes the locked decision rules, so it goes to Anu first.
+- **Analysis and recommendation:** consilience-docs `deepmind/stress/RESULTS_45_ANALYSIS.md`.

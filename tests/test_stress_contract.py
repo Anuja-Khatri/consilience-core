@@ -234,3 +234,28 @@ def test_nonfinite_reject_value_is_named_error(tmp_path):
     d["harness"]["reject"] = {"values": [float("-inf")]}
     with pytest.raises(ContractError, match="must be finite"):
         load_contract(d, base=tmp_path)
+
+
+def test_validity_survives_huge_values_and_mismatched_counts():
+    big = 1e300
+    v = check_rules([R("in_disk", radius="1", center=["0", "0"])], {"x": np.array([big + big * 1j])})
+    assert v and math.isinf(v[0].magnitude)
+    v = check_rules([R("norm", equals="1", tolerance="1e-12", axis=1)], {"x": np.array([[big, big]])})
+    assert v
+    c = np.array([[0.25, 0.25], [0.75, 0.75], [0.5, 0.5]])
+    r = np.array([0.1, 0.1])                              # one radius short
+    assert check_rules([R("pairwise_separation", radii_from="r")], {"x": c, "r": r})
+    assert check_rules([R("in_box", box=[["0", "1"], ["0", "1"]], margin_from="r")], {"x": c, "r": r})
+    v = check_rules([R("pairwise_separation", radii_from="r")], {"x": c * big, "r": np.array([big, big, big])})
+    assert v is not None
+
+
+@pytest.mark.parametrize("rule", [
+    R("in_box", box=[["0", "1"], ["0", "1"]], margin_from="r"), R("pairwise_separation", radii_from="r"),
+    R("range", min="0"), R("distinct"), R("integral"), R("alphabet", values=["1"]), R("convex_position"),
+    R("convex_polygon_ordered"), R("no_k_collinear", k=3), R("no_k_coplanar", k=4),
+    R("norm", equals="1", tolerance="1e-12", axis=1), R("sum", equals="1", tolerance="1e-12"),
+])
+def test_every_rule_survives_empty_input(rule):
+    check_rules([rule], {"x": np.zeros((0, 2)), "r": np.zeros(0)})
+    check_rules([rule], {"x": np.zeros((0, 3)), "r": np.zeros(0)})

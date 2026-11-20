@@ -1,0 +1,906 @@
+[
+ {
+  "key": "CE/second_autocorr_ineq",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 0.9316840466566041 vs record 0.9316008316008316 + m 5.1975051975072795e-05"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 1,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 4,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 5,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/flat_polynomials_c_minus",
+  "finding": 6,
+  "check": "C3",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.5555555555555556 vs reference 0.5555555555555556"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 1,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 3,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.5555555555555556 vs reference 0.5555555555555556"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 4,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.5555555555555556 vs reference 0.5555555555555556"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 5,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.5555555555555556 vs reference 0.5555555555555556"
+ },
+ {
+  "key": "DM/hypergraph_turan_tetrahedron",
+  "finding": 6,
+  "check": "C1-escalation",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.5555555555555556 vs reference 0.5555555555555556"
+ },
+ {
+  "key": "DM/kakeya_needle_2d_triangles",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.1321972219133675 vs reference 0.1416474947305202"
+ },
+ {
+  "key": "DM/kakeya_needle_2d_triangles",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.07639379948100677 vs reference 0.1416474947305202"
+ },
+ {
+  "key": "DM/kakeya_needle_2d_triangles",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.1321972219133675 vs reference 0.1416474947305202"
+ },
+ {
+  "key": "DM/kakeya_needle_2d_triangles",
+  "finding": 3,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.07639379948100677 vs reference 0.1416474947305202"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 3,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 4,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 5,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 6,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 7,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 8,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 9,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 10,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 11,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 12,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 13,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 14,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 15,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "DMR/dmr12_hexagon",
+  "finding": 16,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 7.87636622590071e-12 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "exceeds_bound",
+  "agree": true,
+  "detail": "worst 59646.093749999985 vs bound 0.0"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst -1.911870661785997e-11 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst -1.9234835946235762e-11 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 4,
+  "check": "C1",
+  "kind": "exceeds_bound",
+  "agree": true,
+  "detail": "worst 3.335232090506679e-11 vs bound 0.0"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 5,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst -3.493194622450346e-11 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 6,
+  "check": "C1",
+  "kind": "exceeds_bound",
+  "agree": true,
+  "detail": "worst 2.3404944649030313e-11 vs bound 0.0"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 7,
+  "check": "C1",
+  "kind": "exceeds_bound",
+  "agree": true,
+  "detail": "worst 2.7878699349059843e-11 vs bound 0.0"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 8,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 7.559175507765303e-12 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 9,
+  "check": "C1",
+  "kind": "exceeds_bound",
+  "agree": true,
+  "detail": "worst 2.5446089679803663e-11 vs bound 0.0"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 10,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst -2.6147084497551987e-11 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm14_t_designs_pre",
+  "finding": 11,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst -2.443312219213567e-11 vs record -1e-08 + m 5e-09"
+ },
+ {
+  "key": "LABELS/dm15_diffbases_post",
+  "finding": 0,
+  "check": "C4",
+  "kind": "invariance_broken_integer",
+  "agree": true,
+  "detail": "|5.538461538461538 - 6.5| vs 5e-05"
+ },
+ {
+  "key": "LABELS/dm15_diffbases_pre",
+  "finding": 0,
+  "check": "C4",
+  "kind": "invariance_broken_integer",
+  "agree": true,
+  "detail": "|5.538461538461538 - 6.5| vs 5e-05"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_post",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 3,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 4,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 5,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 6,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 7,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 8,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 9.0 vs reference 9.0"
+ },
+ {
+  "key": "LABELS/dm16_furstenberg_sarkozy_pre",
+  "finding": 9,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": null,
+  "detail": "not re-implemented independently (projection); checked by verify only"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_post",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_post",
+  "finding": 1,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_post",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_post",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 3,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 4,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 5,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 6,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 23.0 vs reference 23.0"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 7,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 8,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 9,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_5_on_a_sphere_pre",
+  "finding": 10,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 23.0 vs record 22.0 + m 2.3e-08"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 1,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 4,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 5,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_post",
+  "finding": 6,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 112.0 vs reference 112.0"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 112.0 vs reference 112.0"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 4,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 5,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 6,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 7,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_no_isosceles_triangles_pre",
+  "finding": 8,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 112.0 vs record 110.0 + m 1.1200000000000001e-07"
+ },
+ {
+  "key": "LABELS/dm16_squares_in_square_post",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 2.999999999999999 vs reference 2.999999999999999"
+ },
+ {
+  "key": "LABELS/dm16_squares_in_square_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 2.999999999999999 vs reference 2.999999999999999"
+ },
+ {
+  "key": "LABELS/dm16_squares_in_square_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 2.999999999999999 vs reference 2.999999999999999"
+ },
+ {
+  "key": "LABELS/dm16_squares_in_square_pre",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 2.999999999999999 vs reference 2.999999999999999"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 3.930092 vs reference 3.930092"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 4,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 5,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "LABELS/dmr12_hexagon_post",
+  "finding": 6,
+  "check": "C1",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst 3.930092 vs record 3.931 + m 0.0005"
+ },
+ {
+  "key": "LABELS/oe514_funcmin_pre",
+  "finding": 0,
+  "check": "C2",
+  "kind": "trusts_self_report",
+  "agree": true,
+  "detail": "gain 0.00011384706615014117 vs m 1.4997641483797084e-09"
+ },
+ {
+  "key": "LABELS/oe548_cpr_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.7988732477271919 vs reference 0.7988732477271919"
+ },
+ {
+  "key": "LABELS/oe548_cpr_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.7988732477271919 vs reference 0.7988732477271919"
+ },
+ {
+  "key": "LABELS/oe549_first_autocorr_pre",
+  "finding": 0,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.785259236897019 vs reference 0.785259236897019"
+ },
+ {
+  "key": "LABELS/oe549_first_autocorr_pre",
+  "finding": 1,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.785259236897019 vs reference 0.785259236897019"
+ },
+ {
+  "key": "LABELS/oe549_first_autocorr_pre",
+  "finding": 2,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.785259236897019 vs reference 0.785259236897019"
+ },
+ {
+  "key": "LABELS/oe549_first_autocorr_pre",
+  "finding": 3,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.785259236897019 vs reference 0.785259236897019"
+ },
+ {
+  "key": "LABELS/oe549_first_autocorr_pre",
+  "finding": 4,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.785259236897019 vs reference 0.785259236897019"
+ },
+ {
+  "key": "LABELS/oe549_first_autocorr_pre",
+  "finding": 5,
+  "check": "C1",
+  "kind": "accepts_gross_invalid",
+  "agree": true,
+  "detail": "score 0.785259236897019 vs reference 0.785259236897019"
+ },
+ {
+  "key": "LABELS/oe562_erdos_pre",
+  "finding": 0,
+  "check": "C2",
+  "kind": "trusts_self_report",
+  "agree": true,
+  "detail": "gain 0.00016001967868128908 vs m 5e-05"
+ }
+]
