@@ -78,12 +78,16 @@ def share(n, d):
 
 
 # ------------------------------------------------------------------------- M1
-def m1(rows: list, res) -> dict:
-    """Pairs in the same parent-molecule + target group that R0 treats as comparable."""
+def m1(rows: list, res, only_type: str = None) -> dict:
+    """Pairs in the same parent-molecule + target group that R0 treats as comparable.
+    ``only_type``: restrict to records of one standard_type (exploratory, not
+    preregistered: what an agent following DeepMind's IC50-only example gets)."""
     status = {r["row"]: r["record_status"] for r in res.records}
     verdict = {(p["a"], p["b"]): (p["verdict"], p["label"]) for p in res.pairs}
     groups = defaultdict(list)
     for i, r in enumerate(rows, start=1):
+        if only_type is not None and r.get("standard_type") != only_type:
+            continue
         if r.get("parent_molecule_chembl_id") and r.get("target_chembl_id") and \
                 r0_nm(r) is not None:
             groups[(r["parent_molecule_chembl_id"], r["target_chembl_id"])].append(i)
@@ -268,6 +272,7 @@ def run_target(t: str) -> dict:
     res = {"target": t, "rows": len(rows), "receipt_sha256": P.receipt["sha256"],
            "p_summary": {k: v for k, v in P.summary.items() if k != "text"},
            "M1": m1(rows, P), "M1_assume_ki_ic50_x2": m1(rows, Pa), "M2": m2(rows),
+           "M1_IC50_only_exploratory": m1(rows, P, only_type="IC50"),
            "M3": m3_p, "M3_assume_ki_ic50_x2": m3_pa, "M4": m4(rows, P),
            "M5": m5(rows, P, t)}
     return res
@@ -323,7 +328,8 @@ def main(argv) -> int:
            "missing_targets": idx["missing_targets"],
            "input_files": idx["files"],
            "per_target": per,
-           "panel": {k: combine(panel, k) for k in ("M1", "M1_assume_ki_ic50_x2")}}
+           "panel": {k: combine(panel, k) for k in ("M1", "M1_assume_ki_ic50_x2",
+                                                    "M1_IC50_only_exploratory")}}
     # panel M3: pool the shifts' counts
     for k in ("M3", "M3_assume_ki_ic50_x2"):
         n = sum(r[k]["groups_compared"] for r in panel)

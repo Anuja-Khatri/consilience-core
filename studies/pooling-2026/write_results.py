@@ -106,6 +106,19 @@ def main() -> int:
           f"{pct(r['M2']['bound_share'])} | {pct(r['M3']['share_shift_gt_0_3'])} | "
           f"{pct(r['M3']['share_shift_gt_1_0'])} | {n(r['p_summary']['pool_valid_records'])} |")
     w("")
+    ei = e["M1_IC50_only_exploratory"]
+    pi = p["M1_IC50_only_exploratory"]
+    w("## IC50 only, as in DeepMind's documented call (exploratory, not preregistered)\n")
+    w("DeepMind's skill example asks for `standard_type=IC50`, so an agent following it never "
+      "mixes IC50 with Ki. Restricting M1 to IC50 records: EGFR, "
+      f"{n(ei['r0_comparable_pairs'])} pairs that unit conversion treats as comparable; of "
+      f"{n(ei['pairs_paired_by_p'])} pairs of records passing the rules, "
+      f"**{n(ei['refused'])} ({pct(ei['refused_share_of_paired'])})** are refused. Panel: "
+      f"{pct(pi.get('refused_share_of_paired'))}.\n")
+    w("| Reason (EGFR, IC50 only) | Pairs |\n|---|---:|")
+    for k, v in list(ei["refused_by_first_reason"].items())[:8]:
+        w(f"| `{k}` | {n(v)} |")
+    w("")
     w("## With the opt-in assumption Ki × 2 = IC50 (`ki_ic50_x2`)\n")
     ea = e["M1_assume_ki_ic50_x2"]
     w(f"EGFR: refused {n(ea['refused'])} of {n(ea['pairs_paired_by_p'])} "
