@@ -1,0 +1,221 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "U",
+    "role": "construction",
+    "type": "real_array"
+   },
+   {
+    "name": "V",
+    "role": "construction",
+    "type": "real_array"
+   },
+   {
+    "name": "W",
+    "role": "construction",
+    "type": "real_array"
+   },
+   {
+    "name": "n",
+    "quantity": "n",
+    "role": "claimed",
+    "type": "int"
+   },
+   {
+    "name": "m",
+    "quantity": "m",
+    "role": "claimed",
+    "type": "int"
+   },
+   {
+    "name": "p",
+    "quantity": "p",
+    "role": "claimed",
+    "type": "int"
+   },
+   {
+    "name": "loss",
+    "quantity": "loss",
+    "role": "claimed",
+    "type": "real"
+   },
+   {
+    "name": "rank",
+    "quantity": "rank",
+    "role": "claimed",
+    "type": "int"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "block_end": "# EVOLVE-BLOCK-END",
+   "block_start": "# EVOLVE-BLOCK-START",
+   "call_args": {},
+   "entry": "evaluate",
+   "evaluator": "evaluator.py",
+   "extra_files": [],
+   "kind": "template",
+   "program_function": "_consilience_flat",
+   "program_template": "program_template.py",
+   "reject": {
+    "file": null,
+    "keys_present": [
+     "error"
+    ],
+    "values": []
+   },
+   "score_key": "combined_score",
+   "timeout_s": 60.0
+  },
+  "invariances": [],
+  "kind": "evaluator-contract",
+  "name": "openevolve/matmul <2,4,5> (OE-514 post-fix, bc36680)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "U",
+   "V",
+   "W",
+   "n",
+   "m",
+   "p",
+   "loss",
+   "rank"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "AlphaEvolve rank-32 decomposition of <2,4,5> (the evaluator's BENCHMARK = 32, config.yaml) -> combined_score = 32 / R = 1 (integer rank, exact)",
+    "value": "1"
+   }
+  },
+  "validity": [
+   {
+    "field": "U",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "equals": 8,
+    "field": "U",
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "field": "V",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "equals": 20,
+    "field": "V",
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "field": "W",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "equals": 10,
+    "field": "W",
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "call": "exact_decomposition",
+    "equality": true,
+    "name": "exact_decomposition",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/oe514_matmul_post/contract.yaml",
+ "contract_sha256": "d8a6d960ae20b75a125eb71e34a381fa7fdc56160a1f22b47a7e5c464a8e51ca",
+ "created": "2026-11-20T19:23:35+00:00",
+ "environment": {
+  "mean_call_seconds": 0.002811079994242459,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 13.097
+ },
+ "file_hashes": {
+  "evaluator.py": "6c51cc458c61bee9c2ae53947ae51ea0f0677da2b13c3936108ea1f7db72d620",
+  "glue.py": "e53690d8eced03182398a5b9f19d66eb3166c65e5c87c0c45f2359ae378e40f5",
+  "program_template.py": "111cb729ad2b33621242703e05174dbde225544b88708376779a6da28391a48e",
+  "reference.npz": "2ef50bd4f9a8d883ed26f097ff5398a621f613aba2cc9c82ab69f0fd982d1539"
+ },
+ "findings": [],
+ "glue_sha256": "e53690d8eced03182398a5b9f19d66eb3166c65e5c87c0c45f2359ae378e40f5",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 0.8,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 4301,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1e-09,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": 1.0,
+  "reference_score": 0.8,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    8,
+    215
+   ],
+   "esc": [
+    3,
+    500
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "107294342fda7583862951de61b8f9626209420ab09cdf01335b957b5fa701dc",
+ "verdict": "PASS"
+}

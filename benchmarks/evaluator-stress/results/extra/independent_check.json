@@ -1,0 +1,74 @@
+[
+ {
+  "key": "DM/equidistant_points_in_convex_polygons_large",
+  "finding": 0,
+  "check": "C1",
+  "kind": "sentinel_is_best",
+  "agree": true,
+  "detail": "raw 1000000000.0 vs reference -0.49011716212553025"
+ },
+ {
+  "key": "DM/equidistant_points_in_convex_polygons_large",
+  "finding": 1,
+  "check": "C1",
+  "kind": "sentinel_is_best",
+  "agree": true,
+  "detail": "raw 1000000000.0 vs reference -0.49011716212553025"
+ },
+ {
+  "key": "DM/equidistant_points_in_convex_polygons_large",
+  "finding": 2,
+  "check": "C1",
+  "kind": "sentinel_is_best",
+  "agree": true,
+  "detail": "raw 1000000000.0 vs reference -0.49011716212553025"
+ },
+ {
+  "key": "DM/equidistant_points_in_convex_polygons_large",
+  "finding": 3,
+  "check": "C3",
+  "kind": "exploitable_invalid",
+  "agree": true,
+  "detail": "worst -0.24436096277300873 vs max(record, valid base, reference) + m 5e-06"
+ },
+ {
+  "key": "DM/flat_polynomials_c_plus",
+  "finding": 0,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": true,
+  "detail": "score 1.3530591988583383 vs reference 1.35306055191889 + m 1.3530605466590535e-09 (projection checked by verify)"
+ },
+ {
+  "key": "DM/flat_polynomials_c_plus",
+  "finding": 1,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": true,
+  "detail": "score 1.3529252458636973 vs reference 1.35306055191889 + m 1.3530605466590535e-09 (projection checked by verify)"
+ },
+ {
+  "key": "DM/flat_polynomials_c_plus",
+  "finding": 2,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": true,
+  "detail": "score 1.3517074913669707 vs reference 1.35306055191889 + m 1.3530605466590535e-09 (projection checked by verify)"
+ },
+ {
+  "key": "DM/flat_polynomials_c_plus",
+  "finding": 3,
+  "check": "C1",
+  "kind": "exploitable_type_violation",
+  "agree": true,
+  "detail": "score 1.3395299463997004 vs reference 1.35306055191889 + m 1.3530605466590535e-09 (projection checked by verify)"
+ },
+ {
+  "key": "DM/flat_polynomials_c_plus",
+  "finding": 4,
+  "check": "C3",
+  "kind": "exploitable_type_violation",
+  "agree": true,
+  "detail": "score 1.2416953917531448 vs reference 1.35306055191889 + m 1.3530605466590535e-09 (projection checked by verify)"
+ }
+]

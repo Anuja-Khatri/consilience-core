@@ -1,0 +1,153 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "x",
+    "role": "construction",
+    "type": "real"
+   },
+   {
+    "name": "y",
+    "role": "construction",
+    "type": "real"
+   },
+   {
+    "name": "value",
+    "quantity": "value",
+    "role": "claimed",
+    "type": "real"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "block_end": "# EVOLVE-BLOCK-END",
+   "block_start": "# EVOLVE-BLOCK-START",
+   "call_args": {},
+   "entry": "evaluate",
+   "evaluator": "evaluator.py",
+   "extra_files": [],
+   "kind": "template",
+   "program_function": "search_algorithm",
+   "program_template": "program_template.py",
+   "reject": {
+    "file": null,
+    "keys_present": [
+     "error"
+    ],
+    "values": []
+   },
+   "score_key": "combined_score",
+   "timeout_s": 60.0
+  },
+  "invariances": [],
+  "kind": "evaluator-contract",
+  "name": "openevolve/function_minimization (OE-514 post-fix, bc36680)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "x",
+   "y",
+   "value"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": null
+  },
+  "validity": [
+   {
+    "field": "x",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "y",
+    "rule": "finite",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/oe514_funcmin_post/contract.yaml",
+ "contract_sha256": "62f844b86d2da05d789a6fa94dce912af1b5fd1fc126d49ee357194d429eb2f8",
+ "created": "2026-11-20T19:23:06+00:00",
+ "environment": {
+  "mean_call_seconds": 0.007606503260423325,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 13.065
+ },
+ "file_hashes": {
+  "evaluator.py": "9f3235b3eb390a30ed1bd77a98d2f123451cceebda9d8b47bbd24955bbe57abe",
+  "glue.py": "82a53c0da89decde96bb571f72882c5f7d5efb6d0d329fb9b2a90d26527f9cf5",
+  "program_template.py": "e824be71c59d0c23b3f0a66b84c29a30d1175d23337f92ce7659332c62c0d0bc",
+  "reference.npz": "f1d5cec7c02c578908f73d3075a0351c4f8beaf69e349f84f9d5de81e1ea14b6"
+ },
+ "findings": [],
+ "glue_sha256": "82a53c0da89decde96bb571f72882c5f7d5efb6d0d329fb9b2a90d26527f9cf5",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 1.4997641483797082,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 1699,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1.4997641483797084e-09,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": null,
+  "reference_score": 1.4997641483797082,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    8,
+    188
+   ],
+   "esc": [
+    3,
+    500
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "b02b28d8e28f2e482c14b0a8bf3bbb1761ce3c7ab15008da89ea309e76fc47ae",
+ "verdict": "PASS"
+}

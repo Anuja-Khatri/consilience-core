@@ -1,0 +1,211 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "circles",
+    "role": "construction",
+    "shape": [
+     21,
+     3
+    ],
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "evaluate",
+   "evaluator": "evaluator.py",
+   "extra_files": [],
+   "kind": "py_path",
+   "program_function": "circle_packing21",
+   "reject": {
+    "file": null,
+    "keys_present": [
+     "error"
+    ],
+    "values": []
+   },
+   "score_key": "combined_score",
+   "timeout_s": 30.0
+  },
+  "invariances": [
+   {
+    "field": "circles",
+    "transform": "permute"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "openevolve/circle_packing_rect (pre-fix)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "circles"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "AlphaEvolve 2025 sum of radii 2.3658 (the evaluator's BENCHMARK) -> combined_score 1",
+    "value": "1.0000"
+   }
+  },
+  "validity": [
+   {
+    "field": "circles",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "circles",
+    "rule": "shape",
+    "shape": [
+     21,
+     3
+    ],
+    "tolerance": "0"
+   },
+   {
+    "call": "packing",
+    "equality": false,
+    "name": "packing",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/oe548_cpr_pre/contract.yaml",
+ "contract_sha256": "1c8ca0ddcf530a522a9de2971e523bcb0e45ad40b8c89c327e3a8321b4acd782",
+ "created": "2026-11-20T19:24:11+00:00",
+ "environment": {
+  "mean_call_seconds": 0.00151125543794289,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 10.457
+ },
+ "file_hashes": {
+  "evaluator.py": "819858872b1b4fea242cdff5afa5fadc9c22c62db18bbf4f349f1ecb076a67e1",
+  "glue.py": "20f0f8a01982221d90392ca340c41212805c4cf526826accd2872d7440795c4e",
+  "reference.npz": "73be557ac71261ae8a7b234b6d6839f75fe3d514350e29335ca7926aa582ad64"
+ },
+ "findings": [
+  {
+   "attack": "circles:nonfinite[0, 0]=nan",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "864dce176ae995381d852dcf92d53fa2c3811bacfa44a50058d7169283f59154"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.7988732477271919,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "packing"
+    }
+   ],
+   "score": 0.7988732477271919
+  },
+  {
+   "attack": "circles:nonfinite[0, 1]=nan",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "fbe412584c2ff25a9078952b7e302fcf5eb87f699f42bcb14f5b2b97cba87a6d"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.7988732477271919,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "packing"
+    }
+   ],
+   "score": 0.7988732477271919
+  }
+ ],
+ "glue_sha256": "20f0f8a01982221d90392ca340c41212805c4cf526826accd2872d7440795c4e",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 0.8275906852382643,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 6535,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 5e-05,
+  "margin_source": "record_resolution",
+  "record_score_units": 1.0,
+  "reference_score": 0.7988732477271919,
+  "resolution": 5e-05,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "d744f122c3a037e0898218a2d95cded86a5d96db7fbc6c1854661323cc0a11ee",
+ "verdict": "BLOCK"
+}

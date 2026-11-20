@@ -1,0 +1,405 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {
+   "n": 11
+  },
+  "fields": [
+   {
+    "name": "inner",
+    "role": "construction",
+    "shape": [
+     11,
+     3
+    ],
+    "type": "real_array"
+   },
+   {
+    "name": "center",
+    "role": "construction",
+    "shape": [
+     2
+    ],
+    "type": "real_array"
+   },
+   {
+    "name": "side",
+    "role": "construction",
+    "type": "real"
+   },
+   {
+    "name": "angle",
+    "role": "construction",
+    "type": "real"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "verify_construction",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "score_key": null,
+   "timeout_s": 30.0
+  },
+  "invariances": [
+   {
+    "field": "inner",
+    "transform": "permute"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "alphaevolve_results/B.7 hexagon verify_construction (n=11) [post]",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "inner",
+   "center",
+   "side",
+   "angle"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "minimize",
+   "record": {
+    "kind": "best_known",
+    "source": "AlphaEvolve (Novikov et al. 2025), alphaevolve_results B.7 text (cell 85): n=11 outer side 3.931",
+    "value": "3.931"
+   }
+  },
+  "validity": [
+   {
+    "field": "inner",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "inner",
+    "rule": "shape",
+    "shape": [
+     11,
+     3
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "center",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "center",
+    "rule": "shape",
+    "shape": [
+     2
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "side",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "side",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "field": "angle",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "call": "packing",
+    "equality": false,
+    "name": "hexagons_disjoint_and_contained",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/dmr12_hexagon_post/contract.yaml",
+ "contract_sha256": "826240b42fc3bc9badc34c6afbd06f7cc0d3d4525c80b1bd6fdf43302a6aba6f",
+ "created": "2026-11-20T19:25:14+00:00",
+ "environment": {
+  "mean_call_seconds": 0.0015560629072557432,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 212.369
+ },
+ "file_hashes": {
+  "glue.py": "29776d4868b3638f76bae66606bcea78dfd85f2393f6ece9bf2ab7d102bf167d",
+  "reference.npz": "6e12614e8dbaa72ea63026570a0ab9fd40d87f2f701146e753028b76ff126137",
+  "scorer.py": "05370ae8ff966e3e1a0cb579b1a6168fed1a74dcbdddfd4ac73c308a2b4b77be"
+ },
+ "findings": [
+  {
+   "attack": "inner:count-1",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "b7559e15a47b929f51ce27c0083f4b55481e784a8e37650625b9260c357b3111"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 3.930092,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "shape [10, 3] != [11, 3]",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "shape"
+    }
+   ],
+   "score": 3.930092
+  },
+  {
+   "attack": "inner:empty",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "68e9c003dc13a2b07b4faaac57aa2526e6c5934160ea2dad2b98b4f6ad53d434"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 3.930092,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "shape [0, 3] != [11, 3]",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "shape"
+    }
+   ],
+   "score": 3.930092
+  },
+  {
+   "attack": "center:count+1",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "10a98ef0417578aae058c78de38c385a259114c240916fefac65653d72feb46a"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 3.930092,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "shape [3] != [2]",
+     "index": 3,
+     "magnitude": "inf",
+     "rule": "shape"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ],
+   "score": 3.930092
+  },
+  {
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f03_C1-escalation_exploitable_invalid_candidate.json",
+     "sha256": "b525adfb6dc76a4deefdeb11d5e5eadae2970ab767a8189fbf4386ec79e40493"
+    }
+   },
+   "check": "C1-escalation",
+   "escalated_from": "center:magnitude*1e+150",
+   "kind": "exploitable_invalid",
+   "paired_gain": 3.9266627946011274,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ],
+   "valid_base": 3.930092,
+   "worst": 0.003429205398872759,
+   "worst_factor": 1.0
+  },
+  {
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f04_C1-escalation_exploitable_invalid_candidate.json",
+     "sha256": "95370d34aff9b8b328e12887a57b54869cde255cb0728aff7c867431f37a4e35"
+    }
+   },
+   "check": "C1-escalation",
+   "escalated_from": "angle:magnitude*1e+150",
+   "kind": "exploitable_invalid",
+   "paired_gain": 3.9262860438386817,
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ],
+   "valid_base": 3.930092,
+   "worst": 0.0038059561613183884,
+   "worst_factor": 1.0
+  }
+ ],
+ "glue_sha256": "29776d4868b3638f76bae66606bcea78dfd85f2393f6ece9bf2ab7d102bf167d",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 3.930092,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 8446,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 0.0005,
+  "margin_source": "record_resolution",
+  "record_score_units": 3.931,
+  "reference_score": 3.930092,
+  "resolution": 0.0005,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 3.930092
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "center:magnitude*1e+150",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ]
+  },
+  {
+   "attack": "center:magnitude*1e+300",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ]
+  },
+  {
+   "attack": "angle:magnitude*1e+150",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ]
+  },
+  {
+   "attack": "angle:magnitude*1e+300",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "center:magnitude*1e+300",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "predicate raised ZeroDivisionError",
+     "index": 7,
+     "magnitude": "inf",
+     "rule": "hexagons_disjoint_and_contained"
+    }
+   ]
+  }
+ ],
+ "sha256": "041b77cb79197868632fc515fa83bb7fcf7cffbaac485694ce6f479898013ae3",
+ "verdict": "BLOCK"
+}

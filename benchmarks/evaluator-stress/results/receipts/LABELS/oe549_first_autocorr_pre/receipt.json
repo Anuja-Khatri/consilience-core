@@ -1,0 +1,402 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "f",
+    "role": "construction",
+    "type": "real_array"
+   },
+   {
+    "name": "c",
+    "quantity": "c1",
+    "role": "claimed",
+    "type": "real"
+   },
+   {
+    "name": "loss",
+    "role": "fixed",
+    "type": "real",
+    "value": 0.0
+   },
+   {
+    "from": "len(f)",
+    "name": "n",
+    "role": "derived",
+    "type": "int"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "evaluate",
+   "evaluator": "evaluator.py",
+   "extra_files": [],
+   "kind": "py_path",
+   "program_function": "run",
+   "reject": {
+    "file": null,
+    "keys_present": [
+     "error"
+    ],
+    "values": []
+   },
+   "score_key": "combined_score",
+   "timeout_s": 30.0
+  },
+  "invariances": [],
+  "kind": "evaluator-contract",
+  "name": "openevolve/first_autocorr_ineq (pre-fix)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "f",
+   "c",
+   "loss",
+   "n"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "AlphaEvolve 2025 value (the evaluator's BENCHMARK) -> combined_score 1; stated to 4 decimals",
+    "value": "1.0000"
+   }
+  },
+  "validity": [
+   {
+    "field": "f",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "f",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/LABELS/oe549_first_autocorr_pre/contract.yaml",
+ "contract_sha256": "49057ca78fccfa73f4ddea6b3bc76d61dd3850d58e8dc6990e685712f0dfb510",
+ "created": "2026-11-20T19:24:22+00:00",
+ "environment": {
+  "mean_call_seconds": 0.0024959586915515716,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 4.762
+ },
+ "file_hashes": {
+  "evaluator.py": "9576c025d0ef55046984edd74399c151cbcde4dca174853bfb1311a6acc500b0",
+  "glue.py": "5584d790197184691044c472f4478cdf430b6666ab63dc382a813625e764a0fe",
+  "reference.npz": "d0e9fb606bd310fa6af7c002ec12c752f0b026dfb63765a7953d691b8ca49f2f"
+ },
+ "findings": [
+  {
+   "attack": "f:nonfinite[0]=nan+lie",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "c20c5e407d4eff064730163b6bd489e8a3b47c2c20b5ee6d812d087dac0eae9e"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.785259236897019,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.785259236897019
+  },
+  {
+   "attack": "f:nonfinite[300]=nan+lie",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "7778d11c394e0da43e22d3359373914586f9432b61675b087191e63757525358"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.785259236897019,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.785259236897019
+  },
+  {
+   "attack": "f:nonfinite[599]=nan+lie",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "f337b603b9db8cefab7b17601bb5f0aaee569211a47bb16a37f589bc9878c26d"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.785259236897019,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.785259236897019
+  },
+  {
+   "attack": "f:nonfinite[0]=inf+lie",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f03_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "af944bf29033e479bccbb3eb243f3d11512972e592cf31c348e55e28481f4cf1"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.785259236897019,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.785259236897019
+  },
+  {
+   "attack": "f:nonfinite[300]=inf+lie",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f04_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "5081144b709ce781d514bc6784629f4031c5d08ee163c3f528a213dee34ab554"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.785259236897019,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.785259236897019
+  },
+  {
+   "attack": "f:nonfinite[599]=inf+lie",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f05_C1_accepts_gross_invalid_candidate.json",
+     "sha256": "38e2cd2e00b665659a6417b84cf41bd5c983deae2925a87fb3262ec803aa526f"
+    }
+   },
+   "check": "C1",
+   "kind": "accepts_gross_invalid",
+   "reference_score": 0.785259236897019,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ],
+   "score": 0.785259236897019
+  }
+ ],
+ "glue_sha256": "5584d790197184691044c472f4478cdf430b6666ab63dc382a813625e764a0fe",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 0.801394871255875,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 1764,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 5e-05,
+  "margin_source": "record_resolution",
+  "record_score_units": 1.0,
+  "reference_score": 0.785259236897019,
+  "resolution": 5e-05,
+  "scaled_budget": {
+   "c3": [
+    8,
+    196
+   ],
+   "esc": [
+    3,
+    500
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "f:nonfinite[0]=nan",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ]
+  },
+  {
+   "attack": "f:nonfinite[300]=nan",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ]
+  },
+  {
+   "attack": "f:nonfinite[599]=nan",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ]
+  },
+  {
+   "attack": "f:nonfinite[0]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ]
+  },
+  {
+   "attack": "f:nonfinite[300]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ]
+  },
+  {
+   "attack": "f:nonfinite[599]=inf",
+   "block": false,
+   "check": "C1",
+   "kind": "nan_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "non-finite value",
+     "index": 0,
+     "magnitude": "inf",
+     "rule": "finite"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C2",
+   "field": "c",
+   "kind": "self_report_headroom",
+   "m": 5e-05,
+   "score_gain": 4.0964250413999537e-07,
+   "slack_claim_units": 9.99999999793948e-07,
+   "true_value": 1.916938888090493
+  }
+ ],
+ "sha256": "1363056e653167cfe66316cb630bf9d324c7e30b756541b4830f982ae573c10f",
+ "verdict": "BLOCK"
+}

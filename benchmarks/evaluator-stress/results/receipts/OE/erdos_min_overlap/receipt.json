@@ -1,0 +1,502 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "h",
+    "role": "construction",
+    "type": "real_array"
+   },
+   {
+    "name": "c5",
+    "quantity": "c5",
+    "role": "claimed",
+    "type": "real"
+   },
+   {
+    "from": "len(h)",
+    "name": "n",
+    "role": "derived",
+    "type": "int"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "evaluate",
+   "evaluator": "evaluator.py",
+   "extra_files": [],
+   "kind": "py_path",
+   "program_function": "run",
+   "reject": {
+    "file": null,
+    "keys_present": [
+     "error"
+    ],
+    "values": []
+   },
+   "score_key": "combined_score",
+   "timeout_s": 60.0
+  },
+  "invariances": [],
+  "kind": "evaluator-contract",
+  "name": "openevolve/erdos_min_overlap @ ac5f8f5",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "h",
+   "c5",
+   "n"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "map": "score_from_c5",
+    "quantity": "c5",
+    "source": "AlphaEvolve C5 <= 0.380924 (alphaevolve_results mathematical_results.ipynb markdown, B.5); map = evaluator BENCHMARK 0.38092303510845016 / c5",
+    "value": "0.380924"
+   }
+  },
+  "validity": [
+   {
+    "field": "h",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "h",
+    "max": "1",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "call": "integral_one",
+    "equality": true,
+    "name": "integral_one",
+    "rule": "predicate",
+    "tolerance": "1e-12"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/OE/erdos_min_overlap/contract.yaml",
+ "contract_sha256": "9189e73cd859bec4fcbbab4c95c53385215987e208941a1a083d4defd228c9c8",
+ "created": "2026-11-20T19:24:55+00:00",
+ "environment": {
+  "mean_call_seconds": 0.0019923611960337186,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 9.969
+ },
+ "file_hashes": {
+  "evaluator.py": "014d3836de0436a49951a2cbb43bae505dcc1184ee5939af219a200b60a21205",
+  "glue.py": "1c6dabe3837629931206f8154e316ce942428e22f555577dcae6d16eb2267d1f",
+  "reference.npz": "27c4edd990e35cf20944b2c4c7b4a1e0aa4e418c34cd77f850b9c0b4705cf8d5"
+ },
+ "findings": [],
+ "glue_sha256": "1c6dabe3837629931206f8154e316ce942428e22f555577dcae6d16eb2267d1f",
+ "info": {
+  "C3": {
+   "best_invalid": 0.7718641886670775,
+   "best_valid": null,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 1.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 4195,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1.3125944637315534e-06,
+  "margin_source": "record_resolution",
+  "record_score_units": 0.999997466970971,
+  "reference_score": 0.7618460702169003,
+  "resolution": 1.3125944637315534e-06,
+  "scaled_budget": {
+   "c3": [
+    8,
+    208
+   ],
+   "esc": [
+    3,
+    500
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 0.8625876940666704
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "h:count+1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.950248756266416e-06,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:count+1+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.950248756266416e-06,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1+1e-09)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 1.000000082740371e-09,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1+1e-09)+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 1.000000082740371e-09,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1-1e-09)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.99999940631824e-10,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1-1e-09)+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.99999940631824e-10,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1+1e-06)",
+   "beats_record": false,
+   "block": false,
+   "check": "C1",
+   "kind": "tolerance_headroom",
+   "paired_gain": 7.616129948928574e-13,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999997489794e-07,
+     "rule": "integral_one"
+    }
+   ],
+   "valid_base": 0.7618460702169003,
+   "worst": 0.7618460702176619,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "h:scale*(1+1e-06)+lie",
+   "beats_record": false,
+   "block": false,
+   "check": "C1",
+   "kind": "tolerance_headroom",
+   "paired_gain": 7.616129948928574e-13,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999997489794e-07,
+     "rule": "integral_one"
+    }
+   ],
+   "valid_base": 0.7618460702169003,
+   "worst": 0.7618460702176619,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "h:scale*(1-1e-06)",
+   "beats_record": false,
+   "block": false,
+   "check": "C1",
+   "kind": "tolerance_headroom",
+   "paired_gain": 7.616129948928574e-13,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999997489794e-07,
+     "rule": "integral_one"
+    }
+   ],
+   "valid_base": 0.7618460702169003,
+   "worst": 0.7618460702176619,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "h:scale*(1-1e-06)+lie",
+   "beats_record": false,
+   "block": false,
+   "check": "C1",
+   "kind": "tolerance_headroom",
+   "paired_gain": 7.616129948928574e-13,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999997489794e-07,
+     "rule": "integral_one"
+    }
+   ],
+   "valid_base": 0.7618460702169003,
+   "worst": 0.7618460702176619,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "h:scale*(1+0.0001)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999999990905e-05,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1+0.0001)+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999999990905e-05,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1-0.0001)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999999990905e-05,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1-0.0001)+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.999999999990905e-05,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1+0.001)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 0.000999999999999659,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1+0.001)+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 0.000999999999999659,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1-0.001)",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 0.0009999999999999432,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "attack": "h:scale*(1-0.001)+lie",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 0.0009999999999999432,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "h:count+1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 1.8006972963470916e-05,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "h:scale*(1+1e-09)",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 0.0005979780736819862,
+     "rule": "integral_one"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "h:scale*(1-1e-09)",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.671388870046372e-05,
+     "rule": "integral_one"
+    }
+   ]
+  }
+ ],
+ "sha256": "3ba01e2ec15b9bd787be16659fbe171372fe59465a5efdff39cf437feafb4570",
+ "verdict": "PASS"
+}

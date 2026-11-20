@@ -1,0 +1,216 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.3.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {
+   "n": 26
+  },
+  "fields": [
+   {
+    "name": "centers",
+    "role": "construction",
+    "shape": [
+     26,
+     2
+    ],
+    "type": "real_array"
+   },
+   {
+    "name": "radii",
+    "role": "construction",
+    "shape": [
+     26
+    ],
+    "type": "real_array"
+   },
+   {
+    "name": "reported_sum",
+    "quantity": "sum_radii",
+    "role": "claimed",
+    "type": "real"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "block_end": "# EVOLVE-BLOCK-END",
+   "block_start": "# EVOLVE-BLOCK-START",
+   "call_args": {},
+   "entry": "evaluate_file",
+   "evaluator": "sdk_adapter.py",
+   "extra_files": [
+    "alpha_evolve/models.py",
+    "evaluate.py"
+   ],
+   "kind": "template",
+   "program_function": "construct_packing",
+   "program_template": "program.py",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     -1000000000000.0
+    ]
+   },
+   "score_key": "scores.scores[metric=sum_of_radii].score",
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "center": [
+     "0.5",
+     "0.5"
+    ],
+    "field": "centers",
+    "order": 4,
+    "transform": "dihedral"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "google-cloud-alphaevolve/circle_packing (n=26)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "centers",
+   "radii",
+   "reported_sum"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "AlphaEvolve (Novikov et al. 2025), alphaevolve_results @ 4226acb B.12: n=26 sum of radii 2.635 (stated to 3 decimals)",
+    "value": "2.635"
+   }
+  },
+  "validity": [
+   {
+    "field": "centers",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "centers",
+    "rule": "shape",
+    "shape": [
+     26,
+     2
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "radii",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "radii",
+    "rule": "shape",
+    "shape": [
+     26
+    ],
+    "tolerance": "0"
+   },
+   {
+    "field": "radii",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "box": [
+     [
+      "0",
+      "1"
+     ],
+     [
+      "0",
+      "1"
+     ]
+    ],
+    "field": "centers",
+    "margin_from": "radii",
+    "rule": "in_box",
+    "tolerance": "0"
+   },
+   {
+    "field": "centers",
+    "radii_from": "radii",
+    "rule": "pairwise_separation",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/G/circle_packing/contract.yaml",
+ "contract_sha256": "393f73701c7a5b2a8e53ce761f67df10fae22a810429d44a1d5466736b780477",
+ "created": "2026-11-20T19:08:24+00:00",
+ "environment": {
+  "mean_call_seconds": 0.0020353565482192954,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 15.429
+ },
+ "file_hashes": {
+  "alpha_evolve/models.py": "00d3d51ee7db90ed6f90f773047f0b5007cb0166797becb2a4d9c1b011a791fe",
+  "evaluate.py": "e1c9fb66a45280b4caa29ce43c77c85d469a329696fcf3eb74e0e1d42b494d7f",
+  "glue.py": "3907724f142e890c790e5b60102f35bf1b16905175b535e2f3c86cd60ec5fb90",
+  "program.py": "dc2671c102d6feb0c9fa57b495b689841854950cd96c72dbe67a04d7d03fd0bf",
+  "reference.npz": "7cb84d24ad5d3ee518710654b2792a855925fd20dc41fc14062fd5545b493517",
+  "sdk_adapter.py": "1c8dc83fb59f9a58acf5a6764b77b199e876bab10cb646eaa07efedeb35d89e2"
+ },
+ "findings": [],
+ "glue_sha256": "3907724f142e890c790e5b60102f35bf1b16905175b535e2f3c86cd60ec5fb90",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 2.6358627564136983,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 6737,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 0.0005,
+  "margin_source": "record_resolution",
+  "record_score_units": 2.635,
+  "reference_score": 2.6358627564136983,
+  "resolution": 0.0005,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "fdd47f2766bd4e92a6be537960660919f54ac8e9a003bd8fe4f4718f0ba31e58",
+ "verdict": "PASS"
+}
