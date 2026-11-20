@@ -1,0 +1,47 @@
+kind: evaluator-contract
+name: deepmind/equidistant_points calculate_polygon_score_new (4-point helper)
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_polygon_score_new
+  reject:
+    values:
+    - 1000000000.0
+    - -1000000000.0
+fields:
+- name: P
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: P
+- rule: count
+  field: P
+  equals: 15
+- rule: convex_polygon_ordered
+  field: P
+invariances:
+- transform: rotate
+  field: P
+  dims: 2
+- transform: translate
+  field: P
+- transform: scale
+  field: P
+  score_exponent: 0
+- transform: cyclic_shift
+  field: P
+- transform: reflect
+  field: P
+score:
+  direction: maximize
+  record:
+    value: '-0.49012'
+    kind: best_known
+    source: score of AlphaEvolve's shipped construction (myarr4) under the extracted
+      4-point scorer; the notebook printed -0.48898 after out-of-order execution
+reference:
+  file: reference.npz
+initial:
+  file: initial.npz
+glue: glue.py

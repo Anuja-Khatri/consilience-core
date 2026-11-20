@@ -1,0 +1,45 @@
+kind: evaluator-contract
+name: openevolve/third_autocorr_ineq (post-fix)
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: run
+  score_key: combined_score
+  reject:
+    keys_present:
+    - error
+fields:
+- name: f
+  type: real_array
+  role: construction
+- name: c
+  type: real
+  role: claimed
+  quantity: c3
+- name: loss
+  type: real
+  role: fixed
+  value: 0.0
+- name: n
+  type: int
+  role: derived
+  from: len(f)
+returns:
+- f
+- c
+- loss
+- n
+validity:
+- rule: finite
+  field: f
+score:
+  direction: maximize
+  record:
+    value: '1.0000'
+    kind: best_known
+    source: AlphaEvolve 2025 value (the evaluator's BENCHMARK) -> combined_score 1;
+      stated to 4 decimals
+reference:
+  file: reference.npz
+glue: glue.py

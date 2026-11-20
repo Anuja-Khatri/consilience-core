@@ -1,0 +1,51 @@
+kind: evaluator-contract
+name: deepmind/matrix_multiplication_amgm get_score
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values:
+    - -1000000.0
+fields:
+- name: B
+  type: real_array
+  shape:
+  - 3
+  - 2
+  - 2
+  role: construction
+validity:
+- rule: finite
+  field: B
+- rule: shape
+  field: B
+  shape:
+  - 3
+  - 2
+  - 2
+- rule: range
+  field: B
+  min: '-1000'
+  max: '1000'
+invariances:
+- transform: permute
+  field: B
+- transform: conjugate
+  field: B
+- transform: scale
+  field: B
+  score_exponent: 4
+score:
+  direction: maximize
+  record:
+    value: '0'
+    kind: threshold
+    success: '>'
+    margin: '0'
+    source: 'notebook: a positive score indicates a counterexample'
+reference:
+  file: reference.npz
+claimed_best:
+  file: claimed_best.npz
+glue: glue.py

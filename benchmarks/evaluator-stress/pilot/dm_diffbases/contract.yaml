@@ -1,0 +1,34 @@
+kind: evaluator-contract
+name: deepmind/difference_bases get_score
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  reject:
+    values:
+    - -100.0
+fields:
+- name: B
+  type: int_set
+  role: construction
+validity:
+- rule: finite
+  field: B
+- rule: integral
+  field: B
+- rule: distinct
+  field: B
+invariances:
+- transform: translate
+  field: B
+- transform: permute
+  field: B
+score:
+  direction: minimize
+  record:
+    value: '2.6390'
+    kind: best_known
+    source: problem page (AlphaEvolve bound)
+reference:
+  file: reference.npz
+glue: glue.py

@@ -1,0 +1,42 @@
+kind: evaluator-contract
+name: openevolve/circle_packing_rect (pre-fix)
+harness:
+  kind: py_path
+  evaluator: evaluator.py
+  entry: evaluate
+  program_function: circle_packing21
+  score_key: combined_score
+  reject:
+    keys_present:
+    - error
+fields:
+- name: circles
+  type: real_array
+  shape:
+  - 21
+  - 3
+  role: construction
+validity:
+- rule: finite
+  field: circles
+- rule: shape
+  field: circles
+  shape:
+  - 21
+  - 3
+- rule: predicate
+  call: packing
+  name: packing
+invariances:
+- transform: permute
+  field: circles
+score:
+  direction: maximize
+  record:
+    value: '1.0000'
+    kind: best_known
+    source: AlphaEvolve 2025 sum of radii 2.3658 (the evaluator's BENCHMARK) -> combined_score
+      1
+reference:
+  file: reference.npz
+glue: glue.py
