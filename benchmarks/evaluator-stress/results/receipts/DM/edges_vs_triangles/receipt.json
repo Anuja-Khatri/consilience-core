@@ -99,13 +99,13 @@
  "contract_author": "model",
  "contract_file": "../../../../contracts/DM/edges_vs_triangles/contract.yaml",
  "contract_sha256": "1e7e642bc8afe7449c480bb74e151f26d69b605b8e6770f6c1ca9551017e8fc4",
- "created": "2026-11-20T18:00:51+00:00",
+ "created": "2026-11-20T19:00:41+00:00",
  "environment": {
-  "mean_call_seconds": 0.0009757514695301892,
+  "mean_call_seconds": 0.0009133912868268362,
   "numpy": "2.5.5",
   "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
   "python": "3.12.3",
-  "seconds": 18.68
+  "seconds": 17.684
  },
  "file_hashes": {
   "glue.py": "45dd7b8ec80fcaed0cd8a455cc3be2b8d1cc4fb03635737a987c09ffb6c7fa12",

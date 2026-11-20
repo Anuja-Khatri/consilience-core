@@ -98,13 +98,13 @@
  "contract_author": "model",
  "contract_file": "../../../../contracts/DM/erdos_squares_in_a_square/contract.yaml",
  "contract_sha256": "ff908c76a437a15121c18fddd9efa8d939ca7f13364e592e16fc99bbaaad7622",
- "created": "2026-11-20T18:01:00+00:00",
+ "created": "2026-11-20T19:00:57+00:00",
  "environment": {
-  "mean_call_seconds": 0.002028255328788596,
+  "mean_call_seconds": 0.00828811761944793,
   "numpy": "2.5.5",
   "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
   "python": "3.12.3",
-  "seconds": 8.561
+  "seconds": 15.181
  },
  "file_hashes": {
   "glue.py": "cd63178521e20eafe8ea57141855f33a00e167aa4037549beca006dfa89c6017",
@@ -135,7 +135,7 @@
    ],
    "k": 100
   },
-  "calls": 3776,
+  "calls": 1720,
   "deterministic": true,
   "flagged_transforms": [],
   "m": 3.0000000000000004e-09,
@@ -146,7 +146,7 @@
   "scaled_budget": {
    "c3": [
     8,
-    454
+    197
    ],
    "esc": [
     3,
@@ -165,6 +165,6 @@
  ],
  "receipt": "consilience-stress-receipt/v1",
  "reported": [],
- "sha256": "c04282b63ce0bef65df9d44ee8abf8a9b124479c71b36239902f3a2c3fd316a6",
+ "sha256": "5e9a44ccb806f910d11c45fb37790cc0da5aa4e8ec79d16f3fc268bf97216f16",
  "verdict": "PASS"
 }
