@@ -1,0 +1,38 @@
+kind: evaluator-contract
+name: deepmind/erdos_squarefree_problem calculate_score (M = 625)
+description: >
+  Problem 52 (Erdos: sets A with ab+1 never squarefree; the problem page's wording drops 'never', the
+  notebook prompt states it). Modular proxy from the prompt: A subset of {0..M-1}, M = 625, valid when
+  gcd(ab+1, M) is not squarefree for all a, b in A (a = b included). Score = |A|/M minus a penalty that
+  is 0 on valid sets. M = 625 because the scorer maps every multiple of 25 to 625.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+  timeout_s: 60
+  reject:
+    values: [-1000000.0]
+fields:
+  - {name: A, type: int_set, role: construction}
+validity:
+  - {rule: finite, field: A}
+  - {rule: count, field: A, min: 1}
+  - {rule: integral, field: A}
+  - {rule: distinct, field: A}
+  - {rule: range, field: A, min: "0", max: "624"}
+  - {rule: predicate, call: all_pairs_gcd_not_squarefree, name: all_pairs_gcd_not_squarefree}
+invariances:
+  - {transform: permute, field: A}
+score:
+  direction: maximize
+  record:
+    value: "0.04"
+    kind: best_known
+    source: "notebook 'What AlphaEvolve found': residue class 7 mod 25 (density 1/25), sharp for large N (Sawhney)"
+  bound:
+    value: "0.04"
+    kind: proven
+    source: "elementary for M = 625: a valid a needs 25 | a^2 + 1, so a = 7 or 18 mod 25, and 7*18 + 1 = 127 is not divisible by 25, so A lies in one class mod 25 (at most 25 residues)"
+reference: {file: reference.npz}
+glue: glue.py
