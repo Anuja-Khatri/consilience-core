@@ -139,10 +139,15 @@ def _rerun(rec, rpath, data, command, recorded, version, integrity, steps) -> Ve
             prec = rec["result"].get("precision") or {}
             written = {k: prec[k].get("written") for k in ("a", "b")
                        if isinstance(prec.get(k), dict)}
-            fresh = compare(inp["a"], inp["b"], pack=ruleset, abs_tol=opt.get("abs_tol"),
-                            rel_tol=opt.get("rel_tol"), floor=opt.get("floor"),
+            if opt.get("defaults_from_pack"):   # the pack's defaults were in force
+                tol = {}
+            else:
+                tol = dict(abs_tol=opt.get("abs_tol"), rel_tol=opt.get("rel_tol"),
+                           floor=opt.get("floor"), log_tol=opt.get("log_tol"),
+                           log_floor=opt.get("log_floor"))
+            fresh = compare(inp["a"], inp["b"], pack=ruleset,
                             precision=opt.get("precision", "exact"),
-                            _written=written).receipt
+                            _written=written, **tol).receipt
         except (KeyError, TypeError) as exc:
             raise InputError(f"the receipt is missing a field: {exc}") from None
     else:

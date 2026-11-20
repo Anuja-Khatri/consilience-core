@@ -1,0 +1,190 @@
+# Domain pack: bioactivity (potency values such as IC50, Ki, Kd, EC50 from ChEMBL).
+#
+# Says which records may be pooled: two potency values are compared only when they are
+# the same kind of value and were measured under the same assay conditions. The
+# conditions are exactly the assay fields Landrum & Riniker (2024) use for their
+# "conditions hash" to decide which ChEMBL assays may be combined, plus the measurement
+# type. A field left empty on both records counts as the same, as it does in their hash.
+#
+# Use it with `consilience compare-table <table> --map chembl --pack bioactivity`. The
+# `chembl` column map turns ChEMBL activity fields into these names.
+#
+# What this pack does NOT check (stated, not hidden):
+# - ATP or substrate concentration: mostly free text in ChEMBL (assay_parameters or the
+#   description), so it is not a rule. Two kinase IC50s that pass this pack may still
+#   differ in ATP concentration.
+# - Assays whose description mentions "mutant", "mutation" or "variant" but carry no
+#   variant record (Landrum & Riniker drop these by a text search). Not a rule here.
+# - Repeat citations of one measurement (`potential_duplicate`): kept, and reported.
+#
+# Licence: CC BY 4.0. The pack's hash is printed with every result that uses it.
+kind: compare-pack
+name: bioactivity
+version: bioactivity-v1
+plain_english: >
+  Two potency values are pooled only when they are the same kind of value (IC50 with
+  IC50, Ki with Ki) and were measured in assays with the same type, organism, category,
+  tax id, strain, tissue, cell type, subcellular fraction, BioAssay Ontology format and
+  target variant. Values ChEMBL flags as possibly wrong, values from assays not mapped
+  directly to a single protein, and approximate or missing relations are left out.
+rationale: >
+  Combining IC50 or Ki values from different assays without matching assay conditions
+  adds significant noise: with minimal curation almost 65% of duplicate IC50 pairs differ
+  by more than 0.3 log units and 27% by more than one log unit (Landrum & Riniker 2024).
+source: >
+  Landrum GA, Riniker S. Combining IC50 or Ki Values from Different Sources Is a Source of
+  Significant Noise. J Chem Inf Model 2024; doi 10.1021/acs.jcim.4c00049 (PMC10934815).
+  Kalliokoski T, Kramer C, Vulpetti A, Gedeck P. Comparability of Mixed IC50 Data - A
+  Statistical Analysis. PLoS One 2013; 8:e61007 (PMC3628986). Kramer C et al. The
+  experimental uncertainty of heterogeneous public Ki data. J Med Chem 2012; 55:5165
+  (doi 10.1021/jm300131x). ChEMBL schema documentation, release 37.
+licence: CC BY 4.0
+conditions:
+  - id: BA1
+    field: standard_type
+    predicate: equal
+    plain_english: Only the same kind of value is pooled (IC50 with IC50, Ki with Ki, ...).
+    rationale: >
+      IC50 depends on the assay conditions; Ki does not. They are different quantities
+      (Kalliokoski et al. 2013: "In contrast to Ki values, IC50 data is assay specific").
+      See assumption ki_ic50_x2 for the opt-in conversion.
+    source: Kalliokoski et al. 2013 (PMC3628986); Landrum & Riniker 2024 (PMC10934815).
+  - id: BA2
+    field: assay_type
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same assay type (B binding, F functional, A ADME, T toxicity, P physicochemical, U unassigned).
+    rationale: Binding and functional (often cell-based) potencies differ systematically.
+    source: Landrum & Riniker 2024, conditions hash field assay_type; ChEMBL schema ASSAY_TYPE.
+  - id: BA3
+    field: assay_organism
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same assay organism.
+    rationale: The target may be expressed in, or assayed with, different organisms.
+    source: Landrum & Riniker 2024, conditions hash field assay_organism.
+  - id: BA4
+    field: assay_category
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same assay category (for example screening, confirmatory, panel).
+    rationale: Part of the assay metadata that must match before assays are combined.
+    source: Landrum & Riniker 2024, conditions hash field assay_category.
+  - id: BA5
+    field: assay_tax_id
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same assay taxonomy id.
+    rationale: Part of the assay metadata that must match before assays are combined.
+    source: Landrum & Riniker 2024, conditions hash field assay_tax_id.
+  - id: BA6
+    field: assay_strain
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same strain.
+    rationale: Part of the assay metadata that must match before assays are combined.
+    source: Landrum & Riniker 2024, conditions hash field assay_strain.
+  - id: BA7
+    field: assay_tissue
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same tissue.
+    rationale: Part of the assay metadata that must match before assays are combined.
+    source: Landrum & Riniker 2024, conditions hash field assay_tissue.
+  - id: BA8
+    field: assay_cell_type
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same cell type (cell line).
+    rationale: >
+      Cell-based potencies depend on the cell line ("the assays may be run using
+      different cell types", Landrum & Riniker 2024). Empty on both counts as the same,
+      as in their hash.
+    source: Landrum & Riniker 2024, conditions hash field assay_cell_type.
+  - id: BA9
+    field: assay_subcellular_fraction
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same subcellular fraction.
+    rationale: Part of the assay metadata that must match before assays are combined.
+    source: Landrum & Riniker 2024, conditions hash field assay_subcellular_fraction.
+  - id: BA10
+    field: bao_format
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same BioAssay Ontology format (for example single protein, cell-based, organism-based).
+    rationale: Biochemical and cell-based formats measure potency in different settings.
+    source: Landrum & Riniker 2024, conditions hash field bao_format; ChEMBL schema BAO_FORMAT.
+  - id: BA11
+    field: assay_variant_mutation
+    predicate: equal
+    absent_on_both: equal
+    plain_english: >
+      Same target variant (for example wild type, L858R, T790M). An "undefined mutation"
+      is not stated and is never pooled, not even with another undefined mutation.
+    rationale: >
+      "different variants of the same parent protein are assigned the same target ID in
+      ChEMBL" (Landrum & Riniker 2024). ChEMBL's VARIANT_ID is -1 for unclassified
+      variants, so an undefined mutation is unknown, not wild type.
+    source: Landrum & Riniker 2024, conditions hash field variant_id; ChEMBL schema VARIANT_ID.
+record_rules:
+  - id: BR1
+    field: data_validity_comment
+    kind: in
+    values: [Manually validated]
+    allow_empty: true
+    plain_english: >
+      Leave out values ChEMBL flags as possibly wrong ("Outside typical range",
+      "Potential author error", "Non standard unit type", "Potential missing data", ...).
+      Values marked "Manually validated" (checked against the paper) are kept.
+    rationale: ChEMBL's own warning that the value is likely to be incorrect.
+    source: ChEMBL schema documentation, DATA_VALIDITY_COMMENT.
+  - id: BR2
+    field: confidence_score
+    kind: at_least
+    threshold: 9
+    plain_english: Only assays assigned to a direct single protein target (ChEMBL confidence score 9).
+    rationale: >
+      Landrum & Riniker 2024: "any assay that does not have a confidence score value of 9
+      (indicating that the assay is assigned to a direct single target) is removed."
+    source: Landrum & Riniker 2024 (PMC10934815); ChEMBL schema CONFIDENCE_SCORE.
+  - id: BR3
+    field: relation
+    kind: in
+    values: ["=", "<", "<=", ">", ">="]
+    plain_english: >
+      The relation must be exact or a one-sided bound. Approximate ("~") and other
+      relations, and records with no relation, are left out.
+    rationale: Only these relations can be read exactly; nothing is guessed.
+    source: consilience bound grammar.
+  - id: BR4
+    field: value
+    kind: present
+    plain_english: A record with no value is left out.
+    rationale: There is nothing to compare.
+    source: consilience.
+assumptions:
+  - id: ki_ic50_x2
+    condition: standard_type
+    from: Ki
+    to: IC50
+    factor: 2
+    plain_english: >
+      Opt-in (--assume ki_ic50_x2): pool a Ki with an IC50 by multiplying the Ki by 2.
+      This assumes competitive inhibition measured with the substrate at its Km.
+    rationale: >
+      Cheng-Prusoff with [S] = Km gives IC50 = 2 Ki. Kalliokoski et al. 2013: "For a broad
+      dataset such as ChEMBL database a Ki- IC50 conversion factor of 2 was found to be the
+      most reasonable" (their observed mean offset was 0.355 log units, a factor of 2.3).
+    source: Kalliokoski et al. 2013, PLoS One 8:e61007 (PMC3628986).
+defaults:
+  log_tol: 0.3
+  log_floor: 1.0
+  plain_english: >
+    Two pooled values agree if they are within 0.3 log units (about 2-fold); within the
+    floor if within 1 log unit (10-fold); otherwise they disagree.
+  source: >
+    The thresholds Landrum & Riniker 2024 report against (abstract: "almost 65% of the
+    points differ by more than 0.3 log units, 27% differ by more than one log unit"); one
+    log unit is also about two standard deviations of public Ki data (Kramer et al. 2012:
+    SD 0.54 pKi). These are reporting thresholds, not a published agreement criterion.

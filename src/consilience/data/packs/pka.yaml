@@ -1,0 +1,65 @@
+# Domain pack: pKa (acid dissociation constants), the second domain for compare-table.
+#
+# Says which measured pKa values of the same molecule and the same dissociation step may
+# be pooled. Written for the columns of the IUPAC Digitized pKa Dataset (use
+# `--map iupac_pka`), but works on any table with these fields.
+#
+# What this pack does NOT check (stated, not hidden):
+# - Ionic strength: in the IUPAC dataset it appears only in free-text remarks.
+# - The measurement method: deliberately not a condition. Different methods measuring
+#   the same pKa are exactly what pooling is for; the result lists the methods per class.
+# - Cosolvent: the IUPAC dataset fills `cosolvent` only "if able to be parsed from
+#   remarks", so an empty cosolvent means "none parsed", not proven pure water.
+#
+# There are no default tolerances: no cited source on inter-laboratory pKa
+# reproducibility was found for this pack. Give --abs-tol and --floor yourself.
+#
+# Licence: CC BY 4.0. The pack's hash is printed with every result that uses it.
+kind: compare-pack
+name: pka
+version: pka-v1
+plain_english: >
+  Two pKa values of the same molecule and dissociation step are pooled only when they were
+  measured at the same temperature, with the same cosolvent and pressure. Values IUPAC
+  rates "Very uncertain" or leaves unrated are left out.
+source: >
+  Zheng JW, Lafontant-Joseph O. IUPAC Digitized pKa Dataset, v2.4a (2026), doi
+  10.5281/zenodo.7236452, and its digitization report (column definitions).
+licence: CC BY 4.0
+conditions:
+  - id: PK1
+    field: temperature
+    predicate: quantity_equal
+    tolerance: 0
+    plain_english: Same temperature. A temperature that is not stated is never pooled.
+    rationale: pKa depends on temperature.
+    source: IUPAC digitization report, column T ("room temperature was converted to 25 °C").
+  - id: PK2
+    field: cosolvent
+    predicate: equal
+    ignore_case: true
+    absent_on_both: equal
+    plain_english: Same cosolvent; empty on both counts as the same (no cosolvent parsed).
+    rationale: A cosolvent changes the measured pKa.
+    source: IUPAC digitization report, column cosolvent ("if able to be parsed from remarks").
+  - id: PK3
+    field: pressure
+    predicate: equal
+    absent_on_both: equal
+    plain_english: Same pressure; empty on both counts as the same (ordinary pressure).
+    rationale: The dataset marks the few very-high-pressure entries in this column.
+    source: IUPAC digitization report, column pressure.
+record_rules:
+  - id: PKR1
+    field: assessment
+    kind: in
+    values: [Reliable, Approximate, Uncertain]
+    plain_english: Leave out values IUPAC rates "Very uncertain", other grades, or no grade.
+    rationale: IUPAC's own critical evaluation of the source's reliability for the entry.
+    source: IUPAC digitization report, column assessment.
+  - id: PKR2
+    field: value
+    kind: present
+    plain_english: A record with no value is left out.
+    rationale: There is nothing to compare.
+    source: consilience.

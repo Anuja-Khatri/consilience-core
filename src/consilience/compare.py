@@ -412,6 +412,8 @@ class _Cmp:
     # ---- pack rules
     def rule(self, rule: dict, path: str, va, vb, present_a: bool, present_b: bool):
         rid = rule.get("id")
+        if rule.get("absent_on_both") == "equal" and _absent(va) and _absent(vb):
+            return   # empty on both measurements: the pack says this counts as the same
         if not (present_a and present_b):
             self.defects.append(_defect("not_stated", path, "missing",
                                         "not stated on " + ("both sides" if not
@@ -483,6 +485,12 @@ class _Cmp:
         for key in rule.get("also_equal", []):
             self.rule({"id": rid, "predicate": "equal"}, f"{path}.{key}", ra.get(key),
                       rb.get(key), ra.get(key) is not None, rb.get(key) is not None)
+
+
+def _absent(v) -> bool:
+    """Empty: no value at all (None, or blank text). The word "unstated" is not empty:
+    it says the value is unknown, and it is never equal to anything."""
+    return v is None or (isinstance(v, str) and not v.strip())
 
 
 def _leaf_safe(v):
@@ -615,8 +623,50 @@ def _side_precision(m: dict, written: Optional[str]) -> dict:
     return {"written": written, "implied": half, "rule": rule}
 
 
+def _log_options(log_tol, log_floor) -> dict:
+    out = {}
+    for name, v in (("log_tol", log_tol), ("log_floor", log_floor)):
+        if v is None:
+            continue
+        try:
+            x = parse_number(v)
+        except UnitError as exc:
+            raise InputError(f"--{name.replace('_', '-')} {v!r}: {exc} (give base-10 log "
+                             "units, e.g. 0.3)") from None
+        if x < 0:
+            raise InputError(f"--{name.replace('_', '-')} must not be negative: {v!r}")
+        out[name] = x
+    return out
+
+
+def _resolve_options(ps, abs_tol, rel_tol, floor, log_tol, log_floor):
+    """The tolerance options in force: the user's, or else the pack's ``defaults``.
+    Returns (abs_tol, rel_tol, floor, log_tol, log_floor, from_pack)."""
+    user = (abs_tol, rel_tol, floor, log_tol, log_floor)
+    linear = any(v is not None for v in user[:3])
+    logs = any(v is not None for v in user[3:])
+    if linear and logs:
+        raise InputError("log-scale options (--log-tol, --log-floor) cannot be combined "
+                         "with --abs-tol, --rel-tol or --floor")
+    d = (ps.content.get("defaults") if ps is not None else None) or {}
+    if linear or logs or not d:
+        return abs_tol, rel_tol, floor, log_tol, log_floor, False
+    return (d.get("abs_tol"), d.get("rel_tol"), d.get("floor"), d.get("log_tol"),
+            d.get("log_floor"), True)
+
+
+def _log_implied(m: dict, written: Optional[str], value: float) -> dict:
+    """Implied precision of one side on the log scale: log10(1 + h/v), where h is the
+    written half-unit in the value's own unit and v the value in that unit."""
+    p = _side_precision(m, written)
+    h = p["implied"]
+    p["implied"] = math.log10(1.0 + h / value) if h else 0.0
+    return p
+
+
 def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
             rel_tol=None, floor=None, precision: str = "stated",
+            log_tol=None, log_floor=None,
             _written: Optional[dict] = None) -> CompareResult:
     """Compare measurement ``a`` with measurement ``b``.
 
@@ -627,6 +677,13 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
     ``rel_tol`` is a fraction. ``precision`` is ``"stated"`` (default: a value written
     with k decimal places carries an implied half-unit in its last place) or
     ``"exact"``. Raises ``InputError`` for unusable input or options.
+
+    ``log_tol`` and ``log_floor`` compare on the log scale instead (base-10 log units,
+    for positive quantities such as concentrations): a and b agree if
+    ``|log10 a - log10 b| <= log_tol``. A value that is zero or negative is
+    ``unparseable`` for a log comparison. Log and linear options cannot be mixed. If no
+    option is given and the pack has ``defaults``, those are used, and the receipt says so.
+
     ``_written`` is for ``verify``: the written digits recorded in a receipt.
     """
     old = legacy()   # re-running a 0.1.0 receipt: 0.1.0 rules and receipt shape
@@ -639,7 +696,15 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
     ps = load_rules(pack) if pack is not None else None
     if ps is not None and ps.kind != "compare-pack":
         raise InputError(f"{ps.origin} is a {ps.kind} file, not a compare pack")
+    abs_tol, rel_tol, floor, log_tol, log_floor, from_pack = _resolve_options(
+        ps, abs_tol, rel_tol, floor, log_tol, log_floor)
     given, opts = _options(abs_tol, rel_tol, floor)
+    logopts = _log_options(log_tol, log_floor)
+    log_mode = bool(logopts)
+    if log_mode:   # written only when used, so receipts without it are unchanged
+        given["log_tol"], given["log_floor"] = log_tol, log_floor
+    if from_pack:
+        given["defaults_from_pack"] = True
     if not old:
         given["precision"] = precision
 
@@ -679,11 +744,43 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
                                                    mb.get("conditions") or {}, ps)
     defects.extend(cond_defects)
 
+    if log_mode and a_val is not None and b_val is not None:
+        for sd, v in (("a", a_val), ("b", b_val)):
+            if not v > 0:
+                defects.append(_defect("unparseable", f"{sd}.value", "not_positive",
+                                       "a log-scale comparison needs a value above zero"))
+
     difference = tolerance = floor_applied = None
     prec: dict = {"mode": precision, "implied": 0.0 if precision == "exact" else None}
     if defects:
         defects.sort(key=lambda d: RANK[d["verdict"]])
         verdict, label = defects[0]["verdict"], _label(defects[0])
+    elif log_mode:
+        qa_own, qb_own = float(qa.magnitude), float(qb.magnitude)
+        implied = 0.0
+        if precision == "stated":
+            pa = _log_implied(ma, _written_text(ma["value"], _written.get("a")), qa_own)
+            pb = _log_implied(mb, _written_text(mb["value"], _written.get("b")), qb_own)
+            implied = pa["implied"] + pb["implied"]
+            prec = {"mode": precision, "scale": "log10", "implied": implied, "a": pa, "b": pb}
+        la, lb = math.log10(a_val), math.log10(b_val)
+        scale = max(abs(la), abs(lb), 1.0)
+        tolerance = logopts.get("log_tol", 0.0)
+        floor_applied = max(logopts.get("log_floor", 0.0),
+                            math.log10(1.0 + ua / a_val) if ua else 0.0,
+                            math.log10(1.0 + ub / b_val) if ub else 0.0)
+        if opa is None and opb is None:
+            difference = abs(la - lb)
+            if _close(la, lb, scale, tolerance + implied):
+                verdict = "agree"
+            elif floor_applied > 0 and _close(la, lb, scale, floor_applied + implied):
+                verdict = "within_floor"
+            else:
+                verdict = "disagree"
+        else:
+            verdict, difference = _bounded(la, opa, lb, opb, scale, tolerance,
+                                           floor_applied, implied)
+        label = verdict
     else:
         implied = 0.0
         if precision == "stated":
@@ -735,6 +832,8 @@ def compare(a, b, *, pack: Union[str, Path, RuleSet, None] = None, abs_tol=None,
         "floor": floor_applied,
         "conditions": cond_summary,
     }
+    if log_mode:
+        result["scale"] = "log10"   # difference, tolerance and floor are in log10 units
     if not old:
         result["comparison"] = ("values" if opa is None and opb is None else
                                 "bounds" if opa is not None and opb is not None else

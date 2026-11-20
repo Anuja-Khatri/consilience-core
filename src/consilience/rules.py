@@ -26,7 +26,7 @@ from .hashing import sha256_json
 from .units import UnitError, as_quantity, parse_unit
 
 KINDS = ("compare-pack", "check-rules")
-BUNDLED_PACKS = ("electrochemistry",)
+BUNDLED_PACKS = ("electrochemistry", "bioactivity", "pka")
 
 
 class RuleFileError(ValueError):
@@ -100,9 +100,17 @@ def _bool(d: dict, key: str, where: str, default: bool) -> bool:
 
 # --------------------------------------------------------------- compare packs
 _PACK_TOP = {"kind", "name", "version", "plain_english", "rationale", "source", "licence",
-             "conditions"}
+             "conditions", "record_rules", "assumptions", "defaults"}
 _COND_KEYS = {"id", "field", "predicate", "plain_english", "rationale", "source",
-              "ignore_case", "aliases", "tolerance", "words", "also_equal", "parts"}
+              "ignore_case", "aliases", "tolerance", "words", "also_equal", "parts",
+              "absent_on_both"}
+_RECORD_RULE_KEYS = {"id", "field", "kind", "values", "allow_empty", "threshold",
+                     "plain_english", "rationale", "source"}
+RECORD_RULE_KINDS = ("empty", "present", "in", "at_least")
+_ASSUMPTION_KEYS = {"id", "condition", "from", "to", "factor", "plain_english", "rationale",
+                    "source"}
+_DEFAULT_KEYS = {"log_tol", "log_floor", "abs_tol", "rel_tol", "floor", "plain_english",
+                 "source"}
 _PART_KEYS = {"predicate", "ignore_case", "aliases", "tolerance", "words", "also_equal"}
 PREDICATES = ("equal", "quantity_equal", "record")
 
@@ -189,8 +197,131 @@ def _normalise_pack(data: dict, where: str) -> dict:
                 "rationale": _text(c, "rationale", cw, required=False),
                 "source": _text(c, "source", cw, required=False)}
         rule.update(_predicate_params(c, cw, allow_record=True))
+        if "absent_on_both" in c:
+            # written into the normalised pack only when set, so packs without it hash
+            # exactly as before (old receipts keep verifying)
+            if c["absent_on_both"] != "equal":
+                raise _err(cw, "'absent_on_both' can only be 'equal' (a condition left "
+                               "empty on both measurements then counts as the same)")
+            if rule["predicate"] == "record":
+                raise _err(cw, "'absent_on_both' applies to a single field, not a record")
+            rule["absent_on_both"] = "equal"
         norm.append(rule)
     out["conditions"] = norm
+    if "record_rules" in data:
+        out["record_rules"] = _normalise_record_rules(data["record_rules"], where)
+    if "assumptions" in data:
+        out["assumptions"] = _normalise_assumptions(data["assumptions"], norm, where)
+    if "defaults" in data:
+        out["defaults"] = _normalise_defaults(data["defaults"], where)
+    return out
+
+
+def _normalise_record_rules(rules, where: str) -> list:
+    """Rules about a single record, applied before any comparison (``compare-table``).
+
+    empty     the field must be empty (e.g. a validity warning)
+    present   the field must not be empty
+    in        the field must be one of ``values`` (``allow_empty: true`` also accepts empty)
+    at_least  the field must be a number >= ``threshold``
+
+    A record that fails is excluded, with the rule id and the reason. A field that is
+    empty fails ``present``, ``in`` (unless ``allow_empty``) and ``at_least`` with the
+    reason "not stated". A field whose column is absent from the whole table is not
+    checked; the result says so.
+    """
+    if not isinstance(rules, list) or not rules:
+        raise _err(where, "'record_rules' must be a non-empty list")
+    out, ids = [], set()
+    for i, r in enumerate(rules):
+        rw = f"{where}, record_rules[{i}]"
+        _only(r, _RECORD_RULE_KEYS, rw)
+        rid = _text(r, "id", rw)
+        if rid in ids:
+            raise _err(rw, f"duplicate id {rid!r}")
+        ids.add(rid)
+        kind = r.get("kind")
+        if kind not in RECORD_RULE_KINDS:
+            raise _err(rw, f"'kind' must be one of {list(RECORD_RULE_KINDS)} (got {kind!r})")
+        rule = {"id": rid, "field": _text(r, "field", rw), "kind": kind,
+                "plain_english": _text(r, "plain_english", rw),
+                "rationale": _text(r, "rationale", rw, required=False),
+                "source": _text(r, "source", rw, required=False)}
+        allowed = {"in": {"values", "allow_empty"}, "at_least": {"threshold"}}.get(kind, set())
+        for k in ("values", "allow_empty", "threshold"):
+            if k in r and k not in allowed:
+                raise _err(rw, f"'{k}' does not apply to kind {kind!r}")
+        if kind == "in":
+            vals = r.get("values")
+            if not isinstance(vals, list) or not vals or not all(
+                    isinstance(v, str) and v.strip() for v in vals):
+                raise _err(rw, "'values' must be a non-empty list of text")
+            rule["values"] = sorted({" ".join(v.split()) for v in vals})
+            if "allow_empty" in r:
+                rule["allow_empty"] = _bool(r, "allow_empty", rw, False)
+        elif kind == "at_least":
+            t = r.get("threshold")
+            if isinstance(t, bool) or not isinstance(t, (int, float)):
+                raise _err(rw, "'threshold' must be a number")
+            rule["threshold"] = t
+        out.append(rule)
+    return out
+
+
+def _normalise_assumptions(items, conditions: list, where: str) -> list:
+    """Named, opt-in conversions: with ``--assume <id>``, two records that differ only in
+    ``condition`` (``from`` on one, ``to`` on the other) are compared after multiplying
+    the ``from`` value by ``factor``. Without ``--assume`` nothing changes."""
+    if not isinstance(items, list) or not items:
+        raise _err(where, "'assumptions' must be a non-empty list")
+    fields = {c["field"]: c for c in conditions}
+    out, ids = [], set()
+    for i, a in enumerate(items):
+        aw = f"{where}, assumptions[{i}]"
+        _only(a, _ASSUMPTION_KEYS, aw)
+        aid = _text(a, "id", aw)
+        if aid in ids:
+            raise _err(aw, f"duplicate id {aid!r}")
+        ids.add(aid)
+        cond = _text(a, "condition", aw)
+        if cond not in fields:
+            raise _err(aw, f"'condition' {cond!r} is not a condition of this pack")
+        if fields[cond]["predicate"] != "equal":
+            raise _err(aw, "an assumption needs a condition with predicate 'equal'")
+        f = a.get("factor")
+        if isinstance(f, bool) or not isinstance(f, (int, float)) or not f > 0:
+            raise _err(aw, "'factor' must be a positive number")
+        frm, to = _text(a, "from", aw), _text(a, "to", aw)
+        if frm == to:
+            raise _err(aw, "'from' and 'to' must differ")
+        out.append({"id": aid, "condition": cond, "from": frm, "to": to, "factor": f,
+                    "plain_english": _text(a, "plain_english", aw),
+                    "rationale": _text(a, "rationale", aw, required=False),
+                    "source": _text(a, "source", aw, required=False)})
+    return out
+
+
+def _normalise_defaults(d, where: str) -> dict:
+    """Recommended tolerance and floor, used when the user gives none (each with a
+    source). Log-scale and linear options cannot be mixed."""
+    dw = f"{where}, defaults"
+    _only(d, _DEFAULT_KEYS, dw)
+    out = {}
+    for k in ("log_tol", "log_floor", "rel_tol"):
+        if k in d:
+            v = d[k]
+            if isinstance(v, bool) or not isinstance(v, (int, float)) or v < 0:
+                raise _err(dw, f"'{k}' must be a number, zero or more")
+            out[k] = v
+    for k in ("abs_tol", "floor"):
+        if k in d:
+            out[k] = _quantity_text(d[k], dw, k, unit_required=True, nonneg=True)
+    if not out:
+        raise _err(dw, "give at least one of log_tol, log_floor, abs_tol, rel_tol, floor")
+    if ({"log_tol", "log_floor"} & set(out)) and ({"abs_tol", "rel_tol", "floor"} & set(out)):
+        raise _err(dw, "log-scale and linear defaults cannot be mixed")
+    out["plain_english"] = _text(d, "plain_english", dw)
+    out["source"] = _text(d, "source", dw)
     return out
 
 
