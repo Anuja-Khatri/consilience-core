@@ -42,3 +42,4 @@
 - **Rule 2:** `exploitable_type_violation` requires the score to beat both the projected valid equivalent and the reference by more than m.
 - **verify** and the independent check were updated to the same purpose. The independent check now also requires a gain over the valid reference: it challenges the rule's purpose, not only its arithmetic.
 - **Run 3:** the same `SELECTION_45.txt`, from scratch, `standard` budget, seed 0. Run 2's results stay in history and are summarised in RESULTS_45_ANALYSIS.md (consilience-docs).
+- **Note on run 3:** the version string was bumped to 0.3.0.dev0 (docs and plugin work) while run 3 was in progress, so some receipts say 0.2.0.dev0 and later ones 0.3.0.dev0. No engine code changed during the run: the last engine commit before it was 34350aa.

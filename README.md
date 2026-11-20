@@ -352,6 +352,31 @@ consilience verify egfr/receipt.json
 
 Full description, definitions and limits: [docs/compare-table.md](docs/compare-table.md).
 
+## Stress-check scoring code before you optimise against it (new in 0.3)
+
+`pip install 'consilience[stress]'`, then `consilience stress contract.yaml --out receipts/`.
+
+Program search (AlphaEvolve, OpenEvolve, ShinkaEvolve, CodeEvolve), reinforcement learning and any other optimiser will exploit a scorer that:
+- accepts invalid answers;
+- trusts numbers a candidate reports about itself;
+- changes its verdict under transformations that should not matter.
+
+`stress` reads a short contract (what a valid answer is, written from the problem statement) and attacks the scorer *before* the costly run.
+
+| Verdict | Meaning |
+|---|---|
+| **BLOCK** | A counterexample anyone can re-run, saved with the receipt |
+| **PASS** | No counterexample found within the stated budget (not a proof) |
+| **ABSTAIN** | The check could not run; a named reason is given |
+
+`consilience verify` re-checks the receipt.
+
+Also included:
+- an agent plugin that runs the check after a scoring file is edited (`integrations/agent-plugin/consilience-stress`);
+- a public benchmark of about 110 contracts across five evaluator collections (`benchmarks/evaluator-stress`).
+
+What it is good at, who it is for, the full contract reference and its limits: **docs/stress.md**.
+
 ## Python
 
 The same four functions, from Python:

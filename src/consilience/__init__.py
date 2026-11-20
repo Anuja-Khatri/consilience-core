@@ -7,7 +7,7 @@ The nanopublication exporter (``consilience.export``) is a separate, optional pa
 ``pip install "consilience[nanopub]"``.
 """
 
-__version__ = "0.2.0.dev0"
+__version__ = "0.3.0.dev0"
 
 from .api import (  # noqa: E402
     BUNDLED_PACKS,

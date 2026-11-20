@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.0] - unreleased (in development: 0.3.0.dev0)
+
+Includes everything in 0.2.0 below.
+
+### Added
+- **`consilience stress`** (and `consilience.stress.stress()`): stress-check a scoring function before an optimiser runs against it. Install with the `[stress]` extra (numpy).
+  - **Contract:** an evaluator contract in YAML. It sets the harness (`function`, `py_path`, `cli_json`, `sdk_dict`, `template`), the fields, strict exact validity rules, invariances, and a record as published.
+  - **Checks:**
+    - C1: invalid answers, with escalation;
+    - C2: self-reported values;
+    - C3: naive search with a valid twin;
+    - C4: integer invariance and threshold flips;
+    - C5: claimed record against noise and precision.
+  - **Verdicts:** PASS / BLOCK / ABSTAIN; exit codes 0 / 1 / 2 / 64.
+  - **Receipts:** `consilience-stress-receipt/v1`, with counterexamples as exact JSON. `consilience verify` re-checks every BLOCK's deciding inequality.
+  - See docs/stress.md.
+- **Agent plugin** `integrations/agent-plugin/consilience-stress`: a hook after a scoring file is written or edited, a skill, and `/stress-check`.
+- **Benchmark** `benchmarks/evaluator-stress`: contracts for public scoring functions from five collections, labelled known bugs, a preregistration, a runner, an independent second-way checker, and results.
+
 ## [0.2.0] - unreleased (in development: 0.2.0.dev0)
 
 Includes everything in 0.1.1 below.
