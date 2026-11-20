@@ -21,3 +21,7 @@ def compose(out, cand):
 
 
 quantities = {"sum_radii": sum_radii_of}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose sum_radii equals v.
+maps = {"score_from_sum": lambda v: v / 2.635}

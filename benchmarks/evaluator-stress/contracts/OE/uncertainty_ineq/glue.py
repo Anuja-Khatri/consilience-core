@@ -105,3 +105,7 @@ def sign_change(c):
 
 quantities = {"c4": c4_of, "r_max": r_max_of}
 predicates = {"sign_change": sign_change}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose c4 equals v.
+maps = {"score_from_c4": lambda v: 0.3215872333529007 / v}

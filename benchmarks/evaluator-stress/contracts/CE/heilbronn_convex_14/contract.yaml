@@ -30,8 +30,9 @@ invariances:
 - {transform: reflect, field: P}
 score:
   direction: maximize
-  record: {value: '0.027835571458482138', quantity: min_area_normalized, map: ratio, kind: best_known, source: 'CodeEvolve
-      README (problem page): ''min_area_normalized > 0.027835571458482138 (AlphaEvolve''s reported best)'''}
+  record: {value: '0.0278', quantity: min_area_normalized, map: ratio, kind: best_known, source: 'AlphaEvolve, alphaevolve_results
+      @ 4226acb mathematical_results.ipynb B.10 text: n=14 improved to 0.0278 (as published); mapped through the
+      evaluator''s BENCHMARK'}
 reference: {file: reference.npz}
 glue: glue.py
 contract_author: model

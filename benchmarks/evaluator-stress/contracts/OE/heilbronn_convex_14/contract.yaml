@@ -28,9 +28,11 @@ invariances:
 score:
   direction: maximize
   record:
-    value: "1.000"
+    quantity: min_area_normalized
+    value: "0.0278"
+    map: score_from_area
     kind: best_known
-    source: "evaluator BENCHMARK 0.027835571458482138 (AlphaEvolve, config.yaml) -> combined_score 1; published as 0.0278 (3 significant digits)"
+    source: "AlphaEvolve n = 14: 0.0278 (alphaevolve_results mathematical_results.ipynb markdown, B.10); map = min_area_normalized / evaluator BENCHMARK 0.027835571458482138"
 reference: {file: reference.npz}
 initial: {file: initial.npz}
 glue: glue.py

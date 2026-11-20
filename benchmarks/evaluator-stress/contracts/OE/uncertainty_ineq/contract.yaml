@@ -30,8 +30,10 @@ invariances:
 score:
   direction: maximize
   record:
-    value: "1.0000"
+    quantity: c4
+    value: "0.3216"
+    map: score_from_c4
     kind: best_known
-    source: "evaluator BENCHMARK 0.3215872333529007 (config.yaml) -> combined_score 1. DM problem page 11 lists the AlphaEvolve bound (14 May 2025) as 0.321591, which maps to 0.99999; 4 decimals cover both"
+    source: "AlphaEvolve C4 <= 0.3216 (alphaevolve_results mathematical_results.ipynb markdown, B.4; the Laguerre formulation, where the Hermite formulation used by this evaluator is published at 0.3521); DM problem page 11 lists the same result as 0.321591; map = evaluator BENCHMARK 0.3215872333529007 / c4"
 reference: {file: reference.npz}
 glue: glue.py

@@ -26,3 +26,7 @@ def positive_integral(c):
 
 quantities = {"c2": c2_of}
 predicates = {"positive_integral": positive_integral}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose c2 equals v.
+maps = {"score_from_c2": lambda v: v / 0.8962799441554086}

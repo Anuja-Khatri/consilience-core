@@ -1,6 +1,7 @@
 # Validity from examples/circle_packing/instructions.md ('Problem' and 'Constraints'). Reference: AlphaEvolve's n=26 packing
 # (alphaevolve_results @ 4226acb, B.12 cell 118). program.py is both the vendored template and what evaluate.py reads at import.
-# evaluator = sdk_adapter.py (unvendored, 15 lines) because the template harness does not build the SDK envelope.
+# evaluator = sdk_adapter.py (unvendored, 16 lines) because the template harness does not build the SDK envelope;
+# the vendored evaluate.py and alpha_evolve/models.py it loads are listed in harness.extra_files.
 kind: evaluator-contract
 name: google-cloud-alphaevolve/circle_packing (n=26)
 description: 26 disjoint circles in the unit square, maximise the sum of radii. The candidate file is program.py
@@ -16,6 +17,7 @@ harness:
   score_key: scores.scores[metric=sum_of_radii].score
   reject:
     values: [-1000000000000.0]
+  extra_files: [evaluate.py, alpha_evolve/models.py]
   timeout_s: 60
 dims: {n: 26}
 fields:

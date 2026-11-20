@@ -40,8 +40,9 @@ invariances:
 - {transform: scale, field: a, score_exponent: 0}
 score:
   direction: maximize
-  record: {value: '1.5031', quantity: c1, map: benchmark_ratio_from_c1, kind: best_known, source: 'CodeEvolve README
-      (problem page): ''Benchmark: C1 < 1.5031 ... matching AlphaEvolve''s reported best'''}
+  record: {value: '1.5053', quantity: c1, map: benchmark_ratio_from_c1, kind: best_known, source: 'AlphaEvolve,
+      alphaevolve_results @ 4226acb mathematical_results.ipynb B.1 text: C1 <= 1.5053 (as published); mapped through
+      the evaluator''s BENCHMARK 1.5031'}
   bound: {value: '1.174296875', kind: proven, source: 'C1 >= 1.28 (Cloninger & Steinerberger 2017, stated in the
       README); the step-function C1 is exact, so benchmark_ratio <= 1.5031/1.28'}
 reference: {file: reference.npz}

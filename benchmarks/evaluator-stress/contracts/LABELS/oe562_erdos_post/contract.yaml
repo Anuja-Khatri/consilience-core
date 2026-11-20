@@ -1,5 +1,6 @@
 kind: evaluator-contract
 name: openevolve/erdos_min_overlap (post-fix)
+contract_author: model
 harness:
   kind: py_path
   evaluator: evaluator.py

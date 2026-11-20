@@ -1,0 +1,37 @@
+kind: evaluator-contract
+name: deepmind/erdos_gyarfas_conjecture calculate_score_hidden (n = 16)
+description: >
+  Problem 51: must every finite graph with minimum degree >= 3 contain a cycle of length 2^k (k >= 2)?
+  Construction = a simple graph on 16 vertices with minimum degree >= 3 (edge list). Score = minus a
+  weighted count of power-of-2 cycles after the scorer's simplification, or an edge-density bonus in
+  (0, 1] when there are none; a positive score is a counterexample. n = 16 is the smallest size the
+  scorer handles (it indexes cycle_counts[16]).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score_hidden
+  timeout_s: 120
+  reject:
+    values: [-1000000.0, -1000001.0, -1000002.0, -50001.0]
+fields:
+  - {name: E, type: int_array, role: construction}
+validity:
+  - {rule: finite, field: E}
+  - {rule: integral, field: E}
+  - {rule: range, field: E, min: "0", max: "15"}
+  - {rule: graph_simple, field: E}
+  - {rule: predicate, call: min_degree_3, name: min_degree_3}
+invariances:
+  - {transform: permute, field: E}
+  - {transform: relabel, field: E}
+score:
+  direction: maximize
+  record:
+    value: "0"
+    kind: threshold
+    success: ">"
+    margin: "0"
+    source: "notebook: a graph with minimum degree >= 3 and no 2^k cycle is a counterexample; such graphs score > 0 (edge bonus)"
+reference: {file: reference.npz}
+glue: glue.py

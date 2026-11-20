@@ -1,5 +1,6 @@
 kind: evaluator-contract
 name: openevolve/first_autocorr_ineq (post-fix)
+contract_author: model
 harness:
   kind: py_path
   evaluator: evaluator.py

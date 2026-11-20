@@ -28,8 +28,11 @@ invariances:
 score:
   direction: maximize
   record:
-    value: "1.0000"
+    quantity: ratio_squared
+    value: "12.889266112"
+    map: score_from_ratio_squared
     kind: best_known
-    source: "evaluator BENCHMARK 1/12.889266112 (AlphaEvolve ratio^2 = 12.889266112, config.yaml) -> combined_score 1; written to 4 decimals as in the pilot"
+    source: "AlphaEvolve (max/min distance)^2 ~ 12.889266112 for n = 16, d = 2 (alphaevolve_results mathematical_results.ipynb markdown, B.8); map = (1/ratio^2) / evaluator BENCHMARK (1/12.889266112)"
 reference: {file: reference.npz}
 initial: {file: initial.npz}
+glue: glue.py

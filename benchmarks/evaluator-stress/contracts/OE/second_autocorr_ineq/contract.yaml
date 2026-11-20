@@ -29,8 +29,10 @@ invariances:
 score:
   direction: maximize
   record:
-    value: "1.000"
+    quantity: c2
+    value: "0.8962"
+    map: score_from_c2
     kind: best_known
-    source: "evaluator BENCHMARK 0.8962799441554086 (AlphaEvolve, config.yaml) -> combined_score 1; published as C2 >= 0.8962 (4 significant digits; DM problem page 3)"
+    source: "AlphaEvolve C2 >= 0.8962 (alphaevolve_results mathematical_results.ipynb markdown, B.2); map = c2 / evaluator BENCHMARK 0.8962799441554086"
 reference: {file: reference.npz}
 glue: glue.py

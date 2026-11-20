@@ -27,3 +27,7 @@ def contains_zero_and_positive(c):
 
 quantities = {"c6": c6_of}
 predicates = {"contains_zero_and_positive": contains_zero_and_positive}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose c6 equals v.
+maps = {"score_from_c6": lambda v: v / 1.158417281556896}

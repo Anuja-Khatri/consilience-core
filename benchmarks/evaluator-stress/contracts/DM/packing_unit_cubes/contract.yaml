@@ -1,0 +1,49 @@
+kind: evaluator-contract
+name: deepmind/packing_unit_cubes calculate_packing_score_cubes_3d (n = 11)
+description: >
+  Problem 35 (packing in a dilate), for unit cubes: C(n) is the smallest side s of a cube containing
+  n unit cubes with disjoint interiors. Each row of P is (x, y, z, x_angle, y_angle, z_angle) in
+  degrees. The evaluation function used (code cell 2) first moves the first 8 cubes to the corners
+  of the bounding box with zero rotation (the "fixed" placements the prompt mentions), then returns
+  -(bounding cube side) - 100 x (number of intersecting pairs). Called with
+  return_adjusted_coordinates=False so it returns only the score. The reference is the shipped
+  11-cube packing (code cell 0, placements_no_intersection). Rows are interchangeable cubes, so the
+  true score (the bounding side of the given placement) is permutation-invariant.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_packing_score_cubes_3d
+  call_args:
+    return_adjusted_coordinates: false
+  timeout_s: 60
+  reject:
+    values:
+    - -1000000.0
+    - -1000002.0
+fields:
+- name: P
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: P
+- rule: shape
+  field: P
+  shape: [11, 6]
+- rule: predicate
+  call: disjoint_interiors
+  name: cubes_have_disjoint_interiors
+invariances:
+- transform: permute
+  field: P
+score:
+  direction: maximize
+  record:
+    value: '-2.894531'
+    kind: best_known
+    source: notebook code cell 0 (analyze_cube_packing on placements_no_intersection prints the bounding side to
+      6 decimals, 2.894531; recomputed, the cell has no stored output); the problem page states no number
+reference:
+  file: reference.npz
+glue: glue.py

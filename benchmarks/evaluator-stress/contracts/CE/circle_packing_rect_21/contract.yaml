@@ -26,8 +26,9 @@ invariances:
 - {transform: permute, field: circles}
 score:
   direction: maximize
-  record: {value: '2.3658321334167627', quantity: radii_sum, map: ratio, kind: best_known, source: 'CodeEvolve README
-      (problem page): ''radii_sum > 2.3658321334167627 (AlphaEvolve''s reported best)'''}
+  record: {value: '2.365', quantity: radii_sum, map: ratio, kind: best_known, source: 'AlphaEvolve, alphaevolve_results
+      @ 4226acb mathematical_results.ipynb B.13 text: n=21 improved to 2.365 (as published); mapped through the
+      evaluator''s BENCHMARK'}
 reference: {file: reference.npz}
 glue: glue.py
 contract_author: model

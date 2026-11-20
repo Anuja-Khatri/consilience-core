@@ -20,3 +20,7 @@ def project(c):
     return dict(c, h=h)
 quantities = {"c5": c5_of}
 predicates = {"integral_one": integral_one}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose c5 equals v.
+maps = {"score_from_c5": lambda v: 0.38092303510845016 / v}

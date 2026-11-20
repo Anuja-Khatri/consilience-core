@@ -21,3 +21,7 @@ def packing(c):
         worst = max(worst, (2 * (w + h) - 4) / 4)
     return (worst == 0, float(worst))
 predicates = {"packing": packing}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose sum_radii equals v.
+maps = {"score_from_sum": lambda v: v / 2.3658321334167627}

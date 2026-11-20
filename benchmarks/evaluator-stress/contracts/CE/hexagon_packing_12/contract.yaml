@@ -40,8 +40,9 @@ invariances:
 - {transform: permute, field: inner}
 score:
   direction: maximize
-  record: {value: '3.9419123', quantity: outer_hex_side_length, map: ratio, kind: best_known, source: 'CodeEvolve
-      README (problem page): ''inv_outer_hex_side_length > 1/3.9419123 (AlphaEvolve''s reported best)'''}
+  record: {value: '3.942', quantity: outer_hex_side_length, map: ratio, kind: best_known, source: 'AlphaEvolve,
+      alphaevolve_results @ 4226acb mathematical_results.ipynb B.7 text: outer side 3.942 for n=12 (as published);
+      mapped through the evaluator''s BENCHMARK 1/3.9419123'}
 reference: {file: reference.npz}
 glue: glue.py
 contract_author: model

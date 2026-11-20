@@ -1,6 +1,7 @@
 # Validity from examples/circle_packing/README.md ('pack n=26 circles in a unit square, maximize sum of radii') and
 # evaluate.py's docstring. Reference: AlphaEvolve's n=26 packing (alphaevolve_results @ 4226acb, B.12 cell 118), split into
-# centers/radii. The argv shim stands in for the shinka package __init__ files (see the comment inside it).
+# centers/radii. The argv shim (inline, so hashed with the contract) stands in for the shinka package __init__ files;
+# the two vendored shinka modules it loads are listed in harness.extra_files.
 kind: evaluator-contract
 name: shinka/circle_packing (n=26)
 description: 26 disjoint circles in the unit square, maximise the sum of radii; run_packing returns (centers, radii,
@@ -34,6 +35,7 @@ harness:
   score_key: combined_score
   reject:
     file: {path: '{outdir}/correct.json', key: correct, equals: false}
+  extra_files: [shinka_vendored/core/wrap_eval.py, shinka_vendored/utils/eval_stop.py]
   timeout_s: 60
 dims: {n: 26}
 fields:

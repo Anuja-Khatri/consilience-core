@@ -19,3 +19,7 @@ def nonzero_integral(c):
 
 quantities = {"c3": c3_of}
 predicates = {"nonzero_integral": nonzero_integral}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose c3 equals v.
+maps = {"score_from_c3": lambda v: 1.4556427953745406 / v}

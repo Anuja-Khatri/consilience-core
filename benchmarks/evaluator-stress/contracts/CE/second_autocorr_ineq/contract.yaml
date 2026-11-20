@@ -21,8 +21,9 @@ invariances:
 - {transform: scale, field: f, score_exponent: 0}
 score:
   direction: maximize
-  record: {value: '0.962', quantity: c2, map: benchmark_ratio_from_c2, kind: best_known, source: 'CodeEvolve README
-      (problem page): ''Benchmark: C2 > 0.962, matching AlphaEvolve''s reported best'''}
+  record: {value: '0.8962', quantity: c2, map: benchmark_ratio_from_c2, kind: best_known, source: 'AlphaEvolve,
+      alphaevolve_results @ 4226acb mathematical_results.ipynb B.2 text: 0.8962 <= C2 (as published); mapped through
+      the evaluator''s BENCHMARK 0.962'}
   bound: {value: '1.0395010396', kind: proven, source: C2 <= 1 by Hoelder (README 'Known bounds'); the scorer's
       C2 is exact for a step function; 1/0.962 rounded up}
 reference: {file: reference.npz}

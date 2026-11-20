@@ -21,3 +21,7 @@ def not_all_collinear(c):
 
 
 predicates = {"not_all_collinear": not_all_collinear}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose min_area_normalized equals v.
+maps = {"score_from_area": lambda v: v / 0.030936889034895654}

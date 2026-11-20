@@ -69,3 +69,7 @@ def packing(c):
 
 
 predicates = {"packing": packing}
+
+
+# Record map (spec 6.4): the scorer's combined_score for a construction whose outer_side equals v.
+maps = {"score_from_side": lambda v: (1.0 / v) / (1 / 3.930092)}

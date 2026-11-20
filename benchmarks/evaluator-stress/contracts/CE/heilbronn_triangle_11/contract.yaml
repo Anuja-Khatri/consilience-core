@@ -32,8 +32,9 @@ invariances:
   center: ['0.5', '0']
 score:
   direction: maximize
-  record: {value: '0.036529889880030156', quantity: min_area_normalized, map: ratio, kind: best_known, source: 'CodeEvolve
-      README (problem page): ''min_area_normalized > 0.036529889880030156 (AlphaEvolve''s reported best)'''}
+  record: {value: '0.0365', quantity: min_area_normalized, map: ratio, kind: best_known, source: 'AlphaEvolve, alphaevolve_results
+      @ 4226acb mathematical_results.ipynb B.9 text: minimum area larger than 0.0365 (as published); mapped through
+      the evaluator''s BENCHMARK'}
 reference: {file: reference.npz}
 claimed_best: {file: claimed_best.npz}
 glue: glue.py

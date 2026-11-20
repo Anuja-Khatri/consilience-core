@@ -25,9 +25,11 @@ invariances:
 score:
   direction: maximize
   record:
-    value: "1.0000"
+    quantity: sum_radii
+    value: "2.365"
+    map: score_from_sum
     kind: best_known
-    source: "evaluator BENCHMARK 2.3658321334167627 (AlphaEvolve sum of radii, config.yaml) -> combined_score 1; published as 2.3658 (5 significant digits)"
+    source: "AlphaEvolve sum of radii n = 21: 2.365 (alphaevolve_results mathematical_results.ipynb markdown, B.13: 'the SOTA was 2.364, and AlphaEvolve improved it to 2.365'); map = sum / evaluator BENCHMARK 2.3658321334167627"
 reference: {file: reference.npz}
 initial: {file: initial.npz}
 glue: glue.py

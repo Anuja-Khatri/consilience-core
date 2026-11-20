@@ -32,8 +32,10 @@ invariances:
 score:
   direction: maximize
   record:
-    value: "1.000"
+    quantity: sum_radii
+    value: "2.635"
+    map: score_from_sum
     kind: best_known
-    source: "AlphaEvolve sum of radii 2.635 for n = 26 (the evaluator's TARGET_VALUE) -> combined_score 1; 4 significant digits"
+    source: "AlphaEvolve sum of radii n = 26: 2.635 (alphaevolve_results mathematical_results.ipynb markdown, B.12); map = sum / evaluator TARGET_VALUE 2.635"
 reference: {file: reference.npz}
 glue: glue.py
