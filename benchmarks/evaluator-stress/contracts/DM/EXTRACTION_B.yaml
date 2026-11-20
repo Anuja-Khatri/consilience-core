@@ -1,0 +1,29 @@
+# Extraction test, DM part B (CONTRACT_AUTHORING.md section 3): each extracted scorer run once on the notebook's own
+# shipped construction and compared with the score printed in the notebook output. A mismatch is recorded, not fixed.
+# printed: null = the notebook saved no output for that score; match: null = nothing to compare.
+# Source: google-deepmind/alphaevolve_repository_of_problems @ 8f447457957deac61e28bf1676746f0753b3b2f8. 20 Nov 2026.
+results:
+  - {slug: beat_the_average_game, printed: "0.3889526195239618", recomputed: "0.3889526195239619", match: true, cause: "agrees to 1 ulp (printed constant best_score_found_20000 in code cell 2)"}
+  - {slug: factoring_n_factorial, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: points_on_sphere_max_volume, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: erdos_discrepancy_problem, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: sums_differences_problems, printed: null, recomputed: "1.1219357374860444", match: null, cause: "shipped best_list (code cell 0) scored; the notebook has no saved output, so nothing printed to compare"}
+  - {slug: sums_differences_problems_p44, printed: null, recomputed: "1.158417281556896 (solution_2); 1.1479888965092757 (solution_1)", match: null, cause: "code cell 6 prints the bounds but the notebook has no saved output"}
+  - {slug: sum_difference_problem_ii, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: finite_field_sum_product_problem, printed: null, recomputed: null, match: null, cause: "no shipped construction (only the evolved programs) and no printed score"}
+  - {slug: matrix_multiplication_amgm, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score (AlphaEvolve found no counterexample)"}
+  - {slug: edges_vs_triangles, printed: null, recomputed: "-0.7124938782214396", match: null, cause: "code cell 1 prints the score of the shipped best_solutions but the notebook has no saved output"}
+  - {slug: erdos_gyarfas_conjecture, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score (no counterexample found)"}
+  - {slug: erdos_squarefree_problem, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: equidistant_points_in_convex_polygons, printed: "-0.48898477500990667", recomputed: "-0.49011716212553025", match: false, cause: "printed after out-of-order execution: reproduced exactly with code cell 6 (nb idx 8) 3-point calculate_vertex_error, which redefines the helper used by calculate_polygon_score_new"}
+  - {slug: kissing_cylinders, printed: null, recomputed: "-1.469475303103728e-26", match: null, cause: "code cell 0 ends with a bare call on the shipped cylinder_config_c_7 but the notebook has no saved output"}
+  - {slug: erdos_squares_in_a_square, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: szemeredi_trotter_constructions, printed: null, recomputed: "361.0 (initial program, n=100, outside the harness)", match: null, cause: "no shipped construction; the cell prints only the initial program on several n and has no saved output"}
+  - {slug: rudin_problem, printed: null, recomputed: null, match: null, cause: "no shipped construction (evolved-code cell is a placeholder); verification cell scores np.ones for degree 3 and has no saved output"}
+  - {slug: erdos_szekeres_happy_ending_problem, printed: null, recomputed: "-1.0 (points_7, k=7); -1.0 (points_8, k=8)", match: null, cause: "no saved output; the markdown comment in code cell 1 states the shipped configurations yield 0 convex k-gons, the extracted scorer counts 1 for each"}
+  - {slug: subsets_of_the_grid_with_no_isosceles_triangles, printed: null, recomputed: "True (sol_64, 112 points)", match: null, cause: "the cell prints its verification result but the notebook has no saved output"}
+  - {slug: no_5_on_a_sphere, printed: null, recomputed: "True (construction_n_7_7_7, 21 points)", match: null, cause: "the cell prints its verification results but the notebook has no saved output"}
+  - {slug: ring_loading_problem, printed: null, recomputed: "1.1190475684692773", match: null, cause: "code cell 0 ends with get_score(solution, 15) but the notebook has no saved output"}
+  - {slug: imo_2025_p6, printed: null, recomputed: "-12.0 (shipped program at n=9); -21.0 at n=16", match: null, cause: "the notebook ships a program, not a construction, and has no saved output"}
+  - {slug: hypergraph_turan_tetrahedron, printed: null, recomputed: null, match: null, cause: "no shipped construction and no printed score"}
+  - {slug: the_2d_moving_sofa, printed: "2.2192697096945855", recomputed: "2.2192697096945864", match: true, cause: "agrees to 9e-16 (4 ulp); last digits differ, plausibly the installed shapely/GEOS version"}

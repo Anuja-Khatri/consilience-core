@@ -1,0 +1,29 @@
+kind: evaluator-contract
+name: deepmind/the_2d_moving_sofa calculate_intersection_area (single turn)
+description: >
+  Problem 62: largest area of a shape that can move through a unit-width L-shaped corner. Construction =
+  a path of the corridor's inner corner, rows (x, y, angle in degrees), between the fixed endpoints
+  [0, 0, 0] and [-2, 0, 90] the scorer adds; the shape is the intersection of the corridor positions
+  along the (angle-interpolated) path. Score = its area. The notebook warns these discretised areas are
+  not rigorous lower bounds. Glue carries a verbatim copy of the notebook's Corridor class (the entry
+  needs a Corridor instance and glue may not import the scorer).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_intersection_area
+  timeout_s: 60
+fields:
+  - {name: path, type: real_array, role: construction}
+validity:
+  - {rule: finite, field: path}
+  - {rule: count, field: path, min: 1}
+  - {rule: predicate, call: angles_in_quarter_turn, name: angles_in_quarter_turn}
+score:
+  direction: maximize
+  record:
+    value: "2.2195"
+    kind: best_known
+    source: "Gerver's sofa (area 2.2195...), proved optimal by Baek (2024); the notebook calls the shipped path an approximation of Gerver's sofa"
+reference: {file: reference.npz}
+glue: glue.py

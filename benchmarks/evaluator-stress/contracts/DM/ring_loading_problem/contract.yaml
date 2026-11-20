@@ -1,0 +1,27 @@
+kind: evaluator-contract
+name: deepmind/ring_loading_problem get_score (code cell 0, m = 15)
+description: >
+  Problem 61: C = inf of alpha such that for all non-negative u, v with u_i + v_i <= 1 some choice
+  z_k in {v_k, -u_k} keeps every |sum_{i<=k} z_i - sum_{i>k} z_i| <= alpha. Construction = (u_i, v_i),
+  i = 1..15, non-negative with u_i + v_i <= 1. Score = the smallest achievable alpha for that input, a
+  lower bound on C. Scorer = code cell 0 ('Data and verification'); code cell 3 is a search-time variant
+  that returns -1 on several valid but 'boring' inputs.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  timeout_s: 60
+  reject:
+    values: [-1.0]
+fields:
+  - {name: X, type: real_array, shape: [15, 2], role: construction}
+validity:
+  - {rule: finite, field: X}
+  - {rule: shape, field: X, shape: [15, 2]}
+  - {rule: range, field: X, min: "0"}
+  - {rule: predicate, call: u_plus_v_at_most_1, name: u_plus_v_at_most_1}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+glue: glue.py

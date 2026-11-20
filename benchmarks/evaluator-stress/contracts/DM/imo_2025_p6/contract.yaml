@@ -1,0 +1,35 @@
+kind: evaluator-contract
+name: deepmind/imo_2025_p6 calculate_score (n = 9)
+description: >
+  Problem 65 (IMO 2025 P6): place non-overlapping grid-aligned rectangular tiles on an n x n grid so that
+  every row and column has exactly one uncovered square; C(n) = minimum number of tiles (here n = 9).
+  Construction = tiles (r, c, h, w). Score = -(number of tiles) for a valid tiling.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+  timeout_s: 60
+  reject:
+    values: [-1000000000.0]
+fields:
+  - {name: T, type: int_array, role: construction}
+validity:
+  - {rule: finite, field: T}
+  - {rule: count, field: T, min: 1}
+  - {rule: integral, field: T}
+  - {rule: predicate, call: valid_tiling, name: valid_tiling}
+invariances:
+  - {transform: permute, field: T}
+score:
+  direction: maximize
+  record:
+    value: "-12"
+    kind: best_known
+    source: "IMO 2025 Problem 6: for n = k^2 the minimum is k^2 + 2k - 3 (2112 for n = 2025); n = 9 gives 12 tiles, score -12"
+  bound:
+    value: "-12"
+    kind: proven
+    source: "IMO 2025 Problem 6 solution: at least k^2 + 2k - 3 tiles for n = k^2"
+reference: {file: reference.npz}
+glue: glue.py

@@ -1,0 +1,35 @@
+kind: evaluator-contract
+name: deepmind/hypergraph_turan_tetrahedron evaluate_sequences (n = 6 classes)
+description: >
+  Problem 37: C = largest edge density (in units of binom(n,3)) of K4^(3)-free 3-graphs. Construction =
+  a weighted blow-up on 6 vertex classes: a 0/1 edge sequence (50 entries, the notebook's encoding) and
+  class weights in [0, 1]. Valid: the blow-up contains no tetrahedron (glue predicate); the scorer
+  itself deletes edges of any tetrahedron before scoring. Score = blow-up edge density.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: evaluate_sequences
+  timeout_s: 60
+fields:
+  - {name: s, type: int_array, shape: [50], role: construction}
+  - {name: w, type: real_array, shape: [6], role: construction}
+validity:
+  - {rule: finite, field: s}
+  - {rule: shape, field: s, shape: [50]}
+  - {rule: alphabet, field: s, values: ["0", "1"]}
+  - {rule: predicate, call: tetrahedron_free, name: tetrahedron_free}
+  - {rule: finite, field: w}
+  - {rule: shape, field: w, shape: [6]}
+  - {rule: range, field: w, min: "0", max: "1"}
+  - {rule: predicate, call: positive_weight, name: positive_weight}
+invariances:
+  - {transform: scale, field: w, score_exponent: 0}
+score:
+  direction: maximize
+  record:
+    value: "0.5555555555555556"
+    kind: best_known
+    source: "Turan's construction, C >= 5/9 (conjectured optimal); notebook 'What AlphaEvolve found'. Written as the float nearest 5/9"
+reference: {file: reference.npz}
+glue: glue.py

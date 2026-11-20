@@ -1,0 +1,34 @@
+kind: evaluator-contract
+name: deepmind/no_5_on_a_sphere verify_3d_construction (n = 7)
+description: >
+  Problem 60: C(n) = largest S in [n]^3 with no 5 points on a sphere or a plane (here n = 7, the grid
+  {0..6}^3 as in the shipped construction_n_7_7_7). Construction = the point set S. The scorer verifies;
+  glue composes score = |S| if verified else 0.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: verify_3d_construction
+  timeout_s: 120
+  reject:
+    values: [0.0]
+fields:
+  - {name: S, type: int_array, role: construction}
+validity:
+  - {rule: finite, field: S}
+  - {rule: count, field: S, min: 1}
+  - {rule: integral, field: S}
+  - {rule: range, field: S, min: "0", max: "6"}
+  - {rule: distinct, field: S}
+  - {rule: predicate, call: no_five_cospherical_or_coplanar, name: no_five_cospherical_or_coplanar}
+invariances:
+  - {transform: permute, field: S}
+  - {transform: translate, field: S}
+score:
+  direction: maximize
+  record:
+    value: "21"
+    kind: best_known
+    source: "size of AlphaEvolve's published 7 x 7 x 7 construction construction_n_7_7_7 (code cell 0); status.json lists problem 60 as a world record"
+reference: {file: reference.npz}
+glue: glue.py

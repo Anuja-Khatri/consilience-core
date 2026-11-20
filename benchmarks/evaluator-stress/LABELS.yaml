@@ -1,0 +1,90 @@
+# Labelled known bugs (spec v1.0 §10.2), written before any benchmark run.
+# pre: the contract on the buggy code (a labelled POSITIVE: recall M1). post: the contract on the fixed code
+# (a labelled NEGATIVE for this bug: M2(b) counts a matching finding there as a false alarm).
+# match: a BLOCK counts as catching the bug if its kind is listed AND (when `rules` is given) its broken rules include
+# one of them. Commits and links: SOURCES.yaml.
+labels:
+  - id: OE-514-matmul
+    issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/514
+    bug: the evaluator trusted self-reported rank and dimensions; an empty decomposition was not rejected
+    pre: LABELS/oe514_matmul_pre
+    post: LABELS/oe514_matmul_post
+    match: {kinds: [trusts_self_report, accepts_gross_invalid, exploitable_invalid, sentinel_is_best]}
+  - id: OE-514-funcmin
+    issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/514
+    bug: the evaluator scored the candidate's self-reported function value
+    pre: LABELS/oe514_funcmin_pre
+    post: LABELS/oe514_funcmin_post
+    match: {kinds: [trusts_self_report]}
+  - id: OE-548
+    issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/548
+    bug: circle_packing_rect accepted non-finite circles
+    pre: LABELS/oe548_cpr_pre
+    post: LABELS/oe548_cpr_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound], rules: [finite]}
+  - id: OE-549
+    issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/549
+    bug: first_autocorr_ineq accepted non-finite function values
+    pre: LABELS/oe549_first_autocorr_pre
+    post: LABELS/oe549_first_autocorr_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound], rules: [finite]}
+  - id: OE-562
+    issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/562
+    bug: erdos_min_overlap scored the self-reported C5 instead of the recomputed one
+    pre: LABELS/oe562_erdos_pre
+    post: LABELS/oe562_erdos_post
+    match: {kinds: [trusts_self_report]}
+  - id: DM-14
+    issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/14
+    bug: spherical_t_designs verification - the pass check is always true
+    pre: LABELS/dm14_t_designs_pre
+    post: null
+    match: {kinds: [exceeds_bound, decision_flips_under_invariance, accepts_gross_invalid, exploitable_invalid, sentinel_is_best]}
+  - id: DM-15
+    issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/15
+    bug: difference_bases get_score appends 0 after sorting (score wrong for a valid set without 0)
+    pre: LABELS/dm15_diffbases_pre
+    post: LABELS/dm15_diffbases_post
+    match: {kinds: [invariance_broken_integer, exploitable_invalid, exploitable_type_violation]}
+  - id: DM-16-squares_in_square
+    issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16
+    bug: accepts NaN / inf
+    pre: LABELS/dm16_squares_in_square_pre
+    post: LABELS/dm16_squares_in_square_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound, sentinel_is_best], rules: [finite]}
+  - id: DM-16-no_5_on_a_sphere
+    issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16
+    bug: accepts NaN / inf
+    pre: LABELS/dm16_no_5_on_a_sphere_pre
+    post: LABELS/dm16_no_5_on_a_sphere_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound, sentinel_is_best], rules: [finite]}
+  - id: DM-16-furstenberg_sarkozy
+    issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16
+    bug: accepts NaN / inf
+    pre: LABELS/dm16_furstenberg_sarkozy_pre
+    post: LABELS/dm16_furstenberg_sarkozy_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound, sentinel_is_best], rules: [finite]}
+  - id: DM-16-no_isosceles_triangles
+    issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16
+    bug: accepts NaN / inf
+    pre: LABELS/dm16_no_isosceles_triangles_pre
+    post: LABELS/dm16_no_isosceles_triangles_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound, sentinel_is_best], rules: [finite]}
+  - id: DMR-11
+    issue: https://github.com/google-deepmind/alphaevolve_results/issues/11
+    bug: verify_circles accepts negative radii and infinite centres
+    pre: DMR/dmr11_circles
+    post: null
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound, sentinel_is_best]}
+  - id: DMR-12
+    issue: https://github.com/google-deepmind/alphaevolve_results/issues/12
+    bug: hexagon verify_construction accepts NaN
+    pre: DMR/dmr12_hexagon
+    post: LABELS/dmr12_hexagon_post
+    match: {kinds: [accepts_gross_invalid, exploitable_invalid, exceeds_bound, sentinel_is_best], rules: [finite]}
+not_new:
+  # findings on these contracts count as KNOWN, never as new (M3): the notebook itself documents that these
+  # superseded scorer versions were cheated
+  - DM/autocorrelation_problems_first_v0
+  - DM/autocorrelation_problems_first_v1
+  - DM/autocorrelation_problems_first_v2

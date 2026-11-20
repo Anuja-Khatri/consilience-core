@@ -1,6 +1,6 @@
 # Preregistration: the evaluator-stress benchmark
 
-**Status: DRAFT.** It is finalised and committed **before any benchmark run**. The commit that adds the final version is recorded in `results/RESULTS.md`, and every run must come after it.
+**Status: FINAL, 20 Nov 2026.** This was committed **before any benchmark run**. The commit that adds this final version is recorded in `results/RESULTS.md`, and every run comes after it.
 
 The product spec is cycle 4, spec v1.0 (locked 20 Nov 2026), §10 and §12.
 
@@ -11,13 +11,24 @@ The product spec is cycle 4, spec v1.0 (locked 20 Nov 2026), §10 and §12.
 The contracts, labels and sources are frozen by this commit:
 - `SOURCES.yaml`: every set, commit and label SHA;
 - `LABELS.yaml`: each labelled bug, its pre-fix and post-fix contracts, the finding kinds that count as a match, and the link to its issue;
-- `contracts/*/COVERAGE*.md`: every scoring function considered, including those out of scope, unrunnable or skipped, with the reason and the authoring time.
+- `contracts/*/COVERAGE*.md`: every scoring function considered, including those out of scope, unrunnable or skipped, with the reason and the authoring time;
+- `CONTRACTS.sha256`: the SHA-256 of every contract, glue, vendored scorer and candidate file.
+
+**At freeze:**
+- 112 contract files: 111 validate; DM/sum_difference_problem_ii is unrunnable as published, because its numba code does not compile on numba 0.68.1.
+- Coverage rows: 110 OK, 23 out of scope, 11 skipped, 4 unrunnable. The median authoring time is 10 minutes.
+- All contracts were drafted by a model (`contract_author: model`) under `CONTRACT_AUTHORING.md`, with no stress runs and no attacks.
+
+**Engine changes made during step 4, before this freeze** (each found while writing contracts; none after any result):
+- `harness.extra_files` is hashed into the receipt;
+- non-finite reject values give a named error;
+- the worker registers the scorer in `sys.modules`, which numba's recursive functions need.
 
 ## 2. Measures (spec §10.3)
 
 | # | Measure | Definition |
 |---|---|---|
-| M1 | Recall | The share of labelled pre-fix contracts that BLOCK with a finding kind listed as a match in `LABELS.yaml`, confirmed by the independent check |
+| M1 | Recall | The share of the 13 labelled bugs in `LABELS.yaml` whose pre-fix contract BLOCKs with a matching finding (by kind, and by rule where the label names one), confirmed by the independent check or, for kinds it does not re-implement, by `consilience verify` |
 | M2 | False alarms | (a) The number of BLOCK findings the independent check does not confirm, after investigation. (b) The number of labelled post-fix contracts still BLOCKed **for the fixed bug**, i.e. a matching finding kind on the fixed rule. **Target 0.** Other BLOCKs on a post-fix version count toward M3 if confirmed |
 | M3 | New confirmed BLOCKs | BLOCKs on unlabelled contracts (and non-matching BLOCKs on labelled ones), confirmed independently, that are not in any public issue listed in §5. Reported by class (gross input; type; exploitable invalid; C2 self-report; C4 integer invariance; C4 threshold flip; exceeds bound) and by set |
 | M4 | Records against noise | C5 verdicts where `claimed_best` is given. **Sets OE, CE, SH and G only.** DM C5 results are internal: they are reported only after an exact independent re-check and Anu's approved wording |
@@ -55,6 +66,11 @@ The forecast written before this benchmark is in the same file (§3). RESULTS.md
 
 ## 5. Known public issues (a finding that matches one of these is not "new")
 
+These are not new either:
+- findings on the contracts under `not_new` in `LABELS.yaml` (superseded scorer versions shown in the notebook itself);
+- NaN/inf findings on the four DM scorers named in issue #16, in either the `DM/` or the `LABELS/` copy.
+
+
 From the survey of 20 Nov 2026 (`deepmind/research/option_B_check_2026-11-20.md`):
 - **DeepMind problems repository:**
   - #1 (C3 autocorrelation max vs max|·|);
@@ -74,6 +90,19 @@ From the survey of 20 Nov 2026 (`deepmind/research/option_B_check_2026-11-20.md`
 - Statements are about "the published code at commit X". Nothing is said about any group's internal systems or published results.
 - No issues, PRs or posts. Drafts per finding go to Anu.
 
-## 7. Deviations
+## 7. Known design choices (made before the run; see COVERAGE notes)
+
+- **Contract fields:** each contract fixes problem sizes, chooses a direction where the scorer and its search loop disagree, and writes records exactly as published, with their sources.
+- **Records omitted:** where no published value could be verified, the record is left out, and C2/C3 materiality falls back to the reference floor or 1e−9 relative.
+- **The pilot's AM-GM `claimed_best`** (our own float counterexample) is not in the benchmark contract, because the notebook ships no construction. That claim check stays a pilot demonstration only.
+- **Gaps the contract format cannot yet express** (named in the COVERAGE notes):
+  - joint permutations of paired fields;
+  - sequence reversal;
+  - modular and group-label symmetries;
+  - some float-geometry inequalities, written as glue predicates.
+
+  Missing invariances make C4 test less. They cannot create false BLOCKs.
+
+## 8. Deviations
 
 Any deviation from this document after the run starts is written in `VERIFICATION_LOG.md` with its reason and time, and repeated in RESULTS.md.

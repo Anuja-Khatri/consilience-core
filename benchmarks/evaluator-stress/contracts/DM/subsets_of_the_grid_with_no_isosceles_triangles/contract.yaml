@@ -27,5 +27,9 @@ invariances:
   - {transform: translate, field: S}
 score:
   direction: maximize
+  record:
+    value: "112"
+    kind: best_known
+    source: "size of AlphaEvolve's published 64 x 64 construction sol_64 (code cell 0); status.json lists problem 59 as a world record"
 reference: {file: reference.npz}
 glue: glue.py
