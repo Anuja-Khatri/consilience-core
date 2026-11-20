@@ -12,7 +12,7 @@ never computes or guesses a value:
     id: activity_id              # a column that identifies each record (optional)
     value: standard_value        # the measured value
     relation: standard_relation  # optional: =, <, <=, >, >= (empty or absent: =)
-    unit: standard_units         # the unit column
+    unit: standard_units         # the unit column (or fixed_unit: one unit for all records)
     uncertainty: null            # optional
     method: null                 # optional: listed per condition class (e.g. pKa method)
     fields:                      # output name: source column (dotted path into nested JSON)
@@ -43,7 +43,8 @@ from .rules import RuleFileError, _bool, _err, _only, _text, _UniqueKeyLoader  #
 
 BUNDLED_MAPS = ("chembl", "iupac_pka")
 _TOP = {"kind", "name", "version", "plain_english", "source", "records", "key", "id",
-        "value", "relation", "unit", "uncertainty", "method", "fields", "lookups", "units"}
+        "value", "relation", "unit", "fixed_unit", "uncertainty", "method", "fields", "lookups",
+        "units"}
 _ROLE_KEYS = ("id", "value", "relation", "unit", "uncertainty", "method")
 
 
@@ -83,9 +84,12 @@ def map_from_dict(data: dict, origin: str = "<dict>") -> ColumnMap:
             raise _err(origin, "'key' must be a list of field names (the default grouping)")
         out["key"] = list(k)
     out["value"] = _text(data, "value", origin)
-    for r in ("id", "relation", "unit", "uncertainty", "method"):
+    for r in ("id", "relation", "unit", "uncertainty", "method", "fixed_unit"):
         if data.get(r) is not None:
             out[r] = _text(data, r, origin)
+    if "unit" in out and "fixed_unit" in out:
+        raise _err(origin, "give either 'unit' (a column) or 'fixed_unit' (one unit for "
+                           "every record), not both")
     fields = data.get("fields") or {}
     if not isinstance(fields, dict) or not all(
             isinstance(k, str) and k and isinstance(v, str) and v for k, v in fields.items()):
@@ -179,6 +183,9 @@ def apply_map(row: dict, cmap: Optional[ColumnMap]) -> tuple[dict, set]:
         if found:
             rec[role] = v
             present.add(role)
+    if c.get("fixed_unit") is not None:
+        rec["unit"] = c["fixed_unit"]
+        present.add("unit")
     for f, table in c["lookups"].items():
         v = rec.get(f)
         if isinstance(v, str):

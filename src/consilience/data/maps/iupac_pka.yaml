@@ -11,6 +11,7 @@ source: >
 key: [InChI, pka_type]
 id: unique_ID
 value: pka_value
+fixed_unit: dimensionless
 method: method
 fields:
   temperature: T

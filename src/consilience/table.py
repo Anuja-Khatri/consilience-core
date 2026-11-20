@@ -54,8 +54,7 @@ from .compare import (PINT_VERSION, RANK, InputError, WrittenFloat, _absent, _bo
 from .hashing import sha256_bytes, sha256_json
 from .maps import ColumnMap, apply_map, load_map
 from .rules import RuleSet, load_rules
-from .units import (UREG, UnitError, convert, convert_difference, is_offset_unit,
-                    parse_number, unit_text)
+from .units import UnitError, convert, convert_difference, is_offset_unit, parse_number
 
 TABLE_RECEIPT_SCHEMA = "consilience-table-receipt/v1"
 CONSENSUS_POOLABLE = ("single", "agree", "within_floor")
@@ -102,7 +101,7 @@ def _read_csv(path: Path) -> tuple[list, list]:
             continue
         if len(r) != len(header):
             raise InputError(f"{path}, line {i}: {len(r)} cells for {len(header)} columns")
-        out.append(dict(zip(header, r)))
+        out.append(dict(zip(header, r, strict=True)))
     return header, out
 
 
@@ -399,7 +398,7 @@ def compare_table(table, *, key=None, pack: Union[str, Path, RuleSet, None] = No
     recs: list[_Rec] = []
     present_any: set = set()
     mapped = []
-    for i, row in enumerate(rows, start=1):
+    for row in rows:
         rec, present = apply_map(row, cmap)
         rec = {k: _cell(v) for k, v in rec.items()}   # empty, blank and NaN: not stated
         mapped.append(rec)
@@ -429,7 +428,7 @@ def compare_table(table, *, key=None, pack: Union[str, Path, RuleSet, None] = No
         r = _Rec(row=i, rid=_plain(_cell(rec.get("id"))), key=k, fields=rec)
         recs.append(r)
         if any(x is None for x in k):
-            miss = [c for c, x in zip(key, k) if x is None]
+            miss = [c for c, x in zip(key, k, strict=True) if x is None]
             r.status, r.reason = "excluded", f"key: {', '.join(miss)} not stated"
             continue
         for rule in rr_applied:
@@ -865,7 +864,7 @@ def _render(records, classes, pairs, summary, key) -> dict:
 
 def _plain_text(s: dict, ps, cmap, logopts, given, assume) -> str:
     rs = s["record_status"]
-    lines = [f"Consilience pooling check"
+    lines = ["Consilience pooling check"
              + (f" (pack {ps.version})" if ps is not None else " (no pack: conditions not "
                 "checked)") + f": {s['records']} records, {s['groups']} groups "
              f"({' + '.join(s['key'])})."]
