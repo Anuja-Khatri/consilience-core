@@ -375,15 +375,17 @@ def _run_checks(contract, harness: Harness, seed: int, budget: str, only) -> Str
                 return Finding(where, "accepts_invalid_low_score", False, {"rules": rules, "score": s * R.sign})
             if classes == {"type"}:
                 sp = R.S(R.complete(project_type(c, x)))
-                if sp is not None and s > sp + m:
+                # v1.1: the invalid candidate must beat BOTH its projected valid equivalent and the reference
+                if sp is not None and s > max(sp, sref) + m:
                     return Finding(where, "exploitable_type_violation", True, {"rules": rules, "score": s * R.sign,
                                    "projected_score": sp * R.sign}, {"candidate": x})
                 return Finding(where, "type_violation_harmless", False, {"rules": rules})
             lo, hi, wm, wf = R.worst_best(x, s)
-            beats = recS is not None and lo > recS + m
             if where in ("C3", "C1-escalation"):
                 tw = valid_twin()
                 if tw is None:
+                    # v1.1: "beats the record" means beats the better of the record and the valid base
+                    beats = recS is not None and lo > max(recS, base) + m
                     if beats:
                         return Finding(where, "exploitable_invalid", True, {"rules": rules, "worst": lo * R.sign,
                                        "beats_record": True, "valid_base": None},
@@ -392,6 +394,8 @@ def _run_checks(contract, harness: Harness, seed: int, budget: str, only) -> Str
                                    "note": "equality rule without a projection: no valid base"})
                 base = max(base, tw)
             paired = lo - base
+            # v1.1: "beats the record" means beats the better of the record and the valid base (no zero-gain BLOCKs)
+            beats = recS is not None and lo > max(recS, base) + m
             data = {"rules": rules, "worst": lo * R.sign, "paired_gain": paired, "valid_base": base * R.sign,
                     "beats_record": bool(beats), "worst_factor": wf}
             cands = {"candidate": x, **({"worst_member": wm} if wm is not None else {})}

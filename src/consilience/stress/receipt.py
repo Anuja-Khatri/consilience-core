@@ -301,13 +301,15 @@ def _recheck(fd, cands, R, c, sref, recS, m, sign, h):
             b = sign * float(c.data["score"]["bound"]["value"])
             return worst > b, f"worst {worst * sign} vs bound {b * sign}"
         if fd.get("beats_record"):
-            return recS is not None and worst > recS + m, f"worst {worst * sign} vs record {None if recS is None else recS * sign} + m {m}"
+            base = sign * fd["valid_base"] if fd.get("valid_base") is not None else -float("inf")
+            tgt = max(recS, base) if recS is not None else None
+            return tgt is not None and worst > tgt + m, f"worst {worst * sign} vs max(record, valid base) + m {m}"
         base = sign * fd["valid_base"]
         return worst - base > m, f"paired gain {worst - base} vs m {m}"
     if kind == "exploitable_type_violation":
         s = R.S(x)
         sp = R.S(R.complete(project_type(c, x)))
-        return s is not None and sp is not None and s > sp + m, f"score {s} vs projected {sp} + m {m}"
+        return s is not None and sp is not None and s > max(sp, sref) + m, f"score {s} vs max(projected {sp}, reference {sref}) + m {m}"
     if kind == "trusts_self_report":
         s = R.S(x)
         return s is not None and s - sref > m, f"gain {None if s is None else s - sref} vs m {m}"

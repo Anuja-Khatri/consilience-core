@@ -313,9 +313,11 @@ def judge(fd, cands, contract, cdir, glue, info):
             return worst > b, f"worst {worst * sign} vs bound {b * sign}"
         if fd.get("beats_record"):
             rec = sign * float(info["record_score_units"])
-            return worst > rec + m, f"worst {worst * sign} vs record {rec * sign} + m {m}"
+            base = sign * float(fd["valid_base"]) if fd.get("valid_base") is not None else -math.inf
+            # independent re-statement of the rule's PURPOSE: a real gain over everything valid we know of
+            return worst > max(rec, base, sref) + m, f"worst {worst * sign} vs max(record, valid base, reference) + m {m}"
         base = sign * float(fd["valid_base"])
-        return worst - base > m, f"paired gain {worst - base} vs m {m}"
+        return worst - base > m and worst > sref + m, f"paired gain {worst - base} vs m {m}; and above the reference"
     if kind == "trusts_self_report":
         s, _ = score(contract, cdir, x)
         return s is not None and sign * s - sref > m, f"gain {None if s is None else sign * s - sref} vs m {m}"
@@ -337,7 +339,9 @@ def judge(fd, cands, contract, cdir, glue, info):
                     vals.append(sign * s)
         return any(ok_(v) for v in vals) and any(not ok_(v) for v in vals), f"scores {vals} vs threshold {thr}"
     if kind == "exploitable_type_violation":
-        return None, "not re-implemented independently (projection); checked by verify only"
+        # independent: the candidate must at least beat the valid reference (projection not re-implemented)
+        s, _ = score(contract, cdir, x)
+        return (s is not None and sign * s > sref + m), f"score {s} vs reference {sref * sign} + m {m} (projection checked by verify)"
     return None, f"kind {kind} not re-implemented"
 
 

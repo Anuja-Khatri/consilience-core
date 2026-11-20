@@ -336,3 +336,39 @@ def test_scalar_and_2d_fields_do_not_crash(tmp_path):
         """, base, {"s": 0.5, "P": [[0, 0], [1, 0], [0, 1]]})
     r = stress(p, budget="small")
     assert r.verdict in ("PASS", "BLOCK")
+
+
+def test_no_zero_gain_block_when_reference_beats_record(tmp_path):
+    # v1.1: the valid reference already beats the stated record; an invalid candidate that only ties the
+    # reference must not BLOCK as exploitable_invalid
+    glue = """
+        from fractions import Fraction
+        def in_box(c):
+            ok = all(0 <= Fraction(float(v)) <= 1 for v in c['x'])
+            return (ok, 0.0 if ok else float('inf'))
+        predicates = {'in_box': in_box}
+        """
+    base = dict(harness=FN(), fields=[VEC],
+                validity=[{"rule": "finite", "field": "x"}, {"rule": "predicate", "call": "in_box", "name": "in_box"}],
+                score={"direction": "maximize", "record": {"value": "1", "source": "toy: stale record below the reference"}})
+    p = make(tmp_path, """
+        import numpy as np
+        def score(x):
+            return 3.0                       # ignores x entirely: accepts anything, gains nothing
+        """, base, {"x": [0.5] * 4}, glue=glue)
+    r = stress(p, budget="small")
+    assert not any(f.kind == "exploitable_invalid" for f in r.result.findings)
+
+
+def test_type_violation_must_beat_reference(tmp_path):
+    base = dict(harness=FN(), fields=[{"name": "s", "type": "real_array", "shape": [4], "role": "construction"}],
+                validity=[{"rule": "finite", "field": "s"}, {"rule": "alphabet", "field": "s", "values": ["0", "1"]}],
+                score={"direction": "maximize"})
+    p = make(tmp_path, """
+        import numpy as np
+        def score(s):
+            s = np.asarray(s, float)
+            return float(np.clip(np.round(s), 0, 1).sum()) / 4.0   # rounds and clips its input: no gain from off-alphabet values
+        """, base, {"s": [1.0, 1.0, 0.0, 1.0]})
+    r = stress(p, budget="small")
+    assert not any(f.kind == "exploitable_type_violation" for f in r.result.findings)

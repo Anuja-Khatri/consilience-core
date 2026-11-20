@@ -35,3 +35,10 @@
 
   Not fixed: a fix changes the locked decision rules, so it goes to Anu first.
 - **Analysis and recommendation:** consilience-docs `deepmind/stress/RESULTS_45_ANALYSIS.md`.
+
+## Deviation 2 (Anu approved, 20 Nov 2026): decision rules v1.1, then run 3 (45 contracts, from scratch)
+
+- **Rule 1:** a candidate "beats the record" only if its worst case beats the better of the record and the valid base (the reference, or the valid-twin base) by more than m. This removes zero-gain BLOCKs.
+- **Rule 2:** `exploitable_type_violation` requires the score to beat both the projected valid equivalent and the reference by more than m.
+- **verify** and the independent check were updated to the same purpose. The independent check now also requires a gain over the valid reference: it challenges the rule's purpose, not only its arithmetic.
+- **Run 3:** the same `SELECTION_45.txt`, from scratch, `standard` budget, seed 0. Run 2's results stay in history and are summarised in RESULTS_45_ANALYSIS.md (consilience-docs).
