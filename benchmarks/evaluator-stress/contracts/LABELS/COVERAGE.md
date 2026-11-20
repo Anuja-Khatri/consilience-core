@@ -16,12 +16,12 @@ and the OE @ ac5f8f5 work these were derived from (see `contracts/OE/COVERAGE.md
 | oe514_matmul_post | OK | 2 | 46 | 83 | Evaluator @ bc36680 (post-fix; identical to ac5f8f5). Same contract as pre. |
 | oe514_funcmin_pre | OK | 5 | 33 | 22 | Evaluator, `openevolve/evaluation_result.py` and initial_program.py (as `program_template.py`) @ a1e9d91. `template` harness; construction (x, y); the reported `value` is `claimed`. Same contract as `OE/function_minimization`. No record. |
 | oe514_funcmin_post | OK | 2 | 33 | 22 | Same files @ bc36680 (identical to ac5f8f5). |
-| oe549_first_autocorr_pre | OK | 1 | 49 | 8 | Copied unchanged from `pilot/oe_c1_pre` (evaluator @ 23dc34b). |
-| oe549_first_autocorr_post | OK | 1 | 49 | 8 | Copied unchanged from `pilot/oe_c1_post` (evaluator @ 464054d). |
-| oe562_erdos_pre | OK | 1 | 49 | 22 | Copied unchanged from `pilot/oe_erdos_pre` (evaluator @ b6359e7). |
-| oe562_erdos_post | OK | 1 | 49 | 22 | Copied unchanged from `pilot/oe_erdos_post` (evaluator @ da723ad). |
-| oe548_cpr_pre | OK | 1 | 43 | 23 | Copied unchanged from `pilot/oe_cpr_pre` (evaluator @ 464054d). |
-| oe548_cpr_post | OK | 1 | 43 | 23 | Copied unchanged from `pilot/oe_cpr_post` (evaluator @ 04270bd). |
+| oe549_first_autocorr_pre | OK | 1 | 49 | 8 | Copied from `pilot/oe_c1_pre` (evaluator @ 23dc34b); only `contract_author: model` added. |
+| oe549_first_autocorr_post | OK | 1 | 49 | 8 | Copied from `pilot/oe_c1_post` (evaluator @ 464054d); only `contract_author: model` added. |
+| oe562_erdos_pre | OK | 1 | 49 | 22 | Copied from `pilot/oe_erdos_pre` (evaluator @ b6359e7); only `contract_author: model` added. |
+| oe562_erdos_post | OK | 1 | 49 | 22 | Copied from `pilot/oe_erdos_post` (evaluator @ da723ad); only `contract_author: model` added. |
+| oe548_cpr_pre | OK | 1 | 43 | 23 | Copied from `pilot/oe_cpr_pre` (evaluator @ 464054d); only `contract_author: model` added. |
+| oe548_cpr_post | OK | 1 | 43 | 23 | Copied from `pilot/oe_cpr_post` (evaluator @ 04270bd); only `contract_author: model` added. |
 
 Notes on the copies: they are identical to the pilot except for the added `contract_author: model` line, so they keep the pilot's conventions,
 which differ from `CONTRACT_AUTHORING.md` in one place: the one-line provenance header without the file path.
