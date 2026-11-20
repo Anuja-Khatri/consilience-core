@@ -11,7 +11,7 @@ Every statement below concerns **the published code at the commit named in `../S
 
 ## 1. Limits first
 
-- **Only 45 of the 111 contracts were run.** The 21 unlabelled contracts are a seeded random sample (`../SELECTION_45.txt`), and the M3 numbers below are on that sample.
+- **Only 45 of the 111 runnable contracts were run.** The 21 unlabelled contracts are a seeded random sample (`../SELECTION_45.txt`), and the M3 numbers below are on that sample.
 - **The run shows where the checks are weak:**
   - in the random sample, the checks for self-reports (C2) and for invariance (C4) found **nothing**;
   - the naive search (C3) needed the `large` budget for the one case it is known to catch (equidistant points, §4).
@@ -29,7 +29,7 @@ Every statement below concerns **the published code at the commit named in `../S
 | **M3** new findings, 21-contract random sample | — | **3 of 21** | 2 in the easy invalid-input class |
 | — C2 self-report (sample) | 2–5 over about 90 | **0** | Below forecast |
 | — C4 invariance (sample) | 0–2 over about 90 | **0** | |
-| **M5 reach** | 60–80% | 110 contracts written for the in-scope functions (about 86%); median 10 minutes each; 1 scorer unrunnable as published | |
+| **M5 reach** | 60–80% | 89 unlabelled + 22 labelled contracts; about 86% of in-scope functions; median 10 minutes each; 1 scorer unrunnable as published | |
 | **M6 runtime** | seconds to minutes | median 16 s, max 714 s per contract | |
 
 ## 3. What the checks reliably catch (labelled known bugs, confirmed independently)

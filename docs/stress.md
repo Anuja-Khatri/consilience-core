@@ -316,12 +316,12 @@ It exits 0 if every verdict reproduces and 1 if not. Use `--input` to point to t
 
 ## 12. The public benchmark
 
-`benchmarks/evaluator-stress/` holds contracts for about 110 public scoring functions, with vendored code kept under its own Apache-2.0 licence:
-- 52 from Google DeepMind's AlphaEvolve problem notebooks;
+`benchmarks/evaluator-stress/` holds contracts for 89 public scoring functions, with vendored code kept under its own Apache-2.0 licence:
+- 53 from Google DeepMind's AlphaEvolve problem notebooks;
 - 2 from its results repository;
 - 19 from OpenEvolve;
 - 13 from CodeEvolve;
 - 1 each from ShinkaEvolve and Google Cloud's AlphaEvolve samples;
-- pre-fix and post-fix versions of 13 known bugs.
+- 22 pre-fix and post-fix versions of 13 known bugs.
 
 It also holds the preregistration, the labels, the runner, an independent second-way checker and the results (`results/RESULTS.md`). Findings concern **the published code at the stated commit** only, never anyone's internal systems or published results.

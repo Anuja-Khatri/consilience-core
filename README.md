@@ -373,7 +373,7 @@ Program search (AlphaEvolve, OpenEvolve, ShinkaEvolve, CodeEvolve), reinforcemen
 
 Also included:
 - an agent plugin that runs the check after a scoring file is edited (`integrations/agent-plugin/consilience-stress`);
-- a public benchmark of about 110 contracts across five evaluator collections (`benchmarks/evaluator-stress`).
+- a public benchmark of contracts for 89 scoring functions across five evaluator collections, plus 22 labelled bug versions (`benchmarks/evaluator-stress`).
 
 What it is good at, who it is for, the full contract reference and its limits: **docs/stress.md**.
 
