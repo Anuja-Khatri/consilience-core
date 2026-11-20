@@ -207,7 +207,7 @@ def m1_m2(df, recs):
     bounds = sum(1 for r in recs if norm(r["raw"]["standard_value"]) and
                  norm(r["raw"]["standard_units"]).lower() in R0_NM and
                  _isnum(r["raw"]["standard_value"]) and
-                 norm(r["raw"]["standard_relation"]) not in ("=", ""))
+                 norm(r["raw"]["standard_relation"]) in (">", "<", ">=", "<="))
     return {"r0_comparable_pairs": c["r0"], "pairs_paired_by_p": c["paired"],
             "refused": c["refused"], "involves_excluded_or_unparseable": c["excl"],
             "undecidable_bounds": c["undecidable"], "compared_within_class": c["compared"]}, \
@@ -292,7 +292,7 @@ def main() -> int:
         e2 = t["M2"]
         if a2["r0_values"] != e2["r0_values"]:
             mismatches.append(f"{tid} M2 r0_values: {e2['r0_values']} vs {a2['r0_values']}")
-        eb = sum(v for k, v in e2["relations"].items() if k not in ("=", "(none)"))
+        eb = sum(v for k, v in e2["relations"].items() if k in (">", "<", ">=", "<="))
         if a2["bounds"] != eb:
             mismatches.append(f"{tid} M2 bounds: {eb} vs {a2['bounds']}")
         e3 = t["M3"]

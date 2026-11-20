@@ -135,9 +135,11 @@ def m2(rows: list) -> dict:
         n += 1
         s = (r.get("standard_relation") or "").strip()
         rel[s if s else "(none)"] += 1
-    bounds = sum(v for k, v in rel.items() if k not in ("=", "(none)"))
+    bounds = sum(v for k, v in rel.items() if k in (">", "<", ">=", "<="))
+    other = sum(v for k, v in rel.items() if k not in (">", "<", ">=", "<=", "=", "(none)"))
     return {"r0_values": n, "relations": dict(rel.most_common()),
             "bound_share": share(bounds, n),
+            "other_relation_share": share(other, n),
             "no_relation_share": share(rel.get("(none)", 0), n)}
 
 
@@ -189,7 +191,7 @@ def m3(rows: list, res_mol) -> dict:
             "share_shift_gt_1_0": share(sum(1 for s in shifts if s > 1.0), n),
             "median_shift": statistics.median(shifts) if shifts else None,
             "r1_value_but_no_valid_p_class": dict(no_valid.most_common()),
-            "skipped_non_molar_unit": non_molar}
+            "skipped_non_molar_unit": non_molar, "_shifts": shifts}
 
 
 # ------------------------------------------------------------------------- M4
@@ -254,10 +256,16 @@ def run_target(t: str) -> dict:
     Pm = compare_table(path, map="chembl", pack="bioactivity", key=key_mol)
     Pam = compare_table(path, map="chembl", pack="bioactivity", key=key_mol,
                         assume=["ki_ic50_x2"])
+    m3_p, m3_pa = m3(rows, Pm), m3(rows, Pam)
+    shifts = m3_p.pop("_shifts")
+    m3_pa.pop("_shifts")
+    if t == "CHEMBL203":
+        RESULTS.mkdir(exist_ok=True)
+        (RESULTS / "egfr_shifts.json").write_text(json.dumps(shifts) + "\n", encoding="utf-8")
     res = {"target": t, "rows": len(rows), "receipt_sha256": P.receipt["sha256"],
            "p_summary": {k: v for k, v in P.summary.items() if k != "text"},
            "M1": m1(rows, P), "M1_assume_ki_ic50_x2": m1(rows, Pa), "M2": m2(rows),
-           "M3": m3(rows, Pm), "M3_assume_ki_ic50_x2": m3(rows, Pam), "M4": m4(rows, P),
+           "M3": m3_p, "M3_assume_ki_ic50_x2": m3_pa, "M4": m4(rows, P),
            "M5": m5(rows, P, t)}
     return res
 
@@ -322,8 +330,9 @@ def main(argv) -> int:
             "share_shift_gt_1_0": share(sum(r[k]["shift_gt_1_0"] for r in panel), n),
             "note": "panel medians are per target (per_target[*].M3.median_shift)"}
     m2n = sum(r["M2"]["r0_values"] for r in panel)
-    out["panel"]["M2"] = {"r0_values": m2n, "bound_share": share(sum(
-        round((r["M2"]["bound_share"] or 0) * r["M2"]["r0_values"]) for r in panel), m2n)}
+    nb = sum(sum(v for k, v in r["M2"]["relations"].items() if k in (">", "<", ">=", "<="))
+             for r in panel)
+    out["panel"]["M2"] = {"r0_values": m2n, "bounds": nb, "bound_share": share(nb, m2n)}
     for sub in ("all_pairs", "without_potential_duplicates"):
         tot = Counter()
         for r in panel:
