@@ -1,0 +1,208 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "C",
+    "role": "construction",
+    "type": "int_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "argv": [
+    "{python}",
+    "{evaluator}",
+    "{program}",
+    "{outdir}/results.json"
+   ],
+   "call_args": {},
+   "evaluator": "evaluate.py",
+   "extra_files": [],
+   "kind": "cli_json",
+   "program_function": "kissing_number11",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "result_file": "{outdir}/results.json",
+   "score_key": "benchmark_ratio",
+   "timeout_s": 180.0
+  },
+  "invariances": [
+   {
+    "field": "C",
+    "transform": "permute"
+   },
+   {
+    "field": "C",
+    "transform": "negate"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "codeevolve/kissing_number (d=11)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "C"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "map": "ratio",
+    "quantity": "num_points",
+    "source": "CodeEvolve README (problem page): 'the benchmark target is >= 593 (AlphaEvolve's reported best)'",
+    "value": "593"
+   }
+  },
+  "validity": [
+   {
+    "field": "C",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "C",
+    "rule": "integral",
+    "tolerance": "0"
+   },
+   {
+    "call": "kissing",
+    "equality": false,
+    "name": "kissing_condition",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/CE/kissing_number_11/contract.yaml",
+ "contract_sha256": "5c8d5eb9ccf21208cf851f9c04f7a76d122518189b46d3bf56c59c903290fad6",
+ "created": "2026-11-20T17:07:12+00:00",
+ "environment": {
+  "mean_call_seconds": 0.9647987354291628,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 655.063
+ },
+ "file_hashes": {
+  "evaluate.py": "48acc2a21bf5806dc549a042a61858ddae1181f0988c21060f3a8345948e1d04",
+  "glue.py": "526929f2f52c3cb060bda8ef55f5c00254076fbc854e9f667c3cace996e55ae4",
+  "reference.npz": "e73df495269334e67e41bb5b4b46217cb59db0f438d226ca3110722d24c0074c"
+ },
+ "findings": [],
+ "glue_sha256": "526929f2f52c3cb060bda8ef55f5c00254076fbc854e9f667c3cace996e55ae4",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 1.0,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 4,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 584,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 1e-09,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": 1.0,
+  "reference_score": 1.0,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    4,
+    53
+   ],
+   "esc": [
+    3,
+    71
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 1.0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "C:fractional",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "kissing_condition"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "C:fractional",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "kissing_condition"
+    }
+   ]
+  }
+ ],
+ "sha256": "454dcf70e4ada510d81611307b1c21a8a943fea1c3567cbb7fe4e421847e20a9",
+ "verdict": "PASS"
+}

@@ -1,0 +1,195 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {
+   "n": 32
+  },
+  "fields": [
+   {
+    "name": "circles",
+    "role": "construction",
+    "shape": [
+     32,
+     3
+    ],
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "argv": [
+    "{python}",
+    "{evaluator}",
+    "{program}",
+    "{outdir}/results.json"
+   ],
+   "call_args": {},
+   "evaluator": "evaluate.py",
+   "extra_files": [],
+   "kind": "cli_json",
+   "program_function": "circle_packing32",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "result_file": "{outdir}/results.json",
+   "score_key": "benchmark_ratio",
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "circles",
+    "transform": "permute"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "codeevolve/circle_packing_square (n=32)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "circles"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "map": "ratio",
+    "quantity": "radii_sum",
+    "source": "AlphaEvolve, alphaevolve_results @ 4226acb mathematical_results.ipynb B.12 text: n=32 improved to 2.937 (as published); mapped through the evaluator's BENCHMARK",
+    "value": "2.937"
+   }
+  },
+  "validity": [
+   {
+    "field": "circles",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "circles",
+    "rule": "shape",
+    "shape": [
+     32,
+     3
+    ],
+    "tolerance": "0"
+   },
+   {
+    "call": "packing",
+    "equality": false,
+    "name": "packing_in_unit_square",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/CE/circle_packing_square_32/contract.yaml",
+ "contract_sha256": "8a5b670f2babd67e2c2c9341f38cb44dad4e0d743190682d3fe01b20645bfa03",
+ "created": "2026-11-20T16:49:24+00:00",
+ "environment": {
+  "mean_call_seconds": 0.22033986776647432,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 235.507
+ },
+ "file_hashes": {
+  "evaluate.py": "ceb6039504034ce728199e6a726b1bfd949360800accb2d763d4ce7a1361b7d7",
+  "glue.py": "9bd188f495bb5745d2e08444760bbf33eed05ccd4e1958a88e2ec75532abd100",
+  "reference.npz": "155fd141dd9e948ba53344c14e693aaa46b9c2b73611d6fdcad8df9077aec590"
+ },
+ "findings": [
+  {
+   "attack": "circles:scale*(1+1e-06)",
+   "beats_record": true,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_exploitable_invalid_candidate.json",
+     "sha256": "fc4caaa528d7ca228a3f3506c9b51fca22fdb1243b4cc4d42ea87967fb29cda3"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 9.999999999177334e-07,
+   "rules": [
+    {
+     "class": "small",
+     "detail": "glue predicate",
+     "index": 2,
+     "magnitude": 9.926891706285579e-07,
+     "rule": "packing_in_unit_square"
+    }
+   ],
+   "valid_base": 1.0,
+   "worst": 1.000001,
+   "worst_factor": 1.0
+  }
+ ],
+ "glue_sha256": "9bd188f495bb5745d2e08444760bbf33eed05ccd4e1958a88e2ec75532abd100",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 1.0,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 1065,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 0.0001701870118854809,
+  "margin_source": "record_resolution",
+  "record_score_units": 0.9996785078148708,
+  "reference_score": 1.0,
+  "resolution": 0.0001701870118854809,
+  "scaled_budget": {
+   "c3": [
+    8,
+    110
+   ],
+   "esc": [
+    3,
+    293
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 1.1102230246251565e-16,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "a604c025af12e7a01a7c4c601b6eea99b06fed34561834458d338e8de298d842",
+ "verdict": "BLOCK"
+}

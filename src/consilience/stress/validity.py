@@ -197,6 +197,8 @@ def check_rules(rules: list, cand: dict, contract=None, offset: int = 0) -> list
             if not np.all(af == np.round(af)):
                 add(math.inf, "fractional value")
         elif k == "distinct":
+            if a.ndim == 0 or a.size == 0:
+                continue
             flat = [tuple(row) for row in a.reshape(a.shape[0], -1).tolist()] if a.ndim > 1 else a.tolist()
             if len(set(map(lambda v: v if not isinstance(v, float) else F(v), flat))) != len(flat):
                 add(math.inf, "repeated element")

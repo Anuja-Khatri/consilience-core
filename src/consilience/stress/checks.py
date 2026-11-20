@@ -420,8 +420,10 @@ def _run_checks(contract, harness: Harness, seed: int, budget: str, only) -> Str
                     continue
                 spread = float(np.ptp(np.abs(af))) if af.size else 1.0
                 atk = []
-                if af.ndim >= 2:
-                    pos = [(0,) * (af.ndim - 1) + (j,) for j in range(af.shape[-1])]
+                if af.ndim == 0:
+                    pos = [()]
+                elif af.ndim >= 2:
+                    pos = [(0,) * (af.ndim - 1) + (j,) for j in range(af.shape[-1])] if af.shape[0] else []
                 elif af.size:
                     pos = sorted({(0,), (af.shape[0] // 2,), (af.shape[0] - 1,)})
                 else:
@@ -431,11 +433,12 @@ def _run_checks(contract, harness: Harness, seed: int, budget: str, only) -> Str
                         y = af.astype(float).copy() if not np.iscomplexobj(af) else af.copy()
                         y[p] = val
                         atk.append((f"nonfinite{list(p)}={val}", y))
-                if af.size:
+                if af.ndim >= 1 and af.size:
                     step = 1.0 if isint else 1e-3 * (spread or 1.0)
                     atk.append(("count+1", np.concatenate([af, af[-1:] + step])))
                     atk.append(("count-1", af[:-1]))
-                atk.append(("empty", af[:0]))
+                if af.ndim >= 1:
+                    atk.append(("empty", af[:0]))
                 atk += [(f"magnitude*{g:g}", af * g) for g in (1e150, 1e300)]
                 if not isint:
                     atk += [(f"scale*(1{sg * d:+g})", af * (1 + sg * d)) for d in (1e-9, 1e-6, 1e-4, 1e-3, 1e-2) for sg in (1, -1)]

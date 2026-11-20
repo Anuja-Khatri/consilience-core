@@ -1,0 +1,499 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "A",
+    "role": "construction",
+    "type": "int_set"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "calculate_score",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     -1000000.0
+    ]
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "A",
+    "transform": "permute"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/erdos_squarefree_problem calculate_score (M = 625)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "A"
+  ],
+  "score": {
+   "bound": {
+    "kind": "proven",
+    "source": "elementary for M = 625: a valid a needs 25 | a^2 + 1, so a = 7 or 18 mod 25, and 7*18 + 1 = 127 is not divisible by 25, so A lies in one class mod 25 (at most 25 residues)",
+    "value": "0.04"
+   },
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "notebook 'What AlphaEvolve found': residue class 7 mod 25 (density 1/25), sharp for large N (Sawhney)",
+    "value": "0.04"
+   }
+  },
+  "validity": [
+   {
+    "field": "A",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "A",
+    "min": 1,
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "field": "A",
+    "rule": "integral",
+    "tolerance": "0"
+   },
+   {
+    "field": "A",
+    "rule": "distinct",
+    "tolerance": "0"
+   },
+   {
+    "field": "A",
+    "max": "624",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "call": "all_pairs_gcd_not_squarefree",
+    "equality": false,
+    "name": "all_pairs_gcd_not_squarefree",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DM/erdos_squarefree_problem/contract.yaml",
+ "contract_sha256": "936edf8a44fb625ab8ea2c6c52c3c8c7a93bec91fbc3042f8ce6a77a19c894d3",
+ "created": "2026-11-20T17:11:36+00:00",
+ "environment": {
+  "mean_call_seconds": 0.001070540646656716,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 11.284
+ },
+ "file_hashes": {
+  "glue.py": "35a8e11bd1ba71afc707caed3f18b0d060e83efabdba57087fcc25015537ebf2",
+  "reference.npz": "7fca21ec3604d4967f929523c1222e47f3f17abd5d5f318a49f500b37aff9c9c",
+  "scorer.py": "f24708089ed29ad7a4bc4f0200024c8f6b47990b447859047b23b8b2a7584039"
+ },
+ "findings": [
+  {
+   "attack": "A:fractional",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_exploitable_type_violation_candidate.json",
+     "sha256": "019e28e89df84bedbebb767271d6b56b7843b6f92bbdc88d9cf63de19feca020"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_type_violation",
+   "projected_score": 0.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    }
+   ],
+   "score": 0.04
+  }
+ ],
+ "glue_sha256": "35a8e11bd1ba71afc707caed3f18b0d060e83efabdba57087fcc25015537ebf2",
+ "info": {
+  "C3": {
+   "best_invalid": -0.07519999999999999,
+   "best_valid": 0.04,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.875
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 8987,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 0.005,
+  "margin_source": "record_resolution",
+  "record_score_units": 0.04,
+  "reference_score": 0.04,
+  "resolution": 0.005,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 0.04
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "A:count+1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:empty",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "count 0",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "count"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "attack": "A:magnitude*1e+150",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 6.069999999999999e+152,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:magnitude*1e+300",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 6.07e+302,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:duplicate",
+   "block": false,
+   "check": "C1",
+   "kind": "type_violation_harmless",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "repeated element",
+     "index": 3,
+     "magnitude": "inf",
+     "rule": "distinct"
+    }
+   ]
+  },
+  {
+   "attack": "A:range-1e-12",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-12,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:range-1e-09",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-09,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:range-1e-06",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-06,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:range-0.001",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.001,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:range-0.1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.1,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "attack": "A:range-1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1.0,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "A:count+1",
+   "kind": "type_violation_harmless",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "repeated element",
+     "index": 3,
+     "magnitude": "inf",
+     "rule": "distinct"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "A:empty",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "count 0",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "count"
+    }
+   ],
+   "score": 0.0
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "A:magnitude*1e+150",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 6.069999999999999e+152,
+     "rule": "range"
+    },
+    {
+     "class": "large",
+     "detail": "glue predicate",
+     "index": 5,
+     "magnitude": "inf",
+     "rule": "all_pairs_gcd_not_squarefree"
+    }
+   ]
+  }
+ ],
+ "sha256": "e2afc17ea133cf0801d6b6506243bdcb82d63597e8542701ff9cef5a7acf1ed2",
+ "verdict": "BLOCK"
+}

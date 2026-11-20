@@ -1,0 +1,61 @@
+111 contracts; budget standard; seed 0; jobs 3
+CE/circle_packing_rect_21                               PASS       227.6s 
+CE/circle_packing_square_26                             BLOCK      238.5s C1:exploitable_invalid
+CE/circle_packing_square_32                             BLOCK      236.3s C1:exploitable_invalid
+CE/first_autocorr_ineq                                  PASS       608.3s 
+CE/heilbronn_convex_13                                  PASS       278.1s 
+CE/heilbronn_convex_14                                  PASS       271.6s 
+CE/heilbronn_triangle_11                                PASS       534.8s 
+CE/hexagon_packing_11                                   NO_RECEIPT    66.3s 
+   e 211, in stress
+       res = run_checks(c, h, seed=seed, budget=budget, only=only)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/checks.py", line 230, in run_checks
+       return _run_checks(contract, harness, seed, budget, only)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/checks.py", line 426, in _run_checks
+       pos = sorted({(0,), (af.shape[0] // 2,), (af.shape[0] - 1,)})
+                            ~~~~~~~~^^^
+   IndexError: tuple index out of range
+   
+CE/hexagon_packing_12                                   NO_RECEIPT    67.8s 
+   e 211, in stress
+       res = run_checks(c, h, seed=seed, budget=budget, only=only)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/checks.py", line 230, in run_checks
+       return _run_checks(contract, harness, seed, budget, only)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/checks.py", line 426, in _run_checks
+       pos = sorted({(0,), (af.shape[0] // 2,), (af.shape[0] - 1,)})
+                            ~~~~~~~~^^^
+   IndexError: tuple index out of range
+   
+CE/kissing_number_11                                    PASS       655.9s 
+CE/minimizing_max_min_dist_2d_16                        NO_RECEIPT    58.0s 
+    v = violations(c, x)
+           ^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/validity.py", line 310, in violations
+       return check_rules(contract.data["validity"], cand, contract)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/validity.py", line 200, in check_rules
+       flat = [tuple(row) for row in a.reshape(a.shape[0], -1).tolist()] if a.ndim > 1 else a.tolist()
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   ValueError: cannot reshape array of size 0 into shape (0,newaxis)
+   
+CE/minimizing_max_min_dist_3d_14                        NO_RECEIPT    61.5s 
+    v = violations(c, x)
+           ^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/validity.py", line 310, in violations
+       return check_rules(contract.data["validity"], cand, contract)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     File "/home/user/consilience-core/src/consilience/stress/validity.py", line 200, in check_rules
+       flat = [tuple(row) for row in a.reshape(a.shape[0], -1).tolist()] if a.ndim > 1 else a.tolist()
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   ValueError: cannot reshape array of size 0 into shape (0,newaxis)
+   
+CE/second_autocorr_ineq                                 BLOCK      453.2s C1:exploitable_invalid
+DM/autocorrelation_problems_first                       PASS        44.1s 
+DM/autocorrelation_problems_first_v0                    PASS        25.4s 
+DM/autocorrelation_problems_first_v1                    PASS        23.5s 
+DM/autocorrelation_problems_first_v2                    PASS        24.2s 
+DM/autocorrelation_problems_problem6                    PASS         5.9s 

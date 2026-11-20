@@ -1,0 +1,376 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "X",
+    "role": "construction",
+    "type": "int_set"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "calculate_score",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "score_key": null,
+   "timeout_s": 60.0
+  },
+  "initial": {
+   "file": "initial.npz"
+  },
+  "invariances": [
+   {
+    "field": "X",
+    "transform": "permute"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/finite_field_sum_product_problem calculate_score (p = 1000033)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "X"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "minimize",
+   "record": null
+  },
+  "validity": [
+   {
+    "field": "X",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "equals": 1000,
+    "field": "X",
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "field": "X",
+    "rule": "integral",
+    "tolerance": "0"
+   },
+   {
+    "field": "X",
+    "rule": "distinct",
+    "tolerance": "0"
+   },
+   {
+    "field": "X",
+    "max": "1000032",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DM/finite_field_sum_product_problem/contract.yaml",
+ "contract_sha256": "9bfb97dde0499e8fd2407cb9c4fed837283f6283dc95c86825b7efdb35399e18",
+ "created": "2026-11-20T17:14:57+00:00",
+ "environment": {
+  "mean_call_seconds": 0.008901168687094455,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 48.944
+ },
+ "file_hashes": {
+  "glue.py": "817560b5cad43618895582abc4b982ddbaebfe1d9e589dc533736bb11fff8b56",
+  "initial.npz": "622a940666171f7bff2f6dea0f7a11ddf8144b86d8e3cf0930301989ab6d6de4",
+  "reference.npz": "254141df4690ee486c11507d1de78320dae88009e367f7447c5e697bdab985f6",
+  "scorer.py": "370774d45b9def007696430c5b282f0e3ba605cee8ae857cec5d7ea8d46c7ad6"
+ },
+ "findings": [
+  {
+   "attack": "X:range-1e-06",
+   "beats_record": false,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_exploitable_invalid_candidate.json",
+     "sha256": "12ac672946f40b4f41c4d389a9cc48fc0679e675a3a805fca72120c0904a1a07"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 2.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 58313.0,
+   "worst": 58311.0,
+   "worst_factor": 1.0
+  },
+  {
+   "attack": "X:range-0.1",
+   "beats_record": false,
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_exploitable_invalid_candidate.json",
+     "sha256": "e7b4f303ab93d4f9eba8a310637bf9cb28c985afdc5e24fbc81925690121b7eb"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_invalid",
+   "paired_gain": 4.0,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.1,
+     "rule": "range"
+    }
+   ],
+   "valid_base": 58313.0,
+   "worst": 58309.0,
+   "worst_factor": 1.0
+  }
+ ],
+ "glue_sha256": "817560b5cad43618895582abc4b982ddbaebfe1d9e589dc533736bb11fff8b56",
+ "info": {
+  "C3": {
+   "best_invalid": null,
+   "best_valid": 58313.0,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.0
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 4469,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 5.8313e-05,
+  "margin_source": "default_1e-9_relative",
+  "record_score_units": null,
+  "reference_score": 58313.0,
+  "resolution": 0.0,
+  "scaled_budget": {
+   "c3": [
+    8,
+    301
+   ],
+   "esc": [
+    3,
+    500
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 58313.0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "X:fractional",
+   "block": false,
+   "check": "C1",
+   "kind": "type_violation_harmless",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    }
+   ]
+  },
+  {
+   "attack": "X:range-1e-12",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "X:range-1e-09",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "X:range-0.001",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "X:range-1e-12",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "X:range-1e-09",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "X:range-0.001",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "integral"
+    },
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 4,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ]
+  }
+ ],
+ "sha256": "545d835e112d9561bce7408780268bd209d90b3ff7907a56a108f5340f8f37b0",
+ "verdict": "BLOCK"
+}

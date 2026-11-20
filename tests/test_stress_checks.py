@@ -316,3 +316,23 @@ def test_cli_exit_codes(tmp_path, capsys):
     assert cli_main(["verify", str(tmp_path / "o" / "receipt.json")]) == 0
     assert cli_main(["stress", str(tmp_path / "missing.yaml")]) == 64
     assert cli_main(["stress", str(p), "--only", "C9"]) == 64
+
+
+def test_scalar_and_2d_fields_do_not_crash(tmp_path):
+    # a scalar construction field and an (n, 2) field with a distinct rule (regression for two step-5 crashes)
+    base = dict(harness=FN(), fields=[{"name": "s", "type": "real", "role": "construction"},
+                                      {"name": "P", "type": "real_array", "role": "construction"}],
+                validity=[{"rule": "finite", "field": "s"}, {"rule": "range", "field": "s", "min": "0", "max": "1"},
+                          {"rule": "finite", "field": "P"}, {"rule": "distinct", "field": "P"},
+                          {"rule": "count", "field": "P", "equals": 3}],
+                score={"direction": "maximize"})
+    p = make(tmp_path, """
+        import numpy as np
+        def score(s, P):
+            P = np.asarray(P, float)
+            if P.shape != (3, 2) or not np.isfinite(P).all() or not np.isfinite(s) or not 0 <= s <= 1:
+                raise ValueError
+            return float(s + np.min([np.linalg.norm(P[i] - P[j]) for i in range(3) for j in range(i)]))
+        """, base, {"s": 0.5, "P": [[0, 0], [1, 0], [0, 1]]})
+    r = stress(p, budget="small")
+    assert r.verdict in ("PASS", "BLOCK")

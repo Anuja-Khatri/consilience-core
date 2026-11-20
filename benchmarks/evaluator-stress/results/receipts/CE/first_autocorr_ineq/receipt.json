@@ -1,0 +1,334 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "a",
+    "role": "construction",
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "argv": [
+    "{python}",
+    "-c",
+    "import os, sys, runpy, importlib.util\nev, prog, res = sys.argv[1:4]\nname = os.path.splitext(os.path.basename(prog))[0]\nspec = importlib.util.spec_from_file_location(name, prog)\nmod = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(mod)\n_f = mod.search_for_best_sequence\nmod.search_for_best_sequence = lambda: [float(x) for x in _f()]  # ndarray -> list (the evaluator requires a list)\nsys.modules[name] = mod\nsys.argv = [ev, prog, res]\nrunpy.run_path(ev, run_name='__main__')\n",
+    "{evaluator}",
+    "{program}",
+    "{outdir}/results.json"
+   ],
+   "call_args": {},
+   "evaluator": "evaluate.py",
+   "extra_files": [],
+   "kind": "cli_json",
+   "program_function": "search_for_best_sequence",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": []
+   },
+   "result_file": "{outdir}/results.json",
+   "score_key": "benchmark_ratio",
+   "timeout_s": 60.0
+  },
+  "invariances": [
+   {
+    "field": "a",
+    "score_exponent": 0,
+    "transform": "scale"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "codeevolve/first_autocorr_ineq",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "a"
+  ],
+  "score": {
+   "bound": {
+    "kind": "proven",
+    "source": "C1 >= 1.28 (Cloninger & Steinerberger 2017, stated in the README); the step-function C1 is exact, so benchmark_ratio <= 1.5031/1.28",
+    "value": "1.174296875"
+   },
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "map": "benchmark_ratio_from_c1",
+    "quantity": "c1",
+    "source": "AlphaEvolve, alphaevolve_results @ 4226acb mathematical_results.ipynb B.1 text: C1 <= 1.5053 (as published); mapped through the evaluator's BENCHMARK 1.5031",
+    "value": "1.5053"
+   }
+  },
+  "validity": [
+   {
+    "field": "a",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "a",
+    "max": "1000",
+    "min": "0",
+    "rule": "range",
+    "tolerance": "0"
+   },
+   {
+    "call": "positive_sum",
+    "equality": false,
+    "name": "f_not_zero",
+    "rule": "predicate",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/CE/first_autocorr_ineq/contract.yaml",
+ "contract_sha256": "9ce0e7f0281fb7a20223ba0cfaf9500bf310bc67125d91be3ee737fc64f83f4f",
+ "created": "2026-11-20T16:59:24+00:00",
+ "environment": {
+  "mean_call_seconds": 0.2070523103622541,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 607.265
+ },
+ "file_hashes": {
+  "evaluate.py": "5f091d84183e556182318d0bbf389be387f49381f5eacad7f2b427183d01929b",
+  "glue.py": "2cbfb784c6c1adeb9558316ca87c59159b753177002d9d98048f42c5305eeb0a",
+  "reference.npz": "50c3c1bcf45d50a2e53a891ac194e4b3e41f14ff1ffa42f4d73325958ab238b5"
+ },
+ "findings": [],
+ "glue_sha256": "2cbfb784c6c1adeb9558316ca87c59159b753177002d9d98048f42c5305eeb0a",
+ "info": {
+  "C3": {
+   "best_invalid": 0.9287836773747431,
+   "best_valid": 0.9985424983517113,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.875
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 2920,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 3.3167425045277366e-05,
+  "margin_source": "record_resolution",
+  "record_score_units": 0.9985384973095064,
+  "reference_score": 0.9985424983517113,
+  "resolution": 3.3167425045277366e-05,
+  "scaled_budget": {
+   "c3": [
+    8,
+    117
+   ],
+   "esc": [
+    3,
+    313
+   ]
+  },
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0,
+  "valid_twin_base": 0.9985424983517113
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "a:magnitude*1e+150",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 9.00854017233134e+150,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:magnitude*1e+300",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 9.00854017233134e+300,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:range-1e-12",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:range-1e-09",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 1e-09,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:range-1e-06",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 1e-06,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:range-0.001",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 0.001,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:range-0.1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 0.1,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "attack": "a:range-1",
+   "block": false,
+   "check": "C1",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 1.0,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "a:magnitude*1e+150",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 9.116500681569279e+150,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "a:magnitude*1e+300",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "large",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 9.00854017233134e+300,
+     "rule": "range"
+    }
+   ]
+  },
+  {
+   "block": false,
+   "check": "C1-escalation",
+   "escalated_from": "a:range-1e-12",
+   "kind": "accepts_invalid_low_score",
+   "rules": [
+    {
+     "class": "small",
+     "detail": "outside range",
+     "index": 1,
+     "magnitude": 1e-12,
+     "rule": "range"
+    }
+   ]
+  }
+ ],
+ "sha256": "b7ad087c94e016b2d7b1be7fdad3d4cc4b18fa0a8b81f394ea84048e10b5e2cf",
+ "verdict": "PASS"
+}

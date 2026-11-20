@@ -1,0 +1,203 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "B",
+    "role": "construction",
+    "type": "int_set"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "get_score",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     -100.0
+    ]
+   },
+   "score_key": null,
+   "timeout_s": 30.0
+  },
+  "invariances": [
+   {
+    "field": "B",
+    "transform": "translate"
+   },
+   {
+    "field": "B",
+    "transform": "permute"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/difference_bases get_score",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "B"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "minimize",
+   "record": {
+    "kind": "best_known",
+    "source": "notebook code cell 0, shipped construction L = combine_A_B(A, B, 89^2+89+1) (|L| = 360), whose recomputed score is 2.639027; the problem page states no number",
+    "value": "2.6390"
+   }
+  },
+  "validity": [
+   {
+    "field": "B",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "field": "B",
+    "rule": "integral",
+    "tolerance": "0"
+   },
+   {
+    "field": "B",
+    "rule": "distinct",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DM/difference_bases/contract.yaml",
+ "contract_sha256": "c3708555d80178e5fa52fa19ac0a1c9f0d6c8c7025235f5cfc984f794a468213",
+ "created": "2026-11-20T17:10:16+00:00",
+ "environment": {
+  "mean_call_seconds": 0.010581353588647204,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 69.826
+ },
+ "file_hashes": {
+  "glue.py": "aad1a840a7b7e5d67087bfa714a06e97ff167f24f93088b50e779638e272e05d",
+  "reference.npz": "fec4c9594136843b5fb74a918c182999c6213824653558da744241da4eccc4f7",
+  "scorer.py": "92afbc4f507eea6437355f1f480c353a0104ea79ccc6b68c6e5d0a084d7a5e14"
+ },
+ "findings": [
+  {
+   "block": true,
+   "candidates": {
+    "reference": {
+     "file": "candidates/f00_C4_invariance_broken_integer_reference.json",
+     "sha256": "e64e92cab1369e70396940ad853e69ff739e1e239f302f8af3642dcfe12d126a"
+    },
+    "transformed": {
+     "file": "candidates/f00_C4_invariance_broken_integer_transformed.json",
+     "sha256": "91bfedc9714092954c6ec1308075937d2160e8d7155f48bac3bb2d70b519edff"
+    }
+   },
+   "check": "C4",
+   "deviation": 0.014681626585758334,
+   "kind": "invariance_broken_integer",
+   "threshold": 5e-05,
+   "transform": "translate:B"
+  },
+  {
+   "attack": "B:fractional",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_exploitable_type_violation_candidate.json",
+     "sha256": "18195ee309bd807be650747536c1ec8e8aac9ee08b079f8cd67382253ace7b87"
+    }
+   },
+   "check": "C1",
+   "kind": "exploitable_type_violation",
+   "projected_score": 7.995064774830352,
+   "rules": [
+    {
+     "class": "type",
+     "detail": "fractional value",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "integral"
+    }
+   ],
+   "score": 2.639027469506608
+  }
+ ],
+ "glue_sha256": "aad1a840a7b7e5d67087bfa714a06e97ff167f24f93088b50e779638e272e05d",
+ "info": {
+  "C3": {
+   "best_invalid": 191.94126506024097,
+   "best_valid": 2.639027469506608,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.625
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 6534,
+  "deterministic": true,
+  "flagged_transforms": [
+   "translate:B"
+  ],
+  "m": 5e-05,
+  "margin_source": "record_resolution",
+  "record_score_units": 2.639,
+  "reference_score": 2.639027469506608,
+  "resolution": 5e-05,
+  "seed": 0,
+  "sigma_ref": 0.0,
+  "timeouts": 0
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [
+  {
+   "attack": "B:duplicate",
+   "block": false,
+   "check": "C1",
+   "kind": "type_violation_harmless",
+   "rules": [
+    {
+     "class": "type",
+     "detail": "repeated element",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "distinct"
+    }
+   ]
+  }
+ ],
+ "sha256": "65886bd09be43fedfdc78cfc0bb6f044c9d03f19e2d9aea6750d1811fd043cc1",
+ "verdict": "BLOCK"
+}

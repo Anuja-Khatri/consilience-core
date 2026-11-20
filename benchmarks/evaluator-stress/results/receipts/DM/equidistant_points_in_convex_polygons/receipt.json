@@ -1,0 +1,238 @@
+{
+ "C5": null,
+ "abstain_reasons": [],
+ "consilience_version": "0.2.0.dev0",
+ "contract": {
+  "caller_enforced": [],
+  "contract_author": "model",
+  "dims": {},
+  "fields": [
+   {
+    "name": "P",
+    "role": "construction",
+    "type": "real_array"
+   }
+  ],
+  "glue": "glue.py",
+  "harness": {
+   "call_args": {},
+   "entry": "calculate_polygon_score_new",
+   "evaluator": "scorer.py",
+   "extra_files": [],
+   "kind": "function",
+   "reject": {
+    "file": null,
+    "keys_present": [],
+    "values": [
+     1000000000.0,
+     -1000000000.0
+    ]
+   },
+   "score_key": null,
+   "timeout_s": 30.0
+  },
+  "initial": {
+   "file": "initial.npz"
+  },
+  "invariances": [
+   {
+    "dims": 2,
+    "field": "P",
+    "transform": "rotate"
+   },
+   {
+    "field": "P",
+    "transform": "translate"
+   },
+   {
+    "field": "P",
+    "score_exponent": 0,
+    "transform": "scale"
+   },
+   {
+    "field": "P",
+    "transform": "cyclic_shift"
+   },
+   {
+    "field": "P",
+    "transform": "reflect"
+   }
+  ],
+  "kind": "evaluator-contract",
+  "name": "deepmind/equidistant_points calculate_polygon_score_new (4-point helper, code cell 4)",
+  "noise": {
+   "probe_repeats": 3
+  },
+  "reference": {
+   "file": "reference.npz"
+  },
+  "returns": [
+   "P"
+  ],
+  "score": {
+   "bound": null,
+   "direction": "maximize",
+   "record": {
+    "kind": "best_known",
+    "source": "score of AlphaEvolve's shipped construction (myarr4, code cell 5) under the extracted 4-point scorer; the notebook printed -0.48898 after out-of-order execution",
+    "value": "-0.49012"
+   }
+  },
+  "validity": [
+   {
+    "field": "P",
+    "rule": "finite",
+    "tolerance": "0"
+   },
+   {
+    "equals": 15,
+    "field": "P",
+    "rule": "count",
+    "tolerance": "0"
+   },
+   {
+    "field": "P",
+    "rule": "convex_polygon_ordered",
+    "tolerance": "0"
+   }
+  ]
+ },
+ "contract_author": "model",
+ "contract_file": "../../../../contracts/DM/equidistant_points_in_convex_polygons/contract.yaml",
+ "contract_sha256": "75e91690be9b7df773326a673f198b41dad3d28295f423a7c69e0fb8104d287c",
+ "created": "2026-11-20T17:10:50+00:00",
+ "environment": {
+  "mean_call_seconds": 0.001636430186457506,
+  "numpy": "2.5.5",
+  "platform": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "seconds": 13.843
+ },
+ "file_hashes": {
+  "glue.py": "53984ba9e52402105a042d559e22cb070590cf918fd11e7b2b45b7904b97f687",
+  "initial.npz": "296f40ddb05ef9268e7f621f43168ea51ec246790646e16364940e6cf5e1d193",
+  "reference.npz": "0aec2a2ca54bfa7d7f66a7145e48cd788b56336af81a6b866c0512426cb74553",
+  "scorer.py": "c129257fa8f39dbd3f168664e9c9ce54999be485ecaad8a06fcf5dbf7ed4b173"
+ },
+ "findings": [
+  {
+   "attack": "P:count+1",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f00_C1_sentinel_is_best_candidate.json",
+     "sha256": "c8efed18e27bda020b1756bd6c8b63e9e9441cd8664ee1f36bf392270d3c75d4"
+    }
+   },
+   "check": "C1",
+   "kind": "sentinel_is_best",
+   "raw": 1000000000.0,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "count 16",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "count"
+    }
+   ]
+  },
+  {
+   "attack": "P:count-1",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f01_C1_sentinel_is_best_candidate.json",
+     "sha256": "454e426d5f81486da482d31df50fef4de501708dedae53a9b83895f759b32bf9"
+    }
+   },
+   "check": "C1",
+   "kind": "sentinel_is_best",
+   "raw": 1000000000.0,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "count 14",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "count"
+    }
+   ]
+  },
+  {
+   "attack": "P:empty",
+   "block": true,
+   "candidates": {
+    "candidate": {
+     "file": "candidates/f02_C1_sentinel_is_best_candidate.json",
+     "sha256": "ce2807c8b35c1ac5f9472022ee25ef7baabd682d3cc7de2ed22042c2ad5f422a"
+    }
+   },
+   "check": "C1",
+   "kind": "sentinel_is_best",
+   "raw": 1000000000.0,
+   "rules": [
+    {
+     "class": "gross",
+     "detail": "count 0",
+     "index": 1,
+     "magnitude": "inf",
+     "rule": "count"
+    },
+    {
+     "class": "large",
+     "detail": "not a strictly convex polygon in the given order",
+     "index": 2,
+     "magnitude": "inf",
+     "rule": "convex_polygon_ordered"
+    }
+   ]
+  }
+ ],
+ "glue_sha256": "53984ba9e52402105a042d559e22cb070590cf918fd11e7b2b45b7904b97f687",
+ "info": {
+  "C3": {
+   "best_invalid": -1.004303149184538,
+   "best_valid": -0.49011716212553025,
+   "limitation": "naive search; 'no drift found' is weak evidence",
+   "restarts": 8,
+   "share_invalid": 0.75
+  },
+  "budget": "standard",
+  "budget_exhausted": [],
+  "budget_params": {
+   "c3": [
+    8,
+    800
+   ],
+   "cap": 600.0,
+   "esc": [
+    3,
+    500
+   ],
+   "k": 100
+  },
+  "calls": 6856,
+  "deterministic": true,
+  "flagged_transforms": [],
+  "m": 5e-06,
+  "margin_source": "record_resolution",
+  "record_score_units": -0.49012,
+  "reference_score": -0.49011716212553025,
+  "resolution": 5e-06,
+  "seed": 0,
+  "sigma_ref": 5.995204332975845e-15,
+  "timeouts": 0,
+  "valid_twin_base": -0.49011716212553025
+ },
+ "limits": [
+  "PASS means no counterexample was found within the stated budget; it is not a proof",
+  "C3 is a naive search standing in for an optimiser; 'no drift found' is weak evidence",
+  "not a security sandbox: the scorer's code runs with the caller's permissions",
+  "findings describe the scoring code at the hashed files, nothing else"
+ ],
+ "receipt": "consilience-stress-receipt/v1",
+ "reported": [],
+ "sha256": "f681b897035a8bdc1fe5cc7758191758c2130b31a6d88cc0d9a3b3660815a0ee",
+ "verdict": "BLOCK"
+}
