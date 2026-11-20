@@ -62,11 +62,11 @@
     "rule": "no decimal point: exact"
    },
    "b": {
-    "written": null,
+    "written": "2e-07",
     "implied": 0.0,
-    "rule": "a number with no written form (a Python float): exact"
+    "rule": "no decimal point: exact"
    }
   }
  },
- "sha256": "9b74c54a92155826d2ff0632c98568a3f22c30279d3b9f77b39b36ebd410ea25"
+ "sha256": "a59418b09b6a0b8e5fcd5c4ca68dcfc072f62174f277a115eaf3e0e6a0f36c82"
 }

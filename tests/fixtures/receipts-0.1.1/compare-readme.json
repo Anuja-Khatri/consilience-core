@@ -176,7 +176,7 @@
    "mode": "stated",
    "implied": 0.0,
    "a": {
-    "written": null,
+    "written": "0.32",
     "implied": 0.0,
     "rule": "uncertainty stated"
    },
@@ -187,5 +187,5 @@
    }
   }
  },
- "sha256": "e807ca3c0000cbe0ed7459b015505211b90931ccc7893ccc35e5addaca767c2b"
+ "sha256": "6ba5644bf56adc463b7a10a63daf2dcff53364a0e3dcce8aa6c521195880ada2"
 }

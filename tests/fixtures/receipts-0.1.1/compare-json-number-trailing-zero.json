@@ -21,8 +21,8 @@
  },
  "pack": null,
  "result": {
-  "verdict": "disagree",
-  "label": "disagree",
+  "verdict": "agree",
+  "label": "agree",
   "defects": [],
   "unit": "V",
   "a": {
@@ -54,18 +54,18 @@
   "comparison": "values",
   "precision": {
    "mode": "stated",
-   "implied": 0.0,
+   "implied": 0.055,
    "a": {
-    "written": null,
-    "implied": 0.0,
-    "rule": "a number with no written form (a Python float): exact"
+    "written": "1.5",
+    "implied": 0.05,
+    "rule": "1 decimal place"
    },
    "b": {
-    "written": null,
-    "implied": 0.0,
-    "rule": "a number with no written form (a Python float): exact"
+    "written": "1.46",
+    "implied": 0.005,
+    "rule": "2 decimal places"
    }
   }
  },
- "sha256": "90e9ae9b5647851273d109d15973f22570121c9c4819f94fa2bd6ff4bbf9f58f"
+ "sha256": "8f47e72391f27d064f6fd254588906b80e38c62f4067645e996970f410092c42"
 }

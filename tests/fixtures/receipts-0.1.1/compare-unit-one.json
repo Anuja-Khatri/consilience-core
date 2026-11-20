@@ -54,18 +54,18 @@
   "comparison": "values",
   "precision": {
    "mode": "stated",
-   "implied": 0.0,
+   "implied": 0.1,
    "a": {
-    "written": null,
-    "implied": 0.0,
-    "rule": "a number with no written form (a Python float): exact"
+    "written": "0.5",
+    "implied": 0.05,
+    "rule": "1 decimal place"
    },
    "b": {
-    "written": null,
-    "implied": 0.0,
-    "rule": "a number with no written form (a Python float): exact"
+    "written": "0.5",
+    "implied": 0.05,
+    "rule": "1 decimal place"
    }
   }
  },
- "sha256": "31b7bb063389f6745785d3e4bbfd466b0040f89595b7c562fc7d012868ca7a94"
+ "sha256": "618e9d00b465bb9d5c85cf6b008ced730500f7d3120b7ac18a0b9e88570795fb"
 }
