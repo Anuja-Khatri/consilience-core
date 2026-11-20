@@ -1,0 +1,51 @@
+# Frozen sources for the evaluator-stress benchmark (Rule F). Written in build step 0, 20 Nov 2026,
+# before any benchmark run. File-level SHA-256 hashes are added when the code is vendored (step 4).
+sets:
+  DM:
+    repository: https://github.com/google-deepmind/alphaevolve_repository_of_problems
+    commit: 8f447457957deac61e28bf1676746f0753b3b2f8
+    licence: Apache-2.0 (code); CC-BY-4.0 (other material)
+  DM-R:
+    repository: https://github.com/google-deepmind/alphaevolve_results
+    commit: 4226acbf237ff9ad10ba7673a2af127a2d8a5971
+    licence: Apache-2.0
+  OE:
+    repository: https://github.com/algorithmicsuperintelligence/openevolve
+    commit: ac5f8f5e39b7bffb707def97039076bb2135e992
+    licence: Apache-2.0
+  CE:
+    repository: https://github.com/inter-co/science-codeevolve
+    commit: a43fd88270e5a38f1e0dda1e7d834f7d7b58f85b
+    licence: Apache-2.0
+  SH:
+    repository: https://github.com/SakanaAI/ShinkaEvolve
+    commit: 1bf7113e97dd89349f1a337babe48d98c92d7e10
+    licence: Apache-2.0
+  G:
+    repository: https://github.com/Google-Cloud-AI/alphaevolve-on-googlecloud
+    commit: 019a2d2688b260a8e8a5ff62ad85b92710a0e497
+    licence: Apache-2.0
+label_commits:            # pre-fix = parent of the fix commit; post-fix = the fix commit / PR head
+  OE-514: {issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/514, fix_pr: 518,
+           pre: a1e9d91eecde612f0efc8e8e31f59b36998248c0, post: bc366807fd05720ababd3491fbba0107bf1742e9}
+  OE-548: {issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/548, fix_pr: 551,
+           pre: 464054d2e1452d71b3efc28aada2ac5ef3527283, post: 04270bd8a0e0d060671708d05cd89f77a2671d58}
+  OE-549: {issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/549, fix_pr: 552,
+           pre: 23dc34b0423f4e1648b8ccf774e79a55d073e216, post: 464054d2e1452d71b3efc28aada2ac5ef3527283}
+  OE-562: {issue: https://github.com/algorithmicsuperintelligence/openevolve/issues/562, fix_pr: 563,
+           pre: b6359e79643a8b40c9fa8773929208ba82537054, post: da723ad7af9050071383489dad012aa221d31a35}
+  DM-15: {issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/15, fix_pr: 17,
+          pre: 8f447457957deac61e28bf1676746f0753b3b2f8, post: 04fbf24280c069892a7830cb2acbadd5ce51db19}
+  DM-16: {issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/16, fix_pr: 19,
+          pre: 8f447457957deac61e28bf1676746f0753b3b2f8, post: 7b6a34b7b5b13d615dd55800e851080df5c3f92d}
+  DM-14: {issue: https://github.com/google-deepmind/alphaevolve_repository_of_problems/issues/14,
+          pre: 8f447457957deac61e28bf1676746f0753b3b2f8, post: null}
+  DMR-11: {issue: https://github.com/google-deepmind/alphaevolve_results/issues/11,
+           pre: 4226acbf237ff9ad10ba7673a2af127a2d8a5971, post: null}
+  DMR-12: {issue: https://github.com/google-deepmind/alphaevolve_results/issues/12, fix_pr: 13,
+           pre: 4226acbf237ff9ad10ba7673a2af127a2d8a5971, post: 976da27b8436f23fd051f5e1bbaab2140bc63386}
+known_notebook_mismatches:
+  - notebook: experiments/equidistant_points_in_convex_polygons/Equidistant_points_in_convex_polygons.ipynb
+    printed: "-0.48898477500990667"
+    recomputed_with_extracted_scorer: "-0.49011716212553025"
+    cause: "printed after out-of-order execution; reproduced exactly with cell 8's 3-point calculate_vertex_error"
