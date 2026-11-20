@@ -1,0 +1,36 @@
+kind: evaluator-contract
+name: deepmind/kissing_cylinders calculate_arrangement_score_hidden (7 unit cylinders)
+description: >
+  Problem 54: can seven infinite unit-radius circular cylinders all touch each other? Construction =
+  7 cylinders, each (p, v): v the unit axis direction, p the axis point closest to the origin.
+  Score = -sum over pairs of (axis distance - 2)^2; 0 means all pairs touch.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_arrangement_score_hidden
+  timeout_s: 60
+fields:
+  - {name: X, type: real_array, shape: [7, 2, 3], role: construction}
+validity:
+  - {rule: finite, field: X}
+  - {rule: shape, field: X, shape: [7, 2, 3]}
+  - {rule: predicate, call: unit_directions, name: unit_directions, equality: true, tolerance: "1e-12"}
+  - {rule: predicate, call: standardized_points, name: standardized_points, equality: true, tolerance: "1e-12"}
+invariances:
+  - {transform: permute, field: X}
+  - {transform: rotate, field: X, dims: 3}
+  - {transform: reflect, field: X}
+  - {transform: negate, field: X}
+score:
+  direction: maximize
+  record:
+    value: "0"
+    kind: best_known
+    source: "Bozoki, Lee and Ronyai (2015): seven mutually touching infinite unit cylinders exist, so the optimum is 0"
+  bound:
+    value: "0"
+    kind: proven
+    source: "the score is minus a sum of squares"
+reference: {file: reference.npz}
+glue: glue.py

@@ -1,0 +1,62 @@
+# Extraction test, DM part A (CONTRACT_AUTHORING.md section 3). The extracted scorer is run once on the
+# notebook's own shipped construction and compared with the value the notebook prints or states.
+# None of the part-A notebooks has stored cell outputs (every code cell has execution_count null).
+# "printed" is therefore the value the notebook STATES: a stored score variable, a cell title, or
+# markdown text. Where nothing is stated or no construction is shipped, printed and match are null.
+# No code was edited to make anything match.
+- {slug: finite_field_kakeya_problem, printed: "-127.99940414137563", recomputed: "-128.0", match: true,
+   cause: "stored best_score_p7_d3_iqhd (code cell 0); the stored value includes evaluate()'s +U(0, 0.001) noise"}
+- {slug: finite_field_nikodym_problem, printed: "-81.99990588967684", recomputed: "-82.0", match: true,
+   cause: "stored best_score_p5_d3_iqhd (code cell 8) vs cell 8's search output at p=5; stored includes +U(0, 1e-4) noise"}
+- {slug: autocorrelation_problems_first, printed: "1.5032", recomputed: "1.503163554681561", match: true,
+   cause: "cell 24 title 'score = 1.5032' (reference construction); v0, v1 and v2 give the same value on it"}
+- {slug: "autocorrelation_problems_first#cell12", printed: "1.5053", recomputed: "1.5052939684401607", match: true, cause: "cell title"}
+- {slug: "autocorrelation_problems_first#cell14", printed: "1.5040", recomputed: "1.5039528121183459", match: true, cause: "cell title"}
+- {slug: "autocorrelation_problems_first#cell16", printed: "1.5036", recomputed: "1.5035598601465194", match: true, cause: "cell title"}
+- {slug: "autocorrelation_problems_first#cell18", printed: "1.5035", recomputed: "1.5034847157116409", match: true, cause: "cell title"}
+- {slug: "autocorrelation_problems_first#cell20", printed: "1.5035", recomputed: "1.50340520911315", match: false,
+   cause: "cell title says 1.5035; the shipped sequence scores 1.50341 (rounds to 1.5034). Not investigated"}
+- {slug: "autocorrelation_problems_first#cell22", printed: "1.5033", recomputed: "1.503224498259761", match: false,
+   cause: "cell title says 1.5033; the shipped (reversed) sequence scores 1.50322 (rounds to 1.5032). Not investigated"}
+- {slug: autocorrelation_problems_problem6, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: difference_bases, printed: null, recomputed: "2.639027469506608", match: null,
+   cause: "cell 0 ends with get_score(L) but has no stored output and the notebook states no value"}
+- {slug: sendov_conjecture, printed: null, recomputed: "0.15668481692184016", match: null,
+   cause: "data cell 1 calls evaluate_sendov_conjecture_no_penalty, which no cell defines (NameError as published); recomputed with evaluate_sendov_conjecture_h"}
+- {slug: schmeisser_conjecture, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: borcea_conjecture, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: smale_problem, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: de_bruijn_sharma_problem, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: crouzeix_conjecture, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: sidorenko_conjecture, printed: null, recomputed: null, match: null, cause: "no shipped construction"}
+- {slug: prime_number_theorem, printed: null, recomputed: null, match: null,
+   cause: "the final program (cell 0) searches for 100 s and needs cma; no function is shipped as data"}
+- {slug: flat_polynomials_c_plus, printed: "-1.3530605466590535", recomputed: "1.35306055191889", match: true,
+   cause: "stored c_plus_results[50][0] (negated). 79 of 80 stored n agree within 1e-6 (most within 1e-8; sampling on a 1e6-point grid). n=80 does not: stored 1.388487 vs recomputed 1.405352. Not investigated"}
+- {slug: flat_polynomials_c_minus, printed: "0.5173793503929208", recomputed: "0.517379236932169", match: true,
+   cause: "stored c_minus_results[50][0]. 79 of 80 stored n agree within 1e-6. n=38 does not: stored 0.566879 vs recomputed 0.458323. Not investigated"}
+- {slug: block_stacking_problem, printed: null, recomputed: null, match: null,
+   cause: "no positions shipped; cell 1 prints totals for the initial program only (no stored output)"}
+- {slug: furstenberg_sarkozy_problem, printed: null, recomputed: null, match: null,
+   cause: "text reports a 12-element subset of Z/205Z, but no list is shipped"}
+- {slug: spherical_t_designs, printed: "Correct numerical construction of a (2, 15, 120) design", recomputed: "1.4423173766431319e-10", match: true,
+   cause: "cell 1 prints the message iff score < 1e-8 (no stored output); all 12 shipped designs score |s| < 2.7e-9"}
+- {slug: thomson_problem, printed: null, recomputed: "-37147.29441846226", match: null, cause: "no energy stated for the shipped N=282 configuration"}
+- {slug: tammes_problem, printed: null, recomputed: "1.0514622242382672", match: null,
+   cause: "cell 5 would print energies (no stored output); N=12 equals the icosahedron value 4/sqrt(10+2 sqrt 5)"}
+- {slug: packing_unit_cubes, printed: "2.894531", recomputed: "-2.894531152", match: true,
+   cause: "cell 0's analyze_cube_packing prints the bounding side to 6 decimals (recomputed by running cell 0; no stored output); the scorer returns -side"}
+- {slug: packing_circles_max_sum_of_radii_square, printed: "2.635", recomputed: "2.6359830849176076", match: true,
+   cause: "markdown 'improved it to 2.635' for n=26: consistent if truncated, not if rounded (2.636)"}
+- {slug: "packing_circles_max_sum_of_radii_square#n32", printed: "2.937", recomputed: "2.9395727712063233", match: false,
+   cause: "markdown 'improved it to 2.937' for n=32; the shipped centers_32/radii_32 give 2.93957. Not investigated (n=32 is not the contracted instance)"}
+- {slug: packing_circles_max_sum_of_radii_rectangle, printed: "2.365", recomputed: "2.365832375910811", match: true,
+   cause: "markdown 'improved it to 2.365' for n=21: consistent if truncated"}
+- {slug: sphere_packing_uncertainty_principles_uncertainty, printed: null, recomputed: "-0.572949053085303", match: null,
+   cause: "nothing stated for z_6 (the cell-7 comment suggests get_score(z)**2). Recomputed C: z_6 0.328271, z_7 0.328001, z_8 0.327920. Problem page 11 credits 0.321591 to Georgiev-Gomez-Serrano-Tao-Wagner; none of the shipped z_k reaches it"}
+- {slug: sphere_packing_uncertainty_principles_lp, printed: null, recomputed: "25.936869435095424", match: null,
+   cause: "cell 3 lists get_score calls only in comments"}
+- {slug: kakeya_needle_2d_triangles, printed: null, recomputed: "0.1416474947305202", match: null,
+   cause: "cell 7 prints AE areas when run (no stored output). Keich comparison text for N=32 is 0.15458984374999993; recomputed Keich 0.15458984374999998"}
+- {slug: kakeya_needle_2d_parallelograms, printed: null, recomputed: "0.2883887848100331", match: null,
+   cause: "cell 8 prints AE and Keich areas when run (no stored output); recomputed Keich n=32 is 0.2746130952380952"}

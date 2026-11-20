@@ -227,3 +227,10 @@ def test_extra_files_are_hashed(tmp_path):
     d["harness"]["extra_files"] = ["missing.py"]
     with pytest.raises(ContractError, match="file not found"):
         load_contract(d, base=tmp_path)
+
+
+def test_nonfinite_reject_value_is_named_error(tmp_path):
+    d = _base(tmp_path)
+    d["harness"]["reject"] = {"values": [float("-inf")]}
+    with pytest.raises(ContractError, match="must be finite"):
+        load_contract(d, base=tmp_path)

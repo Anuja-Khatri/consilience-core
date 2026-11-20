@@ -1,0 +1,51 @@
+kind: evaluator-contract
+name: deepmind/sphere_packing_uncertainty_principles get_score (LP sphere packing, code cell 1, m = 6, n = 25)
+description: >
+  Problems 12/13 (sphere packing, linear-programming bounds). The notebook builds g as the unique
+  combination of odd-degree Laguerre polynomials of order n/2 - 1 with double roots at the chosen
+  positive z_1..z_m, g(0) = 0, g'(0) = 1, and get_score(m, n, zs) (code cell 1, exact sympy
+  arithmetic) returns the largest sign change r. Direction: the prompt asks for "the largest
+  possible value of r" and the initial program's search keeps the larger score, so maximize is
+  used (see COVERAGE_A.md for the comparison with problem 13). The prompt asks for positive roots no
+  larger than 200. Fixed to (m, n) = (6, 25); the reference is the shipped suggested_roots_6_25
+  (code cell 3). No record in these units is stated, so none is given.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  timeout_s: 120
+  reject:
+    values:
+    - 10000.0
+    - 10001.0
+    - 10002.0
+    - 10003.0
+    - 10004.0
+fields:
+- name: z
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: z
+- rule: shape
+  field: z
+  shape: [6]
+- rule: range
+  field: z
+  min: '0'
+  max: '200'
+- rule: predicate
+  call: positive
+  name: roots_positive
+- rule: distinct
+  field: z
+invariances:
+- transform: permute
+  field: z
+score:
+  direction: maximize
+reference:
+  file: reference.npz
+glue: glue.py

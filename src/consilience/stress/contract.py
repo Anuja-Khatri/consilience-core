@@ -271,6 +271,9 @@ def _norm_harness(h: dict, where: str) -> dict:
     vals = rej.get("values") or []
     if not all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in vals):
         raise _err(where + ".reject.values", "must be numbers")
+    import math as _m
+    if any(not _m.isfinite(float(v)) for v in vals):
+        raise _err(where + ".reject.values", "must be finite; non-finite outputs (NaN, inf) are always treated as rejections")
     rf = rej.get("file")
     if rf is not None:
         if not isinstance(rf, dict):

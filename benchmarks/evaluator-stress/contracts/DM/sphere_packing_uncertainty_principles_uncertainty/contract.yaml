@@ -1,0 +1,62 @@
+kind: evaluator-contract
+name: deepmind/sphere_packing_uncertainty_principles get_score (uncertainty principle, code cell 5)
+description: >
+  Problem 11 (an uncertainty principle): C is the largest constant with A(f) A(f^) >= C for even f
+  with f(0), f^(0) < 0. The notebook builds g as the unique combination of even-degree Laguerre
+  polynomials (alpha = -1/2) with double roots at the chosen positive z_1..z_m, g(0) = 0, g'(0) = 1,
+  and get_score (code cell 5, exact sympy arithmetic) returns -sqrt(r / (2 pi)) for the largest
+  sign change r; get_score(z)**2 is the resulting upper bound on C (notebook comment). Larger score
+  (smaller r) is better. Any m gives a valid bound, so m is not fixed. The prompt asks for positive
+  roots no larger than 300. The reference is the shipped 6-root construction z_6 (code cell 7).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  timeout_s: 120
+  reject:
+    values:
+    - -10000.0
+    - -10001.0
+    - -10002.0
+    - -10003.0
+    - -10004.0
+fields:
+- name: z
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: z
+- rule: count
+  field: z
+  min: 1
+- rule: range
+  field: z
+  min: '0'
+  max: '300'
+- rule: predicate
+  call: positive
+  name: roots_positive
+- rule: distinct
+  field: z
+invariances:
+- transform: permute
+  field: z
+score:
+  direction: maximize
+  record:
+    quantity: C
+    map: score_from_C
+    value: '0.3102'
+    kind: best_known
+    source: problem page 11, upper bounds table (Cohn-de Laat-Goncalves, unpublished, 2025); best published
+      0.321591 (Georgiev-Gomez-Serrano-Tao-Wagner, May 2025)
+  bound:
+    value: '-0.45'
+    kind: proven
+    source: problem page 11, lower bound C >= 0.2025 (Goncalves-Oliveira e Silva-Steinerberger 2016), so a valid
+      construction's upper bound get_score**2 is at least 0.2025, i.e. score <= -sqrt(0.2025) = -0.45
+reference:
+  file: reference.npz
+glue: glue.py

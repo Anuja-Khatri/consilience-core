@@ -1,0 +1,37 @@
+kind: evaluator-contract
+name: deepmind/erdos_szekeres_happy_ending_problem calculate_score (k = 7, 33 points)
+description: >
+  Problem 58: C(k) = least N such that every N points in general position contain a convex k-gon
+  (conjecture: 2^(k-2) + 1; open for k = 7). Construction = 2^(7-2) + 1 = 33 points in the plane, no
+  three collinear. Score = -(number of convex 7-gons); 0 would be a counterexample to the conjecture.
+  The prompt places the points in the unit square; the problem does not, and the count is affine-invariant.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+  timeout_s: 120
+  reject:
+    values: [-1000000000000000.0, -999999999999000.0]
+fields:
+  - {name: P, type: real_array, shape: [33, 2], role: construction}
+validity:
+  - {rule: finite, field: P}
+  - {rule: shape, field: P, shape: [33, 2]}
+  - {rule: no_k_collinear, field: P, k: 3}
+invariances:
+  - {transform: permute, field: P}
+  - {transform: translate, field: P}
+  - {transform: rotate, field: P, dims: 2}
+  - {transform: reflect, field: P}
+  - {transform: scale, field: P, score_exponent: 0}
+score:
+  direction: maximize
+  record:
+    value: "0"
+    kind: threshold
+    success: ">="
+    margin: "0"
+    source: "prompt: 2^(k-2)+1 points with 0 convex k-gons would be a counterexample (Erdos-Szekeres conjecture, open for k = 7)"
+reference: {file: reference.npz}
+glue: glue.py

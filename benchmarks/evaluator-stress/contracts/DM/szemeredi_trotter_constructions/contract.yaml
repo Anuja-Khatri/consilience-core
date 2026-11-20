@@ -1,0 +1,31 @@
+kind: evaluator-contract
+name: deepmind/szemeredi_trotter_constructions calculate_score (n = 100)
+description: >
+  Problem 56: C(n, m) = max incidences between n points and m lines (here n = m = 100). Construction =
+  grid height H (points = the scorer's near-rectangular lattice set of n points) and 100 distinct lines
+  a x + b y = c with integer coefficients. Score = number of incidences.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+  timeout_s: 60
+fields:
+  - {name: H, type: int, role: construction}
+  - {name: L, type: int_array, shape: [100, 3], role: construction}
+validity:
+  - {rule: finite, field: H}
+  - {rule: integral, field: H}
+  - {rule: range, field: H, min: "1", max: "100"}
+  - {rule: finite, field: L}
+  - {rule: shape, field: L, shape: [100, 3]}
+  - {rule: integral, field: L}
+  - {rule: predicate, call: n_distinct_lines, name: n_distinct_lines}
+invariances:
+  - {transform: permute, field: L}
+  - {transform: negate, field: L}
+  - {transform: scale, field: L, score_exponent: 0}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+glue: glue.py

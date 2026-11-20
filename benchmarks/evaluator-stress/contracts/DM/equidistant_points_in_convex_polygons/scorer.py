@@ -1,7 +1,9 @@
-# Vendored from https://github.com/google-deepmind/alphaevolve_repository_of_problems @ 8f447457957deac61e28bf1676746f0753b3b2f8, experiments/equidistant_points_in_convex_polygons/Equidistant_points_in_convex_polygons.ipynb, notebook code cells 4 (0-based, counting code cells only), functions calculate_vertex_error, calculate_polygon_score_new (the 4-point helper defined in this cell, not cell 6's 3-point one) (Apache-2.0).
+# Vendored from https://github.com/google-deepmind/alphaevolve_repository_of_problems @ 8f447457957deac61e28bf1676746f0753b3b2f8, experiments/equidistant_points_in_convex_polygons/Equidistant_points_in_convex_polygons.ipynb, notebook code cells 4 (0-based, counting code cells only) (Apache-2.0).
 # Scoring cells copied verbatim; only imports added
-import numpy as np, itertools, math
+import numpy as np
 from typing import List, Tuple
+
+#@title New evaluation code
 
 def calculate_vertex_error(
     vertex_index: int, polygon_points: List[Tuple[float, float]]
@@ -36,7 +38,6 @@ def calculate_vertex_error(
             min_range = current_range
 
     return min_range
-
 
 def calculate_polygon_score_new(
     polygon_points: List[Tuple[float, float]], num_vertex: int
@@ -94,4 +95,3 @@ def calculate_polygon_score_new(
 
     # Now a score of 0 means a perfect solution
     return -final_score
-

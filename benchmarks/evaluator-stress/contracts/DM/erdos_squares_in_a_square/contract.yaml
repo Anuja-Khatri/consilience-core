@@ -1,0 +1,35 @@
+kind: evaluator-contract
+name: deepmind/erdos_squares_in_a_square calculate_packing_score (n = 9)
+description: >
+  Problem 55: C(n) = max sum of side lengths of n squares with disjoint interiors inside the unit square
+  (here n = 9). Construction = 9 rows (x, y, angle_norm, s), each entry in [0, 1] (the prompt's format).
+  Score = sum of side lengths.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_packing_score
+  timeout_s: 60
+  reject:
+    values: [-1000000.0]
+fields:
+  - {name: Q, type: real_array, shape: [9, 4], role: construction}
+validity:
+  - {rule: finite, field: Q}
+  - {rule: shape, field: Q, shape: [9, 4]}
+  - {rule: range, field: Q, min: "0", max: "1"}
+  - {rule: predicate, call: squares_packed, name: squares_packed}
+invariances:
+  - {transform: permute, field: Q}
+score:
+  direction: maximize
+  record:
+    value: "3"
+    kind: best_known
+    source: "C(9) = 3: the 3 x 3 grid attains it and Cauchy-Schwarz gives sum s <= sqrt(n * sum s^2) <= sqrt(9) = 3"
+  bound:
+    value: "3"
+    kind: proven
+    source: "Cauchy-Schwarz with total area <= 1: sum of sides <= sqrt(n) = 3"
+reference: {file: reference.npz}
+glue: glue.py

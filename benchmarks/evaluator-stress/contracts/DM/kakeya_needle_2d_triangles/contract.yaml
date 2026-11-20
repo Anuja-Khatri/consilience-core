@@ -1,0 +1,40 @@
+kind: evaluator-contract
+name: deepmind/kakeya_needle_2d get_score_shapely (triangles, n = 32)
+description: >
+  Problem 9 (Kakeya needle problem): C^T(n) is the least area of the union of the n triangles
+  T_j with vertices (x_j, 0), (x_j + 1/n, 0), (x_j + j/n, 1) for real x_1..x_n. get_score_shapely (code cell 2, the "Evaluation for the AlphaEvolve
+  search setup") returns the shapely area of the union of a list of triangles; the glue builds the
+  triangles from x as the problem defines them (identical to the notebook's get_all_triangle_vertices, which is
+  vendored for reference). Smaller is better. The scorer does not know n, so the length is a
+  caller-enforced fact; n = 32 is fixed here. The reference is AlphaEvolve's shipped suggested_positions_32 (code cell
+  7); initial is Keich's construction for n = 32 (code cell 3). The notebook prints Keich's
+  areas as comparison text but states no value for AlphaEvolve's constructions, so no record is given.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score_shapely
+  reject:
+    values:
+    - -100000.0
+fields:
+- name: x
+  type: real_array
+  role: construction
+validity:
+- rule: finite
+  field: x
+caller_enforced:
+- rule: shape
+  field: x
+  shape: [32]
+invariances:
+- transform: translate
+  field: x
+score:
+  direction: minimize
+reference:
+  file: reference.npz
+initial:
+  file: initial.npz
+glue: glue.py

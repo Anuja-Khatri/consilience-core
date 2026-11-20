@@ -1,0 +1,26 @@
+kind: evaluator-contract
+name: deepmind/rudin_problem get_score (p = 4, d = 2, degree 10)
+description: >
+  Problem 57: ratio ||u||_L4 / ||u||_L2 over real spherical harmonics u of degree D on S^2 (here D = 10,
+  the evaluator's default degree). Construction = the 21 real coefficients of u (not all zero).
+  Score = -(L4/L2 ratio). The notebook's prompt asks for the LOWEST ratio, while the problem page asks
+  for the maximum; the contract follows the scorer (maximise -ratio, i.e. minimise the ratio).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+  timeout_s: 120
+fields:
+  - {name: c, type: real_array, shape: [21], role: construction}
+validity:
+  - {rule: finite, field: c}
+  - {rule: shape, field: c, shape: [21]}
+  - {rule: predicate, call: nonzero_harmonic, name: nonzero_harmonic}
+invariances:
+  - {transform: scale, field: c, score_exponent: 0}
+  - {transform: negate, field: c}
+score:
+  direction: maximize
+reference: {file: reference.npz}
+glue: glue.py
