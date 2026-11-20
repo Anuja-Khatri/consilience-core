@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.2.0] - unreleased (in development: 0.2.0.dev0)
+
+Includes everything in 0.1.1 below.
+
+### Added
+- **`compare-table`** (and `consilience.compare_table()`): which records of a table may be
+  pooled, and do they agree. Groups by `--key`, forms condition classes, compares every
+  pair with the rules of `compare`, gives each class a consensus and a pooled value, and
+  marks each record `pool_valid` or names why not. Reads CSV, JSON (including the ChEMBL
+  API's response), JSONL, Parquet (with pyarrow), a pandas DataFrame or a list of dicts.
+  Exit codes 0 / 1 / 3 / 64. Outputs records.csv, classes.csv, pairs.csv, summary.json and
+  a table receipt (`consilience-table-receipt/v1`) that `consilience verify` re-runs
+  (`--input` if the table moved). See docs/compare-table.md.
+- **Log-scale tolerance** for `compare` and `compare-table`: `--log-tol`, `--log-floor`
+  (base-10 log units, for positive quantities); stated precision carried onto the log
+  scale. Cannot be mixed with the linear options.
+- **Pack options**, written into a pack only when used (older packs hash as before):
+  `absent_on_both: equal`, `as_text`, `record_rules` (`empty`, `present`, `in` with
+  `allow_empty`, `at_least`), `assumptions` (named, opt-in conversions, `--assume`), and
+  `defaults` (tolerances used when none is given; the receipt says so).
+- **Column maps** (`--map`): `chembl` and `iupac_pka` bundled, or a YAML file (renames,
+  nested paths, value lookups, units of bare numbers, a fixed unit).
+- **Packs**: `bioactivity` (assay conditions from Landrum & Riniker 2024, ChEMBL validity
+  and confidence rules, `ki_ic50_x2`, defaults 0.3 / 1.0 log units) and `pka`.
+- An **agent plugin** that runs the check after an AI agent fetches ChEMBL data
+  (integrations/agent-plugin/consilience-pooling), and a preregistered study
+  (studies/pooling-2026).
+
+### Unchanged
+- `compare`, `check` and `verify` behave as in 0.1.1 when the new options are not used;
+  receipts written by 0.1.0 and 0.1.1 still verify (frozen fixtures in tests/fixtures).
+
 ## [0.1.1] - unreleased
 
 Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).

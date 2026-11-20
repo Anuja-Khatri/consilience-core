@@ -97,4 +97,4 @@ The study is about how pooling choices change potency datasets. It credits ChEMB
 
 ## Amendments
 
-(none)
+- **20 Nov 2026 (before any analysis run): how the data is fetched, not which data.** The public API failed on deep offsets: offset 5,000 and beyond for EGFR timed out or returned HTTP 500, on four tries with no other load. So `fetch.py` now asks for each target in slices by document year, and further by measurement type when a year is still large, so that no slice needs a deep offset. The set of records is the same as defined above. Completeness is checked exactly: for each target, the slices' counts must add up to the target's total count, and the union of activity ids must have that size. Incomplete targets are reported, never replaced.

@@ -11,7 +11,11 @@ re-run to confirm it.
 - `consilience check data.csv --rules rules.yaml` lists every row that breaks a rule (a
   value above its own recorded limit, a value outside physical bounds), and every cell it
   could not read.
-- `consilience verify receipt.json` re-runs either result and confirms its hash.
+- `consilience compare-table table.csv --key ... --pack ...` answers, for a whole table of
+  measurements gathered from many sources: which records may be pooled, why the others
+  may not, and whether the poolable ones agree. For potency values from ChEMBL:
+  `consilience compare-table activities.json --map chembl --pack bioactivity`.
+- `consilience verify receipt.json` re-runs any of these results and confirms its hash.
 
 Verdicts come from plain, deterministic code. No AI model is called anywhere in this
 package.
@@ -324,6 +328,29 @@ Row S-011 was recorded in mV; it was converted before comparing with its limit i
 two cells that could not be read are listed and counted, not skipped: fix them and run
 the check again. Open `report.html` in a browser for the same report as a page. The
 full report, including every violating row's receipt, is in `check-receipt.json`.
+
+## Pooling check: a whole table (new in 0.2)
+
+Converting units is not enough to make values comparable. `compare-table` groups a table
+by a key (for bioactivity: molecule and target), splits each group into condition classes
+(records that may be pooled together), compares every pair with exactly the rules of
+`compare`, and marks each record `pool_valid` or names why not.
+
+```
+consilience compare-table egfr_activities.json --map chembl --pack bioactivity --out egfr/
+consilience verify egfr/receipt.json
+```
+
+- The `bioactivity` pack: the assay conditions Landrum & Riniker (2024) match before
+  combining ChEMBL assays, ChEMBL's own validity warnings, bounds kept as bounds, and
+  agreement within 0.3 / 1.0 log units. See [docs/packs/bioactivity.md](docs/packs/bioactivity.md).
+- A second domain: the `pka` pack for measured pKa values ([docs/packs/pka.md](docs/packs/pka.md),
+  `examples/pka_pooling.py`).
+- An agent plugin runs the check after an AI agent fetches ChEMBL data:
+  [integrations/agent-plugin/consilience-pooling](integrations/agent-plugin/consilience-pooling/).
+- A preregistered study on 30 targets: [studies/pooling-2026](studies/pooling-2026/).
+
+Full description, definitions and limits: [docs/compare-table.md](docs/compare-table.md).
 
 ## Python
 
