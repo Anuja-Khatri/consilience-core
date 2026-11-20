@@ -1,0 +1,29 @@
+kind: evaluator-contract
+name: deepmind/beat_the_average_game get_score (L = 20000)
+description: >
+  Problem 39: C = sup over probability measures mu on [0, inf) of P[X1 + X2 + X3 < 2 X4], Xi iid ~ mu.
+  Construction = non-negative weights w on the atoms {0, ..., L-1}; mu = w / sum(w).
+  Score = P[X1 + X2 + X3 < 2 X4] for that measure.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: get_score
+fields:
+  - {name: w, type: real_array, shape: [20000], role: construction}
+validity:
+  - {rule: finite, field: w}
+  - {rule: shape, field: w, shape: [20000]}
+  - {rule: range, field: w, min: "0"}
+  - {rule: predicate, call: positive_mass, name: positive_mass}
+invariances:
+  - {transform: scale, field: w, score_exponent: 0}
+score:
+  direction: maximize
+  record:
+    value: "0.400695"
+    kind: best_known
+    source: "notebook 'What AlphaEvolve found' (arXiv:2511.02864 Sec. 6.22): Bellec and Fritz, C >= 0.400695"
+reference: {file: reference.npz}
+initial: {file: initial.npz}
+glue: glue.py

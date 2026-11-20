@@ -1,0 +1,43 @@
+kind: evaluator-contract
+name: deepmind/finite_field_kakeya_problem calculate_score (p=7, d=3)
+description: >
+  Problem 1 (Kakeya sets in F_q^d). A Kakeya set K in F_p^d contains a line in every direction;
+  the problem asks for the least size. The 3-D evaluation cell (code cell 3) scores -|K| (after
+  de-duplication) for a valid set. Fixed here to p=7, d=3, the largest 3-D case with a shipped
+  construction.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+fields:
+- name: K
+  type: int_array
+  role: construction
+validity:
+- rule: finite
+  field: K
+- rule: integral
+  field: K
+- rule: range
+  field: K
+  min: '0'
+  max: '6'
+- rule: distinct
+  field: K
+- rule: predicate
+  call: kakeya
+  name: kakeya_set_in_F7_cubed
+invariances:
+- transform: permute
+  field: K
+score:
+  direction: maximize
+  record:
+    value: '-128'
+    kind: best_known
+    source: notebook code cell 0, best_construction_p7_d3_iqhd (|K| = 128; the stored best_score_p7_d3_iqhd
+      = -127.9994 includes the evaluate() noise term U(0, 0.001)). The problem page states no number.
+reference:
+  file: reference.npz
+glue: glue.py

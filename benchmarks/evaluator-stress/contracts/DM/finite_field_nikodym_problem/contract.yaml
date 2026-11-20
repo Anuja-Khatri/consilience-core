@@ -1,0 +1,48 @@
+kind: evaluator-contract
+name: deepmind/finite_field_nikodym_problem calculate_score (3-D cell, p=5)
+description: >
+  Problem 1 (Nikodym sets in F_q^d). N is a Nikodym set if every point x of F_p^d lies on a line l
+  with l \ {x} contained in N; the problem asks for the least size. The 3-D evaluation cell
+  (code cell 9) scores -|N| (after de-duplication). Fixed here to p=5, d=3 (the smallest prime the
+  3-D evaluate() tests; larger primes cost O(p^6) per call).
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_score
+fields:
+- name: N
+  type: int_array
+  role: construction
+validity:
+- rule: finite
+  field: N
+- rule: integral
+  field: N
+- rule: range
+  field: N
+  min: '0'
+  max: '4'
+- rule: distinct
+  field: N
+- rule: predicate
+  call: nikodym
+  name: nikodym_set_in_F5_cubed
+invariances:
+- transform: permute
+  field: N
+score:
+  direction: maximize
+  record:
+    value: '-70'
+    kind: best_known
+    source: notebook code cell 7 (initial program) at p=5 gives |N| = 70; AlphaEvolve's 3-D program
+      (code cell 8) stores best_score_p5_d3_iqhd = -81.9999 (|N| = 82, plus evaluate() noise). evaluate()
+      only averages p > 10, so p=5 was not optimised. The problem page states no number.
+reference:
+  file: reference.npz
+initial:
+  file: initial.npz
+claimed_best:
+  file: claimed_best.npz
+glue: glue.py

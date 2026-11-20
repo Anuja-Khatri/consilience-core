@@ -1,0 +1,32 @@
+kind: evaluator-contract
+name: deepmind/factoring_n_factorial calculate_smallest_group_product (N = 180)
+description: >
+  Problem 38: factor N! into N factors, each as large as possible; C(N) is the largest possible
+  smallest factor. Construction = a group label in {0..N-1} for each of the 456 prime factors of 180!
+  (with multiplicity, increasing order). Score = smallest group product.
+contract_author: model
+harness:
+  kind: function
+  evaluator: scorer.py
+  entry: calculate_smallest_group_product
+  reject:
+    values: [-1000001, -1000002, -1000003]
+fields:
+  - {name: assignment, type: int_array, shape: [456], role: construction}
+validity:
+  - {rule: finite, field: assignment}
+  - {rule: shape, field: assignment, shape: [456]}
+  - {rule: integral, field: assignment}
+  - {rule: range, field: assignment, min: "0", max: "179"}
+score:
+  direction: maximize
+  record:
+    value: "54"
+    kind: best_known
+    source: "notebook 'What AlphaEvolve found' (arXiv:2511.02864 Sec. 6.21): C(180) improved from 51 to 54, matching the exact value"
+  bound:
+    value: "54"
+    kind: proven
+    source: "exact value C(180) = 54 (OEIS A034258; notebook: 'matching the exact value', certified by integer programming)"
+reference: {file: reference.npz}
+glue: glue.py
