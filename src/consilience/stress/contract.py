@@ -234,7 +234,7 @@ def _norm_harness(h: dict, where: str) -> dict:
     if not isinstance(h, dict):
         raise _err(where, "must be a mapping")
     allowed = {"kind", "evaluator", "entry", "program_function", "argv", "result_file", "score_key",
-               "reject", "timeout_s", "call_args", "program_template", "block_start", "block_end"}
+               "reject", "timeout_s", "call_args", "program_template", "block_start", "block_end", "extra_files"}
     _only(h, allowed, where)
     kind = _need(h, "kind", where)
     if kind not in HARNESS_KINDS:
@@ -244,6 +244,10 @@ def _norm_harness(h: dict, where: str) -> dict:
            "call_args": dict(h.get("call_args") or {})}
     if out["timeout_s"] <= 0:
         raise _err(where, "timeout_s must be positive")
+    ef = h.get("extra_files") or []
+    if not (isinstance(ef, list) and all(isinstance(x, str) for x in ef)):
+        raise _err(where, "extra_files must be a list of relative paths (every other file the scorer loads)")
+    out["extra_files"] = sorted(ef)
     if kind in ("function", "py_path", "sdk_dict", "template"):
         out["entry"] = str(_need(h, "entry", where))
     if kind in ("py_path", "cli_json", "sdk_dict", "template"):
@@ -576,7 +580,7 @@ def contract_from_dict(data: dict, base: Union[str, Path] = ".", origin: str = "
         for table, name in sorted(glue_needed, key=lambda t: (str(t[0]), t[1])):
             c.glue_fn(table, name)
     # hash every file the run reads
-    for rel in [harness["evaluator"]] + [v["file"] for v in files.values()] + \
+    for rel in [harness["evaluator"]] + list(harness.get("extra_files", [])) + [v["file"] for v in files.values()] + \
                ([norm["glue"]] if norm["glue"] else []) + \
                ([harness["program_template"]] if harness.get("program_template") else []):
         p = c.path(rel)

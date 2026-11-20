@@ -216,3 +216,14 @@ def test_predicate_and_projection(tmp_path):
     assert [x.rule for x in v] == ["has_zero"] and v[0].cls == "large"
     p = project_type(c, {"x": np.array([0.0, 1.4, 1.0, 3.0])})
     assert list(p["x"]) == [0.0, 1.0, 3.0]
+
+
+def test_extra_files_are_hashed(tmp_path):
+    d = _base(tmp_path)
+    (tmp_path / "helper.py").write_text("X = 1\n")
+    d["harness"]["extra_files"] = ["helper.py"]
+    c = load_contract(d, base=tmp_path)
+    assert "helper.py" in c.file_hashes
+    d["harness"]["extra_files"] = ["missing.py"]
+    with pytest.raises(ContractError, match="file not found"):
+        load_contract(d, base=tmp_path)
