@@ -49,7 +49,11 @@ WORKERS = 4
 MAX_SLICE = 4000
 
 
-def get(url: str, tries: int = 6) -> bytes:
+TRIES = 6
+
+
+def get(url: str, tries: int = 0) -> bytes:
+    tries = tries or TRIES
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={"Accept": "application/json",
@@ -59,7 +63,7 @@ def get(url: str, tries: int = 6) -> bytes:
         except Exception as exc:  # noqa: BLE001 (retried, then raised)
             if i == tries - 1:
                 raise
-            wait = 5 * (i + 1)
+            wait = min(5 * (i + 1), 60)
             print(f"  retry {i + 1} after {exc!r} (waiting {wait}s)", flush=True)
             time.sleep(wait)
     raise AssertionError
@@ -139,22 +143,49 @@ def _assay_page(i: int, batch: list) -> tuple:
 
 
 def main() -> int:
+    """``fetch.py`` fetches everything. ``fetch.py --resume`` re-fetches only the targets
+    the manifest lists as missing (a retry, never a replacement), then the assays not yet
+    fetched, and merges them into the same manifest."""
     from concurrent.futures import ThreadPoolExecutor
+    global TRIES
+    resume = "--resume" in sys.argv
     spec = json.loads((HERE / "targets.json").read_text(encoding="utf-8"))
     targets = [spec["demonstration"]] + spec["panel"]
     types = spec["standard_types"]
     status = json.loads(get(f"{API}/status.json"))
-    manifest = {"fetched_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-                "chembl_db_version": status.get("chembl_db_version"),
-                "chembl_release_date": status.get("chembl_release_date"),
-                "api": API, "targets": targets, "standard_types": types,
-                "method": "slices by document year (then type), offset < 4000 in each",
-                "files": [], "counts": {}, "slices": {}, "missing_targets": []}
+    if resume:
+        TRIES = 12
+        manifest = json.loads((DATA / "MANIFEST.json").read_text(encoding="utf-8"))
+        if status.get("chembl_db_version") != manifest["chembl_db_version"]:
+            raise SystemExit("ChEMBL release changed since the first fetch; start again")
+        retry = [m["target"] for m in manifest["missing_targets"]]
+        manifest["missing_targets"] = []
+        manifest.setdefault("resumed_at", []).append(
+            dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"))
+        done_assays = set()
+        for e in manifest["files"]:
+            if e["file"].startswith("assay/"):
+                done_assays.update(a["assay_chembl_id"] for a in
+                                   json.loads((DATA / e["file"]).read_bytes())["assays"])
+        targets_now = [t for t in targets if t in retry]
+        print(f"resume: retrying {targets_now}", flush=True)
+    else:
+        manifest = {"fetched_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+                    "chembl_db_version": status.get("chembl_db_version"),
+                    "chembl_release_date": status.get("chembl_release_date"),
+                    "api": API, "targets": targets, "standard_types": types,
+                    "method": "slices by document year (then type), offset < 4000 in each",
+                    "files": [], "counts": {}, "slices": {}, "missing_targets": []}
+        done_assays = set()
+        targets_now = targets
     print(f"ChEMBL {manifest['chembl_db_version']} ({manifest['chembl_release_date']})",
           flush=True)
     assays: set = set()
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        for t in targets:
+        for t in targets_now:
+            if resume:   # drop any partial files of this target from the first attempt
+                manifest["files"] = [e for e in manifest["files"]
+                                     if not e["file"].startswith(f"activity/{t}/")]
             try:
                 total = json.loads(get(f"{API}/activity.json?" + urllib.parse.urlencode(
                     _query(t, types, {}, 0, limit=1))))["page_meta"]["total_count"]
@@ -188,16 +219,20 @@ def main() -> int:
                   + ("" if ok else "  INCOMPLETE"), flush=True)
             if not ok:
                 manifest["missing_targets"].append({"target": t, "error": "incomplete"})
-        ids = sorted(assays)
+        ids = sorted(assays - done_assays)
         print(f"assays: {len(ids)}", flush=True)
-        futs = [(i, pool.submit(_assay_page, i, ids[i:i + ASSAY_BATCH]))
+        offset0 = 0
+        if resume:   # name new assay files after the existing ones
+            offset0 = 1 + max((int(Path(e["file"]).stem) for e in manifest["files"]
+                               if e["file"].startswith("assay/")), default=-1)
+        futs = [(i, pool.submit(_assay_page, offset0 + i, ids[i:i + ASSAY_BATCH]))
                 for i in range(0, len(ids), ASSAY_BATCH)]
         for i, f in futs:
             got, entry = f.result()
             if got != len(ids[i:i + ASSAY_BATCH]):
                 print(f"  assay batch {i}: {got} of {len(ids[i:i + ASSAY_BATCH])}", flush=True)
             manifest["files"].append(entry)
-    manifest["assays_requested"] = len(ids)
+    manifest["assays_requested"] = manifest.get("assays_requested", 0) + len(ids)
     manifest["files"].sort(key=lambda e: e["file"])
     (DATA / "MANIFEST.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
     print("done", flush=True)
