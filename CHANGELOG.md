@@ -17,7 +17,7 @@ Includes everything in 0.2.0 below.
   - **Receipts:** `consilience-stress-receipt/v1`, with counterexamples as exact JSON. `consilience verify` re-checks every BLOCK's deciding inequality.
   - See docs/stress.md.
 - **Agent plugin** `integrations/agent-plugin/consilience-stress`: a hook after a scoring file is written or edited, a skill, and `/stress-check`.
-- **Benchmark** `benchmarks/evaluator-stress`: contracts for public scoring functions from five collections, labelled known bugs, a preregistration, a runner, an independent second-way checker, and results.
+- **Benchmark** (now in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks), `evaluator-stress/`): contracts for public scoring functions from five collections, labelled known bugs, a preregistration, a runner, an independent second-way checker, and results.
 
 ## [0.2.0] - unreleased (in development: 0.2.0.dev0)
 
@@ -45,7 +45,7 @@ Includes everything in 0.1.1 below.
   and confidence rules, `ki_ic50_x2`, defaults 0.3 / 1.0 log units) and `pka`.
 - An **agent plugin** that runs the check after an AI agent fetches ChEMBL data
   (integrations/agent-plugin/consilience-pooling), and a preregistered study
-  (studies/pooling-2026).
+  (now in consilience-benchmarks, `pooling-2026/`).
 
 ### Unchanged
 - `compare`, `check` and `verify` behave as in 0.1.1 when the new options are not used;

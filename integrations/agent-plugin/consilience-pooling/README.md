@@ -8,7 +8,7 @@ When an AI agent fetches potency values (IC50, Ki, Kd, EC50) from ChEMBL, this p
 
 | Part | What it does |
 |---|---|
-| **Hook** (`hooks/hooks.json`, `hooks/after_fetch.py`) | Runs after Bash and ChEMBL MCP tool calls. If the output, or the file the tool wrote (DeepMind's ChEMBL skill prints `{"output_file": ...}`), holds ChEMBL activity records, it runs `consilience compare-table --map chembl --pack bioactivity` and adds a short summary to the agent's context. Otherwise it stays silent. It never blocks the tool, never uses the network, stops after 20 s, and always exits 0 |
+| **Hook** (`hooks/hooks.json`, `hooks/after_fetch.py`) | Runs after Bash and ChEMBL MCP tool calls. If the output, or the file the tool wrote (for skills that print `{"output_file": ...}` after writing it), holds ChEMBL activity records, it runs `consilience compare-table --map chembl --pack bioactivity` and adds a short summary to the agent's context. Otherwise it stays silent. It never blocks the tool, never uses the network, stops after 20 s, and always exits 0 |
 | **Skill** (`skills/check-pooling/SKILL.md`) | When and how to check, and how to read the result |
 | **Command** (`commands/check-pooling.md`) | `/check-pooling <file>` for a full, combined fetch |
 
@@ -38,7 +38,7 @@ The hook checks **one fetch at a time**. When the fetch is one page of a larger 
 
 | Platform | What was tested |
 |---|---|
-| **Claude Code** | Recorded PostToolUse inputs, in `tests/test_agent_plugin.py`:<ul><li>DeepMind's status JSON naming an `output_file`;</li><li>inline activity JSON;</li><li>non-matching output (silent, under 1 s);</li><li>malformed output;</li><li>exit code always 0.</li></ul>Plus a live headless run with DeepMind's own ChEMBL script: see `LIVE_RUN.md` |
+| **Claude Code** | Recorded PostToolUse inputs, in `tests/test_agent_plugin.py`:<ul><li>a skill's status JSON naming an `output_file`;</li><li>inline activity JSON;</li><li>non-matching output (silent, under 1 s);</li><li>malformed output;</li><li>exit code always 0.</li></ul>Plus a live headless run with a public ChEMBL agent-skill script, recorded in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`pooling-2026/plugin/LIVE_RUN.md`) |
 | **Antigravity** | Files only, not runtime-tested |
 
 ## Limits

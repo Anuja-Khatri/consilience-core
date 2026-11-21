@@ -1,0 +1,158 @@
+{
+ "chembl_db_version": "ChEMBL_37",
+ "chembl_release_date": "2026-05-01",
+ "files": {
+  "CHEMBL203": {
+   "file": "input/CHEMBL203.csv",
+   "rows": 28741,
+   "sha256": "4fbeccb9475a3717eeeb50c485cc3a0234569d3c97b5516aaa79b3d8e5bf580d"
+  },
+  "CHEMBL1862": {
+   "file": "input/CHEMBL1862.csv",
+   "rows": 8807,
+   "sha256": "287a2602e828a4e12727941382e1332f8c55dc506a5a4566b249ee7e2d7e2bd2"
+  },
+  "CHEMBL1871": {
+   "file": "input/CHEMBL1871.csv",
+   "rows": 6639,
+   "sha256": "cee9654c7a2473a867696efa66259f9955d2644fb997b02b19b2847f70e2946f"
+  },
+  "CHEMBL2034": {
+   "file": "input/CHEMBL2034.csv",
+   "rows": 7279,
+   "sha256": "1d90083f0f142c86fb7dcfc9ce09ae2852868196d18e95e6541c9da9ede9b01a"
+  },
+  "CHEMBL2047": {
+   "file": "input/CHEMBL2047.csv",
+   "rows": 4908,
+   "sha256": "53b8b4fff7a88dc00c99e3aea4dd07cae169a66620661e0f488face8e440a5fd"
+  },
+  "CHEMBL204": {
+   "file": "input/CHEMBL204.csv",
+   "rows": 9188,
+   "sha256": "cb93fcdf751c843698f47c2c9d4ed881811a16b03d23e05c21d4a947824f7693"
+  },
+  "CHEMBL2147": {
+   "file": "input/CHEMBL2147.csv",
+   "rows": 11060,
+   "sha256": "723bffe5fd603b60936d235b1253453011a113ec36ce2863adff4a31271aa972"
+  },
+  "CHEMBL214": {
+   "file": "input/CHEMBL214.csv",
+   "rows": 8835,
+   "sha256": "2b199b4aed23fa39ead59426b9ea2a9ea25fc72daae8f55a0ecb030cb356f883"
+  },
+  "CHEMBL218": {
+   "file": "input/CHEMBL218.csv",
+   "rows": 12969,
+   "sha256": "87cfe93186ebf9dde7f0c7fda035d68916fb03c3ebc3971e375eb267b4802094"
+  },
+  "CHEMBL219": {
+   "file": "input/CHEMBL219.csv",
+   "rows": 4780,
+   "sha256": "7d779485750e0d9cdbac8442d4bfb3eae3b8568b802b3c4067ca4eae4ae80a82"
+  },
+  "CHEMBL228": {
+   "file": "input/CHEMBL228.csv",
+   "rows": 8127,
+   "sha256": "26202c4b20c94e0a93b5bb5e83ffd0c6e25794adbdd2d7b13a134c6195e407fb"
+  },
+  "CHEMBL231": {
+   "file": "input/CHEMBL231.csv",
+   "rows": 2785,
+   "sha256": "4bf95a263799040ee4c607914e6e0d6eb4133cc658aee4b2c626ed2e8655dacc"
+  },
+  "CHEMBL233": {
+   "file": "input/CHEMBL233.csv",
+   "rows": 14051,
+   "sha256": "0856383859346237561d22076e9762c1a1d8530989668881a356e663a543ce17"
+  },
+  "CHEMBL234": {
+   "file": "input/CHEMBL234.csv",
+   "rows": 10130,
+   "sha256": "3334d03b414279512de330db7a0d54b8f6208ea81f6830d5c5a4af48f83adbcc"
+  },
+  "CHEMBL235": {
+   "file": "input/CHEMBL235.csv",
+   "rows": 8050,
+   "sha256": "760dfb726602c5701c58a7a5883d22cab16323972e2af06e67c994b8774b3166"
+  },
+  "CHEMBL236": {
+   "file": "input/CHEMBL236.csv",
+   "rows": 9019,
+   "sha256": "0c6e7001278f3223d458bc1c981c2a00f9209d72a79d71f76881d7ef42c67c2b"
+  },
+  "CHEMBL237": {
+   "file": "input/CHEMBL237.csv",
+   "rows": 11258,
+   "sha256": "2f5a3a4f4eb87544b831cc241e5e19c7c0e681e746db863eab3af81dcc3e3a2d"
+  },
+  "CHEMBL238": {
+   "file": "input/CHEMBL238.csv",
+   "rows": 5760,
+   "sha256": "7c13d1cee5e025ed81594528e16d1e4ade824d4da775ec547708d0a357da2291"
+  },
+  "CHEMBL239": {
+   "file": "input/CHEMBL239.csv",
+   "rows": 5373,
+   "sha256": "f18ee393877a2b89c2d11372a05d46b755d8cad87671e5c20fc21c4b0ca774f2"
+  },
+  "CHEMBL244": {
+   "file": "input/CHEMBL244.csv",
+   "rows": 8607,
+   "sha256": "c351393183987871d8423926b3b6503b0db59f0ae40b8e842bc4093f2561998a"
+  },
+  "CHEMBL262": {
+   "file": "input/CHEMBL262.csv",
+   "rows": 10240,
+   "sha256": "b1039b88956b690928f0e59005641de4ac2238d33bec34ac81b1339904a84856"
+  },
+  "CHEMBL264": {
+   "file": "input/CHEMBL264.csv",
+   "rows": 6859,
+   "sha256": "bccced225d70a1f491e6feb35dd1240751bab380bf313383910e6d2c01d3d151"
+  },
+  "CHEMBL2835": {
+   "file": "input/CHEMBL2835.csv",
+   "rows": 19794,
+   "sha256": "ec96b4aa4964e51a56ab4740a58233bdb7f7161c0b6df5cfc493ee58853083fd"
+  },
+  "CHEMBL287": {
+   "file": "input/CHEMBL287.csv",
+   "rows": 4828,
+   "sha256": "554d3574195db0aa3cc46d603fe01cdc245ac98dbcc362656f65ced46ce09888"
+  },
+  "CHEMBL2971": {
+   "file": "input/CHEMBL2971.csv",
+   "rows": 24517,
+   "sha256": "e2c92309a4e6050be8f55eb97677b6af5a4fbfa3ab17f21f5ca8b338e68e037b"
+  },
+  "CHEMBL3979": {
+   "file": "input/CHEMBL3979.csv",
+   "rows": 3301,
+   "sha256": "455bbe99bdf60a72562aa19e4805258fc458e7776b92208c023ff4c15ee1eac1"
+  },
+  "CHEMBL4005": {
+   "file": "input/CHEMBL4005.csv",
+   "rows": 12507,
+   "sha256": "1d9155a5cab341ac1712cb5c22f8fd4c5f93de741e96a9885314401403d3fd37"
+  },
+  "CHEMBL4203": {
+   "file": "input/CHEMBL4203.csv",
+   "rows": 2020,
+   "sha256": "47dc19acb6053ace9001f0a25b763a142a9acaa9aa628bdf22b9c57fa04376e9"
+  },
+  "CHEMBL4616": {
+   "file": "input/CHEMBL4616.csv",
+   "rows": 3326,
+   "sha256": "19fc92c48073bb449380004d97eccbc8355c8a393bfb5be18e5f378d50484fc3"
+  },
+  "CHEMBL4792": {
+   "file": "input/CHEMBL4792.csv",
+   "rows": 13314,
+   "sha256": "ea903daf3bad2e960506ac71a0de6e9b763b28580e5331b73f6479c80e76570c"
+  }
+ },
+ "missing_targets": [],
+ "activities_without_assay": 49989
+}

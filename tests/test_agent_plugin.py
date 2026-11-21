@@ -50,7 +50,7 @@ def test_manifest_and_hook_files_are_valid_json():
         assert (PLUGIN / f).is_file()
 
 
-def test_deepmind_skill_status_json_naming_output_file(tmp_path):
+def test_skill_status_json_naming_output_file(tmp_path):
     out = tmp_path / "egfr.json"
     out.write_text(json.dumps(acts(total=26600)), encoding="utf-8")
     # exactly what chembl_api.py's _write_json prints after writing the file

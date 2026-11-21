@@ -348,7 +348,7 @@ consilience verify egfr/receipt.json
   `examples/pka_pooling.py`).
 - An agent plugin runs the check after an AI agent fetches ChEMBL data:
   [integrations/agent-plugin/consilience-pooling](integrations/agent-plugin/consilience-pooling/).
-- A preregistered study on 30 targets: [studies/pooling-2026](studies/pooling-2026/).
+- A preregistered study on 30 targets lives in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`pooling-2026/`).
 
 Full description, definitions and limits: [docs/compare-table.md](docs/compare-table.md).
 
@@ -373,7 +373,7 @@ Program search (AlphaEvolve, OpenEvolve, ShinkaEvolve, CodeEvolve), reinforcemen
 
 Also included:
 - an agent plugin that runs the check after a scoring file is edited (`integrations/agent-plugin/consilience-stress`);
-- a public benchmark of contracts for 89 scoring functions across five evaluator collections, plus 22 labelled bug versions (`benchmarks/evaluator-stress`).
+- a public benchmark of contracts for 89 scoring functions across five evaluator collections, plus 22 labelled bug versions, in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`evaluator-stress/`).
 
 What it is good at, who it is for, the full contract reference and its limits: **docs/stress.md**.
 

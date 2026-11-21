@@ -10,7 +10,7 @@
 consilience compare-table activities.json --map chembl --pack bioactivity --out result/
 ```
 
-The map reads the ChEMBL web API's `/activity` JSON, or a CSV or SQL export with the same column names. Five conditions (BA3, BA4, BA6, BA7, BA9) and the confidence-score rule (BR2) use assay fields that are not in `/activity` records. Join them from `/assay` on `assay_chembl_id` first. The study scripts show how (`studies/pooling-2026/`).
+The map reads the ChEMBL web API's `/activity` JSON, or a CSV or SQL export with the same column names. Five conditions (BA3, BA4, BA6, BA7, BA9) and the confidence-score rule (BR2) use assay fields that are not in `/activity` records. Join them from `/assay` on `assay_chembl_id` first. The study scripts in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`pooling-2026/`) show how.
 
 If a column is missing from the table, its rule is **not applied**, and the summary lists it under "not checked".
 

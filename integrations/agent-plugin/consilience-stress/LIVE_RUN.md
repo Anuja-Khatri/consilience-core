@@ -4,7 +4,7 @@ A headless Claude Code session (version 2.1.329 (Claude Code)) with this plugin 
 
 The working folder held:
 - OpenEvolve's `third_autocorr_ineq` evaluator (vendored @ ac5f8f5);
-- its contract, glue and reference, copied from `benchmarks/evaluator-stress/pilot/oe_c3_post/`.
+- its contract, glue and reference, copied from `evaluator-stress/pilot/oe_c3_post/` in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks).
 
 The agent was asked only to add a comment line to `evaluator.py`:
 

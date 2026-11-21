@@ -161,7 +161,7 @@ Records refused across classes or excluded by a rule are the expected product of
 
 ## Agents
 
-`integrations/agent-plugin/consilience-pooling/` runs this check automatically after an agent fetches ChEMBL activity records. It works with DeepMind's ChEMBL skill as it is; see the plugin's `README.md` and `LIVE_RUN.md`.
+`integrations/agent-plugin/consilience-pooling/` runs this check automatically after an agent fetches ChEMBL activity records. It works with ChEMBL agent skills that print the path of the file they write; see the plugin's `README.md`; a recorded live run is in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`pooling-2026/plugin/LIVE_RUN.md`).
 
 ## Limits
 

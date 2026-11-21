@@ -14,7 +14,7 @@ Optimisers find loopholes. When you run AI program search (AlphaEvolve, OpenEvol
 - forgets a constraint;
 - flips its yes/no answer because of float rounding,
 
-then the search will find it, and you get a fake record. DeepMind's own AlphaEvolve notebooks say it plainly: *"AlphaEvolve will cheat by any means possible"*.
+then the search will find it, and you get a fake record. The public AlphaEvolve problem notebooks say it plainly: *"AlphaEvolve will cheat by any means possible"*.
 
 `consilience stress` reads a short **contract** that says what a valid answer is, written from the problem statement and independently of the scorer. It then attacks the scorer **before** you spend compute on a search. It returns one of three verdicts:
 - **BLOCK**, with a counterexample anyone can re-run;
@@ -315,28 +315,17 @@ It exits 0 if every verdict reproduces and 1 if not. Use `--input` to point to t
 
 1. **PASS is not a proof.** C3 is a naive search standing in for an optimiser. In our benchmark it missed loopholes that were found at a larger budget, or that needed problem-specific insight.
 2. **It is only as good as the contract.** A missing validity rule is never tested. A wrong invariance creates false findings. Contracts drafted by a model must be read by a person.
-3. **It finds common classes of loopholes, not deep ones.** In our 45-contract benchmark it reliably caught invalid input (NaN/inf, wrong counts) and self-reported values. It did not catch a matrix-multiplication self-report exploit that needs a dimension change (OpenEvolve #514), or a negative-radius exploit (DeepMind results #11).
+3. **It finds common classes of loopholes, not deep ones.** In our 45-contract benchmark it reliably caught invalid input (NaN/inf, wrong counts) and self-reported values. It did not catch a matrix-multiplication self-report exploit that needs a dimension change (OpenEvolve #514), or a negative-radius exploit (AlphaEvolve results repository, issue #11).
 4. **On real-valued data, rounding noise and real bugs cannot be told apart automatically,** so C4 only reports them unless you declare a tolerance. For floating-point verdicts, the stronger answer is an exact or rational-arithmetic verifier, which some teams already use.
 5. **Not a sandbox.**
 6. **Out of scope:** algorithms on hidden inputs, LLM judges, function inputs, joint invariances of paired fields, and the `ragged` type.
 
 ## 12. The public benchmark
 
-`benchmarks/evaluator-stress/` holds contracts for 89 public scoring functions, with vendored code kept under its own Apache-2.0 licence:
-- 53 from Google DeepMind's AlphaEvolve problem notebooks;
-- 2 from its results repository;
-- 19 from OpenEvolve;
-- 13 from CodeEvolve;
-- 1 each from ShinkaEvolve and Google Cloud's AlphaEvolve samples;
-- 22 pre-fix and post-fix versions of 13 known bugs.
+The benchmark lives in its own repository, [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`evaluator-stress/`). It holds:
+- contracts for 89 public scoring functions from five evaluator collections, with vendored code kept under its own licence;
+- 22 pre-fix and post-fix versions of 13 known bugs;
+- the preregistration, the labels, the runner, an independent second-way checker, the results and every receipt;
+- a worked notebook.
 
-It also holds the preregistration, the labels, the runner, an independent second-way checker and the results (`results/RESULTS.md`). Findings concern **the published code at the stated commit** only, never anyone's internal systems or published results.
-
-To reproduce the benchmark, install the scorers' own dependencies (pinned to the versions used for the runs) and re-check any receipt:
-
-```bash
-pip install -e '.[stress]' -r benchmarks/evaluator-stress/requirements.txt
-consilience verify benchmarks/evaluator-stress/results/receipts/DM/flat_polynomials_c_minus/receipt.json
-```
-
-If a scorer's dependency is missing, `verify` fails with "could not run the scorer" and names the missing module. A worked walk-through is in `examples/stress_demo.ipynb`.
+Findings there concern **the published code at the stated commit** only, never anyone's internal systems or published results. To reproduce it, follow that repository's README; `consilience verify` re-checks any of its receipts. If a scorer's dependency is missing, `verify` fails with "could not run the scorer" and names the missing module.

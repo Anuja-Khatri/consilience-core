@@ -2,8 +2,8 @@
 """After an agent fetches ChEMBL activity records: which may be pooled, and why not.
 
 Runs as a hook (PostToolUse). It reads the tool call from stdin, finds ChEMBL activity
-records in the tool's output, or in the file the tool wrote (DeepMind's ChEMBL skill
-prints {"output_file": ...}), and runs `consilience compare-table --map chembl --pack
+records in the tool's output, or in the file the tool wrote (some ChEMBL skills
+print {"output_file": ...}), and runs `consilience compare-table --map chembl --pack
 bioactivity` on them. It writes the outputs and receipt under
 ./consilience_receipts/<time>/ and tells the agent the result in plain language.
 

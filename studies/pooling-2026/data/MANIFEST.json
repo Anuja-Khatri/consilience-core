@@ -1,0 +1,8002 @@
+{
+ "fetched_at": "2026-11-20T10:07:57+00:00",
+ "recovered": "manifest rebuilt from the saved pages, each target re-checked",
+ "chembl_db_version": "ChEMBL_37",
+ "chembl_release_date": "2026-05-01",
+ "api": "https://www.ebi.ac.uk/chembl/api/data",
+ "targets": [
+  "CHEMBL203",
+  "CHEMBL1862",
+  "CHEMBL1871",
+  "CHEMBL2034",
+  "CHEMBL2047",
+  "CHEMBL204",
+  "CHEMBL2147",
+  "CHEMBL214",
+  "CHEMBL218",
+  "CHEMBL219",
+  "CHEMBL228",
+  "CHEMBL231",
+  "CHEMBL233",
+  "CHEMBL234",
+  "CHEMBL235",
+  "CHEMBL236",
+  "CHEMBL237",
+  "CHEMBL238",
+  "CHEMBL239",
+  "CHEMBL244",
+  "CHEMBL262",
+  "CHEMBL264",
+  "CHEMBL2835",
+  "CHEMBL287",
+  "CHEMBL2971",
+  "CHEMBL3979",
+  "CHEMBL4005",
+  "CHEMBL4203",
+  "CHEMBL4616",
+  "CHEMBL4792"
+ ],
+ "standard_types": [
+  "IC50",
+  "Ki",
+  "Kd",
+  "EC50"
+ ],
+ "method": "slices by document year (then type), offset < 4000 in each",
+ "files": [
+  {
+   "file": "activity/CHEMBL1862/y1900-1999_00000.json",
+   "sha256": "78223e9091045c5d80565df678058b2791fab7aafe5c7d5c354a30c054db26ca",
+   "bytes": 90704
+  },
+  {
+   "file": "activity/CHEMBL1862/y2000-2004_00000.json",
+   "sha256": "4b2ad3d7854ee16fd59927f4771ad2f0dec3fa234ac1719bfe318112cbe2f1bc",
+   "bytes": 20742
+  },
+  {
+   "file": "activity/CHEMBL1862/y2005-2009_00000.json",
+   "sha256": "50f88db98696bcaef6dfc197a68544550a305e8221431f16c5b707e72d81c998",
+   "bytes": 725823
+  },
+  {
+   "file": "activity/CHEMBL1862/y2005-2009_01000.json",
+   "sha256": "cab5c536c3d4dc53f254aafcc85282261ca12c8a593e7c3a87da33115d43bbbf",
+   "bytes": 144682
+  },
+  {
+   "file": "activity/CHEMBL1862/y2010-2012_00000.json",
+   "sha256": "a3a09231d695d7a468ba4ee7acb9fc27bfe67eac7c5000e7b239200aab27ef84",
+   "bytes": 836645
+  },
+  {
+   "file": "activity/CHEMBL1862/y2010-2012_01000.json",
+   "sha256": "52d7b7457c4ee59cc8f18686943ec684e8283e9eb2018d95928ac7db4b07e35d",
+   "bytes": 426974
+  },
+  {
+   "file": "activity/CHEMBL1862/y2013-2015_00000.json",
+   "sha256": "1aa866e29a980948b89f164a349c8eea5803e070689e37b2586896091179e4f6",
+   "bytes": 1033648
+  },
+  {
+   "file": "activity/CHEMBL1862/y2013-2015_01000.json",
+   "sha256": "2ce2023bf64ea236dee0aa0373f431956e2e74f679a9e09cef2f0457c0ca7bcd",
+   "bytes": 93986
+  },
+  {
+   "file": "activity/CHEMBL1862/y2016-2018_00000.json",
+   "sha256": "683e45502f4727faee81a15acf3ab95d1329196ff46bba61791de33aa198da9a",
+   "bytes": 1752684
+  },
+  {
+   "file": "activity/CHEMBL1862/y2016-2018_01000.json",
+   "sha256": "744a3b2da44a296cb3a15fc70f9ba1141bfc6279f8d246e412be96e570467fe5",
+   "bytes": 1475077
+  },
+  {
+   "file": "activity/CHEMBL1862/y2016-2018_02000.json",
+   "sha256": "ff982a60aec264751ccdb687ee5695be0652e00f3de21e89295331fbe9ed4578",
+   "bytes": 861253
+  },
+  {
+   "file": "activity/CHEMBL1862/y2019-2021_00000.json",
+   "sha256": "9428c57b4e8076ac110e4de98cf2c8934ec58919fbde174259319aa086416fc0",
+   "bytes": 1373968
+  },
+  {
+   "file": "activity/CHEMBL1862/y2019-2021_01000.json",
+   "sha256": "67e9836ddd3b222b9082b48c1acd3d735d2e07dd237bee500a45047e956195b8",
+   "bytes": 398434
+  },
+  {
+   "file": "activity/CHEMBL1862/y2022-2030_00000.json",
+   "sha256": "e9b6567caf8b5b1efa72b12fbb316b658cc58bf3c61c89ae7775c59518ce9337",
+   "bytes": 341101
+  },
+  {
+   "file": "activity/CHEMBL1862/ynull_00000.json",
+   "sha256": "31d5a85b9dd4aae0c27c686543cf6572e5036f344ab41ddbdef989c9e0a155d7",
+   "bytes": 663517
+  },
+  {
+   "file": "activity/CHEMBL1871/y1900-1999_00000.json",
+   "sha256": "995acc1040ec8f37af28d634ed421abff2463b4e6e9ee00634eeab3a34b75a74",
+   "bytes": 375807
+  },
+  {
+   "file": "activity/CHEMBL1871/y2000-2004_00000.json",
+   "sha256": "cae8e3aa1a348fbd50859f0b90f4feef0159db288c2f56b2c4702d722b40023a",
+   "bytes": 254516
+  },
+  {
+   "file": "activity/CHEMBL1871/y2005-2009_00000.json",
+   "sha256": "0ec8e0a0277590cbee434f99c6776437af4cb39ae9b4426954e0bfdeefe41946",
+   "bytes": 837506
+  },
+  {
+   "file": "activity/CHEMBL1871/y2005-2009_01000.json",
+   "sha256": "4621ad37f1a958179d8ab7b108e4f7d223f68d36092a13d9bb78b5b8a3714b0d",
+   "bytes": 371373
+  },
+  {
+   "file": "activity/CHEMBL1871/y2010-2012_00000.json",
+   "sha256": "50202fbfe2140595df35f136dce15477d9f8201f6cabbc967fb97c708b7cddd3",
+   "bytes": 881033
+  },
+  {
+   "file": "activity/CHEMBL1871/y2010-2012_01000.json",
+   "sha256": "c1b0c99bee02dc8d6b3058bd7c69d43dd161f6b6604552477cacea37f5a50e2e",
+   "bytes": 13825
+  },
+  {
+   "file": "activity/CHEMBL1871/y2013-2015_00000.json",
+   "sha256": "ca7895848918cb7c6f6ad8df03760d59fb36fbfa055b6ab3bb224130010277b2",
+   "bytes": 913485
+  },
+  {
+   "file": "activity/CHEMBL1871/y2016-2018_00000.json",
+   "sha256": "20ede15ab21ca565a408db4749697d30c764d7d1b2c1886d3c9fa1dc504e6452",
+   "bytes": 766834
+  },
+  {
+   "file": "activity/CHEMBL1871/y2019-2021_00000.json",
+   "sha256": "bfc99545039bbd4733b296ad3f76e39b802db2709de658804e7abb92945edbb6",
+   "bytes": 950890
+  },
+  {
+   "file": "activity/CHEMBL1871/y2022-2030_00000.json",
+   "sha256": "f05a59d4105f1a0aa59b997698494be1146c6266ee32ec33c0a37e7e739ec7a5",
+   "bytes": 1064281
+  },
+  {
+   "file": "activity/CHEMBL1871/y2022-2030_01000.json",
+   "sha256": "3f6784b3d82063c0dc64139dc4568b6c3dbd9147ef438ad69dc0075b991680f7",
+   "bytes": 109907
+  },
+  {
+   "file": "activity/CHEMBL1871/ynull_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL203/y1900-1999_00000.json",
+   "sha256": "ed3d46df18bdc832ef7adc503b8d3f5d49911024aa05c201b7c4880e51c6b6e2",
+   "bytes": 866715
+  },
+  {
+   "file": "activity/CHEMBL203/y1900-1999_01000.json",
+   "sha256": "7ece7debe8a49f50e3d04d08a8160c94f517be901ea51846b5b72a460396fa01",
+   "bytes": 843448
+  },
+  {
+   "file": "activity/CHEMBL203/y1900-1999_02000.json",
+   "sha256": "f45ea98da7eb808781e1c546d5c95b8e94efab0abffe7a9ab5ecba71481062f5",
+   "bytes": 45918
+  },
+  {
+   "file": "activity/CHEMBL203/y2000-2004_00000.json",
+   "sha256": "f23eb511a4b372d6de84601aa4454748ddba47f507924eaab1de5d595db298f1",
+   "bytes": 704309
+  },
+  {
+   "file": "activity/CHEMBL203/y2005-2009_00000.json",
+   "sha256": "3f3613cfbdf7b9f08cf22962a249d57be630fb0c70259c03ad5228e23041ad54",
+   "bytes": 814605
+  },
+  {
+   "file": "activity/CHEMBL203/y2005-2009_01000.json",
+   "sha256": "22765bcf1ff35f0c34d07c3ef25d01a6e30f7b104b35a7b93b5667e1bbb42869",
+   "bytes": 803486
+  },
+  {
+   "file": "activity/CHEMBL203/y2005-2009_02000.json",
+   "sha256": "f1196a71bdc17517414f404f00a2fa6de606c96a364ca904bf3dbe1d884c6a68",
+   "bytes": 949566
+  },
+  {
+   "file": "activity/CHEMBL203/y2005-2009_03000.json",
+   "sha256": "146e20d53bb991621a705d804fa2a460869aa9f2aaca2f379d884ca945d13a2b",
+   "bytes": 169658
+  },
+  {
+   "file": "activity/CHEMBL203/y2010-2012_00000.json",
+   "sha256": "e02a37f09388a625f16f6e2c8af0c2f5f9ac8e22201007d1ec04c4cf2bcea3aa",
+   "bytes": 836584
+  },
+  {
+   "file": "activity/CHEMBL203/y2010-2012_01000.json",
+   "sha256": "6630714002ebecb3a503c75fa565dcaae16e3e64b1cee7081a70623cfd659c76",
+   "bytes": 838409
+  },
+  {
+   "file": "activity/CHEMBL203/y2010-2012_02000.json",
+   "sha256": "8bc957fb197d3fac49ddd8308180bac4b82e6eaa59b682c83e2bc428e97ec52c",
+   "bytes": 448459
+  },
+  {
+   "file": "activity/CHEMBL203/y2013-2015_00000.json",
+   "sha256": "1504e9b78cb8022438481283fcad5dec68bd13f778532b1c2859ea9f2b9cf74c",
+   "bytes": 901087
+  },
+  {
+   "file": "activity/CHEMBL203/y2013-2015_01000.json",
+   "sha256": "b780af1c515f5a818e6443dcbc37b991e1771230be2a03d5d22180fc193c2b31",
+   "bytes": 1044072
+  },
+  {
+   "file": "activity/CHEMBL203/y2013-2015_02000.json",
+   "sha256": "52d88b16ddd4aa46e4064c7efd8e19b68d1064e31a52d8160329bc5350d2267e",
+   "bytes": 1059104
+  },
+  {
+   "file": "activity/CHEMBL203/y2016-2016_00000.json",
+   "sha256": "6fe71f7d28297a818168ba497d212bc479fc6ca7d13629f0a65d4888fa4a7b9f",
+   "bytes": 917904
+  },
+  {
+   "file": "activity/CHEMBL203/y2016-2016_01000.json",
+   "sha256": "b9462f38f32be44734b0692387b78be459b9b7ef057d25c5f87bd6d53295465e",
+   "bytes": 763224
+  },
+  {
+   "file": "activity/CHEMBL203/y2017-2017_00000.json",
+   "sha256": "95d5838dd22cd63a03b325a501d65b1c2d316f1eb71d691d0ff1b2734b31e3ba",
+   "bytes": 985355
+  },
+  {
+   "file": "activity/CHEMBL203/y2017-2017_01000.json",
+   "sha256": "7e6559ea7574bd1fc4dcb1bdaf91a2db4baa6ff6fe8986d1716f6f4633264167",
+   "bytes": 742877
+  },
+  {
+   "file": "activity/CHEMBL203/y2017-2017_02000.json",
+   "sha256": "85aadebe4ccc34df79f7591e6ee10a1fdde0a794f2d129ff830647935a6761f4",
+   "bytes": 1436226
+  },
+  {
+   "file": "activity/CHEMBL203/y2018-2018_00000.json",
+   "sha256": "20d60c7cdc845466ce1dfec482702012a8bb3681410515fb59e08183cd09b009",
+   "bytes": 739409
+  },
+  {
+   "file": "activity/CHEMBL203/y2018-2018_01000.json",
+   "sha256": "d6d16d727043fc8aede469f1829665bba86aaf192b0fa4b3f5dad2e8705a9b8a",
+   "bytes": 709505
+  },
+  {
+   "file": "activity/CHEMBL203/y2019-2020_00000.json",
+   "sha256": "63e500a94bd8d697ae487ce8e61f41086f824df997390b73734cbd8b96137f7e",
+   "bytes": 740903
+  },
+  {
+   "file": "activity/CHEMBL203/y2019-2020_01000.json",
+   "sha256": "4134eaadef9f34b1f54b14bc9b003869c8cfed15fec3a649432b418e04e1f725",
+   "bytes": 1864121
+  },
+  {
+   "file": "activity/CHEMBL203/y2019-2020_02000.json",
+   "sha256": "f35b44bcea097ecab9fc8c8e6756085643343884ba78aa5028d63228c273eb7c",
+   "bytes": 740047
+  },
+  {
+   "file": "activity/CHEMBL203/y2019-2020_03000.json",
+   "sha256": "9c96ce566318b7c5de0593fdf6a1212466eac19185ce1c54e972924817dc09ea",
+   "bytes": 95055
+  },
+  {
+   "file": "activity/CHEMBL203/y2021-2021_00000.json",
+   "sha256": "329a3db0f8970ff8a8a600133bc74f9ce12b38beb59722776d36061a43c4ff49",
+   "bytes": 766154
+  },
+  {
+   "file": "activity/CHEMBL203/y2021-2021_01000.json",
+   "sha256": "bf836704db1d247ab31a5e130e3efc5145b6022ffed201b5d69ba8b1dd6dedc7",
+   "bytes": 2635780
+  },
+  {
+   "file": "activity/CHEMBL203/y2021-2021_02000.json",
+   "sha256": "062382588c41a52acdaaeb71d791c0ff66e48b5bcfa2ddec63f78b8fe1e15b20",
+   "bytes": 1684287
+  },
+  {
+   "file": "activity/CHEMBL203/y2022-2023_00000.json",
+   "sha256": "a1aa5036f4b3f9a670b5ea93045e6806d556fdad41a10f4f047d250156fae1a4",
+   "bytes": 914299
+  },
+  {
+   "file": "activity/CHEMBL203/y2022-2023_01000.json",
+   "sha256": "bd700f4fccf2b836eb92573defb0b8bd1e31fe3e59cace464c162b4450c49e83",
+   "bytes": 917347
+  },
+  {
+   "file": "activity/CHEMBL203/y2022-2023_02000.json",
+   "sha256": "9d90797e73e71e2ada3220e003e87f34bb9ab8fc8c30eb03d64488845d80b069",
+   "bytes": 1845113
+  },
+  {
+   "file": "activity/CHEMBL203/y2022-2023_03000.json",
+   "sha256": "aa914b3deb188b8195850ed06d7a016721f3d21dcf1b18de288b808a9f00cefc",
+   "bytes": 548728
+  },
+  {
+   "file": "activity/CHEMBL203/y2024-2024_00000.json",
+   "sha256": "e0e4292ee019b4aec4fed6f2b0f2f7d713fae052ca7f2867510e3748b68f9e08",
+   "bytes": 930949
+  },
+  {
+   "file": "activity/CHEMBL203/y2024-2024_01000.json",
+   "sha256": "5e1d429ca6994170878569bba5549b2820f255a0774184446b3160018a989738",
+   "bytes": 317960
+  },
+  {
+   "file": "activity/CHEMBL203/y2025-2026_00000.json",
+   "sha256": "9079c11ad7d47ff18ef9233800354e6dc494405f0507ab155543b1c8dd6c9305",
+   "bytes": 412821
+  },
+  {
+   "file": "activity/CHEMBL203/y2027-2030_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL203/ynull_00000.json",
+   "sha256": "09ac48537129246baf3901ab598b0e0b07ce21ecf29372ea56a1d60b30d919b2",
+   "bytes": 546247
+  },
+  {
+   "file": "activity/CHEMBL2034/y1900-1999_00000.json",
+   "sha256": "3505b8b5c4bc530899b95648c4704980ea1cfecf77fad19ba4e695bbddf87943",
+   "bytes": 112474
+  },
+  {
+   "file": "activity/CHEMBL2034/y2000-2004_00000.json",
+   "sha256": "152789c421e14c8d692622f3eda07b47cf4b2e3185f95e2cf1574162806c9187",
+   "bytes": 640053
+  },
+  {
+   "file": "activity/CHEMBL2034/y2005-2009_00000.json",
+   "sha256": "aecb1ba3c5d54aae25f9c0192ae6cca5a6440ccdb1e9d060fd4287330cbfdc95",
+   "bytes": 857762
+  },
+  {
+   "file": "activity/CHEMBL2034/y2005-2009_01000.json",
+   "sha256": "7254b614375f4c813b7d39f59ac9d90d05655ad042eee91d1f390fa28da7bc7a",
+   "bytes": 578434
+  },
+  {
+   "file": "activity/CHEMBL2034/y2010-2012_00000.json",
+   "sha256": "a3fce6f6690aa5a5105071f1fea5358a22576fa842e480adc971b388e5ef07cf",
+   "bytes": 912138
+  },
+  {
+   "file": "activity/CHEMBL2034/y2010-2012_01000.json",
+   "sha256": "edb46e8ddce2bb945f99e712cc8ab8636bfdcd0873c24d6ca37bb119670a3123",
+   "bytes": 640883
+  },
+  {
+   "file": "activity/CHEMBL2034/y2013-2015_00000.json",
+   "sha256": "90db204571e499c225dd50d43ee325da33bcabe8ca7c80a169d93cedf87dc8cf",
+   "bytes": 743896
+  },
+  {
+   "file": "activity/CHEMBL2034/y2013-2015_01000.json",
+   "sha256": "6db33da6f18ef8800d1197aa220cb01951b7741a2a7ea678c1379e842c07cf83",
+   "bytes": 38633
+  },
+  {
+   "file": "activity/CHEMBL2034/y2016-2018_00000.json",
+   "sha256": "2939e5f23f58ccd18343900843710a5b1fe34002f6f83f7e9bd517b2aa6d684f",
+   "bytes": 917391
+  },
+  {
+   "file": "activity/CHEMBL2034/y2019-2021_00000.json",
+   "sha256": "6462b12ef0e26e78e6664186830c3fe4276f9775b81e5712f6cfc08aa4d4c17a",
+   "bytes": 1196600
+  },
+  {
+   "file": "activity/CHEMBL2034/y2022-2030_00000.json",
+   "sha256": "42637300bf54d66b5d4ae370d66fea7d195b216d636ddea6e3062bdf1558fce0",
+   "bytes": 385085
+  },
+  {
+   "file": "activity/CHEMBL2034/ynull_00000.json",
+   "sha256": "4d8fcbbb6aacf229a3aa089a6c0b1736879832466b32ad330e27af56eb9e045b",
+   "bytes": 82619
+  },
+  {
+   "file": "activity/CHEMBL204/y1900-1999_00000.json",
+   "sha256": "2b2f4406b4206f91afcc9966661caa65b13ba432c7d50848e3c3f5cada449ebf",
+   "bytes": 842081
+  },
+  {
+   "file": "activity/CHEMBL204/y1900-1999_01000.json",
+   "sha256": "24b985a42480a292d5b3d9e2c375c0b6820b4be498dc913c88f135751427bb3c",
+   "bytes": 700504
+  },
+  {
+   "file": "activity/CHEMBL204/y2000-2004_00000.json",
+   "sha256": "0043fe7a8bb1af37e1d7b9e90226100176fd38f430d6b5480e74a44fe130bff9",
+   "bytes": 817827
+  },
+  {
+   "file": "activity/CHEMBL204/y2000-2004_01000.json",
+   "sha256": "cec95085aa76e531f18e84d62a9fe53cb8b629bf3c2f317c4d26060a51b2f35a",
+   "bytes": 824692
+  },
+  {
+   "file": "activity/CHEMBL204/y2000-2004_02000.json",
+   "sha256": "3766b76ef6a9a8c0b7609c4fef32d449b8b1b31628961047e870afd0eb5c79b9",
+   "bytes": 560354
+  },
+  {
+   "file": "activity/CHEMBL204/y2005-2009_00000.json",
+   "sha256": "35f781edb83b4f22237242927d2950692f7e087c92ada6d41529f05d565a9520",
+   "bytes": 818955
+  },
+  {
+   "file": "activity/CHEMBL204/y2005-2009_01000.json",
+   "sha256": "af5f4fc8b3f7842ef59ec4354dddaf00087369a6ab5c8a6308d00d2a5b816610",
+   "bytes": 332873
+  },
+  {
+   "file": "activity/CHEMBL204/y2010-2012_00000.json",
+   "sha256": "26404809267aa7ed19fd75fd242bc52587e2cc2b2c1b4470655b97b270c3730d",
+   "bytes": 437615
+  },
+  {
+   "file": "activity/CHEMBL204/y2013-2015_00000.json",
+   "sha256": "64052c62e926058c9c1dfe0b2c9b358e56863cc1a005c886e1e39efbcddc3d37",
+   "bytes": 518227
+  },
+  {
+   "file": "activity/CHEMBL204/y2016-2018_00000.json",
+   "sha256": "1604cc5154f0edbff97070ff698e0a909d4db9966e5132d3d64d72f20e84c92c",
+   "bytes": 751487
+  },
+  {
+   "file": "activity/CHEMBL204/y2019-2021_00000.json",
+   "sha256": "5c2c5f0bb43efd1a6c16d9c99d811e6bbb3fbacf541b24239f2ae8aa2a5d4eeb",
+   "bytes": 218363
+  },
+  {
+   "file": "activity/CHEMBL204/y2022-2030_00000.json",
+   "sha256": "7a0e72a5aa42d21f5d056791cb50a5895fb8b335849220dafc9f3494864f0a97",
+   "bytes": 1130577
+  },
+  {
+   "file": "activity/CHEMBL204/ynull_00000.json",
+   "sha256": "006339d073e90d48921ddcad1c683be39f2f2015c3ac998af2be2558050ab165",
+   "bytes": 495357
+  },
+  {
+   "file": "activity/CHEMBL2047/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL2047/y2000-2004_00000.json",
+   "sha256": "d106469157b1c2fe305e49d139ffd996ca2561add8896c116ccf55254bfdc018",
+   "bytes": 43667
+  },
+  {
+   "file": "activity/CHEMBL2047/y2005-2009_00000.json",
+   "sha256": "9f32420fa761c5f375454b4cb8f0d6df154020959853e5b68b0ef4d42b0defc3",
+   "bytes": 364222
+  },
+  {
+   "file": "activity/CHEMBL2047/y2010-2012_00000.json",
+   "sha256": "7cd72ed3496a6c964982edcf39f519f77a41cba350300980a02e75618bc81f74",
+   "bytes": 365433
+  },
+  {
+   "file": "activity/CHEMBL2047/y2013-2015_00000.json",
+   "sha256": "ca9f13214332c5ea0ae1dfde1e5b1b8c864afa63b62ecdf6ecfeea9b57312611",
+   "bytes": 234724
+  },
+  {
+   "file": "activity/CHEMBL2047/y2016-2018_00000.json",
+   "sha256": "a8a44681578a58750e0a8c2b868d4f6aa380dd8e06ea48ccaaac209d2b1432f8",
+   "bytes": 450767
+  },
+  {
+   "file": "activity/CHEMBL2047/y2019-2021_00000.json",
+   "sha256": "7b234773ae2daebb51952e6e1e43bf86f80bc3d6e8db9fedee60e78558086f88",
+   "bytes": 1634769
+  },
+  {
+   "file": "activity/CHEMBL2047/y2019-2021_01000.json",
+   "sha256": "3f7a26b42838517b4bcbe5c3303a71af63417919e971890a49ab47df00506fc4",
+   "bytes": 3227233
+  },
+  {
+   "file": "activity/CHEMBL2047/y2019-2021_02000.json",
+   "sha256": "7e4720ae6192378386a234cb4d9bb5c5366f242846e0b4bc465228c9b390d792",
+   "bytes": 476893
+  },
+  {
+   "file": "activity/CHEMBL2047/y2022-2030_00000.json",
+   "sha256": "c24c7d66102c8bfd0a252881eeb300e6a6167206413524b3cfc23fc8b005624c",
+   "bytes": 2051717
+  },
+  {
+   "file": "activity/CHEMBL2047/y2022-2030_01000.json",
+   "sha256": "f438b74377b0bd799b0329630faedbb23e1b83d9a9ef8653857c0e2dbc07c761",
+   "bytes": 52744
+  },
+  {
+   "file": "activity/CHEMBL2047/ynull_00000.json",
+   "sha256": "ba4e1d5a3dd1cfc7cc1c4e51904f72a1cbaa23a537e68100b9590caad61e7337",
+   "bytes": 6381
+  },
+  {
+   "file": "activity/CHEMBL214/y1900-1999_00000.json",
+   "sha256": "b05e80ff6789a00a049b7fad1936e203593eb8308f1fb4b5013dd3c086598ecd",
+   "bytes": 725331
+  },
+  {
+   "file": "activity/CHEMBL214/y2000-2004_00000.json",
+   "sha256": "b2629603f97cae9b24a01fd20492b494e2bc2963c7eafe7dd2090d85c3eba53b",
+   "bytes": 684654
+  },
+  {
+   "file": "activity/CHEMBL214/y2005-2009_00000.json",
+   "sha256": "d664b619f2e5f60d49c612cbb5221f0e59afd0176c4355824b6db69593107087",
+   "bytes": 837568
+  },
+  {
+   "file": "activity/CHEMBL214/y2005-2009_01000.json",
+   "sha256": "797c0fb6fa8d1278bf35a97c4361113e1c0e42a25e54055c57531e0a03ee4915",
+   "bytes": 426025
+  },
+  {
+   "file": "activity/CHEMBL214/y2010-2012_00000.json",
+   "sha256": "0ef8d45a7a20499eabdf9d98005250bf9e0a1a40fbc003ef07665b43b66ec99f",
+   "bytes": 852624
+  },
+  {
+   "file": "activity/CHEMBL214/y2010-2012_01000.json",
+   "sha256": "7fb6bd4fbe56cb25e2b3b46ced4c170cf11ee77725831382d45323af63322fc3",
+   "bytes": 119124
+  },
+  {
+   "file": "activity/CHEMBL214/y2013-2015_00000.json",
+   "sha256": "c6435545be259bcf6e6ddf4894589b0bfad24fed73c58e11954667f5861fb8af",
+   "bytes": 656083
+  },
+  {
+   "file": "activity/CHEMBL214/y2016-2018_00000.json",
+   "sha256": "df763b6b7eb1d0a2cd060bb6a84b4a8cf5e98228d22d521c9ce62c2e36e2f1e8",
+   "bytes": 902271
+  },
+  {
+   "file": "activity/CHEMBL214/y2016-2018_01000.json",
+   "sha256": "cddb7a0f1c87c0c0abf2234e5c0c91a3b302b7b6e6c7817391522f26e89accd6",
+   "bytes": 719397
+  },
+  {
+   "file": "activity/CHEMBL214/y2019-2021_00000.json",
+   "sha256": "4874da34a8712e42752787a4a88efc9ae084dff7b51df204b7d17c20d1d99090",
+   "bytes": 908859
+  },
+  {
+   "file": "activity/CHEMBL214/y2019-2021_01000.json",
+   "sha256": "ea94a892c4c981a07ab7b04200c1b541b1bc90b2eadadde33c5ec21e7af5e14b",
+   "bytes": 1068625
+  },
+  {
+   "file": "activity/CHEMBL214/y2022-2030_00000.json",
+   "sha256": "f313beecf2d5348d7aaa0e08aa745d3ac993eff7a38fffbe63cb46a9a1c44616",
+   "bytes": 851965
+  },
+  {
+   "file": "activity/CHEMBL214/ynull_00000.json",
+   "sha256": "e252f62fbcf18a2356dd80681acc19679f770c9e0e5a95391869203be7adbae7",
+   "bytes": 47639
+  },
+  {
+   "file": "activity/CHEMBL2147/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL2147/y2000-2004_00000.json",
+   "sha256": "97b5e010868cd9f4433c7c124e58790a296fc28a83c9e5184b88a33594f633f0",
+   "bytes": 815
+  },
+  {
+   "file": "activity/CHEMBL2147/y2005-2009_00000.json",
+   "sha256": "f6a66cfc889d6ec32e7291171661e5be4441b8f1fa0b7209934e526826b9c54d",
+   "bytes": 212846
+  },
+  {
+   "file": "activity/CHEMBL2147/y2010-2012_00000.json",
+   "sha256": "ebd1630cb02439f7a1b08dfcff3f461f97049a88b4891e2feab74e1795d9d5aa",
+   "bytes": 470533
+  },
+  {
+   "file": "activity/CHEMBL2147/y2013-2015_00000.json",
+   "sha256": "ccae5b57bf22482d6238742a3b309db385dd99ebf1a2d5709db71dc01edaa525",
+   "bytes": 1146830
+  },
+  {
+   "file": "activity/CHEMBL2147/y2013-2015_01000.json",
+   "sha256": "c935985cab50836b1c4c1331b54c1abb89319081c1e95c9934dcbaa4b316c8a4",
+   "bytes": 1297189
+  },
+  {
+   "file": "activity/CHEMBL2147/y2016-2016_00000.json",
+   "sha256": "11a3f3b511e24ccb8cb27efb76d8e1f1a89b38dc76dea33bd828d182fd37da93",
+   "bytes": 1655859
+  },
+  {
+   "file": "activity/CHEMBL2147/y2016-2016_01000.json",
+   "sha256": "e3a51e58a6d8d309b3549f5a238f6656b271c19ea5c2a6f1b177dd30e5f4ee8a",
+   "bytes": 2515053
+  },
+  {
+   "file": "activity/CHEMBL2147/y2016-2016_02000.json",
+   "sha256": "46dfe1eb31fec4ba4ea9a5b568a93cf1ffe03710eb28df3f83f379711d19c9c6",
+   "bytes": 1742732
+  },
+  {
+   "file": "activity/CHEMBL2147/y2016-2016_03000.json",
+   "sha256": "5fc25dbe5eba67e5c6e30f8fff5002a39f8706e56973fa8a88d6ee8957eb871f",
+   "bytes": 685329
+  },
+  {
+   "file": "activity/CHEMBL2147/y2017-2017_00000.json",
+   "sha256": "b950f2be322f58d94e598cce2a0247a38b05434f6069c228edefbb919bd99b4a",
+   "bytes": 1165590
+  },
+  {
+   "file": "activity/CHEMBL2147/y2018-2018_00000.json",
+   "sha256": "21469fc10971639f80d3bc2e1f253570ea96af70900e356d6b81306823b54fb6",
+   "bytes": 450998
+  },
+  {
+   "file": "activity/CHEMBL2147/y2019-2021_00000.json",
+   "sha256": "36b72be90432fdd07ecb67d9b8ac32d0cc39b468c464309cc1326162fe75e596",
+   "bytes": 1827954
+  },
+  {
+   "file": "activity/CHEMBL2147/y2019-2021_01000.json",
+   "sha256": "9989e914a9851284c973ab9164823184e0d3e2992856c45023dd762252b97b0f",
+   "bytes": 669259
+  },
+  {
+   "file": "activity/CHEMBL2147/y2022-2030_00000.json",
+   "sha256": "db51a99582ec2a05fde69b511255a183f868d7538543a237cccede16dd2e1cb0",
+   "bytes": 982620
+  },
+  {
+   "file": "activity/CHEMBL2147/ynull_00000.json",
+   "sha256": "7d61b8d92f6459a4cdcf68d3cdad0e65fa2967be10b7e50967b59ea538722218",
+   "bytes": 843921
+  },
+  {
+   "file": "activity/CHEMBL2147/ynull_01000.json",
+   "sha256": "c151bce611f204545ee9250895b4b3d027f5d8b5c4927eb6cfd194718ef66d70",
+   "bytes": 135657
+  },
+  {
+   "file": "activity/CHEMBL218/y1900-1999_00000.json",
+   "sha256": "5af5810e09059d09b85a6c501b967e255bc488a0bad9d6ba35c0e5a2e604d786",
+   "bytes": 84570
+  },
+  {
+   "file": "activity/CHEMBL218/y2000-2004_00000.json",
+   "sha256": "b1ce4da350843bad33a1a696d4b7a45a56f44320281c42ef829effd4ae00338d",
+   "bytes": 157334
+  },
+  {
+   "file": "activity/CHEMBL218/y2005-2009_00000.json",
+   "sha256": "194baf0dd66d4dc700ea41cd09df5dac49f0770744b57cb008007b79c20277ca",
+   "bytes": 831858
+  },
+  {
+   "file": "activity/CHEMBL218/y2005-2009_01000.json",
+   "sha256": "6d627308871d8edc190257afbdec4fdf724a131ab1430f3f77e2feef7ed6d89f",
+   "bytes": 847446
+  },
+  {
+   "file": "activity/CHEMBL218/y2005-2009_02000.json",
+   "sha256": "1831307e5eacc5fb34bfaf35fcc486816d6bf5d31227a7e4f41fe2d995a5047c",
+   "bytes": 617193
+  },
+  {
+   "file": "activity/CHEMBL218/y2010-2012_00000.json",
+   "sha256": "74aae531f7347ade0fc03b9e4cf39cc358c0208d4087337c800d6d423dc8194c",
+   "bytes": 859621
+  },
+  {
+   "file": "activity/CHEMBL218/y2010-2012_01000.json",
+   "sha256": "ae13ffc43c14b43a953e116ac262e1f966488f32bbad7bc79ab15451c11ed772",
+   "bytes": 867418
+  },
+  {
+   "file": "activity/CHEMBL218/y2010-2012_02000.json",
+   "sha256": "742be4e4a7547aeadd9453c0e4ab6e92b966772169cf3150c02fb15cb9ea8a9f",
+   "bytes": 390561
+  },
+  {
+   "file": "activity/CHEMBL218/y2013-2015_00000.json",
+   "sha256": "463fb7ebb374c63e254de766742db2265d839068c17e55406806ced631609125",
+   "bytes": 886702
+  },
+  {
+   "file": "activity/CHEMBL218/y2013-2015_01000.json",
+   "sha256": "3b3036c5066183d89de8b38d72ec79427ab798e920c8a026cd5ff4f195bcef55",
+   "bytes": 534545
+  },
+  {
+   "file": "activity/CHEMBL218/y2016-2018_00000.json",
+   "sha256": "4cbef8e294f25ecfa0ee6d7eb71a058814a9acd8721d405de7f7c464acfafdf2",
+   "bytes": 1705331
+  },
+  {
+   "file": "activity/CHEMBL218/y2016-2018_01000.json",
+   "sha256": "db5591939477c7cebcde21da391e6d339314c9910949012b5a369128e580330a",
+   "bytes": 734157
+  },
+  {
+   "file": "activity/CHEMBL218/y2016-2018_02000.json",
+   "sha256": "835b72cde41323316c7d5fcfc0b5ffb4e5ffaa47fc07c780c96602b1495afb81",
+   "bytes": 1821784
+  },
+  {
+   "file": "activity/CHEMBL218/y2016-2018_03000.json",
+   "sha256": "e773277225b8c03488d22e8b657fdf9df2700f7ebb5139cd314b35aac5af8595",
+   "bytes": 656896
+  },
+  {
+   "file": "activity/CHEMBL218/y2019-2021_00000.json",
+   "sha256": "f743109fa86a9545b2448907332259cfe3675913ab6360f02f9f65ffd40b57ba",
+   "bytes": 932416
+  },
+  {
+   "file": "activity/CHEMBL218/y2019-2021_01000.json",
+   "sha256": "c60babaa82f4fcacf996ca52c2e16b9bd31a370441ca9945983564eafea799ee",
+   "bytes": 674660
+  },
+  {
+   "file": "activity/CHEMBL218/y2022-2030_00000.json",
+   "sha256": "07156bf384d8aad30c9cf7bc988333019782facf6db9566f6f36cfc05d74f1b2",
+   "bytes": 1079199
+  },
+  {
+   "file": "activity/CHEMBL218/y2022-2030_01000.json",
+   "sha256": "e10b08746af59db9c52af3931707595bd1e7f6fd2a83ec558c0757df11a588b7",
+   "bytes": 10493
+  },
+  {
+   "file": "activity/CHEMBL218/ynull_00000.json",
+   "sha256": "70c1cbf4e9b93a56aed064b80bd3844c430c62039b0b7918719e9c4c8ed545a8",
+   "bytes": 309401
+  },
+  {
+   "file": "activity/CHEMBL219/y1900-1999_00000.json",
+   "sha256": "91a0372e6596b809db05a6cbbbfb36d9642c9e0213f484859bc0c02474c66d6d",
+   "bytes": 615282
+  },
+  {
+   "file": "activity/CHEMBL219/y2000-2004_00000.json",
+   "sha256": "f6df0e32e1c7771eb90a495f1086572bd1946092eccaf8ef91dcd71431971f33",
+   "bytes": 747642
+  },
+  {
+   "file": "activity/CHEMBL219/y2005-2009_00000.json",
+   "sha256": "feb093cbfa5806fc6bcb1aba74101a42eb1e76d62c0d4def9d4a55d98fd55359",
+   "bytes": 634289
+  },
+  {
+   "file": "activity/CHEMBL219/y2010-2012_00000.json",
+   "sha256": "70faa8b1522077162bb4625d9d04301a36fb8f9541ab72c70c383ebf73831ab3",
+   "bytes": 265906
+  },
+  {
+   "file": "activity/CHEMBL219/y2013-2015_00000.json",
+   "sha256": "597511cdbd2e5803eda045eca01cb8c865a61f7e77110c406b9453a58bdb2e76",
+   "bytes": 282360
+  },
+  {
+   "file": "activity/CHEMBL219/y2016-2018_00000.json",
+   "sha256": "9f2d0bd64542f2973bc7047889a7224d982ae113a496aa4d4516fe26a2392897",
+   "bytes": 378092
+  },
+  {
+   "file": "activity/CHEMBL219/y2019-2021_00000.json",
+   "sha256": "f997a18e8f219b518e34a5e020d38652c45220caca7c515a56a81169d91804b9",
+   "bytes": 697941
+  },
+  {
+   "file": "activity/CHEMBL219/y2022-2030_00000.json",
+   "sha256": "dea341378619ac42c779a9d211b74548e776687c4ff2f700912eb119ee28d12d",
+   "bytes": 511945
+  },
+  {
+   "file": "activity/CHEMBL219/ynull_00000.json",
+   "sha256": "09a1032eb7eb6ad6b63351a26d1d15f6dfed4b707231ffa49d5f0d2b1fd7f2b2",
+   "bytes": 22911
+  },
+  {
+   "file": "activity/CHEMBL228/y1900-1999_00000.json",
+   "sha256": "3d7a260aac92d16757d49523777e0c4dc86945a94819cb228f0bb38f6bea4e53",
+   "bytes": 149955
+  },
+  {
+   "file": "activity/CHEMBL228/y2000-2004_00000.json",
+   "sha256": "3d1cfc51c90c4c4d27c3a3dea98156e6b1ec1a8903fcb0c822fd17cac03136e0",
+   "bytes": 479844
+  },
+  {
+   "file": "activity/CHEMBL228/y2005-2009_00000.json",
+   "sha256": "6d61da4dbcc7c9fb7c841b87405ed11735bccb1fd78cb1a9df08c81f13626308",
+   "bytes": 814648
+  },
+  {
+   "file": "activity/CHEMBL228/y2005-2009_01000.json",
+   "sha256": "edf188a8b0b2236ceeac9c54c96cf4c0a41494ec682b47f99eb8ead21876f92d",
+   "bytes": 717755
+  },
+  {
+   "file": "activity/CHEMBL228/y2005-2009_02000.json",
+   "sha256": "b27d96243a4c1e3c9871e59c5ffe7255cad8dd02676bfcaf54a5e31f9a3eb85b",
+   "bytes": 648276
+  },
+  {
+   "file": "activity/CHEMBL228/y2010-2012_00000.json",
+   "sha256": "68447d06b82a1d3b24c915439ce346b360dc9df3d50ccfac75a876b9692fad15",
+   "bytes": 841623
+  },
+  {
+   "file": "activity/CHEMBL228/y2010-2012_01000.json",
+   "sha256": "7816e317f359357d174192252f7bee943ba288e8d774987ce7a6e3b156987238",
+   "bytes": 268259
+  },
+  {
+   "file": "activity/CHEMBL228/y2013-2015_00000.json",
+   "sha256": "22f04486dc24e46d508a53490a08338e46c60fcffe5c85ec503e86c21e6f72c9",
+   "bytes": 815445
+  },
+  {
+   "file": "activity/CHEMBL228/y2016-2018_00000.json",
+   "sha256": "028f17356ec8a6b803b6929205575de67d12cf81750a4c19116bc469136c6391",
+   "bytes": 725377
+  },
+  {
+   "file": "activity/CHEMBL228/y2016-2018_01000.json",
+   "sha256": "2f93938c2cfb86448d634a4340a5b8f8bd3086901d9ac159add8cd010beafa54",
+   "bytes": 101060
+  },
+  {
+   "file": "activity/CHEMBL228/y2019-2021_00000.json",
+   "sha256": "20023059580055b9c471ef096c9e01981ce591f855d1c6a0fcfbabcb472fc32c",
+   "bytes": 486993
+  },
+  {
+   "file": "activity/CHEMBL228/y2022-2030_00000.json",
+   "sha256": "3a888724439fec56b559373f8f2398c58213f30841e90750e415e936d824a7b3",
+   "bytes": 491917
+  },
+  {
+   "file": "activity/CHEMBL228/ynull_00000.json",
+   "sha256": "17dcacc5689c495dfc128f7bb259a216412e7a45fba61ddb52e6738cac76aac5",
+   "bytes": 131895
+  },
+  {
+   "file": "activity/CHEMBL231/y1900-1999_00000.json",
+   "sha256": "1905aa136eb909b9208266eb535395032f46c68885cdc260467d191e1d93547a",
+   "bytes": 58737
+  },
+  {
+   "file": "activity/CHEMBL231/y2000-2004_00000.json",
+   "sha256": "611d370a4e2a4ac54a78056b3f80af527388d40a9fab671acb88a1720c445590",
+   "bytes": 335532
+  },
+  {
+   "file": "activity/CHEMBL231/y2005-2009_00000.json",
+   "sha256": "a531caf18026be794198f59e8b05eea4fa419436e8f9e7be4db0cb79db6844f5",
+   "bytes": 432545
+  },
+  {
+   "file": "activity/CHEMBL231/y2010-2012_00000.json",
+   "sha256": "f45e06c0b352bb5b14ca7b295ebfb0d6749daff271248c5d2ab5d1d383eb3935",
+   "bytes": 534067
+  },
+  {
+   "file": "activity/CHEMBL231/y2013-2015_00000.json",
+   "sha256": "1659ee33624a0c04efd9470f7c40ca0a430c5067b7d5921603c2e4a5d2818670",
+   "bytes": 110889
+  },
+  {
+   "file": "activity/CHEMBL231/y2016-2018_00000.json",
+   "sha256": "21df79922080dd1c5d5273786828adff5adf99309607865efd60bb085f8bce99",
+   "bytes": 312708
+  },
+  {
+   "file": "activity/CHEMBL231/y2019-2021_00000.json",
+   "sha256": "3b7a11a6a3df2107bd05cdf551b65166ef94877861265e08e06354d77d518021",
+   "bytes": 319955
+  },
+  {
+   "file": "activity/CHEMBL231/y2022-2030_00000.json",
+   "sha256": "5a39b377577409cf5ad9385df6c8c4a88a6eb495c2d8e2f298425cadcf468739",
+   "bytes": 295188
+  },
+  {
+   "file": "activity/CHEMBL231/ynull_00000.json",
+   "sha256": "bd1a42765235af4c4025db3600b63c5012d76cc2b5f1f36fc6a5563cd9642f56",
+   "bytes": 81229
+  },
+  {
+   "file": "activity/CHEMBL233/y1900-1999_00000.json",
+   "sha256": "42e41df0f66f4e8cf28e59e524daf496d69bf1d81c08f6c57365a7bc4951eace",
+   "bytes": 123973
+  },
+  {
+   "file": "activity/CHEMBL233/y2000-2004_00000.json",
+   "sha256": "fb16c4982cd3841340a51050f52933d2f0e745c362021efeea38d66fd75b1b31",
+   "bytes": 868853
+  },
+  {
+   "file": "activity/CHEMBL233/y2000-2004_01000.json",
+   "sha256": "e6e6fe171ffd7cd4ab88e0f58fae0b937e4948649378c9811a4a86e3a597a06f",
+   "bytes": 65471
+  },
+  {
+   "file": "activity/CHEMBL233/y2005-2009_00000.json",
+   "sha256": "e9fbb22312a8714ac13dc8299922c458efe84ba535b0effd900435da5878c32c",
+   "bytes": 735009
+  },
+  {
+   "file": "activity/CHEMBL233/y2005-2009_01000.json",
+   "sha256": "bc132a07c8dc025cb8980f3ac8af2f4db927575a569d9349d5cb23f48b8d2bca",
+   "bytes": 861915
+  },
+  {
+   "file": "activity/CHEMBL233/y2005-2009_02000.json",
+   "sha256": "a6a75663d11c87ac8d7d35213e092e25caf1f844383bfa99aca345b621f933b1",
+   "bytes": 246995
+  },
+  {
+   "file": "activity/CHEMBL233/y2010-2012_00000.json",
+   "sha256": "1f7051b06229572cf23054d8d85898d32b167aeae92da8323b42a5d4bc9d3957",
+   "bytes": 864114
+  },
+  {
+   "file": "activity/CHEMBL233/y2013-2015_00000.json",
+   "sha256": "e58b09dcafa9dce20ca24f968b497c4d36da9871715d8bc073a0af634c632bb2",
+   "bytes": 946215
+  },
+  {
+   "file": "activity/CHEMBL233/y2013-2015_01000.json",
+   "sha256": "0cbebeb5847db1825c9845fe06f630866e01d2a785bd640cd33c9dffa18e7699",
+   "bytes": 605960
+  },
+  {
+   "file": "activity/CHEMBL233/y2016-2018_00000.json",
+   "sha256": "e04122f3d4ca2e498951f6429a31454542fa893d92ce0f2ab557456e4a378f1b",
+   "bytes": 745354
+  },
+  {
+   "file": "activity/CHEMBL233/y2016-2018_01000.json",
+   "sha256": "72e858d8a7dc150dd30e012688e487a72182dbaa1e5c056e1612cad5d75ed094",
+   "bytes": 310669
+  },
+  {
+   "file": "activity/CHEMBL233/y2019-2021_00000.json",
+   "sha256": "5d8c6a76988dd6212c6cc0cb1efaeddc7b7d1dfb3d21cad4e9572bd6f7aa97cf",
+   "bytes": 939903
+  },
+  {
+   "file": "activity/CHEMBL233/y2019-2021_01000.json",
+   "sha256": "d342c6a08f5a19028e0eea19e1e9745ff8fafa67af85dc4ad5e2d88a53e94ba4",
+   "bytes": 740631
+  },
+  {
+   "file": "activity/CHEMBL233/y2019-2021_02000.json",
+   "sha256": "e4393031d6dccb83753373f0d9935891be4ddd3736efea740ea71e09b757f16d",
+   "bytes": 2231752
+  },
+  {
+   "file": "activity/CHEMBL233/y2019-2021_03000.json",
+   "sha256": "24e7f70756d30854bb4a705c32be3c43aef9f21296e96f7668ca6a2fcbfd7b94",
+   "bytes": 650509
+  },
+  {
+   "file": "activity/CHEMBL233/y2022-2030_00000.json",
+   "sha256": "0dcab2d78f3c0519adc0627c07869b6451491ecde8dd13ef513a506893ff02a7",
+   "bytes": 742275
+  },
+  {
+   "file": "activity/CHEMBL233/y2022-2030_01000.json",
+   "sha256": "e2f28311793fab1ba13af9cea75635a286a041999571dc0aef47c5aae426d01a",
+   "bytes": 378151
+  },
+  {
+   "file": "activity/CHEMBL233/ynull_00000.json",
+   "sha256": "321cb623548b1b498e763eb9199de5582c8bb087d30dd5e48ddae692395e4d8e",
+   "bytes": 970528
+  },
+  {
+   "file": "activity/CHEMBL234/y1900-1999_00000.json",
+   "sha256": "e98cb827365d32d3d801651864895e6a1f7eb4ca96198e69dba0c026a0f2c47b",
+   "bytes": 793211
+  },
+  {
+   "file": "activity/CHEMBL234/y2000-2004_00000.json",
+   "sha256": "4ee3856666e78b40fe8a5f7ce655e8cb714caeb943cf89b5e245378874e4a02d",
+   "bytes": 571752
+  },
+  {
+   "file": "activity/CHEMBL234/y2005-2009_00000.json",
+   "sha256": "1b0b372d83fdae473f8a39d117c855d85ea764251558bbd3ff8515bff582dbff",
+   "bytes": 840262
+  },
+  {
+   "file": "activity/CHEMBL234/y2005-2009_01000.json",
+   "sha256": "a34d0fdba0b6c3a444e91831f35fe68521f1fbf0c49400339aa53a10d0142022",
+   "bytes": 536727
+  },
+  {
+   "file": "activity/CHEMBL234/y2010-2012_00000.json",
+   "sha256": "45fbcd8e8aaca7115b26a23cab867e7f9bcaaf65a6d4e7fda6e1c96783c05922",
+   "bytes": 722866
+  },
+  {
+   "file": "activity/CHEMBL234/y2013-2015_00000.json",
+   "sha256": "2a48ba27bc16fb4f18ccf5654fbb764ec611cb409f43cb896e7b3384933cdc87",
+   "bytes": 1005313
+  },
+  {
+   "file": "activity/CHEMBL234/y2013-2015_01000.json",
+   "sha256": "4c6ce12fbec2511cb96aa7f264c0f7b28d57bd76dc73a3603b9c43baec73f653",
+   "bytes": 1266798
+  },
+  {
+   "file": "activity/CHEMBL234/y2016-2018_00000.json",
+   "sha256": "7699c5cdc7c07618042d2044a8e94db5150c48c029c2696b1dff050a1a738678",
+   "bytes": 897764
+  },
+  {
+   "file": "activity/CHEMBL234/y2016-2018_01000.json",
+   "sha256": "73d135948847dfdc537fad7636fde2d7e02fb9f6891494be35ca68c0044e4771",
+   "bytes": 756222
+  },
+  {
+   "file": "activity/CHEMBL234/y2019-2021_00000.json",
+   "sha256": "cb5bab63c254d4443804df826444f3d68e1737cb7fbb7fa05d609d4bb5a5a436",
+   "bytes": 912203
+  },
+  {
+   "file": "activity/CHEMBL234/y2019-2021_01000.json",
+   "sha256": "a4dc8be2ef048c8dd694a0e17b55795034216a1b6bbfc05b0fd705f44e949c6e",
+   "bytes": 1360537
+  },
+  {
+   "file": "activity/CHEMBL234/y2022-2030_00000.json",
+   "sha256": "6053450103f68a4695e440005b9d9341d07154e712ab080b722d38136d2ddcac",
+   "bytes": 1379755
+  },
+  {
+   "file": "activity/CHEMBL234/y2022-2030_01000.json",
+   "sha256": "3ca96c83bde7c62cb54560ae62f107edaa2b3aff6ba91cb15f4de2f30529b066",
+   "bytes": 211937
+  },
+  {
+   "file": "activity/CHEMBL234/ynull_00000.json",
+   "sha256": "b1086c22a7e9eb2a7b1702ff51e22871b719e7b1bb88c0b343be75a66c685f11",
+   "bytes": 157511
+  },
+  {
+   "file": "activity/CHEMBL235/y1900-1999_00000.json",
+   "sha256": "fc2744616ac46cdfefd3d5999218932ee0cc601cbcc06aaee683c6b57b424966",
+   "bytes": 392601
+  },
+  {
+   "file": "activity/CHEMBL235/y2000-2004_00000.json",
+   "sha256": "3b654c797705995c6c1f47d26ca909f2648b702520dcc76b5570310cccc2a367",
+   "bytes": 581356
+  },
+  {
+   "file": "activity/CHEMBL235/y2005-2009_00000.json",
+   "sha256": "a01edff044f983f5d7fe333eea8e8dafa566b7a652430e4af95106211487abbe",
+   "bytes": 838969
+  },
+  {
+   "file": "activity/CHEMBL235/y2005-2009_01000.json",
+   "sha256": "7db1f625c20232c2cf885d6cc02304dad89d7660a129a329797b822ba330fcb7",
+   "bytes": 866184
+  },
+  {
+   "file": "activity/CHEMBL235/y2005-2009_02000.json",
+   "sha256": "cb65ad06ed5662220be8704ec722594d91a13b6e4d13c190be0203fc4e1e2757",
+   "bytes": 382298
+  },
+  {
+   "file": "activity/CHEMBL235/y2010-2012_00000.json",
+   "sha256": "e5b4b985c25a139f6780ce18c3cf06430eaf66bc8323a2046bd3de7e5c89cc89",
+   "bytes": 886114
+  },
+  {
+   "file": "activity/CHEMBL235/y2010-2012_01000.json",
+   "sha256": "6ad870280f64be848f3c8a1251075bf43f6989e48413980ef69c9b4bc0cda419",
+   "bytes": 401784
+  },
+  {
+   "file": "activity/CHEMBL235/y2013-2015_00000.json",
+   "sha256": "a0e376a37d7ce6632a72262982db59f752d7b45beae51b91f8b193436a7eae4b",
+   "bytes": 1156898
+  },
+  {
+   "file": "activity/CHEMBL235/y2013-2015_01000.json",
+   "sha256": "d18dfce179e68ed1f2ddeb2317c8549ad89e97757b9447ebe5567ecd867b1f8d",
+   "bytes": 120938
+  },
+  {
+   "file": "activity/CHEMBL235/y2016-2018_00000.json",
+   "sha256": "3dbb2719730b6972adc1790757e6e8683780a6d2d3ea43407ae0548d2c1b11ae",
+   "bytes": 535263
+  },
+  {
+   "file": "activity/CHEMBL235/y2019-2021_00000.json",
+   "sha256": "6688f5c13f53f1be599dd1f317cc3d36b36fb2bf7949f852610bb60585eb5006",
+   "bytes": 627963
+  },
+  {
+   "file": "activity/CHEMBL235/y2022-2030_00000.json",
+   "sha256": "d623039e17ddde04c56366bcb581cf1811a496d870efa14f5cc0e75c944f1d24",
+   "bytes": 641265
+  },
+  {
+   "file": "activity/CHEMBL235/ynull_00000.json",
+   "sha256": "34f027588ae1d2b1eb3d87808daad6968fe15fc26f330ea47fe64cc35b8b4d17",
+   "bytes": 47147
+  },
+  {
+   "file": "activity/CHEMBL236/y1900-1999_00000.json",
+   "sha256": "59b366314b4d16ff7914d37446c013f92c0f92783075d837bcebf6a1291b11fc",
+   "bytes": 714614
+  },
+  {
+   "file": "activity/CHEMBL236/y2000-2004_00000.json",
+   "sha256": "f35e15a0e786f5f0afb7cf11dc6ec1c30ca564bc8071cdc7423cbfbc5e99f0a2",
+   "bytes": 871134
+  },
+  {
+   "file": "activity/CHEMBL236/y2000-2004_01000.json",
+   "sha256": "506e1f4e51975ebc01cb2584d6110218b012f854fec5d46c05ec2b4867b4f7aa",
+   "bytes": 215562
+  },
+  {
+   "file": "activity/CHEMBL236/y2005-2009_00000.json",
+   "sha256": "0cf6b47255c2b9229c0306a298601181f06bbff21651a03bdcf6980fddffb394",
+   "bytes": 880306
+  },
+  {
+   "file": "activity/CHEMBL236/y2005-2009_01000.json",
+   "sha256": "76addacacda687e5999b5870b64f1a6bbbfde8d5d68054a2d48305bfda9b6c8f",
+   "bytes": 749033
+  },
+  {
+   "file": "activity/CHEMBL236/y2005-2009_02000.json",
+   "sha256": "221937f70b705fa3c742da8a45a3d66c43aae42e893abed03325771b11dd7349",
+   "bytes": 11756
+  },
+  {
+   "file": "activity/CHEMBL236/y2010-2012_00000.json",
+   "sha256": "40b3869a2e0de8f79acc1b5c1aaf7b4ca42f27f548aa5eb287062151da603a68",
+   "bytes": 733427
+  },
+  {
+   "file": "activity/CHEMBL236/y2013-2015_00000.json",
+   "sha256": "cbc7b9bbebe5af13e8294b2b6d96bad3d2e01ec5d52c3c3ace5e0f2cd6e57de3",
+   "bytes": 1002232
+  },
+  {
+   "file": "activity/CHEMBL236/y2013-2015_01000.json",
+   "sha256": "cdbff59e520cc45758017cfddb64775674368047d9bd84e55e9c1f4668505470",
+   "bytes": 221136
+  },
+  {
+   "file": "activity/CHEMBL236/y2016-2018_00000.json",
+   "sha256": "ee299cd962346edca7c447beb93610f2db7424e8016812d6057a4dde599058ee",
+   "bytes": 760484
+  },
+  {
+   "file": "activity/CHEMBL236/y2019-2021_00000.json",
+   "sha256": "0749291fc0d867a7566e057a7ce6004d3c7cb0684c84f9343c5a99a17261aea7",
+   "bytes": 687326
+  },
+  {
+   "file": "activity/CHEMBL236/y2022-2030_00000.json",
+   "sha256": "89d88189fcf61c4c822efc4e3a0b538e46ee86a650fe3ea9812bf68db4962626",
+   "bytes": 754550
+  },
+  {
+   "file": "activity/CHEMBL236/ynull_00000.json",
+   "sha256": "72d9d1059fd3ade22e93150e9e93a6c4c2477fa54a826270e4e2602fc2cef919",
+   "bytes": 845010
+  },
+  {
+   "file": "activity/CHEMBL237/y1900-1999_00000.json",
+   "sha256": "3b35e473188c46cc454d15ce999be4cf155fbfb2679ccb6cad4764e70114911a",
+   "bytes": 275914
+  },
+  {
+   "file": "activity/CHEMBL237/y2000-2004_00000.json",
+   "sha256": "544110b5e7abbe8e1364af532442d6c59225f7194d2efda71348b65fc4bf93cd",
+   "bytes": 840732
+  },
+  {
+   "file": "activity/CHEMBL237/y2005-2009_00000.json",
+   "sha256": "605dec6372110de0f35fa4dcf683f19f539abb1ebbfdaae0fb313ca4f7c3b03e",
+   "bytes": 867145
+  },
+  {
+   "file": "activity/CHEMBL237/y2005-2009_01000.json",
+   "sha256": "fdc5ad76811a9c12bb0e195255f92a51417d6346d0158925673ecf25d2d9fcba",
+   "bytes": 868891
+  },
+  {
+   "file": "activity/CHEMBL237/y2005-2009_02000.json",
+   "sha256": "9173c8ad267d6a54b7be0332617d9b0b2407dc9503d79e92d7159852da6eb0c5",
+   "bytes": 74076
+  },
+  {
+   "file": "activity/CHEMBL237/y2010-2012_00000.json",
+   "sha256": "b96ef32a26a1fb34e9f07999528425cbc39262b2eeedb0535382c6f69e80a1d2",
+   "bytes": 768837
+  },
+  {
+   "file": "activity/CHEMBL237/y2013-2015_00000.json",
+   "sha256": "007e7466c8b625736e519d9bdbd70fa3eb20f8e09701ae889c3441ed67fe4a55",
+   "bytes": 997164
+  },
+  {
+   "file": "activity/CHEMBL237/y2013-2015_01000.json",
+   "sha256": "528609741aac1fa9d2a0b811fe4b94a757c985b0360608e2b97d24436b9fc310",
+   "bytes": 924938
+  },
+  {
+   "file": "activity/CHEMBL237/y2016-2018_00000.json",
+   "sha256": "21ffcb8932d21c7401e23193eb418e31086a77750dbd9cfba9f5742064a6188e",
+   "bytes": 1164552
+  },
+  {
+   "file": "activity/CHEMBL237/y2016-2018_01000.json",
+   "sha256": "ee0dda31a5185cad80d2a3d59a89523195cebcab177e72b02d966e773baf5e59",
+   "bytes": 1954403
+  },
+  {
+   "file": "activity/CHEMBL237/y2016-2018_02000.json",
+   "sha256": "4e14ada316abe6ab9a6a15a33968edec45add4a967d4338415ab238c8ccec1bc",
+   "bytes": 442636
+  },
+  {
+   "file": "activity/CHEMBL237/y2019-2021_00000.json",
+   "sha256": "c22ea99eb53cc15d31c7d241bf859c15ea01db3dbaa1e7dbe543609d2a9ac6e5",
+   "bytes": 1954047
+  },
+  {
+   "file": "activity/CHEMBL237/y2019-2021_01000.json",
+   "sha256": "95c9cde7d26d8af4e6a9c0de4a2fb94e3b678dfc4cd2260b0c9dc1b0e6c76481",
+   "bytes": 576837
+  },
+  {
+   "file": "activity/CHEMBL237/y2022-2030_00000.json",
+   "sha256": "2dc6ba587986f5e683bce12baf784cd18737e46caf98f152e1fbac50dcd9b0ae",
+   "bytes": 914403
+  },
+  {
+   "file": "activity/CHEMBL237/ynull_00000.json",
+   "sha256": "63d2f51d027a9837bd475d740ed5be9ecb3bbe04078e4d4a3387d66ea0d6c8f5",
+   "bytes": 1089998
+  },
+  {
+   "file": "activity/CHEMBL237/ynull_01000.json",
+   "sha256": "97c39468a150023da5bd80533841d348ab964f054d4d49b8e5ce991da9fb7233",
+   "bytes": 149368
+  },
+  {
+   "file": "activity/CHEMBL238/y1900-1999_00000.json",
+   "sha256": "75fb8a9b7dcc9e9a58e62f460c52b47d4cc88d66806f21a3a5bc35ca68789622",
+   "bytes": 166342
+  },
+  {
+   "file": "activity/CHEMBL238/y2000-2004_00000.json",
+   "sha256": "8722c04e8f309ce9324b0830ff41a2f453218b2399937e3a1561a3eda26cdebf",
+   "bytes": 403606
+  },
+  {
+   "file": "activity/CHEMBL238/y2005-2009_00000.json",
+   "sha256": "9ffb93ed97eab87f39bdc421def066b338948ad76c5e74f54f40ad53467ee989",
+   "bytes": 717791
+  },
+  {
+   "file": "activity/CHEMBL238/y2005-2009_01000.json",
+   "sha256": "dd2d087d6dca23a6bba741885a7f3f1f0e03e9497949a33fb5aef025e549727e",
+   "bytes": 708725
+  },
+  {
+   "file": "activity/CHEMBL238/y2010-2012_00000.json",
+   "sha256": "c0764e8533b60a6966c15d84df29034a4496ff216af260a258deb5a3ee11f813",
+   "bytes": 805853
+  },
+  {
+   "file": "activity/CHEMBL238/y2013-2015_00000.json",
+   "sha256": "7759327c02602d7e77f883a3fdfaaae793080e9ef95d0707c03e51c1a056080d",
+   "bytes": 560940
+  },
+  {
+   "file": "activity/CHEMBL238/y2016-2018_00000.json",
+   "sha256": "976d19cc3f44a1b6182b513dca15caf3ad3a4a9da622e673b4cd62f7b48c5c7e",
+   "bytes": 1281261
+  },
+  {
+   "file": "activity/CHEMBL238/y2019-2021_00000.json",
+   "sha256": "5c60ccdfb30f7d521c41f39c2b857b11c348520cfa855bbbe3f2ecf134971ae1",
+   "bytes": 1005994
+  },
+  {
+   "file": "activity/CHEMBL238/y2022-2030_00000.json",
+   "sha256": "f6cf7d1dbbcf62a9596efb2c61547e5a1df6e8977d62b57f4797566074633bc9",
+   "bytes": 234308
+  },
+  {
+   "file": "activity/CHEMBL238/ynull_00000.json",
+   "sha256": "1722ba66dad839505f0c05d7bc26c5031b7a98dd4638629f5e6ceee3905b1868",
+   "bytes": 138017
+  },
+  {
+   "file": "activity/CHEMBL239/y1900-1999_00000.json",
+   "sha256": "954ba2487077f9f24cb5362660cf33d43cdf61d41929ee11f701bf1affab4352",
+   "bytes": 44699
+  },
+  {
+   "file": "activity/CHEMBL239/y2000-2004_00000.json",
+   "sha256": "5b26567fab2c616b82615071a52324e79a88f1dcecbad6d606b4026cd025006e",
+   "bytes": 530206
+  },
+  {
+   "file": "activity/CHEMBL239/y2005-2009_00000.json",
+   "sha256": "8c7f8dc34641d088b0239f502ebcd024040d5b5cdca9ce8b96b36cb5ec8ddc8e",
+   "bytes": 834984
+  },
+  {
+   "file": "activity/CHEMBL239/y2005-2009_01000.json",
+   "sha256": "f0868b6467a5b7c3c86d2cb0ac4778c88d59bf444e15df71b90256de933e8da6",
+   "bytes": 865568
+  },
+  {
+   "file": "activity/CHEMBL239/y2005-2009_02000.json",
+   "sha256": "a3dc9bf290aa26c1f3234b245e3d5c28b40ba8daab0470a844256b094559be48",
+   "bytes": 184073
+  },
+  {
+   "file": "activity/CHEMBL239/y2010-2012_00000.json",
+   "sha256": "1b31f17c4fec0f7ad9fea99d6ee3a35dd02854570641cd478eb7d40f8b70f8bc",
+   "bytes": 874403
+  },
+  {
+   "file": "activity/CHEMBL239/y2010-2012_01000.json",
+   "sha256": "71453e9ee082e991ca7e9e31c8bb2c4ddb346e5b85b83819c1cf8b5c28f2cfb2",
+   "bytes": 27691
+  },
+  {
+   "file": "activity/CHEMBL239/y2013-2015_00000.json",
+   "sha256": "6b4b442deec8bfdec6df8e1a9a7ef47de2e19f21cd055a60d94ee77713c230c2",
+   "bytes": 419675
+  },
+  {
+   "file": "activity/CHEMBL239/y2016-2018_00000.json",
+   "sha256": "8295a96a52a8b1e7cf57ff02304f5f7a807f8cb1d7407a763e4d8909b16dc7ca",
+   "bytes": 297312
+  },
+  {
+   "file": "activity/CHEMBL239/y2019-2021_00000.json",
+   "sha256": "fdcbfa55613db6f2609684cfdf559d29a9c32a1c21b8f3f79503c66e430b0e35",
+   "bytes": 299048
+  },
+  {
+   "file": "activity/CHEMBL239/y2022-2030_00000.json",
+   "sha256": "5ac5366cd683a13748602c29ab64083f749ce8600cc8c02ce6ade8465f1bf341",
+   "bytes": 365992
+  },
+  {
+   "file": "activity/CHEMBL239/ynull_00000.json",
+   "sha256": "bb6537c02423f2e5ed6b03bd722bf67f2ca8f9e0161f073e307995f8f715fa2d",
+   "bytes": 7365
+  },
+  {
+   "file": "activity/CHEMBL244/y1900-1999_00000.json",
+   "sha256": "578693aa94be898181848996b7326d5d9803856959b32f027850e072fd11fde4",
+   "bytes": 634922
+  },
+  {
+   "file": "activity/CHEMBL244/y2000-2004_00000.json",
+   "sha256": "5b8fb12e0c8e95b8246d123bcbf49e16df6f2a023df0758ea8d68d6b819f74ed",
+   "bytes": 824552
+  },
+  {
+   "file": "activity/CHEMBL244/y2000-2004_01000.json",
+   "sha256": "d1d001d8a7170d686db944b99adf4335e12a36e11628f88486fd0905ce0f2d37",
+   "bytes": 732462
+  },
+  {
+   "file": "activity/CHEMBL244/y2000-2004_02000.json",
+   "sha256": "7de7c5a66ec16b0c86a43dc547420b9e535ecd9b2c1da417e5d2a67f78d24b5d",
+   "bytes": 268538
+  },
+  {
+   "file": "activity/CHEMBL244/y2005-2009_00000.json",
+   "sha256": "81790a7bf0b6b9e3d90305fe9b06bb9992954ad37e7ef07930b43d2f3acf17d5",
+   "bytes": 812753
+  },
+  {
+   "file": "activity/CHEMBL244/y2005-2009_01000.json",
+   "sha256": "b3eb821ef7957857e1c68ee9e26cc14d959683c0d8e868389ac491498343377f",
+   "bytes": 740521
+  },
+  {
+   "file": "activity/CHEMBL244/y2005-2009_02000.json",
+   "sha256": "b52a4f370ff910d1df21b09e9f8b99a1b444c45a8d8fac7d5079334464f49453",
+   "bytes": 80641
+  },
+  {
+   "file": "activity/CHEMBL244/y2010-2012_00000.json",
+   "sha256": "8ab77964f724113c3585e95cd53f664cd7ff36e21932bfa8899c553f0f296b9c",
+   "bytes": 631136
+  },
+  {
+   "file": "activity/CHEMBL244/y2013-2015_00000.json",
+   "sha256": "2cc446dc92bdbd467a75809c769b806cf6f44c041c02831af06c1a4c4f2edc86",
+   "bytes": 832649
+  },
+  {
+   "file": "activity/CHEMBL244/y2016-2018_00000.json",
+   "sha256": "e8336b08012d234a9423d86bf4519928c03cfed27c3d9f569633d4033a234b87",
+   "bytes": 377484
+  },
+  {
+   "file": "activity/CHEMBL244/y2019-2021_00000.json",
+   "sha256": "eb6d1cf40af29ee4030760ad3610b9b5f1166014ebaf081b73445a388c9471ff",
+   "bytes": 230922
+  },
+  {
+   "file": "activity/CHEMBL244/y2022-2030_00000.json",
+   "sha256": "24e05abee9ab8efff294d90496d0feb14cbf9138b85bc3019c2fc2a7a1360463",
+   "bytes": 386081
+  },
+  {
+   "file": "activity/CHEMBL244/ynull_00000.json",
+   "sha256": "b2f9727f53c368e000bcfbab30f2bfd4041a71ae02cf3a85831834bba54ccb21",
+   "bytes": 971144
+  },
+  {
+   "file": "activity/CHEMBL262/y1900-1999_00000.json",
+   "sha256": "34aac8755ab90dd35ccbc622dd00709d66d184fc82865941e718004273958430",
+   "bytes": 1569
+  },
+  {
+   "file": "activity/CHEMBL262/y2000-2004_00000.json",
+   "sha256": "4f96c661e0ed94dd3eba97cf3ebd26a03c80781978b497c5bc7bcc491e706418",
+   "bytes": 360974
+  },
+  {
+   "file": "activity/CHEMBL262/y2005-2009_00000.json",
+   "sha256": "29516322791f235a3c8872a91144139f3fee54987b3f479a0eebda08453ec546",
+   "bytes": 675153
+  },
+  {
+   "file": "activity/CHEMBL262/y2010-2012_00000.json",
+   "sha256": "9e085b180513bb8acd5e2845896b8a5a9133fe4b97dccfd5e8a1c996bc65b1fe",
+   "bytes": 724701
+  },
+  {
+   "file": "activity/CHEMBL262/y2010-2012_01000.json",
+   "sha256": "62faf4a5bcec7ba31db8d87ad01d0470bad86a48ee1aec21ef068ac1d9d8e4a9",
+   "bytes": 18207
+  },
+  {
+   "file": "activity/CHEMBL262/y2013-2015_00000.json",
+   "sha256": "45390d41a22f2ee701c54565490a6c213fec16a6f13126920bd2cda073d9d7ba",
+   "bytes": 379341
+  },
+  {
+   "file": "activity/CHEMBL262/y2016-2018_00000.json",
+   "sha256": "521ddc9cd946e8c37d112cf56d90e782c656d49d07033147715acbddeeec2a18",
+   "bytes": 732304
+  },
+  {
+   "file": "activity/CHEMBL262/y2016-2018_01000.json",
+   "sha256": "709d54436e58505103d887c780fae83aff3bcd3a7c41694073f1f64b154d4bb0",
+   "bytes": 1235008
+  },
+  {
+   "file": "activity/CHEMBL262/y2019-2021_00000.json",
+   "sha256": "775ebe15a2feffad873f26e6bea4bcbc60ececc6e5446afc9d79850d65e2f4aa",
+   "bytes": 731580
+  },
+  {
+   "file": "activity/CHEMBL262/y2019-2021_01000.json",
+   "sha256": "2042134ee416f7143dcfcafab7b9436720a3441957e02e24285d020831b7d6f4",
+   "bytes": 729472
+  },
+  {
+   "file": "activity/CHEMBL262/y2019-2021_02000.json",
+   "sha256": "d35e4953b91c954a0712a5c8e20524876c582f2ba2b8d065697e49f0351f23a8",
+   "bytes": 735685
+  },
+  {
+   "file": "activity/CHEMBL262/y2019-2021_03000.json",
+   "sha256": "202201ac8e032c20badd019a8a64f5fe17014994d25181bafd55c25fb24d94e1",
+   "bytes": 396660
+  },
+  {
+   "file": "activity/CHEMBL262/y2022-2030_00000.json",
+   "sha256": "10d686368ba71eae02f83cafeb81c51f5ec1eb94752bfe57fe5c4e4c1241cdfc",
+   "bytes": 1073732
+  },
+  {
+   "file": "activity/CHEMBL262/y2022-2030_01000.json",
+   "sha256": "77518c65e7cd26da87cacdd07f0e0214faeebd3ad8fee8871cc2c83bc1bcc92d",
+   "bytes": 484852
+  },
+  {
+   "file": "activity/CHEMBL262/ynull_00000.json",
+   "sha256": "25684bc495dfcfff74f502d52a643df026ddff72fca376a7e5fd90953658f545",
+   "bytes": 844407
+  },
+  {
+   "file": "activity/CHEMBL262/ynull_01000.json",
+   "sha256": "5d2b93b7d1c764ecbd4c1eadbc9132a4db3316940295adfe81a4c7170df2b112",
+   "bytes": 57562
+  },
+  {
+   "file": "activity/CHEMBL264/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL264/y2000-2004_00000.json",
+   "sha256": "53948d9dc6236cfffb2741a9e40a869e5558e925a5f5087cd14bc1e0b5512891",
+   "bytes": 564169
+  },
+  {
+   "file": "activity/CHEMBL264/y2005-2009_00000.json",
+   "sha256": "6ecd463652024a8c2b6a8fd6ad6c5260f5ba1fd66b42cde7927133815aaa0089",
+   "bytes": 832474
+  },
+  {
+   "file": "activity/CHEMBL264/y2005-2009_01000.json",
+   "sha256": "01e08f50b724533025bb93455ad351420e43433829a26bbded3509962acb7bd1",
+   "bytes": 789600
+  },
+  {
+   "file": "activity/CHEMBL264/y2010-2012_00000.json",
+   "sha256": "979761e3be491204c99c9fc9649c2d7e4e8713d7d3c458fb031fe31bd71c6628",
+   "bytes": 861898
+  },
+  {
+   "file": "activity/CHEMBL264/y2010-2012_01000.json",
+   "sha256": "c4ce66f315c65cbaf242169a8c4142e84b119dbca133d6cd93b1c30da0e441c7",
+   "bytes": 538597
+  },
+  {
+   "file": "activity/CHEMBL264/y2013-2015_00000.json",
+   "sha256": "2103e13ee0857f0b2749a45698b320361ab0a5c426a460595b6abff095f11d7c",
+   "bytes": 962824
+  },
+  {
+   "file": "activity/CHEMBL264/y2016-2018_00000.json",
+   "sha256": "91e78c93fc3b386a0647ae8bfbbd7b623de1d03e079d45d7af0ce2fc0824554b",
+   "bytes": 518252
+  },
+  {
+   "file": "activity/CHEMBL264/y2019-2021_00000.json",
+   "sha256": "dded6db1ff3ab398d85a9c06fb3422055b1a87535ecbfc16a17fb304c2aeded1",
+   "bytes": 871719
+  },
+  {
+   "file": "activity/CHEMBL264/y2022-2030_00000.json",
+   "sha256": "9687a8812cd49115542619d697bb97a9914f1cc4ec305adf714833c404135e0e",
+   "bytes": 261320
+  },
+  {
+   "file": "activity/CHEMBL264/ynull_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL2835/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL2835/y2000-2004_00000.json",
+   "sha256": "be3f50109a8274cd32faa3943b61072334903a232fc0fbe3a5e86650a4f4509d",
+   "bytes": 5541
+  },
+  {
+   "file": "activity/CHEMBL2835/y2005-2009_00000.json",
+   "sha256": "2564bce03a6cab9ecfb9d474b1bcc960ff7543656bf8836a44d1d25b1f253149",
+   "bytes": 51097
+  },
+  {
+   "file": "activity/CHEMBL2835/y2010-2012_00000.json",
+   "sha256": "7591c4f8a71c98c58547bb720d8fb6b200c4f2becb20f8b287b28c3bf2bd2935",
+   "bytes": 400938
+  },
+  {
+   "file": "activity/CHEMBL2835/y2013-2015_00000.json",
+   "sha256": "99f58a07ca62b100148614dfc8f16c3a7ed49494daf11dd76dec637188999957",
+   "bytes": 1177582
+  },
+  {
+   "file": "activity/CHEMBL2835/y2013-2015_01000.json",
+   "sha256": "f0873ff5133a5bd9d11aa98cdb38798e6c6996007fca118c7bb75f57fc1d5253",
+   "bytes": 1436882
+  },
+  {
+   "file": "activity/CHEMBL2835/y2013-2015_02000.json",
+   "sha256": "870c8ce9572be18f91b17cac8666ceb422738208fc010becc2bd88c15b5b96f7",
+   "bytes": 893923
+  },
+  {
+   "file": "activity/CHEMBL2835/y2016-2016_00000.json",
+   "sha256": "125240e8008ad8102cb9c5da38c4147411b407e0b46aec9eb0ca5229177c0440",
+   "bytes": 737869
+  },
+  {
+   "file": "activity/CHEMBL2835/y2016-2016_01000.json",
+   "sha256": "664a7c561edb2ea91ea9370b2f6a3d0e3b497922849853685064cfc8c215a93f",
+   "bytes": 2068613
+  },
+  {
+   "file": "activity/CHEMBL2835/y2016-2016_02000.json",
+   "sha256": "629e3ba132243ed8bc0bc15e34422753b773da5436cd89c2b65304a328d518e6",
+   "bytes": 321662
+  },
+  {
+   "file": "activity/CHEMBL2835/y2017-2017_00000.json",
+   "sha256": "4c366f8679e68c461695d9b3100fb09f297db17c6f13f7fafbb0aabbd5b45cc1",
+   "bytes": 1443439
+  },
+  {
+   "file": "activity/CHEMBL2835/y2017-2017_01000.json",
+   "sha256": "eb89dbf90975c6fe0e1fb507c1cff019a168d4f5b08c27921ac246d8bbd7c4e4",
+   "bytes": 2139958
+  },
+  {
+   "file": "activity/CHEMBL2835/y2017-2017_02000.json",
+   "sha256": "c148b828680672ebba77458f42c8fd4f891df08b31e6b26305f4c3074e987bf6",
+   "bytes": 146615
+  },
+  {
+   "file": "activity/CHEMBL2835/y2018-2018_00000.json",
+   "sha256": "b34a3a40b0106254a0c58ceb43b25ca95a93bd72861774565487a11769b4453e",
+   "bytes": 2015438
+  },
+  {
+   "file": "activity/CHEMBL2835/y2018-2018_01000.json",
+   "sha256": "a1ad0dfa98c6467e15c173595f770fa2097602109dbba4e7b223c94544e21b34",
+   "bytes": 2062196
+  },
+  {
+   "file": "activity/CHEMBL2835/y2018-2018_02000.json",
+   "sha256": "e70a773d5bb9132b5b81c115151250bd09ce39a8df423b5ba23ca62c764a8352",
+   "bytes": 747879
+  },
+  {
+   "file": "activity/CHEMBL2835/y2018-2018_03000.json",
+   "sha256": "73a52e017a0e2a4fef60e78462a84a577fdb1e855800a043c56899729392cc00",
+   "bytes": 212342
+  },
+  {
+   "file": "activity/CHEMBL2835/y2019-2020_00000.json",
+   "sha256": "55829e3452900cbc4baf117f8fc752fe6c2f60eba07f6a84e5508d18968e6a23",
+   "bytes": 1410772
+  },
+  {
+   "file": "activity/CHEMBL2835/y2019-2020_01000.json",
+   "sha256": "96b9d5260ee8c6e5f32ef8f44a0f9aa40a07e7324e994b97277067348202c49d",
+   "bytes": 2311281
+  },
+  {
+   "file": "activity/CHEMBL2835/y2019-2020_02000.json",
+   "sha256": "a429a639c8d44413593017bf685138f6c4f98d0e51d29a20102c05be9c37483a",
+   "bytes": 1853581
+  },
+  {
+   "file": "activity/CHEMBL2835/y2019-2020_03000.json",
+   "sha256": "a632d1da1379b92abcb40fb6f452df11e708f2e3044adedb07fac2b78e9368f6",
+   "bytes": 728497
+  },
+  {
+   "file": "activity/CHEMBL2835/y2021-2021_00000.json",
+   "sha256": "ef6b73daaca5e1330f7cb8161c063aeaecf643bbdd998b1cb6298552a146f96f",
+   "bytes": 2162852
+  },
+  {
+   "file": "activity/CHEMBL2835/y2021-2021_01000.json",
+   "sha256": "ff4a138f68afab61e69fde35fe914b4d949936074de9631178c842321d20114a",
+   "bytes": 2065263
+  },
+  {
+   "file": "activity/CHEMBL2835/y2021-2021_02000.json",
+   "sha256": "b5c934dde308d2f5cdd106f29bd9c3ec7aa9eaff95ba9b26165fa14262ba4e4b",
+   "bytes": 235913
+  },
+  {
+   "file": "activity/CHEMBL2835/y2022-2030_00000.json",
+   "sha256": "fdea94608b11884788f72480dda8373488a196615831b9c359c5b61e70770785",
+   "bytes": 1219039
+  },
+  {
+   "file": "activity/CHEMBL2835/y2022-2030_01000.json",
+   "sha256": "19e5aa1d504157b67a80b6105190fa4e2c4411d10de2e4709cb462fd8817098a",
+   "bytes": 1835057
+  },
+  {
+   "file": "activity/CHEMBL2835/y2022-2030_02000.json",
+   "sha256": "4a0b2cde212c50fce575bec948dc1d4cb21f8675a52f2e645c230fb6c6994d24",
+   "bytes": 2017997
+  },
+  {
+   "file": "activity/CHEMBL2835/y2022-2030_03000.json",
+   "sha256": "2098257c401d2345479795ca67f6ad9a4f3054c2cd8e071f334f8448ce383f2a",
+   "bytes": 1231319
+  },
+  {
+   "file": "activity/CHEMBL2835/ynull_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL287/y1900-1999_00000.json",
+   "sha256": "5fa8c8699ab33f99fea273cd92dd74d606a75e2891b5ffe0c1815a706bd75f92",
+   "bytes": 851910
+  },
+  {
+   "file": "activity/CHEMBL287/y1900-1999_01000.json",
+   "sha256": "6ea36d3f996a639a14de1cc0770f1c025a20af278b0c6a0493072ce39ff36b46",
+   "bytes": 701461
+  },
+  {
+   "file": "activity/CHEMBL287/y2000-2004_00000.json",
+   "sha256": "6428b027bfa1a31579f541a3e07bdb1ecbe187be7ae60072361e33795e47318f",
+   "bytes": 246313
+  },
+  {
+   "file": "activity/CHEMBL287/y2005-2009_00000.json",
+   "sha256": "c827adc8eb62988aca63fa9b51704406d7465b425f739c136f8fd81edac7997a",
+   "bytes": 139058
+  },
+  {
+   "file": "activity/CHEMBL287/y2010-2012_00000.json",
+   "sha256": "0a0fd4ee14af6da731969328c9d933162ed3c4ee0273028696e057d7f1793700",
+   "bytes": 131920
+  },
+  {
+   "file": "activity/CHEMBL287/y2013-2015_00000.json",
+   "sha256": "b780f1d16a523982088c631744fb64657753eb6dfb03bf9a4eb0aaac5d292b3b",
+   "bytes": 220288
+  },
+  {
+   "file": "activity/CHEMBL287/y2016-2018_00000.json",
+   "sha256": "a0113da88eea8def2be0b50343f8c337ce00282a3993f4922764da0475270bdf",
+   "bytes": 477912
+  },
+  {
+   "file": "activity/CHEMBL287/y2019-2021_00000.json",
+   "sha256": "c8325dee1e43e824e99676a65b41419fb5b25073ee652d72c1e6c8caf5e99c31",
+   "bytes": 1256123
+  },
+  {
+   "file": "activity/CHEMBL287/y2022-2030_00000.json",
+   "sha256": "5466cd0523f9e231ec883c0517ef05252da56bf9474a19ed4849cc47c73f71f1",
+   "bytes": 782051
+  },
+  {
+   "file": "activity/CHEMBL287/ynull_00000.json",
+   "sha256": "cd162baee727b5ad3e4af95e33d4dfe3f061a26214aca82d8537e80512c990dc",
+   "bytes": 110008
+  },
+  {
+   "file": "activity/CHEMBL2971/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL2971/y2000-2004_00000.json",
+   "sha256": "1fb17e673d4f72f2b9f166765242458b0e9a2ad891fe65896899d22cb6b8413c",
+   "bytes": 5552
+  },
+  {
+   "file": "activity/CHEMBL2971/y2005-2009_00000.json",
+   "sha256": "5a33ee7b6051ebc13b9216dfa5b94d7e18dd80a23c6ba2b27e361833cf85f696",
+   "bytes": 288209
+  },
+  {
+   "file": "activity/CHEMBL2971/y2010-2012_00000.json",
+   "sha256": "be6f4096ef3a08029ad40c480a482a8770a0a1dc081f3da475fb0ae517b921ab",
+   "bytes": 670323
+  },
+  {
+   "file": "activity/CHEMBL2971/y2013-2015_00000.json",
+   "sha256": "fca122be7b66db20cbe65b351b0b670ce3182b3752b2b1329a78d17bba0d902c",
+   "bytes": 906713
+  },
+  {
+   "file": "activity/CHEMBL2971/y2013-2015_01000.json",
+   "sha256": "9654a95471225b0f7ff1d0ced776c898ad56374cf5f43513df35b63bd0d4b2d6",
+   "bytes": 1451446
+  },
+  {
+   "file": "activity/CHEMBL2971/y2013-2015_02000.json",
+   "sha256": "6e0c4ad8a1c9bf59ba205c26ea6bdd959e5518ef054574b8d9781f425f6c551b",
+   "bytes": 1261492
+  },
+  {
+   "file": "activity/CHEMBL2971/y2013-2015_03000.json",
+   "sha256": "fef1a989cd0e5222fda5ebd69e968223ef4f332965c811e89c32d281e62410bf",
+   "bytes": 1074035
+  },
+  {
+   "file": "activity/CHEMBL2971/y2016-2016_00000.json",
+   "sha256": "b11cec1dd4a5542247fc2af7058653f540bd3eb71199289c2d71c0e9de9356d9",
+   "bytes": 736802
+  },
+  {
+   "file": "activity/CHEMBL2971/y2016-2016_01000.json",
+   "sha256": "244a34cdd15f5b2190fb56313a1a502ea96ea307f7e3b397b4d450fba647d27d",
+   "bytes": 1960898
+  },
+  {
+   "file": "activity/CHEMBL2971/y2016-2016_02000.json",
+   "sha256": "47586c436ad5cd4242b1dede734b98edf76ba381691658995c3699604908add1",
+   "bytes": 688805
+  },
+  {
+   "file": "activity/CHEMBL2971/y2017-2017_00000.json",
+   "sha256": "1b2c1cdfcb870cb4348343534d47f369c176e4bd31a5f23e64248b4a5f23c667",
+   "bytes": 1512858
+  },
+  {
+   "file": "activity/CHEMBL2971/y2017-2017_01000.json",
+   "sha256": "572e771d0f22a2d2bb7fed12254c635730c006a2f99d76305d198f7b7e730067",
+   "bytes": 2189179
+  },
+  {
+   "file": "activity/CHEMBL2971/y2017-2017_02000.json",
+   "sha256": "26fec50847d021a7e870c74d86c104824ea98e3889a120cf124813fd11164d79",
+   "bytes": 828184
+  },
+  {
+   "file": "activity/CHEMBL2971/y2018-2018_00000.json",
+   "sha256": "7f8d1cc982f4dfa3f0db632b35bbc5b69f73a9b9ecd1ac501f51eaa969b9ac50",
+   "bytes": 1897093
+  },
+  {
+   "file": "activity/CHEMBL2971/y2018-2018_01000.json",
+   "sha256": "4849bac3b4f9f28591f9787ecc9640df5fdd30fd70b591f5192ba5daa24125cf",
+   "bytes": 2287299
+  },
+  {
+   "file": "activity/CHEMBL2971/y2018-2018_02000.json",
+   "sha256": "77009f8b9e206db6a40881c2634ba4c04e9fe6caae515a54a33823bef218e7f3",
+   "bytes": 2167151
+  },
+  {
+   "file": "activity/CHEMBL2971/y2018-2018_03000.json",
+   "sha256": "d513a217613caa3144dcd207f597c50159da59c30d91b4b8ab79df0bd2331ed1",
+   "bytes": 886243
+  },
+  {
+   "file": "activity/CHEMBL2971/y2019-2019_00000.json",
+   "sha256": "d0ba0ed24aefd8ca46dc8831ce96d31b70983955dedf1d5a4cae233261c78b2f",
+   "bytes": 736555
+  },
+  {
+   "file": "activity/CHEMBL2971/y2019-2019_01000.json",
+   "sha256": "27f77c4e45bf5233e0736de6b97dfa4b2c683ddcca594db3ec4a7129ae8d6e97",
+   "bytes": 2009155
+  },
+  {
+   "file": "activity/CHEMBL2971/y2019-2019_02000.json",
+   "sha256": "75748734c009640cc06330d9204221b55558a0320cd5f9796c6766696c6995eb",
+   "bytes": 1933158
+  },
+  {
+   "file": "activity/CHEMBL2971/y2020-2020_00000.json",
+   "sha256": "b2ea8f2ab4e6de147243b190a006feb3271c0ccd5a870085e5b8694375469a5e",
+   "bytes": 1481525
+  },
+  {
+   "file": "activity/CHEMBL2971/y2020-2020_01000.json",
+   "sha256": "98d4509d45252a8c954f7176ce9bc56d578d2d2f564a42144660258ec8c08770",
+   "bytes": 1674087
+  },
+  {
+   "file": "activity/CHEMBL2971/y2020-2020_02000.json",
+   "sha256": "8ed98b51c12410501e3f0729d5ec19bbdd4a634bd85927c5fdb7d2fb242bd555",
+   "bytes": 730036
+  },
+  {
+   "file": "activity/CHEMBL2971/y2021-2021_00000.json",
+   "sha256": "b11a8611072a6a7fbdd8213378fe953d256f6a3474ab9667482ca6896effc218",
+   "bytes": 1942386
+  },
+  {
+   "file": "activity/CHEMBL2971/y2021-2021_01000.json",
+   "sha256": "a6f0e924ba7c799a3cc3bdad403fe802ceaa41219de7625e08b9f792a8cd8b43",
+   "bytes": 2101110
+  },
+  {
+   "file": "activity/CHEMBL2971/y2021-2021_02000.json",
+   "sha256": "aa66f147d3eac37eaa6b7290ac02c344a80c0d49f6f339da15f8ec5092b1501c",
+   "bytes": 330834
+  },
+  {
+   "file": "activity/CHEMBL2971/y2022-2030_00000.json",
+   "sha256": "3c2d8de18d298041521c011aab165182d6fe5b7aa3fc76cd708fb7d22b65dc27",
+   "bytes": 1089292
+  },
+  {
+   "file": "activity/CHEMBL2971/y2022-2030_01000.json",
+   "sha256": "46d9aadd018f3e35189c132e8cfa9eb2eab57cfdefc87c62db5c56d1beae7f88",
+   "bytes": 737328
+  },
+  {
+   "file": "activity/CHEMBL2971/y2022-2030_02000.json",
+   "sha256": "af29255def9476107d5b1f28ec0da3029764143bb46b1ca3d88709d19aa352bc",
+   "bytes": 1822279
+  },
+  {
+   "file": "activity/CHEMBL2971/ynull_00000.json",
+   "sha256": "c5aefe43dba7b1dea6391436e08f101e1eb668c54539f566ffac8388af671ed9",
+   "bytes": 838643
+  },
+  {
+   "file": "activity/CHEMBL3979/y1900-1999_00000.json",
+   "sha256": "a43b1ef4b63668e58ccf82471656e7bde003edaa0a1e64e48b3fe4ced340b165",
+   "bytes": 3746
+  },
+  {
+   "file": "activity/CHEMBL3979/y2000-2004_00000.json",
+   "sha256": "b75e46d9317d34f9dd28d1da2529e1424679ad7694bbf061bc2b2708f5627b53",
+   "bytes": 279294
+  },
+  {
+   "file": "activity/CHEMBL3979/y2005-2009_00000.json",
+   "sha256": "3ab6b6229e69a0025002279dfaeaa4e29ab82a778b66e15a04b6858b92640f18",
+   "bytes": 846026
+  },
+  {
+   "file": "activity/CHEMBL3979/y2005-2009_01000.json",
+   "sha256": "a15533d84df39e7cfb3f042374c6e12827b4fdac884d819ec89c66a37d788460",
+   "bytes": 98732
+  },
+  {
+   "file": "activity/CHEMBL3979/y2010-2012_00000.json",
+   "sha256": "69856034c6c0e64b28cdd2ab60ea2d906f9f90646affb79f9481f0d9c16a3061",
+   "bytes": 701387
+  },
+  {
+   "file": "activity/CHEMBL3979/y2013-2015_00000.json",
+   "sha256": "3cfdbe6272e844fe94e11d434360e4922ddfdef5c13894ce92cb014ff4d4feda",
+   "bytes": 76830
+  },
+  {
+   "file": "activity/CHEMBL3979/y2016-2018_00000.json",
+   "sha256": "406cd561546bbaef79aa44b347298be07038e16d47988b9d938e3d1bc5c69132",
+   "bytes": 239208
+  },
+  {
+   "file": "activity/CHEMBL3979/y2019-2021_00000.json",
+   "sha256": "723b90f12bb4a1d55ff98e176e0e50ce13d4989f6328c8a47fcc45a9e75ba65b",
+   "bytes": 251924
+  },
+  {
+   "file": "activity/CHEMBL3979/y2022-2030_00000.json",
+   "sha256": "1785c0104f94ce7d19f679c3fcdb56564b20f8717f5d493a75ac0dde84a43ea5",
+   "bytes": 329393
+  },
+  {
+   "file": "activity/CHEMBL3979/ynull_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL4005/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL4005/y2000-2004_00000.json",
+   "sha256": "f9e49343d0650940423f570221764676e81468528fddf4983734c6f22bff10d3",
+   "bytes": 3328
+  },
+  {
+   "file": "activity/CHEMBL4005/y2005-2009_00000.json",
+   "sha256": "9959e98a2f3c02196902c141e213445cebacf76e843df993e949c193a6437938",
+   "bytes": 622289
+  },
+  {
+   "file": "activity/CHEMBL4005/y2010-2012_00000.json",
+   "sha256": "dfb7c2bf3d32523064dcd3cbf2dba6fc64d7c846b496991157210ed2521c4168",
+   "bytes": 826499
+  },
+  {
+   "file": "activity/CHEMBL4005/y2010-2012_01000.json",
+   "sha256": "17d2eb67ad5e1e8d1c8bc69fc9b5cfc48ab9c61be88af89a960a0e20cdeaab62",
+   "bytes": 848022
+  },
+  {
+   "file": "activity/CHEMBL4005/y2010-2012_02000.json",
+   "sha256": "633582118e6fc76713cde05906066cd0abbd593903f161a44601a787774f6e06",
+   "bytes": 497626
+  },
+  {
+   "file": "activity/CHEMBL4005/y2013-2015_00000.json",
+   "sha256": "76e7b428c2df60d6396695232c428a84b9cfcc854156d2d1d8ef08f56c3e4374",
+   "bytes": 872385
+  },
+  {
+   "file": "activity/CHEMBL4005/y2013-2015_01000.json",
+   "sha256": "0a0aaf22942ccbfeefba4704409fb56ba326a0736cbea2e6eceb905d8d3636d1",
+   "bytes": 1178124
+  },
+  {
+   "file": "activity/CHEMBL4005/y2013-2015_02000.json",
+   "sha256": "b49aaa7b9af70c9e5c5cf603fef1228d372e6982569fea8657f112cbf08fa45a",
+   "bytes": 1523336
+  },
+  {
+   "file": "activity/CHEMBL4005/y2013-2015_03000.json",
+   "sha256": "0e66078cc3d2e563c659598b10b4afd0e3c626d94da1a814f5b537627a79e8ca",
+   "bytes": 535966
+  },
+  {
+   "file": "activity/CHEMBL4005/y2016-2018_00000.json",
+   "sha256": "8068598516814477b811893ae7c8fb5edf3a02dc595bee89648928f594460dca",
+   "bytes": 1218559
+  },
+  {
+   "file": "activity/CHEMBL4005/y2016-2018_01000.json",
+   "sha256": "378c4102e31fea888d4aae21bb9bbbccee4a9c3ac0f8c663950af8c83d0c7886",
+   "bytes": 2548096
+  },
+  {
+   "file": "activity/CHEMBL4005/y2016-2018_02000.json",
+   "sha256": "311206ef172e62e95744479d65d7c87a44603a2bc91536dc81fe758a3b887ffc",
+   "bytes": 541618
+  },
+  {
+   "file": "activity/CHEMBL4005/y2019-2021_00000.json",
+   "sha256": "c26975b9a77bc2ac0a798209f0f11892181445f6f16ca814ec23b07b07abcaff",
+   "bytes": 742171
+  },
+  {
+   "file": "activity/CHEMBL4005/y2019-2021_01000.json",
+   "sha256": "3dcf7930a10b9c42e3f64f569648a96c649e5668f73ad42495bd3faa74943527",
+   "bytes": 404680
+  },
+  {
+   "file": "activity/CHEMBL4005/y2022-2030_00000.json",
+   "sha256": "aa516ec4e1077d5f338a517f6797723bcd08d09e77e37ac8019210168f6ba0b3",
+   "bytes": 901210
+  },
+  {
+   "file": "activity/CHEMBL4005/y2022-2030_01000.json",
+   "sha256": "dc11185d26d3c2fcf9343a665d591aa08f7b47c61803d12dd9623165047e09ee",
+   "bytes": 1857819
+  },
+  {
+   "file": "activity/CHEMBL4005/y2022-2030_02000.json",
+   "sha256": "20e3b9a80efab4cf6a27ba8d5a3e720933188ab3f698d11f6c946ed80b50f5cd",
+   "bytes": 945239
+  },
+  {
+   "file": "activity/CHEMBL4005/ynull_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL4203/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL4203/y2000-2004_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL4203/y2005-2009_00000.json",
+   "sha256": "80d269baf51dcb0de6057e254e7663562ccdf520940ef43e297d2bae11421477",
+   "bytes": 66703
+  },
+  {
+   "file": "activity/CHEMBL4203/y2010-2012_00000.json",
+   "sha256": "a53746a9d487f938da8d3df61e15d7cac27ee86cbbaa34acadf5d420d455d7f4",
+   "bytes": 104724
+  },
+  {
+   "file": "activity/CHEMBL4203/y2013-2015_00000.json",
+   "sha256": "ca42d315a61b8fe5bca6c0fa15b7499a609e015c15e7ea3251e299613724a869",
+   "bytes": 89147
+  },
+  {
+   "file": "activity/CHEMBL4203/y2016-2018_00000.json",
+   "sha256": "551186e2a856296f485f8d2bdfd0f8a504d6e43dbe6edcde3923df7fa995acab",
+   "bytes": 220400
+  },
+  {
+   "file": "activity/CHEMBL4203/y2019-2021_00000.json",
+   "sha256": "61d1be8731daad809397a8fa5db321f81dc971f003dbceead925e15b313e85af",
+   "bytes": 61778
+  },
+  {
+   "file": "activity/CHEMBL4203/y2022-2030_00000.json",
+   "sha256": "f732a484c23b6d042b2df37efb097b212ab2247b8d519ad83b9add84ec9cfc84",
+   "bytes": 352138
+  },
+  {
+   "file": "activity/CHEMBL4203/ynull_00000.json",
+   "sha256": "f3dfaf901be255ba7b0eb566ed6a584820cdc840d22d78d0919e83ccff7dc959",
+   "bytes": 843197
+  },
+  {
+   "file": "activity/CHEMBL4203/ynull_01000.json",
+   "sha256": "6c9a7a57f085edcf20cbfb928a4ab8d9c5dbca74d6e99651a41d8d38fefbf7a4",
+   "bytes": 10023
+  },
+  {
+   "file": "activity/CHEMBL4616/y1900-1999_00000.json",
+   "sha256": "fbc732de3d30abe571851809243600798461aad068f2682e05316e68ef2877e5",
+   "bytes": 6386
+  },
+  {
+   "file": "activity/CHEMBL4616/y2000-2004_00000.json",
+   "sha256": "01f0787e11d833e9f59387ba09993deb1e41bee27a6381476a7cc6b9e93ed3d4",
+   "bytes": 186384
+  },
+  {
+   "file": "activity/CHEMBL4616/y2005-2009_00000.json",
+   "sha256": "377c61ee060d555b57cd57da0f9c200238f86d0c23f13696c9c342c8e6faf31c",
+   "bytes": 853666
+  },
+  {
+   "file": "activity/CHEMBL4616/y2005-2009_01000.json",
+   "sha256": "367cbc9786006e8ec0f8933ccd875da7e118952aef15e0d5375360401985c58b",
+   "bytes": 212511
+  },
+  {
+   "file": "activity/CHEMBL4616/y2010-2012_00000.json",
+   "sha256": "29c0c9c63244af599deb305536961f424d40ac7a0fd268f6174f8ad97ba9a635",
+   "bytes": 330335
+  },
+  {
+   "file": "activity/CHEMBL4616/y2013-2015_00000.json",
+   "sha256": "1e1d0cb8fa04d7483bfb430f64add118d1844e80b2c09ca16010aaa62370abe1",
+   "bytes": 720579
+  },
+  {
+   "file": "activity/CHEMBL4616/y2016-2018_00000.json",
+   "sha256": "d73a7d7dc80d2760dc782479992e62686df2add05f79a429a31c08e299df7ef0",
+   "bytes": 233579
+  },
+  {
+   "file": "activity/CHEMBL4616/y2019-2021_00000.json",
+   "sha256": "08976faef6e3930cf503cfd359274a49c970d44192efa78889b93f758a7bc365",
+   "bytes": 251286
+  },
+  {
+   "file": "activity/CHEMBL4616/y2022-2030_00000.json",
+   "sha256": "29516c8f39d94d1907beb34816cd40488cf7adb1cef5afebfc23bbf5bf755512",
+   "bytes": 41734
+  },
+  {
+   "file": "activity/CHEMBL4616/ynull_00000.json",
+   "sha256": "a38723425da95a596510c5a78f5104bb9587a9d1896f2f20cd3e888caba0d0c9",
+   "bytes": 135393
+  },
+  {
+   "file": "activity/CHEMBL4792/y1900-1999_00000.json",
+   "sha256": "037003a7f3631e9dad89108fdea19fea07b7bdc2b8ba71c985fc55d69c999ba9",
+   "bytes": 111
+  },
+  {
+   "file": "activity/CHEMBL4792/y2000-2004_00000.json",
+   "sha256": "bde5811f3fec8c51065280aad05e40041a6dafe9de26cfcc4eb86b77c5bb2aff",
+   "bytes": 225584
+  },
+  {
+   "file": "activity/CHEMBL4792/y2005-2009_00000.json",
+   "sha256": "5640c7d76f86a56feed89c5bf96eabee7abc643e54e6c50ecd16ff4f0f916312",
+   "bytes": 150265
+  },
+  {
+   "file": "activity/CHEMBL4792/y2010-2012_00000.json",
+   "sha256": "63cddd0367015b8e2e517630d35879d77921e75a9a16e6fefa78cfc7a1a71beb",
+   "bytes": 148752
+  },
+  {
+   "file": "activity/CHEMBL4792/y2013-2015_00000.json",
+   "sha256": "b918297746e7382d271e01310b743095bd7c35416b6785303acdf1e36b5a1578",
+   "bytes": 1121978
+  },
+  {
+   "file": "activity/CHEMBL4792/y2013-2015_01000.json",
+   "sha256": "d2975310aa52ab97ea369e973ece7c0352ac0431e57e6138e76ea09f0c116480",
+   "bytes": 1445303
+  },
+  {
+   "file": "activity/CHEMBL4792/y2013-2015_02000.json",
+   "sha256": "bca80b22429681aeb4413c90a1924a6a932fc622c3f75676276708e6b7bd0cc5",
+   "bytes": 811806
+  },
+  {
+   "file": "activity/CHEMBL4792/y2016-2016_00000.json",
+   "sha256": "3f77ca41b63ccba7df6e6b10ed11552215eeb52b648b768ca50db4bcffa4ad3f",
+   "bytes": 2270634
+  },
+  {
+   "file": "activity/CHEMBL4792/y2016-2016_01000.json",
+   "sha256": "fb29a04100720fecfae4fbc5f8921f6f8c334ddbf473af5d0eadd4aa23a59a6b",
+   "bytes": 2192975
+  },
+  {
+   "file": "activity/CHEMBL4792/y2017-2017_00000.json",
+   "sha256": "7585fc4694af9939b281383204648e84bf8bf36a9df399abb06c5706811e58df",
+   "bytes": 2473568
+  },
+  {
+   "file": "activity/CHEMBL4792/y2017-2017_01000.json",
+   "sha256": "de11f32eb06f056cd08f98d1860311d2262cf244dd73aaa3a54bf74617c519d2",
+   "bytes": 2758639
+  },
+  {
+   "file": "activity/CHEMBL4792/y2017-2017_02000.json",
+   "sha256": "84317cbf6ee2ad32a56392f98ac970a00d83763cc867911951afce995f9cdce7",
+   "bytes": 2154314
+  },
+  {
+   "file": "activity/CHEMBL4792/y2017-2017_03000.json",
+   "sha256": "4d09ea2f9031ac7de009869ced61360416b1f7aa266f777c5a32e80d2ce8d76f",
+   "bytes": 152295
+  },
+  {
+   "file": "activity/CHEMBL4792/y2018-2018_00000.json",
+   "sha256": "aa67909ff69ac19785ce94253c06a72dedde33020b09dd67b34dc093b72c25d2",
+   "bytes": 1984174
+  },
+  {
+   "file": "activity/CHEMBL4792/y2019-2021_00000.json",
+   "sha256": "ba8bcdf72aaeb0de38208bf807b33cad28c6182c87655f5f0a4c6747c4e819d2",
+   "bytes": 2364403
+  },
+  {
+   "file": "activity/CHEMBL4792/y2019-2021_01000.json",
+   "sha256": "982987ea5d99a210006e4ed1ddcad807694bddd4a467a8a84de3fcb4be99c39e",
+   "bytes": 2529513
+  },
+  {
+   "file": "activity/CHEMBL4792/y2019-2021_02000.json",
+   "sha256": "1138b75d07b9b4b7f1187fa0a9b0f09c6cba24e9ccf86131e06a3ce6febea545",
+   "bytes": 310137
+  },
+  {
+   "file": "activity/CHEMBL4792/y2022-2030_00000.json",
+   "sha256": "c626380c2bdf7bc97bcbd4ae29127c9c585d1b39339cf7b0625b528813e2fc0b",
+   "bytes": 745130
+  },
+  {
+   "file": "activity/CHEMBL4792/y2022-2030_01000.json",
+   "sha256": "472cfec99474879444f375a3efe5d42cb3296a281741ab4566b26a7428adc577",
+   "bytes": 1495052
+  },
+  {
+   "file": "activity/CHEMBL4792/ynull_00000.json",
+   "sha256": "904ec14ed2b533185714596ce7d09dc638642633d5e0353d78efa46d287b8ddf",
+   "bytes": 440163
+  },
+  {
+   "file": "assay/0000000.json",
+   "sha256": "22395cb8eaa7a69ad3976b0d46006e0363b06e454fbc1434e64d7929e748cbc7",
+   "bytes": 13612
+  },
+  {
+   "file": "assay/0000050.json",
+   "sha256": "e99efae99cf85388685ab6dfa0da9604a3ade998fc7961bfae1daf3551ddde21",
+   "bytes": 13619
+  },
+  {
+   "file": "assay/0000100.json",
+   "sha256": "2d356515551f332c8bc45a301bca6972dd2a4e5b3f90541f28e24a01e093d98c",
+   "bytes": 13454
+  },
+  {
+   "file": "assay/0000150.json",
+   "sha256": "c8c6479101ab9991f7373e3e02e122d4b13a46f5c042e5421f620ae660f35382",
+   "bytes": 13495
+  },
+  {
+   "file": "assay/0000200.json",
+   "sha256": "ba4735d348b26c2317d11648eb6bc28238b7d8f13da898c63e8e93d5470d4386",
+   "bytes": 13487
+  },
+  {
+   "file": "assay/0000250.json",
+   "sha256": "2351f43a69a49326018a1e41fcf8daa605197b404852573bb3af5a95b5c8d528",
+   "bytes": 13509
+  },
+  {
+   "file": "assay/0000300.json",
+   "sha256": "54e215a16babbdd48b217961b671e3320973d1da9bb0df0156d47a0820afc92f",
+   "bytes": 13511
+  },
+  {
+   "file": "assay/0000350.json",
+   "sha256": "7cdf4ba9f9e811b8837697c639e5282f0e873e83abb6263f7d357129acdd80cd",
+   "bytes": 13432
+  },
+  {
+   "file": "assay/0000400.json",
+   "sha256": "ad0552ceaf20eb3b740bc39ecfc97e1157618c24ff0b240a6f06ee0698d75263",
+   "bytes": 13519
+  },
+  {
+   "file": "assay/0000450.json",
+   "sha256": "e0c9b825d75e9d28b1624c0c3ff15b8c58de664a8f7510ebc45bafa46bdebe76",
+   "bytes": 13539
+  },
+  {
+   "file": "assay/0000500.json",
+   "sha256": "493af012eeb6009afc91ba19e74cac89da062e4ba094ea4e5e11eed2b122049c",
+   "bytes": 13501
+  },
+  {
+   "file": "assay/0000550.json",
+   "sha256": "019a05cb130e4c844890dd7e522adbb1b8dc21a41d161b73e83940b081e7332f",
+   "bytes": 13461
+  },
+  {
+   "file": "assay/0000600.json",
+   "sha256": "cb4e159dc12d82e01d712d6d2bb62086f8afb36b8d2fc51a9de3a4f921e05bff",
+   "bytes": 13468
+  },
+  {
+   "file": "assay/0000650.json",
+   "sha256": "aad057351c8adf05fe097e9654355222839d229942ce598c8e5c68706fb736c9",
+   "bytes": 13505
+  },
+  {
+   "file": "assay/0000700.json",
+   "sha256": "cbf085e8d092aa8a71aa78e4cd9b841b0df6e0a16eacc3d3fa8cdde34231e943",
+   "bytes": 13383
+  },
+  {
+   "file": "assay/0000750.json",
+   "sha256": "d6175cca46c0d5a177068a0bd19e16450c874ac757ab857acae6d4bfb9043289",
+   "bytes": 13439
+  },
+  {
+   "file": "assay/0000800.json",
+   "sha256": "16d371a472cb986369f7884dfe32bc2723682c2fdf7c2d087244dd18e226aa9c",
+   "bytes": 13470
+  },
+  {
+   "file": "assay/0000850.json",
+   "sha256": "a9d5ee011dc7417c35694284541a7df83f035e56378eaa685d89f576e7f4bab4",
+   "bytes": 13459
+  },
+  {
+   "file": "assay/0000900.json",
+   "sha256": "a1c88e6d8c74fa633eac3c563c16f7767a79918ac062989a53da52d57eb1daeb",
+   "bytes": 13539
+  },
+  {
+   "file": "assay/0000950.json",
+   "sha256": "9b34c72d904e5c013c5d51ad9e495fe00cf8bae827cf493c045e2a28b0e60bf9",
+   "bytes": 13539
+  },
+  {
+   "file": "assay/0001000.json",
+   "sha256": "e70b53bd208d1fc7cb4eb49f955d59d8af5b0883fa562da15c4058d757fbad6b",
+   "bytes": 13465
+  },
+  {
+   "file": "assay/0001050.json",
+   "sha256": "b6d89804a3cb1b75c5c059267714804419f6e02a820c8cbdbe644ceb4de6a2e1",
+   "bytes": 13505
+  },
+  {
+   "file": "assay/0001100.json",
+   "sha256": "12dc50358d86a222a23e2a4937d4c76b7d913565d8b35d3c69f930ed765a1abd",
+   "bytes": 13538
+  },
+  {
+   "file": "assay/0001150.json",
+   "sha256": "07004dffe8616eec4406d58ec8eb2514e7a0e60bbc9f18fdac3d7e9d6e0f5e67",
+   "bytes": 13427
+  },
+  {
+   "file": "assay/0001200.json",
+   "sha256": "1d0a8753ca2f6be109b84907c933cc2ec64b3a16820589994a1f59f28e054d9b",
+   "bytes": 13570
+  },
+  {
+   "file": "assay/0001250.json",
+   "sha256": "9ea07caa711c19e7ca116dee4c91f4419316191cc8fc0cd5491892401c08a87a",
+   "bytes": 13583
+  },
+  {
+   "file": "assay/0001300.json",
+   "sha256": "694b3ce832d5d01adeed0236a7af436ba7eeb5569c817163fb55d0c84f390381",
+   "bytes": 13563
+  },
+  {
+   "file": "assay/0001350.json",
+   "sha256": "f771e44e94eca89a1785ef618c8b8c77408b0e41cdb6bd4a5a7e545867b84b61",
+   "bytes": 13380
+  },
+  {
+   "file": "assay/0001400.json",
+   "sha256": "df4adbb155d9c0c4cdf85c23946cbc958176a0326d9c35279b7d6e94e55be20c",
+   "bytes": 13767
+  },
+  {
+   "file": "assay/0001450.json",
+   "sha256": "03174f043fc7b8b7103c4bc3344341ed69e40db437f7ffa22209ea1b6bb004f7",
+   "bytes": 13665
+  },
+  {
+   "file": "assay/0001500.json",
+   "sha256": "b13cb578a039694995cfc8c689f3b08f326bc1b3ebb7cc01ccb5d840d6254231",
+   "bytes": 13527
+  },
+  {
+   "file": "assay/0001550.json",
+   "sha256": "3b824830ff89b3acde0b937e9520d79a280b566b396dfccc622284c5a848d34a",
+   "bytes": 13539
+  },
+  {
+   "file": "assay/0001600.json",
+   "sha256": "c5692543db50d13de4aa00b6a246f5c01fb90964dc7a40c3ebe958902fd09b2b",
+   "bytes": 13323
+  },
+  {
+   "file": "assay/0001650.json",
+   "sha256": "932a10adb40324f86f2f1555b2bf838a6b710c5532ddd220af1eab347702055e",
+   "bytes": 13515
+  },
+  {
+   "file": "assay/0001700.json",
+   "sha256": "27b32cb31efc9b781aaafd7dc715379036335cb4dd63abecde6fa67c3546119d",
+   "bytes": 13433
+  },
+  {
+   "file": "assay/0001750.json",
+   "sha256": "5a209a79dda7340cf37362aa5c2e4f9309604a8863b232130b3487fde0615617",
+   "bytes": 13341
+  },
+  {
+   "file": "assay/0001800.json",
+   "sha256": "9e9ab12f2fdcff9d434b01d06055b3476ea9d25022fec1eccc755aa2f90ac21f",
+   "bytes": 13461
+  },
+  {
+   "file": "assay/0001850.json",
+   "sha256": "6c75cc2d94527728a5000d98ef36ea395c5917e098cf1227bb4e1587490b17e4",
+   "bytes": 13520
+  },
+  {
+   "file": "assay/0001900.json",
+   "sha256": "acad57a1f96cfaace2c9faeb9967bc10d598734b12c049261e36e76cd367ed4a",
+   "bytes": 13530
+  },
+  {
+   "file": "assay/0001950.json",
+   "sha256": "ddf0f9bbf72ee1f78d1f9e4fb3c0e6e379bc727ff6bf1a7d27c7221f79b329ef",
+   "bytes": 13516
+  },
+  {
+   "file": "assay/0002000.json",
+   "sha256": "14469ed96e5686f8d40b42c25691d993320bd4dbe84ea80b6851f722d72d4604",
+   "bytes": 13449
+  },
+  {
+   "file": "assay/0002050.json",
+   "sha256": "e9cb2377e668d55cfacab1aabfed92d4915e6f13976f33c9b6fb339efe13e851",
+   "bytes": 13478
+  },
+  {
+   "file": "assay/0002100.json",
+   "sha256": "9fad46946ba36e905123aa2fc179af35aa51c72597a82a6a896e7a9a99595cfa",
+   "bytes": 13571
+  },
+  {
+   "file": "assay/0002150.json",
+   "sha256": "e4c148749ce39b471a1290c030faa3b94424bb723f3786a4d9843ceb4117f075",
+   "bytes": 13623
+  },
+  {
+   "file": "assay/0002200.json",
+   "sha256": "38b005508aa743e74071ead9196b06e1d9fd201353d821188f098999fd27b2e5",
+   "bytes": 13578
+  },
+  {
+   "file": "assay/0002250.json",
+   "sha256": "c6ff89378c9c54051c8cde2645d36b589f95069a284c05efc4259dcc260b7d4f",
+   "bytes": 13514
+  },
+  {
+   "file": "assay/0002300.json",
+   "sha256": "016a58bc6c4dbf8ab8b00e0dca67e1ae39eb9e034b3614908160837d9ff830ac",
+   "bytes": 13624
+  },
+  {
+   "file": "assay/0002350.json",
+   "sha256": "5b5a22d0f1cb2f34ea39002245d9fd1afe17d83f2f33a8fc2e3646aad77e4972",
+   "bytes": 13417
+  },
+  {
+   "file": "assay/0002400.json",
+   "sha256": "93d7184944c966172113be9f129071c6c82f96f46065e92ba2d5082af774f781",
+   "bytes": 13523
+  },
+  {
+   "file": "assay/0002450.json",
+   "sha256": "3cfff8ec87fc9e3414ad38f0fe71aed5997ce4abdc5f13de749461109c92d711",
+   "bytes": 13555
+  },
+  {
+   "file": "assay/0002500.json",
+   "sha256": "c22f24b3712bedc8ba703b91a06d274e6180a83ba0ce87de92e2223656c61557",
+   "bytes": 13629
+  },
+  {
+   "file": "assay/0002550.json",
+   "sha256": "204c8b1ae1622215decda8ff39e5b8804fc14927011d883441336fc1c3a3eda9",
+   "bytes": 13661
+  },
+  {
+   "file": "assay/0002600.json",
+   "sha256": "fb1a2dbc41b8efed1575a26aa875b79461b69ea09a929efbec67050164fef02e",
+   "bytes": 13684
+  },
+  {
+   "file": "assay/0002650.json",
+   "sha256": "2480c6486f272575de86439676a85ce4806ab205fbfebdfeff5cb5a551bb61a7",
+   "bytes": 13665
+  },
+  {
+   "file": "assay/0002700.json",
+   "sha256": "fd9bfe2153c9e0a7ab2169f79f27b603fa4295fe9464046fd5bd4b0f3955db70",
+   "bytes": 13670
+  },
+  {
+   "file": "assay/0002750.json",
+   "sha256": "952cdeb5e41f1147eb3249179e34c255a0b2adeed6d830b441377d30efcf04ac",
+   "bytes": 13654
+  },
+  {
+   "file": "assay/0002800.json",
+   "sha256": "d2e33adb3ef0fc794b1e5a10d42281ff55492381ae1b95dcd66552763b864fcd",
+   "bytes": 13695
+  },
+  {
+   "file": "assay/0002850.json",
+   "sha256": "23a9350fb39a9d157c6479624ec2d64ed25b88ba952f35a4866f2ebe72cdfec0",
+   "bytes": 13628
+  },
+  {
+   "file": "assay/0002900.json",
+   "sha256": "5b732db50a7e7a2c8d622f5b90844ca084261922038f6b74d05887bd4134fa19",
+   "bytes": 13630
+  },
+  {
+   "file": "assay/0002950.json",
+   "sha256": "e693d7fd4e7d9506efe9e0528db7209fffc20cac9923fced7640dd41e8bbf6ed",
+   "bytes": 13659
+  },
+  {
+   "file": "assay/0003000.json",
+   "sha256": "142a8c0ffb1e5cba81eabf51711ce70a9c2e4006f97bd5771863a3c2d0d2cf8e",
+   "bytes": 13660
+  },
+  {
+   "file": "assay/0003050.json",
+   "sha256": "1bacf38ae4d0287d375582e9ec858589bf42dba738ec7e81d0f9fe8841aeefa5",
+   "bytes": 13643
+  },
+  {
+   "file": "assay/0003100.json",
+   "sha256": "66ba5bdaa44bf5e28a376bb2bdf89048f39bd712b3e5380757b3d6b00953aa69",
+   "bytes": 13642
+  },
+  {
+   "file": "assay/0003150.json",
+   "sha256": "0bda5714b4d1b9b6786b959aee1a4907266f1a861b990fe82cd05550ef0a557b",
+   "bytes": 13628
+  },
+  {
+   "file": "assay/0003200.json",
+   "sha256": "de16c6a3bbea63673cc55abdc9f8d4f5da4c5900ed4628c93317ed808203d110",
+   "bytes": 13682
+  },
+  {
+   "file": "assay/0003250.json",
+   "sha256": "d36d22c78f9d4a3a1ff7a13554ee952635db07f5ad0611ea706f53cbe6e2890a",
+   "bytes": 13649
+  },
+  {
+   "file": "assay/0003300.json",
+   "sha256": "733e6130ae168da6b95daa0c33a80e24aae80428c9dd3ef9fc7390105ad8a351",
+   "bytes": 13638
+  },
+  {
+   "file": "assay/0003350.json",
+   "sha256": "0cfdaf2e90ccde6a5f1e6be33dc9a52e01b6fe60560bc55f71a28a1b52604912",
+   "bytes": 13670
+  },
+  {
+   "file": "assay/0003400.json",
+   "sha256": "c7ee5b106e4d061801a74af5923b0ba2295aa6901cb25a5e3d6b47c31edaa581",
+   "bytes": 13640
+  },
+  {
+   "file": "assay/0003450.json",
+   "sha256": "dcfc15f55abea3f642b207bc0a5b67dcbdd6c96d570e5795734a4e381106e3c8",
+   "bytes": 13648
+  },
+  {
+   "file": "assay/0003500.json",
+   "sha256": "69d76af020d4ab055f75b9e0835b9cbd42b3509657377f435bdf167d20581c22",
+   "bytes": 13672
+  },
+  {
+   "file": "assay/0003550.json",
+   "sha256": "5378ef4c2c5df2ad845782e474e97485f83febbffde5a9da082163d4fcf3c1e0",
+   "bytes": 13636
+  },
+  {
+   "file": "assay/0003600.json",
+   "sha256": "d58a57911688ab0f1dcc372ba76d9f765aa5138577a5eb610eb3d1521178cb81",
+   "bytes": 13689
+  },
+  {
+   "file": "assay/0003650.json",
+   "sha256": "a91f1b87f5b85a96131d7e70f45526263b950858d9ec434dd61b2b36f35c2d2f",
+   "bytes": 13676
+  },
+  {
+   "file": "assay/0003700.json",
+   "sha256": "2517cad2c755730a5f44125f22b60a43296fc9bc532e4f0e448de3211017a14b",
+   "bytes": 13676
+  },
+  {
+   "file": "assay/0003750.json",
+   "sha256": "797420bff12cbab1590c039f9508defb74272488029864bf999e79abb8f14338",
+   "bytes": 13687
+  },
+  {
+   "file": "assay/0003800.json",
+   "sha256": "33fd770c45c604bf6de6d8495cef577b7dbe5c22944ebbefba261ad6747ec836",
+   "bytes": 13711
+  },
+  {
+   "file": "assay/0003850.json",
+   "sha256": "d834e5e64de2f91bcca73ad7e10bc23c0b67155f54dcb5b06e6be3c00388f0b4",
+   "bytes": 13670
+  },
+  {
+   "file": "assay/0003900.json",
+   "sha256": "ecee0285d9d0f5c7f25e7cd97ff8d8e24ab29823cfdb35c2e6eccbc695de9ff5",
+   "bytes": 13674
+  },
+  {
+   "file": "assay/0003950.json",
+   "sha256": "34a845a33045e8af4074fcab412198c2dd7919f56e20d261faad0717ab8ca32c",
+   "bytes": 13664
+  },
+  {
+   "file": "assay/0004000.json",
+   "sha256": "fe251b28a80225a9423575febe214fe9d49810901dc698c4d7ea3fdb30c4ecea",
+   "bytes": 13694
+  },
+  {
+   "file": "assay/0004050.json",
+   "sha256": "09ae2c5b72595ca60ad3d13673e7f432fb5cd147502f08c3f2f8ffb6d99e6dfa",
+   "bytes": 13698
+  },
+  {
+   "file": "assay/0004100.json",
+   "sha256": "7c15168e710ae4df252a8ddd4a3990c2aad16289923f56e47763705f927b3551",
+   "bytes": 13677
+  },
+  {
+   "file": "assay/0004150.json",
+   "sha256": "a66c92642816a969f8ccc0f485f46a5439b9fce4f26b90e73b9659e446cb6f23",
+   "bytes": 13677
+  },
+  {
+   "file": "assay/0004200.json",
+   "sha256": "e3c6100affd0278cb5d18faba357166352a51637fad5fd80fbfce9cfcfb0e862",
+   "bytes": 13639
+  },
+  {
+   "file": "assay/0004250.json",
+   "sha256": "b3ffb913b25c1eeda4c0bff90fc1606737bb439c28b75537915203fc5b38771f",
+   "bytes": 13602
+  },
+  {
+   "file": "assay/0004300.json",
+   "sha256": "91a5cefc4e7ba4b23e42b183c58eff6090c6ca11566fcf4adfa607902cdb6f3e",
+   "bytes": 13559
+  },
+  {
+   "file": "assay/0004350.json",
+   "sha256": "7563b2894029f9eaa825a712575ef0e79c77c0b33cd4da3a6ce18fb60215c8d8",
+   "bytes": 13611
+  },
+  {
+   "file": "assay/0004400.json",
+   "sha256": "4ed474fd1e61e66b6d4746b40c3fd730ec2d94b08566db9b78910b58569fc305",
+   "bytes": 13632
+  },
+  {
+   "file": "assay/0004450.json",
+   "sha256": "2670e5114555d008bf4f7aae2cc7fe40fa2246534122220f154f4555efd0c387",
+   "bytes": 13690
+  },
+  {
+   "file": "assay/0004500.json",
+   "sha256": "eaf17261cb9a9c69bf40a926f5fab76c00c74f2390160b6a7a8d9485a47936cb",
+   "bytes": 13622
+  },
+  {
+   "file": "assay/0004550.json",
+   "sha256": "b13878d253c0bd4b4ee69abc569a9960cffc2098548b0d3a8fbde33520886a97",
+   "bytes": 13645
+  },
+  {
+   "file": "assay/0004600.json",
+   "sha256": "b001affc40f78bc6b04a3c56f2a0f9cfaedb908162e6e2ade2aa14b3c2afa20b",
+   "bytes": 13657
+  },
+  {
+   "file": "assay/0004650.json",
+   "sha256": "c080fe1005293e03f0f3401298a572dd1e0475c04d76ece78288e0d82009a221",
+   "bytes": 13651
+  },
+  {
+   "file": "assay/0004700.json",
+   "sha256": "48b50979996858b62a6c00f1f051dba5670d4053e855abe0a258e1f78727c3ed",
+   "bytes": 13721
+  },
+  {
+   "file": "assay/0004750.json",
+   "sha256": "a8601f692062a20f1de4fac128b2a8c3073962669e8df82f2f53247a26011e7c",
+   "bytes": 13653
+  },
+  {
+   "file": "assay/0004800.json",
+   "sha256": "6f7074383ba76a89a127f3d35d0f89f8cfc89bbf8ca389b08cbb690f16892944",
+   "bytes": 13652
+  },
+  {
+   "file": "assay/0004850.json",
+   "sha256": "cb1b0db8cb3f302bd9a7191d23b778dee779691393c36cf644d61abcf0b2c289",
+   "bytes": 13671
+  },
+  {
+   "file": "assay/0004900.json",
+   "sha256": "ff186b27a549a5a8a494579de3b65f697d89569fd89fc239a43205b19fd0df27",
+   "bytes": 13690
+  },
+  {
+   "file": "assay/0004950.json",
+   "sha256": "6808d1415d86c0985540a74c1a3133a596f42cb1967398f0d4c8cfeea0ab5a18",
+   "bytes": 13671
+  },
+  {
+   "file": "assay/0005000.json",
+   "sha256": "4787e11697f3ae2e872e179fefcbe60f0432ccc66d25a4f9e54dec42268f45df",
+   "bytes": 13670
+  },
+  {
+   "file": "assay/0005050.json",
+   "sha256": "2ddb4b45339591b2c830f2fd3b1d43af343b87ed0fd255aa32d9bea9b88f67e9",
+   "bytes": 121950
+  },
+  {
+   "file": "assay/0005100.json",
+   "sha256": "82385501ff7f7cc539b0c44f6c0607b41cb369fedb2c655d48d5d4548680b6a8",
+   "bytes": 13509
+  },
+  {
+   "file": "assay/0005150.json",
+   "sha256": "738f2c88102eb4bec4dd5cbafa4dc05e3d6bf15cee893b9e9e9b5e9d4c3551d7",
+   "bytes": 13468
+  },
+  {
+   "file": "assay/0005200.json",
+   "sha256": "e3076f4aee7924b97e6e262ba3bdd73bd0732fa451e2961b1c4ecfb61b96400b",
+   "bytes": 13456
+  },
+  {
+   "file": "assay/0005250.json",
+   "sha256": "ce169399d536a2895342c0bb86f9a37c4499b0763bac40d936b9bf78d26fc504",
+   "bytes": 16048
+  },
+  {
+   "file": "assay/0005300.json",
+   "sha256": "9f6eec842f98d7ac93cf1ce9fe237ce95d53aad0fc9ff09447cff75544f0099a",
+   "bytes": 13612
+  },
+  {
+   "file": "assay/0005350.json",
+   "sha256": "e7891d27740c6bb389f0c12325ce3eb6f4c0e0ae24d5a348c830dc1088a6f8b0",
+   "bytes": 13654
+  },
+  {
+   "file": "assay/0005400.json",
+   "sha256": "912fa292aa5edf43c91c74f5b7d41e718aa04b834372912d7300c76db2322bfb",
+   "bytes": 13614
+  },
+  {
+   "file": "assay/0005450.json",
+   "sha256": "3c3e7541733284752600ded94f734497fd47e51baf339129596521fc80cb916b",
+   "bytes": 13640
+  },
+  {
+   "file": "assay/0005500.json",
+   "sha256": "5a6bb32ac9aaed4380052ace90d80a7178f66c1fe91d683f94b1920b52831252",
+   "bytes": 13622
+  },
+  {
+   "file": "assay/0005550.json",
+   "sha256": "d6d95fdafa01cc472007fa1efddf633fcd4eea7b681ab9bd9f345e572a5450be",
+   "bytes": 13624
+  },
+  {
+   "file": "assay/0005600.json",
+   "sha256": "d878ced1128a7ec2f1c0aaff661c600a2aac950381717d32d5a42b26e093ddfd",
+   "bytes": 13676
+  },
+  {
+   "file": "assay/0005650.json",
+   "sha256": "f17a55aa70f23405cab5baca6fe03d670839bcc40310ed5f9f0f1651e45bdb85",
+   "bytes": 13614
+  },
+  {
+   "file": "assay/0005700.json",
+   "sha256": "e7669aa976634ac99781f55f74005108c36fcf0cfaf965f4c833bc91dca3d069",
+   "bytes": 13658
+  },
+  {
+   "file": "assay/0005750.json",
+   "sha256": "a7f35323c3a1c7d7e4168b3b739587dc579ea7fe43004a029140b77c0372ee01",
+   "bytes": 13634
+  },
+  {
+   "file": "assay/0005800.json",
+   "sha256": "806b0e88b35fced10c862befbe17e8bfdb84938dfd3add882247141b78a7bf9f",
+   "bytes": 13639
+  },
+  {
+   "file": "assay/0005850.json",
+   "sha256": "4c51cbfbfeda8ad49e1da70583e83722e1de91d1542e48a8d7b2acb5a36cc83a",
+   "bytes": 13611
+  },
+  {
+   "file": "assay/0005900.json",
+   "sha256": "0891208f4698edf2beaa3a4eedbfe0b194dcdcb87b2db5fde9b1c50e4319ad2a",
+   "bytes": 13647
+  },
+  {
+   "file": "assay/0005950.json",
+   "sha256": "34ee7c7ba00852eb37163170fd4a714881bc8de8deb4f8a47bfe2add1203bb75",
+   "bytes": 13635
+  },
+  {
+   "file": "assay/0006000.json",
+   "sha256": "1b04683cca69d1ce7d12c95649fe16f1a138222974d34aceb1d6dad941965381",
+   "bytes": 13633
+  },
+  {
+   "file": "assay/0006050.json",
+   "sha256": "b8c570ecab02298ce1e3eb010f37238e646bdd7bbc95fc55682a9e9bc3ccb7f6",
+   "bytes": 13622
+  },
+  {
+   "file": "assay/0006100.json",
+   "sha256": "bde3eff607617210f97a241bc447ca1a2943ff967b0f450676b06690a0c99acf",
+   "bytes": 13621
+  },
+  {
+   "file": "assay/0006150.json",
+   "sha256": "9360f0a6d9ea385cac8bb1d03701448f76448e58c4db7cd1a12d34448514a023",
+   "bytes": 13636
+  },
+  {
+   "file": "assay/0006200.json",
+   "sha256": "221cbe99bde642189ea8d2d27daf16c7d6420fb20c5b1ca53c14b8647fb80218",
+   "bytes": 13642
+  },
+  {
+   "file": "assay/0006250.json",
+   "sha256": "a9b750280f313788b58f4fb483eb7df3d0bbbe4644d43a12a03a7e50a148fd84",
+   "bytes": 13646
+  },
+  {
+   "file": "assay/0006300.json",
+   "sha256": "730af7a304bf2429f8a263b08a8dce81ddbc75ccdf940ce04e15e434f9058f27",
+   "bytes": 13644
+  },
+  {
+   "file": "assay/0006350.json",
+   "sha256": "8ffe9619ce79a21f7ddbe0cf775ea4c6e6f9d5b0aabf43dedc2435a149cb318b",
+   "bytes": 13641
+  },
+  {
+   "file": "assay/0006450.json",
+   "sha256": "68fa0e44667c9f7438c14aa65ecac6b1ce345f3236ee48b31b785de06f2310ff",
+   "bytes": 13652
+  },
+  {
+   "file": "assay/0006500.json",
+   "sha256": "1cf6cc2c0550fe5e0c9e5c255732a9e0e82009b68a48ca758b15922ac4173829",
+   "bytes": 13626
+  },
+  {
+   "file": "assay/0006600.json",
+   "sha256": "322098ca0682ebd7f572d5eb96d3cb95dd18575319a1540e19396064d38a610f",
+   "bytes": 13629
+  },
+  {
+   "file": "assay/0006650.json",
+   "sha256": "dfea2211a937f61fbbba2a6e789ff7dbb729c2e451b7cd9dbe7e48d598b72d9c",
+   "bytes": 13647
+  },
+  {
+   "file": "assay/0006700.json",
+   "sha256": "019d87a9c4e80cf370b9b83977529e7effd4b050787fc28ea37582b402d29c79",
+   "bytes": 13635
+  },
+  {
+   "file": "assay/0006750.json",
+   "sha256": "a85d331c138bde6f50d56f1a00512803cf673ca666405ea6b6fec9befb9133a8",
+   "bytes": 13681
+  },
+  {
+   "file": "assay/0006800.json",
+   "sha256": "a65ec36da3fc0d7814cc1af692142ac33865dad3bf060ad1bffdebdfd2a5ad1c",
+   "bytes": 13626
+  },
+  {
+   "file": "assay/0006850.json",
+   "sha256": "63e8c26aade88d4fbe70701562301a4ab9fcf8408d725290fbf0e65ccdfcd0ee",
+   "bytes": 13670
+  },
+  {
+   "file": "assay/0006900.json",
+   "sha256": "df4f248f2af5f1427e612ef47b3c694a5176fa82949e2021e48f87c5a005792d",
+   "bytes": 13657
+  },
+  {
+   "file": "assay/0007000.json",
+   "sha256": "ea063b1e3abec5ce088fd7a405ce228a1b7c8b1e187f34fed8e5f08ff6d945a9",
+   "bytes": 13693
+  },
+  {
+   "file": "assay/0007050.json",
+   "sha256": "5e101eba0bb3cfecca5bafec8ab1f387c81f6cce978230e3728e3ebd896c5366",
+   "bytes": 13740
+  },
+  {
+   "file": "assay/0007150.json",
+   "sha256": "a9d038223a8cc4970ff704a69f70aa967904937c6ce8fa749c0895e71e8ce3a8",
+   "bytes": 13815
+  },
+  {
+   "file": "assay/0007200.json",
+   "sha256": "4dc3f40615f35236e3e7af17228da605bf0e90a6367a82bab7ffb7a9d5bd67e4",
+   "bytes": 13703
+  },
+  {
+   "file": "assay/0007250.json",
+   "sha256": "2e9eb4897b2680faf516fccaf2c2c9cd571d4065b2f514767fd68319c58502d4",
+   "bytes": 13674
+  },
+  {
+   "file": "assay/0007300.json",
+   "sha256": "bb7dbbe0fb606b025eb25c855356452a607bc7cd109bb742a94314e0a3f8d706",
+   "bytes": 13709
+  },
+  {
+   "file": "assay/0007350.json",
+   "sha256": "54e106a9013b5f5deef16aa55449bc5e403962a19b6a021547d5f775b6140455",
+   "bytes": 13679
+  },
+  {
+   "file": "assay/0007400.json",
+   "sha256": "ce00f3576be7682947b8daf6aeb6826eea4da9ea927147ff7fa77d64400430d2",
+   "bytes": 13702
+  },
+  {
+   "file": "assay/0007450.json",
+   "sha256": "db8c29b3035cb336cee0e204b59dde91d2cd132f2b32d954dcf0360e38dc3677",
+   "bytes": 13709
+  },
+  {
+   "file": "assay/0007500.json",
+   "sha256": "ff6d6afbbf210d4b12aa49e881dbccf60ff0e7cf6482dc88d6d1af3e97f9be3c",
+   "bytes": 99674
+  },
+  {
+   "file": "assay/0007550.json",
+   "sha256": "3ad989717e9110b8e5ade5ce318dabb4f011ec783fc86e2349ea4c7d8be74c00",
+   "bytes": 19470
+  },
+  {
+   "file": "assay/0007600.json",
+   "sha256": "553146688b566e48a81d8604ca47c482a35a65399228f9e40835f4e3c599319b",
+   "bytes": 13681
+  },
+  {
+   "file": "assay/0007650.json",
+   "sha256": "f1cb60ef54544347a8d1916b09f539b7e8c22284246d00c2ad2ceeea6c6f83d5",
+   "bytes": 13817
+  },
+  {
+   "file": "assay/0007700.json",
+   "sha256": "ad953219f560c2a67c91099ed1990bf15486fbf42b2c18a06d12882b3e269d1e",
+   "bytes": 26318
+  },
+  {
+   "file": "assay/0007750.json",
+   "sha256": "be0f06d52054a28d575124de9fd68f4b38067965501e0f73d57bbf9c9270111a",
+   "bytes": 13788
+  },
+  {
+   "file": "assay/0007800.json",
+   "sha256": "1455df088157de7cf8fe93fd1317a43901564b153dab28000b6981437c889d0e",
+   "bytes": 13642
+  },
+  {
+   "file": "assay/0007850.json",
+   "sha256": "8eab73073bdf30262646f9e7e3d0ebb5550c56b69bfe42b319e2adc6542db738",
+   "bytes": 13660
+  },
+  {
+   "file": "assay/0007900.json",
+   "sha256": "d04210006983e34683e181f1803048b0b8c2c010db29063cf0264328110c44b4",
+   "bytes": 13663
+  },
+  {
+   "file": "assay/0007950.json",
+   "sha256": "b24244e51dee4e63e90f268b7664dcdc3b7915ef1866063e61ee3859eae4ccd8",
+   "bytes": 13643
+  },
+  {
+   "file": "assay/0008000.json",
+   "sha256": "ecfff1ad9d998bcbf1ab80b8339785ca6ee9e1ce63836fd6c3e0d49ccd9f3558",
+   "bytes": 13671
+  },
+  {
+   "file": "assay/0008100.json",
+   "sha256": "b73b985c42c9656b4c7da1eaf7fd2cf88623705c516371c998c7dee6c4e3c722",
+   "bytes": 13707
+  },
+  {
+   "file": "assay/0008150.json",
+   "sha256": "739526dc07c780581f96cc07a50b247901059430f86a7cd366d10814848824ec",
+   "bytes": 13728
+  },
+  {
+   "file": "assay/0008200.json",
+   "sha256": "ad8eb53d01bd5fcd24e765e33eac38ad2891fb7e6bba42538f36678dd6899325",
+   "bytes": 13676
+  },
+  {
+   "file": "assay/0008250.json",
+   "sha256": "3cbf0626a5b1c572e668d3e91e8e001ebeec1dab24d24b287743ab9115aeebb7",
+   "bytes": 13653
+  },
+  {
+   "file": "assay/0008300.json",
+   "sha256": "85cf56fa5177c21d4878ed53fee3596406066b2b8e3dc96c4e90e2fb130abe96",
+   "bytes": 50439
+  },
+  {
+   "file": "assay/0008350.json",
+   "sha256": "ee64164ce63384f94f2172071879bbd1fe17b980fca8a9b4000a5e1d78aff6ef",
+   "bytes": 28180
+  },
+  {
+   "file": "assay/0008400.json",
+   "sha256": "8f563723e765eedcbe03dacdd546dcccf2744878f66bba1e09acd447b4a7c85e",
+   "bytes": 26122
+  },
+  {
+   "file": "assay/0008450.json",
+   "sha256": "af1887a7d51b77a0f1b4c096fb5d9fee32174555a94a1c0fbef7d3c95bb1e674",
+   "bytes": 25328
+  },
+  {
+   "file": "assay/0008500.json",
+   "sha256": "1586a64ebada0b060388344f589cb07fc71112f76b881f9b1c2c661a9beaa86e",
+   "bytes": 17263
+  },
+  {
+   "file": "assay/0008600.json",
+   "sha256": "b3e3c073af5f7a4248733f92a2ed4bdac2f6afc7da491457707832bc98c597d6",
+   "bytes": 13638
+  },
+  {
+   "file": "assay/0008650.json",
+   "sha256": "94ccd153a9e420881c08213fb92a589aa922ae406e67910178091b0c4967a8de",
+   "bytes": 13671
+  },
+  {
+   "file": "assay/0008700.json",
+   "sha256": "b7b2fa794ec11d65e23bb8564fb301b0c0cfa1f37db260780f25e6192623e840",
+   "bytes": 13641
+  },
+  {
+   "file": "assay/0008750.json",
+   "sha256": "8e081b75d029c6532df706144cefedc5f3881eb4746bfd795ff708151b45fa40",
+   "bytes": 13635
+  },
+  {
+   "file": "assay/0008800.json",
+   "sha256": "808c37982414ca207658fd064e317cc50faac681ac53ffe98f77036a2766dfee",
+   "bytes": 13679
+  },
+  {
+   "file": "assay/0008850.json",
+   "sha256": "ebcff24f1f628c8dc086a25cfd81ebf9ac103fcb992ddca3f503762f218d0e7d",
+   "bytes": 13642
+  },
+  {
+   "file": "assay/0008900.json",
+   "sha256": "ef4db9e0138b2f546b5c03937f4c48f76351d0cdd81cb1e72d4c75dc488a550e",
+   "bytes": 17084
+  },
+  {
+   "file": "assay/0008950.json",
+   "sha256": "3e5727529048c8d0210df7a4bbdf3c8d89f5820b65434284303c44cbf7b1bb63",
+   "bytes": 13718
+  },
+  {
+   "file": "assay/0009000.json",
+   "sha256": "40f42225ffb5b1f8e92b24214ba8197cbcaba052cff2c6facff15a8e7ee9d965",
+   "bytes": 13677
+  },
+  {
+   "file": "assay/0009050.json",
+   "sha256": "cd532716e0b23626d0b8a090c9363f73889741ee75917a72deb3c3afc3362dff",
+   "bytes": 13692
+  },
+  {
+   "file": "assay/0009100.json",
+   "sha256": "75c1ade299fccfc468b414132e530fb121fd9e4160a99401e22c0c877b0ca9fd",
+   "bytes": 13685
+  },
+  {
+   "file": "assay/0009150.json",
+   "sha256": "ebaaec39a3a2cca87177fcdba7676d051128123e6b7734211d243bafa1472113",
+   "bytes": 13625
+  },
+  {
+   "file": "assay/0009200.json",
+   "sha256": "d8e25d161cab26c90798e958294183025dcd5ce265c53098cedddd8c15c85e85",
+   "bytes": 13676
+  },
+  {
+   "file": "assay/0009250.json",
+   "sha256": "d63f106eef0dbe1056c697263e378e252bdf3d0dbc6e6895c5a1b171019d6d7a",
+   "bytes": 13706
+  },
+  {
+   "file": "assay/0009300.json",
+   "sha256": "9ec25ca66ac1c810e645b24297bb5cd11b4103758b6490b133eed213e88601ad",
+   "bytes": 13695
+  },
+  {
+   "file": "assay/0009350.json",
+   "sha256": "cafff3ad4cd01569f8f504b558c40977e34fbaab1829b74b768e810475cba156",
+   "bytes": 13712
+  },
+  {
+   "file": "assay/0009400.json",
+   "sha256": "0c60b888d0115d80c4f6637b0cf185305a0b48b20d0e506699409735645e8f19",
+   "bytes": 13648
+  },
+  {
+   "file": "assay/0009450.json",
+   "sha256": "77ecd5baaf06eefefa982e3ed6bd67976eac578b2577a6490ed887bfdffd59d0",
+   "bytes": 13692
+  },
+  {
+   "file": "assay/0009500.json",
+   "sha256": "3ccf522069cddb8385a97b45bb189a8aaca7dd88e4e850d7a686aabdbeca48bb",
+   "bytes": 43857
+  },
+  {
+   "file": "assay/0009550.json",
+   "sha256": "e14c33797223790bf092db26626f77d548eeae5166ae9b7bb6f887012cae6ea2",
+   "bytes": 62370
+  },
+  {
+   "file": "assay/0009600.json",
+   "sha256": "9e74440dfa637ed3bffb7a1c6e740f6dd687ac6b41d916c0859b19492873295c",
+   "bytes": 62315
+  },
+  {
+   "file": "assay/0009650.json",
+   "sha256": "f9e216902b8798d9479e63a3e9528efc48243c7891f80dc59c4c370e53d8c7be",
+   "bytes": 38945
+  },
+  {
+   "file": "assay/0009700.json",
+   "sha256": "89dcb46020744f6d9c98ec4be8aed2c0d8b06c0d1ee45cf8ff83c74926ce4ec5",
+   "bytes": 29582
+  },
+  {
+   "file": "assay/0009750.json",
+   "sha256": "6661fa98fbd83cf8746b32ba3190995eaf9c4638c4b061f856df71494ddefbf1",
+   "bytes": 29740
+  },
+  {
+   "file": "assay/0009800.json",
+   "sha256": "8698832f09c9af375326081a0fb1fad8b1f277139b148adf40cf4ab119e8fbbc",
+   "bytes": 26701
+  },
+  {
+   "file": "assay/0009850.json",
+   "sha256": "1f35b21e50cf4353bfbb8bd4b4894768a66c1a3f1c95039a905a2ea073f8f70e",
+   "bytes": 13642
+  },
+  {
+   "file": "assay/0009900.json",
+   "sha256": "9e8c28ecb7a185e7a87a62e1c818a2de1e70b747a713db500ed8dec9c053edc9",
+   "bytes": 13737
+  },
+  {
+   "file": "assay/0009950.json",
+   "sha256": "730d663b441420e124d46c5c97c04691404a93a42c15295c24790ec98fdb4d54",
+   "bytes": 13675
+  },
+  {
+   "file": "assay/0010000.json",
+   "sha256": "008eac53647b1381deab5179cb2bda9a9d7156e435098c538dfd88d27f6f7cee",
+   "bytes": 13673
+  },
+  {
+   "file": "assay/0010050.json",
+   "sha256": "901e27782aceb8d9d3895b18985a163ee37efd065f328d21a66fcc6965f403f0",
+   "bytes": 13638
+  },
+  {
+   "file": "assay/0010100.json",
+   "sha256": "137cccefd03dec50e0aadad81affe1e752be62ed6930c21e6b6b195fe606e73d",
+   "bytes": 13668
+  },
+  {
+   "file": "assay/0010150.json",
+   "sha256": "1a6f34346a776725290723b17b2fa2d12160eeb646d5e397e0f1097bd84bee28",
+   "bytes": 13661
+  },
+  {
+   "file": "assay/0010200.json",
+   "sha256": "c3efc6f236324bdeea1f3c71fd580a18238042befb5091c3fccb2851355c27df",
+   "bytes": 13671
+  },
+  {
+   "file": "assay/0010250.json",
+   "sha256": "c197236d9092070e213994b83f5c172ac7e7a7ea2d768bee35fff443623fc59e",
+   "bytes": 13667
+  },
+  {
+   "file": "assay/0010300.json",
+   "sha256": "ca6806b62af0a404226e80f676d263635b27d94eb5e89cfdeff2bb22281ee248",
+   "bytes": 13630
+  },
+  {
+   "file": "assay/0010350.json",
+   "sha256": "dca280564e95f41e5f5cb9ee7e565d7e9a8849e633b72816cc2b30bcab682c35",
+   "bytes": 37875
+  },
+  {
+   "file": "assay/0010400.json",
+   "sha256": "1c6b58bb6c3ae0edc7e4a9d77b21e65ba45ff9048f432c2b5fc5ec7d9bea8482",
+   "bytes": 34746
+  },
+  {
+   "file": "assay/0010450.json",
+   "sha256": "bf918961e71d0c6d34d06856a66c00672eada49d06b9c619709b710c46151a2b",
+   "bytes": 50266
+  },
+  {
+   "file": "assay/0010500.json",
+   "sha256": "d8c4b7d50a311d48aebac13346397b4dfa8f7985282801ce8f90485e60b3dc90",
+   "bytes": 39791
+  },
+  {
+   "file": "assay/0010550.json",
+   "sha256": "af5e48b639d78421a313e630ab1eefe252b7d889a8e49929a8e927b696a81542",
+   "bytes": 42770
+  },
+  {
+   "file": "assay/0010600.json",
+   "sha256": "e78a01ee2b4826783773ba481b7fba03268668b8fc78a96f642b065384b956db",
+   "bytes": 53686
+  },
+  {
+   "file": "assay/0010650.json",
+   "sha256": "3608af0e1d653143fa0d460f192b98338ea22f151e07fdd85839cfad7cae8dd0",
+   "bytes": 25991
+  },
+  {
+   "file": "assay/0010700.json",
+   "sha256": "d3707149ba5ccc60d5a18fa91d8c7e0fb84d93b40d232ee5c94c699df276ec95",
+   "bytes": 13494
+  },
+  {
+   "file": "assay/0010750.json",
+   "sha256": "7ad27c9caeb932df02d7027fee141c8be3bfe38efcbfe15d1f23deee6cc3b6f3",
+   "bytes": 13554
+  },
+  {
+   "file": "assay/0010800.json",
+   "sha256": "629354f4aef31c2e4ea20c585b755ae1da6e23a67ddb83da8b8d7836daecc2c1",
+   "bytes": 13564
+  },
+  {
+   "file": "assay/0010850.json",
+   "sha256": "eae4e3fa462d9778dc51077fd4fe03252438a4b3681fcf4a79570442720e65c7",
+   "bytes": 13534
+  },
+  {
+   "file": "assay/0010900.json",
+   "sha256": "a0fad36c61d0ba80c6abf2c41ccdaf668c81b1db7c2313dce9e29a752d0efb1c",
+   "bytes": 13504
+  },
+  {
+   "file": "assay/0010950.json",
+   "sha256": "f12a867152c234237c896a43700ccf86501a85af552be7cbf3b98787cf7eaf35",
+   "bytes": 13554
+  },
+  {
+   "file": "assay/0011000.json",
+   "sha256": "b1cd9d1d308d59965711843125e666a1e9a5ce1d16822bb61e79765ea56ac514",
+   "bytes": 13544
+  },
+  {
+   "file": "assay/0011050.json",
+   "sha256": "b7cf24be924a8815c991081b51f75ce1efe92597a57330e7bb79428c77a59593",
+   "bytes": 13524
+  },
+  {
+   "file": "assay/0011100.json",
+   "sha256": "f36494116940b9589ce06e1ca875f7be91af9dac74f7b1e2f209bc7348df7e15",
+   "bytes": 13574
+  },
+  {
+   "file": "assay/0011150.json",
+   "sha256": "2b547952c3140856fb2448f4bf8721d62c817accdb9c9710878817238f17ca02",
+   "bytes": 13504
+  },
+  {
+   "file": "assay/0011200.json",
+   "sha256": "7f4881101ab33ab3d22c2c80063d852c19aaeb9d16ea6ccfeb9c37d72164273e",
+   "bytes": 13504
+  },
+  {
+   "file": "assay/0011250.json",
+   "sha256": "dcf1e2ad1c1fb3cc4e6d6152d6e8e8857cf4524aa243c77205a2f70547b26951",
+   "bytes": 13404
+  },
+  {
+   "file": "assay/0011300.json",
+   "sha256": "105fe1fe7a2ac940aa16a9677b02fa57a3a8214edd3d08482befa2592533b0e0",
+   "bytes": 13424
+  },
+  {
+   "file": "assay/0011350.json",
+   "sha256": "256952bb71c32716ee74dca579b958193bb159a62d9d0e63e2b81a4e42412a66",
+   "bytes": 13534
+  },
+  {
+   "file": "assay/0011400.json",
+   "sha256": "549a1e847c85e0f4e86e93e8f7adfcb95a23799e631371950add8485572ef6cf",
+   "bytes": 13601
+  },
+  {
+   "file": "assay/0011450.json",
+   "sha256": "5b53ca897f6e0e8f20943de18a1b10fca42ffe335327ba1943c6b0188053186b",
+   "bytes": 13662
+  },
+  {
+   "file": "assay/0011500.json",
+   "sha256": "62b7b75a5d92dabbece755f93df6010a5ec5d645bf5a9e48b942e8b4e133b9d0",
+   "bytes": 13638
+  },
+  {
+   "file": "assay/0011550.json",
+   "sha256": "8eb80726a7f750ddc2cf61caff31b620db6f239cf6d9df806c8468e51a0abb00",
+   "bytes": 13644
+  },
+  {
+   "file": "assay/0011600.json",
+   "sha256": "d5d0c5ce13a4b8acec436c546eca0636f33f85089d1b7b22736e1faef3f894fe",
+   "bytes": 13684
+  },
+  {
+   "file": "assay/0011650.json",
+   "sha256": "a3af3af1ebbc5bdfd2a0f1a4bf5d63820880d19c6cb9d3b38246cd1101acb2c0",
+   "bytes": 13720
+  },
+  {
+   "file": "assay/0011800.json",
+   "sha256": "9098fdd951d5e41c3b23127dadc0a8f6d4332fb5c386ec908b71362e82220a68",
+   "bytes": 13708
+  },
+  {
+   "file": "assay/0011850.json",
+   "sha256": "98465ff17eabaff9fddfead155c4fc9f17dff72073638f8080d52d143f827977",
+   "bytes": 13497
+  },
+  {
+   "file": "assay/0011900.json",
+   "sha256": "f301b8dcf39f47d739ca78a2186bda95f6572299afa963ef9af8d307373a3694",
+   "bytes": 13325
+  },
+  {
+   "file": "assay/0012350.json",
+   "sha256": "c0645c7ebdf58ccb66487b5db0e3fe838fe38e2b7b1798f22e946691eec5c059",
+   "bytes": 13188
+  },
+  {
+   "file": "assay/0012400.json",
+   "sha256": "ac499be6685a51d52316d1765d79c7512deee3c443e4ab401360e84ce5a96a99",
+   "bytes": 13749
+  },
+  {
+   "file": "assay/0012450.json",
+   "sha256": "5698de489d57534b73e5e21199afe1fdd6b0cae0e41337082d6c35560eb676e7",
+   "bytes": 13774
+  },
+  {
+   "file": "assay/0012500.json",
+   "sha256": "f769b1275c77bbb711a367a9a1a01bd263e74fe46060cd155b5e44e3dfba7323",
+   "bytes": 13339
+  },
+  {
+   "file": "assay/0012550.json",
+   "sha256": "b6632cc1127e555959719f5a2c10a2d947d1c73c193021524b8893983363415a",
+   "bytes": 13164
+  },
+  {
+   "file": "assay/0012600.json",
+   "sha256": "3e00e161ed1211ff70e7588e3ae78d50e84e1853336cca1c3b9fe66e57fab166",
+   "bytes": 13324
+  },
+  {
+   "file": "assay/0012650.json",
+   "sha256": "e137538d0c2492c4f582a7606a04d9a16c8f2520124081735ff1afe8d6a1d697",
+   "bytes": 13462
+  },
+  {
+   "file": "assay/0012700.json",
+   "sha256": "14d2ad62108f29b3fd8ea5feb20a2a6907d2a58b2acbfbe9d58cfb229a3e8f1f",
+   "bytes": 13434
+  },
+  {
+   "file": "assay/0012750.json",
+   "sha256": "3843636e89ed911917c55e8b0141283aeb951b2ae4b0ec3a08ecb7b0491ce9cd",
+   "bytes": 13242
+  },
+  {
+   "file": "assay/0012800.json",
+   "sha256": "2a62dbff9c501ef1d7fe9c9b55db0c19c0ae97be1b50f0bb1e486b447a6388de",
+   "bytes": 13349
+  },
+  {
+   "file": "assay/0012850.json",
+   "sha256": "67e6ac1ad52f9f6e91fa7858cc4ce8074fd1524838596dc4bce33b4fcf17e100",
+   "bytes": 13352
+  },
+  {
+   "file": "assay/0012900.json",
+   "sha256": "ef094fa6a295edd0d3a21763a881ec741a55caee6c048b9f2b01c5c658c5fd35",
+   "bytes": 13411
+  },
+  {
+   "file": "assay/0012950.json",
+   "sha256": "3880817630a2930fe6bae612bd8929ebca7be33030499d9a7562124f087b135a",
+   "bytes": 13207
+  },
+  {
+   "file": "assay/0013000.json",
+   "sha256": "4a38072758d546c42776cda7775c14133e9e77b85d09a284cf36265723b03688",
+   "bytes": 13254
+  },
+  {
+   "file": "assay/0013050.json",
+   "sha256": "7862fe64febecc1b954948a2106930174d45f22dac0720468e802c57ff645ad0",
+   "bytes": 13391
+  },
+  {
+   "file": "assay/0013100.json",
+   "sha256": "b5c16cc3abd2c0bf04f20d9a513c7e979694e36581a85244d910a64e0442e6a0",
+   "bytes": 13859
+  },
+  {
+   "file": "assay/0013150.json",
+   "sha256": "4302638d893fa7dacbe4ab405db56389e49bc51e65b31da75bb3772eaf85dc9e",
+   "bytes": 13419
+  },
+  {
+   "file": "assay/0013200.json",
+   "sha256": "6126a5ae844a0ebd89fb92df7b77039323805eb22da50a792e9b5c081c251391",
+   "bytes": 13405
+  },
+  {
+   "file": "assay/0013250.json",
+   "sha256": "5f888a6ab0d5bab4b690b42cbae94b91234a0a3121a6cb43ec509fe2db85f6a1",
+   "bytes": 13354
+  },
+  {
+   "file": "assay/0013300.json",
+   "sha256": "8aa78dcc2e4301af146aa79289424fc54d3d35fa9be251fcfd3295a8a4435ccf",
+   "bytes": 13312
+  },
+  {
+   "file": "assay/0013350.json",
+   "sha256": "0bf6bf660b04b909bea8fc2a31ecc5681350732e341770c633db2877eb9702e3",
+   "bytes": 13260
+  },
+  {
+   "file": "assay/0013400.json",
+   "sha256": "c1e937459fbccd066bcec3df4bd7569dc410dc1776e53ed45d3d1ef4d490e66e",
+   "bytes": 13341
+  },
+  {
+   "file": "assay/0013450.json",
+   "sha256": "008fec22a6179733b8277833c161760ebd8259ea126f6ff53b655d908efd7104",
+   "bytes": 13904
+  },
+  {
+   "file": "assay/0013500.json",
+   "sha256": "7a417337a35323b494ca124262eff41eba2b9f936bed12924d5591a21e3fc6d2",
+   "bytes": 13572
+  },
+  {
+   "file": "assay/0013550.json",
+   "sha256": "ebe7ff59c34e4f550e508a941bf6f6da3f0950a401ae1b1ade678f9000448dce",
+   "bytes": 13389
+  },
+  {
+   "file": "assay/0013600.json",
+   "sha256": "aa9b37616dd0db2322b7658f013998cf6b1c91e5db1badb0b043edbb1ebd936b",
+   "bytes": 13522
+  },
+  {
+   "file": "assay/0013650.json",
+   "sha256": "680c98b6b38821eb0feb731756d0b865ee5033f013396d6a024b088d6760d551",
+   "bytes": 13300
+  },
+  {
+   "file": "assay/0013700.json",
+   "sha256": "4b7d1e106a1701e0a04b40acfacd15144eb5ea205c131c255ed245ae0c0adef4",
+   "bytes": 13112
+  },
+  {
+   "file": "assay/0013750.json",
+   "sha256": "b7b0cc2282460ba60a3ee1465280f25d776be55a0109ecad5ad41ca85efca78a",
+   "bytes": 13117
+  },
+  {
+   "file": "assay/0013800.json",
+   "sha256": "04701a2bf0edc2630a19c6239e1303b3236c0155b24e2e62c71e957e9e5ad654",
+   "bytes": 13116
+  },
+  {
+   "file": "assay/0013850.json",
+   "sha256": "75d2949d7295d5073cf571110a41be3c8dfc85cd8aaa7c5d9fddaf8f5822030d",
+   "bytes": 13064
+  },
+  {
+   "file": "assay/0013900.json",
+   "sha256": "62ed4ab0ed3654cd39d2c9c18312cdcc682ea06d9d9280510daadadc69a13c87",
+   "bytes": 13166
+  },
+  {
+   "file": "assay/0013950.json",
+   "sha256": "aafb1d605a8da16f74dc9a1241865fed4a38b5845177b65fbd04d44c94aa9987",
+   "bytes": 13556
+  },
+  {
+   "file": "assay/0014000.json",
+   "sha256": "e618e1199d26a1719f7d90dab8e6e71d7ac4efff9da1d5dabb9249b5d00d85bf",
+   "bytes": 13573
+  },
+  {
+   "file": "assay/0014050.json",
+   "sha256": "a3be53aec5146f18f9fbdf9e006cafef0d0116d8ea11382f08e2e17c96ffe7de",
+   "bytes": 13550
+  },
+  {
+   "file": "assay/0014100.json",
+   "sha256": "9fdd494369fa1e780d688106be62a4704c5150dd084ac87eb6392aaa58e1a3e8",
+   "bytes": 13519
+  },
+  {
+   "file": "assay/0014150.json",
+   "sha256": "04908cf73a23382cb33e3ff5c783050a2a86d59b2a4f648a049abc477640c0af",
+   "bytes": 13572
+  },
+  {
+   "file": "assay/0014200.json",
+   "sha256": "f3e0d6a3a7bc8567d4ea28c1bfb31d2294d14ab06a14413216f2c367c284a140",
+   "bytes": 13581
+  },
+  {
+   "file": "assay/0014250.json",
+   "sha256": "ebd2215745a8c075763430f0f7bfc438167e0acf9cf21578c38aae41e2a00bfb",
+   "bytes": 13586
+  },
+  {
+   "file": "assay/0014300.json",
+   "sha256": "d2a1e369784c1e277e8e7224da7513683e0cba619e5a2b1aa0f5dfd68d74a8e4",
+   "bytes": 13538
+  },
+  {
+   "file": "assay/0014350.json",
+   "sha256": "ebee181584ce4269e4c1aa0d61b835f461d7c528220ab47d9242d9b69fe7dc66",
+   "bytes": 13519
+  },
+  {
+   "file": "assay/0014400.json",
+   "sha256": "84396f551f04593fcb6d2035c31c7269988072edfaeb0df0652d057c57c5497a",
+   "bytes": 13532
+  },
+  {
+   "file": "assay/0014450.json",
+   "sha256": "6aa86f8a9c74e129f846410947497b5131cc700160b770928b8a754e390d051d",
+   "bytes": 13578
+  },
+  {
+   "file": "assay/0014500.json",
+   "sha256": "15a607a74019949e215bcf9fbfcf8345b4f6f37795a45f910c81564994eaee1e",
+   "bytes": 13609
+  },
+  {
+   "file": "assay/0014550.json",
+   "sha256": "bf51e7d8fa0e55e089586f537cf0eb8016fac479fe8e7945569a65e4942a890b",
+   "bytes": 13572
+  },
+  {
+   "file": "assay/0014600.json",
+   "sha256": "870b7a9904174d8d8c1b06fe2d73edc00a5f6d08f654cbe4c0721a172adbabb5",
+   "bytes": 13587
+  },
+  {
+   "file": "assay/0014650.json",
+   "sha256": "6d97caa256e31f6e8a449e05ad2e59146913b6247b5b7ff6891c8299e2a68149",
+   "bytes": 13418
+  },
+  {
+   "file": "assay/0014700.json",
+   "sha256": "68fe37a728df2c8554a8d73dcf8378af18cb9334a4993855c97a3d3f68b623cf",
+   "bytes": 13363
+  },
+  {
+   "file": "assay/0014750.json",
+   "sha256": "197b33cb6fc4c75115083a24635642aa3d5120efb347bf1b39b86c5046955ae8",
+   "bytes": 13442
+  },
+  {
+   "file": "assay/0014800.json",
+   "sha256": "b4c2debdd04ca7c91cba30e7388f4fe97573ee218fc4238276aac1a4a302c7b8",
+   "bytes": 13384
+  },
+  {
+   "file": "assay/0014850.json",
+   "sha256": "295c272c1a0f7a5071ba94f80742b694b218b25d4d5928d4d173ce0baba22310",
+   "bytes": 13501
+  },
+  {
+   "file": "assay/0014900.json",
+   "sha256": "8b343f4f103912b343951cc43ca129ff203c47c743c0411d512dcb2696b1aefc",
+   "bytes": 13563
+  },
+  {
+   "file": "assay/0014950.json",
+   "sha256": "6e458a73e61ff0a78dbb75f0b8c0e9282dd1cdc99cc1c21d6a9331a8d172a841",
+   "bytes": 13487
+  },
+  {
+   "file": "assay/0015000.json",
+   "sha256": "1c10dc0d752d5d874c7856a2a98629706062c3f86c229359869651472995bda8",
+   "bytes": 13606
+  },
+  {
+   "file": "assay/0015050.json",
+   "sha256": "9d9097d90c6a7e82a9098d469242b7f7a9888d7a34193cfda7a722e772fc8db6",
+   "bytes": 13446
+  },
+  {
+   "file": "assay/0015100.json",
+   "sha256": "9d99073b7582976db6da3909e1d5a7e62fbbf9e86804f3f91a94c47d2a471950",
+   "bytes": 13484
+  },
+  {
+   "file": "assay/0015150.json",
+   "sha256": "abbb8101fb8c8999bd659769f9a5cbf52cd577f8b3534758fbd9692611e5ec9d",
+   "bytes": 13510
+  },
+  {
+   "file": "assay/0015200.json",
+   "sha256": "351d08e1452ec1956646707b6e3a85da583b176b20b6217aef3b21193b571c7e",
+   "bytes": 13579
+  },
+  {
+   "file": "assay/0015250.json",
+   "sha256": "0d3fe6b125ba7cd390c787937b57324b4010fee51ad5626d4752d83dddfc1b72",
+   "bytes": 13590
+  },
+  {
+   "file": "assay/0015300.json",
+   "sha256": "d8c8a333e67bc9a301687a6b8e9f57821781f5f0af41d7ffb6d9a180e36caa00",
+   "bytes": 13609
+  },
+  {
+   "file": "assay/0015350.json",
+   "sha256": "c682b920b03d3a429dc1dd548f50e63f741c90be768af06fc25837f7bcf7a1d0",
+   "bytes": 13539
+  },
+  {
+   "file": "assay/0015400.json",
+   "sha256": "22e1b450971d57c3c5f014c6e4698c921373dfd540a94a786884b3233e2921db",
+   "bytes": 13475
+  },
+  {
+   "file": "assay/0015450.json",
+   "sha256": "482f26a012241f4d8c2661310e5ac521d43dad4635276a3aee4e300b9e8bfdac",
+   "bytes": 13429
+  },
+  {
+   "file": "assay/0015500.json",
+   "sha256": "8d7db401215ad63f56e9abf4392cfe78d79133d697b9964b9014162d258e9daf",
+   "bytes": 13430
+  },
+  {
+   "file": "assay/0015550.json",
+   "sha256": "70be43e78a5465154bf1f30961cdf8056a4478af3779d79db8a0d4f3757297e7",
+   "bytes": 13445
+  },
+  {
+   "file": "assay/0015600.json",
+   "sha256": "e4190a993fddd8ad89284ea25ece164ab8c8e6e9fd26488c04187be25bbb1a75",
+   "bytes": 13415
+  },
+  {
+   "file": "assay/0015650.json",
+   "sha256": "d8d2d13235ce0f596da17fe9cba27b2a060ed47b11321c44c6ebc13c52664917",
+   "bytes": 13470
+  },
+  {
+   "file": "assay/0015700.json",
+   "sha256": "9ea4a7b665817ec4b995440cb51b8998bb71ca55d2076e837c9cafcaf5f30371",
+   "bytes": 13401
+  },
+  {
+   "file": "assay/0015750.json",
+   "sha256": "8cc7ad79fd41fc100f8cbcc07f540d7e607b457fb1ad59f0f44640b8771b2798",
+   "bytes": 13437
+  },
+  {
+   "file": "assay/0015800.json",
+   "sha256": "aba8c4bee1c93abc939f8c2647340006cad4f2737639ab8de7b599978bd2a3a4",
+   "bytes": 13377
+  },
+  {
+   "file": "assay/0015850.json",
+   "sha256": "b75a759be20d0245d6466e993abb8073560692d8273bc2e9cdc79e30166a095e",
+   "bytes": 13401
+  },
+  {
+   "file": "assay/0015900.json",
+   "sha256": "a57629af8a5b2181b498d78b4a7fccbbdf748acefc10c5344e1df49b2367bcbb",
+   "bytes": 13401
+  },
+  {
+   "file": "assay/0015950.json",
+   "sha256": "99b6432f1159f269e52ba453289c7e672b704cffcd3f70592509c3dbfe238dc5",
+   "bytes": 8383
+  },
+  {
+   "file": "assay/0015951.json",
+   "sha256": "8e51567430c80bec1e035189c2f8691403a85a791dc7361e2c7565f95b3c60fa",
+   "bytes": 13375
+  },
+  {
+   "file": "assay/0015952.json",
+   "sha256": "f06c73749c2e2dcad993f41d346d682e743bc335f86fffcc7db6c5cb7d93ee66",
+   "bytes": 13476
+  },
+  {
+   "file": "assay/0015953.json",
+   "sha256": "42ebd7289feef4e7e4e4c85701acaa7bb64b90e7ac8ddbacbd141e6ad96342ee",
+   "bytes": 13559
+  },
+  {
+   "file": "assay/0015954.json",
+   "sha256": "9bf93fc1a9f28f1cbdc3ff3ae5427bd93dacbe104bba2a8d00df6a75063b62dd",
+   "bytes": 13692
+  },
+  {
+   "file": "assay/0015955.json",
+   "sha256": "39bfe54b52879dd47576c50a16d8248604b8e6e56bac8cfc46507da8c432e74b",
+   "bytes": 13699
+  },
+  {
+   "file": "assay/0015956.json",
+   "sha256": "89d1d8fb20cf1013e0444dbd1123e38850d5775fdca8a8d94af0bf065098272c",
+   "bytes": 13700
+  },
+  {
+   "file": "assay/0015957.json",
+   "sha256": "857a60d6ccce9d6532a145fcad2efe434dde4f8613fcec319606de995ae73923",
+   "bytes": 13707
+  },
+  {
+   "file": "assay/0015958.json",
+   "sha256": "af637543b20ddcde9f92e70f5f7989b41a5b4f3a5ad7a1307b94a802bfcc12d4",
+   "bytes": 13655
+  },
+  {
+   "file": "assay/0015959.json",
+   "sha256": "3db345103cd920c59261f2ab5ea111510b4edf3176d3c0e6d5d27b3ad4100bb5",
+   "bytes": 13685
+  },
+  {
+   "file": "assay/0015960.json",
+   "sha256": "9f8008b8341ef289743dbcd61726df90be8c06d36375bde40753c6c97b388575",
+   "bytes": 13672
+  },
+  {
+   "file": "assay/0015961.json",
+   "sha256": "d95b6bef5d4840a07c667ac7e066aa9db5714cf1066efe2363c77951de5ae8cb",
+   "bytes": 13691
+  },
+  {
+   "file": "assay/0015962.json",
+   "sha256": "35db1599778f549acdfe7a226ea1e8338d759eadd8090fa55bc6fb7143a9bdbc",
+   "bytes": 13694
+  },
+  {
+   "file": "assay/0015963.json",
+   "sha256": "d4f413cfc9e8a0208a3e2e85f3dd7f3da6bbfdafa5c97374e4422dba8ab8f058",
+   "bytes": 30828
+  },
+  {
+   "file": "assay/0015964.json",
+   "sha256": "da8a430f1f9976cd396dd8fdf1821708fdf7f6e2313d599a92b95e543c0b9660",
+   "bytes": 13704
+  },
+  {
+   "file": "assay/0015965.json",
+   "sha256": "a9ba60a0064b480c23f5f4ed05f688044c992412dc68683f2964f2b16875895a",
+   "bytes": 16178
+  },
+  {
+   "file": "assay/0015966.json",
+   "sha256": "82023edf2f722832364417f45e10a0117176c1c77df66842adb304090398fb35",
+   "bytes": 13661
+  },
+  {
+   "file": "assay/0015967.json",
+   "sha256": "0ab59a62dfcfcc5e1237c346227f464fa96a1e0b9c583260a4ab69a035ed8518",
+   "bytes": 14255
+  },
+  {
+   "file": "assay/0015968.json",
+   "sha256": "fec49ff1ae9c5677d610cd5cb709626488ce43b638b4e40d434cb1e7d7512c4a",
+   "bytes": 13683
+  },
+  {
+   "file": "assay/0015969.json",
+   "sha256": "ef947fb5cabe432cfbb500aad82bca162b2b8a0bb56fc584f2db50890fc35895",
+   "bytes": 13671
+  },
+  {
+   "file": "assay/0015970.json",
+   "sha256": "24bcb962b271c13837b2e94fefe643bcb909406a882594f6f8c7f290247daccb",
+   "bytes": 13473
+  },
+  {
+   "file": "assay/0015971.json",
+   "sha256": "4ec02997df6ab7a004749ccef78e33d55bdc7e690c5316e58ee98e0d433c112d",
+   "bytes": 13227
+  },
+  {
+   "file": "assay/0015972.json",
+   "sha256": "f5500d10842ab1a742461930297fbe1b7b0becfec46da5023cbc4f49971882fc",
+   "bytes": 13191
+  },
+  {
+   "file": "assay/0015973.json",
+   "sha256": "ee13e261e92f5aef5cd8b1921875b69e66502be5d57b8b70cbe00e07b9422169",
+   "bytes": 13252
+  },
+  {
+   "file": "assay/0015974.json",
+   "sha256": "6663782e75cd9e400fb3a50c825e06710b1773fd01a66b774dee3cb9ddcf5b12",
+   "bytes": 13225
+  },
+  {
+   "file": "assay/0015975.json",
+   "sha256": "cde6798c6c5a1703dbdcf4467a2b79481bb87e793cbe021522b453b365d7ce3e",
+   "bytes": 13103
+  },
+  {
+   "file": "assay/0015976.json",
+   "sha256": "4996472d436b1f9e735681f6a0ed52847c9226fa6ad145e6e26aec716dac40d6",
+   "bytes": 13320
+  },
+  {
+   "file": "assay/0015977.json",
+   "sha256": "d858f46a82f2d17fae148963ad2da97ea0c0451c7d44b73e968f65a776c62403",
+   "bytes": 13193
+  },
+  {
+   "file": "assay/0015978.json",
+   "sha256": "109a1122165ee0d2d0469af81b455c387fb5f060ef8d15e8761107269da4f7b5",
+   "bytes": 13231
+  },
+  {
+   "file": "assay/0015979.json",
+   "sha256": "9d223748ee0722e4cbcd312e694127a1df92c23878502297d4ab85d5ce0064fc",
+   "bytes": 13424
+  },
+  {
+   "file": "assay/0015980.json",
+   "sha256": "7e490dc8ea0d9a156a0bd4e12b10f7bcbf70ecbd4c6a7544ebf66f9960b5b472",
+   "bytes": 13314
+  },
+  {
+   "file": "assay/0015981.json",
+   "sha256": "636e69e78b99bf8cdcc4edf191520c598647a8e4e54513bf685820ff10a435f0",
+   "bytes": 13177
+  },
+  {
+   "file": "assay/0015982.json",
+   "sha256": "c02992b6a890946944101211dc8e73aed94a07a1be698917fc7b382656910371",
+   "bytes": 13394
+  },
+  {
+   "file": "assay/0015983.json",
+   "sha256": "e7b72310cf3a41d28d84d4ec76708196f39b3fdb0ff7e566fcaf5f17631a4a97",
+   "bytes": 13509
+  },
+  {
+   "file": "assay/0015984.json",
+   "sha256": "f191348e6556a29cd315b04d068f98f0a1666b723905c93ade90df67b40a91f7",
+   "bytes": 13481
+  },
+  {
+   "file": "assay/0015985.json",
+   "sha256": "62e3a95ed58c8306bd7514c3ee2b494af0c5417c8446277ce6f77bc265c467d8",
+   "bytes": 3817
+  }
+ ],
+ "counts": {
+  "CHEMBL203": {
+   "api_total": 28741,
+   "slice_total": 28741,
+   "unique_activities": 28741,
+   "complete": true
+  },
+  "CHEMBL1862": {
+   "api_total": 8807,
+   "slice_total": 8807,
+   "unique_activities": 8807,
+   "complete": true
+  },
+  "CHEMBL1871": {
+   "api_total": 6639,
+   "slice_total": 6639,
+   "unique_activities": 6639,
+   "complete": true
+  },
+  "CHEMBL2034": {
+   "api_total": 7279,
+   "slice_total": 7279,
+   "unique_activities": 7279,
+   "complete": true
+  },
+  "CHEMBL2047": {
+   "api_total": 4908,
+   "slice_total": 4908,
+   "unique_activities": 4908,
+   "complete": true
+  },
+  "CHEMBL204": {
+   "api_total": 9188,
+   "slice_total": 9188,
+   "unique_activities": 9188,
+   "complete": true
+  },
+  "CHEMBL2147": {
+   "api_total": 11060,
+   "slice_total": 11060,
+   "unique_activities": 11060,
+   "complete": true
+  },
+  "CHEMBL214": {
+   "api_total": 8835,
+   "slice_total": 8835,
+   "unique_activities": 8835,
+   "complete": true
+  },
+  "CHEMBL218": {
+   "api_total": 12969,
+   "slice_total": 12969,
+   "unique_activities": 12969,
+   "complete": true
+  },
+  "CHEMBL219": {
+   "api_total": 4780,
+   "slice_total": 4780,
+   "unique_activities": 4780,
+   "complete": true
+  },
+  "CHEMBL228": {
+   "api_total": 8127,
+   "slice_total": 8127,
+   "unique_activities": 8127,
+   "complete": true
+  },
+  "CHEMBL231": {
+   "api_total": 2785,
+   "slice_total": 2785,
+   "unique_activities": 2785,
+   "complete": true
+  },
+  "CHEMBL233": {
+   "api_total": 14051,
+   "slice_total": 14051,
+   "unique_activities": 14051,
+   "complete": true
+  },
+  "CHEMBL234": {
+   "api_total": 10130,
+   "slice_total": 10130,
+   "unique_activities": 10130,
+   "complete": true
+  },
+  "CHEMBL235": {
+   "api_total": 8050,
+   "slice_total": 8050,
+   "unique_activities": 8050,
+   "complete": true
+  },
+  "CHEMBL236": {
+   "api_total": 9019,
+   "slice_total": 9019,
+   "unique_activities": 9019,
+   "complete": true
+  },
+  "CHEMBL237": {
+   "api_total": 11258,
+   "slice_total": 11258,
+   "unique_activities": 11258,
+   "complete": true
+  },
+  "CHEMBL238": {
+   "api_total": 5760,
+   "slice_total": 5760,
+   "unique_activities": 5760,
+   "complete": true
+  },
+  "CHEMBL239": {
+   "api_total": 5373,
+   "slice_total": 5373,
+   "unique_activities": 5373,
+   "complete": true
+  },
+  "CHEMBL244": {
+   "api_total": 8607,
+   "slice_total": 8607,
+   "unique_activities": 8607,
+   "complete": true
+  },
+  "CHEMBL262": {
+   "api_total": 10240,
+   "slice_total": 10240,
+   "unique_activities": 10240,
+   "complete": true
+  },
+  "CHEMBL264": {
+   "api_total": 6859,
+   "slice_total": 6859,
+   "unique_activities": 6859,
+   "complete": true
+  },
+  "CHEMBL2835": {
+   "api_total": 19794,
+   "slice_total": 19794,
+   "unique_activities": 19794,
+   "complete": true
+  },
+  "CHEMBL287": {
+   "api_total": 4828,
+   "slice_total": 4828,
+   "unique_activities": 4828,
+   "complete": true
+  },
+  "CHEMBL2971": {
+   "api_total": 24517,
+   "slice_total": 24517,
+   "unique_activities": 24517,
+   "complete": true
+  },
+  "CHEMBL3979": {
+   "api_total": 3301,
+   "slice_total": 3301,
+   "unique_activities": 3301,
+   "complete": true
+  },
+  "CHEMBL4005": {
+   "api_total": 12507,
+   "slice_total": 12507,
+   "unique_activities": 12507,
+   "complete": true
+  },
+  "CHEMBL4203": {
+   "api_total": 2020,
+   "slice_total": 2020,
+   "unique_activities": 2020,
+   "complete": true
+  },
+  "CHEMBL4616": {
+   "api_total": 3326,
+   "slice_total": 3326,
+   "unique_activities": 3326,
+   "complete": true
+  },
+  "CHEMBL4792": {
+   "api_total": 13314,
+   "slice_total": 13314,
+   "unique_activities": 13314,
+   "complete": true
+  }
+ },
+ "slices": {
+  "CHEMBL203": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2056
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 835
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3231
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2609
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2748
+   },
+   {
+    "tag": "y2016-2016",
+    "filters": {
+     "document_year__range": "2016,2016"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1640
+   },
+   {
+    "tag": "y2017-2017",
+    "filters": {
+     "document_year__range": "2017,2017"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2804
+   },
+   {
+    "tag": "y2018-2018",
+    "filters": {
+     "document_year__range": "2018,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1383
+   },
+   {
+    "tag": "y2019-2020",
+    "filters": {
+     "document_year__range": "2019,2020"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3050
+   },
+   {
+    "tag": "y2021-2021",
+    "filters": {
+     "document_year__range": "2021,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2719
+   },
+   {
+    "tag": "y2022-2023",
+    "filters": {
+     "document_year__range": "2022,2023"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3217
+   },
+   {
+    "tag": "y2024-2024",
+    "filters": {
+     "document_year__range": "2024,2024"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1336
+   },
+   {
+    "tag": "y2025-2026",
+    "filters": {
+     "document_year__range": "2025,2026"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 465
+   },
+   {
+    "tag": "y2027-2030",
+    "filters": {
+     "document_year__range": "2027,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 648
+   }
+  ],
+  "CHEMBL1862": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 123
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 25
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1155
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1584
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1080
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2459
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1221
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 374
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 786
+   }
+  ],
+  "CHEMBL1871": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 446
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 300
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1513
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1018
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 918
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 623
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 700
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1121
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   }
+  ],
+  "CHEMBL2034": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 133
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 742
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1649
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1690
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1050
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 695
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 865
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 359
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 96
+   }
+  ],
+  "CHEMBL2047": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 50
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 417
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 404
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 319
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 420
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2234
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1058
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 6
+   }
+  ],
+  "CHEMBL204": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1826
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2676
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1444
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 488
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 562
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 603
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 225
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 835
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 529
+   }
+  ],
+  "CHEMBL2147": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 296
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 651
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1771
+   },
+   {
+    "tag": "y2016-2016",
+    "filters": {
+     "document_year__range": "2016,2016"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3936
+   },
+   {
+    "tag": "y2017-2017",
+    "filters": {
+     "document_year__range": "2017,2017"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 807
+   },
+   {
+    "tag": "y2018-2018",
+    "filters": {
+     "document_year__range": "2018,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 611
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1223
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 604
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1160
+   }
+  ],
+  "CHEMBL214": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 855
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 794
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1514
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1141
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 707
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1288
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1737
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 748
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 51
+   }
+  ],
+  "CHEMBL218": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 100
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 186
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2719
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2446
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1551
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3233
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1401
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1011
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 322
+   }
+  ],
+  "CHEMBL219": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 725
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 884
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 887
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 310
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 324
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 430
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 657
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 535
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 28
+   }
+  ],
+  "CHEMBL228": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 177
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 569
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2907
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1369
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 753
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1141
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 677
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 349
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 185
+   }
+  ],
+  "CHEMBL231": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 78
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 408
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 507
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 625
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 127
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 329
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 322
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 291
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 98
+   }
+  ],
+  "CHEMBL233": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 145
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1076
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2281
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 967
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1811
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1410
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3884
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1508
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 969
+   }
+  ],
+  "CHEMBL234": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 924
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 672
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1633
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 836
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1832
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1391
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1545
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1107
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 190
+   }
+  ],
+  "CHEMBL235": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 435
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 674
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2430
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1461
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1073
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 580
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 674
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 678
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 45
+   }
+  ],
+  "CHEMBL236": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 783
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1294
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2012
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 811
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1293
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 612
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 680
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 693
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 841
+   }
+  ],
+  "CHEMBL237": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 321
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 962
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2084
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 862
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1553
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2342
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1124
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 852
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1158
+   }
+  ],
+  "CHEMBL238": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 196
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 478
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1858
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 965
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 503
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 802
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 596
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 196
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 166
+   }
+  ],
+  "CHEMBL239": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 60
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 611
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2209
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1030
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 426
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 318
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 325
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 388
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 6
+   }
+  ],
+  "CHEMBL244": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 852
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2365
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2107
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 749
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 793
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 350
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 303
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 340
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 748
+   }
+  ],
+  "CHEMBL262": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 503
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 935
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1024
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 520
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1675
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3211
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1291
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1079
+   }
+  ],
+  "CHEMBL264": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 667
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1919
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1748
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 816
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 714
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 781
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 214
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   }
+  ],
+  "CHEMBL2835": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 7
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 62
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 552
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2550
+   },
+   {
+    "tag": "y2016-2016",
+    "filters": {
+     "document_year__range": "2016,2016"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2131
+   },
+   {
+    "tag": "y2017-2017",
+    "filters": {
+     "document_year__range": "2017,2017"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2198
+   },
+   {
+    "tag": "y2018-2018",
+    "filters": {
+     "document_year__range": "2018,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3283
+   },
+   {
+    "tag": "y2019-2020",
+    "filters": {
+     "document_year__range": "2019,2020"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3307
+   },
+   {
+    "tag": "y2021-2021",
+    "filters": {
+     "document_year__range": "2021,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2130
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3574
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   }
+  ],
+  "CHEMBL287": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1830
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 290
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 163
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 153
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 254
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 373
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 935
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 695
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 135
+   }
+  ],
+  "CHEMBL2971": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 7
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 357
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 922
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3690
+   },
+   {
+    "tag": "y2016-2016",
+    "filters": {
+     "document_year__range": "2016,2016"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2276
+   },
+   {
+    "tag": "y2017-2017",
+    "filters": {
+     "document_year__range": "2017,2017"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2599
+   },
+   {
+    "tag": "y2018-2018",
+    "filters": {
+     "document_year__range": "2018,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3436
+   },
+   {
+    "tag": "y2019-2019",
+    "filters": {
+     "document_year__range": "2019,2019"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2832
+   },
+   {
+    "tag": "y2020-2020",
+    "filters": {
+     "document_year__range": "2020,2020"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2317
+   },
+   {
+    "tag": "y2021-2021",
+    "filters": {
+     "document_year__range": "2021,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2167
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2953
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 961
+   }
+  ],
+  "CHEMBL3979": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 4
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 325
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1134
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 803
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 86
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 256
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 343
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 350
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   }
+  ],
+  "CHEMBL4005": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 4
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 747
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2569
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3312
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2260
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1199
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2416
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   }
+  ],
+  "CHEMBL4203": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 84
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 128
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 110
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 219
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 73
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 395
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1011
+   }
+  ],
+  "CHEMBL4616": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 7
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 195
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1240
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 360
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 762
+   },
+   {
+    "tag": "y2016-2018",
+    "filters": {
+     "document_year__range": "2016,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 310
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 257
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 38
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 157
+   }
+  ],
+  "CHEMBL4792": [
+   {
+    "tag": "y1900-1999",
+    "filters": {
+     "document_year__range": "1900,1999"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 0
+   },
+   {
+    "tag": "y2000-2004",
+    "filters": {
+     "document_year__range": "2000,2004"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 201
+   },
+   {
+    "tag": "y2005-2009",
+    "filters": {
+     "document_year__range": "2005,2009"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 178
+   },
+   {
+    "tag": "y2010-2012",
+    "filters": {
+     "document_year__range": "2010,2012"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 167
+   },
+   {
+    "tag": "y2013-2015",
+    "filters": {
+     "document_year__range": "2013,2015"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2470
+   },
+   {
+    "tag": "y2016-2016",
+    "filters": {
+     "document_year__range": "2016,2016"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1865
+   },
+   {
+    "tag": "y2017-2017",
+    "filters": {
+     "document_year__range": "2017,2017"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 3205
+   },
+   {
+    "tag": "y2018-2018",
+    "filters": {
+     "document_year__range": "2018,2018"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 943
+   },
+   {
+    "tag": "y2019-2021",
+    "filters": {
+     "document_year__range": "2019,2021"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 2103
+   },
+   {
+    "tag": "y2022-2030",
+    "filters": {
+     "document_year__range": "2022,2030"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 1756
+   },
+   {
+    "tag": "ynull",
+    "filters": {
+     "document_year__isnull": "true"
+    },
+    "types": [
+     "IC50",
+     "Ki",
+     "Kd",
+     "EC50"
+    ],
+    "total": 426
+   }
+  ]
+ },
+ "missing_targets": [],
+ "assays_requested": 16895,
+ "assays_returned": 16895,
+ "assays_not_returned": []
+}
