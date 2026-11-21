@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "consilience"
-version = "0.3.0.dev0"
+version = "0.3.0"
 description = "Compare two measurements with units and conditions, and check a table against written limits. Refuses what it cannot read; every result has a receipt you can re-run."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -50,7 +50,7 @@ consilience = "consilience.cli:main"
 Homepage = "https://github.com/Anuja-Khatri/consilience-core"
 Source = "https://github.com/Anuja-Khatri/consilience-core"
 Issues = "https://github.com/Anuja-Khatri/consilience-core/issues"
-Changelog = "https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/CHANGELOG.md"
+Changelog = "https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]

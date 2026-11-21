@@ -1,8 +1,8 @@
 # Changelog
 
-## [0.3.0] - unreleased (in development: 0.3.0.dev0)
+## [0.3.0] - 2026-11-21
 
-Includes everything in 0.2.0 below.
+The first release since 0.1.0. It includes everything in 0.2.0 and 0.1.1 below, which were never released on their own.
 
 ### Added
 - **`consilience stress`** (and `consilience.stress.stress()`): stress-check a scoring function before an optimiser runs against it. Install with the `[stress]` extra (numpy).
@@ -19,7 +19,7 @@ Includes everything in 0.2.0 below.
 - **Agent plugin** `integrations/agent-plugin/consilience-stress`: a hook after a scoring file is written or edited, a skill, and `/stress-check`.
 - **Benchmark** (now in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks), `evaluator-stress/`): contracts for public scoring functions from five collections, labelled known bugs, a preregistration, a runner, an independent second-way checker, and results.
 
-## [0.2.0] - unreleased (in development: 0.2.0.dev0)
+## [0.2.0] - not released on its own (included in 0.3.0)
 
 Includes everything in 0.1.1 below.
 
@@ -51,7 +51,7 @@ Includes everything in 0.1.1 below.
 - `compare`, `check` and `verify` behave as in 0.1.1 when the new options are not used;
   receipts written by 0.1.0 and 0.1.1 still verify (frozen fixtures in tests/fixtures).
 
-## [0.1.1] - unreleased
+## [0.1.1] - not released on its own (included in 0.3.0)
 
 Closes the gaps found when 0.1.0 was used in a real study (the WP5 run audit).
 

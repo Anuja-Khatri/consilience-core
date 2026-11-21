@@ -50,6 +50,8 @@ wrote try/measurement_e.json
 wrote try/readings.csv
 wrote try/readings_rules.yaml
 wrote try/electrochemistry.yaml
+wrote try/bioactivity.yaml
+wrote try/pka.yaml
 These examples are MADE UP for trying the tool; they are not real data.
 $ cd try
 ```
@@ -343,14 +345,14 @@ consilience verify egfr/receipt.json
 
 - The `bioactivity` pack: the assay conditions Landrum & Riniker (2024) match before
   combining ChEMBL assays, ChEMBL's own validity warnings, bounds kept as bounds, and
-  agreement within 0.3 / 1.0 log units. See [docs/packs/bioactivity.md](docs/packs/bioactivity.md).
-- A second domain: the `pka` pack for measured pKa values ([docs/packs/pka.md](docs/packs/pka.md),
+  agreement within 0.3 / 1.0 log units. See [docs/packs/bioactivity.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/docs/packs/bioactivity.md).
+- A second domain: the `pka` pack for measured pKa values ([docs/packs/pka.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/docs/packs/pka.md),
   `examples/pka_pooling.py`).
 - An agent plugin runs the check after an AI agent fetches ChEMBL data:
-  [integrations/agent-plugin/consilience-pooling](integrations/agent-plugin/consilience-pooling/).
+  [integrations/agent-plugin/consilience-pooling](https://github.com/Anuja-Khatri/consilience-core/tree/v0.3.0/integrations/agent-plugin/consilience-pooling).
 - A preregistered study on 30 targets lives in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`pooling-2026/`).
 
-Full description, definitions and limits: [docs/compare-table.md](docs/compare-table.md).
+Full description, definitions and limits: [docs/compare-table.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/docs/compare-table.md).
 
 ## Stress-check scoring code before you optimise against it (new in 0.3)
 
@@ -375,7 +377,7 @@ Also included:
 - an agent plugin that runs the check after a scoring file is edited (`integrations/agent-plugin/consilience-stress`);
 - a public benchmark of contracts for 89 scoring functions across five evaluator collections, plus 22 labelled bug versions, in [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (`evaluator-stress/`).
 
-What it is good at, who it is for, the full contract reference and its limits: **docs/stress.md**.
+What it is good at, who it is for, the full contract reference and its limits: [docs/stress.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/docs/stress.md).
 
 ## Python
 
@@ -508,7 +510,7 @@ rules:
 Unknown keys are refused, so a misspelt key is an error rather than silently ignored.
 The full format for both kinds (and options such as `if_empty`, `if_limit_empty`,
 `value_offset`, exclusive bounds, and every pack predicate) is in
-[docs/RULES.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/docs/RULES.md).
+[docs/RULES.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/docs/RULES.md).
 
 ## Receipts
 
@@ -517,8 +519,8 @@ SHA-256), the options, the complete rule file used, the consilience and pint ver
 and the result, plus a SHA-256 over all of that. `consilience verify` checks the hash,
 checks the data file still has the same SHA-256, re-runs the comparison or check, and
 confirms the fresh result hashes the same. It re-runs by the rules of the version that
-wrote the receipt, so a receipt made with 0.1.0 still verifies under 0.1.1, even where
-0.1.1 reads the same input differently. For a check receipt it looks for the data file
+wrote the receipt, so a receipt made with 0.1.0 still verifies under later versions, even where
+a later version reads the same input differently. For a check receipt it looks for the data file
 where it was, then beside the receipt; `--data` tells it where the file is now. A
 violation's row receipt is `sha256` over `{"rules_sha256", "rule", "line", "cells"}` in
 canonical JSON (the rule file's hash, the rule id, the line number and the row as text).
@@ -535,9 +537,9 @@ canonical JSON (the rule file's hash, the rule id, the line number and the row a
   instrument, sample or experiment. The 13 mV floor in the quickstart is an example too.
 - **It does not know whether your rules are right.** A check reports rows that break the
   rules you wrote, nothing more.
-- **There is no hosted service.** `compare`, `check` and `verify` run on your computer
-  and send nothing anywhere.
-- It reads CSV only (UTF-8, comma-separated, a header row).
+- **There is no hosted service.** Every command runs on your computer and sends nothing
+  anywhere.
+- `check` reads CSV only (UTF-8, comma-separated, a header row).
 
 ## Also in this package: nanopublication export
 
@@ -545,13 +547,13 @@ From a source checkout, the package can also export Consilience records as
 nanopublications (signed, citable RDF statements) to the Knowledge Pixels test registry.
 This needs `pip install "consilience[nanopub]"` (Python 3.12 or newer, which the
 nanopub library requires) and is described in
-[docs/NANOPUB.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/docs/NANOPUB.md)
-and [PILOT.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/PILOT.md).
+[docs/NANOPUB.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/docs/NANOPUB.md)
+and [PILOT.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/PILOT.md).
 
 ## Develop
 
 ```
-git clone -b v0.1.1 https://github.com/Anuja-Khatri/consilience-core.git
+git clone -b v0.3.0 https://github.com/Anuja-Khatri/consilience-core.git
 cd consilience-core
 python -m venv .venv && . .venv/bin/activate
 pip install -e ".[test]"
@@ -561,9 +563,9 @@ bash scripts/check_release.sh      # build, install the wheel in a clean venv, r
 
 ## Licence and provenance
 
-Code: MIT ([LICENSE](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/LICENSE)).
+Code: MIT ([LICENSE](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/LICENSE)).
 Rule packs, examples, records and vocabulary: CC BY 4.0
-([LICENSE-DATA](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/LICENSE-DATA)).
+([LICENSE-DATA](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/LICENSE-DATA)).
 What was adapted from other Consilience repositories, and from which commit, is in
-[PROVENANCE.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/PROVENANCE.md).
-Changes: [CHANGELOG.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.1.1/CHANGELOG.md).
+[PROVENANCE.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/PROVENANCE.md).
+Changes: [CHANGELOG.md](https://github.com/Anuja-Khatri/consilience-core/blob/v0.3.0/CHANGELOG.md).
