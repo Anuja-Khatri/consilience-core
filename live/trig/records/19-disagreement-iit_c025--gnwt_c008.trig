@@ -1,0 +1,59 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAXkMbooHSB02bJmVmHMEDv6cMQhPDd-MBO2g-w_WTQWA/> .
+@prefix this: <https://w3id.org/np/RAXkMbooHSB02bJmVmHMEDv6cMQhPDd-MBO2g-w_WTQWA> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "inu07wluWvKTU/LjEAEZlbNdT/l0Q8vyyS04qIYumxdoCO1CEW4kC9L6hd6QQSll7pPdhOunNxGFmOEv2O/+rfaeGmnOyidYB5NJclu/MZahLprOlGSAHUANCDGtUF8o64z27H1uxvWCMKsEy5aqcKlxtPFWATqQGzo2/gssf9duwSb56HtZxyVtIKOyUU7303Zuax7Js9iN4eSu98i2Vj+TXHcWp2OGZ0TEackiZrRbyJPbBPNe+w3CWGRb/9HrVBhTXvTldcUT2nHIT2RK9EKjTJvbfoSgQaBablzd5nEBZrqDNaho2QIvSdbL9i2X5oSBe3qFaNxSN1u9362JZw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Disagreement iit_c025 vs gnwt_c008 on connectivity: testable now (observable: connectivity metrics)" ;
+        dcterms:created "2026-11-18T17:52:20Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable now and names the shared observable both claims bear on; it names no instrument, so none is recorded. This is a statement about the two claims, not a verdict on either theory. The dimension is a dimension of theoretical commitment, not a quantity, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:Disagreement ;
+        npx:introduces sub:disagreement ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAvlFcbPa5pxTNcz8r_uYIDAXRuieEgMgSnPlzBHibUjY/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2117-L2156> ;
+        cv:contentHash "cfd55cd0236677bc83af80a13c095a41dca0709d4e4e88918870ca92014087ca" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:assertion {
+    sub:disagreement a cv:Disagreement ;
+        dcterms:identifier "iit_c025|gnwt_c008" ;
+        cv:claimA <https://w3id.org/np/RAob9CIQoyQcgaJaeQwtS_QdN_oxPE16ywans-y_p5YTg/claim> ;
+        cv:claimB <https://w3id.org/np/RAj0FElO3VmUKP1bdXqP9jYd0wlMlghNIj_dVt34Pdhpw/claim> ;
+        cv:dimension cv:Connectivity ;
+        cv:observable cv:ConnectivityMetrics ;
+        cv:testability cv:TestableNow ;
+        cv:testabilityReason "The demo's check rules this disagreement decidable now: both claims bear on a shared observable (connectivity metrics) that current methods measure. The demo names no specific instrument, so none is recorded." .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

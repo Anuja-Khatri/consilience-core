@@ -1,0 +1,70 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RA-gEsYS2o6G8dYAnXq23QkrDyJChDu79TQxePRYa0EUk/> .
+@prefix this: <https://w3id.org/np/RA-gEsYS2o6G8dYAnXq23QkrDyJChDu79TQxePRYa0EUk> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "blff2dE3eeGQbLs/k5+ZS9eQkclMDYdEfmyFZHXaQ4CmQdSuakMHEXlTfd/9e6yJ9cz4bA0fankb9j/u8s+QR+BN5gNVHRcyjRdaBud2fv2rU5ugfulr7tVV22a1pJPjdLVYNF7lhK1YzX4AtlKRDNJtPHU0k8mKKQnQ3JT91M1CUYLpiLd54pWNVVm2DiqfwpLcEMBCuV0yj7Ph9OtS/VclIzCzI3p0BjlQgesWxpmFEgxzwBSlu3FfjajlftMnLAo6BIFnHzL9jRzZtGT9Su1T+LLPnLNZB1f8Y9WR1in8CIleQ/DJzNfg2OZe1ut+GmpaP1Sol3j+2q6WTlsgUQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Theory claim gnwt_c025 (GNWT): time course = gradual build-up" ;
+        dcterms:created "2026-11-18T17:52:02Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk/templateVersion> .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373> ;
+        cv:contentHash "080b2024d3815ab3fd5af9311d4d6c610725f493dd132228b98135299d9970dd" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:assertion {
+    sub:claim a cv:TheoryClaim ;
+        dcterms:identifier "gnwt_c025" ;
+        cv:claimStatement "Neural correlates of conscious experience build up gradually across cortical areas, implying a temporal profile for the emergence of conscious content." ;
+        cv:dimension cv:TemporalProfile ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:GradualBuildup ;
+        cv:restsOn sub:location,
+            sub:location__1 ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory cv:GlobalNeuronalWorkspaceTheory .
+
+    sub:location dcterms:source <https://doi.org/10.1016/j.neuron.2011.03.018> ;
+        cv:pageLocator "p.21" .
+
+    sub:location__1 dcterms:source <https://doi.org/10.1016/j.neuron.2020.01.026> ;
+        cv:pageLocator "p.1" .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+

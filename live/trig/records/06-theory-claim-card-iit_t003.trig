@@ -1,0 +1,71 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc/> .
+@prefix this: <https://w3id.org/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:claim a cv:TheoryClaim ;
+        dcterms:identifier "iit_t003" ;
+        cv:claimStatement "IIT predicts that the duration of a conscious instant is definite and sustained over tens to hundreds of milliseconds, not transient or phasic, as required by the exclusion postulate governing the cause–effect structure of the PSC." ;
+        cv:dimension cv:TemporalProfile ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:SustainedMaintenance ;
+        cv:restsOn sub:location,
+            sub:location__1 ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory wd:Q6042884 .
+
+    sub:location dcterms:source <https://doi.org/10.1038/nrn.2016.44> ;
+        cv:pageLocator "p.3" .
+
+    sub:location__1 dcterms:source <https://doi.org/10.1038/nrn.2016.44> ;
+        cv:pageLocator "p.6" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L640-L665> ;
+        cv:contentHash "bef31ed57b3dbd75fa0d71d83f2bb73e69070055fc671f038f3d56caf68bf9c0" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "aDLN5oqEhsgQcI7CGrYXWEuLXKXT0eiXliVP2wIuPRA4BgykKV9TD7ooRrbVn5cryBnGhVlNb8qx9GEWOUqeJnc1GGR3zh0x+Ld5lHdJDc3dH+e2tnQW6WfZEr6ZcKjbn+RHJeppvL6bECkQ7bQHaXNB0BVnx7NhjusHeUCsVACAeRHOCznk0o3G3A8u2l5L6rwXJJDwQf4e9T2YgFMqkJcNMDcOMIOaU4CWzX0GymT3woIMcOZ437LFVyNXrtSXju0ybFoPOLQcSk0ox+evd/i/15F/BXYxK+LJUI7Q3xl3bkse0sxRBhl4701jVQZG1dWhq7o9uMt17vkKHn1QKg==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Theory claim iit_t003 (IIT): time course = sustained maintenance" ;
+        dcterms:created "2026-11-18T17:51:58Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk/templateVersion> .
+}
+

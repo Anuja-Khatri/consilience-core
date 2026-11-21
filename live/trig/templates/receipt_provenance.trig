@@ -1,0 +1,190 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/> .
+@prefix this: <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:assertion {
+    sub:templateVersion a ntemplate:ProvenanceTemplate ;
+        rdfs:label "Consilience: receipt" ;
+        dcterms:description "Where a Consilience record comes from and how to check it: the receipt (the record at a pinned commit of a public repository), the content hash and the method that reproduces it, and the code, rule and map versions that produced the record. For statements a person reviewed, who reviewed them and what drafted them." ;
+        ntemplate:hasStatement sub:st01,
+            sub:st02,
+            sub:st03,
+            sub:st04,
+            sub:st05,
+            sub:st06,
+            sub:st07,
+            sub:st08,
+            sub:st09,
+            sub:st10,
+            sub:st11,
+            sub:st12,
+            sub:st13 .
+
+    prov:wasAttributedTo rdfs:label "is attributed to" .
+
+    prov:wasDerivedFrom rdfs:label "was derived from the receipt" .
+
+    cv:codeVersion rdfs:label "was computed by the code version" .
+
+    cv:contentHash rdfs:label "has the content hash" .
+
+    cv:draftedBy rdfs:label "was drafted by" .
+
+    cv:exportedWith rdfs:label "was exported with" .
+
+    cv:hashMethod rdfs:label "hashed with the method" .
+
+    cv:ledgerHash rdfs:label "is covered by the ledger hash" .
+
+    cv:mapVersion rdfs:label "with the axis map version" .
+
+    cv:reviewedBy rdfs:label "was reviewed by" .
+
+    cv:rulesVersion rdfs:label "under the rule version" .
+
+    cv:sourceCommit rdfs:label "at the commit" .
+
+    cv:sourceRepository rdfs:label "comes from the repository" .
+
+    sub:agent a ntemplate:AgentPlaceholder,
+            ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "software agent" ;
+        ntemplate:hasDefaultValue ntemplate:CREATOR .
+
+    sub:codeVersion a ntemplate:LiteralPlaceholder ;
+        rdfs:label "code version" .
+
+    sub:commit a ntemplate:LiteralPlaceholder ;
+        rdfs:label "source commit" .
+
+    sub:contentHash a ntemplate:LiteralPlaceholder ;
+        rdfs:label "content hash (SHA-256)" .
+
+    sub:draftedBy a ntemplate:LiteralPlaceholder ;
+        rdfs:label "drafted by (in words)" .
+
+    sub:exporter a ntemplate:LiteralPlaceholder ;
+        rdfs:label "exporter and version" .
+
+    sub:hashMethod a ntemplate:LiteralPlaceholder ;
+        rdfs:label "hash method" .
+
+    sub:ledgerHash a ntemplate:LiteralPlaceholder ;
+        rdfs:label "ledger hash" .
+
+    sub:mapVersion a ntemplate:LiteralPlaceholder ;
+        rdfs:label "axis map version" .
+
+    sub:receipt a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "receipt (record at a pinned commit)" .
+
+    sub:repository a ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "source repository" .
+
+    sub:reviewer a ntemplate:AgentPlaceholder,
+            ntemplate:ExternalUriPlaceholder ;
+        rdfs:label "reviewer (ORCID iD)" .
+
+    sub:rulesVersion a ntemplate:LiteralPlaceholder ;
+        rdfs:label "rule version" .
+
+    sub:st01 rdf:object sub:agent ;
+        rdf:predicate prov:wasAttributedTo ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st02 rdf:object sub:receipt ;
+        rdf:predicate prov:wasDerivedFrom ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st03 rdf:object sub:repository ;
+        rdf:predicate cv:sourceRepository ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st04 rdf:object sub:commit ;
+        rdf:predicate cv:sourceCommit ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st05 rdf:object sub:contentHash ;
+        rdf:predicate cv:contentHash ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st06 rdf:object sub:hashMethod ;
+        rdf:predicate cv:hashMethod ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st07 a ntemplate:OptionalStatement ;
+        rdf:object sub:codeVersion ;
+        rdf:predicate cv:codeVersion ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st08 a ntemplate:OptionalStatement ;
+        rdf:object sub:rulesVersion ;
+        rdf:predicate cv:rulesVersion ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st09 a ntemplate:OptionalStatement ;
+        rdf:object sub:mapVersion ;
+        rdf:predicate cv:mapVersion ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st10 a ntemplate:OptionalStatement ;
+        rdf:object sub:ledgerHash ;
+        rdf:predicate cv:ledgerHash ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st11 rdf:object sub:exporter ;
+        rdf:predicate cv:exportedWith ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st12 a ntemplate:OptionalStatement ;
+        rdf:object sub:reviewer ;
+        rdf:predicate cv:reviewedBy ;
+        rdf:subject ntemplate:ASSERTION .
+
+    sub:st13 a ntemplate:OptionalStatement ;
+        rdf:object sub:draftedBy ;
+        rdf:predicate cv:draftedBy ;
+        rdf:subject ntemplate:ASSERTION .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo orcid:0009-0008-3375-7858 .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "VG0/RNCxUE8Maf+m6YaH9qIEptDrsS7h8XJKixGRPXTXm+b2iOwRaY7j5CPZflaKpf/aFt9fjh+p+6McANR5rUdmeb48lRFyWSCQtsAuuG3kiC8b1OJV+yMFZlVn9mBtRblTcDb8eOXJ14heU+p2V6HdZ0f3tY5bkNtpyiWnfqWy6XxQjpphQAYsKDg4YooyH62oqHnDpK1Dhwy9muIQ+Uj8Ci5f7voX3HYhUDRahDHKqadzf/5HXwQndD6F9015diVbje0vg/eRpTwKADaqXCohVhTqPGeGKWK418pSUAxcgz+exx9OkQXxQ9bHp59ugpOkQNi1PugezGYhLNQpRA==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    orcid:0009-0008-3375-7858 foaf:name "Anuja Khatri" .
+
+    this: rdfs:label "Consilience: receipt" ;
+        dcterms:created "2026-11-18T17:51:49Z"^^xsd:dateTime ;
+        dcterms:creator orcid:0009-0008-3375-7858 ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:embeds sub:templateVersion ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RA7lSq6MuK_TIC6JMSHvLtee3lpLoZDOqLJCLXevnrPoU> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RA-yPZEYODCS39dWOWm7NA_ClOGFHzPi8iYhLzoZf19GI/templateVersion> .
+}
+

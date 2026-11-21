@@ -1,0 +1,59 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RARxbeQbqJNpcbIHjHhUCTJSROf8q3la6R61a7772Pv1c/> .
+@prefix this: <https://w3id.org/np/RARxbeQbqJNpcbIHjHhUCTJSROf8q3la6R61a7772Pv1c> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2187-L2226> ;
+        cv:contentHash "6f2ef72a9ed138fd4e9487843aa76256df262e8e565103d269bad2fd1047b71b" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "V+s1XBxWiksirlUlr/ThTDZa8Wis1m65ybs+Xs7w6ZaLsiLo0OSRWON6p2dBUvUrlSTzvQ2o/S5WXDLUwuJbQ2iXy2H8bKN5paVLxq+E0KUip1WSDTvc5Y4Pw057OLMNRLyI2BPS4C57vaFey+fOPgg3j6LpV0gPWoApXE9HFXuNavx3SWU+pkJcDrD2h+xZdJsMKcCDB/SshQcbKpFwvvebo1jBfrAZBOxLhgLv+zjekRyK/KfSqvpV1CcPmQuueQbQisgmue3RndnvWpdl3yPfuThPOOqH5ocYD9eXkv5MQXL74xGOVsGuRfnVifQoCFBdpSSiayNyJDwMGYL6lw==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Disagreement iit_n007 vs gnwt_c003 on locus: testable now (observable: regional decoding)" ;
+        dcterms:created "2026-11-18T17:52:10Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable now and names the shared observable both claims bear on; it names no instrument, so none is recorded. This is a statement about the two claims, not a verdict on either theory. The dimension is a dimension of theoretical commitment, not a quantity, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations. The demo marks this pair as a type divergence: the two claims are different kinds of claim (boundary and substrate)." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:Disagreement ;
+        npx:introduces sub:disagreement ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAvlFcbPa5pxTNcz8r_uYIDAXRuieEgMgSnPlzBHibUjY/templateVersion> .
+}
+
+sub:assertion {
+    sub:disagreement a cv:Disagreement ;
+        dcterms:identifier "iit_n007|gnwt_c003" ;
+        cv:claimA <https://w3id.org/np/RAitF_rOR4zUt7-8j0RCPBJzfl0kX1l4Wiqmdg4o2E4k0/claim> ;
+        cv:claimB <https://w3id.org/np/RACrUIP9aqJdKYoVm42mWO7vrXrgIs0oeQh_aOXJJcw8E/claim> ;
+        cv:dimension cv:Locus ;
+        cv:observable cv:RegionalDecoding ;
+        cv:testability cv:TestableNow ;
+        cv:testabilityReason "The demo's check rules this disagreement decidable now: both claims bear on a shared observable (regional decoding) that current methods measure. The demo names no specific instrument, so none is recorded." .
+}
+

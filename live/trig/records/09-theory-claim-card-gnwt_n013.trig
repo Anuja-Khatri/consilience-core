@@ -1,0 +1,66 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix orcid: <https://orcid.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU/> .
+@prefix this: <https://w3id.org/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "WMBxVBEjjw4rulzuFJQDFCB9lPWm0vLl3WP5sm6Dp6HKGbFhMzCxbWKGBSLY22hJLale7mMeVkOpLN10tf+Y2lYQhyHJdyLXfEAqigFOjqMeEuXewqDZYPWzsfu6bmw7qTU4VyhZHpX0+PeiyiMPNCmY8UpVWS+U5yEaEVU8LkZixjYVerzWrDN/6M7tEr5uzqDK6u4cZhFvz/D5t6xpz8ehLrx1vF0fod/vV5oM512Irldr5jej4h6c25YkaIDVjccAEfnkLthUvY6h0q58csTJpX8OCZzUQFsCpBqqWCMPL9yRKFx2I3Hz2x6QtRAO3/z9AGW2tKKzSjwjOCmNLQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Theory claim gnwt_n013 (GNWT): time course = serial and all-or-none" ;
+        dcterms:created "2026-11-18T17:52:03Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The claim statement is a paraphrase of the source paper, drafted by a large language model and reviewed by a person, who is named in the provenance. It is not a quotation. Page locators are pages of the PDF the demo read, which can differ from printed page numbers." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:TheoryClaim ;
+        npx:introduces sub:claim ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk/templateVersion> .
+}
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:assertion {
+    sub:claim a cv:TheoryClaim ;
+        dcterms:identifier "gnwt_n013" ;
+        cv:claimStatement "Conscious processing is serial and all-or-none: at any moment only one interpretation reaches consciousness, and access to one item prevents or delays conscious access to a competing item." ;
+        cv:dimension cv:TemporalProfile ;
+        cv:polarity cv:Asserts ;
+        cv:position cv:SerialAllOrNone ;
+        cv:restsOn sub:location ;
+        cv:statementForm cv:ReviewedParaphrase ;
+        cv:theory cv:GlobalNeuronalWorkspaceTheory .
+
+    sub:location dcterms:source <https://doi.org/10.1007/978-3-030-54173-6_4> ;
+        cv:pageLocator "p.6" .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1502-L1521> ;
+        cv:contentHash "6eb8fa2d9e2f666670ad88299c34affd2226c2537b989574194a39ea61c99632" ;
+        cv:draftedBy "a large language model" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:reviewedBy orcid:0009-0008-3375-7858 ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+

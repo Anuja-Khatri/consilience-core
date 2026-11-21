@@ -1,0 +1,245 @@
+{
+  "agent:introduction": {
+    "nanopub": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE",
+    "published": "2026-11-18T17:51:39Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/introduction.trig",
+    "note": "self-signed introduction of the engine, owned by its responsible person (frbr:owner, ORCID iD)"
+  },
+  "template:graded_correspondence": {
+    "nanopub": "https://w3id.org/np/RAB5yq6zMD127_oapC0cGKGoS5Ey5UaNVf94DRwWW83P4",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAB5yq6zMD127_oapC0cGKGoS5Ey5UaNVf94DRwWW83P4",
+    "published": "2026-11-18T17:51:40Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/graded_correspondence.trig",
+    "note": "Consilience: claim A corresponds to claim B at grade X"
+  },
+  "template:comparison_refusal": {
+    "nanopub": "https://w3id.org/np/RAlb0AYfTHDZRuPbIoidrefXQOkzkv7INTEeJwOYoQFRY",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAlb0AYfTHDZRuPbIoidrefXQOkzkv7INTEeJwOYoQFRY",
+    "published": "2026-11-18T17:51:42Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/comparison_refusal.trig",
+    "note": "Consilience: comparison refused"
+  },
+  "template:disagreement": {
+    "nanopub": "https://w3id.org/np/RAvlFcbPa5pxTNcz8r_uYIDAXRuieEgMgSnPlzBHibUjY",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAvlFcbPa5pxTNcz8r_uYIDAXRuieEgMgSnPlzBHibUjY",
+    "published": "2026-11-18T17:51:44Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/disagreement.trig",
+    "note": "Consilience: claims A and B disagree on a dimension; testability and reason"
+  },
+  "template:data_quality_finding": {
+    "nanopub": "https://w3id.org/np/RALu1b-aXtNNYykZ7Qrz04kx_NMVIapIfzvpFVrXRhbaM",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RALu1b-aXtNNYykZ7Qrz04kx_NMVIapIfzvpFVrXRhbaM",
+    "published": "2026-11-18T17:51:45Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/data_quality_finding.trig",
+    "note": "Consilience: data-quality finding"
+  },
+  "template:claim_card": {
+    "nanopub": "https://w3id.org/np/RA2bWtxQfydQAEUp-qimU19xrw3XlXRmkgsvC7jTdh4LU",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA2bWtxQfydQAEUp-qimU19xrw3XlXRmkgsvC7jTdh4LU",
+    "published": "2026-11-18T17:51:47Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/claim_card.trig",
+    "note": "Consilience: measured claim (claim card)"
+  },
+  "template:theory_claim_card": {
+    "nanopub": "https://w3id.org/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAmOdphN9C0EvbBzcUBHfii2z-EYmcPsTwP2mLr9SsOLk",
+    "published": "2026-11-18T17:51:49Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/theory_claim_card.trig",
+    "note": "Consilience: theory claim (claim card)"
+  },
+  "template:receipt_provenance": {
+    "nanopub": "https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8",
+    "published": "2026-11-18T17:51:50Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/templates/receipt_provenance.trig",
+    "note": "Consilience: receipt"
+  },
+  "record:01-theory-claim-card-iit_c010": {
+    "nanopub": "https://w3id.org/np/RAfs4_dYLqZWACbgtjvXF4dMeRe7MLBdQoYlmSMVT_sz0",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAfs4_dYLqZWACbgtjvXF4dMeRe7MLBdQoYlmSMVT_sz0",
+    "published": "2026-11-18T17:51:52Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/01-theory-claim-card-iit_c010.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L239-L264"
+  },
+  "record:02-theory-claim-card-gnwt_c003": {
+    "nanopub": "https://w3id.org/np/RACrUIP9aqJdKYoVm42mWO7vrXrgIs0oeQh_aOXJJcw8E",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RACrUIP9aqJdKYoVm42mWO7vrXrgIs0oeQh_aOXJJcw8E",
+    "published": "2026-11-18T17:51:54Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/02-theory-claim-card-gnwt_c003.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1077-L1121"
+  },
+  "record:03-theory-claim-card-iit_n007": {
+    "nanopub": "https://w3id.org/np/RAitF_rOR4zUt7-8j0RCPBJzfl0kX1l4Wiqmdg4o2E4k0",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAitF_rOR4zUt7-8j0RCPBJzfl0kX1l4Wiqmdg4o2E4k0",
+    "published": "2026-11-18T17:51:55Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/03-theory-claim-card-iit_n007.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L450-L475"
+  },
+  "record:04-theory-claim-card-iit_n013": {
+    "nanopub": "https://w3id.org/np/RA8tvjpdSIBtbQ0RlNRYUTYO2Ct2XnK1FygM56rSXlhmE",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA8tvjpdSIBtbQ0RlNRYUTYO2Ct2XnK1FygM56rSXlhmE",
+    "published": "2026-11-18T17:51:57Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/04-theory-claim-card-iit_n013.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L476-L500"
+  },
+  "record:05-theory-claim-card-iit_t002": {
+    "nanopub": "https://w3id.org/np/RA9f62iHvzbEv8f2QUlWbb-SWcaYC8ocDYLDVfHBr-XAE",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA9f62iHvzbEv8f2QUlWbb-SWcaYC8ocDYLDVfHBr-XAE",
+    "published": "2026-11-18T17:51:58Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/05-theory-claim-card-iit_t002.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L607-L639"
+  },
+  "record:06-theory-claim-card-iit_t003": {
+    "nanopub": "https://w3id.org/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc",
+    "published": "2026-11-18T17:52:00Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/06-theory-claim-card-iit_t003.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L640-L665"
+  },
+  "record:07-theory-claim-card-gnwt_c018": {
+    "nanopub": "https://w3id.org/np/RAIZxrAd1cBIM3kbG9zdSaaQJazB7gqfs0wiuHbAkjMwQ",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAIZxrAd1cBIM3kbG9zdSaaQJazB7gqfs0wiuHbAkjMwQ",
+    "published": "2026-11-18T17:52:02Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/07-theory-claim-card-gnwt_c018.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1273-L1297"
+  },
+  "record:08-theory-claim-card-gnwt_c025": {
+    "nanopub": "https://w3id.org/np/RA-gEsYS2o6G8dYAnXq23QkrDyJChDu79TQxePRYa0EUk",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA-gEsYS2o6G8dYAnXq23QkrDyJChDu79TQxePRYa0EUk",
+    "published": "2026-11-18T17:52:03Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/08-theory-claim-card-gnwt_c025.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1349-L1373"
+  },
+  "record:09-theory-claim-card-gnwt_n013": {
+    "nanopub": "https://w3id.org/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU",
+    "published": "2026-11-18T17:52:05Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/09-theory-claim-card-gnwt_n013.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1502-L1521"
+  },
+  "record:10-theory-claim-card-iit_c025": {
+    "nanopub": "https://w3id.org/np/RAob9CIQoyQcgaJaeQwtS_QdN_oxPE16ywans-y_p5YTg",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAob9CIQoyQcgaJaeQwtS_QdN_oxPE16ywans-y_p5YTg",
+    "published": "2026-11-18T17:52:06Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/10-theory-claim-card-iit_c025.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L360-L384"
+  },
+  "record:11-theory-claim-card-gnwt_c008": {
+    "nanopub": "https://w3id.org/np/RAj0FElO3VmUKP1bdXqP9jYd0wlMlghNIj_dVt34Pdhpw",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAj0FElO3VmUKP1bdXqP9jYd0wlMlghNIj_dVt34Pdhpw",
+    "published": "2026-11-18T17:52:08Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/11-theory-claim-card-gnwt_c008.trig",
+    "note": "theory_claim_card; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L1148-L1172"
+  },
+  "record:12-disagreement-iit_c010--gnwt_c003": {
+    "nanopub": "https://w3id.org/np/RA5KLObrSfquvAohnvKNJnqi0ScB-QDDHe9gBOvu07IOo",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA5KLObrSfquvAohnvKNJnqi0ScB-QDDHe9gBOvu07IOo",
+    "published": "2026-11-18T17:52:10Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/12-disagreement-iit_c010--gnwt_c003.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2077-L2116"
+  },
+  "record:13-disagreement-iit_n007--gnwt_c003": {
+    "nanopub": "https://w3id.org/np/RARxbeQbqJNpcbIHjHhUCTJSROf8q3la6R61a7772Pv1c",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RARxbeQbqJNpcbIHjHhUCTJSROf8q3la6R61a7772Pv1c",
+    "published": "2026-11-18T17:52:11Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/13-disagreement-iit_n007--gnwt_c003.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2187-L2226"
+  },
+  "record:14-disagreement-iit_n013--gnwt_c003": {
+    "nanopub": "https://w3id.org/np/RAWAHIPkNMlBXI-xrZx9VUra-KfbtW0_UWhn4IqwP6eCU",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAWAHIPkNMlBXI-xrZx9VUra-KfbtW0_UWhn4IqwP6eCU",
+    "published": "2026-11-18T17:52:13Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/14-disagreement-iit_n013--gnwt_c003.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2227-L2266"
+  },
+  "record:15-disagreement-iit_t002--gnwt_c003": {
+    "nanopub": "https://w3id.org/np/RA3f5gQrh6XprmKRPPyYqh5B3hmdKhEwDo-J34Msn64L0",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA3f5gQrh6XprmKRPPyYqh5B3hmdKhEwDo-J34Msn64L0",
+    "published": "2026-11-18T17:52:15Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/15-disagreement-iit_t002--gnwt_c003.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2297-L2336"
+  },
+  "record:16-disagreement-iit_t003--gnwt_c018": {
+    "nanopub": "https://w3id.org/np/RASdu2hlQHETcoMjxMPTQg_Gc0MjXCgYgwoBD6jP0Uk50",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RASdu2hlQHETcoMjxMPTQg_Gc0MjXCgYgwoBD6jP0Uk50",
+    "published": "2026-11-18T17:52:16Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/16-disagreement-iit_t003--gnwt_c018.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2337-L2379"
+  },
+  "record:17-disagreement-iit_t003--gnwt_c025": {
+    "nanopub": "https://w3id.org/np/RAXicJOK4YUyrtYmXa6X-iFrkm5MTL32Ysnt9d-56H4zw",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAXicJOK4YUyrtYmXa6X-iFrkm5MTL32Ysnt9d-56H4zw",
+    "published": "2026-11-18T17:52:18Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/17-disagreement-iit_t003--gnwt_c025.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2380-L2422"
+  },
+  "record:18-disagreement-iit_t003--gnwt_n013": {
+    "nanopub": "https://w3id.org/np/RA6XI7pO7i7tyVrkZCntvrjKEBSUZw0fovWmOblLWKJfI",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RA6XI7pO7i7tyVrkZCntvrjKEBSUZw0fovWmOblLWKJfI",
+    "published": "2026-11-18T17:52:20Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/18-disagreement-iit_t003--gnwt_n013.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2423-L2465"
+  },
+  "record:19-disagreement-iit_c025--gnwt_c008": {
+    "nanopub": "https://w3id.org/np/RAXkMbooHSB02bJmVmHMEDv6cMQhPDd-MBO2g-w_WTQWA",
+    "registry": "live",
+    "resolves_at": "https://registry.knowledgepixels.com/np/RAXkMbooHSB02bJmVmHMEDv6cMQhPDd-MBO2g-w_WTQWA",
+    "published": "2026-11-18T17:52:22Z",
+    "signer": "https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine",
+    "file": "trig/records/19-disagreement-iit_c025--gnwt_c008.trig",
+    "note": "disagreement; receipt https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2117-L2156"
+  }
+}

@@ -1,0 +1,60 @@
+@prefix cv: <https://theconsilience.io/ns/cv#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
+@prefix npx: <http://purl.org/nanopub/x/> .
+@prefix ntemplate: <https://w3id.org/np/o/ntemplate/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sub: <https://w3id.org/np/RA6XI7pO7i7tyVrkZCntvrjKEBSUZw0fovWmOblLWKJfI/> .
+@prefix this: <https://w3id.org/np/RA6XI7pO7i7tyVrkZCntvrjKEBSUZw0fovWmOblLWKJfI> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sub:Head {
+    this: a np:Nanopublication ;
+        np:hasAssertion sub:assertion ;
+        np:hasProvenance sub:provenance ;
+        np:hasPublicationInfo sub:pubinfo .
+}
+
+sub:provenance {
+    sub:assertion prov:wasAttributedTo <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        prov:wasDerivedFrom <https://github.com/Anuja-Khatri/theconsilience-engine/blob/96ba4e435bd13718d36435cc3436d938d2d1f894/results/demo/files/iitxgnwt_judge.json#L2423-L2465> ;
+        cv:contentHash "7ec3523726ee836e8be7b725665682513c1287b33114c788a3560709997dc8e0" ;
+        cv:exportedWith "consilience 0.1.1 (github.com/Anuja-Khatri/consilience-core)" ;
+        cv:hashMethod "json-sha256-v0" ;
+        cv:sourceCommit "96ba4e435bd13718d36435cc3436d938d2d1f894" ;
+        cv:sourceRepository <https://github.com/Anuja-Khatri/theconsilience-engine> .
+}
+
+sub:assertion {
+    sub:disagreement a cv:Disagreement ;
+        dcterms:identifier "iit_t003|gnwt_n013" ;
+        cv:claimA <https://w3id.org/np/RAlbyNlxmIqqa0q7i7BT0FHPxBFxOgChlPO8vv--4Omfc/claim> ;
+        cv:claimB <https://w3id.org/np/RAvoHn4pTNGy6LyMOMAJsv7VwN-p1Y2bGTLflTmnio0EU/claim> ;
+        cv:dimension cv:TemporalProfile ;
+        cv:observable cv:IgnitionSignature,
+            cv:TemporalGeneralization ;
+        cv:testability cv:TestableNow ;
+        cv:testabilityReason "The demo's check rules this disagreement decidable now: both claims bear on a shared observable (ignition signature and temporal generalisation) that current methods measure. The demo names no specific instrument, so none is recorded." .
+}
+
+sub:pubinfo {
+    sub:sig npx:hasAlgorithm "RSA" ;
+        npx:hasPublicKey "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArnVHdGqFqkAq1UtBF89BhwuND7xVDDNJNFlJ/upzaqxZei7Htg+Y8GV9HivdyuMjli59WSDrTnpJHMRjSWC8Ha/uTyapbpF5c/500BOqctLzuc01pxjPqFhyfSo5UCK6XIVcqTfCJ6Y5IAmkVblpChBIfBZed01azfvOlSSAkVkJHnWWvMp3ejkRcp0WNrq8LSMKdvHlX55zQZ34fzm952YBAwoEqJcoyNy2CrtYRseneI+NQ7g3sdvtEh8KxfabWKGjAvdWfIh4h3wDhoG+bsXGx5dsFCdrAdRkJZ2KmP2UByyKc56/p8vTLjBTGFoMPFXiNNm8Zsy4Zwdjx2MRIwIDAQAB" ;
+        npx:hasSignature "DI53nmImPQoamLXIqnmZZXPxJQgqETu2x3fG1HdBAArt7TgCaXHkYSzdLS2nyOUHJF6UdmM74cav3BFtJm+QSAJHFe5q9HhURZUrg2FF/plsUZCNga5WBk9ALsEN4COdFIX/D+gOiae3G+86FDWw9oL5BDKcv9GgUxkOdwdT0IxacuT7bQNBcsvjkx9YxYVrI2pvndwG5yVpOKuLAho+9jyoqEt8Te2KQBIyXk80F4TaBPgjpXk9Fa26TNwiX0NUbLWZDKHr+DJd4PhQCAmEiis48G2to83TzQC7igwiVxTm3Wki4ZzJKNfmhZX+qub31dkc1RpL1nf39Ri1ifgLiQ==" ;
+        npx:hasSignatureTarget this: ;
+        npx:signedBy <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> .
+
+    this: rdfs:label "Disagreement iit_t003 vs gnwt_n013 on time course: testable now (observable: ignition signature and temporal generalisation)" ;
+        dcterms:created "2026-11-18T17:52:18Z"^^xsd:dateTime ;
+        dcterms:creator <https://w3id.org/np/RALXyTyKDxI0Vn52y2zbUn7vOopULhdzIVmF84UUyRGdE/consilience-engine> ;
+        dcterms:description "From the Consilience cross-theory demo (consilience-demo.netlify.app); its results are pinned in https://github.com/Anuja-Khatri/theconsilience-engine at commit 96ba4e435bd13718d36435cc3436d938d2d1f894, results/demo/. The demo's check rules this disagreement decidable now and names the shared observable both claims bear on; it names no instrument, so none is recorded. This is a statement about the two claims, not a verdict on either theory. The dimension is a dimension of theoretical commitment, not a quantity, so no margin or floor applies. The claim statements in the linked claim cards are reviewed paraphrases with page locators, not quotations." ;
+        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+        npx:hasNanopubType cv:Disagreement ;
+        npx:introduces sub:disagreement ;
+        ntemplate:wasCreatedFromProvenanceTemplate <https://w3id.org/np/RAzZQ_kvsjQobnlXeZTcPwFOORCpu9qY5oEd7umj0kGx8/templateVersion> ;
+        ntemplate:wasCreatedFromPubinfoTemplate <https://w3id.org/np/RA-N4_kFxcruvBTlo1yJv29E4SLOXsx5KO_th69PprMrA>,
+            <https://w3id.org/np/RACJ58Gvyn91LqCKIO9zu1eijDQIeEff28iyDrJgjSJF8> ;
+        ntemplate:wasCreatedFromTemplate <https://w3id.org/np/RAvlFcbPa5pxTNcz8r_uYIDAXRuieEgMgSnPlzBHibUjY/templateVersion> .
+}
+
