@@ -25,6 +25,16 @@ who receives tables of measurements and wants to know which rows to distrust bef
 using them: researchers, data stewards, people building automated or AI-assisted analysis
 who want a check that refuses rather than guesses.
 
+## At a glance
+
+- **What it checks:** whether two measurements agree once units, tolerances and measurement conditions are taken into account; which rows of a data table break written limits; and whether a scoring function accepts answers it should reject (`consilience stress`).
+- **Why it matters:** numbers from different labs, papers and runs get compared by hand, and units or conditions get lost on the way. A checker that guesses is worse than none, so this one refuses with a named reason whenever it cannot read something exactly.
+- **Who it is for:** researchers comparing results across sources, data stewards, and people building automated or AI-assisted analysis and optimisation pipelines.
+- **Where it has been used:** it is the engine under [consilience-benchmarks](https://github.com/Anuja-Khatri/consilience-benchmarks) (scorers from Google DeepMind's AlphaEvolve repositories and open versions of it) and [consilience-judge-check](https://github.com/Anuja-Khatri/consilience-judge-check) (Perplexity's DRACO benchmark).
+- **Try it:** `pip install consilience`, then `consilience examples .` to get example files. No AI model is called anywhere in the package, and every result comes with a receipt that `consilience verify` re-runs.
+
+Part of [The Consilience](https://theconsilience.io), a verification layer for AI-for-science. All public repos: [github.com/Anuja-Khatri](https://github.com/Anuja-Khatri).
+
 ## Install
 
 Needs Python 3.10 or newer.
